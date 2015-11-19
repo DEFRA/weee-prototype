@@ -59,7 +59,7 @@
   <body class="{{$bodyClasses}}{{/bodyClasses}}">
     <script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
 
-    
+
 
     <div id="skiplink-container">
       <div>
@@ -68,13 +68,13 @@
     </div>
 
     <div id="global-cookie-message">
-      
+
         {{$cookieMessage}}{{/cookieMessage}}
-      
+
     </div>
     <!--end global-cookie-message-->
 
-    
+
     <header role="banner" id="global-header" class="{{$headerClass}}{{/headerClass}}">
       <div class="header-wrapper">
         <div class="header-global">
@@ -89,7 +89,7 @@
       </div>
     </header>
     <!--end header-->
-    
+
 
     {{$afterHeader}}{{/afterHeader}}
 
@@ -101,17 +101,67 @@
     <footer class="group js-footer" id="footer" role="contentinfo">
 
       <div class="footer-wrapper">
+        <div class="footer_agencies">
+<h2 class="heading-medium">Contact us</h2>
+<div class="grid-row">
+
+  <div class="column-half">
+      <h3 class="heading-small">England</h3>
+      <p>
+          Environment Agency<br />
+          Producer Responsibility Regulatory Services<br />
+          Telephone: 03708 506 506<br />
+      </p>
+
+      <h3 class="heading-small">Scotland</h3>
+      <p>
+          Scottish Environment Protection Agency<br />
+          Producer Compliance and Waste Shipments Unit<br />
+          Telephone: 01786 457700<br />
+      </p>
+  </div>
+
+  <div class="column-half">
+      <h3 class="heading-small">Northern Ireland</h3>
+      <p>
+          Northern Ireland Environment Agency<br />
+          Producer Responsibility Unit<br />
+          Telephone: 02 890 569338<br />
+      </p>
+
+      <h3 class="heading-small">Wales</h3>
+      <p>
+          Natural Resources Wales<br />
+          Producer Responsibility Unit<br />
+          Telephone: 03000 65 3096<br />
+      </p>
+  </div>
+
+</div>
+<hr />
         {{$footerTop}}{{/footerTop}}
 
         <div class="footer-meta">
           <div class="footer-meta-inner">
+            <ul>
+
+                    <li>
+                        <a href="javascript:alert('Terms and conditions');" target="_blank">Terms and conditions</a>
+                    </li>
+                    <li>
+                        <a href="javascript:alert('Privacy statement');" target="_blank">Privacy</a>
+                    </li>
+                    <li>
+                        <a href="javascript:alert('Cookies');" target="_blank">Cookies</a>
+                    </li>
+                </ul>
             {{$footerSupportLinks}}{{/footerSupportLinks}}
 
             <div class="open-government-licence">
               <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
-              
+
                 {{$licenceMessage}}<p>All content is available under the <a href='https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/' rel='license'>Open Government Licence v3.0</a>, except where otherwise stated</p>{{/licenceMessage}}
-              
+
             </div>
           </div>
 
