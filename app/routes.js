@@ -11,6 +11,13 @@ router.get('/examples/template-data', function (req, res) {
 
 
 
-// add your routes here
+// routes for producers/delete
+router.post('/producers/delete/delete-confirmation', function (req,res) {
+  if (req.body['radio-inline-group']==="Yes"){
+    res.redirect('/producers/delete/delete-confirmation-yes');
+  } else {
+    res.redirect('/producers/delete/index');
+  }
+});
 
 module.exports = router;
