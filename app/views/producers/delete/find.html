@@ -70,7 +70,7 @@ text-align: center;
 .grey {
 
 background-color: #dee0e2;
-height: 485px;
+height: 450px;
 margin-top:20px;
 padding-top:5px;
 padding-right: 10px;
@@ -139,7 +139,7 @@ color: #2e8aca;
 
 
             <li>
-                <a href="">Activity</a>: Delete producer
+                <a href="">Activity</a>: View producer details
             </li>
 
             <li>
@@ -165,22 +165,36 @@ color: #2e8aca;
 </div>
 
 </div>
-
 <div class="account-link-banner"></div>
-<section class="column-two-thirds">
-<header>
-	<h1 class="heading-large">Producer deleted</h1>
-</header>
-<p>You have successfully deleted the following producer.</p>
-								<span style="font-weight:800";>Producer registration number (PRN):</span>&nbsp;&nbsp;&nbsp;&nbsp;WEE/MM1329AA</p>
 
-<br/>
-<p><a href="find" class="button" value="Continue">Continue</a></p>
+<div class="grid-row">
 
-              </div>
 
-</section>
+    <section class="column-three-quarters">
+
+			<header class="hgroup">
+					<h1 class="heading-xlarge">
+						 Find producer
+							</h1>
+			</header>
+			<!-- ========================================================================================================== -->
+			<!-- ========================================================================================================== -->
+			<!-- ========================================================================================================== -->
+<div>
+<p>Start typing the name, number or reference to find a match</p>
+	 <div>
+<input type="text" id="creditors"
+				class="form-control typeahead input-lg" autocomplete="off">
+
+ </div>
+<p><br/></p>
+<div>
+<a href="javascript:alert('End of prototype journey');" class="button">Continue</a></div>
+<div>
+
+            </section>
             </main>
+
 
 
             {{/content}}
