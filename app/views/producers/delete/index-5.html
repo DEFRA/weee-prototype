@@ -119,6 +119,79 @@ text-decoration: underline;
 color: #2e8aca;
 
 }
+
+
+.button::before {
+    background: transparent none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 110%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.button::before {
+    background: transparent none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 110%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.button:link, .button:hover, .button:focus, .button:visited {
+    color: #fff;
+}
+.button:link, .button:hover, .button:focus, .button:visited {
+    color: #fff;
+}
+a:link {
+    color: #005ea5;
+}
+
+.redButton::before {
+    background: transparent none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 110%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.redButton {
+    background-color: #FF0000;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: 0 2px 0 #003518;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    line-height: 1.25;
+    margin: 0 15px 15px 0;
+    padding: 0.52632em 0.78947em 0.26316em;
+    position: relative;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+.redButton:link, .redButton:visited {
+    color: #fff;
+}
+
+.redButton:hover, .redButton:focus
+{
+	color: #fff;
+	background-color: #E00000;
+}
+
+
+
+
   </style>
 
 <main id="content" role="main">
@@ -181,6 +254,7 @@ color: #2e8aca;
 
 <p><a href="javascript:alert('Back to find screen');">Find another producer</a></p>
 
+
 </section>
     <section class="column-three-quarters">
 
@@ -208,12 +282,12 @@ color: #2e8aca;
                   <tbody>
 
                     <tr>
-                        <th valign="top" width="30%">Registered PCS</th>
-                        <td valign="top" width="70%">Unaligned<br/><br/>A WEEE Scheme<br/>01/01/2018 - 03/03/2018</td>
+                        <th width="50%">Registered PCS</th>
+                        <td width="50%">A WEEE Scheme</td>
 
                     </tr>
                       <tr>
-                          <th width="40%">Producer name</th>
+                          <th>Producer name</th>
                           <td>10 Squared Ltd</td>
 
                       </tr>
@@ -256,11 +330,12 @@ color: #2e8aca;
                       <tr>
                           <th>Ceased to exist</th>
                           <td></td>
-
+                          
                       </tr>
                   </tbody>
               </table>
               <br />
+							<p><a href="delete-confirmation-5" class="redButton">Unalign producer</a></p>
 
 
 

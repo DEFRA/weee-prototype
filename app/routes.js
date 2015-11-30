@@ -52,4 +52,12 @@ router.post('/producers/delete/delete-confirmation-4', function (req,res) {
   }
 });
 
+router.post('/producers/delete/delete-confirmation-5', function (req,res) {
+  if (req.body['radio-inline-group']==="Yes"){
+    res.redirect('/producers/delete/delete-confirmation-yes-5');
+  } else {
+    res.redirect('/producers/delete/index-5');
+  }
+});
+
 module.exports = router;
