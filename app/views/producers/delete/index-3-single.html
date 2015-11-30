@@ -1,0 +1,354 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+<style>
+  .column-three-quarters {
+  float: left;
+  width: 75%;
+}
+.column-three-quarters {
+  box-sizing: border-box;
+  padding: 0 15px;
+}
+
+.selection-block {
+float: left;
+background-color: #00823B;
+color: #ffffff;
+
+
+}
+
+.half {
+
+width: 318px;
+margin-bottom: 30px;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+padding-left: 10px;
+height:65px;
+text-align: center;
+}
+
+.selection-block a:visited {
+
+color: #ffffff;
+text-decoration: none;
+
+}
+
+.margin-right {
+
+margin-right: 30px;
+
+}
+
+.margin-bottom-15 {
+
+margin-bottom: 15px;
+
+}
+
+.full {
+
+width: 686px;
+margin-bottom: 15px;
+padding-top: 10px;
+padding-bottom: 10px;
+padding-right: 10px;
+padding-left: 10px;
+text-align: center;
+
+}
+
+.grey {
+
+background-color: #dee0e2;
+height: 265px;
+margin-top:20px;
+padding-top:5px;
+padding-right: 10px;
+padding-left: 10px;
+
+}
+
+.expanded {
+
+
+
+}
+
+.noBorders th  {
+
+border: none;
+
+}
+
+.noBorders td  {
+
+border: none;
+
+ }
+
+ .hide {
+
+display: none;
+
+ }
+
+ .hide2 {
+
+display: none;
+
+ }
+
+.show {
+
+
+}
+
+.fakeLink {
+
+text-decoration: underline;
+color: #2e8aca;
+
+}
+
+
+.button::before {
+    background: transparent none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 110%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.button::before {
+    background: transparent none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 110%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.button:link, .button:hover, .button:focus, .button:visited {
+    color: #fff;
+}
+.button:link, .button:hover, .button:focus, .button:visited {
+    color: #fff;
+}
+a:link {
+    color: #005ea5;
+}
+
+.redButton::before {
+    background: transparent none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 110%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.redButton {
+    background-color: #FF0000;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: 0 2px 0 #003518;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    line-height: 1.25;
+    margin: 0 15px 15px 0;
+    padding: 0.52632em 0.78947em 0.26316em;
+    position: relative;
+    text-decoration: none;
+    vertical-align: top;
+}
+
+.redButton:link, .redButton:visited {
+    color: #fff;
+}
+
+.redButton:hover, .redButton:focus
+{
+	color: #fff;
+	background-color: #E00000;
+}
+
+
+
+
+  </style>
+
+<main id="content" role="main">
+	<div class="phase-banner">
+	            <p>
+	                <strong class="phase-tag">BETA</strong>
+	                <span>This is a new service – your
+					<a href="" target="_blank">feedback</a> will help us to improve it.</span>
+	            </p>
+	        </div>
+
+
+<div class="grid-row">
+
+<div class="column-half">
+<div class="breadcrumb-title-display font-xsmall">
+    <ul>
+
+
+            <li>
+                <a href="">Activity</a>: View producer details
+            </li>
+
+            <li>
+            </li>
+
+    </ul>
+</div>
+</div>
+
+<div class="column-half">
+<div class="username-title-display font-xsmall">
+  <ul>
+        <li>
+            <div class="text-secondary">Signed in as: <span class="username-format">Susan Smith</span></div>
+        </li>
+        <li>
+<form action="" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="eCzIfWzuMLjFN1jdi8ETodFPDiZvIg2ytPoi40_Zhsgc-pjTharcfJlvZFt7pREwfzNfrH_LvgqJ94MNm00Itez9O8ZpslIoZ9l9zROV-BLwjAfWGjAKaUAA7doF1Y0tKUKWnEDylMZgvRKhBPTJtg2" />
+                <button class="link-submit" id="link-sign-out" type="submit">Sign out</button>
+</form>
+</li>
+    </ul>
+</div>
+</div>
+
+</div>
+<div class="account-link-banner"></div>
+
+<div class="grid-row">
+<section class="column-quarter grey">
+ <h2 class="heading-small">Compliance year</h2>
+<p>Select a compliance year</p>
+<p><a href="javascript:alert('Prototype')">2016</a></p>
+<hr style="margin-top:0px;padding-top:0px;margin-bottom:0px;padding-bottom:0px;">
+<p><a href="javascript:alert('Prototype')">Download amendment history (CSV)</a></p>
+
+<p><a href="javascript:alert('Back to find screen');">Find another producer</a></p>
+
+
+</section>
+    <section class="column-three-quarters">
+
+        <header class="hgroup">
+            <h1 class="heading-xlarge">
+                Producer details
+                </h1>
+        </header>
+        <!-- ========================================================================================================== -->
+        <!-- ========================================================================================================== -->
+        <!-- ========================================================================================================== -->
+
+        <p><span style="font-weight:800;">Compliance year:</span>&nbsp;&nbsp;&nbsp;&nbsp;2016<br/>
+                        <span style="font-weight:800";>Producer registration number (PRN):</span>&nbsp;&nbsp;&nbsp;&nbsp;WEE/MM1329AA</p>
+
+
+
+
+              <table>
+                  <thead>
+                      <tr class="visuallyhidden">
+                          <th colspan="2">Producer Details (2018)</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr>
+                        <th width="30%">Registered PCS</th>
+                        <td>A WEEE Scheme</td>
+                        <td></td>
+                    </tr>
+                      <tr>
+                          <th>Producer name</th>
+                          <td>10 Squared Ltd</td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <th valign="top">Trading name</th>
+                          <td valign="top">Squared Up</td>
+                          <td valign="top"></td>
+</tr>
+
+                      <tr>
+                          <th>Registration date</th>
+                          <td>11 November 2013</td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <th>Company registration number</th>
+                          <td>12345678</td>
+                          <td></td>
+                      </tr>
+
+                      <tr>
+                          <th>Obligation type</th>
+                          <td>Both</td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <th valign="top">Charge band type</th>
+                          <td valign="top">B</td>
+                          <td valign-"top"></td>
+
+                      </tr>
+
+
+
+                      <tr>
+                          <th>Authorised representative</th>
+                          <td>Yes</td>
+                          <td></td>
+                      </tr>
+                      <tr>
+                          <th>Ceased to exist</th>
+                          <td></td>
+                          <td></td>
+                      </tr>
+                  </tbody>
+              </table>
+              <br />
+							<p><a href="delete-confirmation-single" class="redButton">Delete producer</a></p>
+
+
+
+              </div>
+
+            </section>
+            </main>
+
+
+
+            {{/content}}
+
+            {{$bodyEnd}}
+
+            {{/bodyEnd}}
+
+
+
+
+            {{/layout}}

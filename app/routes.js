@@ -20,6 +20,14 @@ router.post('/producers/delete/delete-confirmation', function (req,res) {
   }
 });
 
+router.post('/producers/delete/delete-confirmation-single', function (req,res) {
+  if (req.body['radio-inline-group']==="Yes"){
+    res.redirect('/producers/delete/delete-confirmation-yes-single');
+  } else {
+    res.redirect('/producers/delete/index-single');
+  }
+});
+
 router.post('/producers/delete/delete-confirmation-2', function (req,res) {
   if (req.body['radio-inline-group']==="Yes"){
     res.redirect('/producers/delete/delete-confirmation-yes-2');
