@@ -60,4 +60,14 @@ router.post('/producers/delete/delete-confirmation-5', function (req,res) {
   }
 });
 
+
+
+router.post('/schemes/datareturnmenu', function (req,res) {
+  if (req.body['radio-inline-group']==="View data returns"){
+    res.redirect('/schemes/viewreturns');
+  } else {
+    res.redirect('/schemes/datareturnmenu');
+  }
+});
+
 module.exports = router;
