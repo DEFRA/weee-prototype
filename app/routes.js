@@ -61,6 +61,15 @@ router.post('/producers/delete/delete-confirmation-5', function (req,res) {
 });
 
 
+router.post('/producers/delete/delete-confirmation-6', function (req,res) {
+  if (req.body['radio-inline-group']==="Yes"){
+    res.redirect('/producers/delete/delete-confirmation-yes-6');
+  } else {
+    res.redirect('/producers/delete/index-6');
+  }
+});
+
+
 
 router.post('/schemes/datareturnmenu', function (req,res) {
   if (req.body['radio-inline-group']==="View data returns"){
