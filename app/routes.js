@@ -23,7 +23,8 @@ router.post('/producers/delete/delete-confirmation', function (req,res) {
 router.post('/producers/delete/delete-confirmation-single', function (req,res) {
   if (req.body['radio-inline-group']==="Yes"){
     res.redirect('/producers/delete/delete-confirmation-yes-single');
-  } else {
+  }
+  else {
     res.redirect('/producers/delete/index-single');
   }
 });
