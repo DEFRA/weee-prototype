@@ -83,10 +83,15 @@ router.post('/schemes/datareturnmenu', function (req,res) {
 router.post('/schemes/index-2', function (req,res) {
   if (req.body['radio-inline-group']==="Manage EEE/WEEE data returns"){
     res.redirect('/schemes/datareturnmenu');
-  } else {
+
+  }
+  
+  else {
     res.redirect('/schemes/index-2');
   }
 });
+
+
 
 router.post('/producers/eee-data/index', function (req,res) {
   if (req.body['radio-inline-group']==="View producer information"){
