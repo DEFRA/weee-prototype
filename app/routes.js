@@ -85,7 +85,7 @@ router.post('/schemes/index-2', function (req,res) {
     res.redirect('/schemes/datareturnmenu');
 
   }
-  
+
   else {
     res.redirect('/schemes/index-2');
   }
@@ -100,5 +100,22 @@ router.post('/producers/eee-data/index', function (req,res) {
     res.redirect('/producers/eee-data/index');
   }
 });
+
+router.post('/register/address-lookup', function (req,res) {
+    res.redirect('/register/address-lookup-2');
+
+});
+
+router.post('/register/address-lookup-2', function (req,res) {
+    res.redirect('/register/phone-email');
+
+});
+
+router.post('/register/phone-email', function (req,res) {
+    res.redirect('/register/registered-office-check');
+
+});
+
+
 
 module.exports = router;
