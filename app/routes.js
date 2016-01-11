@@ -117,5 +117,53 @@ router.post('/register/phone-email', function (req,res) {
 });
 
 
+router.post('/notice-address/reg-company', function (req,res) {
+    res.redirect('/notice-address/main-contact');
+
+});
+
+router.post('/notice-address/main-contact', function (req,res) {
+    res.redirect('/notice-address/main-contact-address');
+
+});
+
+router.post('/notice-address/main-contact-address', function (req,res) {
+    res.redirect('/notice-address/reg-office-same');
+
+});
+
+router.post('/notice-address/reg-office-details', function (req,res) {
+    res.redirect('/notice-address/notice-address-same');
+
+});
+
+router.post('/notice-address/notice-address-details', function (req,res) {
+    res.redirect('/notice-address/summary');
+
+});
+
+router.post('/notice-address/reg-office-same', function (req,res) {
+  if (req.body['SelectedValue']==="Yes"){
+    res.redirect('/notice-address/notice-address-same');
+
+  }
+
+  else {
+    res.redirect('/notice-address/reg-office-details');
+  }
+});
+
+
+router.post('/notice-address/notice-address-same', function (req,res) {
+  if (req.body['SelectedValue']==="A different address"){
+    res.redirect('/notice-address/notice-address-details');
+
+  }
+
+  else {
+    res.redirect('/notice-address/summary');
+  }
+});
+
 
 module.exports = router;

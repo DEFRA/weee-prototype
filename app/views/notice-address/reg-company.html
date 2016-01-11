@@ -1,0 +1,133 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+
+<!-- #EndEditable -->
+</head>
+
+<body class="">
+<script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+
+
+
+<!--end header-->
+
+
+
+<main id="content">
+	<div class="phase-banner">
+			<p>
+					<strong class="phase-tag">BETA</strong>
+					<span>This is a new service – your <a href="../new-user/feedback" target="_blank">feedback</a> will help us to improve it.</span>
+			</p>
+	</div>
+
+  <!-- #BeginEditable "banner" -->
+<div class="grid-row">
+
+    <div class="column-half">
+        <div class="breadcrumb-title-display font-xsmall">
+            <ul>
+                <li>
+                    Organisation: Loads of Schemes Ltd
+                </li>
+
+                <li>
+                    <a href="/weee/1/scheme/f48cca5a-da72-4e60-bb16-a51a01033c3e/home/choose-activity">Activity</a>: Create an organisation
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="column-half">
+        <div class="username-title-display font-xsmall">
+            <ul>
+                <li>
+                    <div class="text-secondary">Signed in as: <span class="username-format">Sophie Ottaway</span></div>
+                </li>
+                <li>
+                    <form action="/weee/1/account/sign-out" id="logoutForm" method="post">
+                        <input name="__RequestVerificationToken" type="hidden" value="X8BvF4Z88cI5XLLUFn7SKdcUIqwAVVQgd01RgxXsO0vvVM63al1e7k8F-EfcqjiuJgu4nEF1Tfuwh62y5ZPkCZZ40VdocI3ASY3OcVedTMyBGr-HLant0AozyRQWMmqTm4BkhI28IyFhjlRHO2V0vg2" />                        <button class="link-submit" id="link-sign-out" type="submit">Sign out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="account-link-banner"></div>
+
+
+
+  <!-- #EndEditable -->
+    <div class="grid-row">
+
+      <div class="column-two-thirds">
+
+				<section id="main-content">
+
+				    <header class="hgroup">
+				        <h1 class="heading-large">Tell us about your registered company</h1>
+				    </header>
+
+				<form method="post"><input name="__RequestVerificationToken" type="hidden" value="tAd0C7HpXARB33cS1HRa_ZVWSIM82mp8maE7CmEYmej60yoOe698rRcnstylQ7i022dmyVZpLkEyIMrVcF9zdr6hs2GafwZkABmIJE1LE50Dp0FJCK2A7vKXkch1pLZIXMpAM-at2skZJjslBN5P2A2" /><div class='error-summary-valid' data-valmsg-summary='true'>
+				                        <ul class='error-summary-list'>
+				                            <li style='display:none'></li>
+				                        </ul>
+				                    </div>        <div style="margin-bottom: 1.66667em;">
+				            <p>Enter the name of your registered company. For companies registered in the UK, these details must be the same as those registered with Companies House.</p>
+				        </div>
+				        <div class="form-group">
+				            <label class="form-label" for="CompanyName">Company name </label>
+
+				            <input class="form-control" id="CompanyName" maxlength="256" name="CompanyName" type="text" value="" />
+				        </div>
+				        <div class="form-group">
+				            <label class="form-label" for="BusinessTradingName">Business trading name, if different to company name (optional)</label>
+				            <input class="form-control" id="BusinessTradingName" maxlength="256" name="BusinessTradingName" type="text" value="" />
+				        </div>
+				        <div class="form-group">
+				            <label class="form-label" for="CompaniesRegistrationNumber">Company registration number (CRN) </label>
+
+				            <input class="form-control" id="CompaniesRegistrationNumber" maxlength="10" name="CompaniesRegistrationNumber" type="text" value="" />
+				        </div>
+				        <div class="form-group">
+				<details><summary onclick="if(this.getAttribute('aria-expanded') == 'true'){ga('send', 'event', 'Hidden content', 'Progressive disclosure', 'Where can I find my company registration number?');}"><span class="summary">Where can I find my company registration number?<span class="hidden-for-screen-reader">This is an expandable link that will reveal more content upon activation</span></span></summary><div class="panel-indent">                <p>
+				                    For companies registered in the UK, a company registration number (CRN) is allocated by Companies House when a company is registered.
+				                </p>
+				                <p>
+				                    You can search <a href="https://www.gov.uk/get-information-about-a-company" target="_blank" rel="external">Companies House online services</a> to find your CRN.
+				                </p>
+				</div></details>        </div>
+				        <div class="form-group">
+				            <button class="button" type="submit">Continue</button>
+				        </div>
+				</form>
+				            </section>
+
+    </div>
+</div>
+</main>
+
+
+            {{/content}}
+
+
+
+            {{$bodyEnd}}
+
+            {{/bodyEnd}}
+
+
+
+
+            {{/layout}}
