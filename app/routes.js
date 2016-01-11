@@ -105,7 +105,7 @@ router.post('/producers/eee-data/index', function (req,res) {
 
 
 
-/* Notice address journey */
+/*Address lookup feature */
 
 router.post('/register/main-contact-address', function (req,res) {
     res.redirect('/register/phone-email');
@@ -128,6 +128,8 @@ router.post('/register/phone-email', function (req,res) {
 
 });
 
+
+/* Notice address journey */
 
 router.post('/notice-address/reg-company', function (req,res) {
     res.redirect('/notice-address/main-contact');
