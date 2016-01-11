@@ -101,6 +101,9 @@ router.post('/producers/eee-data/index', function (req,res) {
   }
 });
 
+
+/* Notice address journey */
+
 router.post('/register/address-lookup', function (req,res) {
     res.redirect('/register/address-lookup-2');
 
