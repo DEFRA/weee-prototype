@@ -1,0 +1,119 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+
+<!-- #EndEditable -->
+</head>
+
+<body class="">
+<script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+
+
+
+<!--end header-->
+
+
+
+<main id="content">
+	<div class="phase-banner">
+			<p>
+					<strong class="phase-tag">BETA</strong>
+					<span>This is a new service – your <a href="../new-user/feedback" target="_blank">feedback</a> will help us to improve it.</span>
+			</p>
+	</div>
+
+  <!-- #BeginEditable "banner" -->
+<div class="grid-row">
+
+    <div class="column-half">
+        <div class="breadcrumb-title-display font-xsmall">
+            <ul>
+                <li>
+                    Organisation: Loads of Schemes Ltd
+                </li>
+
+                <li>
+                    <a href="/weee/1/scheme/f48cca5a-da72-4e60-bb16-a51a01033c3e/home/choose-activity">Activity</a>: Create an organisation
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="column-half">
+        <div class="username-title-display font-xsmall">
+            <ul>
+                <li>
+                    <div class="text-secondary">Signed in as: <span class="username-format">Sophie Ottaway</span></div>
+                </li>
+                <li>
+                    <form action="/weee/1/account/sign-out" id="logoutForm" method="post">
+                        <input name="__RequestVerificationToken" type="hidden" value="X8BvF4Z88cI5XLLUFn7SKdcUIqwAVVQgd01RgxXsO0vvVM63al1e7k8F-EfcqjiuJgu4nEF1Tfuwh62y5ZPkCZZ40VdocI3ASY3OcVedTMyBGr-HLant0AozyRQWMmqTm4BkhI28IyFhjlRHO2V0vg2" />                        <button class="link-submit" id="link-sign-out" type="submit">Sign out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="account-link-banner"></div>
+
+
+
+  <!-- #EndEditable -->
+    <div class="grid-row">
+
+      <div class="column-two-thirds">
+
+				<section id="main-content">
+
+     <header class="hgroup">
+         <h1 class="heading-large">What is your business trading name?</h1>
+     </header>
+
+ <form method="post"><div class='error-summary-valid' data-valmsg-summary='true'>
+                         <ul class='error-summary-list'>
+                             <li style='display:none'></li>
+                         </ul>
+                     </div>        <div class="form-group">
+ <details><summary onclick="if(this.getAttribute('aria-expanded') == 'true'){ga('send', 'event', 'Hidden content', 'Progressive disclosure', 'What does business trading name mean?');}"><span class="summary">What does business trading name mean?<span class="hidden-for-screen-reader">This is an expandable link that will reveal more content upon activation</span></span></summary><div class="panel-indent">                <p>
+                     This is either the partner's names or your business name. A business name is any name under which someone carries on business. In the case of a partnership, it means a name other than the partners names.
+                 </p>
+ </div></details>        </div>
+         <div class="form-group">
+             <label class="form-label" for="BusinessTradingName">Business trading name </label>
+
+             <input class="form-control" id="BusinessTradingName" maxlength="256" name="BusinessTradingName" type="text" value="" />
+         </div>
+         <div class="form-group">
+             <button class="button" type="submit">Continue</button>
+         </div>
+ </form>
+             </section>
+
+
+    </div>
+</div>
+</main>
+
+
+            {{/content}}
+
+
+
+            {{$bodyEnd}}
+
+            {{/bodyEnd}}
+
+
+
+
+            {{/layout}}

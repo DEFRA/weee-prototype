@@ -142,6 +142,30 @@ router.post('/notice-address/notice-address-details', function (req,res) {
 
 });
 
+router.post('/notice-address/business-trading-name', function (req,res) {
+    res.redirect('/notice-address/main-contact-partnership');
+
+});
+
+router.post('/notice-address/main-contact-partnership', function (req,res) {
+    res.redirect('/notice-address/main-contact-address-partnership');
+
+});
+router.post('/notice-address/main-contact-address-partnership', function (req,res) {
+    res.redirect('/notice-address/principal-place-same');
+
+});
+
+router.post('/notice-address/notice-address-details-principal', function (req,res) {
+    res.redirect('/notice-address/summary-principal');
+
+});
+
+router.post('/notice-address/principal-place-details', function (req,res) {
+    res.redirect('/notice-address/notice-address-same-principal');
+
+});
+
 router.post('/notice-address/reg-office-same', function (req,res) {
   if (req.body['SelectedValue']==="Yes"){
     res.redirect('/notice-address/notice-address-same');
@@ -153,9 +177,31 @@ router.post('/notice-address/reg-office-same', function (req,res) {
   }
 });
 
+router.post('/notice-address/principal-place-same', function (req,res) {
+  if (req.body['SelectedValue']==="Yes"){
+    res.redirect('/notice-address/notice-address-same-principal');
+
+  }
+
+  else {
+    res.redirect('/notice-address/principal-place-details');
+  }
+});
+
+router.post('/notice-address/notice-address-same-principal', function (req,res) {
+  if (req.body['SelectedValue']==="A new address"){
+    res.redirect('/notice-address/notice-address-details-principal');
+
+  }
+
+  else {
+    res.redirect('/notice-address/summary-principal');
+  }
+});
+
 
 router.post('/notice-address/notice-address-same', function (req,res) {
-  if (req.body['SelectedValue']==="A different address"){
+  if (req.body['SelectedValue']==="A new address"){
     res.redirect('/notice-address/notice-address-details');
 
   }
@@ -164,6 +210,8 @@ router.post('/notice-address/notice-address-same', function (req,res) {
     res.redirect('/notice-address/summary');
   }
 });
+
+
 
 
 module.exports = router;
