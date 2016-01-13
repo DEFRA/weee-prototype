@@ -102,8 +102,22 @@ router.post('/producers/eee-data/index', function (req,res) {
 });
 
 
+/*Internal address lookup - edit organisation contact*/
 
+router.post('/internal-address/main-contact-address', function (req,res) {
+    res.redirect('/internal-address/edit-org-contact');
 
+});
+
+router.post('/internal-address/address-lookup', function (req,res) {
+    res.redirect('/internal-address/address-lookup-2');
+
+});
+
+router.post('/internal-address/address-lookup-2', function (req,res) {
+    res.redirect('/internal-address/edit-org-contact');
+
+});
 
 /*Address lookup feature */
 
