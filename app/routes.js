@@ -114,6 +114,11 @@ router.post('/internal-address/address-lookup-notice', function (req,res) {
 
 });
 
+router.post('/internal-address/main-contact-address-address', function (req,res) {
+    res.redirect('/internal-address/edit-notice');
+
+});
+
 router.post('/internal-address/main-contact-address', function (req,res) {
     res.redirect('/internal-address/edit-org-contact');
 
