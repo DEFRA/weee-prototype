@@ -104,6 +104,11 @@ router.post('/producers/eee-data/index', function (req,res) {
 
 /*Internal address lookup - edit organisation contact*/
 
+router.post('/internal-address/address-lookup-notice-2', function (req,res) {
+    res.redirect('/internal-address/edit-notice');
+
+});
+
 router.post('/internal-address/address-lookup-notice', function (req,res) {
     res.redirect('/internal-address/address-lookup-notice-2');
 
