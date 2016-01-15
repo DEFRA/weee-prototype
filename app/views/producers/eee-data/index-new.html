@@ -59,54 +59,48 @@
 
         <header class="hgroup">
             <h1 class="heading-large">
-                Producer details and EEE data
+                What activity would you like to do?
                 </h1>
         </header>
         <!-- ========================================================================================================== -->
         <!-- ========================================================================================================== -->
         <!-- ========================================================================================================== -->
+        <form method="post">
+            <fieldset class="block">
 
-<p>Scheme B has submitted EEE data for the following producer in 2016:
+              <legend class="visuallyhidden">What activity would you like to do?</legend>
 
-<h3 class="heading-small">WEE/MM0900AA</h3>
-<br/>
-<p>Overview&nbsp;&nbsp;|&nbsp;&nbsp;<a href="eee-data-cumulative-1">Cumulative</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="eee-data-q1-1">Quarter 1</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="eee-data-q2-1">Quarter 2</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="eee-data-q3-1">Quarter 3</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="eee-data-q4-1">Quarter 4</a></p>
-<table>
-	<tr>
-		<th>PCS name</th>
-		<td>Scheme B</td>
-	</tr>
-	<tr>
-		<th>Producer name</th>
-		<td>1 TestB</td>
-	</tr>
-	<tr>
-		<th>Trading name</th>
-		<td>1 TestB</td>
-	</tr>
-	<tr>
-		<th>Registration date</th>
-		<td>3 November 2015</td>
-	</tr>
-	<tr>
-		<th>Obligation type</th>
-		<td>Both</td>
-	</tr>
-	<tr>
-		<th>Charge band type</th>
-		<td>A</td>
-	</tr>
-	<tr>
-		<th>Authorised representative</th>
-		<td>Yes</td>
-	</tr>
-</table>
+              <label class="block-label" for="radio-inline-1">
+                <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Manage PCSs">
+                Manage PCSs
+              </label>
 
-<br/>
-<p><a href="javascript:alert('Prototype only');">Download EEE data (CSV)</a></p>
-<p><a href="javascript:alert('Prototype only');">Download amendment history (CSV)</a></p>
-<p><a href="find-2">Find another producer</a></p>
-<p><a class="button" href="index-new">Perform another activity</a></p>
+              <label class="block-label" for="radio-inline-2">
+                <input id="radio-inline-2" type="radio" name="radio-inline-group" value="Submissions history">
+                Submissions history
+              </label>
+        			<label class="block-label" for="radio-inline-3">
+                <input id="radio-inline-3" type="radio" name="radio-inline-group" value="View producer information">
+                View producer information
+              </label>
+        			<label class="block-label" for="radio-inline-4">
+                <input id="radio-inline-4" type="radio" name="radio-inline-group" value="Manage users">
+              Manage users
+              </label>
+        			<label class="block-label" for="radio-inline-5">
+                <input id="radio-inline-5" type="radio" name="radio-inline-group" value="View reports">
+                View reports
+              </label>
+
+
+
+
+            </fieldset>
+        <br/>
+        		<div class="form-group">
+        				<input type="submit" class="button" value="Continue" />
+        		</div>
+          </form>
 
             </section>
             </main>

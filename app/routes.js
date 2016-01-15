@@ -93,6 +93,14 @@ router.post('/schemes/index-2', function (req,res) {
 
 
 
+router.post('/producers/eee-data/index-new', function (req,res) {
+  if (req.body['radio-inline-group']==="View producer information"){
+    res.redirect('/producers/eee-data/find-2');
+  } else {
+    res.redirect('/producers/eee-data/index-new');
+  }
+});
+
 router.post('/producers/eee-data/index', function (req,res) {
   if (req.body['radio-inline-group']==="View producer information"){
     res.redirect('/producers/eee-data/find');
