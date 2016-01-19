@@ -41,14 +41,14 @@
     <div class="column-half">
         <div class="breadcrumb-title-display font-xsmall">
             <ul>
-
+                <li>
+                    Organisation: Loads of Schemes Ltd
+                </li>
 
                 <li>
-                    <a href="">Activity</a>: Manage PCSs
+                    <a href="/weee/1/scheme/f48cca5a-da72-4e60-bb16-a51a01033c3e/home/choose-activity">Activity</a>: View producer details
                 </li>
-								<li>
-										<a href="">Organisation:</a> Demo Scheme
-								</li>
+
 
 
             </ul>
@@ -95,56 +95,64 @@
 	                <!-- ========================================================================================================== -->
 	                <!-- #BeginEditable "body" -->
 
-<p>Registration details&nbsp;&nbsp;|&nbsp;&nbsp;<a href="organisation-details">Organisation details</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="notice-details">Service of notice details</a></p>
-<h2 class="heading-medium">PCS details</h2>
-<table>
-    <tbody>
-      <tr>
-        <th>Scheme name</th>
-        <td>Demo Scheme</td>
-
-      </tr>
-      <tr>
-        <th>Approval number</th>
-        <td>WEE/TE0016ST/SCH</td>
-
-      </tr>
-      <tr>
-       <th>Billing reference (optional)</th>
-        <td></td>
-
-      </tr>
-      <tr>
-       <th>Obligation type</th>
-        <td>B2B</td>
-
-      </tr>
-      <tr>
-        <th>Appropriate Authority</th>
-        <td>Environment Agency</td>
-
-      </tr>
-      <tr>
-        <th>Authorisation status</th>
-        <td>Pending</td>
-
-      </tr>
-		</table>
-	  <br/>
-	  <p> <a href="edit-pcs">Edit PCS details</a></p>
-	<h2 class="heading-medium">PCS members</h2>
-	<p><a href="javascript:alert('Downloads full member list CSV');">Download 2016 full member list (CSV)</a></p>
-	<p><a href="javascript:alert('Downloads full member list CSV');">Download 2015 full member list (CSV)</a></p>
+<p>Registration details&nbsp;&nbsp;|&nbsp;&nbsp;<a href="organisation-details">Organisation details</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="notice-details">Notice details</a></p>
+<form method="post">
 
 
+						<h2 class="heading-medium">Edit PCS</h2>
 
 
+<div class='error-summary-valid' data-valmsg-summary='true'>
+										<ul class='error-summary-list'>
+												<li style='display:none'></li>
+										</ul>
+								</div><input id="OldApprovalNumber" name="OldApprovalNumber" type="hidden" value="WEE/MM3300AA" />    <div class="form-group">
+		<label class="form-label" for="SchemeName">PCS name </label>
 
-	    </form>
+		<input class="form-control" id="SchemeName" maxlength="70" name="SchemeName" type="text" value="Demo Scheme" />
+</div>
+<div class="form-group">
+		<label class="form-label" for="ApprovalNumber">Approval number </label>
 
-	  </div>
+		<input class="form-control" id="ApprovalNumber" maxlength="16" name="ApprovalNumber" type="text" value="WEE/MM3300AA" />
+</div>
+<div class="form-group">
+		<label class="form-label" for="IbisCustomerReference">Billing reference (optional)</label>
+
+		<input class="form-control" id="IbisCustomerReference" maxlength="10" name="IbisCustomerReference" type="text" value="WEEE000045" />
+</div>
+<div class="form-group">
+		<label class="form-label" for="ObligationType">Obligation type </label>
+
+		<select autocomplete="false" class="form-control" id="ObligationType" name="ObligationType"><option value=""></option>
+<option value="1">B2B</option>
+<option selected="selected" value="2">B2C</option>
+<option value="3">Both</option>
+</select>
+</div>
+<div class="form-group">
+		<label class="form-label" for="CompetentAuthorityId">Appropriate authority </label>
+
+		<select autocomplete="false" class="form-control" id="CompetentAuthorityId" name="CompetentAuthorityId"><option value=""></option>
+<option selected="selected" value="a3c2d0dd-53a1-4f6a-99d0-1ccfc87611a8">EA</option>
+<option value="4eee5942-01b2-4a4d-855a-34dee1bbbf26">NIEA</option>
+<option value="44c2f368-aa66-48f0-bbc9-a0ed34ad0951">NRW</option>
+<option value="78f37814-364b-4fae-beb5-db0439cbf177">SEPA</option>
+</select>
+</div>
+<div class="form-group">
+		<label class="form-label" for="Status">Status </label>
+
+				<select class="form-control" disabled="disabled">
+						<option>Approved</option>
+				</select>
+<input id="Status" name="Status" type="hidden" value="Approved" />    </div>
 
 
+<p><a class="button" href="index">Save and continue</a></p>
+
+</p>
+</form>
 
 
         </section>

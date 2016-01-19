@@ -9,12 +9,24 @@
 
 <!-- #EndEditable -->
 <style>
-.font-bold {
-
-	font-weight: 700;
+.address-select, .form-control-select {
+    width: auto;
+}
+.address-select, .form-control-select {
+    background-color: #fff;
+    border: 1px solid #bfc1c3;
+    border-radius: 0;
+    box-sizing: border-box;
+    font-family: "nta",Arial,sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.31579;
+    margin-top: 10px;
+    padding: 4px;
+    text-transform: none;
+    width: 100%;
 }
 </style>
-
 </head>
 
 <body class="">
@@ -41,14 +53,14 @@
     <div class="column-half">
         <div class="breadcrumb-title-display font-xsmall">
             <ul>
-
-
 							<li>
 									<a href="">Activity</a>: Manage PCSs
 							</li>
 							<li>
 									<a href="">Organisation:</a> Demo Scheme
 							</li>
+
+
             </ul>
         </div>
     </div>
@@ -80,35 +92,50 @@
 
 <section>
 
+	<header class="hgroup">
+			<h1 class="heading-xlarge">
+					<!-- #BeginEditable "header" -->
+Demo Scheme
+									<!-- #EndEditable -->
+			</h1>
+	</header>
+	<!-- ========================================================================================================== -->
+	<!-- ========================================================================================================== -->
+	<!-- ========================================================================================================== -->
+	<!-- #BeginEditable "body" -->
 
-	                <header class="hgroup">
-	                    <h1 class="heading-xlarge">
-	                        <!-- #BeginEditable "header" -->
-	            Demo Scheme
-	                                <!-- #EndEditable -->
-	                    </h1>
-	                </header>
-	                <!-- ========================================================================================================== -->
-	                <!-- ========================================================================================================== -->
-	                <!-- ========================================================================================================== -->
-	                <!-- #BeginEditable "body" -->
+<p><a href="index">Registration details</a>&nbsp;&nbsp;|&nbsp;&nbsp;Organisation details&nbsp;&nbsp;|&nbsp;&nbsp;<a href="notice-details">Service of notice details</a></p>
+<div id="organisationcontent">
+	<form method="post" class="form text">
 
-<p><a href="index">Registration details</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="organisation-details">Organisation details</a>&nbsp;&nbsp;|&nbsp;&nbsp;Service of notice details</p>
-<h2 class="heading-medium">Contact details</h2>
-<table>
-	<tr>
-		<th valign="top">Contact</th>
-		<td>John Smith<br/>Scheme Leader<br/>01482 000 000<br/>test@test.com</td>
-		<td><a href="edit-name-email">Edit</a></td>
+    <h2 class="form-title heading-medium">
+      How can we get in touch with your main contact person?
+    </h2>
 
-	<tr>
-	<th valign="top">Address</th>
-	<td>1 Demo Address<br/>Demo Street<br/>DemoTown DE1 MMO<br/>United Kingdom</td>
-	<td><a href="address-lookup">Edit</a></td>
-</tr>
+      <!-- Address -->
+      <div class="form-group">
+        <label class="form-label-bold" for="business_address">Select an address</label>
+        <select class="address-select form-control-1-2">
+          <option value="business_address">1 address found</option>
+          <option value="business_address">Demo Address 1, Demo Lane, DemoLand DE1 3MO</option>
 
-</table>
+        </select>
+      </div>
 
+      <!-- Show and hide address-->
+
+      <p>     <a href="main-contact-address">Enter the address manually</span></p>
+
+
+
+      <br>
+
+      <!-- Primary button -->
+      <div class="form-group">
+        <input type="submit" class="button" value="Save and continue">
+      </div>
+
+  </form>
 
         </section>
     </div>

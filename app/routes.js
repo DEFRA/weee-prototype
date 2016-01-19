@@ -263,7 +263,27 @@ router.post('/notice-address/notice-address-same', function (req,res) {
   }
 });
 
+/* New Edit PCS journey */
 
+router.post('/edit-pcs/address-lookup', function (req,res) {
+    res.redirect('/edit-pcs/address-lookup-2');
+
+});
+
+router.post('/edit-pcs/address-lookup-2', function (req,res) {
+    res.redirect('/edit-pcs/organisation-details');
+
+});
+
+router.post('/edit-pcs/main-contact-address', function (req,res) {
+    res.redirect('/edit-pcs/organisation-details');
+
+});
+
+router.post('/edit-pcs/edit-org-contact', function (req,res) {
+    res.redirect('/edit-pcs/organisation-details');
+
+});
 
 
 module.exports = router;

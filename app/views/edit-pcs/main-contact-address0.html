@@ -1,0 +1,403 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+
+<!-- #EndEditable -->
+</head>
+
+<body class="">
+<script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+
+
+
+<!--end header-->
+
+
+
+<main id="content">
+	<div class="phase-banner">
+			<p>
+					<strong class="phase-tag">BETA</strong>
+					<span>This is a new service – your <a href="../new-user/feedback" target="_blank">feedback</a> will help us to improve it.</span>
+			</p>
+	</div>
+
+  <!-- #BeginEditable "banner" -->
+<div class="grid-row">
+
+    <div class="column-half">
+        <div class="breadcrumb-title-display font-xsmall">
+            <ul>
+                <li>
+                    Organisation: Loads of Schemes Ltd
+                </li>
+
+                <li>
+                    <a href="/weee/1/scheme/f48cca5a-da72-4e60-bb16-a51a01033c3e/home/choose-activity">Activity</a>: Create an organisation
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="column-half">
+        <div class="username-title-display font-xsmall">
+            <ul>
+                <li>
+                    <div class="text-secondary">Signed in as: <span class="username-format">Sophie Ottaway</span></div>
+                </li>
+                <li>
+                    <form action="/weee/1/account/sign-out" id="logoutForm" method="post">
+                        <input name="__RequestVerificationToken" type="hidden" value="X8BvF4Z88cI5XLLUFn7SKdcUIqwAVVQgd01RgxXsO0vvVM63al1e7k8F-EfcqjiuJgu4nEF1Tfuwh62y5ZPkCZZ40VdocI3ASY3OcVedTMyBGr-HLant0AozyRQWMmqTm4BkhI28IyFhjlRHO2V0vg2" />                        <button class="link-submit" id="link-sign-out" type="submit">Sign out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="account-link-banner"></div>
+
+
+
+  <!-- #EndEditable -->
+    <div class="grid-row">
+
+      <div class="column-two-thirds">
+
+				<section id="main-content">
+
+	 <header class="hgroup">
+			 <h1 class="heading-large">
+					 Edit organisation contact details
+			 </h1>
+	 </header>
+
+<form method="post"><div class='error-summary-valid' data-valmsg-summary='true'>
+											 <ul class='error-summary-list'>
+													 <li style='display:none'></li>
+											 </ul>
+									 </div>        <div class="form-instruction">
+
+			 </div>
+<input id="Address_RowVersion" name="Address.RowVersion" type="hidden" value="" />
+
+<div class="form-group">
+	 <label class="form-label" for="Address_Address1">Address line 1 </label>
+
+	 <input class="form-control" id="Address_Address1" maxlength="35" name="Address.Address1" type="text" value="1 Demo Address" />
+</div>
+
+<div class="form-group">
+	 <label class="form-label" for="Address_Address2">Address line 2 (optional)</label>
+
+	 <input class="form-control" id="Address_Address2" maxlength="35" name="Address.Address2" type="text" value="Demo Street" />
+</div>
+
+<div class="form-group">
+	 <label class="form-label" for="Address_TownOrCity">Town or city </label>
+
+	 <input class="form-control" id="Address_TownOrCity" maxlength="35" name="Address.TownOrCity" type="text" value="DemoTown" />
+</div>
+
+<div class="form-group">
+	 <label class="form-label" for="Address_CountyOrRegion">County or region (optional)</label>
+
+	 <input class="form-control" id="Address_CountyOrRegion" maxlength="35" name="Address.CountyOrRegion" type="text" value="" />
+</div>
+
+<div class="form-group">
+	 <label class="form-label" for="Address_Postcode">Postcode (optional)</label>
+
+	 <input class="form-control" id="Address_Postcode" maxlength="10" name="Address.Postcode" type="text" value="DE1 MM0" />
+</div>
+
+<div class="form-group countries">
+	 <label class="form-label" for="Address_CountryId">Country </label>
+
+	 <select autocomplete="false" class="form-control" id="Address_CountryId" name="Address.CountryId"><option value=""></option>
+<option value="cf57bdaa-bcf0-48c5-ac6f-662d24df68bf">Afghanistan</option>
+<option value="a5d22c34-f99f-4811-9c58-a1ac1989b47c">Åland Islands</option>
+<option value="81e1738e-1cfe-4625-9df8-90ffd5dfd943">Albania</option>
+<option value="cf05a8b0-ea89-4b6d-9ecf-599e94371d98">Algeria</option>
+<option value="5223fb91-cc90-44e9-8383-94ff383baa00">American Samoa</option>
+<option value="2f36fdcc-6eed-48fa-b9b2-1b5e3d4bdfee">Andorra</option>
+<option value="48f80f67-02f7-4b1c-a9b6-d268fb855cac">Angola</option>
+<option value="db1a8be4-80f1-4940-b006-11ba74c4e649">Anguilla</option>
+<option value="44417dda-c5a1-4884-9a01-8e0cacc865fb">Antarctica</option>
+<option value="75ae079b-3299-4de1-a7bc-d4590adb0b37">Antigua and Barbuda</option>
+<option value="015c233b-f7c6-4e87-8c9d-509cbe19b507">Argentina</option>
+<option value="0bfef5c2-3e28-4e08-ba89-b387c39d6718">Armenia</option>
+<option value="9950fc05-804a-4287-9e64-8c6dd9e9032a">Aruba</option>
+<option value="ddc6551c-d9b2-465c-86dd-670b7d2142c2">Australia</option>
+<option value="1a3414cf-d96e-4926-9b7a-2f8ea59bd98f">Austria</option>
+<option value="b5ebe1d1-8349-43cd-9e87-0081ea0a8463">Azerbaijan</option>
+<option value="0bb8b6a4-1b19-4c76-b7b6-d6659a5a134b">Bahamas</option>
+<option value="48facfef-22f5-4918-9098-fc545eff7ef8">Bahrain</option>
+<option value="699086d0-7031-4ec9-85e2-ffa836bf7b05">Bangladesh</option>
+<option value="1d6b469f-6a54-4440-8796-5468d6987912">Barbados</option>
+<option value="703c690c-825b-4c44-9a23-3688ff4697b9">Belarus</option>
+<option value="e10118b3-0feb-40f5-827f-61ae3520611e">Belgium</option>
+<option value="5954474e-66c1-4ae2-859e-f37509dc3da6">Belize</option>
+<option value="31a0c2fa-d9e0-43ac-8674-ba9e5ebe7635">Benin</option>
+<option value="306c4714-c207-4077-a742-057a20ff0bf3">Bermuda</option>
+<option value="b89a375e-0cda-4466-a65e-94e7a65cf86b">Bhutan</option>
+<option value="49deca1e-2ed1-4f31-b0c7-d1b3d3409868">Bolivia</option>
+<option value="64c8abad-3490-4f88-8a48-69b22ff484f3">Bonaire, Sint Eustatius and Saba</option>
+<option value="ab8a3abf-c0f7-4735-b145-812d0185fc10">Bosnia and Herzegovina</option>
+<option value="0dd1cdd0-4225-44c0-ad7e-a606089d492e">Botswana</option>
+<option value="3d442c19-cfcc-4785-acba-01b4a9c7496e">Bouvet Island</option>
+<option value="b73c4f7f-b946-4828-84a9-92fc9f81c3b9">Brazil</option>
+<option value="cb866d5c-7817-4b27-9d8a-8a92fab61488">British Indian Ocean Territory</option>
+<option value="0321bd73-4e02-4f4b-9847-412ea3ef8a34">Brunei Darussalam</option>
+<option value="b45070d6-a073-413b-9883-5e181895d5ac">Bulgaria</option>
+<option value="af5f5919-5da1-441e-938a-3a6d307f4c13">Burkina Faso</option>
+<option value="62dce536-941c-4f14-abd8-818b41ceb864">Burundi</option>
+<option value="2889c722-75a9-4cac-ab66-2b1534dc7374">Cabo Verde</option>
+<option value="24c8b1df-aef1-4720-acc6-c1a80202d273">Cambodia</option>
+<option value="0b3c6f53-a968-42bb-8784-bedb03cdfadf">Cameroon</option>
+<option value="0242ebcf-7f85-4dbb-a420-3cb9bca798c9">Canada</option>
+<option value="ccb802eb-375f-4269-8440-dbc2b5a0c1fa">Cayman Islands</option>
+<option value="0b89732e-4b33-421f-9352-f58d825c8a69">Central African Republic</option>
+<option value="299325a9-5bc9-4041-a967-68829542d4ff">Chad</option>
+<option value="8158f05a-d00b-47af-8ad1-1ff457cdb0c9">Chile</option>
+<option value="21168cc4-0933-412e-876c-654f2381f3fd">China</option>
+<option value="3e0184c2-35ba-4941-ade1-a8800b44fe14">Christmas Island</option>
+<option value="9db39510-4ee9-4fe6-9385-d42e2ee4a736">Cocos (Keeling) Islands</option>
+<option value="c4b471cb-f71b-4906-85f1-d48d25825028">Colombia</option>
+<option value="a708894d-cfbe-471c-8e59-b74cdcf39c26">Comoros</option>
+<option value="73848791-d517-44d7-ba7d-4408522081dc">Congo</option>
+<option value="60a9faec-f0ad-4e8d-8fed-a57370d46aee">Congo, Democratic Republic of</option>
+<option value="9e7aa137-71ae-4395-83a9-c3d0b08df7a8">Cook Islands</option>
+<option value="85d806ee-615a-44b8-a904-7f1f164036d4">Costa Rica</option>
+<option value="5442bc62-88cc-42ea-bd34-ff939914912b">Côte d&#39;Ivoire</option>
+<option value="3de3a637-bf2d-4691-bf38-0bf917fdb5f7">Croatia</option>
+<option value="7be7d3f4-c984-44ef-b7cf-72614cc64707">Cuba</option>
+<option value="01244b26-e11b-4824-8f6f-cecef8f11f86">Curaçao</option>
+<option value="22902e7e-42ca-4643-bda2-86387ccb65d3">Cyprus</option>
+<option value="ac5b6adb-3dab-4bdd-ab4d-3f92cbaaed02">Czech Republic</option>
+<option value="799b6e77-f8a2-47e0-85eb-2b6a21c3b678">Denmark</option>
+<option value="c454ccb7-e1c7-48f4-83ec-5b4aac472ce8">Djibouti</option>
+<option value="c464595d-d6bc-4ac2-8565-6c9559280d25">Dominica</option>
+<option value="e847d179-c848-470b-90c2-cd5dadd8f406">Dominican Republic</option>
+<option value="b37b38de-04ad-400e-be6b-e5b3f4bb2355">Ecuador</option>
+<option value="04191657-43ad-4b9f-84a8-383f55ab5d88">Egypt</option>
+<option value="e2002a68-37a9-4715-8e09-87d2ea9f20f4">El Salvador</option>
+<option value="b30fab3b-7e0e-4372-8eff-f9eb01df44cd">Equatorial Guinea</option>
+<option value="48140b61-bf30-4b09-a409-fe0aca197d20">Eritrea</option>
+<option value="cade06a7-8c9d-4720-a92a-853dfecdb8c3">Estonia</option>
+<option value="5c39091e-dbe6-4007-b467-63697bd5505a">Ethiopia</option>
+<option value="40fec43d-abba-456f-aa8c-835d7a558364">Falkland Islands, the Malvinas</option>
+<option value="bf333898-e923-488d-a0df-7f1d2cf9808b">Faroe Islands</option>
+<option value="a2c0a4d9-d5a5-48a8-bc57-fcb06d77979d">Fiji</option>
+<option value="128b59f9-43f2-40c3-ab0b-afc38bbd0250">Finland</option>
+<option value="3ef4f2fc-a090-42c4-90e8-e2916090d2c4">France</option>
+<option value="8eb15995-17cc-4622-8c90-f7d76c872329">French Guiana</option>
+<option value="0272d805-18a4-45d4-934c-f589df5cad53">French Polynesia</option>
+<option value="255da01f-e0b7-4f12-91d8-0e11866f72c2">French Southern Territories</option>
+<option value="094b1411-6bd9-4cfe-9bf1-65b75684ceef">Gabon</option>
+<option value="a5998090-2831-44ac-9c9d-e113e41b8620">Gambia</option>
+<option value="1b7134f7-1070-4ff9-ade1-2f0a156a0ad7">Georgia</option>
+<option value="e6dd6923-c7a4-44a8-bbe2-d27201341ddb">Germany</option>
+<option value="3dd6acaa-d6b5-4fde-b1ad-2bc8cdabf214">Ghana</option>
+<option value="c915d5f8-fcc5-4a50-8ecf-bfb332f30423">Gibraltar</option>
+<option value="5cde6128-0106-4258-abdc-2215e47d738f">Greece</option>
+<option value="7d5101e1-886c-4415-8bb7-04ea786aaa29">Greenland</option>
+<option value="77042f31-4398-47b6-8fd6-964ffe013108">Grenada</option>
+<option value="87085a03-a7b5-42f8-9ef5-0396e6a61c18">Guadeloupe</option>
+<option value="2fa30452-8ce7-409d-9965-17485e606b55">Guam</option>
+<option value="98b99de4-b5c5-4645-abc0-23e8feedeb12">Guatemala</option>
+<option value="4c178840-8cc6-4fff-bcf9-873c79fa0a4c">Guernsey</option>
+<option value="a0f80530-1985-4b78-b1a3-6ffb658706da">Guinea</option>
+<option value="8341c530-9665-4681-8796-25cc43d33b5e">Guinea-Bissau</option>
+<option value="0ba5c4bf-6d02-4f37-9e8f-925355b284e6">Guyana</option>
+<option value="ecc19611-a814-48f0-a839-10a81d01ae34">Haiti</option>
+<option value="4bc03f38-0650-41ff-b18a-cdb73b4721cb">Heard Island and McDonald Islands</option>
+<option value="53e5f60f-4881-4d77-8399-96e7f5fcf543">Holy See</option>
+<option value="f3930903-4e63-4ffa-b896-3e3ffa9c75ec">Honduras</option>
+<option value="5e5a825e-f760-4274-a6ee-9d4277d4c306">Hong Kong</option>
+<option value="3bdea7f1-043a-41d9-9de4-257a83aa6199">Hungary</option>
+<option value="4d23a300-ae2c-4cc4-9cab-750dac493761">Iceland</option>
+<option value="70ffb285-e370-4537-a39c-b5ada48d3121">India</option>
+<option value="7d0c054b-d16f-4f41-950f-32d28913deb8">Indonesia</option>
+<option value="771c2c73-3d21-4375-9c50-fd6cb2ad3111">Iran, Islamic Republic of</option>
+<option value="4e17c6e3-fb25-49ae-ad6c-aa20b38404b2">Iraq</option>
+<option value="595a6a95-4991-4926-9e34-655fe9c17b1e">Ireland</option>
+<option value="cb46df14-8bd9-44b7-89f4-2a62a74315ae">Isle of Man</option>
+<option value="cb0e7142-fe1f-4fb8-83f4-4fc725200520">Israel</option>
+<option value="ac82340a-f45f-46ff-8c10-478c6d6d16f3">Italy</option>
+<option value="4765594d-445e-4c1e-ba8b-201189c6c850">Jamaica</option>
+<option value="798c89e8-bf1f-40db-b18f-5324852d802b">Japan</option>
+<option value="3f944f2d-c2ad-4f08-b061-368456d1f839">Jersey</option>
+<option value="fd4161e8-4f7c-432c-8cf3-80449b8536eb">Jordan</option>
+<option value="93c2a0f2-f398-47c0-b351-0d6318783a14">Kazakhstan</option>
+<option value="af7aece3-d4b6-4cb9-b31c-371950cdb5c8">Kenya</option>
+<option value="bc2ae316-42d1-41aa-a4af-0803bd69a795">Kiribati</option>
+<option value="0fe271db-6740-41e8-95ee-665fa52da2ce">Korea, the Democratic People&#39;s Republic of</option>
+<option value="537a61de-09bb-446b-85cb-2dd7b8c2fe28">Korea, the Republic of</option>
+<option value="84035b4e-e2a1-4365-b241-5741dd1ad330">Kuwait</option>
+<option value="4645f31e-f364-4cd2-8bb2-9303dc94e30e">Kyrgyzstan</option>
+<option value="4423ea2d-9dcb-4a21-b068-6d9c7e5e6502">Lao People&#39;s Democratic Republic</option>
+<option value="cd5a7d7c-0af1-400e-9c5d-f437cdebdb11">Latvia</option>
+<option value="4a1575de-a992-48bb-bd00-450482dadba1">Lebanon</option>
+<option value="a1a45927-2a08-4aa5-ab6b-ac7b25d0e963">Lesotho</option>
+<option value="c078fa8a-cba7-4546-b533-df76c9f17bc8">Liberia</option>
+<option value="294b9b2d-6f71-4ad4-bd6e-6f8708a4209b">Libya</option>
+<option value="34dced88-6e38-47f2-9686-3f2f87203e7f">Liechtenstein</option>
+<option value="54bf9fee-7e70-4ed0-ae80-2aca5ec1e83b">Lithuania</option>
+<option value="33947377-48b6-4f9e-bf99-9c9e72c9ad76">Luxembourg</option>
+<option value="01c87b74-25be-4631-84b4-a9ce26ef0050">Macau</option>
+<option value="2f0443e8-b680-40cf-b1aa-f78d65c34110">Macedonia, the former Yugoslav Republic of</option>
+<option value="4b75af12-e364-4592-9909-e53ec1a09bcc">Madagascar</option>
+<option value="f1427bc0-0f48-442b-8484-68fea6702d62">Malawi</option>
+<option value="d74a0614-9ba8-4744-aa86-c0bc2e3d9f7b">Malaysia</option>
+<option value="ccf7e6a4-b776-4e99-9f4e-d35e618f8bdf">Maldives</option>
+<option value="6b2a756a-c6f3-4a11-ab33-088d807b10ed">Mali</option>
+<option value="53e92aef-3de7-4be0-be0f-900d3c54158c">Malta</option>
+<option value="6c15a18a-dd5b-4aa8-b6f5-ff74f3f902df">Marshall Islands</option>
+<option value="cfbd6784-2274-4fc0-80c5-ce30bb3fe2cd">Martinique</option>
+<option value="ad5b96d3-578e-45b4-bf78-435e1b94045d">Mauritania</option>
+<option value="479c8899-219d-4fb1-80cf-d77142598cd6">Mauritius</option>
+<option value="8d2966cd-1b7a-4ed1-8bdf-a3c5ab7a6de1">Mayotte</option>
+<option value="6c27a9dc-5fac-464a-b35d-b019d9c97ad6">Mexico</option>
+<option value="9f4d7a1c-f4bb-4c13-a04c-62ab5b0ce5d4">Micronesia, Federated States of</option>
+<option value="dae94dc0-b14b-427a-9730-94f77b38d886">Moldova</option>
+<option value="aec0b33e-f450-466c-972d-35acb8e28131">Monaco</option>
+<option value="e9d49a40-d597-4d53-890d-368ba3e36e13">Mongolia</option>
+<option value="f1ef4a0e-868d-4e13-b233-fed58694e1b5">Montenegro</option>
+<option value="80d3ba44-f6da-455f-955a-c70d21204a8e">Montserrat</option>
+<option value="b022f766-4bea-4ff5-a685-cfa849e35428">Morocco</option>
+<option value="769dac1f-66bf-472e-983e-4e33163cfb75">Mozambique</option>
+<option value="4f089ff3-5242-4948-af10-88cb03377752">Myanmar</option>
+<option value="a34fb9a2-8c39-43f0-9d56-a737f839a5de">Namibia</option>
+<option value="1973d433-0741-41e0-be45-687209f93eb0">Nauru</option>
+<option value="00cae49c-9e87-426b-9296-f1fd3983ec52">Nepal</option>
+<option value="46a8d2b9-f875-48b0-80a5-c9e733b14365">Netherlands</option>
+<option value="9c79a5b7-b3cf-4c7e-a55a-7336f6dd195b">New Caledonia</option>
+<option value="14534e29-0af2-424e-973a-ae9f42813862">New Zealand</option>
+<option value="062e2984-a3bf-4424-94e8-318c6ef4b973">Nicaragua</option>
+<option value="e9c59e76-6635-4e1b-8132-46da108a9ac1">Niger</option>
+<option value="6274c893-7282-4961-84de-c349547b569c">Nigeria</option>
+<option value="fb536349-010d-441e-aadb-697f085d783a">Niue</option>
+<option value="90e538bd-f39e-4c96-8162-647e3d231640">Norfolk Island</option>
+<option value="0244cbce-1951-4555-9e89-60ce9073957a">Northern Mariana Islands</option>
+<option value="b5842760-4f32-4253-93e3-de541d8cbd9e">Norway</option>
+<option value="e25b8cc8-8ee4-4e22-9b82-62b7249bdf80">Oman</option>
+<option value="68696da0-2cb7-4559-b2d7-052074e1edd1">Pakistan</option>
+<option value="8d068753-1668-4c38-adee-a1ea6ab53199">Palau</option>
+<option value="86a5b651-7e18-4195-a1a4-a0339b42de6f">Palestine, State of</option>
+<option value="f7716a81-7643-4c24-9319-f461ad334025">Panama</option>
+<option value="0c77fe7a-7e72-40dc-ad10-de0bad5a2a98">Papua New Guinea</option>
+<option value="e976714e-a1ae-4669-8c8f-2b7b93abbc38">Paraguay</option>
+<option value="4812280d-1637-4b42-b0b1-d735d3f3efc4">Peru</option>
+<option value="da846d81-9416-4851-9956-8ba1ed464a65">Philippines</option>
+<option value="2c77dce1-cd59-40cb-b95e-f7209c9dad4c">Pitcairn</option>
+<option value="5b2c5853-19d5-4036-9747-5f2e92c2c450">Poland</option>
+<option value="df860dd5-db05-4458-ba3a-f5631a94f55d">Portugal</option>
+<option value="e8751c0c-50d8-4a3e-8505-d1a674769d93">Puerto Rico</option>
+<option value="320d6c8f-36e9-4860-b370-df76a804d6b6">Qatar</option>
+<option value="52254502-9c8e-4868-833c-889b7a661bd6">Réunion</option>
+<option value="1b68f670-7f2c-4b36-ad85-e8b93114afac">Romania</option>
+<option value="bd65dc5e-5378-433e-80fd-2fedb656efe4">Russian Federation</option>
+<option value="4350ba96-0669-4914-a8b3-33f02c0b8bdf">Rwanda</option>
+<option value="5534ded1-7068-430c-967a-a832c1900b52">Saint Barthélemy</option>
+<option value="6ba398e1-3ae1-4b43-bd9d-d8d944baad87">Saint Helena, Ascension and Tristan da Cunha</option>
+<option value="750e328a-7a9f-4719-98ac-05aa629e382d">Saint Kitts and Nevis</option>
+<option value="673661c9-6a21-46ff-80a6-dcb172334df2">Saint Lucia</option>
+<option value="010e65e3-27c9-45bd-9de8-c566077ac4af">Saint Pierre and Miquelon</option>
+<option value="f7bc3a22-a240-4dd4-ab19-f978c3700018">Saint Vincent and the Grenadines</option>
+<option value="5cd05424-f380-47e1-a0cc-12ea73c86632">Saint-Martin (France)</option>
+<option value="5440e147-d989-4468-8927-75bc1493fb19">Samoa</option>
+<option value="49dee7cc-4dd9-4a8c-8b3f-0d3dcfc0e4f0">San Marino</option>
+<option value="514e4ea0-4704-4068-9e56-31fa492eb6b2">Sao Tome and Principe</option>
+<option value="a85ad242-cb6b-4fbd-8754-ddfec5403614">Saudi Arabia</option>
+<option value="2fd3ba5e-4c9d-471f-857a-66fd07172f69">Senegal</option>
+<option value="7b815054-350d-4604-b83d-389566960b0e">Serbia</option>
+<option value="2739792d-e2c7-4a3d-b5ca-7c8947d4e9f5">Seychelles</option>
+<option value="54bb5de0-4476-420b-900d-33568cef6b45">Sierra Leone</option>
+<option value="f51d8be3-b4a4-486c-baf7-650a0b52523b">Singapore</option>
+<option value="ea004417-2088-4da3-9c7e-2c786f1c0afd">Sint Maarten (Dutch part)</option>
+<option value="c3ab3fc3-c6cc-41de-bb63-de33fc81a3ae">Slovakia</option>
+<option value="5f91a3f9-5e4d-4687-84b1-4da81b084444">Slovenia</option>
+<option value="b8d77fb4-3b71-48e8-bd49-eeac848155f5">Solomon Islands</option>
+<option value="d217ccbc-6a67-4432-8d3f-b2ccf927d5e9">Somalia</option>
+<option value="44314112-7114-438d-b0ed-09ffe7f73655">South Africa</option>
+<option value="35d4e623-9ba4-4430-b541-5218c6b1622c">South Georgia and the South Sandwich Islands</option>
+<option value="c7439f4d-d266-43fe-afc5-c215c42a30cc">South Sudan</option>
+<option value="66646128-8521-4a5a-9311-e9e41ff6c616">Spain</option>
+<option value="e2d91f16-335f-48cb-9b3d-8f0a3e1dc895">Sri Lanka</option>
+<option value="11f3c6f1-69ac-4b3f-a444-21f46b31000f">Sudan</option>
+<option value="78d22fad-15d1-45df-9f70-0316d96027d0">Suriname</option>
+<option value="075d366b-74b5-485b-a603-3f5c9bae2a46">Svalbard and Jan Mayen Islands</option>
+<option value="9ae85d79-fafb-490c-9b69-eb910538b4ee">Swaziland</option>
+<option value="ecdf2a74-738b-4d55-b861-00bcdc420cc2">Sweden</option>
+<option value="d9d59b40-0732-4403-8117-1b489e4ca2c2">Switzerland</option>
+<option value="3cb932c3-0cd6-4f0b-8580-a26f92a57951">Syria Arab Republic</option>
+<option value="fc79a308-97a3-4c2d-99e2-db31a3dd1422">Taiwan (Province of China)</option>
+<option value="9c33adb0-52f6-41d4-a557-3a5613a30c75">Tajikistan</option>
+<option value="8cfdaeac-1566-43e1-ad5f-9042f9ed40d5">Tanzania, United Republic of</option>
+<option value="8a774650-6996-40d9-8c00-980e00f2fede">Thailand</option>
+<option value="5d0cd1bc-e624-4ca3-89ba-e209586150c9">Timor-Leste</option>
+<option value="a26dc0bc-645b-4ab8-95a0-38291f3cda18">Togo</option>
+<option value="7c5c61a3-9e30-4813-9d7d-e062c02eb1ea">Tokelau</option>
+<option value="e625ed77-189a-4f96-b714-a32743ef21f4">Tonga</option>
+<option value="b0279e2d-44e0-44ca-a980-d5ba4b78325a">Trinidad and Tobago</option>
+<option value="9fcbfcd5-625a-4fa4-8387-b3178f2c287f">Tunisia</option>
+<option value="b20fde5b-688d-4804-b7a3-66f8dfe4ec6c">Turkey</option>
+<option value="ae7b6bd1-ae4d-4181-8256-719576968516">Turkmenistan</option>
+<option value="29f33272-c55f-4613-aa4a-ad1ab17654f6">Turks and Caicos Islands</option>
+<option value="2c89491d-33c7-413e-a1f4-62a49e0f7766">Tuvalu</option>
+<option value="c191d9b8-755a-4e2c-898f-6739f1f29af6">Uganda</option>
+<option value="184e1785-26b4-4ae4-80d3-ae319b103acb">UK - England</option>
+<option value="7bfb8717-4226-40f3-bc51-b16fdf42550c">UK - Northern Ireland</option>
+<option value="4209ee95-0882-42f2-9a5d-355b4d89ef30">UK - Scotland</option>
+<option value="db83f5ab-e745-49cf-b2ca-23fe391b67a8">UK - Wales</option>
+<option value="b2ba3ef1-dccf-4871-b0f5-a83335acbee5">Ukraine</option>
+<option value="b811df78-eaaa-44cb-aa9d-02da644d6ead">United Arab Emirates</option>
+<option value="51480c7f-f5cb-4367-b571-61cd45524487">United States Minor Outlying Islands</option>
+<option value="8aeef0f2-8e72-4ed6-8bfe-719baa5c462b">United States of America</option>
+<option value="92a1f401-59f0-4261-b734-e59cbdab1113">Uruguay</option>
+<option value="50f8b792-99ce-41b1-a9a8-f3cc35911b48">Uzbekistan</option>
+<option value="f72ac676-5ddb-4054-85c5-3bf571fec472">Vanuatu</option>
+<option value="ea42793c-dfb9-4a01-b2e9-d0f4956e4801">Venezuela (Bolivarian Repulic of)</option>
+<option value="398e7572-d4cd-4fac-8f59-eb890a7fe58c">Viet Nam</option>
+<option value="cc8d1a0f-33cc-4ff8-a9a5-1a6dbb7dc5cd">Virgin Islands (British)</option>
+<option value="9a496539-bdb1-4423-9f6b-8ab78aee002a">Virgin Islands (U.S.)</option>
+<option value="8359b37e-d4c5-449d-8e13-6233f2300df1">Wallis and Futuna</option>
+<option value="33490cd3-c7ea-4d4c-ad48-bffbe03f1ee7">Western Sahara</option>
+<option value="9287782c-7c38-46c3-aa68-fa046a8e8087">Yemen</option>
+<option value="65560a6e-8152-4873-8319-63fb2ccea7d0">Zambia</option>
+<option value="56c5f368-6be5-4af9-8434-d5e276740b3c">Zimbabwe</option>
+</select>
+</div>
+
+<div class="left-cleared"><input type="submit" value="Continue" class="button" /></div></form>
+					 </section>
+
+
+
+    </div>
+</div>
+</main>
+
+
+            {{/content}}
+
+
+
+            {{$bodyEnd}}
+
+            {{/bodyEnd}}
+
+
+
+
+            {{/layout}}
