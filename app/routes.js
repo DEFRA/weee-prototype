@@ -265,6 +265,22 @@ router.post('/notice-address/notice-address-same', function (req,res) {
 
 /* New Edit PCS journey */
 
+
+router.post('/edit-pcs/main-contact-address-notice', function (req,res) {
+    res.redirect('/edit-pcs/notice-details');
+
+});
+
+router.post('/edit-pcs/address-lookup-notice', function (req,res) {
+    res.redirect('/edit-pcs/address-lookup-2-notice');
+
+});
+
+router.post('/edit-pcs/address-lookup-2-notice', function (req,res) {
+    res.redirect('/edit-pcs/notice-details');
+
+});
+
 router.post('/edit-pcs/address-lookup', function (req,res) {
     res.redirect('/edit-pcs/address-lookup-2');
 

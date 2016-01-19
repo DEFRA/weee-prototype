@@ -8,13 +8,6 @@
 
 
 <!-- #EndEditable -->
-<style>
-.font-bold {
-
-	font-weight: 700;
-}
-</style>
-
 </head>
 
 <body class="">
@@ -41,14 +34,14 @@
     <div class="column-half">
         <div class="breadcrumb-title-display font-xsmall">
             <ul>
-
-
 							<li>
 									<a href="">Activity</a>: Manage PCSs
 							</li>
 							<li>
 									<a href="">Organisation:</a> Demo Scheme
 							</li>
+
+
             </ul>
         </div>
     </div>
@@ -79,37 +72,41 @@
       <div class="column-two-thirds">
 
 <section>
+	<header class="hgroup">
+			<h1 class="heading-xlarge">
+					<!-- #BeginEditable "header" -->
+Demo Scheme
+									<!-- #EndEditable -->
+			</h1>
+	</header>
+	<!-- ========================================================================================================== -->
+	<!-- ========================================================================================================== -->
+	<!-- ========================================================================================================== -->
+	<!-- #BeginEditable "body" -->
 
+<p><a href="index">Registration details</a>&nbsp;&nbsp;|&nbsp;&nbsp;Organisation details&nbsp;&nbsp;|&nbsp;&nbsp;<a href="notice-details">Service of notice details</a></p>
+	<form method="post" class="form text">
 
-	                <header class="hgroup">
-	                    <h1 class="heading-xlarge">
-	                        <!-- #BeginEditable "header" -->
-	            Demo Scheme
-	                                <!-- #EndEditable -->
-	                    </h1>
-	                </header>
-	                <!-- ========================================================================================================== -->
-	                <!-- ========================================================================================================== -->
-	                <!-- ========================================================================================================== -->
-	                <!-- #BeginEditable "body" -->
+	    <h2 class="form-title heading-medium">
+	      Edit service of notice contact details
+	    </h2>
 
-<p><a href="index">Registration details</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="organisation-details">Organisation details</a>&nbsp;&nbsp;|&nbsp;&nbsp;Service of notice details</p>
-<h2 class="heading-medium">Service of notice details</h2>
-<table>
-	<tr>
-		<th valign="top">Contact</th>
-		<td>John Smith<br/>Scheme Leader<br/>01482 000 000<br/>test@test.com</td>
-		<td><a href="edit-notice-email">Edit</a></td>
+	      <!-- Postcode look-up -->
+	      <div class="form-group">
+	        <label class="form-label" for="postcode">Enter a UK postcode</label>
+	        <p class="form-hint">For example, S9 4WF</p>
+	        <input type="text" class="form-control-1-4" id="postcode">
+	      </div>
 
-	<tr>
-	<th valign="top">Address</th>
-	<td>1 Demo Address<br/>Demo Street<br/>DemoTown DE1 MMO<br/>United Kingdom</td>
-	<td><a href="address-lookup-notice">Edit</a></td>
-</tr>
+	      <br>
 
-</table>
+	      <!-- Primary button -->
+	      <div class="form-group">
+	        <input type="submit" class="button" value="Find address">
+	      </div>
+				<p><a href="main-contact-address-notice">Enter address manually</a></p>
 
-
+	  </form>
         </section>
     </div>
 </div>
