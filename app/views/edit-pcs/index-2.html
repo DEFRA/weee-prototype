@@ -19,7 +19,10 @@ margin-bottom:10px;
 padding-bottom: 0px;
 
 }
+
+
 </style>
+
 
 </head>
 
@@ -49,12 +52,14 @@ padding-bottom: 0px;
             <ul>
 
 
-							<li>
-									<a href="">Activity</a>: Manage PCSs
-							</li>
-							<li>
-									<a href="">Organisation:</a> Demo Scheme
-							</li>
+                <li>
+                    <a href="">Activity</a>: Manage PCSs
+                </li>
+								<li>
+										<a href="">Organisation:</a> Demo Scheme
+								</li>
+
+
             </ul>
         </div>
     </div>
@@ -91,9 +96,11 @@ padding-bottom: 0px;
 	                    <h1 class="heading-xlarge noMargin">
 	                        <!-- #BeginEditable "header" -->
 	            Demo Scheme
+
 	                                <!-- #EndEditable -->
 	                    </h1>
 											<a href="which-scheme">Select a different PCS</a>
+
 	                </header>
 	                <!-- ========================================================================================================== -->
 	                <!-- ========================================================================================================== -->
@@ -101,47 +108,72 @@ padding-bottom: 0px;
 	                <!-- #BeginEditable "body" -->
 
 									<div class="section-tabs js-tabs">
-									<ul>
+	    <ul>
+
+	                <li class="active" >
+
+	<h1>                        <a id="pcs-details-tab" href="index-2">PCS details</a>
+	</h1>
+	                </li>
+	                <li>
+
+	                        <a id="organisation-details-tab" href="organisation-details">Organisation details</a>
+
+	                </li>
+									<li>
+
+	                        <a id="contact-details-tab" href="contact-details">Contact details</a>
+
+	                </li>
 
 									<li>
 
-																				 <a id="pcs-details-tab" href="index-2">PCS details</a>
+	                        <a id="notice-details-tab" href="notice-details">Notice details</a>
 
-									</li>
-									<li>
+	                </li>
 
-													<a id="organisation-details-tab" href="organisation-details">Organisation details</a>
+	                 </ul>
+	</div>
 
-									</li>
-									<li>
+	<table>
+	    <tbody>
+	      <tr>
+	        <th>PCS name</th>
+	        <td>Demo Scheme</td>
 
-													<a id="contact-details-tab" href="contact-details">Contact details</a>
-									
-									</li>
+	      </tr>
+	      <tr>
+	        <th>Approval number</th>
+	        <td>WEE/TE0016ST/SCH</td>
 
-									<li class="active">
+	      </tr>
+	      <tr>
+	       <th>Billing reference (optional)</th>
+	        <td></td>
 
-											<h1>		<a id="notice-details-tab" href="notice-details">Notice details</a>
-</h1>
-									</li>
+	      </tr>
+	      <tr>
+	       <th>Obligation type</th>
+	        <td>B2B</td>
 
-									 </ul>
-									</div>
+	      </tr>
+	      <tr>
+	        <th>Appropriate Authority</th>
+	        <td>Environment Agency</td>
 
-<h2 class="heading-medium">Notice details</h2>
-<table>
-	<tr>
-		<th valign="top">Contact</th>
-		<td>John Smith<br/>Scheme Leader<br/>01482 000 000<br/>test@test.com</td>
-		<td><a href="edit-notice-email">Edit</a></td>
+	      </tr>
+	      <tr>
+	        <th>Authorisation status</th>
+	        <td>Pending</td>
 
-	<tr>
-	<th valign="top">Address</th>
-	<td>1 Demo Address<br/>Demo Street<br/>DemoTown DE1 MMO<br/>United Kingdom</td>
-	<td><a href="address-lookup-notice">Edit</a></td>
-</tr>
+	      </tr>
+			</table>
+		  <br/>
+		  <p> <a href="edit-pcs">Edit PCS details</a></p>
+		<h2 class="heading-medium">PCS members</h2>
+		<p><a href="javascript:alert('Downloads full member list CSV');">Download 2016 full member list (CSV)</a></p>
+		<p><a href="javascript:alert('Downloads full member list CSV');">Download 2015 full member list (CSV)</a></p>
 
-</table>
 
 
         </section>

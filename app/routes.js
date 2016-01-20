@@ -292,7 +292,7 @@ router.post('/edit-pcs/address-lookup-2', function (req,res) {
 });
 
 router.post('/edit-pcs/main-contact-address', function (req,res) {
-    res.redirect('/edit-pcs/organisation-details');
+    res.redirect('/edit-pcs/contact-details');
 
 });
 
