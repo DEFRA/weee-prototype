@@ -291,8 +291,38 @@ router.post('/edit-pcs/address-lookup-2', function (req,res) {
 
 });
 
+router.post('/edit-pcs/address-lookup-3', function (req,res) {
+    res.redirect('/edit-pcs/address-lookup-4');
+
+});
+
+router.post('/edit-pcs/address-lookup-notice-2', function (req,res) {
+    res.redirect('/edit-pcs/address-lookup-notice-3');
+
+});
+
+router.post('/edit-pcs/main-contact-address-notice-2', function (req,res) {
+    res.redirect('/edit-pcs/notice-details-2');
+
+});
+
+router.post('/edit-pcs/address-lookup-notice-3', function (req,res) {
+    res.redirect('/edit-pcs/notice-details-2');
+
+});
+
+router.post('/edit-pcs/address-lookup-4', function (req,res) {
+    res.redirect('/edit-pcs/contact-details-2');
+
+});
+
 router.post('/edit-pcs/main-contact-address', function (req,res) {
     res.redirect('/edit-pcs/contact-details');
+
+});
+
+router.post('/edit-pcs/main-contact-address-2', function (req,res) {
+    res.redirect('/edit-pcs/contact-details-2');
 
 });
 
@@ -300,6 +330,19 @@ router.post('/edit-pcs/edit-org-contact', function (req,res) {
     res.redirect('/edit-pcs/organisation-details');
 
 });
+
+router.post('/edit-pcs/choose-scheme', function (req,res) {
+  if (req.body['SelectedValue']==="Demo Scheme 1"){
+    res.redirect('/edit-pcs/index-2');
+
+  }
+
+  else {
+    res.redirect('/edit-pcs/index-3');
+  }
+});
+
+
 
 
 module.exports = router;
