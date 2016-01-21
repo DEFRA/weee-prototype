@@ -281,7 +281,7 @@ router.post('/edit-pcs/address-lookup-2-notice', function (req,res) {
 
 });
 
-router.post('/edit-pcs/address-lookup', function (req,res) {
+router.post('/edit-pcs/address-lookup-standard', function (req,res) {
     res.redirect('/edit-pcs/address-lookup-2');
 
 });

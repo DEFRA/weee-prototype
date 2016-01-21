@@ -9,17 +9,12 @@
 
 <!-- #EndEditable -->
 <style>
-.font-bold {
-
-	font-weight: 700;
-}
 .noMargin {
 margin-bottom:10px;
 padding-bottom: 0px;
 
 }
 </style>
-
 </head>
 
 <body class="">
@@ -54,7 +49,6 @@ padding-bottom: 0px;
 							</li>
 
 
-
             </ul>
         </div>
     </div>
@@ -85,84 +79,70 @@ padding-bottom: 0px;
       <div class="column-two-thirds">
 
 <section>
+	<header class="hgroup">
+			<h1 class="heading-xlarge noMargin">
+					<!-- #BeginEditable "header" -->
+Demo Scheme 1
+									<!-- #EndEditable -->
+			</h1>
 
+			<a href="which-scheme">Select a different PCS</a>
+	</header>
+	<!-- ========================================================================================================== -->
+	<!-- ========================================================================================================== -->
+	<!-- ========================================================================================================== -->
+	<!-- #BeginEditable "body" -->
 
-	                <header class="hgroup">
-	                    <h1 class="heading-xlarge noMargin">
-	                        <!-- #BeginEditable "header" -->
-	            Demo Scheme 1
-	                                <!-- #EndEditable -->
-	                    </h1>
+	<div class="section-tabs js-tabs">
+	<ul>
 
-											<a href="which-scheme">Select a different PCS</a>
-	                </header>
-	                <!-- ========================================================================================================== -->
-	                <!-- ========================================================================================================== -->
-	                <!-- ========================================================================================================== -->
-	                <!-- #BeginEditable "body" -->
+	<li>
 
-									<div class="section-tabs js-tabs">
-									<ul>
+												 <a id="pcs-details-tab" href="index-2">PCS details</a>
 
-									<li>
+	</li>
+	<li>
 
-									                       <a id="pcs-details-tab" href="index-2">PCS details</a>
+					<a id="organisation-details-tab" href="organisation-details">Organisation details</a>
 
-									</li>
-									<li>
-
-													<a id="organisation-details-tab" href="organisation-details">Organisation details</a>
-
-									</li>
-									<li class="active">
-
-												<h1>	<a id="contact-details-tab" href="contact-details">Contact details</a>
+	</li>
+	<li class="active">
+<h1>
+					<a id="contact-details-tab" href="contact-details">Contact details</a>
 </h1>
-									</li>
+	</li>
 
-									<li>
+	<li>
 
-													<a id="notice-details-tab" href="notice-details">Notice details</a>
+					<a id="notice-details-tab" href="notice-details">Notice details</a>
 
-									</li>
+	</li>
 
-									 </ul>
-									</div>
+	 </ul>
+	</div>
 
+	<form method="post" class="form text">
 
+	    <h2 class="form-title heading-medium">
+	      Edit service of notice contact details
+	    </h2>
 
+	      <!-- Postcode look-up -->
+	      <div class="form-group">
+	        <label class="form-label" for="postcode">Enter a UK postcode</label>
+	        <p class="form-hint">For example, S9 4WF</p>
+	        <input type="text" class="form-control-1-4" id="postcode">
+	      </div>
 
+	      <br>
 
+	      <!-- Primary button -->
+	      <div class="form-group">
+	        <input type="submit" class="button" value="Find address">
+	      </div>
+				<p><a href="main-contact-address">Enter address manually</a></p>
 
-
-		<table>
-			<tbody>
-
-			<tr>
-				<th valign="top">Contact</th>
-				<td>John Smith<br/>Scheme Leader<br/>01482 000 000<br/>test@test.com</td>
-				<td><a href="edit-name-email">Edit</a></td>
-
-			<tr>
-			<th valign="top">Address</th>
-			<td>1 Demo Address<br/>Demo Street<br/>DemoTown DE1 MMO<br/>United Kingdom</td>
-			<td><a href="address-lookup-standard">Edit</a></td>
-		</tr>
-
-
-	</tbody>
-</table>
-<br/>
-
-
-
-	    </form>
-
-	  </div>
-
-
-
-
+	  </form>
         </section>
     </div>
 </div>
