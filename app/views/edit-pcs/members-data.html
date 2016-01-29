@@ -20,6 +20,19 @@ padding-bottom: 0px;
 
 }
 
+.tabs {
+
+float: left;
+margin-left: 20px;
+
+}
+
+.closeGap{
+
+margin-top: 20px;
+
+}
+
 
 </style>
 
@@ -103,15 +116,16 @@ padding-bottom: 0px;
 											<a href="which-scheme">Select a different PCS</a>
 
 	                </header>
+								</div>
 	                <!-- ========================================================================================================== -->
 	                <!-- ========================================================================================================== -->
 	                <!-- ========================================================================================================== -->
 	                <!-- #BeginEditable "body" -->
 
-									<div class="section-tabs js-tabs">
+									<div class="tabs section-tabs js-tabs">
 	    <ul>
 
-	                <li class="active" >
+	                <li>
 
 	                       <a id="pcs-details-tab" href="index-2">PCS details</a>
 
@@ -140,45 +154,14 @@ padding-bottom: 0px;
 
 	                 </ul>
 	</div>
-
-	<table>
-	    <tbody>
-	      <tr>
-	        <th>PCS name</th>
-	        <td>Demo Scheme 1</td>
-
-	      </tr>
-	      <tr>
-	        <th>Approval number</th>
-	        <td>WEE/TE0016ST/SCH</td>
-
-	      </tr>
-	      <tr>
-	       <th>Billing reference (optional)</th>
-	        <td></td>
-
-	      </tr>
-	      <tr>
-	       <th>Obligation type</th>
-	        <td>B2B</td>
-
-	      </tr>
-	      <tr>
-	        <th>Appropriate Authority</th>
-	        <td>Environment Agency</td>
-
-	      </tr>
-	      <tr>
-	        <th>Authorisation status</th>
-	        <td>Pending</td>
-
-	      </tr>
-			</table>
-		  <br/>
-		  <p> <a href="edit-pcs">Edit PCS details</a></p>
-		<h2 class="heading-medium">PCS members</h2>
-		<p><a href="javascript:alert('Downloads full member list CSV');">Download 2016 full member list (CSV)</a></p>
-		<p><a href="javascript:alert('Downloads full member list CSV');">Download 2015 full member list (CSV)</a></p>
+</div>
+<div class="column-two-thirds">
+	<h2 class="heading-medium closeGap">2017</h2>
+	<p><a href="javascript:alert('Downloads full member list CSV');">Members overview (CSV)</a></p>
+	<p><a href="javascript:alert('Downloads full member list CSV');">EEE/WEEE data overview (CSV)</a></p>
+	<h2 class="heading-medium">2016</h2>
+	<p><a href="javascript:alert('Downloads full member list CSV');">Members overview (CSV)</a></p>
+	<p><a href="javascript:alert('Downloads full member list CSV');">EEE/WEEE data overview (CSV)</a></p>
 <br/>
 <p><a class="button" href="javascript:alert('Back to springboard');">Perform another activity</a></p>
 

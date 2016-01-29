@@ -18,6 +18,19 @@ margin-bottom:10px;
 padding-bottom: 0px;
 
 }
+
+.tabs {
+
+float: left;
+margin-left: 20px;
+
+}
+
+.noGap {
+
+margin-top: 20px;
+
+}
 </style>
 
 </head>
@@ -96,12 +109,13 @@ padding-bottom: 0px;
 
 											<a href="which-scheme">Select a different PCS</a>
 	                </header>
+								</div>
 	                <!-- ========================================================================================================== -->
 	                <!-- ========================================================================================================== -->
 	                <!-- ========================================================================================================== -->
 	                <!-- #BeginEditable "body" -->
 
-									<div class="section-tabs js-tabs">
+									<div class="tabs section-tabs js-tabs">
 									<ul>
 
 									<li>
@@ -109,6 +123,11 @@ padding-bottom: 0px;
 									                       <a id="pcs-details-tab" href="index-2">PCS details</a>
 
 									</li>
+									<li>
+
+	                       <a id="pcs-details-tab" href="members-data">Members/data</a>
+
+	                </li>
 									<li>
 
 													<a id="organisation-details-tab" href="organisation-details">Organisation details</a>
@@ -129,10 +148,11 @@ padding-bottom: 0px;
 									 </ul>
 									</div>
 
-
+</div>
+<div class="column-two-thirds">
 
 <header class="hgroup">
-			 <h2 class="heading-medium">Edit organisation contact details</h2>
+			 <h2 class="heading-medium noGap">Edit organisation contact details</h2>
 	 </header>
 
 <form action="contact-details"><div class='error-summary-valid' data-valmsg-summary='true'>
