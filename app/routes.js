@@ -343,6 +343,17 @@ router.post('/edit-pcs/choose-scheme', function (req,res) {
 });
 
 /* Manage users routes */
+router.post('/manage-users/index', function (req,res) {
+  if (req.body['InternalUserActivityOptions']==="Manage users"){
+    res.redirect('/manage-users/user-list');
+
+  }
+
+  else {
+    res.redirect('/manage-users/index');
+  }
+});
+
 router.post('/manage-users/user-list', function (req,res) {
     res.redirect('/manage-users/user-view');
 
