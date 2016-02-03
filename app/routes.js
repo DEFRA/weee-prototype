@@ -342,6 +342,23 @@ router.post('/edit-pcs/choose-scheme', function (req,res) {
   }
 });
 
+/* Manage users routes */
+router.post('/manage-users/user-list', function (req,res) {
+    res.redirect('/manage-users/user-view');
+
+});
+
+router.post('/manage-users/user-edit', function (req,res) {
+    res.redirect('/manage-users/user-view');
+
+});
+
+router.post('/manage-users/user-view', function (req,res) {
+    res.redirect('/manage-users/user-list');
+
+});
+
+
 
 
 

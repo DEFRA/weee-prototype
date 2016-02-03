@@ -1,0 +1,356 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+
+<!-- #EndEditable -->
+</head>
+
+<body class="">
+<script type="text/javascript">document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
+
+
+
+
+<!--end header-->
+
+
+
+<main id="content">
+	<div class="phase-banner">
+			<p>
+					<strong class="phase-tag">BETA</strong>
+					<span>This is a new service – your <a href="../new-user/feedback" target="_blank">feedback</a> will help us to improve it.</span>
+			</p>
+	</div>
+
+  <!-- #BeginEditable "banner" -->
+<div class="grid-row">
+
+    <div class="column-half">
+        <div class="breadcrumb-title-display font-xsmall">
+					<ul>
+
+
+								<li>
+										<a href="index">Activity</a>: Manage users
+								</li>
+
+
+
+				</ul>
+
+        </div>
+    </div>
+
+    <div class="column-half">
+        <div class="username-title-display font-xsmall">
+
+            <ul>
+                <li>
+                    <div class="text-secondary">Signed in as: <span class="username-format">Sophie Ottaway</span></div>
+                </li>
+                <li>
+                    <form method="post">
+                       <button class="link-submit" id="link-sign-out" type="submit">Sign out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="account-link-banner"></div>
+
+
+
+  <!-- #EndEditable -->
+	<header class="hgroup">
+    <h1 class="heading-large">
+        Choose a user
+    </h1>
+</header>
+
+<form method="post">
+                        <ul class='error-summary-list'>
+                            <li style='display:none'></li>
+                        </ul>
+                    </div>    <div class="table-hr"></div>
+    <table id="idManageUsersTable" class="prsd-table hover-effect">
+        <thead>
+            <tr>
+                        <th class="sorted-ascending">
+                            <a href="/weee/admin/user/manage-users?OrderBy=FullNameDescending">Name</a>
+                            <span class="visuallyhidden">Sorted alphabetically from A to Z.</span>
+                        </th>
+                <th>
+                    Email
+                </th>
+                    <th>
+                        <a href="/weee/admin/user/manage-users?OrderBy=OrganisationAscending">Organisation</a>
+                    </th>
+                                    <th>
+                        <a href="/weee/admin/user/manage-users?OrderBy=StatusAscending">Status</a>
+                    </th>
+                <th>Select</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td width="100%">Chris Smith</td>
+                    <td>chriss+test1@sfwltd.co.uk</td>
+                    <td>Chris Org.</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="59fb3f88-d359-47a3-a1e7-a59a00c5c100" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">D A</td>
+                    <td>david.auty+testi1@environment-agency.gov.uk</td>
+                    <td>EA</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="4722e3dd-8cb0-4ca6-9982-a54700f23852" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">D A</td>
+                    <td>david.auty+test10@environment-agency.gov.uk</td>
+                    <td>EA</td>
+                    <td>Pending</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="068e0fab-f649-4eb9-bdda-a56200d022e3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">David Auty</td>
+                    <td>david.auty+test1@environment-agency.gov.uk</td>
+                    <td>DA1</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="2b2e91fd-80c8-4f13-bc13-a54700eb8ed8" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">David Auty</td>
+                    <td>david.auty+test12@environment-agency.gov.uk</td>
+                    <td>EA</td>
+                    <td>Pending</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="2b10b429-41bf-413c-a671-a56200e6f861" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Admin</td>
+                    <td>helens+internal@sfwltd.co.uk</td>
+                    <td>EA</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="c153a39e-a082-4922-8bb0-a54701177f90" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Collins</td>
+                    <td>helen.collins+testinternal@environment-agency.gov.uk</td>
+                    <td>EA</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="b8448674-291f-45e2-b0c8-a54500ca567f" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Collins</td>
+                    <td>helen.collins+test2@environment-agency.gov.uk</td>
+                    <td>Ella Scheme Ltd</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="95a5d443-2f75-408b-8797-a54b0100d4f2" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Collins</td>
+                    <td>helen.collins+testGDS@environment-agency.gov.uk</td>
+                    <td>GDS Scheme Ltd</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="496df497-3589-4177-8ede-a54c00d86941" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Collins</td>
+                    <td>helen.collins+testmock@environment-agency.gov.uk</td>
+                    <td>Mock Scheme Ltd</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="3c4a7288-b49d-420e-bb84-a54800f01001" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Shore</td>
+                    <td>helens+test2@sfwltd.co.uk</td>
+                    <td>Recycling Ltd</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="07a5c541-c51e-421c-924d-a54b00f42e9e" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Shore</td>
+                    <td>helens+test2@sfwltd.co.uk</td>
+                    <td>GDS Scheme Ltd</td>
+                    <td>Pending</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="11333609-b4a2-4b7e-a035-a54c00de40b9" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Shore</td>
+                    <td>helens+test1@sfwltd.co.uk</td>
+                    <td>WEEECare</td>
+                    <td>Pending</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="1c427e61-a0bc-47c5-b50f-a54800b2b525" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Shore</td>
+                    <td>helens+test1@sfwltd.co.uk</td>
+                    <td>Helen&#39;s  Company Ltd</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="9a23a161-d248-457c-b376-a54800b36005" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Shore</td>
+                    <td>helens+test1@sfwltd.co.uk</td>
+                    <td>SFW</td>
+                    <td>Pending</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="6f51b366-b3a5-4cc8-b2f5-a54800b43ab1" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Helen Shore</td>
+                    <td>helens+test1@sfwltd.co.uk</td>
+                    <td>Mock Scheme Ltd</td>
+                    <td>Pending</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="536b5c9b-6851-48fd-bb1c-a54800f48c41" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">Internal Admin</td>
+                    <td>lynneb+internaltest1@sfwltd.co.uk</td>
+                    <td>EA</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="2382c917-1704-4660-affa-a54600f04986" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">jason sykes</td>
+                    <td>jason.sykes+t1@environment-agency.gov.uk</td>
+                    <td>EA</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="14c4bc4a-47f7-4caf-b4a9-a54400aa3f66" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">jason sykes</td>
+                    <td>jason.sykes+test5@environment-agency.gov.uk</td>
+                    <td>D WEEE SCHEME</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="d1375b64-8e2d-43b5-adfc-a54d00920930" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">jason sykes</td>
+                    <td>jason.sykes+test6@environment-agency.gov.uk</td>
+                    <td>E WEEE SCHEME</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="8c00127c-1f73-4d10-9651-a54d00a72f70" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">jason sykes</td>
+                    <td>jason.sykes+test3@environment-agency.gov.uk</td>
+                    <td>C WEEE SCHEME</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="02ff2a8c-6885-4933-bfb1-a54400f74ad3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">jason sykes</td>
+                    <td>jason.sykes+test3@environment-agency.gov.uk</td>
+                    <td>A WEEE scheme</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="d7faa1f9-a9ef-43b8-8e70-a547009d66c0" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">jason sykes</td>
+                    <td>jason.sykes+B@environment-agency.gov.uk</td>
+                    <td>EA</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="420a619d-371b-4f29-8323-a593008f2707" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">jason sykes</td>
+                    <td>jason.sykes+veolia@environment-agency.gov.uk</td>
+                    <td>VEOLIA ES WEEE COMPLIANCE SCHEME (UK) LIMITED</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="d2fca40f-d3c1-42b8-9478-a58e00beb197" />
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100%">jason sykes</td>
+                    <td>jason.sykes+test1@environment-agency.gov.uk</td>
+                    <td>A WEEE scheme</td>
+                    <td>Active</td>
+                    <td>
+                        <input id="SelectedUserId" name="SelectedUserId" type="radio" value="310febce-3a41-4a66-8818-a54400a3b746" />
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <br/>
+        <div class="pager">
+            <span class="disabled">Prev</span><span class="current">1</span><a href="/weee/admin/user/manage-users?orderby=FullNameAscending&page=2" title="">2</a><a href="/weee/admin/user/manage-users?orderby=FullNameAscending&page=3" title="">3</a><a href="/weee/admin/user/manage-users?orderby=FullNameAscending&page=2" title="Next page">Next</a>
+        </div>
+        <p>Showing 1 - 25 of 68</p>
+<div class="left-cleared"><input type="submit" value="Continue" class="button" /></div>    <p>
+        <a href="javascript:history.back();">Back</a>
+    </p>
+</form>
+
+</main>
+
+
+
+
+            {{/content}}
+
+
+
+            {{$bodyEnd}}
+
+            {{/bodyEnd}}
+
+
+
+
+            {{/layout}}
