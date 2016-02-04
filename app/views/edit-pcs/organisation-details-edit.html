@@ -153,44 +153,40 @@ margin-left: 20px;
 			<td>Registered company</td>
 			<td></td>
 		</tr>
-		<tr>
-			<th>Company name</th>
-			<td>Waste For You Ltd</td>
-			<td></td>
-		</tr>
-		<tr>
-		 <th>Company registration number (CRN)</th>
-			<td>012345678</td>
-			<td></td>
-		</tr>
-		<tr>
-			<th>Business trading name</th>
-			<td>Waste For You</td>
-			<td></td>
-</tr>
-
-
-						<tr>
-							<th valign="top">Address</th>
-							<td>1 Demo Address<br/>Demo Street<br/>DemoLand DE1 MMO<br/>United Kingdom</td>
-							<td></td>
-						</tr>
-						<tr>
-							<th valign="top">Telephone</th>
-							<td>01482 000 000</td>
-							<td></td>
-						</tr>
-						<tr>
-						 <th valign="top">Email address</th>
-							<td>test@test.com</td>
-							<td></td>
-						</tr>
 	</tbody>
 </table>
 <br/>
-<p><a href="organisation-details-edit">Edit organisation details</a></p>
-<br/>
-<p><a class="button" href="javascript:alert('Back to springboard');">Perform another activity</a></p>
+<form method="post">
+	<fieldset>
+		<div>
+	<label class="form-label" for="company-name">
+    Company name
+
+  </label>
+  <input class="form-control" id="company-name" type="text">
+</div>
+
+<div>
+<label class="form-label" for="crn">
+Company Registration Number (CRN)
+
+</label>
+<input class="form-control" id="crn" type="text">
+</div>
+
+<div>
+<label class="form-label" for="trading-name">
+Business trading name
+
+</label>
+<input class="form-control" id="trading-name" type="text">
+</div>
+
+
+
+<div class="form-group">
+	<input type="submit" class="button" value="Save and continue">
+</div>
 
 
 	    </form>
