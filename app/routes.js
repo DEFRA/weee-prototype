@@ -331,6 +331,11 @@ router.post('/edit-pcs/edit-org-contact', function (req,res) {
 
 });
 
+router.post('/edit-pcs/organisation-details-edit', function (req,res) {
+    res.redirect('/organisation-details');
+
+});
+
 router.post('/edit-pcs/choose-scheme', function (req,res) {
   if (req.body['SelectedValue']==="Demo Scheme 1"){
     res.redirect('/edit-pcs/index-2');
