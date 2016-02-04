@@ -332,7 +332,7 @@ router.post('/edit-pcs/edit-org-contact', function (req,res) {
 });
 
 router.post('/edit-pcs/organisation-details-edit', function (req,res) {
-    res.redirect('/organisation-details');
+    res.redirect('/edit-pcs/organisation-details');
 
 });
 
