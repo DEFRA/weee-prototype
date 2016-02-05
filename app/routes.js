@@ -332,8 +332,19 @@ router.post('/edit-pcs/edit-org-contact', function (req,res) {
 });
 
 router.post('/edit-pcs/organisation-details-edit', function (req,res) {
+    res.redirect('/edit-pcs/organisation-details-verify');
+
+});
+
+router.post('/edit-pcs/organisation-details-verify', function (req,res) {
+  if (req.body['radio-inline-group']=="Yes"){
     res.redirect('/edit-pcs/organisation-details');
 
+  }
+
+  else {
+    res.redirect('/edit-pcs/organisation-details-edit');
+  }
 });
 
 router.post('/edit-pcs/choose-scheme', function (req,res) {
