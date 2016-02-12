@@ -380,6 +380,42 @@ router.post('/manage-users/user-view', function (req,res) {
 
 });
 
+/* Partnership create journey */
+
+router.post('/create-partnership/index', function (req,res) {
+  res.redirect('/create-partnership/business-trading-name');
+
+});
+
+router.post('/create-partnership/business-trading-name', function (req,res) {
+  res.redirect('/create-partnership/partners');
+
+});
+
+router.post('/create-partnership/partners', function (req,res) {
+  res.redirect('/create-partnership/main-contact');
+
+});
+
+router.post('/create-partnership/add-partner', function (req,res) {
+  res.redirect('/create-partnership/main-contact');
+
+});
+
+router.post('/create-partnership/main-contact', function (req,res) {
+  res.redirect('/create-partnership/main-contact-address');
+
+});
+
+router.post('/create-partnership/main-contact-address', function (req,res) {
+  res.redirect('/create-partnership/principal-place-same');
+
+});
+
+router.post('/create-partnership/principal-place-same', function (req,res) {
+  res.redirect('/create-partnership/summary');
+
+});
 
 
 

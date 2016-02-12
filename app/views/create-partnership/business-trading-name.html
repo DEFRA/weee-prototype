@@ -1,0 +1,89 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+
+<!-- #EndEditable -->
+
+<main id="content">
+    <div class="phase-banner">
+    <p>
+        <strong class="phase-tag">BETA</strong>
+        <span>
+            This is a new service ñ your
+            <a href="/weee/new-user/feedback"  target="_blank" onclick="ga('send', 'event', 'Feedback', 'Banner', 'Feedback link');">feedback</a> will help us to improve it
+        </span>
+    </p>
+</div>
+
+
+<div class="grid-row">
+
+
+    <div class="column-whole">
+        <div class="username-title-display font-xsmall">
+            <ul>
+                <li>
+                    <div class="text-secondary">Signed in as: <span class="username-format">Sophie Ottaway</span></div>
+                </li>
+                <li>
+<form action="/weee/account/sign-out" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="y5hR2ADxkthkCI8PJaxn-1wL8LZcvthUnSkMmnF2HeYb3dpYjP2XguhS_pJ48Jwc0dN6dbwwqwv0gOmZ0slQ4gI365oOGUv8V4-CrcJtC3mxEWm65ikyArwoY2-03gJsqLmi9M9UP5q2yS_wuCcQ6g2" />                        <input class="link-submit" id="link-sign-out" type="submit" value="Sign out"/>
+</form>                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="account-link-banner"></div>
+
+
+
+
+        <div class="grid-row">
+            <section id="main-content" class="column-two-thirds">
+
+    <header class="hgroup">
+        <h1 class="heading-large">What is your business trading name?</h1>
+    </header>
+
+<form method="post"><div class='error-summary-valid' data-valmsg-summary='true'>
+                        <ul class='error-summary-list'>
+                            <li style='display:none'></li>
+                        </ul>
+                    </div>        <div class="form-group">
+<details><summary onclick="if(this.getAttribute('aria-expanded') == 'true'){ga('send', 'event', 'Hidden content', 'Progressive disclosure', 'What does business trading name mean?');}"><span class="summary">What does business trading name mean?<span class="hidden-for-screen-reader">This is an expandable link that will reveal more content upon activation</span></span></summary><div class="panel-indent">                <p>
+                    This is either the partner's names or your business name. A business name is any name under which someone carries on business. In the case of a partnership, it means a name other than the partners names.
+                </p>
+</div></details>        </div>
+        <div class="form-group">
+            <label class="form-label" for="BusinessTradingName">Business trading name </label>
+
+            <input class="form-control" id="BusinessTradingName" maxlength="256" name="BusinessTradingName" type="text"/>
+        </div>
+        <div class="form-group">
+            <button class="button" type="submit">Continue</button>
+        </div>
+</form>
+            </section>
+        </div>
+</main>
+
+
+
+
+{{/content}}
+
+
+
+{{$bodyEnd}}
+
+{{/bodyEnd}}
+
+
+
+
+{{/layout}}

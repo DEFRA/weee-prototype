@@ -1,0 +1,97 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+
+<!-- #EndEditable -->
+
+<main id="content">
+    <div class="phase-banner">
+    <p>
+        <strong class="phase-tag">BETA</strong>
+        <span>
+            This is a new service ñ your
+            <a href="/weee/new-user/feedback"  target="_blank" onclick="ga('send', 'event', 'Feedback', 'Banner', 'Feedback link');">feedback</a> will help us to improve it
+        </span>
+    </p>
+</div>
+
+
+<div class="grid-row">
+
+
+    <div class="column-whole">
+        <div class="username-title-display font-xsmall">
+            <ul>
+                <li>
+                    <div class="text-secondary">Signed in as: <span class="username-format">Sophie Ottaway</span></div>
+                </li>
+                <li>
+<form action="/weee/account/sign-out" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="-P_znBMQdat8ok4md6Qh7YEjh6iSIQYH2jrLgwoCMm9YkJwqZi_FnL1yrSlOs-hn6dEchF9-6vOopKHwVhhhbOJa-XgT9WqJyKZXNVYYOXXNkiR5xMtD03qHcfom3qbb60W_ZUZEHyVJ3LCXK5e2qg2" />                        <input class="link-submit" id="link-sign-out" type="submit" value="Sign out"/>
+</form>                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="account-link-banner"></div>
+
+
+
+        <div class="grid-row">
+            <section id="main-content" class="column-two-thirds">
+
+        <header class="hgroup">
+            <h1 class="heading-large">
+                Are the details for your principal place of business and your organisation contact details the same?
+            </h1>
+        </header>
+
+<form method="post"><input name="__RequestVerificationToken" type="hidden" value="jWwgGzMh7BfbLMuIg5etSV7MkYnumKX-21ZAnetoMMAA-sFpIMmH7l9f6UnEZANdowVWpVpUcdG39J-as2MADOz5H-sCW8JvLICGYG4bxcQv1Dyy2dUZ2SgbHi0DjL0MddpBDgJOSNOSRs6n2EwsEQ2" /><div class='error-summary-valid' data-valmsg-summary='true'>
+                        <ul class='error-summary-list'>
+                            <li style='display:none'></li>
+                        </ul>
+                    </div><input id="OrganisationType" name="OrganisationType" type="hidden" value="Partnership" />        <div class="form-group" id="ContactDetailsSameAs">
+											<fieldset class="inline">
+
+				      <legend class="visuallyhidden">Do you already have a personal user account?</legend>
+
+				      <label class="block-label" for="radio-inline-1">
+				        <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
+				        Yes
+				      </label>
+				      <label class="block-label" for="radio-inline-2">
+				        <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
+				        No
+				      </label>
+
+				    </fieldset>
+        </div>
+<div class="left-cleared"><input type="submit" value="Continue" class="button" /></div></form>
+            </section>
+        </div>
+</main>
+
+
+
+
+
+
+
+
+{{/content}}
+
+
+
+{{$bodyEnd}}
+
+{{/bodyEnd}}
+
+
+
+
+{{/layout}}

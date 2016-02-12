@@ -1,0 +1,100 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+
+<!-- #EndEditable -->
+<main id="content">
+    <div class="phase-banner">
+    <p>
+        <strong class="phase-tag">BETA</strong>
+        <span>
+            This is a new service ñ your
+            <a href="/weee/new-user/feedback"  target="_blank" onclick="ga('send', 'event', 'Feedback', 'Banner', 'Feedback link');">feedback</a> will help us to improve it
+        </span>
+    </p>
+</div>
+
+
+<div class="grid-row">
+
+
+    <div class="column-whole">
+        <div class="username-title-display font-xsmall">
+            <ul>
+                <li>
+                    <div class="text-secondary">Signed in as: <span class="username-format">Sophie Ottaway</span></div>
+                </li>
+                <li>
+<form action="/weee/account/sign-out" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="4FgkL96NUxqrB0-Xyitec9TChoOVsSPl5kUHibvjfbEHjVmpNFhcZCKlVCZVK4heog5z_tfzKq5wmNsKDPON_Yul1kxwUtQ0O5ku7xefIYjhDsjdYKh1ZUbvgOXjO8SVdz8kO_3zTbfkDzjWeDWG3Q2" />                        <input class="link-submit" id="link-sign-out" type="submit" value="Sign out"/>
+</form>                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="account-link-banner"></div>
+
+
+
+
+
+<form method="post">
+  <header class="hgroup">
+        <h1 class="heading-large">
+            Who are the partners of your organisation?
+        </h1>
+    </header>
+
+    <h2 class="heading-medium">Partner 1</h2>
+
+    <div>  <label class="form-label" for="first-name-f1">First name</label>
+  <input class="form-control" id="first-name-f1" type="text"/></div>
+  <br/>
+  <div><label class="form-label" for="last-name-f1">Last name</label>
+<input class="form-control" id="last-name-f1" type="text"/></div>
+
+
+
+
+    <h2 class="heading-medium">Partner 2</h2>
+    <div>  <label class="form-label" for="first-name-f1">First name</label>
+  <input class="form-control" id="first-name-f1" type="text"/></div>
+  <br/>
+  <div><label class="form-label" for="last-name-f1">Last name</label>
+<input class="form-control" id="last-name-f1" type="text"/></div>
+<br/>
+<p><a href="add-partner">Add another partner</a></p>
+<br/>
+
+
+    <div class="form-group">
+        <button class="button" type="submit">Continue</button>
+    </div>
+</form>
+</main>
+
+
+
+
+
+
+
+
+
+{{/content}}
+
+
+
+{{$bodyEnd}}
+
+{{/bodyEnd}}
+
+
+
+
+{{/layout}}

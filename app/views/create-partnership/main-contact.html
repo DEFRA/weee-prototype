@@ -1,0 +1,100 @@
+{{<layout}}
+
+{{$pageTitle}}
+	WEEE Prototype Environment
+{{/pageTitle}}
+
+{{$content}}
+
+
+<!-- #EndEditable -->
+
+<main id="content">
+    <div class="phase-banner">
+    <p>
+        <strong class="phase-tag">BETA</strong>
+        <span>
+            This is a new service ñ your
+            <a href="/weee/new-user/feedback"  target="_blank" onclick="ga('send', 'event', 'Feedback', 'Banner', 'Feedback link');">feedback</a> will help us to improve it
+        </span>
+    </p>
+</div>
+
+
+<div class="grid-row">
+
+
+    <div class="column-whole">
+        <div class="username-title-display font-xsmall">
+            <ul>
+                <li>
+                    <div class="text-secondary">Signed in as: <span class="username-format">Sophie Ottaway</span></div>
+                </li>
+                <li>
+<form action="/weee/account/sign-out" id="logoutForm" method="post"><input name="__RequestVerificationToken" type="hidden" value="FrhdHIBGhc-3EucWta_s6RSrQ_7wQREuNQcBKdnq5yxXynXdQKVbDQdOW31H27zomjrVGgjPRTj7FMbGuOj185-YVHrFasXIoyAC7zblPs4kbaZjzP4mSaFmmk3N-j45SGsuiXe53N9ointgO5jEQQ2" />                        <input class="link-submit" id="link-sign-out" type="submit" value="Sign out"/>
+</form>                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="account-link-banner"></div>
+
+
+
+
+
+        <div class="grid-row">
+            <section id="main-content" class="column-two-thirds">
+
+    <header class="hgroup">
+        <h1 class="heading-large">Who is your main contact person?</h1>
+    </header>
+
+<form method="post"><div class='error-summary-valid' data-valmsg-summary='true'>
+                        <ul class='error-summary-list'>
+                            <li style='display:none'></li>
+                        </ul>
+                    </div>        <div class="form-instruction">
+            <p>We're looking for the details of your nominated day-to-day contact for the producer compliance scheme (PCS).</p>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="FirstName">First name </label>
+
+            <input class="form-control" id="FirstName" maxlength="35" name="FirstName" type="text" value="" />
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="LastName">Last name </label>
+
+            <input class="form-control" id="LastName" maxlength="35" name="LastName" type="text" value="" />
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="Position">Position </label>
+
+            <input class="form-control" id="Position" maxlength="35" name="Position" type="text" value="" />
+        </div>
+        <div class="form-group">
+            <button class="button" type="submit">Continue</button>
+        </div>
+</form>
+            </section>
+        </div>
+</main>
+
+
+
+
+
+
+{{/content}}
+
+
+
+{{$bodyEnd}}
+
+{{/bodyEnd}}
+
+
+
+
+{{/layout}}
