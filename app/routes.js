@@ -417,6 +417,20 @@ router.post('/create-partnership/principal-place-same', function (req,res) {
 
 });
 
+/*Edit partnership details*/
+
+router.post('/edit-partner/add-partner', function (req,res) {
+  res.redirect('/edit-partner/organisation-details');
+
+});
+
+router.post('/edit-partner/organisation-details-edit', function (req,res) {
+  res.redirect('/edit-partner/organisation-details');
+
+});
+
+
+
 
 
 
