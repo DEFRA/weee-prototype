@@ -265,6 +265,10 @@ router.post('/notice-address/notice-address-same', function (req,res) {
 
 /* New Edit PCS journey */
 
+router.post('/edit-pcs/edit-notice-details', function (req,res) {
+    res.redirect('/edit-pcs/notice-details');
+
+});
 
 router.post('/edit-pcs/main-contact-address-notice', function (req,res) {
     res.redirect('/edit-pcs/notice-details');
@@ -379,6 +383,8 @@ router.post('/manage-users/user-view', function (req,res) {
     res.redirect('/manage-users/user-list');
 
 });
+
+
 
 
 
