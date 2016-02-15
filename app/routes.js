@@ -429,8 +429,20 @@ router.post('/edit-partner/organisation-details-edit', function (req,res) {
 
 });
 
+/*Overdue reports */
 
 
+
+router.post('/deadline-report/index', function (req,res) {
+  if (req.body['radio-group']==="Overdue returns"){
+    res.redirect('/deadline-report/overdue-filter');
+
+  }
+
+  else {
+    res.redirect('/deadline-report/index');
+  }
+});
 
 
 
