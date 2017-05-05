@@ -2,6 +2,8 @@
 
 View at https://weeeprototypes.herokuapp.com/
 
+Currently maintained by @liammcmurray
+
 #### Run the app
 
 ```
