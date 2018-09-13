@@ -1,10 +1,6 @@
 # Documentation
 
-- [Prototyping kit principles](principles.md)
-- [Getting started](getting-started.md)
-- [Making pages](making-pages.md)
-- [Writing CSS](writing-css.md)
-- [Deploying (getting your work online)](deploying.md)
-- [Updating the kit to the latest version](updating-the-kit.md)
-- [Tips and tricks](tips-and-tricks.md)
-- [Creating routes (server-side programming)](creating-routes.md)
+[Documentation and examples](https://govuk-prototype-kit.herokuapp.com/docs)
+
+Documentation is also available when running the app locally at http:localhost:3000/docs
+

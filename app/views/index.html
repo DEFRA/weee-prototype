@@ -1,229 +1,44 @@
 
+{% extends "layout.html" %}
 
-{{<layout}}
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
 
-{{$pageTitle}}
-	WEEE Prototype Environment
-{{/pageTitle}}
+{% block content %}
 
-{{$content}}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        The GOV.UK Prototype Kit
+        <span class="govuk-caption-xl">{{releaseVersion}}</span>
+      </h1>{{releaseVersion | log }}
+      <p>
+        This kit lets you rapidly create HTML prototypes of GOV.UK services.
+      </p>
 
-<main id="content" role="main">
-	<div class="phase-banner">
-	            <p>
-	                <strong class="phase-tag">BETA</strong>
-	                <span>This is a new service – your
-					<a href="../new-user/feedback" target="_blank">feedback</a> will help us to improve it.</span>
-	            </p>
-	        </div>
-<section>
-	<h1 class="heading-xlarge">WEEE Prototypes</h1>
-	<!-- feel free to change this page to suit your needs -->
-<h1 class="heading-large">December 2015 – May 2017</h1>
-<h2 class="heading-medium">External prototypes</h2>
-<table>
-	<tr>
-		<th width="20%">Prototype</th>
-		<th width="30%">Notes</th>
-		<th>Version</th>
-		<th>Last edited</th>
-		<th>Status</th>
+      <p>
+        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
+      </p>
 
-	</tr>
+      <h2 class="govuk-heading-m">About this page</h2>
 
+      <p>We recommend you add links to your prototype to this page, rather than delete it.
+        You'll find this page in the kit at '/app/views/index.html'.</p>
 
-	<tr>
-	<td>View cumulative data</td>
-	<td>New springboard - adds top-level WEEE/EEE data</td>
-	<td><a href="/schemes/index">Version 1</a></td>
-	<td>08/12/2015</td>
-	<td>Closed</td>
-	</tr>
-	<tr>
-	<td></td>
-	<td>Shows cumulative data for data returns as part of 'Manage data returns' journey</td>
-	<td><a href="/schemes/index-2">Version 2</a></td>
-	<td>08/12/2015</td>
-	<td>Awaiting review</td>
-	</tr>
+      <p>You can change the service name by editing the file '/app/config.js'.</p>
 
-	<tr>
-	<td>Address lookup feature</td>
-	<td>Adds lookup feature to existing 'Create an organisation' journey</td>
-	<td><a href="/register/address-lookup">Version 1</a></td>
-	<td>08/01/2016</td>
-	<td>Awaiting review</td>
-	</tr>
+      <h2 class="govuk-heading-m">Examples and documentation</h2>
 
-	<tr>
-	<td>Notice address</td>
-	<td>Adds notice address to existing 'Create an organisation' journey</td>
-	<td><a href="/notice-address/reg-company">V1.1 Registered companies</a></td>
-	<td>11/01/2016</td>
-	<td>Awaiting review</td>
-	</tr>
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/docs/tutorials-and-examples">Example pages and documentation</a></li>
+        <li>
+          <a href="https://design-system.service.gov.uk">
+            GOV.UK Design System
+          </a>
+        </li>
+      </ul>
+    </div>
+</div>
 
-	<tr>
-	<td></td>
-	<td>Adds notice address to existing 'Create an organisation' journey</td>
-	<td><a href="/notice-address/business-trading-name">V1.2 Sole traders and partnerships</a></td>
-	<td>11/01/2016</td>
-	<td></td>
-	</tr>
-
-	<tr>
-	<td>Partnerships</td>
-	<td>Create journey and summary (happy path - no routing)</td>
-	<td><a href="/create-partnership/index">Version 1</a></td>
-	<td>12/02/2016</td>
-	<td>Awaiting review</td>
-	</tr>
-	<tr>
-	<td>Member reg</td>
-	<td>Bring member reg process in line with data returns</td>
-	<td><a href="member-reg/index">Version 1 - start of journey</a><br/><a href="member-reg/final">Version 1 - end of journey</a></td>
-	<td>15/02/2016</td>
-	<td>Awaiting review</td>
-	</tr>
-</table>
-<br/>
-<h2 class="heading-medium">Internal prototypes</h2>
-<table>
-	<tr>
-		<th>Prototype</th>
-		<th>Notes</th>
-		<th>Version</th>
-		<th>Last edited</th>
-		<th>Status</th>
-	</tr>
-	<tr>
-	<td>Delete a producer</td>
-	<td>Standard link</td>
-	<td><a href="/producers/delete/index">Version 1 - Multiple years</a><br/><br/><a href="/producers/delete/index-single">Version 1 - Single year</a></td>
-	<td></td>
-	<td>Closed</td>
- </tr>
-<tr>
-<td></td>
-<td>Red delete button</td>
-<td><a href="/producers/delete/index-3">Version 2 - Multiple years</a><br/><br/><a href="/producers/delete/index-3-single">Version 2 - Single year</a></td>
-<td></td>
-<td>Closed</td>
-</tr>
-<tr>
-<td></td>
-<td>From PCS name field</td>
-<td><a href="/producers/delete/index-2">Version 3 - Multiple years</a><br/><br/><a href="/producers/delete/index-2-single">Version 3 - Single year<br/></td>
-	<td></td>
-	<td>Closed</td>
-</tr>
-<tr>
-<td>Remove a producer</td>
-<td>Based on delete journey.</td>
-<td><a href="/producers/delete/index-6">Version 1</td>
-	<td>10/12/2015</td>
-	<td>Developed</td>
-</tr>
-<tr>
-<td>Disassociate producer</td>
-<td>From PCS name field</td>
-<td><a href="/producers/delete/index-4">Version 1</a></td>
-<td></td>
-<td>Closed</td>
-</tr>
-<tr>
-<td></td>
-<td>Red unalign button</td>
-<td><a href="/producers/delete/index-5">Version 2</a></td>
-<td></td>
-<td>Closed</td>
-</tr>
-<tr>
-<td>View producer EEE data</td>
-<td>Shows quarterly EEE data with producer details</td>
-<td><a href="/producers/eee-data/index">Version 1</a></td>
-	<td>15/01/2015</td>
-	<td>Closed</td>
-</tr>
-<tr>
-	<tr>
-	<td></td>
-	<td>Tabulated approach, now includes GDS tabs</td>
-	<td><a href="/producers/eee-data/index-new">Version 2</a></td>
-		<td>20/01/2016</td>
-		<td>Awaiting review</td>
-	</tr>
-	<tr>
-		<tr>
-		<td>Address lookup for Edit PCS</td>
-		<td>Edit organisation contact and service of notice address</td>
-		<td><a href="internal-address/edit-pcs">Version 1</a></td>
-			<td>13/01/2016</td>
-			<td>Awaiting review</td>
-		</tr>
-		<tr>
-			<tr>
-			<td>Edit PCS overhaul</td>
-			<td>Overhaul to include service of notice address, tabs and muliple PCSs within single organisation</td>
-			<td><a href="edit-pcs/which-scheme">Version 1</a></td>
-				<td>19/01/2016</td>
-				<td>In development</td>
-			</tr>
-
-			<tr>
-				<tr>
-				<td>Manage users - admin and standard users</td>
-				<td>Revisit manage users section to accommodate two user permission levels.</td>
-				<td><a href="manage-users/index">Version 1</a></td>
-					<td>03/02/2016</td>
-					<td>In development</td>
-				</tr>
-
-
-				<tr>
-					<tr>
-					<td>Internal submissions history</td>
-					<td>High level overview of what has changed between submissions</td>
-					<td><a href="submission-history/index">Version 1</a></td>
-						<td>05/02/2016</td>
-						<td>Awaiting review</td>
-					</tr>
-
-					<tr>
-						<tr>
-						<td>Partnerships</td>
-						<td>Edit partnership details and partners</td>
-						<td><a href="edit-partner/organisation-details">Version 1</a></td>
-							<td>12/02/2016</td>
-							<td>Awaiting review</td>
-						</tr>
-
-						<tr>
-							<tr>
-							<td>Overdue returns</td>
-							<td>Download overdue returns report</td>
-							<td><a href="deadline-report/index">Version 1</a></td>
-								<td>15/02/2016</td>
-								<td>Awaiting review</td>
-							</tr>
-
-</table>
-
-
-
-
-</section>
-</main>
-
-
-
-{{/content}}
-
-{{$bodyEnd}}
-
-{{/bodyEnd}}
-
-
-
-
-{{/layout}}
+{% endblock %}
