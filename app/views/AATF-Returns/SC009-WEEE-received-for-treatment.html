@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "/AATF-Returns/SC007-AATF-Tasklist"
+}) }}
+<h2 class="govuk-heading-l">WEEE received for treatment</h2>
+<form action="/AATF-Returns/weee-received-for-treatment-save" method="post" class="form">
+    <table class="govuk-table">
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell"></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">1. Large household appliances</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "large-household-appliances-input-SC009",
+                    name: "large-household-appliances-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">2. Small household appliances</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "small-household-appliances-input-SC009",
+                    name: "small-household-appliances-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">3. IT and telecomms equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "it-and-telecomms-input-SC009",
+                    name: "it-and-telecomms-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">4. Consumer equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "consumer-equipment-input-SC009",
+                    name: "consumer-equipment-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">5. Lighting equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "lighting-equipment-input-SC009",
+                    name: "lighting-equipment-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">6. Electrical and electronic tools</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "electrical-and-electronic-input-SC009",
+                    name: "electrical-and-electronic-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">7. Toys leisure and sports</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "toys-leisure-sports-input-SC009",
+                    name: "toys-leisure-sports-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">8. Medical devices</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "medical-devices-input-SC009",
+                    name: "medical-devices-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">9. Monitoring and control instruments</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "monitoring-control-input-SC009",
+                    name: "monitoring-control-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">10. Automatic dispensers</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "automatic-dispensers-input-SC009",
+                    name: "automatic-dispensers-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">11. Display equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "display-equipment-input-SC009",
+                    name: "display-equipment-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">12. Cooling appliances (containing refrigerants)</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "cooling-appliance-input-SC009",
+                    name: "cooling-appliance-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">13. Gas discharge lamps and LED light sources</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "gas-discharge-led-input-SC009",
+                    name: "gas-discharge-led-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">14. Photovolatic panels</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "photovolatic-panels-input-SC009",
+                    name: "photovolatic-panels-input-SC009"
+                    }) }}
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                    <h3 class="govuk-heading-m">Total</h3>
+                </td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <h3 class="govuk-heading-m" style="float: left">0.000 tonnes</h3>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    {{ govukButton({
+    text: "Save and continue"
+    }) }}
+</form>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% from "panel/macro.njk" import govukPanel %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-panel govuk-panel--confirmation govuk-!-width-two-thirds" style="display: inline-block">
+    <h1 class="govuk-panel__title">
+        Submission complete
+    </h1>
+</div>
+<a href="/SC002-Portal-Landing-Page" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19" style="float: right">Home</a>
+<div class="govuk-!-padding-bottom-8"></div>
+<div class="govuk-!-width-two-thirds">
+    <p class="govuk-body">Your AATF report has been submitted successfully. A confirmation email has been sent to your
+        registered email
+        account.</p>
+    <div class="govuk-!-padding-bottom-2"></div>
+    <p class="govuk-body">Please retain this reference number as evidence of your AATF submission.</p>
+    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Bookmark
+        this page</a>
+    <div class="govuk-!-padding-bottom-4"></div>
+    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Print
+        this page</a>
+    <div class="govuk-!-padding-bottom-4"></div>
+    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Save
+        as PDF</a>
+    <div class="govuk-!-padding-bottom-4"></div>
+    <h3 class="govuk-heading-m">What happens next?</h3>
+    <p class="govuk-body">The data that you have provided in your AATF return has been submitted to the environment
+        agency</p>
+</div>
+{% endblock %}

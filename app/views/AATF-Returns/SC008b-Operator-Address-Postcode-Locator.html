@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "/AATF-Returns/SC008-Operator-Details"
+}) }}
+<h2 class="govuk-heading-l">Operator Address</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/AATF-Returns/operator-address-postcode-save" method="post" class="form" style="display: inline">
+    {{ govukInput({
+        label: {
+          text: "Postcode"
+        },
+        classes: "govuk-!-width-one-half",
+        id: "operator-postcode-search",
+        name: "operator-postcode-search"
+      }) }}
+        <button type="submit" class="govuk-button">
+            Find address
+        </button>
+</form>
+{% endblock %}

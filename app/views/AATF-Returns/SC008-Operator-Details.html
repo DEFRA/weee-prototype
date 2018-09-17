@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "/AATF-Returns/SC007-AATF-Tasklist"
+}) }}
+<h2 class="govuk-heading-l">Are the operator details the same as the facility details?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/AATF-Returns/operator-details-answer" method="post" class="form" style="display: inline">
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="operator-details-yes" name="operator-details" type="radio" value="true">
+            <label class="govuk-label govuk-radios__label" for="another-scheme-yes">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="operator-details-no" name="operator-details" type="radio" value="false">
+            <label class="govuk-label govuk-radios__label" for="operator-details-no">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+    <button type="submit" class="govuk-button">
+        Save and continue
+    </button>
+</form>
+{% endblock %}

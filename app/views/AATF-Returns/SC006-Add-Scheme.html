@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "/AATF-Returns/SC005a-Select-Facility-Confirmation"
+}) }}
+<h2 class="govuk-heading-l">What scheme has this waste been received from?</h2>
+<div class="govuk-!-padding-bottom-4"></div>
+<form action="/AATF-Returns/scheme-add" method="post" class="form">
+{{ govukSelect({
+    id: "schemeSelect",
+    name: "schemeSelect",
+    classes: "govuk-!-width-one-half",
+    items: [
+      {
+        value: "Scheme 1 - 12345678",
+        text: "Scheme 1 - 12345678"
+      },
+      {
+        value: "Scheme 2 - 93287322",
+        text: "Scheme 2 - 93287322"
+      },
+      {
+        value: "Scheme 3 - 01946378",
+        text: "Scheme 3 - 01946378"
+      }
+    ]
+}) }}
+<div class="govuk-!-padding-bottom-4"></div>
+{{ govukButton({
+    text: "Save and continue"
+}) }}
+</form>
+{% endblock %}
