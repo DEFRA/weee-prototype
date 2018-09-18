@@ -11,13 +11,35 @@ GOV.UK Prototype Kit
 text: "Back",
 href: "/AATF-Returns/SC007-AATF-Tasklist"
 }) }}
+<style>
+    #Whole-WEEE-sent-to-another-treatment-table .govuk-form-group {
+        margin-bottom: 10px;
+    }
+</style>
 <h2 class="govuk-heading-l">Whole WEEE sent to another ATF for treatment</h2>
 <form action="/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save" method="post" class="form">
-    <table class="govuk-table">
+    <table class="govuk-table" id="Whole-WEEE-sent-to-another-treatment-table">
         <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell"></td>
-                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell">
+                    <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
+                        Household (B2B) in tonnes
+                    </div>
+                    <div class="govuk-body govuk-!-margin-bottom-1 govuk-!-width-three-quarters govuk-!-font-size-14"
+                        style="color: #6f777b">
+                        Please indicate tonnage to 3 decimal places
+                    </div>
+                </td>
+                <td class="govuk-table__cell">
+                    <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
+                        Non-household (B2C) in tonnes
+                    </div>
+                    <div class="govuk-body govuk-!-margin-bottom-1 govuk-!-width-three-quarters govuk-!-font-size-14"
+                        style="color: #6f777b">
+                        Please indicate tonnage to 3 decimal places
+                    </div>
+                </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">1. Large household appliances</td>
@@ -26,6 +48,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     classes: "govuk-!-width-two-thirds",
                     id: "large-household-appliances-input-SC011",
                     name: "large-household-appliances-input-SC011"
+                    }) }}
+                </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "large-household-appliances-input-SC011-b2c",
+                    name: "large-household-appliances-input-SC011-b2c"
                     }) }}
                 </td>
             </tr>
@@ -38,6 +67,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     name: "small-household-appliances-input-SC011"
                     }) }}
                 </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "small-household-appliances-input-SC011-b2c",
+                    name: "small-household-appliances-input-SC011-b2c"
+                    }) }}
+                </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">3. IT and telecomms equipment</td>
@@ -46,6 +82,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     classes: "govuk-!-width-two-thirds",
                     id: "it-and-telecomms-input-SC011",
                     name: "it-and-telecomms-input-SC011"
+                    }) }}
+                </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "it-and-telecomms-input-SC011-b2c",
+                    name: "it-and-telecomms-input-SC011-b2c"
                     }) }}
                 </td>
             </tr>
@@ -58,6 +101,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     name: "consumer-equipment-input-SC011"
                     }) }}
                 </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "consumer-equipment-input-SC011-b2c",
+                    name: "consumer-equipment-input-SC011-b2c"
+                    }) }}
+                </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">5. Lighting equipment</td>
@@ -66,6 +116,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     classes: "govuk-!-width-two-thirds",
                     id: "lighting-equipment-input-SC011",
                     name: "lighting-equipment-input-SC011"
+                    }) }}
+                </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "lighting-equipment-input-SC011-b2c",
+                    name: "lighting-equipment-input-SC011-b2c"
                     }) }}
                 </td>
             </tr>
@@ -78,6 +135,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     name: "electrical-and-electronic-input-SC011"
                     }) }}
                 </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "electrical-and-electronic-input-SC011-b2c",
+                    name: "electrical-and-electronic-input-SC011-b2c"
+                    }) }}
+                </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">7. Toys leisure and sports</td>
@@ -86,6 +150,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     classes: "govuk-!-width-two-thirds",
                     id: "toys-leisure-sports-input-SC011",
                     name: "toys-leisure-sports-input-SC011"
+                    }) }}
+                </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "toys-leisure-sports-input-SC011-b2c",
+                    name: "toys-leisure-sports-input-SC011-b2c"
                     }) }}
                 </td>
             </tr>
@@ -98,6 +169,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     name: "medical-devices-input-SC011"
                     }) }}
                 </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "medical-devices-input-SC011-b2c",
+                    name: "medical-devices-input-SC011-b2c"
+                    }) }}
+                </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">9. Monitoring and control instruments</td>
@@ -106,6 +184,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     classes: "govuk-!-width-two-thirds",
                     id: "monitoring-control-input-SC011",
                     name: "monitoring-control-input-SC011"
+                    }) }}
+                </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "monitoring-control-input-SC011-b2c",
+                    name: "monitoring-control-input-SC011-b2c"
                     }) }}
                 </td>
             </tr>
@@ -118,6 +203,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     name: "automatic-dispensers-input-SC011"
                     }) }}
                 </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "automatic-dispensers-input-SC011-b2c",
+                    name: "automatic-dispensers-input-SC011-b2c"
+                    }) }}
+                </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">11. Display equipment</td>
@@ -126,6 +218,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     classes: "govuk-!-width-two-thirds",
                     id: "display-equipment-input-SC011",
                     name: "display-equipment-input-SC011"
+                    }) }}
+                </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "display-equipment-input-SC011-b2c",
+                    name: "display-equipment-input-SC011-b2c"
                     }) }}
                 </td>
             </tr>
@@ -138,6 +237,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     name: "cooling-appliance-input-SC011"
                     }) }}
                 </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "cooling-appliance-input-SC011-b2c",
+                    name: "cooling-appliance-input-SC011-b2c"
+                    }) }}
+                </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">13. Gas discharge lamps and LED light sources</td>
@@ -148,6 +254,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     name: "gas-discharge-led-input-SC011"
                     }) }}
                 </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "gas-discharge-led-input-SC011-b2c",
+                    name: "gas-discharge-led-input-SC011-b2c"
+                    }) }}
+                </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">14. Photovolatic panels</td>
@@ -156,6 +269,13 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                     classes: "govuk-!-width-two-thirds",
                     id: "photovolatic-panels-input-SC011",
                     name: "photovolatic-panels-input-SC011"
+                    }) }}
+                </td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    {{ govukInput({
+                    classes: "govuk-!-width-two-thirds",
+                    id: "photovolatic-panels-input-SC011-b2c",
+                    name: "photovolatic-panels-input-SC011-b2c"
                     }) }}
                 </td>
             </tr>

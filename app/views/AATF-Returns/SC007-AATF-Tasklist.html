@@ -12,6 +12,44 @@ text: "Back",
 href: "/AATF-Returns/SC006-Add-Scheme"
 }) }}
 <h2 class="govuk-heading-l">AATF return for {{ data['facilitySelect'] }}</h2>
+<table class="govuk-table govuk-!-width-one-half" style="display: inline-table">
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell govuk-body govuk-!-font-weight-bold">Reporting year</td>
+        <td class="govuk-table__cell">{{ data['compliance-year'] }}</td>
+    </tr>
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell govuk-body govuk-!-font-weight-bold">Reporting period</td>
+        <td class="govuk-table__cell">{{ data['reporting-period'] }}</td>
+    </tr>
+</table>
+<a href="/AATF-Returns/SC003a-AATF-Reporting-Details-Change" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-19" style="float: right">Change</a>
+<div class="govuk-!-padding-bottom-4"></div>
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Facility Name</th>
+            <th class="govuk-table__header" scope="col">Approval No</th>
+            <th class="govuk-table__header" scope="col">Street</th>
+            <th class="govuk-table__header" scope="col">Town</th>
+            <th class="govuk-table__header" scope="col">Country</th>
+            <th class="govuk-table__header" scope="col">Post Code</th>
+            <th class="govuk-table__header" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell ">{{ data['facilitySelect'] }}</td>
+            <td class="govuk-table__cell ">ATF/AB12345/WEEE</td>
+            <td class="govuk-table__cell ">1 Waterloo Avenue</td>
+            <td class="govuk-table__cell ">Woking</td>
+            <td class="govuk-table__cell ">United Kingdom</td>
+            <td class="govuk-table__cell ">GU21 BUY</td>
+            <td class="govuk-table__cell govuk-!-padding-left-2"><a href="/AATF-Returns/SC005a-Select-Facility-Change"
+                    class="govuk-link govuk-link--no-visited-state">Change</a></td>
+        </tr>
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-4"></div>
 <details class="govuk-details" open="open">
     <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
@@ -19,43 +57,6 @@ href: "/AATF-Returns/SC006-Add-Scheme"
         </span>
     </summary>
     <div class="govuk-details__text">
-        <table class="govuk-table govuk-!-width-one-half" style="display: inline-table">
-            <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-body govuk-!-font-weight-bold">Compliance year</td>
-                <td class="govuk-table__cell">{{ data['compliance-year'] }}</td>
-            </tr>
-            <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-body govuk-!-font-weight-bold">Reporting period</td>
-                <td class="govuk-table__cell">{{ data['reporting-period'] }}</td>
-            </tr>
-        </table>
-        <a href="/AATF-Returns/SC003a-AATF-Reporting-Details-Change" class="govuk-link govuk-link--no-visited-state" style="float: right">Change</a>
-        <div class="govuk-!-padding-bottom-4"></div>
-        <table class="govuk-table">
-            <thead class="govuk-table__head">
-                <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="col">Facility Name</th>
-                    <th class="govuk-table__header" scope="col">Approval No</th>
-                    <th class="govuk-table__header" scope="col">Street</th>
-                    <th class="govuk-table__header" scope="col">Town</th>
-                    <th class="govuk-table__header" scope="col">Country</th>
-                    <th class="govuk-table__header" scope="col">Post Code</th>
-                    <th class="govuk-table__header" scope="col"></th>
-                </tr>
-            </thead>
-            <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                    <td class="govuk-table__cell ">{{ data['facilitySelect'] }}</td>
-                    <td class="govuk-table__cell ">ATF/AB12345/WEEE</td>
-                    <td class="govuk-table__cell ">1 Waterloo Avenue</td>
-                    <td class="govuk-table__cell ">Woking</td>
-                    <td class="govuk-table__cell ">United Kingdom</td>
-                    <td class="govuk-table__cell ">GU21 BUY</td>
-                    <td class="govuk-table__cell govuk-!-padding-left-2"><a href="/AATF-Returns/SC005a-Select-Facility-Change" class="govuk-link govuk-link--no-visited-state">Change</a></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="govuk-!-padding-bottom-4"></div>
         <table class="govuk-table">
             <tbody class="govuk-table__body">
                 <tr class="govuk-table__row">
@@ -96,16 +97,16 @@ href: "/AATF-Returns/SC006-Add-Scheme"
                 </tr>
             </tbody>
         </table>
-        <form action="/AATF-Returns/add-another-scheme" method="post" class="form" style="display: inline">
-            <button type="submit" class="govuk-button govuk-!-margin-right-3">
-                Add another scheme
-            </button>
-        </form>
-        <form action="/AATF-Returns/submit-scheme-for-approval" method="post" class="form" style="display: inline">
-            <button type="submit" class="govuk-button" style="background-color: #bfc1c3; color: #0b0c0c">
-                Submit for approval
-            </button>
-        </form>
     </div>
 </details>
+<form action="/AATF-Returns/submit-scheme-for-approval" method="post" class="form" style="display: inline">
+    <button type="submit" class="govuk-button">
+        Save and continue
+    </button>
+</form>
+<form action="/AATF-Returns/add-another-scheme" method="post" class="form govuk-!-margin-left-3" style="display: inline">
+    <button type="submit" class="govuk-button" style="background-color: #bfc1c3; color: #0b0c0c">
+        Add another PCS
+    </button>
+</form>
 {% endblock %}

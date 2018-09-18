@@ -10,17 +10,29 @@ GOV.UK Prototype Kit
 text: "Back",
 href: "/AATF-Returns/SC003-AATF-Reporting-Details"
 }) }}
+<style>
+    #non-obligated-weee-table .govuk-form-group {
+        margin-bottom: 10px;
+    }
+</style>
 <h2 class="govuk-heading-l">Non-obligated WEEE</h2>
 <form action="/AATF-Returns/non-obligated-save" method="post" class="form">
-    <table class="govuk-table">
+    <table class="govuk-table" id="non-obligated-weee-table">
         <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell"></td>
-                <td class="govuk-table__cell govuk-!-margin-bottom-0">Household (B2B)</td>
+                <td class="govuk-table__cell govuk-!-margin-bottom-0">
+                    <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-two-thirds">
+                        WEEE in tonnes
+                    </div>
+                    <div class="govuk-body govuk-!-margin-bottom-1 govuk-!-width-two-thirds govuk-!-font-size-14" style="color: #6f777b">
+                        Please indicate tonnage to 3 decimal places
+                    </div>
+                </td>
             </tr>
             <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-!-padding-bottom-0">1. Large household appliances</td>
-                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                <td class="govuk-table__cell">1. Large household appliances</td>
+                <td class="govuk-table__cell">
                     {{ govukInput({
                     classes: "govuk-!-width-two-thirds",
                     id: "large-household-appliances-input-SC004",
