@@ -14,7 +14,7 @@ GOV.UK Prototype Kit
     padding-top: 30px;
   }
 </style>
-<h2 class="govuk-heading-l">Waste electrical and electronic equipment</h2>
+<h2 class="govuk-heading-l">Sign in to your account</h2>
 <form action="/login-button" method="post" class="form">
   {{ govukInput({
     label: {
@@ -39,10 +39,10 @@ GOV.UK Prototype Kit
   }) }}
 
   {{ govukButton({
-    text: "Sign in"
+    text: "Continue"
   }) }}
 </form>
-<div class="govuk-!-padding-bottom-7"></div>
-<a href="#" class="govuk-link">Not created an account?</a>
-
+<a href="#" class="govuk-link govuk-!-font-size-19">Create a user account</a>
+<div class="govuk-!-padding-bottom-4"></div>
+<a href="#" class="govuk-link govuk-!-font-size-19">Reset password</a>
 {% endblock %}
