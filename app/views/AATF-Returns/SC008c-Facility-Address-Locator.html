@@ -9,23 +9,23 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "/AATF-Returns/SC007-AATF-Tasklist"
+href: "/AATF-Returns/SC008-Operator-Details"
 }) }}
 <style>
     #main-content {
         padding-top: 0px;
     }
 </style>
-<h2 class="govuk-heading-l">Operator Address</h2>
+<h2 class="govuk-heading-l">Facility Address</h2>
 <div class="govuk-!-padding-bottom-5"></div>
-<form action="/AATF-Returns/operator-address-postcode-save" method="post" class="form" style="display: inline">
+<form action="/AATF-Returns/facility-address-postcode-save" method="post" class="form" style="display: inline">
     {{ govukInput({
     label: {
     text: "Postcode"
     },
     classes: "govuk-!-width-one-half",
-    id: "operator-postcode-search",
-    name: "operator-postcode-search"
+    id: "facility-postcode-search",
+    name: "facility-postcode-search"
     }) }}
     <button type="submit" class="govuk-button">
         Find address
@@ -35,7 +35,7 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
 <details class="govuk-details">
     <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">
-            I can't find the operators address
+            I can't find the facilities address
         </span>
     </summary>
     <div class="govuk-details__text">
