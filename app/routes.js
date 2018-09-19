@@ -156,7 +156,7 @@ router.post('/AATF-Returns/weee-reused-as-a-whole-appliance-save', function (req
         result += Number(itemsb2b[i])
     }
     req.session.data['WEEE-resused-as-a-whole-appliance-result'] = result.toFixed(3)
-    res.redirect('/AATF-Returns/SC008b-Operator-Address-Postcode-Locator')
+    res.redirect('/AATF-Returns/SC007-AATF-Tasklist')
 })
 
 router.post('/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save', function (req, res) {

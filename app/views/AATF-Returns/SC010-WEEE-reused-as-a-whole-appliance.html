@@ -15,6 +15,7 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
     #weee-reused-as-a-whole-appliance-table .govuk-form-group {
         margin-bottom: 10px;
     }
+
     #main-content {
         padding-top: 0px;
     }
@@ -24,7 +25,11 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
     <table class="govuk-table" id="weee-reused-as-a-whole-appliance-table">
         <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell">
+                    <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
+                        {{data['facilitySelect']}} - ATF/AB12345/WEEE
+                    </div>
+                </td>
                 <td class="govuk-table__cell">
                     <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
                         Household (B2C) in tonnes
@@ -266,7 +271,7 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
                 </td>
             </tr>
             <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-!-padding-bottom-0">14. Photovolatic panels</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">14. Photovoltaic panels</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
                     {{ govukInput({
                     classes: "govuk-!-width-two-thirds",
