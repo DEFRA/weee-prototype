@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "version1-1/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {%- from "tag/macro.njk" import govukTag -%}
@@ -9,7 +9,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "/AATF-Returns/SC007-AATF-Tasklist"
+href: "SC007-AATF-Tasklist"
 }) }}
 <style>
     .weee-table td {
@@ -40,7 +40,7 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
         <td class="govuk-table__cell">{{ data['reporting-period'] }}</td>
     </tr>
 </table>
-<a href="/AATF-Returns/SC003a-AATF-Reporting-Details-Change" class="govuk-link govuk-link--no-visited-state" style="float: right">Change</a>
+<a href="SC003a-AATF-Reporting-Details-Change" class="govuk-link govuk-link--no-visited-state" style="float: right">Change</a>
 <div class="govuk-!-padding-bottom-4"></div>
 <table class="govuk-table">
     <thead class="govuk-table__head">
@@ -62,7 +62,7 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
             <td class="govuk-table__cell ">Woking</td>
             <td class="govuk-table__cell ">United Kingdom</td>
             <td class="govuk-table__cell ">GU21 BUY</td>
-            <td class="govuk-table__cell govuk-!-padding-left-2"><a href="/AATF-Returns/SC005a-Select-Facility-Change"
+            <td class="govuk-table__cell govuk-!-padding-left-2"><a href="SC005a-Select-Facility-Change"
                     class="govuk-link govuk-link--no-visited-state">Change</a></td>
         </tr>
     </tbody>
@@ -613,7 +613,7 @@ href: "/AATF-Returns/SC007-AATF-Tasklist"
         </td>
     </tr>
 </table>
-<form action="/AATF-Returns/submit-aatf-return" method="post" class="form">
+<form action="/version1-1/AATF-Returns/submit-aatf-return" method="post" class="form">
     {{ govukButton({
     text: "Send"
     }) }}

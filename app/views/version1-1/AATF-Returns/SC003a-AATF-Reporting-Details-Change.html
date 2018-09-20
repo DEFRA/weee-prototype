@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "version1-1/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% block pageTitle %}
@@ -8,7 +8,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
   text: "Back",
-  href: "/SC002-Portal-Landing-Page"
+  href: "AATF-Returns/SC007-AATF-Tasklist"
 }) }}
 <style>
     #main-content {
@@ -16,7 +16,7 @@ GOV.UK Prototype Kit
     }
 </style>
 <h2 class="govuk-heading-l">AATF reporting details</h2>
-<form action="/AATF-Returns/save-and-continue" method="post" class="form">
+<form action="/AATF-Returns/save-and-continue-change" method="post" class="form">
   {{ govukSelect({
     id: "compliance-year",
     name: "compliance-year",
@@ -45,20 +45,20 @@ GOV.UK Prototype Kit
     },
     items: [
       {
-        value: "Q1 Jan - Mar",
-        text: "Q1 Jan - Mar"
+        value: "Jan - Mar",
+        text: "Jan - Mar"
       },
       {
-        value: "Q2 Apr - Jun",
-        text: "Q2 Apr - Jun"
+        value: "Apr - Jun",
+        text: "Apr - Jun"
       },
       {
-        value: "Q3 Jul - Sep",
-        text: "Q3 Jul - Sep"
+        value: "Jul - Sep",
+        text: "Jul - Sep"
       },
       {
-        value: "Q4 Oct - Dec",
-        text: "Q4 Oct - Dec"
+        value: "Oct - Dec",
+        text: "Oct - Dec"
       }
     ]
   }) }}

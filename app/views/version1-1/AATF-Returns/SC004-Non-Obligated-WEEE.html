@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "version1-1/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% block pageTitle %}
@@ -8,7 +8,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "/AATF-Returns/SC003-AATF-Reporting-Details"
+href: "SC003-AATF-Reporting-Details"
 }) }}
 <style>
     #non-obligated-weee-table .govuk-form-group {
@@ -20,7 +20,7 @@ href: "/AATF-Returns/SC003-AATF-Reporting-Details"
     }
 </style>
 <h2 class="govuk-heading-l">Non-obligated WEEE</h2>
-<form action="/AATF-Returns/non-obligated-save" method="post" class="form">
+<form action="/version1-1/AATF-Returns/non-obligated-save" method="post" class="form">
     <table class="govuk-table" id="non-obligated-weee-table">
         <tbody class="govuk-table__body">
             <tr class="govuk-table__row">

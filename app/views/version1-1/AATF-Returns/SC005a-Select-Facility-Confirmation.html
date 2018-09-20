@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "version1-1/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% block pageTitle %}
@@ -8,7 +8,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "/AATF-Returns/SC005-Select-Facility"
+href: "SC005-Select-Facility"
 }) }}
 <style>
         #main-content {
@@ -86,12 +86,12 @@ href: "/AATF-Returns/SC005-Select-Facility"
     ]
 }) }}  -->
 <div class="govuk-!-padding-bottom-7"></div>
-<form action="/AATF-Returns/facility-confirm" method="post" class="form" style="display: inline">
+<form action="/version1-1/AATF-Returns/facility-confirm" method="post" class="form" style="display: inline">
 <button type="submit" class="govuk-button govuk-!-margin-right-3">
     Confirm
 </button>
 </form>
-<form action="/AATF-Returns/facility-cancel" method="post" class="form" style="display: inline">
+<form action="/version1-1/AATF-Returns/facility-cancel" method="post" class="form" style="display: inline">
 <button type="submit" class="govuk-button" style="background-color: #bfc1c3; color: #0b0c0c">
     Cancel
 </button>

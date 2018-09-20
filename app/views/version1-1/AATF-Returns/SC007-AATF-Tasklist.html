@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "version1-1/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {%- from "tag/macro.njk" import govukTag -%}
@@ -9,7 +9,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "/AATF-Returns/SC006-Add-Scheme"
+href: "SC006-Add-Scheme"
 }) }}
 <style>
         #main-content {
@@ -27,7 +27,7 @@ href: "/AATF-Returns/SC006-Add-Scheme"
         <td class="govuk-table__cell">{{ data['reporting-period'] }}</td>
     </tr>
 </table>
-<a href="/AATF-Returns/SC003a-AATF-Reporting-Details-Change" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-19" style="float: right">Change</a>
+<a href="SC003a-AATF-Reporting-Details-Change" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-19" style="float: right">Change</a>
 <div class="govuk-!-padding-bottom-4"></div>
 <table class="govuk-table">
     <thead class="govuk-table__head">
@@ -49,7 +49,7 @@ href: "/AATF-Returns/SC006-Add-Scheme"
             <td class="govuk-table__cell ">Woking</td>
             <td class="govuk-table__cell ">United Kingdom</td>
             <td class="govuk-table__cell ">GU21 BUY</td>
-            <td class="govuk-table__cell govuk-!-padding-left-2"><a href="/AATF-Returns/SC005a-Select-Facility-Change"
+            <td class="govuk-table__cell govuk-!-padding-left-2"><a href="SC005a-Select-Facility-Change"
                     class="govuk-link govuk-link--no-visited-state">Change</a></td>
         </tr>
     </tbody>
@@ -65,7 +65,7 @@ href: "/AATF-Returns/SC006-Add-Scheme"
         <table class="govuk-table">
             <tbody class="govuk-table__body">
                 <tr class="govuk-table__row">
-                    <td class="govuk-table__cell "><a href="/AATF-Returns/SC009-WEEE-received-for-treatment" class="govuk-link govuk-link--no-visited-state">WEEE
+                    <td class="govuk-table__cell "><a href="SC009-WEEE-received-for-treatment" class="govuk-link govuk-link--no-visited-state">WEEE
                             received for treatment</a></td>
                     <td class="govuk-table__cell ">
                         <strong class="govuk-tag">
@@ -74,7 +74,7 @@ href: "/AATF-Returns/SC006-Add-Scheme"
                     </td>
                 </tr>
                 <tr class="govuk-table__row">
-                    <td class="govuk-table__cell "><a href="/AATF-Returns/SC010-WEEE-reused-as-a-whole-appliance" class="govuk-link govuk-link--no-visited-state">WEEE
+                    <td class="govuk-table__cell "><a href="SC010-WEEE-reused-as-a-whole-appliance" class="govuk-link govuk-link--no-visited-state">WEEE
                             reused as a whole appliance for which evidence has been issued</a><br />
                     </td>
                     <td class="govuk-table__cell ">
@@ -84,7 +84,7 @@ href: "/AATF-Returns/SC006-Add-Scheme"
                     </td>
                 </tr>
                 <tr class="govuk-table__row">
-                    <td class="govuk-table__cell "><a href="/AATF-Returns/SC011-Whole-WEEE-sent-to-another-treatment"
+                    <td class="govuk-table__cell "><a href="SC011-Whole-WEEE-sent-to-another-treatment"
                             class="govuk-link govuk-link--no-visited-state">Whole
                             WEEE sent to another ATF for treatment</a><br />
                     </td>
@@ -98,12 +98,12 @@ href: "/AATF-Returns/SC006-Add-Scheme"
         </table>
     </div>
 </details>
-<form action="/AATF-Returns/submit-scheme-for-approval" method="post" class="form" style="display: inline">
+<form action="/version1-1/AATF-Returns/submit-scheme-for-approval" method="post" class="form" style="display: inline">
     <button type="submit" class="govuk-button">
         Save and continue
     </button>
 </form>
-<form action="/AATF-Returns/add-another-scheme" method="post" class="form govuk-!-margin-left-3" style="display: inline">
+<form action="/version1-1/AATF-Returns/add-another-scheme" method="post" class="form govuk-!-margin-left-3" style="display: inline">
     <button type="submit" class="govuk-button" style="background-color: #bfc1c3; color: #0b0c0c">
         Add another PCS
     </button>
