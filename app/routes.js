@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 var counter = 1;
 
+//#region version 1 routes
 // Add your routes here - above the module.exports line
 router.get('/', function (req, res) {
     res.redirect('/version1-1/SC001-Home')
@@ -217,4 +218,5 @@ router.post('/version1-1/AATF-Returns/facility-address-postcode-save', function 
     res.redirect('/version1-1/AATF-Returns/SC007-AATF-Tasklist')
 })
 
+//#endregion
 module.exports = router
