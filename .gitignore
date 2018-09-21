@@ -5,7 +5,13 @@ usage-data-config.json
 .DS_Store
 .start.pid
 .port.tmp
-public
+public/*
+!public/javascripts
+public/javascripts/*
+!public/javascripts/SC004-Error-Handling-and-Field-Manipulation.js 
+!public/javascripts/SC009-Error-Handling-and-Field-Manipulation.js 
+!public/javascripts/SC010-Error-Handling-and-Field-Manipulation.js 
+!public/javascripts/SC011-Error-Handling-and-Field-Manipulation.js 
 node_modules/*
 .tmuxp.*
 package-lock.json

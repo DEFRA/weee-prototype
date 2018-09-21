@@ -1,0 +1,42 @@
+{% extends "version1-2/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% from "radios/macro.njk" import govukRadios %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "SC007-AATF-Tasklist"
+}) }}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<h2 class="govuk-heading-l">Would you like to add another PCS?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-2/AATF-Returns/add-another-scheme-answer" method="post" class="form" style="display: inline">
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="another-scheme-yes" name="another-scheme" type="radio" value="true">
+            <label class="govuk-label govuk-radios__label" for="another-scheme-yes">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="another-scheme-no" name="another-scheme" type="radio" value="false">
+            <label class="govuk-label govuk-radios__label" for="another-scheme-no">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+    <button type="submit" class="govuk-button">
+        Save and continue
+    </button>
+</form>
+{% endblock %}
