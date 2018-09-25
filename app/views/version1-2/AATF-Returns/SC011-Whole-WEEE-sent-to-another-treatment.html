@@ -9,7 +9,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "SC007-AATF-Tasklist"
+href: "SC008b-Operator-Address-Postcode-Locator"
 }) }}
 <style>
     #Whole-WEEE-sent-to-another-treatment-table .govuk-form-group {
@@ -21,6 +21,19 @@ href: "SC007-AATF-Tasklist"
     }
 </style>
 <h2 class="govuk-heading-l">Whole WEEE sent to another ATF for treatment</h2>
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert" tabindex="-1"
+    data-module="error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">Please specify all values as numerical values</a>
+            </li>
+        </ul>
+    </div>
+</div>
 <form action="/version1-2/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save" method="post" class="form">
     <table class="govuk-table" id="Whole-WEEE-sent-to-another-treatment-table">
         <tbody class="govuk-table__body">
@@ -52,350 +65,435 @@ href: "SC007-AATF-Tasklist"
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">1. Large household appliances</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "large-household-appliances-input-SC011",
-                    name: "large-household-appliances-input-SC011"
-                    }) }}
-                    <span id="large-household-appliances-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="large-household-appliances-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "large-household-appliances-input-SC011",
+                        name: "large-household-appliances-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "large-household-appliances-input-SC011-b2b",
-                    name: "large-household-appliances-input-SC011-b2b"
-                    }) }}
-                    <span id="large-household-appliances-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="large-household-appliances-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "large-household-appliances-input-SC011-b2b",
+                        name: "large-household-appliances-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">2. Small household appliances</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "small-household-appliances-input-SC011",
-                    name: "small-household-appliances-input-SC011"
-                    }) }}
-                    <span id="small-household-appliances-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="small-household-appliances-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "small-household-appliances-input-SC011",
+                        name: "small-household-appliances-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "small-household-appliances-input-SC011-b2b",
-                    name: "small-household-appliances-input-SC011-b2b"
-                    }) }}
-                    <span id="small-household-appliances-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="small-household-appliances-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "small-household-appliances-input-SC011-b2b",
+                        name: "small-household-appliances-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">3. IT and telecomms equipment</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "it-and-telecomms-input-SC011",
-                    name: "it-and-telecomms-input-SC011"
-                    }) }}
-                    <span id="it-and-telecomms-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="it-and-telecomms-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "it-and-telecomms-input-SC011",
+                        name: "it-and-telecomms-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "it-and-telecomms-input-SC011-b2b",
-                    name: "it-and-telecomms-input-SC011-b2b"
-                    }) }}
-                    <span id="it-and-telecomms-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="it-and-telecomms-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "it-and-telecomms-input-SC011-b2b",
+                        name: "it-and-telecomms-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">4. Consumer equipment</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "consumer-equipment-input-SC011",
-                    name: "consumer-equipment-input-SC011"
-                    }) }}
-                    <span id="consumer-equipment-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="consumer-equipment-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "consumer-equipment-input-SC011",
+                        name: "consumer-equipment-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "consumer-equipment-input-SC011-b2b",
-                    name: "consumer-equipment-input-SC011-b2b"
-                    }) }}
-                    <span id="consumer-equipment-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="consumer-equipment-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "consumer-equipment-input-SC011-b2b",
+                        name: "consumer-equipment-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">5. Lighting equipment</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "lighting-equipment-input-SC011",
-                    name: "lighting-equipment-input-SC011"
-                    }) }}
-                    <span id="lighting-equipment-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="lighting-equipment-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "lighting-equipment-input-SC011",
+                        name: "lighting-equipment-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "lighting-equipment-input-SC011-b2b",
-                    name: "lighting-equipment-input-SC011-b2b"
-                    }) }}
-                    <span id="lighting-equipment-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="lighting-equipment-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "lighting-equipment-input-SC011-b2b",
+                        name: "lighting-equipment-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">6. Electrical and electronic tools</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "electrical-and-electronic-input-SC011",
-                    name: "electrical-and-electronic-input-SC011"
-                    }) }}
-                    <span id="electrical-and-electronic-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="electrical-and-electronic-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "electrical-and-electronic-input-SC011",
+                        name: "electrical-and-electronic-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "electrical-and-electronic-input-SC011-b2b",
-                    name: "electrical-and-electronic-input-SC011-b2b"
-                    }) }}
-                    <span id="electrical-and-electronic-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="electrical-and-electronic-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "electrical-and-electronic-input-SC011-b2b",
+                        name: "electrical-and-electronic-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-!-padding-bottom-0">7. Toys leisure and sports</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">7. Toys leisure and sports equipment</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "toys-leisure-sports-input-SC011",
-                    name: "toys-leisure-sports-input-SC011"
-                    }) }}
-                    <span id="toys-leisure-sports-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="toys-leisure-sports-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "toys-leisure-sports-input-SC011",
+                        name: "toys-leisure-sports-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "toys-leisure-sports-input-SC011-b2b",
-                    name: "toys-leisure-sports-input-SC011-b2b"
-                    }) }}
-                    <span id="toys-leisure-sports-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="toys-leisure-sports-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "toys-leisure-sports-input-SC011-b2b",
+                        name: "toys-leisure-sports-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">8. Medical devices</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "medical-devices-input-SC011",
-                    name: "medical-devices-input-SC011"
-                    }) }}
-                    <span id="medical-devices-input-SC011-error" class="govuk-error-message govuk-!-font-size-14" style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="medical-devices-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "medical-devices-input-SC011",
+                        name: "medical-devices-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "medical-devices-input-SC011-b2b",
-                    name: "medical-devices-input-SC011-b2b"
-                    }) }}
-                    <span id="medical-devices-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="medical-devices-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "medical-devices-input-SC011-b2b",
+                        name: "medical-devices-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">9. Monitoring and control instruments</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "monitoring-control-input-SC011",
-                    name: "monitoring-control-input-SC011"
-                    }) }}
-                    <span id="monitoring-control-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="monitoring-control-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "monitoring-control-input-SC011",
+                        name: "monitoring-control-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "monitoring-control-input-SC011-b2b",
-                    name: "monitoring-control-input-SC011-b2b"
-                    }) }}
-                    <span id="monitoring-control-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="monitoring-control-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "monitoring-control-input-SC011-b2b",
+                        name: "monitoring-control-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">10. Automatic dispensers</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "automatic-dispensers-input-SC011",
-                    name: "automatic-dispensers-input-SC011"
-                    }) }}
-                    <span id="automatic-dispensers-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="automatic-dispensers-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "automatic-dispensers-input-SC011",
+                        name: "automatic-dispensers-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "automatic-dispensers-input-SC011-b2b",
-                    name: "automatic-dispensers-input-SC011-b2b"
-                    }) }}
-                    <span id="automatic-dispensers-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="automatic-dispensers-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "automatic-dispensers-input-SC011-b2b",
+                        name: "automatic-dispensers-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">11. Display equipment</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "display-equipment-input-SC011",
-                    name: "display-equipment-input-SC011"
-                    }) }}
-                    <span id="display-equipment-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="display-equipment-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "display-equipment-input-SC011",
+                        name: "display-equipment-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "display-equipment-input-SC011-b2b",
-                    name: "display-equipment-input-SC011-b2b"
-                    }) }}
-                    <span id="display-equipment-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="display-equipment-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "display-equipment-input-SC011-b2b",
+                        name: "display-equipment-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
-                <td class="govuk-table__cell govuk-!-padding-bottom-0">12. Cooling appliances (containing refrigerants)</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">12. Appliances containing refrigerants</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "cooling-appliance-input-SC011",
-                    name: "cooling-appliance-input-SC011"
-                    }) }}
-                    <span id="cooling-appliance-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="cooling-appliance-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "cooling-appliance-input-SC011",
+                        name: "cooling-appliance-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "cooling-appliance-input-SC011-b2b",
-                    name: "cooling-appliance-input-SC011-b2b"
-                    }) }}
-                    <span id="cooling-appliance-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="cooling-appliance-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "cooling-appliance-input-SC011-b2b",
+                        name: "cooling-appliance-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">13. Gas discharge lamps and LED light sources</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "gas-discharge-led-input-SC011",
-                    name: "gas-discharge-led-input-SC011"
-                    }) }}
-                    <span id="gas-discharge-led-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="gas-discharge-led-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "gas-discharge-led-input-SC011",
+                        name: "gas-discharge-led-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "gas-discharge-led-input-SC011-b2b",
-                    name: "gas-discharge-led-input-SC011-b2b"
-                    }) }}
-                    <span id="gas-discharge-led-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="gas-discharge-led-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "gas-discharge-led-input-SC011-b2b",
+                        name: "gas-discharge-led-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">14. Photovoltaic panels</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "photovolatic-panels-input-SC011",
-                    name: "photovolatic-panels-input-SC011"
-                    }) }}
-                    <span id="photovolatic-panels-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="photovolatic-panels-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "photovolatic-panels-input-SC011",
+                        name: "photovolatic-panels-input-SC011"
+                        }) }}
+
+                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
-                    {{ govukInput({
-                    classes: "govuk-!-width-two-thirds",
-                    id: "photovolatic-panels-input-SC011-b2b",
-                    name: "photovolatic-panels-input-SC011-b2b"
-                    }) }}
-                    <span id="photovolatic-panels-b2b-input-SC011-error" class="govuk-error-message govuk-!-font-size-14"
-                        style="margin-bottom: 0px; display: none;">
-                        Please fill in this field
-                    </span>
+                    <div class="govuk-form-group">
+                        <span id="photovolatic-panels-input-SC011-error-b2b" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        {{ govukInput({
+                        classes: "govuk-!-width-two-thirds",
+                        id: "photovolatic-panels-input-SC011-b2b",
+                        name: "photovolatic-panels-input-SC011-b2b"
+                        }) }}
+
+                    </div>
                 </td>
             </tr>
             <tr class="govuk-table__row">
@@ -411,8 +509,8 @@ href: "SC007-AATF-Tasklist"
             </tr>
         </tbody>
     </table>
-    {{ govukButton({
-    text: "Save and continue"
-    }) }}
+    <button type="submit" class="govuk-button" id="weee-sent-save">
+        Save and continue
+    </button>
 </form>
 {% endblock %}

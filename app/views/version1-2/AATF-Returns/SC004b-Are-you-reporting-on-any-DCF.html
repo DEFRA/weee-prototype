@@ -1,0 +1,37 @@
+{% extends "version1-2/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "SC004-Are-you-reporting-on-any-non-obligated-weee"
+}) }}
+
+<h2 class="govuk-heading-l">Would you like to report on any non obligated WEEE as retained by a DCF?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-2/AATF-Returns/non-obligated-weee-DCF-answer" method="post" class="form" style="display: block">
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="non-obligated-weee-DCF-yes" name="non-obligated-weee-DCF" type="radio" value="true">
+            <label class="govuk-label govuk-radios__label" for="non-obligated-weee-DCF-yes">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="non-obligated-weee-DCF-no" name="non-obligated-weee-DCF" type="radio" value="false">
+            <label class="govuk-label govuk-radios__label" for="non-obligated-weee-DCF-no">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+    <button type="submit" class="govuk-button">
+        Save and continue
+    </button>
+</form>
+
+{% endblock %}

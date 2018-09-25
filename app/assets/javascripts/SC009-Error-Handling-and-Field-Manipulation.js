@@ -2,6 +2,86 @@ $(document).ready(function () {
     var grandTotal = 0.000;
     var grandTotalb2b = 0.000;
     var beforeValue = 0;
+    var fieldIDs = ['large-household-appliances-input-SC009', 'large-household-appliances-input-SC009-b2b', 'small-household-appliances-input-SC009', 'small-household-appliances-input-SC009-b2b', 'it-and-telecomms-input-SC009', 'it-and-telecomms-input-SC009-b2b', 'consumer-equipment-input-SC009', 'consumer-equipment-input-SC009-b2b', 'lighting-equipment-input-SC009', 'lighting-equipment-input-SC009-b2b', 'electrical-and-electronic-input-SC009', 'electrical-and-electronic-input-SC009-b2b', 'toys-leisure-sports-input-SC009', 'toys-leisure-sports-input-SC009-b2b', 'medical-devices-input-SC009', 'medical-devices-input-SC009-b2b', 'monitoring-control-input-SC009', 'monitoring-control-input-SC009-b2b', 'automatic-dispensers-input-SC009', 'automatic-dispensers-input-SC009-b2b', 'display-equipment-input-SC009', 'display-equipment-input-SC009-b2b', 'cooling-appliance-input-SC009', 'cooling-appliance-input-SC009-b2b', 'gas-discharge-led-input-SC009', 'gas-discharge-led-input-SC009-b2b', 'photovolatic-panels-input-SC009', 'photovolatic-panels-input-SC009-b2b'];
+
+    function changeFunction(name) {
+        var currentValue = $('#'+name).val();
+        var errorString = name + '-error';
+        if (isNaN(beforeValue)) {
+            $('#'+name).parent().parent().addClass("govuk-form-group--error");
+            $('#'+errorString).text('Please specify a numerical value');
+            $('#'+errorString).css('display', 'inline');
+            $('#'+name).addClass('error-check');
+            if (!isNaN(currentValue)) {
+                $('#'+name).parent().parent().removeClass("govuk-form-group--error");
+                $('#'+errorString).css('display', 'none');
+                $('#'+errorString).text('');
+                $('#'+name).removeClass('error-check');
+                currentValue = Number(currentValue);
+                grandTotal = grandTotal + currentValue;
+                $('#tonneTotal').html(grandTotal + ' tonnes');
+            }
+        } else {
+            if (isNaN(currentValue)) {
+                $('#'+name).parent().parent().addClass("govuk-form-group--error");
+                $('#'+errorString).text('Please specify a numerical value');
+                $('#'+errorString).css('display', 'inline');
+                $('#'+name).addClass('error-check');
+                beforeValue = Number(beforeValue);
+                grandTotal = grandTotal - beforeValue;
+                $('#tonneTotal').html(grandTotal + ' tonnes');
+            } else {
+                $('#'+name).parent().parent().removeClass("govuk-form-group--error");
+                $('#'+errorString).text('');
+                $('#'+errorString).css('display', 'none');
+                $('#'+name).removeClass('error-check');
+                currentValue = Number(currentValue);
+                var difference = currentValue - beforeValue;
+                grandTotal = grandTotal + difference;
+                $('#tonneTotal').html(grandTotal + ' tonnes');
+            }
+        }
+    }
+
+    function changeFunctionB2B(name) {
+        var currentValue = $('#'+name).val();
+        var errorString = name.slice(0,-4);
+        errorString = errorString + '-error-b2b';
+        if (isNaN(beforeValue)) {
+            $('#'+name).parent().parent().addClass("govuk-form-group--error");
+            $('#'+errorString).text('Please specify a numerical value');
+            $('#'+errorString).css('display', 'inline');
+            $('#'+name).addClass('error-check');
+            if (!isNaN(currentValue)) {
+                $('#'+name).parent().parent().removeClass("govuk-form-group--error");
+                $('#'+errorString).css('display', 'none');
+                $('#'+errorString).text('');
+                $('#'+name).removeClass('error-check');
+                currentValue = Number(currentValue);
+                grandTotal = grandTotal + currentValue;
+                $('#tonneTotalb2b').html(grandTotal + ' tonnes');
+            }
+        } else {
+            if (isNaN(currentValue)) {
+                $('#'+name).parent().parent().addClass("govuk-form-group--error");
+                $('#'+errorString).text('Please specify a numerical value');
+                $('#'+errorString).css('display', 'inline');
+                $('#'+name).addClass('error-check');
+                beforeValue = Number(beforeValue);
+                grandTotalb2b = grandTotalb2b - beforeValue;
+                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
+            } else {
+                $('#'+name).parent().parent().removeClass("govuk-form-group--error");
+                $('#'+errorString).text('');
+                $('#'+errorString).css('display', 'none');
+                $('#'+name).removeClass('error-check');
+                currentValue = Number(currentValue);
+                var difference = currentValue - beforeValue;
+                grandTotalb2b = grandTotalb2b + difference;
+                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
+            }
+        }
+    }
 
     $('#large-household-appliances-input-SC009').on('focus', function () {
         beforeValue = $(this).val();
@@ -9,25 +89,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#small-household-appliances-input-SC009').on('focus', function () {
@@ -36,25 +98,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#it-and-telecomms-input-SC009').on('focus', function () {
@@ -63,25 +107,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#consumer-equipment-input-SC009').on('focus', function () {
@@ -90,25 +116,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#lighting-equipment-input-SC009').on('focus', function () {
@@ -117,25 +125,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#electrical-and-electronic-input-SC009').on('focus', function () {
@@ -144,25 +134,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#toys-leisure-sports-input-SC009').on('focus', function () {
@@ -171,25 +143,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#medical-devices-input-SC009').on('focus', function () {
@@ -198,25 +152,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#monitoring-control-input-SC009').on('focus', function () {
@@ -225,25 +161,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#automatic-dispensers-input-SC009').on('focus', function () {
@@ -252,25 +170,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#display-equipment-input-SC009').on('focus', function () {
@@ -279,25 +179,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#cooling-appliance-input-SC009').on('focus', function () {
@@ -306,25 +188,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#gas-discharge-led-input-SC009').on('focus', function () {
@@ -333,25 +197,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#photovolatic-panels-input-SC009').on('focus', function () {
@@ -360,25 +206,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotal = grandTotal - beforeValue;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotal = grandTotal + difference;
-                $('#tonneTotal').html(grandTotal + ' tonnes');
-            }
-        }
+        changeFunction($(this).attr('id'));
     });
 
     $('#large-household-appliances-input-SC009-b2b').on('focus', function () {
@@ -387,25 +215,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#small-household-appliances-input-SC009-b2b').on('focus', function () {
@@ -414,25 +224,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#it-and-telecomms-input-SC009-b2b').on('focus', function () {
@@ -441,25 +233,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#consumer-equipment-input-SC009-b2b').on('focus', function () {
@@ -468,25 +242,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#lighting-equipment-input-SC009-b2b').on('focus', function () {
@@ -495,25 +251,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#electrical-and-electronic-input-SC009-b2b').on('focus', function () {
@@ -522,25 +260,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#toys-leisure-sports-input-SC009-b2b').on('focus', function () {
@@ -549,25 +269,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#medical-devices-input-SC009-b2b').on('focus', function () {
@@ -576,25 +278,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#monitoring-control-input-SC009-b2b').on('focus', function () {
@@ -603,25 +287,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#automatic-dispensers-input-SC009-b2b').on('focus', function () {
@@ -630,25 +296,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#display-equipment-input-SC009-b2b').on('focus', function () {
@@ -657,25 +305,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#cooling-appliance-input-SC009-b2b').on('focus', function () {
@@ -684,25 +314,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#gas-discharge-led-input-SC009-b2b').on('focus', function () {
@@ -711,25 +323,7 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
     
     $('#photovolatic-panels-input-SC009-b2b').on('focus', function () {
@@ -738,282 +332,29 @@ $(document).ready(function () {
             beforeValue = Number(beforeValue);
         }
     }).change(function () {
-        var currentValue = $(this).val();
-        if (isNaN(beforeValue)) {
-            if (!isNaN(currentValue)) {
-                currentValue = Number(currentValue);
-                grandTotalb2b = grandTotalb2b + currentValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        } else {
-            if (isNaN(currentValue)) {
-                beforeValue = Number(beforeValue);
-                grandTotalb2b = grandTotalb2b - beforeValue;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            } else {
-                currentValue = Number(currentValue);
-                var difference = currentValue - beforeValue;
-                grandTotalb2b = grandTotalb2b + difference;
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
-            }
-        }
+        changeFunctionB2B($(this).attr('id'));
     });
 
-    $('.govuk-button').click(function (event) {
+    $('#wee-received-save').click(function (event) {
         var errorTrigger = false;
 
-        if ($('#large-household-appliances-input-SC009-b2b').val() == '') {
-            $('#large-household-appliances-input-SC009-b2b').addClass('govuk-input--error');
-            $('#large-household-appliances-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#large-household-appliances-input-SC009-b2b').removeClass('govuk- input--error');
-            $('#large-household-appliances-b2b-input-SC009-error').css('display', 'none');
+        for(var i = 0; i < fieldIDs.length; i++) {
+            if($('#' + fieldIDs[i]).hasClass('error-check')) {
+                errorTrigger = true;
+            }
         }
 
-        if ($('#small-household-appliances-input-SC009-b2b').val() == '') {
-            $('#small-household-appliances-input-SC009-b2b').addClass('govuk-input--error');
-            $('#small-household-appliances-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#small-household-appliances-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#small-household-appliances-b2b-input-SC009-error').css('display', 'none');
-        }
+        if (errorTrigger) {
+            $('#errorSummary').css('display', 'block');
+            var position = $('#errorSummary').offset().top;
 
-        if ($('#it-and-telecomms-input-SC009-b2b').val() == '') {
-            $('#it-and-telecomms-input-SC009-b2b').addClass('govuk-input--error');
-            $('#it-and-telecomms-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#it-and-telecomms-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#it-and-telecomms-b2b-input-SC009-error').css('display', 'none');
-        }
+            $("body, html").animate({
+                scrollTop: position
+            }, 500, 'linear');
 
-        if ($('#consumer-equipment-input-SC009-b2b').val() == '') {
-            $('#consumer-equipment-input-SC009-b2b').addClass('govuk-input--error');
-            $('#consumer-equipment-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#consumer-equipment-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#consumer-equipment-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#lighting-equipment-input-SC009-b2b').val() == '') {
-            $('#lighting-equipment-input-SC009-b2b').addClass('govuk-input--error');
-            $('#lighting-equipment-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#lighting-equipment-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#lighting-equipment-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#electrical-and-electronic-input-SC009-b2b').val() == '') {
-            $('#electrical-and-electronic-input-SC009-b2b').addClass('govuk-input--error');
-            $('#electrical-and-electronic-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#electrical-and-electronic-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#electrical-and-electronic-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#toys-leisure-sports-input-SC009-b2b').val() == '') {
-            $('#toys-leisure-sports-input-SC009-b2b').addClass('govuk-input--error');
-            $('#toys-leisure-sports-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#toys-leisure-sports-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#toys-leisure-sports-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#medical-devices-input-SC009-b2b').val() == '') {
-            $('#medical-devices-input-SC009-b2b').addClass('govuk-input--error');
-            $('#medical-devices-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#medical-devices-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#medical-devices-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#monitoring-control-input-SC009-b2b').val() == '') {
-            $('#monitoring-control-input-SC009-b2b').addClass('govuk-input--error');
-            $('#monitoring-control-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#monitoring-control-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#monitoring-control-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#automatic-dispensers-input-SC009-b2b').val() == '') {
-            $('#automatic-dispensers-input-SC009-b2b').addClass('govuk-input--error');
-            $('#automatic-dispensers-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#automatic-dispensers-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#automatic-dispensers-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#display-equipment-input-SC009-b2b').val() == '') {
-            $('#display-equipment-input-SC009-b2b').addClass('govuk-input--error');
-            $('#display-equipment-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#display-equipment-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#display-equipment-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#cooling-appliance-input-SC009-b2b').val() == '') {
-            $('#cooling-appliance-input-SC009-b2b').addClass('govuk-input--error');
-            $('#cooling-appliance-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#cooling-appliance-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#cooling-appliance-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#gas-discharge-led-input-SC009-b2b').val() == '') {
-            $('#gas-discharge-led-input-SC009-b2b').addClass('govuk-input--error');
-            $('#gas-discharge-led-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#gas-discharge-led-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#gas-discharge-led-b2b-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#photovolatic-panels-input-SC009-b2b').val() == '') {
-            $('#photovolatic-panels-input-SC009-b2b').addClass('govuk-input--error');
-            $('#photovolatic-panels-b2b-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#photovolatic-panels-input-SC009-b2b').removeClass('govuk-input--error');
-            $('#photovolatic-panels-b2b-input-SC009-error').css('display', 'none');
-        }
-        if ($('#large-household-appliances-input-SC009').val() == '') {
-            $('#large-household-appliances-input-SC009').addClass('govuk-input--error');
-            $('#large-household-appliances-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#large-household-appliances-input-SC009').removeClass('govuk- input--error');
-            $('#large-household-appliances-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#small-household-appliances-input-SC009').val() == '') {
-            $('#small-household-appliances-input-SC009').addClass('govuk-input--error');
-            $('#small-household-appliances-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#small-household-appliances-input-SC009').removeClass('govuk-input--error');
-            $('#small-household-appliances-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#it-and-telecomms-input-SC009').val() == '') {
-            $('#it-and-telecomms-input-SC009').addClass('govuk-input--error');
-            $('#it-and-telecomms-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#it-and-telecomms-input-SC009').removeClass('govuk-input--error');
-            $('#it-and-telecomms-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#consumer-equipment-input-SC009').val() == '') {
-            $('#consumer-equipment-input-SC009').addClass('govuk-input--error');
-            $('#consumer-equipment-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#consumer-equipment-input-SC009').removeClass('govuk-input--error');
-            $('#consumer-equipment-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#lighting-equipment-input-SC009').val() == '') {
-            $('#lighting-equipment-input-SC009').addClass('govuk-input--error');
-            $('#lighting-equipment-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#lighting-equipment-input-SC009').removeClass('govuk-input--error');
-            $('#lighting-equipment-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#electrical-and-electronic-input-SC009').val() == '') {
-            $('#electrical-and-electronic-input-SC009').addClass('govuk-input--error');
-            $('#electrical-and-electronic-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#electrical-and-electronic-input-SC009').removeClass('govuk-input--error');
-            $('#electrical-and-electronic-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#toys-leisure-sports-input-SC009').val() == '') {
-            $('#toys-leisure-sports-input-SC009').addClass('govuk-input--error');
-            $('#toys-leisure-sports-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#toys-leisure-sports-input-SC009').removeClass('govuk-input--error');
-            $('#toys-leisure-sports-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#medical-devices-input-SC009').val() == '') {
-            $('#medical-devices-input-SC009').addClass('govuk-input--error');
-            $('#medical-devices-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#medical-devices-input-SC009').removeClass('govuk-input--error');
-            $('#medical-devices-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#monitoring-control-input-SC009').val() == '') {
-            $('#monitoring-control-input-SC009').addClass('govuk-input--error');
-            $('#monitoring-control-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#monitoring-control-input-SC009').removeClass('govuk-input--error');
-            $('#monitoring-control-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#automatic-dispensers-input-SC009').val() == '') {
-            $('#automatic-dispensers-input-SC009').addClass('govuk-input--error');
-            $('#automatic-dispensers-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#automatic-dispensers-input-SC009').removeClass('govuk-input--error');
-            $('#automatic-dispensers-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#display-equipment-input-SC009').val() == '') {
-            $('#display-equipment-input-SC009').addClass('govuk-input--error');
-            $('#display-equipment-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#display-equipment-input-SC009').removeClass('govuk-input--error');
-            $('#display-equipment-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#cooling-appliance-input-SC009').val() == '') {
-            $('#cooling-appliance-input-SC009').addClass('govuk-input--error');
-            $('#cooling-appliance-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#cooling-appliance-input-SC009').removeClass('govuk-input--error');
-            $('#cooling-appliance-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#gas-discharge-led-input-SC009').val() == '') {
-            $('#gas-discharge-led-input-SC009').addClass('govuk-input--error');
-            $('#gas-discharge-led-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#gas-discharge-led-input-SC009').removeClass('govuk-input--error');
-            $('#gas-discharge-led-input-SC009-error').css('display', 'none');
-        }
-
-        if ($('#photovolatic-panels-input-SC009').val() == '') {
-            $('#photovolatic-panels-input-SC009').addClass('govuk-input--error');
-            $('#photovolatic-panels-input-SC009-error').css('display', 'inline');
-            errorTrigger = true;
-        } else {
-            $('#photovolatic-panels-input-SC009').removeClass('govuk-input--error');
-            $('#photovolatic-panels-input-SC009-error').css('display', 'none');
-        }
-        if(errorTrigger){
             event.preventDefault();
+        } else {
+            $('#errorSummary').css('display', 'none');
         }
     });
 });
