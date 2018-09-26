@@ -499,7 +499,10 @@ router.post('/version1-2/AATF-Returns/operator-address-postcode-save', function 
 })
 
 router.post('/version1-2/AATF-Returns/operator-address-postcode-save-2', function (req, res) {
-    res.redirect('/version1-2/AATF-Returns/SC010-WEEE-reused-as-a-whole-appliance')
+    var pcsId = req.session.data['pcsId'];
+    var pcs = req.session.data['pcs'];
+
+    res.redirect('/version1-2/AATF-Returns/SC010-WEEE-reused-as-a-whole-appliance?pcs=' + pcs + '&id=' + pcsId)
 })
 
 router.post('/version1-2/AATF-Returns/submit-scheme-for-approval', function (req, res) {

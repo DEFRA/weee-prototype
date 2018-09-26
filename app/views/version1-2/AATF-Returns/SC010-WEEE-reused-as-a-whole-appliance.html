@@ -20,7 +20,24 @@ href: "SC008b-Operator-Address-Postcode-Locator-2"
         padding-top: 0px;
     }
 </style>
+<script type="text/javascript">
+    $(document).ready(function() {
+        var url = window.location.href;
+        var urlPCS = url.split('pcs=')[1];
+        urlPCS = urlPCS.split('?id=')[0];
+        urlPCS = urlPCS.replace(/%20/g, ' ');
+        localStorage.setItem('completedPCS', urlPCS);
+        var urlPCSID = url.split('id=')[1];
+        localStorage.setItem('completedPCSID', urlPCSID);
+
+        var detail = 'Facility 1</br>WEE/AB1234CD/ATF</br>' + urlPCSID;
+         $('#detailSummary').html(detail);
+    });
+</script>
 <h2 class="govuk-heading-l">WEEE reused as a whole appliance</h2>
+<div>
+    <p id="detailSummary"></p>
+</div>
 <div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert" tabindex="-1"
     data-module="error-summary">
     <h2 class="govuk-error-summary__title" id="error-summary-title">
@@ -40,7 +57,7 @@ href: "SC008b-Operator-Address-Postcode-Locator-2"
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
                     <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
-                        {{data['facilitySelect']}} - ATF/AB12345/WEEE
+                        
                     </div>
                 </td>
                 <td class="govuk-table__cell">
