@@ -12,7 +12,7 @@ $(document).ready(function () {
             $('#'+name).parent().parent().addClass("govuk-form-group--error");
             $('#'+errorString).text('Please specify a numerical value');
             $('#'+errorString).css('display', 'inline');
-            e$('#'+name).addClass('error-check');
+            $('#'+name).addClass('error-check');
             if (!isNaN(currentValue)) {
                 $('#'+name).parent().parent().removeClass("govuk-form-group--error");
                 $('#'+errorString).css('display', 'none');

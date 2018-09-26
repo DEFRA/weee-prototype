@@ -17,7 +17,7 @@ href: "SC005-Select-Facility"
     </style>
 <h2 class="govuk-heading-l">Is the facility that you have selected correct?</h2>
 <div class="govuk-!-padding-bottom-7"></div>
-<table class="govuk-table">
+<table class="govuk-table govuk-!-font-size-16">
     <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">Facility Name</th>
@@ -39,52 +39,6 @@ href: "SC005-Select-Facility"
         </tr>
     </tbody>
 </table>
-<!--
-{{ govukTable({
-    firstCellIsHeader: true,
-    head: [
-      {
-        text: "Facility Name"
-      },
-      {
-        text: "Approval No"
-      },
-      {
-        text: "Street"
-      },
-      {
-        text: "Town"
-      },
-      {
-        text: "Country"
-      },
-      {
-        text: "Post Code"
-      }
-    ],
-    rows: [
-      [
-        {
-            html: "<p>{{ data['facilitySelect'] }}</p>"
-        },
-        {
-            text: "ATF/AB12345/WEEE"
-        },
-        {
-            text: "1 Waterloo Avenue"
-        },
-        {
-            text: "Woking"
-        },
-        {
-            text: "United Kingdom"
-        },
-        {
-            text: "GU21 BUY"
-        }
-      ]
-    ]
-}) }}  -->
 <div class="govuk-!-padding-bottom-7"></div>
 <form action="/version1-2/AATF-Returns/facility-confirm" method="post" class="form" style="display: inline">
 <button type="submit" class="govuk-button govuk-!-margin-right-3">
