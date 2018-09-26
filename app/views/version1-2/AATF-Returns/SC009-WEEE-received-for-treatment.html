@@ -31,7 +31,7 @@ href: "SC006-PCS-Summary"
         var urlPCSID = url.split('id=')[1];
         localStorage.setItem('completedPCSID', urlPCSID);
 
-        var detail = 'Facility 1</br>WEE/AB1234CD/ATF</br>' + urlPCSID;
+        var detail = 'Facility name: Facility 1</br>WEE/AB1234CD/ATF</br>' + urlPCSID;
          $('#detailSummary').html(detail);
 
         $('#pcsId').val(urlPCSID);
@@ -40,7 +40,10 @@ href: "SC006-PCS-Summary"
 </script>
 <h2 class="govuk-heading-l">Enter WEEE that has been received for treatment</h2>
 <div>
-    <p id="detailSummary"></p>
+   <p>
+    [Facility name and Approval number]<br>
+    [PCS name and Approval number]
+</p>
 </div>
 
 
