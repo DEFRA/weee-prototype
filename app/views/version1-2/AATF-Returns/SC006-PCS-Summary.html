@@ -35,9 +35,10 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
                 $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-2/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '?id=' + pcsIDArray[i] + '">Report</a></td><td></td></tr>');
             }
         }
+        /*
         if (buttonCounter == pcsNameArray.length) {
             $('#pcs-check-return').css('display', 'inline');
-        }
+        }*/
     });
 </script>
 <h2 class="govuk-heading-l">PCS</h2>
@@ -59,7 +60,7 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
     </tbody>
 </table>
 <form action="/version1-2/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
-    <button type="submit" class="govuk-button" id="pcs-check-return" style="display: none;">
+    <button type="submit" class="govuk-button" id="pcs-check-return">
         Check my return
     </button>
 </form>
