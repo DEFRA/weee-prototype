@@ -379,7 +379,7 @@ router.post('/version1-2/AATF-Returns/weee-reused-as-a-whole-appliance-save', fu
         result += Number(itemsb2b[i])
     }
     req.session.data['WEEE-resused-as-a-whole-appliance-result'] = result.toFixed(3)
-    res.redirect('/version1-2/AATF-Returns/SC016-Reuse-Table')
+    res.redirect('/version1-2/AATF-Returns/SC006-PCS-Summary')
 })
 
 router.post('/version1-2/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save', function (req, res) {
@@ -452,7 +452,7 @@ router.post('/version1-2/AATF-Returns/reusing-weee-answer', function (req, res) 
     if (answer === 'false') {
         res.redirect('/version1-2/AATF-Returns/SC006-PCS-Summary')
     } else {
-        res.redirect('/version1-2/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2')
+        res.redirect('/version1-2/AATF-Returns/SC010-WEEE-reused-as-a-whole-appliance')
     }
 })
 
