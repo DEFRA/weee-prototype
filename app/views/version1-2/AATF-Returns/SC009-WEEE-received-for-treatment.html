@@ -31,13 +31,16 @@ href: "SC006-PCS-Summary"
         var urlPCSID = url.split('id=')[1];
         localStorage.setItem('completedPCSID', urlPCSID);
 
-         $('#schemeName').html(urlPCSID);
+        var detail = 'Facility 1</br>WEE/AB1234CD/ATF</br>' + urlPCSID;
+         $('#detailSummary').html(detail);
 
+        $('#pcsId').val(urlPCSID);
+        $('#pcs').val(urlPCS);
     });
 </script>
 <h2 class="govuk-heading-l">Enter WEEE that has been received for treatment</h2>
 <div>
-
+    <p id="detailSummary"></p>
 </div>
 
 
@@ -55,6 +58,8 @@ href: "SC006-PCS-Summary"
     </div>
 </div>
 <form action="/version1-2/AATF-Returns/weee-received-for-treatment-save" method="post" class="form">
+    <input type="hidden" id="pcsId" name="pcsId"/>
+    <input type="hidden" id="pcs" name="pcs"/>
     <table class="govuk-table" id="weee-received-table">
         <tbody class="govuk-table__body">
             <tr class="govuk-table__row">

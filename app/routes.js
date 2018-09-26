@@ -483,7 +483,11 @@ router.post('/version1-2/AATF-Returns/operator-address-full-save', function (req
 })
 
 router.post('/version1-2/AATF-Returns/operator-address-postcode-save', function (req, res) {
-    res.redirect('/version1-2/AATF-Returns/SC011-Whole-WEEE-sent-to-another-treatment')
+
+    var pcsId = req.session.data['pcsId'];
+    var pcs = req.session.data['pcs'];
+
+    res.redirect('/version1-2/AATF-Returns/SC011-Whole-WEEE-sent-to-another-treatment?pcs=' + pcs + '&id=' + pcsId)
 })
 
 router.post('/version1-2/AATF-Returns/operator-address-postcode-save-2', function (req, res) {
