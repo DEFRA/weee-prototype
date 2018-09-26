@@ -25,15 +25,18 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
         var pcsNameArray = JSON.parse(localStorage.getItem('pcsNameArray'));
         var pcsIDArray = JSON.parse(localStorage.getItem('pcsIDArray'));
         var pcsCompleteArray = JSON.parse(localStorage.getItem('pcsCompleteArray'));
+        var buttonCounter = 0;
 
         for (var i = 0; i < pcsNameArray.length; i++) {
-
-            if ($.inArray(pcsNameArray[i], pcsCompleteArray) !== -1 ) {
-                $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-2/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '?id='+ pcsIDArray[i] +'">Report</a></td><td style="padding-left:10px;"><strong class="govuk-tag govuk-!-font-size-14">Completed</strong></td></tr>');
+            if ($.inArray(pcsNameArray[i], pcsCompleteArray) !== -1) {
+                $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td style="padding-left:10px;"><strong class="govuk-tag govuk-!-font-size-14">Completed</strong></td></tr>');
+                buttonCounter++;
             } else {
-                $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-2/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '?id='+ pcsIDArray[i] +'">Report</a></td><td></td></tr>');
+                $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-2/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '?id=' + pcsIDArray[i] + '">Report</a></td><td></td></tr>');
             }
-
+        }
+        if (buttonCounter == pcsNameArray.length) {
+            $('#pcs-check-return').css('display', 'inline');
         }
     });
 </script>
@@ -56,7 +59,7 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
     </tbody>
 </table>
 <form action="/version1-2/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
-    <button type="submit" class="govuk-button" id="pcs-check-return">
+    <button type="submit" class="govuk-button" id="pcs-check-return" style="display: none;">
         Check my return
     </button>
 </form>

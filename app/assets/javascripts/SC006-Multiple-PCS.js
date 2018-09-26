@@ -19,6 +19,9 @@ $(document).ready(function () {
         var completedPCS = localStorage.getItem('completedPCS');
         completedArray.push(completedPCS);
         localStorage.setItem('pcsCompleteArray', JSON.stringify(completedArray));
+        var reuseCounter = localStorage.getItem('reuseCounter');
+        reuseCounter = 0;
+        localStorage.setItem('reuseCounter', reuseCounter);
     });
 
     $('#weee-reused-save').click(function() {
@@ -26,6 +29,12 @@ $(document).ready(function () {
         var completedPCS = localStorage.getItem('completedPCS');
         completedArray.push(completedPCS);
         localStorage.setItem('pcsCompleteArray', JSON.stringify(completedArray));
+    });
+
+    $('#are-you-sending-any-whole-wee-to-atf').click(function() {
+        var atfCounter = localStorage.getItem('atfCounter');
+        atfCounter = 0;
+        localStorage.setItem('atfCounter', atfCounter);
     });
 
     $('#multiple-pcs-save').click(function() {

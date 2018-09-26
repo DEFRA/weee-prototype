@@ -9,7 +9,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance"
+href: "SC006-PCS-Summary"
 }) }}
 <style>
     .weee-table td {
@@ -22,6 +22,22 @@ href: "SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance"
         padding-top: 0px;
     }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var pcsNameArray = JSON.parse(localStorage.getItem('pcsNameArray'));
+        var pcsIDArray = JSON.parse(localStorage.getItem('pcsIDArray'));
+        $('.Scheme-2').css('display', 'none')
+        $('#scheme1').click(function () {
+            $('.Scheme-1').css('display', 'table-row')
+            $('.Scheme-2').css('display', 'none')
+        });
+        $('#scheme2').click(function () {
+            $('.Scheme-2').css('display', 'table-row')
+            $('.Scheme-1').css('display', 'none')
+        });
+    });
+</script>
 <h2 class="govuk-heading-l">Check your AATF Quarterly Return</h2>
 <div class="govuk-!-padding-bottom-9"></div>
 <p style="display: inline">Please check and review your AATF Quarterly Return before you proceed to submit</p>
@@ -62,8 +78,7 @@ href: "SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance"
             <td class="govuk-table__cell ">Woking</td>
             <td class="govuk-table__cell ">United Kingdom</td>
             <td class="govuk-table__cell ">GU21 BUY</td>
-            <td class="govuk-table__cell govuk-!-padding-left-2"><a href="SC005a-Select-Facility-Change"
-                    class="govuk-link govuk-link--no-visited-state">Change</a></td>
+            <td class="govuk-table__cell govuk-!-padding-left-2"><a href="SC005a-Select-Facility-Change" class="govuk-link govuk-link--no-visited-state">Change</a></td>
         </tr>
     </tbody>
 </table>
@@ -193,6 +208,141 @@ href: "SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance"
         </td>
     </tr>
     <tr class="govuk-table__row">
+        <td class="govuk-table__cell">
+            <details class="govuk-details">
+                <summary class="govuk-details__summary govuk-!-width-one-third">
+                    <span class="govuk-details__summary-text">
+                        DCF
+                    </span>
+                </summary>
+                <table id="non-obligated-WEEE-table" class="govuk-table govuk-!-width-one-half weee-table" style="float: right">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Large household appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['large-household-appliances-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Small household appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['small-household-appliances-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            IT and telecomms equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['it-and-telecomms-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Consumer equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['consumer-equipment-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Lighting equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['lighting-equipment-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Electrical and electronic tools
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['electrical-and-electronic-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Toys, leisure and sport
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['toys-leisure-sports-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Medical devices
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['medical-devices-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Monitoring and control instruments
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['monitoring-control-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Automatic dispensers
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['automatic-dispensers-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Display equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['display-equipment-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Cooling appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['cooling-appliance-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Gas discharge lamps and LED light sources
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['gas-discharge-led-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Photovoltaic panels
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            {{data['photovolatic-panels-input-SC004c-DCF']}}
+                        </td>
+                    </tr>
+                </table>
+            </details>
+        </td>
+    </tr>
+    <tr class="govuk-table__row" id="schemeRow" style="float: left; border-bottom: 0px; border-top: 0px; margin-top: 30px; margin-bottom: 30px;">
+        <td class="govuk-table__cell">
+            <button class="govuk-button" id="scheme1" style="background-color: #bfc1c3; color: black;">Scheme -
+                012545212</button>
+        </td>
+        <td class="govuk-table__cell">
+            <button class="govuk-button" id="scheme2" style="background-color: #bfc1c3; color: black;">Scheme -
+                012545212</button>
+        </td>
+    </tr>
+    <tr class="govuk-table__row Scheme-1">
         <td class="govuk-table__cell">
             <details class="govuk-details">
                 <summary class="govuk-details__summary govuk-!-width-one-third">
@@ -403,7 +553,7 @@ href: "SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance"
             </details>
         </td>
     </tr>
-    <tr class="govuk-table__row">
+    <tr class="govuk-table__row Scheme-1">
         <td class="govuk-table__cell">
             <details class="govuk-details">
                 <summary class="govuk-details__summary govuk-!-width-one-third">
@@ -606,6 +756,426 @@ href: "SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance"
                         </td>
                         <td class="govuk-table__cell govuk-!-font-weight-bold">
                             {{data['photovolatic-panels-input-SC011-b2b']}}
+                        </td>
+                    </tr>
+                </table>
+            </details>
+        </td>
+    </tr>
+    <tr class="govuk-table__row Scheme-2">
+        <td class="govuk-table__cell">
+            <details class="govuk-details">
+                <summary class="govuk-details__summary govuk-!-width-one-third">
+                    <span class="govuk-details__summary-text">
+                        WEEE reused as a whole appliance for which evidence has been issued
+                </summary>
+                <table id="WEEE-whole-appliance-table" class="govuk-table govuk-!-width-one-half weee-table" style="float: right">
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            Operator Details
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            Street
+                        </td>
+                        <td class="govuk-table__cell" style="white-space: nowrap;">
+                            102 Kingsroad
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            Town
+                        </td>
+                        <td class="govuk-table__cell" style="white-space: nowrap;">
+                            London
+                        </td>
+                        <td class="govuk-table__cell">
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            Country
+                        </td>
+                        <td class="govuk-table__cell" style="white-space: nowrap;">
+                            United Kingdom
+                        </td>
+                        <td class="govuk-table__cell">
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold govuk-!-padding-bottom-4">
+                            Postcode
+                        </td>
+                        <td class="govuk-table__cell govuk-!-padding-bottom-4" style="white-space: nowrap;">
+                            LO9 4TT
+                        </td>
+                        <td class="govuk-table__cell govuk-!-padding-bottom-4">
+                        </td>
+                    </tr>
+
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Large household appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            2
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            2
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Small household appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            3
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            3
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            IT and telecomms equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Consumer equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            432
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            2
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Lighting equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            2
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            2
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Electrical and electronic tools
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Toys, leisure and sport
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Medical devices
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Monitoring and control instruments
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Automatic dispensers
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            7
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            7
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Display equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            8
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            8
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Cooling appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            9
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            9
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Gas discharge lamps and LED light sources
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            0
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            0
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Photovoltaic panels
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            3
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            3
+                        </td>
+                    </tr>
+                </table>
+            </details>
+        </td>
+    </tr>
+    <tr class="govuk-table__row Scheme-2">
+        <td class="govuk-table__cell">
+            <details class="govuk-details">
+                <summary class="govuk-details__summary govuk-!-width-one-third">
+                    <span class="govuk-details__summary-text">
+                        Whole WEEE sent to another ATF for treatment
+                </summary>
+                <table id="WEEE-ATF-treatment-table" class="govuk-table govuk-!-width-one-half weee-table" style="float: right">
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            Operator Details
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            Street
+                        </td>
+                        <td class="govuk-table__cell" style="white-space: nowrap;">
+                            7 Guildford Road
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            Town
+                        </td>
+                        <td class="govuk-table__cell" style="white-space: nowrap;">
+                            Luton
+                        </td>
+                        <td class="govuk-table__cell">
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            Country
+                        </td>
+                        <td class="govuk-table__cell" style="white-space: nowrap;">
+                            United Kingdom
+                        </td>
+                        <td class="govuk-table__cell">
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell govuk-!-font-weight-bold govuk-!-padding-bottom-4">
+                            Postcode
+                        </td>
+                        <td class="govuk-table__cell govuk-!-padding-bottom-4" style="white-space: nowrap;">
+                            LU9 7GH
+                        </td>
+                        <td class="govuk-table__cell govuk-!-padding-bottom-4">
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Large household appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            2
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            2
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Small household appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            IT and telecomms equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            6
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            6
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Consumer equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            6
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            6
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Lighting equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            6
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Electrical and electronic tools
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Toys, leisure and sport
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            4
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Medical devices
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            5
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Monitoring and control instruments
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            6
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            6
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Automatic dispensers
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            8
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            8
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Display equipment
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            8
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            8
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Cooling appliances
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            8
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            8
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Gas discharge lamps and LED light sources
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            9
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            9
+                        </td>
+                    </tr>
+                    <tr class="govuk-table__row">
+                        <td class="govuk-table__cell">
+                            Photovoltaic panels
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            9
+                        </td>
+                        <td class="govuk-table__cell govuk-!-font-weight-bold">
+                            12
                         </td>
                     </tr>
                 </table>

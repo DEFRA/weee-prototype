@@ -8,7 +8,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "SC006-Add-the-PCS-that-you-wish-to-report"
+href: "SC011-Whole-WEEE-sent-to-another-treatment"
 }) }}
 <style>
     #main-content {
@@ -24,22 +24,19 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
     $(document).ready(function () {
         var pcsName = localStorage.getItem('completedPCS');
         var pcsID = localStorage.getItem('completedPCSID');
+        var atfCounter = localStorage.getItem('atfCounter');
         var headerString = pcsName + " - " + pcsID;
         $('#SC016c-paragraph').html(headerString);
-        for (var i = 0; i < pcsNameArray.length; i++) {
-            if ($.inArray(pcsNameArray[i], pcsCompleteArray) !== -1 ) {
-                $('#atf-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-2/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '?id='+ pcsIDArray[i] +'">Report</a></td><td style="padding-left:10px;"><strong class="govuk-tag govuk-!-font-size-14">Completed</strong></td></tr>');
-            } else {
-                $('#atf-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-2/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '">Report</a></td><td></td></tr>');
-            }
-
+        for (var i = 0; i < Number(atfCounter); i++) {
+            var j = i + 1;
+            $('#atf-table-summary > tbody:last-child').append('<tr class="govuk-table__row"><td class="govuk-table__cell ">ABBB Disposal Ltd '+ j +'</td><td class="govuk-table__cell ">???</td><td class="govuk-table__cell ">2 Waterloo Avenue</td><td class="govuk-table__cell ">Guildford</td><td class="govuk-table__cell ">United Kingdom</td><td class="govuk-table__cell ">GU22 7UY</td></tr>');
         }
     });
 </script>
 <p id="SC016c-paragraph" style="margin-bottom: 0px;"></p>
 <h2 class="govuk-heading-l" style="padding-top: 0px;">Report on whole WEEE sent to an ATF for treatment</h2>
 <div class="govuk-!-padding-bottom-4"></div>
-<table class="govuk-table govuk-!-font-size-16" id="atf-table-summary">
+<table class="govuk-table govuk-!-font-size-16" id="atf-table-summary" style="margin-bottom: 0px;">
     <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">ATF name</th>
@@ -53,9 +50,12 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
     <tbody>
     </tbody>
 </table>
-<form action="/version1-2/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
-    <button type="submit" class="govuk-button" id="pcs-check-return">
-        Check my return
+<div class="govuk-!-padding-bottom-2"></div>
+<a href="/version1-2/AATF-Returns/SC008b-Operator-Address-Postcode-Locator" class="govuk-link--no-visited-state govuk-link">Report on whole WEEE</a>
+<div class="govuk-!-padding-bottom-8"></div>
+<form action="/version1-2/AATF-Returns/atf-treatment-save" method="post" class="form" style="display: block">
+    <button type="submit" class="govuk-button" id="atf-treatment-save">
+        Save and continue
     </button>
 </form>
 {% endblock %}

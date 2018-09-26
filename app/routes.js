@@ -379,7 +379,7 @@ router.post('/version1-2/AATF-Returns/weee-reused-as-a-whole-appliance-save', fu
         result += Number(itemsb2b[i])
     }
     req.session.data['WEEE-resused-as-a-whole-appliance-result'] = result.toFixed(3)
-    res.redirect('/version1-2/AATF-Returns/SC006-PCS-Summary')
+    res.redirect('/version1-2/AATF-Returns/SC016-Reuse-Table')
 })
 
 router.post('/version1-2/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save', function (req, res) {
@@ -393,11 +393,19 @@ router.post('/version1-2/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
         result += Number(itemsb2b[i])
     }
     req.session.data['Whole-WEEE-sent-to-another-treatment-result'] = result.toFixed(3)
-    res.redirect('/version1-2/AATF-Returns/SC016b-Would-you-like-to-send-anymore-weee-to-another-atf')
+    res.redirect('/version1-2/AATF-Returns/SC016c-ATF-treatment-table')
 })
 
 router.post('/version1-2/AATF-Returns/add-another-scheme', function (req, res) {
     res.redirect('/version1-2/AATF-Returns/SC012-Would-you-like-to-add-another-scheme')
+})
+
+router.post('/version1-2/AATF-Returns/atf-treatment-save', function (req, res) {
+    res.redirect('/version1-2/AATF-Returns/SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance')
+})
+
+router.post('/version1-2/AATF-Returns/reuse-treatment-save', function (req, res) {
+    res.redirect('/version1-2/AATF-Returns/SC006-PCS-Summary')
 })
 
 router.post('/version1-2/AATF-Returns/add-another-scheme-answer', function (req, res) {

@@ -337,6 +337,9 @@ $(document).ready(function () {
     });
 
     $('#weee-sent-save').click(function (event) {
+        var atfCounter = localStorage.getItem('atfCounter');
+        atfCounter++;
+        localStorage.setItem('atfCounter', atfCounter);
         var errorTrigger = false;
 
         for(var i = 0; i < fieldIDs.length; i++) {

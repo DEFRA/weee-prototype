@@ -337,6 +337,9 @@ $(document).ready(function () {
     });
 
     $('#weee-reused-save').click(function (event) {
+        var reuseCounter = localStorage.getItem('reuseCounter');
+        reuseCounter++;
+        localStorage.setItem('reuseCounter', reuseCounter);
         var errorTrigger = false;
 
         for(var i = 0; i < fieldIDs.length; i++) {
