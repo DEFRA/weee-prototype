@@ -13,7 +13,8 @@ text: "Back",
 href: "SC004a-Non-Obligated-WEEE"
 }) }}
 
-<h2 class="govuk-heading-l">Select the facility for which you need to provide the quarterly return</h2>
+<h2 class="govuk-heading-l">Select a facility where the WEEE was received</h2>
+<p>Select a facility for which you need to provide the quarterly return</p>
 <form action="/version1-2/AATF-Returns/facility-save" method="post" class="form">
   {{ govukSelect({
   id: "facilitySelect",
@@ -40,12 +41,50 @@ href: "SC004a-Non-Obligated-WEEE"
     </summary>
     <div class="govuk-body govuk-!-font-size-14">
     <div class="govuk-details__text ">
-      If the facility that you require is not on the list, then please contact the environment agency via email
+      If the facility that you require is not on the list, then please contact the appropriate authority
+
+      <p>
+          <h2 class="heading-small">
+              England
+          </h2>
+          <span>
+              Environment Agency<br />
+              Producer Responsibility Regulatory Services<br />
+              Telephone: 03708 506 506
+          </span>
+      </p>
+      <p>
+          <h2 class="heading-small">
+              Northern Ireland
+          </h2>
+          <span>
+              Northern Ireland Environment Agency<br />
+              Producer Responsibility Unit<br />
+              Telephone: 02 890 569338
+          </span>
+      </p>
+      <p>
+          <h2 class="heading-small">
+              Scotland
+          </h2>
+          <span>
+              Scottish Environment Protection Agency<br />
+              Producer Compliance and Waste Shipments Unit<br />
+              Telephone: 01786 457700
+          </span>
+      </p>
+      <p>
+          <h2 class="heading-small">
+              Wales
+          </h2>
+          <span>
+              Natural Resources Wales<br />
+              Producer Responsibility Unit<br />
+              Telephone: 03000 65 3096
+          </span>
+      </p>
     </div>
-    <div class="govuk-details__text govuk-!-padding-top-0">
-      environment_agency@ea.gov.uk
-    </div>
-  </div>
+
   </details>
 
   {{ govukButton({

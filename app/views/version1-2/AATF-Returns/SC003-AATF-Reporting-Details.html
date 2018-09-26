@@ -15,7 +15,7 @@ GOV.UK Prototype Kit
         padding-top: 0px;
     }
 </style>
-<h2 class="govuk-heading-l">AATF reporting details</h2>
+<h2 class="govuk-heading-l">AATF return details</h2>
 <form action="/version1-2/AATF-Returns/save-and-continue" method="post" class="form">
   {{ govukSelect({
     id: "compliance-year",
@@ -36,6 +36,10 @@ GOV.UK Prototype Kit
       {
         value: "2018",
         text: "2018"
+      },
+      {
+        value: "2019",
+        text: "2019"
       }
     ]
   }) }}
