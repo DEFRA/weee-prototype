@@ -2,9 +2,17 @@ const express = require('express')
 const router = express.Router()
 
 //Index route
+
+
 router.get('/', function (req, res) {
-    res.redirect('/version1-2/SC001-Home')
+    res.redirect('/version1-3/SC001-Home')
 })
+
+//Index route
+router.get('/home', function (req, res) {
+    res.redirect('/versions-home')
+})
+
 
 //#region version 1 routes
 // Add your routes here - above the module.exports line
@@ -295,6 +303,8 @@ router.post('/version1-2/AATF-Returns/dcf-save', function (req, res) {
 })
 
 router.post('/version1-2/AATF-Returns/facility-save', function (req, res) {
+    
+
     res.redirect('/version1-2/AATF-Returns/SC005a-Select-Facility-Confirmation')
 })
 
@@ -379,7 +389,7 @@ router.post('/version1-2/AATF-Returns/weee-reused-as-a-whole-appliance-save', fu
         result += Number(itemsb2b[i])
     }
     req.session.data['WEEE-resused-as-a-whole-appliance-result'] = result.toFixed(3)
-    res.redirect('/version1-2/AATF-Returns/SC006-PCS-Summary')
+    res.redirect('/version1-2/AATF-Returns/SC016-Reuse-Table')
 })
 
 router.post('/version1-2/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save', function (req, res) {
@@ -452,7 +462,7 @@ router.post('/version1-2/AATF-Returns/reusing-weee-answer', function (req, res) 
     if (answer === 'false') {
         res.redirect('/version1-2/AATF-Returns/SC006-PCS-Summary')
     } else {
-        res.redirect('/version1-2/AATF-Returns/SC010-WEEE-reused-as-a-whole-appliance')
+        res.redirect('/version1-2/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2')
     }
 })
 
