@@ -20,11 +20,12 @@ href: "SC008b-Operator-Address-Postcode-Locator-2"
         padding-top: 0px;
     }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         var url = window.location.href;
         var urlPCS = url.split('pcs=')[1];
-        urlPCS = urlPCS.split('?id=')[0];
+        urlPCS = urlPCS.split('&id=')[0];
         urlPCS = urlPCS.replace(/%20/g, ' ');
         localStorage.setItem('completedPCS', urlPCS);
         var urlPCSID = url.split('id=')[1];

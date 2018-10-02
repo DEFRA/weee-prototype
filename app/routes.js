@@ -649,7 +649,7 @@ router.post('/version1-3/AATF-Returns/facility-cancel', function (req, res) {
     res.redirect('/version1-3/AATF-Returns/SC005-Select-Facility')
 })
 
-router.post('/version1-2/AATF-Returns/facility-confirm', function (req, res) {
+router.post('/version1-3/AATF-Returns/facility-confirm', function (req, res) {
     res.redirect('/version1-3/AATF-Returns/SC006x-Do-you-want-to-report-on-multiple-pcs')
 })
 
@@ -711,7 +711,7 @@ router.post('/version1-3/AATF-Returns/add-another-scheme', function (req, res) {
 })
 
 router.post('/version1-3/AATF-Returns/atf-treatment-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance')
+    res.redirect('/version1-3/AATF-Returns/SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance')
 })
 
 router.post('/version1-3/AATF-Returns/reuse-treatment-save', function (req, res) {

@@ -25,7 +25,7 @@ href: "SC008b-Operator-Address-Postcode-Locator"
     $(document).ready(function() {
         var url = window.location.href;
         var urlPCS = url.split('pcs=')[1];
-        urlPCS = urlPCS.split('?id=')[0];
+        urlPCS = urlPCS.split('&id=')[0];
         urlPCS = urlPCS.replace(/%20/g, ' ');
         localStorage.setItem('completedPCS', urlPCS);
         var urlPCSID = url.split('id=')[1];
