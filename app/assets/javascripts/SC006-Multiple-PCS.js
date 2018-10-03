@@ -2,6 +2,9 @@ $(document).ready(function () {
     var pcsNameArray = [];
     var pcsIDArray = [];
     var pcsComplete = [];
+    var atfArray = [];
+    var atfCompleteArray = [];
+    var sentCompleteArray = [];
 
     $('#multiple-pcs-add').click(function() {
         var selectedValue = $('#multipleSchemeSelect option:selected').val();
@@ -14,8 +17,8 @@ $(document).ready(function () {
         $('#multiple-pcs-save').css('display', 'block');
     });
 
-    $('#are-you-reusing-weee-submit').click(function() {
-        var completedArray = pcsCompleteArray = JSON.parse(localStorage.getItem('pcsCompleteArray'));
+    $('#weee-reused-at-another-site').click(function() {
+        var completedArray = JSON.parse(localStorage.getItem('pcsCompleteArray'));
         var completedPCS = localStorage.getItem('completedPCS');
         completedArray.push(completedPCS);
         localStorage.setItem('pcsCompleteArray', JSON.stringify(completedArray));
@@ -24,11 +27,34 @@ $(document).ready(function () {
         localStorage.setItem('reuseCounter', reuseCounter);
     });
 
-    $('#weee-reused-save').click(function() {
-        var completedArray = pcsCompleteArray = JSON.parse(localStorage.getItem('pcsCompleteArray'));
+    $('#are-you-reusing-weee-submit').click(function() {
+        var completedArray = JSON.parse(localStorage.getItem('pcsCompleteArray'));
         var completedPCS = localStorage.getItem('completedPCS');
         completedArray.push(completedPCS);
         localStorage.setItem('pcsCompleteArray', JSON.stringify(completedArray));
+        var reuseCounter = localStorage.getItem('reuseCounter');
+        reuseCounter = 0;
+        localStorage.setItem('reuseCounter', reuseCounter);
+        localStorage.setItem('atfCompleteArray', JSON.stringify(atfCompleteArray));
+    });
+
+    $('#weee-reused-save').click(function() {
+        var completedArray = JSON.parse(localStorage.getItem('pcsCompleteArray'));
+        var completedPCS = localStorage.getItem('completedPCS');
+        completedArray.push(completedPCS);
+        localStorage.setItem('pcsCompleteArray', JSON.stringify(completedArray));
+
+        var atfName = localStorage.getItem('completedATF');
+        var atfCompletedArray = JSON.parse(localStorage.getItem('atfCompleteArray'));
+        atfCompletedArray.push(atfName);
+        localStorage.setItem('atfCompleteArray', JSON.stringify(atfCompletedArray));
+    });
+
+    $('#weee-sent-save').click(function() {
+        var sentName = localStorage.getItem('completedSENT');
+        var sentCompletedArray = JSON.parse(localStorage.getItem('sentCompleteArray'));
+        sentCompletedArray.push(sentName);
+        localStorage.setItem('sentCompleteArray', JSON.stringify(sentCompletedArray));
     });
 
     $('#are-you-sending-any-whole-wee-to-atf').click(function() {

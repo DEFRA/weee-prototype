@@ -26,15 +26,16 @@ href: "SC010-WEEE-reused-as-a-whole-appliance"
         var pcsID = localStorage.getItem('completedPCSID');
         var reuseCounter = localStorage.getItem('reuseCounter');
         var headerString = pcsName + " - " + pcsID;
+        var atfCompletedArray = JSON.parse(localStorage.getItem('atfCompleteArray'));
+
         $('#SC016c-paragraph').html(headerString);
-        for (var i = 0; i < Number(reuseCounter); i++) {
-            var j = i + 1;
-            $('#reuse-table-summary > tbody:last-child').append('<tr class="govuk-table__row"><td class="govuk-table__cell ">ABBB Disposal Ltd '+ j +'</td><td class="govuk-table__cell ">???</td><td class="govuk-table__cell ">2 Waterloo Avenue</td><td class="govuk-table__cell ">Guildford</td><td class="govuk-table__cell ">United Kingdom</td><td class="govuk-table__cell ">GU22 7UY</td></tr>');
+        for (var i = 0; i < atfCompletedArray.length; i++) {
+            $('#reuse-table-summary > tbody:last-child').append('<tr class="govuk-table__row"><td class="govuk-table__cell ">'+ atfCompletedArray[i] +'</td><td class="govuk-table__cell ">???</td><td class="govuk-table__cell ">2 Waterloo Avenue</td><td class="govuk-table__cell ">Guildford</td><td class="govuk-table__cell ">United Kingdom</td><td class="govuk-table__cell ">GU22 7UY</td></tr>');
         }
     });
 </script>
 <p id="SC016c-paragraph" style="margin-bottom: 0px;"></p>
-<h2 class="govuk-heading-l" style="padding-top: 0px;">Report on whole WEEE sent to an ATF for treatment</h2>
+<h2 class="govuk-heading-l" style="padding-top: 0px;">Report on WEEE reused as a whole appliance</h2>
 <div class="govuk-!-padding-bottom-4"></div>
 <table class="govuk-table govuk-!-font-size-16" id="reuse-table-summary" style="margin-bottom: 0px;">
     <thead class="govuk-table__head">
@@ -51,7 +52,7 @@ href: "SC010-WEEE-reused-as-a-whole-appliance"
     </tbody>
 </table>
 <div class="govuk-!-padding-bottom-2"></div>
-<a href="/version1-3/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2" class="govuk-link--no-visited-state govuk-link">Report on whole WEEE</a>
+<a href="/version1-3/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2" class="govuk-link--no-visited-state govuk-link">Report on WEEE reused</a>
 <div class="govuk-!-padding-bottom-8"></div>
 <form action="/version1-3/AATF-Returns/reuse-treatment-save" method="post" class="form" style="display: block">
     <button type="submit" class="govuk-button" id="reuse-treatment-save">

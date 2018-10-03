@@ -31,16 +31,14 @@ href: "SC008b-Operator-Address-Postcode-Locator"
         var urlPCSID = url.split('id=')[1];
         localStorage.setItem('completedPCSID', urlPCSID);
 
-        var detail = 'Facility 1</br>WEE/AB1234CD/ATF</br>' + urlPCSID;
-         $('#detailSummary').html(detail);
+        var detail = '</br>' + urlPCS + ' - ' + urlPCSID + '</br>';
+         $('#detailSummary').append(detail);
     });
 </script>
 <h2 class="govuk-heading-l">Enter WEEE sent to another ATF for treatment</h2>
 <div>
-    <p>
-        [Facility name and Approval number]<br>
-        [PCS name and Approval number]
-    </p>
+    <p id="detailSummary" style="margin-bottom: 0px;">{{data['facilitySelect']}}</p>
+    <p>{{ data['operator-name'] }} {{ data['operator-name-search'] }} - {{ data['operator-postcode'] }} {{ data['operator-postcode-search'] }}</p>
 </div>
 
 <div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert" tabindex="-1"

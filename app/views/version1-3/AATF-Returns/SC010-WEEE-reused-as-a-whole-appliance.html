@@ -31,13 +31,14 @@ href: "SC008b-Operator-Address-Postcode-Locator-2"
         var urlPCSID = url.split('id=')[1];
         localStorage.setItem('completedPCSID', urlPCSID);
 
-        var detail = 'Facility 1</br>WEE/AB1234CD/ATF</br>' + urlPCSID;
-         $('#detailSummary').html(detail);
+        var detail = '</br>' + urlPCS + ' - ' + urlPCSID;
+         $('#detailSummary').append(detail);
     });
 </script>
-<h2 class="govuk-heading-l">WEEE reused as a whole appliance</h2>
+<h2 class="govuk-heading-l">Enter WEEE that has been reused as a whole appliance at another site</h2>
 <div>
-    <p id="detailSummary"></p>
+    <p id="detailSummary" style="margin-bottom: 0px;">{{data['facilitySelect']}}</p>
+    <p id="detailSummary">{{ data['operator-name-2'] }} {{ data['operator-name-search-2'] }} - {{ data['operator-postcode-2'] }} {{ data['operator-postcode-search-2'] }}</p>
 </div>
 <div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert" tabindex="-1"
     data-module="error-summary">

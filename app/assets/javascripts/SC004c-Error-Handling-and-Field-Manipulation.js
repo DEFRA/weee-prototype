@@ -17,7 +17,9 @@ $(document).ready(function () {
                 $('#'+errorString).text('');
                 $('#'+name).removeClass('error-check');
                 currentValue = Number(currentValue);
-                grandTotal = grandTotal + currentValue;
+                grandTotal = Number(grandTotal);
+                grandTotal = grandTotal + currentValue;   
+                grandTotal = grandTotal.toFixed(3);
                 $('#tonneTotal').html(grandTotal + ' tonnes');
             }
         } else {
@@ -27,7 +29,9 @@ $(document).ready(function () {
                 $('#'+errorString).css('display', 'inline');
                 $('#'+name).addClass('error-check');
                 beforeValue = Number(beforeValue);
+                grandTotal = Number(grandTotal);
                 grandTotal = grandTotal - beforeValue;
+                grandTotal = grandTotal.toFixed(3);
                 $('#tonneTotal').html(grandTotal + ' tonnes');
             } else {
                 $('#'+name).parent().parent().removeClass("govuk-form-group--error");
@@ -35,8 +39,10 @@ $(document).ready(function () {
                 $('#'+errorString).css('display', 'none');
                 $('#'+name).removeClass('error-check');
                 currentValue = Number(currentValue);
+                grandTotal = Number(grandTotal);
                 var difference = currentValue - beforeValue;
                 grandTotal = grandTotal + difference;
+                grandTotal = grandTotal.toFixed(3);
                 $('#tonneTotal').html(grandTotal + ' tonnes');
             }
         }

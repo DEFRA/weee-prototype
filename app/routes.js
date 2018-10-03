@@ -692,6 +692,20 @@ router.post('/version1-3/AATF-Returns/weee-reused-as-a-whole-appliance-save', fu
     res.redirect('/version1-3/AATF-Returns/SC016-Reuse-Table')
 })
 
+router.post('/version1-3/AATF-Returns/weee-reused-as-a-whole-appliance-this-facility-save', function (req, res) {
+    var itemsb2b = [req.session.data['large-household-appliances-input-SC010-b2b'], req.session.data['small-household-appliances-input-SC010-b2b'], req.session.data['it-and-telecomms-input-SC010-b2b'], req.session.data['consumer-equipment-input-SC010-b2b'], req.session.data['lighting-equipment-input-SC010-b2b'], req.session.data['electrical-and-electronic-input-SC010-b2b'], req.session.data['toys-leisure-sports-input-SC010-b2b'], req.session.data['medical-devices-input-SC010-b2b'], req.session.data['monitoring-control-input-SC010-b2b'], req.session.data['automatic-dispensers-input-SC010-b2b'], req.session.data['display-equipment-input-SC010-b2b'], req.session.data['cooling-appliance-input-SC010-b2b'], req.session.data['gas-discharge-led-input-SC010-b2b'], req.session.data['photovolatic-panels-input-SC010-b2b']]
+    var items = [req.session.data['large-household-appliances-input-SC010'], req.session.data['small-household-appliances-input-SC010'], req.session.data['it-and-telecomms-input-SC010'], req.session.data['consumer-equipment-input-SC010'], req.session.data['lighting-equipment-input-SC010'], req.session.data['electrical-and-electronic-input-SC010'], req.session.data['toys-leisure-sports-input-SC010'], req.session.data['medical-devices-input-SC010'], req.session.data['monitoring-control-input-SC010'], req.session.data['automatic-dispensers-input-SC010'], req.session.data['display-equipment-input-SC010'], req.session.data['cooling-appliance-input-SC010'], req.session.data['gas-discharge-led-input-SC010'], req.session.data['photovolatic-panels-input-SC010']]
+    var result = 0;
+    for (var i = 0; i < items.length; i++) {
+        result += Number(items[i])
+    }
+    for (var i = 0; i < itemsb2b.length; i++) {
+        result += Number(itemsb2b[i])
+    }
+    req.session.data['WEEE-resused-as-a-whole-appliance-this-facility-result'] = result.toFixed(3)
+    res.redirect('/version1-3/AATF-Returns/SC008_3-Is-this-whole-weee-being-sent-to-another-site')
+})
+
 router.post('/version1-3/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save', function (req, res) {
     var items = [req.session.data['large-household-appliances-input-SC011'], req.session.data['small-household-appliances-input-SC011'], req.session.data['it-and-telecomms-input-SC011'], req.session.data['consumer-equipment-input-SC011'], req.session.data['lighting-equipment-input-SC011'], req.session.data['electrical-and-electronic-input-SC011'], req.session.data['toys-leisure-sports-input-SC011'], req.session.data['medical-devices-input-SC011'], req.session.data['monitoring-control-input-SC011'], req.session.data['automatic-dispensers-input-SC011'], req.session.data['display-equipment-input-SC011'], req.session.data['cooling-appliance-input-SC011'], req.session.data['gas-discharge-led-input-SC011'], req.session.data['photovolatic-panels-input-SC011']]
     var itemsb2b = [req.session.data['large-household-appliances-input-SC011-b2b'], req.session.data['small-household-appliances-input-SC011-b2b'], req.session.data['it-and-telecomms-input-SC011-b2b'], req.session.data['consumer-equipment-input-SC011-b2b'], req.session.data['lighting-equipment-input-SC011-b2b'], req.session.data['electrical-and-electronic-input-SC011-b2b'], req.session.data['toys-leisure-sports-input-SC011-b2b'], req.session.data['medical-devices-input-SC011-b2b'], req.session.data['monitoring-control-input-SC011-b2b'], req.session.data['automatic-dispensers-input-SC011-b2b'], req.session.data['display-equipment-input-SC011-b2b'], req.session.data['cooling-appliance-input-SC011-b2b'], req.session.data['gas-discharge-led-input-SC011-b2b'], req.session.data['photovolatic-panels-input-SC011-b2b']]
@@ -763,6 +777,40 @@ router.post('/version1-3/AATF-Returns/reusing-weee-answer', function (req, res) 
         res.redirect('/version1-3/AATF-Returns/SC006-PCS-Summary')
     } else {
         res.redirect('/version1-3/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2')
+        
+        //res.redirect('/version1-3/AATF-Returns/SC008_1-Is-this-whole-weee-being-reused-at-this-facility')
+    }
+})
+
+router.post('/version1-3/AATF-Returns/reusing-weee-answer-2', function (req, res) {
+    let answer = req.session.data['reusing-weee-2']
+
+    if (answer === 'false') {
+        res.redirect('/version1-3/AATF-Returns/SC015-Check-your-AATF-return')
+    } else {
+        res.redirect('/version1-3/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2')
+        
+        //res.redirect('/version1-3/AATF-Returns/SC008_1-Is-this-whole-weee-being-reused-at-this-facility')
+    }
+})
+
+router.post('/version1-3/AATF-Returns/reusing-weee-at-this-facility-answer', function (req, res) {
+    let answer = req.session.data['reusing-weee-at-this-facility']
+
+    if (answer === 'false') {
+        res.redirect('/version1-3/AATF-Returns/SC008_3-Is-this-whole-weee-being-sent-to-another-site')
+    } else {
+        res.redirect('/version1-3/AATF-Returns/SC010-WEEE-reused-as-a-whole-appliance-this-facility')
+    }
+})
+
+router.post('/version1-3/AATF-Returns/reusing-weee-sent-to-another-site-answer', function (req, res) {
+    let answer = req.session.data['reusing-weee-sent-to-another-site']
+
+    if (answer === 'false') {
+        res.redirect('/version1-3/AATF-Returns/SC006-PCS-Summary')
+    } else {
+        res.redirect('/version1-3/AATF-Returns/SC016-Reuse-Table')
     }
 })
 

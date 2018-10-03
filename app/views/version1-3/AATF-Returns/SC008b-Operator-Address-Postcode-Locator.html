@@ -16,65 +16,97 @@ href: "SC016-Are-you-sending-any-whole-weee"
         padding-top: 0px;
     }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var sentCompletedArray = [];
+        $('#input-address-button').click(function () {
+            $('#operator-postcode-search').val('');
+            $('#operator-name-search').val('');
+        })
+        $('#postcode-search-button').click(function () {
+            $('#operator-postcode').val('');
+            $('#operator-name').val('');
+            var sentName = $('#operator-name-search').val();
+            localStorage.setItem('completedSENT', sentName);
+        })
+    });
+</script>
 <h2 class="govuk-heading-l">Which ATF is this whole WEEE being sent to for treatment?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
 <form action="/version1-3/AATF-Returns/operator-address-postcode-save" method="post" class="form" style="display: inline">
     {{ govukInput({
     label: {
+    text: "Site Name"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "operator-name-search",
+    name: "operator-name-search"
+    }) }}
+    {{ govukInput({
+    label: {
     text: "Postcode"
     },
-    classes: "govuk-!-width-one-half",
+    classes: "govuk-!-width-one-third",
     id: "operator-postcode-search",
     name: "operator-postcode-search"
     }) }}
-    <button type="submit" class="govuk-button">
+    <button type="submit" class="govuk-button" id="postcode-search-button">
         Find address
     </button>
 
 
-<details class="govuk-details">
-    <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-            I can't find the operator's address
-        </span>
-    </summary>
-    <div class="govuk-details__text">
-        {{ govukInput({
-        label: {
-        text: "Building and street"
-        },
-        classes: "govuk-!-width-one-half",
-        id: "operator-building-street",
-        name: "operator-building-street"
-        }) }}
-        {{ govukInput({
-        label: {
-        text: "Town or city"
-        },
-        classes: "govuk-!-width-one-half",
-        id: "operator-town-city",
-        name: "operator-town-city"
-        }) }}
-        {{ govukInput({
-        label: {
-        text: "County"
-        },
-        classes: "govuk-!-width-one-third",
-        id: "operator-county",
-        name: "operator-county"
-        }) }}
-        {{ govukInput({
-        label: {
-        text: "Post code"
-        },
-        classes: "govuk-!-width-one-third",
-        id: "operator-postcode",
-        name: "operator-postcode"
-        }) }}
-        <button type="submit" class="govuk-button">
-            Save and continue
-        </button>
-    </div>
-</details>
+    <details class="govuk-details">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                I can't find the operator's address
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            {{ govukInput({
+            label: {
+            text: "Site name"
+            },
+            classes: "govuk-!-width-one-half",
+            id: "operator-name",
+            name: "operator-name"
+            }) }}
+            {{ govukInput({
+            label: {
+            text: "Building and street"
+            },
+            classes: "govuk-!-width-one-half",
+            id: "operator-building-street",
+            name: "operator-building-street"
+            }) }}
+            {{ govukInput({
+            label: {
+            text: "Town or city"
+            },
+            classes: "govuk-!-width-one-half",
+            id: "operator-town-city",
+            name: "operator-town-city"
+            }) }}
+            {{ govukInput({
+            label: {
+            text: "County"
+            },
+            classes: "govuk-!-width-one-third",
+            id: "operator-county",
+            name: "operator-county"
+            }) }}
+            {{ govukInput({
+            label: {
+            text: "Post code"
+            },
+            classes: "govuk-!-width-one-third",
+            id: "operator-postcode",
+            name: "operator-postcode"
+            }) }}
+            <button type="submit" class="govuk-button" id="input-address-button">
+                Save and continue
+            </button>
+        </div>
+    </details>
 </form>
 {% endblock %}
