@@ -76,7 +76,7 @@ $(document).ready(function () {
                 $('#'+errorString).css('display', 'inline');
                 $('#'+name).addClass('error-check');
                 beforeValue = Number(beforeValue);
-                grandTotalb2b = Number(grandTotal);
+                grandTotalb2b = Number(grandTotalb2b);
                 grandTotalb2b = grandTotalb2b - beforeValue;
                 grandTotalb2b = grandTotalb2b.toFixed(3);
                 $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
@@ -86,7 +86,7 @@ $(document).ready(function () {
                 $('#'+errorString).css('display', 'none');
                 $('#'+name).removeClass('error-check');
                 currentValue = Number(currentValue);
-                grandTotalb2b = Number(grandTotal);
+                grandTotalb2b = Number(grandTotalb2b);
                 var difference = currentValue - beforeValue;
                 grandTotalb2b = grandTotalb2b + difference;
                 grandTotalb2b = grandTotalb2b.toFixed(3);
