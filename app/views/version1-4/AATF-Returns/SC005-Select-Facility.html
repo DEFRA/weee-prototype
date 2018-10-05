@@ -1,4 +1,4 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "details/macro.njk" import govukDetails %}
@@ -15,7 +15,7 @@ href: "SC004a-Non-Obligated-WEEE"
 
 <h2 class="govuk-heading-l">Select a facility where the WEEE was received</h2>
 <p>Select a facility for which you need to provide the quarterly return</p>
-<form action="/version1-3/AATF-Returns/facility-save" method="post" class="form">
+<form action="/version1-4/AATF-Returns/facility-save" method="post" class="form">
   {{ govukSelect({
   id: "facilitySelect",
   name: "facilitySelect",

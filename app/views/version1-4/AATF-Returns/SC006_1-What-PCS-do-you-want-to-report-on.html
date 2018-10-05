@@ -1,4 +1,4 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% block pageTitle %}
@@ -23,7 +23,7 @@ href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
 </script>
 <h2 class="govuk-heading-l">What PCS has this WEEE been received from?</h2>
 <div class="govuk-!-padding-bottom-4"></div>
-<form action="/version1-3/AATF-Returns/scheme-add" method="post" class="form">
+<form action="/version1-4/AATF-Returns/scheme-add" method="post" class="form">
 {{ govukSelect({
     id: "schemeSelect",
     name: "schemeSelect",

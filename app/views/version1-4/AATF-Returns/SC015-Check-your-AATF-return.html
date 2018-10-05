@@ -1,4 +1,4 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {%- from "tag/macro.njk" import govukTag -%}
@@ -1186,7 +1186,7 @@ href: "SC006-PCS-Summary"
         </tr>
 </table>
 
-<form action="/version1-3/AATF-Returns/submit-aatf-return" method="post" class="form">
+<form action="/version1-4/AATF-Returns/submit-aatf-return" method="post" class="form">
     {{ govukButton({
     text: "Send"
     }) }}

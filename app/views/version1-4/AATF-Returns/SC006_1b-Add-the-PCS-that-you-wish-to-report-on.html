@@ -1,4 +1,4 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% block pageTitle %}
@@ -8,7 +8,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
+href: "SC006-Do-you-want-to-report-on-multiple-pcs"
 }) }}
 <style>
   #main-content {
@@ -74,7 +74,7 @@ href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
   <tbody>
   </tbody>
 </table>
-<form action="/version1-3/AATF-Returns/multiple-pcs-save" method="post" class="form">
+<form action="/version1-4/AATF-Returns/multiple-pcs-save" method="post" class="form">
 <button type="submit" class="govuk-button" id="multiple-pcs-save" style="display: none;">
     Save and Continue
   </button>

@@ -1,4 +1,4 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {%- from "tag/macro.njk" import govukTag -%}
@@ -19,7 +19,7 @@ href: "SC007-AATF-Tasklist"
 </style>
 <h2 class="govuk-heading-l">Would you like to add another PCS?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
-<form action="/version1-3/AATF-Returns/add-another-scheme-answer" method="post" class="form" style="display: inline">
+<form action="/version1-4/AATF-Returns/add-another-scheme-answer" method="post" class="form" style="display: inline">
     <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="another-scheme-yes" name="another-scheme" type="radio" value="true">

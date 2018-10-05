@@ -1,4 +1,4 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% block pageTitle %}
@@ -32,7 +32,7 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
                 $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td style="padding-left:10px;"><strong class="govuk-tag govuk-!-font-size-14">Completed</strong></td></tr>');
                 buttonCounter++;
             } else {
-                $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-3/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '?id=' + pcsIDArray[i] + '">Report</a></td><td></td></tr>');
+                $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-4/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '?id=' + pcsIDArray[i] + '">Report</a></td><td></td></tr>');
             }
         }
         if (buttonCounter == pcsNameArray.length) {
@@ -58,7 +58,7 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
     <tbody>
     </tbody>
 </table>
-<form action="/version1-3/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
+<form action="/version1-4/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
     <button type="submit" class="govuk-button" id="pcs-check-return" style="display: none;">
         Check my return
     </button>

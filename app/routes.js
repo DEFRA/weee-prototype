@@ -895,11 +895,11 @@ router.get('/version1-4/AATF-Returns/SC007-AATF-Tasklist', function (req, res) {
 })
 
 router.post('/version1-4/login-button', function (req, res) {
-    res.redirect('/version1-4/SC002-Portal-Landing-Page')
+    res.redirect('/version1-4/SC002-What-would-you-like-to-do')
 })
 
 router.post('/version1-4/AATF-Returns/save-and-continue', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC004-Are-you-reporting-on-any-non-obligated-weee')
+    res.redirect('/version1-4/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee')
 })
 
 router.post('/version1-4/AATF-Returns/save-and-continue-change', function (req, res) {
@@ -943,7 +943,7 @@ router.post('/version1-4/AATF-Returns/save-and-continue-change', function (req, 
 })
 
 router.post('/version1-4/AATF-Returns/non-obligated-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC004b-Are-you-reporting-on-any-DCF')
+    res.redirect('/version1-4/AATF-Returns/SC004_2-Are-you-reporting-on-any-non-obligated-weee-as-retained-by-a-dcf')
 })
 
 router.post('/version1-4/AATF-Returns/dcf-save', function (req, res) {
@@ -998,7 +998,7 @@ router.post('/version1-4/AATF-Returns/facility-cancel', function (req, res) {
 })
 
 router.post('/version1-4/AATF-Returns/facility-confirm', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC006x-Do-you-want-to-report-on-multiple-pcs')
+    res.redirect('/version1-4/AATF-Returns/SC006-Do-you-want-to-report-on-multiple-pcs')
 })
 
 router.post('/version1-4/AATF-Returns/scheme-add', function (req, res) {
