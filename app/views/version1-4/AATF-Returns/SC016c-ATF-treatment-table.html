@@ -1,0 +1,63 @@
+{% extends "version1-3/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "SC011-Whole-WEEE-sent-to-another-treatment"
+}) }}
+<style>
+    #main-content {
+    padding-top: 0px;
+  }
+  #atf-table-summary td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var pcsName = localStorage.getItem('completedPCS');
+        var pcsID = localStorage.getItem('completedPCSID');
+        var atfCounter = localStorage.getItem('atfCounter');
+        var atfArray = JSON.parse(localStorage.getItem('pcsIDArray'));
+        var headerString = pcsName + " - " + pcsID;
+        var buttonCounter = 0;
+        var sentCompletedArray = JSON.parse(localStorage.getItem('sentCompleteArray'));
+        
+        $('#SC016c-paragraph').html(headerString);
+        for (var i = 0; i < sentCompletedArray.length; i++) {
+            $('#atf-table-summary > tbody:last-child').append('<tr class="govuk-table__row"><td class="govuk-table__cell ">'+ sentCompletedArray[i] +'</td><td class="govuk-table__cell ">2 Waterloo Avenue</td><td class="govuk-table__cell ">Guildford</td><td class="govuk-table__cell ">United Kingdom</td><td class="govuk-table__cell ">GU22 7UY</td></tr>');
+        }
+    });
+</script>
+<p id="SC016c-paragraph" style="margin-bottom: 0px;"></p>
+<h2 class="govuk-heading-l" style="padding-top: 0px;">Report on whole WEEE sent to an ATF for treatment</h2>
+<div class="govuk-!-padding-bottom-4"></div>
+<table class="govuk-table govuk-!-font-size-16" id="atf-table-summary" style="margin-bottom: 0px;">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">ATF name</th>
+            <th class="govuk-table__header" scope="col">Street</th>
+            <th class="govuk-table__header" scope="col">Town</th>
+            <th class="govuk-table__header" scope="col">Country</th>
+            <th class="govuk-table__header" scope="col">Post Code</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-2"></div>
+<a href="/version1-3/AATF-Returns/SC008b-Operator-Address-Postcode-Locator" class="govuk-link--no-visited-state govuk-link">Add an ATF</a>
+<div class="govuk-!-padding-bottom-8"></div>
+<form action="/version1-3/AATF-Returns/atf-treatment-save" method="post" class="form" style="display: block">
+    <button type="submit" class="govuk-button" id="atf-treatment-save">
+        Save and continue
+    </button>
+</form>
+{% endblock %}
