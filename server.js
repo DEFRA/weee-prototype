@@ -268,6 +268,7 @@ if (typeof (routes) !== 'function') {
   routes.bind(app)
 } else {
   app.use('/', routes)
+
 }
 
 if (useDocumentation) {
