@@ -1,4 +1,22 @@
 const router = require('express').Router();
+const Facility = require('../../data/model')
+const Scheme = require('../../data/model')
+
+router.get('/version1-4/AATF-Returns/facilitydisplay', function (req, res) {
+    res.render('version1-4/facilityDisplay')
+})
+
+router.post('/version1-4/add-scheme', function (req, res) {
+    //var facility = req.session.data['facilities'].filter(facility => facility.name = 'facility 1');
+    var facilities = req.session.data['facilities'];
+    var name = req.session.data['schemeName'];
+    var newFac = new Facility(name, 5);
+    facilities.push(newFac);
+    req.session.data['facilities'] = facilities;
+    res.redirect('/version1-4/facilityDisplay')
+})
+
+
 
 router.get('/version1-4/AATF-Returns/SC005a-Select-Facility-Confirmation', function (req, res) {
     var facility = req.session.data['facilitySelect']

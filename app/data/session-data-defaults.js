@@ -16,9 +16,12 @@ Example usage:
 ============================================================================
 
 */
+const Facility = require('./model')
+const Scheme = require('./model')
 
 module.exports = {
-
-  // Insert values here
-
+  "facilities" : [
+    new Facility("facility 1", 1),
+    new Facility("facility 4", 3),
+  ] 
 }
