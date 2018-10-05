@@ -1,3 +1,5 @@
+const router = require('express').Router();
+
 router.get('/version1-4/AATF-Returns/SC005a-Select-Facility-Confirmation', function (req, res) {
     var facility = req.session.data['facilitySelect']
     if (facility == '') {
@@ -340,3 +342,5 @@ router.post('/version1-4/AATF-Returns/submit-aatf-return', function (req, res) {
 router.post('/version1-4/AATF-Returns/facility-address-postcode-save', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC007-AATF-Tasklist')
 })
+
+module.exports = router;
