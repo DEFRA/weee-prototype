@@ -1,7 +1,7 @@
-const router = express.Router()
+const router = require('express').Router();
 
-router.get('/', function (req, res) {
-    res.redirect('/version1-1/SC001-Home')
+router.post('/version1-1/login-button', function (req, res) {
+    res.redirect('/version1-1/SC002-Portal-Landing-Page')
 })
 
 router.get('/version1-1/AATF-Returns/SC005a-Select-Facility-Confirmation', function (req, res) {
@@ -18,10 +18,6 @@ router.get('/version1-1/AATF-Returns/SC007-AATF-Tasklist', function (req, res) {
         req.session.data['facilitySelect'] = "Facility 32323"
     }
     res.render('version1-1/AATF-Returns/SC007-AATF-Tasklist')
-})
-
-router.post('/version1-1/login-button', function (req, res) {
-    res.redirect('/version1-1/SC002-Portal-Landing-Page')
 })
 
 router.post('/version1-1/AATF-Returns/save-and-continue', function (req, res) {
@@ -214,3 +210,5 @@ router.post('/version1-1/AATF-Returns/submit-aatf-return', function (req, res) {
 router.post('/version1-1/AATF-Returns/facility-address-postcode-save', function (req, res) {
     res.redirect('/version1-1/AATF-Returns/SC007-AATF-Tasklist')
 })
+
+module.exports = router;
