@@ -1,0 +1,66 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
+}) }}
+<style>
+  #main-content {
+    padding-top: 0px;
+  }
+  #pcs-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+<h2 class="govuk-heading-l">Select all the PCSs that you need to report on</h2>
+<form action="/version1-4/AATF-Returns/add-pcs" method="post" class="form">
+<div class="govuk-!-padding-bottom-4"></div>
+  <div class="govuk-form-group">
+       <select class="govuk-select govuk-!-width-one-half" id="schemeselect" name="schemeselect">
+          {% for scheme in data['schemes']._schemes %}
+          <option value="{{ scheme._id }}">{{ scheme._name }}</option>
+          {% endfor %}
+      </select>
+    </div>
+  <div class="govuk-!-padding-bottom-4"></div>
+  <button type="submit" class="govuk-button" id="multiple-pcs-add">
+      Add
+    </button>
+  </form>
+  {% set schemeAdded = data['currentFacility']._pcs.length %}
+<div class="govuk-!-padding-bottom-7"></div>
+{% if schemeAdded> 0 %}
+<table class="govuk-table" id="pcs-table">
+{% else %}
+<table class="govuk-table" id="pcs-table" style="display: none;">
+{% endif %}
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">PCS Name</th>
+      <th class="govuk-table__header" scope="col">Approval No</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for scheme in data['currentFacility']._pcs %}
+      <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col">{{scheme._name}}</td>
+            <td class="govuk-table__cell" scope="col">{{scheme._id}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+</table>
+{% if schemeAdded> 0 %}
+<form action="/version1-4/AATF-Returns/multiple-pcs-save" method="post" class="form">
+<button type="submit" class="govuk-button" id="multiple-pcs-save">
+    Save and Continue
+  </button>
+</form>
+{% endif %}
+{% endblock %}

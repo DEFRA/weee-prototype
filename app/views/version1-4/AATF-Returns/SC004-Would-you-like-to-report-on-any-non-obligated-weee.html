@@ -1,7 +1,6 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
-{%- from "tag/macro.njk" import govukTag -%}
 {% block pageTitle %}
 GOV.UK Prototype Kit
 {% endblock %}
@@ -9,26 +8,26 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "SC008b-Operator-Address-Postcode-Locator"
+href: "SC003-AATF-Reporting-Details"
 }) }}
 <style>
         #main-content {
             padding-top: 0px;
         }
     </style>
-<h2 class="govuk-heading-l">Are the operator details the same as the facility details?</h2>
+<h2 class="govuk-heading-l">Would you like to report on any non-obligated WEEE?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
-<form action="/version1-3/AATF-Returns/operator-details-answer" method="post" class="form" style="display: inline">
+<form action="/version1-4/AATF-Returns/non-obligated-weee-answer" method="post" class="form" style="display: inline">
     <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="operator-details-yes" name="operator-details" type="radio" value="true">
-            <label class="govuk-label govuk-radios__label" for="another-scheme-yes">
+            <input class="govuk-radios__input" id="non-obligated-weee-yes" name="non-obligated-weee" type="radio" value="true">
+            <label class="govuk-label govuk-radios__label" for="non-obligated-weee-yes">
                 Yes
             </label>
         </div>
         <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="operator-details-no" name="operator-details" type="radio" value="false">
-            <label class="govuk-label govuk-radios__label" for="operator-details-no">
+            <input class="govuk-radios__input" id="non-obligated-weee-no" name="non-obligated-weee" type="radio" value="false">
+            <label class="govuk-label govuk-radios__label" for="non-obligated-weee-no">
                 No
             </label>
         </div>
@@ -38,4 +37,5 @@ href: "SC008b-Operator-Address-Postcode-Locator"
         Save and continue
     </button>
 </form>
+
 {% endblock %}

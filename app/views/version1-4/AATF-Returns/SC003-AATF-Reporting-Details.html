@@ -1,4 +1,4 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% block pageTitle %}
@@ -8,7 +8,7 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
   text: "Back",
-  href: "/version1-3/SC002-Portal-Landing-Page"
+  href: "/version1-4/SC002-Portal-Landing-Page"
 }) }}
 <style>
     #main-content {
@@ -16,7 +16,7 @@ GOV.UK Prototype Kit
     }
 </style>
 <h2 class="govuk-heading-l">AATF return details</h2>
-<form action="/version1-3/AATF-Returns/save-and-continue" method="post" class="form">
+<form action="/version1-4/AATF-Returns/save-and-continue" method="post" class="form">
   {{ govukSelect({
     id: "compliance-year",
     name: "compliance-year",

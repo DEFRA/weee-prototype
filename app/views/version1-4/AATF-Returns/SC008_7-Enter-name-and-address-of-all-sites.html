@@ -1,4 +1,4 @@
-{% extends "version1-3/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {% block pageTitle %}
@@ -30,7 +30,7 @@ href: "SC010-WEEE-reused-as-a-whole-appliance"
 
         $('#SC016c-paragraph').html(headerString);
         for (var i = 0; i < atfCompletedArray.length; i++) {
-            $('#reuse-table-summary > tbody:last-child').append('<tr class="govuk-table__row"><td class="govuk-table__cell ">'+ atfCompletedArray[i] +'</td><td class="govuk-table__cell ">???</td><td class="govuk-table__cell ">2 Waterloo Avenue</td><td class="govuk-table__cell ">Guildford</td><td class="govuk-table__cell ">United Kingdom</td><td class="govuk-table__cell ">GU22 7UY</td></tr>');
+            $('#reuse-table-summary > tbody:last-child').append('<tr class="govuk-table__row"><td class="govuk-table__cell ">PLACEHOLDER</td><td class="govuk-table__cell ">2 Waterloo Avenue</td><td class="govuk-table__cell ">Guildford</td><td class="govuk-table__cell ">United Kingdom</td><td class="govuk-table__cell ">GU22 7UY</td><td class="govuk-table__cell "><a href="" class="govuk-link govuk-link--no-visited-state">Remove</a></td></tr>');
         }
     });
 </script>
@@ -40,21 +40,21 @@ href: "SC010-WEEE-reused-as-a-whole-appliance"
 <table class="govuk-table govuk-!-font-size-16" id="reuse-table-summary" style="margin-bottom: 0px;">
     <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">ATF name</th>
-            <th class="govuk-table__header" scope="col">Permit No/Approval</th>
+            <th class="govuk-table__header" scope="col">Site name</th>
             <th class="govuk-table__header" scope="col">Street</th>
             <th class="govuk-table__header" scope="col">Town</th>
             <th class="govuk-table__header" scope="col">Country</th>
             <th class="govuk-table__header" scope="col">Post Code</th>
+            <th class="govuk-table__header" scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
     </tbody>
 </table>
 <div class="govuk-!-padding-bottom-2"></div>
-<a href="/version1-3/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2" class="govuk-link--no-visited-state govuk-link">Report on WEEE reused</a>
+<a href="/version1-4/AATF-Returns/SC008_5-Which-site-is-this-WEEE-being-sent-to-for-reuse-as-a-whole-appliance" class="govuk-link--no-visited-state govuk-link">Add site</a>
 <div class="govuk-!-padding-bottom-8"></div>
-<form action="/version1-3/AATF-Returns/reuse-treatment-save" method="post" class="form" style="display: block">
+<form action="/version1-4/AATF-Returns/reuse-treatment-save" method="post" class="form" style="display: block">
     <button type="submit" class="govuk-button" id="reuse-treatment-save">
         Save and continue
     </button>

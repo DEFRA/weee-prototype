@@ -1,0 +1,112 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance"
+}) }}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#input-address-button').click(function () {
+            $('#operator-postcode-search-2').val('');
+            $('#operator-name-search-2').val('');
+        })
+        $('#postcode-search-button').click(function () {
+            $('#operator-postcode-2').val('');
+            $('#operator-name-2').val('');
+            var atfName = $('#operator-name-search-2').val();
+            localStorage.setItem('completedATF', atfName);
+        })
+    });
+</script>
+<h2 class="govuk-heading-l">Which site is this WEEE being sent to for reuse as a whole appliance</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<input type="hidden" id="atfId" name="atfId"/>
+<form action="/version1-4/AATF-Returns/operator-address-postcode-save-2" method="post" class="form" style="display: inline">
+    {{ govukInput({
+    label: {
+    text: "Site Name"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "operator-name-search-2",
+    name: "operator-name-search-2"
+    }) }}
+    {{ govukInput({
+    label: {
+    text: "Postcode"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "operator-postcode-search-2",
+    name: "operator-postcode-search-2"
+    }) }}
+    <button type="submit" class="govuk-button" id="postcode-search-button">
+        Find address
+    </button>
+
+
+    <details class="govuk-details">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                I can't find the operator's address
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            {{ govukInput({
+            label: {
+            text: "Site name"
+            },
+            classes: "govuk-!-width-one-half",
+            id: "operator-name-2",
+            name: "operator-name-2"
+            }) }}
+            {{ govukInput({
+            label: {
+            text: "Building and street"
+            },
+            classes: "govuk-!-width-one-half",
+            id: "operator-building-street-2",
+            name: "operator-building-street-2"
+            }) }}
+            {{ govukInput({
+            label: {
+            text: "Town or city"
+            },
+            classes: "govuk-!-width-one-half",
+            id: "operator-town-city-2",
+            name: "operator-town-city-2"
+            }) }}
+            {{ govukInput({
+            label: {
+            text: "County"
+            },
+            classes: "govuk-!-width-one-third",
+            id: "operator-county-2",
+            name: "operator-county-2"
+            }) }}
+            {{ govukInput({
+            label: {
+            text: "Post code"
+            },
+            classes: "govuk-!-width-one-third",
+            id: "operator-postcode-2",
+            name: "operator-postcode-2"
+            }) }}
+            <button type="submit" class="govuk-button" id="input-address-button">
+                Save and continue
+            </button>
+        </div>
+    </details>
+</form>
+{% endblock %}

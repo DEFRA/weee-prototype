@@ -5,7 +5,7 @@ $(document).ready(function () {
     var atfArray = [];
     var atfCompleteArray = [];
     var sentCompleteArray = [];
-
+/* 
     $('#multiple-pcs-add').click(function() {
         var selectedValue = $('#multipleSchemeSelect option:selected').val();
         var pcsName = selectedValue.split('_')[0];
@@ -15,7 +15,7 @@ $(document).ready(function () {
         $('#pcs-table > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsName + '</td><td>' + pcsID + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td></tr>');
         $('#pcs-table').css('display', 'table');
         $('#multiple-pcs-save').css('display', 'block');
-    });
+    }); */
 
     $('#weee-reused-at-another-site').click(function() {
         var completedArray = JSON.parse(localStorage.getItem('pcsCompleteArray'));
