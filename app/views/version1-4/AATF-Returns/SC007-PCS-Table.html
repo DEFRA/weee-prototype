@@ -19,28 +19,6 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
     padding-bottom: 5px;
   }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-/*
-    $(document).ready(function () {
-        var pcsNameArray = JSON.parse(localStorage.getItem('pcsNameArray'));
-        var pcsIDArray = JSON.parse(localStorage.getItem('pcsIDArray'));
-        var pcsCompleteArray = JSON.parse(localStorage.getItem('pcsCompleteArray'));
-        var buttonCounter = 0;
-
-        for (var i = 0; i < pcsNameArray.length; i++) {
-            if ($.inArray(pcsNameArray[i], pcsCompleteArray) !== -1) {
-                $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td style="padding-left:10px;"><strong class="govuk-tag govuk-!-font-size-14">Completed</strong></td></tr>');
-                buttonCounter++;
-            } else {
-                $('#pcs-table-summary > tbody:last-child').append('<tr style="border-bottom: 1px solid #bfc1c3; padding-top: 5px; padding-bottom: 5px;"><td>' + pcsNameArray[i] + '</td><td>' + pcsIDArray[i] + '</td><td>1 Waterloo Avenue</td>><td>Guildford</td><td>United Kingdom</td>><td>GU22 7UY</td><td><a href="/version1-4/AATF-Returns/SC009-WEEE-received-for-treatment?pcs=' + pcsNameArray[i] + '?id=' + pcsIDArray[i] + '">Report</a></td><td></td></tr>');
-            }
-        }
-        if (buttonCounter == pcsNameArray.length) {
-            $('#pcs-check-return').css('display', 'inline');
-        }
-    });*/
-</script>
 <h2 class="govuk-heading-l">PCSs that you need to report WEEE received from</h2>
 <div class="govuk-!-padding-bottom-4"></div>
 <table class="govuk-table govuk-!-font-size-16" id="pcs-table-summary">
@@ -48,21 +26,17 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
         <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">PCS Name</th>
             <th class="govuk-table__header" scope="col">Approval No</th>
-            <th class="govuk-table__header" scope="col">Street</th>
-            <th class="govuk-table__header" scope="col">Town</th>
-            <th class="govuk-table__header" scope="col">Country</th>
-            <th class="govuk-table__header" scope="col">Post Code</th>
             <th class="govuk-table__header" scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
-        <td class="govuk-table__cell" scope="col">PLACEHOLDER</td>
-        <td class="govuk-table__cell" scope="col">WEEE/AB1234GH/ATF</td>
-        <td class="govuk-table__cell" scope="col">1 Stratford Avenue</td>
-        <td class="govuk-table__cell" scope="col">Hammersmith</td>
-        <td class="govuk-table__cell" scope="col">United Kingdom</td>
-        <td class="govuk-table__cell" scope="col">W4 5YH</td>
-        <td class="govuk-table__cell" scope="col"><a href="SC009-Enter-WEEE-that-has-been-received-for-treatment.html" class="govuk-link govuk-link--no-visited-state">Report</a></td>
+            {% for scheme in data['currentFacility']._pcs %}
+            <tr class="govuk-table__row">
+                  <td class="govuk-table__cell" scope="col">{{scheme._name}}</td>
+                  <td class="govuk-table__cell" scope="col">{{scheme._id}}</td>
+                  <td class="govuk-table__cell" scope="col"><a href="SC009-Enter-WEEE-that-has-been-received-for-treatment.html" class="govuk-link govuk-link--no-visited-state">Report</a></td>
+              </tr>
+              {% endfor %}
     </tbody>
 </table>
 <div class="govuk-!-padding-bottom-4"></div>

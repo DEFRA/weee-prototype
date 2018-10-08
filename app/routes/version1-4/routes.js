@@ -4,13 +4,22 @@ const Facility = require('../../data/facility');
 const Period = require('../../data/period');
 const Operator = require('../../data/operator');
 const Categories = require('../../data/categories');
+const Scheme = require('../../data/scheme');
+
+
+function filterById(item, compareId){
+    if (parseInt(item._id) === parseInt(compareId)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 
 router.get('/version1-4/AATF-Returns/SC002_1-My-facilities', function (req, res) {
     var period = req.session.data['period'];
     var facility = period._facilities[1];
-    console.log(facility);
-    console.debug(period);
-    res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
+        res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
 })
 
 
@@ -20,7 +29,6 @@ router.get('/version1-4/AATF-Returns/facilitydisplay', function (req, res) {
 })
 
 router.get('/version1-4/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee', function (req, res) {
-    console.log(req.session.data.operator);  
     res.render('version1-4/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee')
 })
 
@@ -133,7 +141,7 @@ router.post('/version1-4/AATF-Returns/dcf-save', function (req, res) {
     req.session.data['photovolatic-panels-input-SC004c-DCF']);
 
     req.session.data.period = period;
-    console.log(period)
+
     res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities');
 })
 
@@ -200,6 +208,37 @@ router.post('/version1-4/AATF-Returns/scheme-confirm', function (req, res) {
 
 router.post('/version1-4/AATF-Returns/scheme-cancel', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on')
+})
+
+router.get('/version1-4/AATF-Returns/What-PCS-do-you-want-to-report-on', function(req, res) {    
+    var currentFacility = req.session.data.period._facilities.filter(function(facility){
+        if (parseInt(facility._id) === parseInt(req.session.data.facilityId)){
+            return true;
+        }
+    });
+    req.session.data.currentFacility = currentFacility;
+    res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on?facility=' + req.session.data.facility + '&facilityId=' + req.session.data.facilityId)
+})
+
+router.post('/version1-4/AATF-Returns/add-pcs', function (req, res) {
+    var period = req.session.data.period;
+    var currentFacility = req.session.data.period._facilities.filter(function(facility){
+        if (parseInt(facility._id) === parseInt(req.session.data.facilityId)){
+            return true;
+        }
+    });
+    
+    var selectedScheme = req.session.data.schemes._schemes.filter(function(scheme){
+        console.log(req.session.data.schemeselect);
+        if (scheme._id === req.session.data.schemeselect){
+            return true;
+        }
+    }); 
+ 
+    currentFacility[0]._pcs.push(selectedScheme[0]);
+    req.session.data.period = period;
+    req.session.data.currentFacility = currentFacility[0];
+    res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on?facility=' + req.session.data.facility + '&facilityId=' + req.session.data.facilityId)
 })
 
 router.post('/version1-4/AATF-Returns/weee-received-for-treatment-save', function (req, res) {
@@ -373,8 +412,6 @@ router.post('/version1-4/AATF-Returns/atf-same-as-operator-answer', function (re
 })
 
 router.post('/version1-4/AATF-Returns/non-obligated-weee-answer', function (req, res) {
-    console.log(req.session.data.operator)
-
     let answer = req.session.data['non-obligated-weee']
 
     if (answer === 'false') {
