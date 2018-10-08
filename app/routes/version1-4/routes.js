@@ -133,6 +133,10 @@ router.post('/version1-4/AATF-Returns/scheme-confirm', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
 })
 
+router.post('/version1-4/AATF-Returns/aatf-option-select', function (req, res) {
+    res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on')
+})
+
 router.post('/version1-4/AATF-Returns/scheme-cancel', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on')
 })
@@ -148,7 +152,7 @@ router.post('/version1-4/AATF-Returns/weee-received-for-treatment-save', functio
         result += Number(itemsb2b[i])
     }
     req.session.data['WEEE-received-for-treatment-result'] = result.toFixed(3);    
-    res.redirect('/version1-4/AATF-Returns/SC016-Are-you-sending-any-whole-weee');
+    res.redirect('/version1-4/AATF-Returns/SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment');
 })
 
 router.post('/version1-4/AATF-Returns/weee-reused-as-a-whole-appliance-save', function (req, res) {
@@ -190,7 +194,7 @@ router.post('/version1-4/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
         result += Number(itemsb2b[i])
     }
     req.session.data['Whole-WEEE-sent-to-another-treatment-result'] = result.toFixed(3)
-    res.redirect('/version1-4/AATF-Returns/SC016c-ATF-treatment-table')
+    res.redirect('/version1-4/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment')
 })
 
 router.post('/version1-4/AATF-Returns/add-another-scheme', function (req, res) {
@@ -198,11 +202,11 @@ router.post('/version1-4/AATF-Returns/add-another-scheme', function (req, res) {
 })
 
 router.post('/version1-4/AATF-Returns/atf-treatment-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance')
+    res.redirect('/version1-4/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance')
 })
 
 router.post('/version1-4/AATF-Returns/reuse-treatment-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC006-PCS-Summary')
+    res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
 })
 
 router.post('/version1-4/AATF-Returns/add-another-scheme-answer', function (req, res) {
@@ -219,9 +223,9 @@ router.post('/version1-4/AATF-Returns/whole-weee-answer', function (req, res) {
     let answer = req.session.data['whole-weee']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC008-Are-you-reusing-any-WEEE-as-a-whole-appliance')
+        res.redirect('/version1-4/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance')
     } else {
-        res.redirect('/version1-4/AATF-Returns/SC008b-Operator-Address-Postcode-Locator')
+        res.redirect('/version1-4/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment')
     }
 })
 
@@ -236,7 +240,7 @@ router.post('/version1-4/AATF-Returns/multiple-scheme-select-answer', function (
 })
 
 router.post('/version1-4/AATF-Returns/multiple-pcs-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC006-PCS-Summary')
+    res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
 })
 
 router.post('/version1-4/AATF-Returns/pcs-check-my-return', function (req, res) {
@@ -247,9 +251,9 @@ router.post('/version1-4/AATF-Returns/reusing-weee-answer', function (req, res) 
     let answer = req.session.data['reusing-weee']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC006-PCS-Summary')
+        res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
     } else {
-        res.redirect('/version1-4/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2')
+        res.redirect('/version1-4/AATF-Returns/SC008_2-Enter-WEEE-that-has-been-reused-as-a-whole-appliance')
         
         //res.redirect('/version1-4/AATF-Returns/SC008_1-Is-this-whole-weee-being-reused-at-this-facility')
     }
@@ -281,9 +285,9 @@ router.post('/version1-4/AATF-Returns/reusing-weee-sent-to-another-site-answer',
     let answer = req.session.data['reusing-weee-sent-to-another-site']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC006-PCS-Summary')
+        res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
     } else {
-        res.redirect('/version1-4/AATF-Returns/SC016-Reuse-Table')
+        res.redirect('/version1-4/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites')
     }
 })
 
@@ -294,6 +298,16 @@ router.post('/version1-4/AATF-Returns/operator-details-answer', function (req, r
         res.redirect('/version1-4/AATF-Returns/SC008c-Facility-Address-Locator')
     } else {
         res.redirect('/version1-4/AATF-Returns/SC007-AATF-Tasklist')
+    }
+})
+
+router.post('/version1-4/AATF-Returns/atf-same-as-operator-answer', function (req, res) {
+    let answer = req.session.data['atf-same-as-operator']
+
+    if (answer === 'false') {
+        res.redirect('/version1-4/AATF-Returns/SC016_2b-Provide-the-address-of-the-atf')
+    } else {
+        res.redirect('/version1-4/AATF-Returns/SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment')
     }
 })
 
@@ -326,22 +340,26 @@ router.post('/version1-4/AATF-Returns/operator-address-postcode-save', function 
     var pcsId = req.session.data['pcsId'];
     var pcs = req.session.data['pcs'];
 
-    res.redirect('/version1-4/AATF-Returns/SC011-Whole-WEEE-sent-to-another-treatment?pcs=' + pcs + '&id=' + pcsId)
+    res.redirect('/version1-4/AATF-Returns/SC016_2a-Is-the-atf-address-the-same-as-the-facility')
+})
+
+router.post('/version1-4/AATF-Returns/operator-address-postcode-atf-save', function (req, res) {
+
+    var pcsId = req.session.data['pcsId'];
+    var pcs = req.session.data['pcs'];
+
+    res.redirect('/version1-4/AATF-Returns/SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment')
 })
 
 router.post('/version1-4/AATF-Returns/operator-address-postcode-save-2', function (req, res) {
     var pcsId = req.session.data['pcsId'];
     var pcs = req.session.data['pcs'];
 
-    res.redirect('/version1-4/AATF-Returns/SC010-WEEE-reused-as-a-whole-appliance?pcs=' + pcs + '&id=' + pcsId)
+    res.redirect('/version1-4/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites')
 })
 
 router.post('/version1-4/AATF-Returns/submit-scheme-for-approval', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC015-Check-your-AATF-return')
-})
-
-router.post('/version1-4/AATF-Returns/multiple-pcs-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC006-PCS-Summary')
 })
 
 router.post('/version1-4/AATF-Returns/submit-aatf-return', function (req, res) {
