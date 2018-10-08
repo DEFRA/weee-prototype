@@ -17,21 +17,8 @@ router.post('/version1-4/add-scheme', function (req, res) {
 })
 
 
-
-router.get('/version1-4/AATF-Returns/SC005a-Select-Facility-Confirmation', function (req, res) {
-    var facility = req.session.data['facilitySelect']
-    if (facility == '') {
-        req.session.data['facilitySelect'] = "Facility 3232"
-    }
-    res.render('version1-4/AATF-Returns/SC005a-Select-Facility-Confirmation')
-})
-
-router.get('/version1-4/AATF-Returns/SC007-AATF-Tasklist', function (req, res) {
-    res.render('version1-4/AATF-Returns/SC007-AATF-Tasklist')
-})
-
 router.post('/version1-4/login-button', function (req, res) {
-    res.redirect('/version1-4/SC002-Portal-Landing-Page')
+    res.redirect('/version1-4/SC002-What-would-you-like-to-do')
 })
 
 router.post('/version1-4/AATF-Returns/save-and-continue', function (req, res) {
@@ -79,11 +66,11 @@ router.post('/version1-4/AATF-Returns/save-and-continue-change', function (req, 
 })
 
 router.post('/version1-4/AATF-Returns/non-obligated-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC004b-Are-you-reporting-on-any-DCF')
+    res.redirect('/version1-4/AATF-Returns/SC004_2-Are-you-reporting-on-any-non-obligated-weee-as-retained-by-a-dcf')
 })
 
 router.post('/version1-4/AATF-Returns/dcf-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC005-Select-Facility')
+    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
 })
 
 router.post('/version1-4/AATF-Returns/facility-save', function (req, res) {
@@ -139,11 +126,15 @@ router.post('/version1-4/AATF-Returns/scheme-add', function (req, res) {
     req.session.data['WEEE-received-for-treatment-result'] = "0.000"
     req.session.data['WEEE-resused-as-a-whole-appliance-result'] = "0.000"
     req.session.data['Whole-WEEE-sent-to-another-treatment-result'] = "0.000"
-    res.redirect('/version1-4/AATF-Returns/SC006a-Scheme-confirmation')
+    res.redirect('/version1-4/AATF-Returns/SC006_1a-Is-this-the-correct-PCS-that-you-wish-to-report-on')
 })
 
 router.post('/version1-4/AATF-Returns/scheme-confirm', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC009-WEEE-received-for-treatment')
+    res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
+})
+
+router.post('/version1-4/AATF-Returns/scheme-cancel', function (req, res) {
+    res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on')
 })
 
 router.post('/version1-4/AATF-Returns/weee-received-for-treatment-save', function (req, res) {
@@ -310,9 +301,9 @@ router.post('/version1-4/AATF-Returns/non-obligated-weee-answer', function (req,
     let answer = req.session.data['non-obligated-weee']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC004b-Are-you-reporting-on-any-DCF')
+        res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
     } else {
-        res.redirect('/version1-4/AATF-Returns/SC004a-Non-Obligated-WEEE')
+        res.redirect('/version1-4/AATF-Returns/SC004_1-Enter-non-obligated-WEEE')
     }
 })
 
@@ -320,9 +311,9 @@ router.post('/version1-4/AATF-Returns/non-obligated-weee-DCF-answer', function (
     let answer = req.session.data['non-obligated-weee-DCF']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC005-Select-Facility')
+        res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
     } else {
-        res.redirect('/version1-4/AATF-Returns/SC004c-DCF-Entry')
+        res.redirect('/version1-4/AATF-Returns/SC004_2a-Add-any-DCF-data')
     }
 })
 

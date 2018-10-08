@@ -21,6 +21,7 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+/*
     $(document).ready(function () {
         var pcsNameArray = JSON.parse(localStorage.getItem('pcsNameArray'));
         var pcsIDArray = JSON.parse(localStorage.getItem('pcsIDArray'));
@@ -38,9 +39,9 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
         if (buttonCounter == pcsNameArray.length) {
             $('#pcs-check-return').css('display', 'inline');
         }
-    });
+    });*/
 </script>
-<h2 class="govuk-heading-l">PCS</h2>
+<h2 class="govuk-heading-l">PCSs that you need to report WEEE received from</h2>
 <div class="govuk-!-padding-bottom-4"></div>
 <table class="govuk-table govuk-!-font-size-16" id="pcs-table-summary">
     <thead class="govuk-table__head">
@@ -51,16 +52,30 @@ href: "SC006-Add-the-PCS-that-you-wish-to-report"
             <th class="govuk-table__header" scope="col">Town</th>
             <th class="govuk-table__header" scope="col">Country</th>
             <th class="govuk-table__header" scope="col">Post Code</th>
-            <th class="govuk-table__header" scope="col"></th>
-            <th class="govuk-table__header" scope="col"></th>
         </tr>
     </thead>
     <tbody>
+        <td class="govuk-table__cell" scope="col">PLACEHOLDER</td>
+        <td class="govuk-table__cell" scope="col">WEEE/AB1234GH/ATF</td>
+        <td class="govuk-table__cell" scope="col">1 Stratford Avenue</td>
+        <td class="govuk-table__cell" scope="col">Hammersmith</td>
+        <td class="govuk-table__cell" scope="col">United Kingdom</td>
+        <td class="govuk-table__cell" scope="col">W4 5YH</td>
     </tbody>
 </table>
+<div class="govuk-!-padding-bottom-4"></div>
 <form action="/version1-4/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
-    <button type="submit" class="govuk-button" id="pcs-check-return" style="display: none;">
-        Check my return
-    </button>
+    <table class="govuk-table">
+        <tr class="govuk-table__row">
+            <td>
+                <button type="submit" class="govuk-button" id="pcs-check-return" style="margin-bottom: 0px;">
+                    Start Report
+                </button>
+            </td>
+            <td>
+                <a href="SC002_1-My-facilities.html" class="govuk-link govuk-link--no-visited-state">My facilities</a>
+            </td>
+        </tr>
+    </table>
 </form>
 {% endblock %}
