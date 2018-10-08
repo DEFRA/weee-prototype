@@ -62,14 +62,15 @@ href: "/version1-4/SC002-Portal-Landing-Page"
             </tr>
         </thead>
         <tbody>
+            {% set operator = data['period']._operator %}
             <tr class="govuk-table__row">
-                <td class="govuk-table__cell" scope="col">Abb Ltd</td>
-                <td class="govuk-table__cell" scope="col">WEEE/AB1234GH/ATF</td>
-                <td class="govuk-table__cell" scope="col">1 Stratford Avenue</td>
-                <td class="govuk-table__cell" scope="col">Hammersmith</td>
-                <td class="govuk-table__cell" scope="col">United Kingdom</td>
-                <td class="govuk-table__cell" scope="col">W4 5YH</td>
-                <td class="govuk-table__cell" scope="col"><a href="SC004-Would-you-like-to-report-on-any-non-obligated-weee.html" class="govuk-link govuk-link--no-visited-state">Start
+                <td class="govuk-table__cell" scope="col">{{operator._name }}</td>
+                <td class="govuk-table__cell" scope="col">{{operator._approvalNumber }}</td>
+                <td class="govuk-table__cell" scope="col">{{operator._address._street }}</td>
+                <td class="govuk-table__cell" scope="col">{{operator._address._town }}</td>
+                <td class="govuk-table__cell" scope="col">{{operator._address._country }}</td>
+                <td class="govuk-table__cell" scope="col">{{operator._address._postcode }}</td>
+                <td class="govuk-table__cell" scope="col"><a href="SC004-Would-you-like-to-report-on-any-non-obligated-weee?operator={{operator._name }}" class="govuk-link govuk-link--no-visited-state">Start
                         report</a></td>
             </tr>
         </tbody>
@@ -89,17 +90,18 @@ href: "/version1-4/SC002-Portal-Landing-Page"
             </tr>
         </thead>
         <tbody>
-            <tr class="govuk-table__row">
-                <td class="govuk-table__cell" scope="col">Abb Ltd Darlaston</td>
-                <td class="govuk-table__cell" scope="col">WEEE/AB1234GH/ATF</td>
-                <td class="govuk-table__cell" scope="col">-</td>
-                <td class="govuk-table__cell" scope="col">-</td>
-                <td class="govuk-table__cell" scope="col">-</td>
-                <td class="govuk-table__cell" scope="col">Not started</td>
-                <td class="govuk-table__cell" scope="col"><a href="SC006_1-What-PCS-do-you-want-to-report-on.html" class="govuk-link govuk-link--no-visited-state">Start
-                        report</a></td>
-            </tr>
-            
+      {% for facility in data['period']._facilities %}
+      <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col">{{facility._name}}</td>
+            <td class="govuk-table__cell" scope="col">{{facility._approvalNumber}}</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col">Not started</td>
+            <td class="govuk-table__cell" scope="col"><a href="SC006_1-What-PCS-do-you-want-to-report-on?facility={{facility._name}}&facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Start
+                    report</a></td>
+        </tr>
+        {% endfor %}
         </tbody>
     </table>
 </form>

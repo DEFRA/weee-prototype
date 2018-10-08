@@ -1,10 +1,32 @@
 const router = require('express').Router();
-const Facility = require('../../data/model')
-const Scheme = require('../../data/model')
+const Address = require('../../data/address');
+const Facility = require('../../data/facility');
+const Period = require('../../data/period');
+const Operator = require('../../data/operator');
+const Categories = require('../../data/categories');
+
+router.get('/version1-4/AATF-Returns/SC002_1-My-facilities', function (req, res) {
+    var period = req.session.data['period'];
+    var facility = period._facilities[1];
+    console.log(facility);
+    console.debug(period);
+    res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
+})
+
+
 
 router.get('/version1-4/AATF-Returns/facilitydisplay', function (req, res) {
     res.render('version1-4/facilityDisplay')
 })
+
+router.get('/version1-4/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee', function (req, res) {
+    console.log(req.session.data.operator);  
+    res.render('version1-4/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee')
+})
+
+
+
+
 
 router.post('/version1-4/add-scheme', function (req, res) {
     //var facility = req.session.data['facilities'].filter(facility => facility.name = 'facility 1');
@@ -66,11 +88,53 @@ router.post('/version1-4/AATF-Returns/save-and-continue-change', function (req, 
 })
 
 router.post('/version1-4/AATF-Returns/non-obligated-save', function (req, res) {
+
+    var period = req.session.data.period;
+    var currentOperator = period._operator;
+
+    currentOperator._categories = new Categories(req.session.data['large-household-appliances-input-SC004'],
+    req.session.data['small-household-appliances-input-SC004'],
+    req.session.data['it-and-telecomms-input-SC004'],
+    req.session.data['consumer-equipment-input-SC004'],
+    req.session.data['lighting-equipment-input-SC004'],
+    req.session.data['electrical-and-electronic-input-SC004'],
+    req.session.data['toys-leisure-sports-input-SC004'],
+    req.session.data['medical-devices-input-SC004'],
+    req.session.data['monitoring-control-input-SC004'],
+    req.session.data['automatic-dispensers-input-SC004'],
+    req.session.data['display-equipment-input-SC004'],
+    req.session.data['cooling-appliance-input-SC004'],
+    req.session.data['gas-discharge-led-input-SC004'],
+    req.session.data['photovolatic-panels-input-SC004']);
+
+    req.session.data.period = period;
+    
     res.redirect('/version1-4/AATF-Returns/SC004_2-Are-you-reporting-on-any-non-obligated-weee-as-retained-by-a-dcf')
 })
 
 router.post('/version1-4/AATF-Returns/dcf-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+    
+    var period = req.session.data.period;
+    var currentOperator = period._operator;
+    
+    currentOperator._categoriesDcf = new Categories(req.session.data['large-household-appliances-input-SC004c-DCF'],
+    req.session.data['small-household-appliances-input-SC004c-DCF'],
+    req.session.data['it-and-telecomms-input-SC004c-DCF'],
+    req.session.data['consumer-equipment-input-SC004c-DCF'],
+    req.session.data['lighting-equipment-input-SC004c-DCF'],
+    req.session.data['electrical-and-electronic-input-SC004c-DCF'],
+    req.session.data['toys-leisure-sports-input-SC004c-DCF'],
+    req.session.data['medical-devices-input-SC004c-DCF'],
+    req.session.data['monitoring-control-input-SC004c-DCF'],
+    req.session.data['automatic-dispensers-input-SC004c-DCF'],
+    req.session.data['display-equipment-input-SC004c-DCF'],
+    req.session.data['cooling-appliance-input-SC004c-DCF'],
+    req.session.data['gas-discharge-led-input-SC004c-DCF'],
+    req.session.data['photovolatic-panels-input-SC004c-DCF']);
+
+    req.session.data.period = period;
+    console.log(period)
+    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities');
 })
 
 router.post('/version1-4/AATF-Returns/facility-save', function (req, res) {
@@ -132,6 +196,7 @@ router.post('/version1-4/AATF-Returns/scheme-add', function (req, res) {
 router.post('/version1-4/AATF-Returns/scheme-confirm', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
 })
+
 
 router.post('/version1-4/AATF-Returns/scheme-cancel', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on')
@@ -298,6 +363,8 @@ router.post('/version1-4/AATF-Returns/operator-details-answer', function (req, r
 })
 
 router.post('/version1-4/AATF-Returns/non-obligated-weee-answer', function (req, res) {
+    console.log(req.session.data.operator)
+
     let answer = req.session.data['non-obligated-weee']
 
     if (answer === 'false') {
