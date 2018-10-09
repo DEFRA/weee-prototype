@@ -64,13 +64,6 @@ router.get('/version1-4/AATF-Returns/SC002_1-My-facilities', function (req, res)
     for (i = 0; i < period._facilities.length; i++){
         //period._facilities[i]
     }
-    
-    //console.log(CategoryTotal(period._category._categories));
-    //var operator = period._operator.getOperatorTotal;
-    //console.log(operator);
-    //period._operator.getOperatorTotal())
-
-    //req.session.data['period']. ;
 
     res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
 })
@@ -398,7 +391,6 @@ router.post('/version1-4/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
 
     req.session.data['period'] = period;
     req.session.data['selectedScheme'] = updateScheme[0];
-    console.log(req.session.data['selectedScheme']);
     req.session.data['Whole-WEEE-sent-to-another-treatment-result'] = result.toFixed(3)
 
     res.redirect('/version1-4/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment')
@@ -547,8 +539,9 @@ router.post('/version1-4/AATF-Returns/atf-same-as-operator-answer', function (re
             }
         }); 
         
+        var newOperator = new Operator(operator._name, 0, '',  operator._address._street, operator._address._town, operator._address._country, operator._address._postcode);
+        selectedAtf[0]._atfAddress = newOperator;
 
-        selectedAtf[0]._atfAddress = new Address(operator._address._street, operator._address._town, operator._address._country, operator._address._postcode);
         req.session.data['period'] = period;
         res.redirect('/version1-4/AATF-Returns/SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment')
     }
@@ -641,17 +634,56 @@ router.post('/version1-4/AATF-Returns/operator-address-postcode-save', function 
 })
 
 router.post('/version1-4/AATF-Returns/operator-address-postcode-atf-save', function (req, res) {
+    var period = req.session.data['period'];
+    var selectedScheme = GetSelectedScheme(period, req.session.data["selectedFacility"]._id, req.session.data["selectedScheme"]._id);
 
-    var pcsId = req.session.data['pcsId'];
-    var pcs = req.session.data['pcs'];
+    
+    var operatorName;
+    var operatorPostcode;
+    if (req.session.data['operator-name'] !== '')
+    {
+        operatorName = req.session.data['operator-name'];
+    }
+    else{
+        operatorName = req.session.data['operator-name-search'];
+    }
+    if (req.session.data['operator-postcode'] !== '')
+    {
+        operatorPostcode = req.session.data['operator-postcode'];
+    }
+    else{
+        operatorPostcode = req.session.data['operator-postcode-search'];
+    }
+    
+    var selectedAtf = selectedScheme._sentOnOperatorCollection.filter(function(senton){
+        if (parseInt(senton._id) === parseInt(req.session.data['selectedSentOnForTreatmentId'])){
+            return true;
+        }
+    }); 
+    console.log(selectedAtf[0]);
+
+    var newOperator = new Operator(operatorName, selectedScheme._sentOnOperatorCollection.length, '',  req.session.data['operator-building-street'],  req.session.data['operator-town-city'],  req.session.data['operator-county'], operatorPostcode);
+    selectedAtf[0]._atfAddress = newOperator;
+
+    req.session.data['period'] = period;
 
     res.redirect('/version1-4/AATF-Returns/SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment')
 })
 
 router.post('/version1-4/AATF-Returns/operator-address-postcode-save-2', function (req, res) {
-    var pcsId = req.session.data['pcsId'];
-    var pcs = req.session.data['pcs'];
-
+   
+    /* var operatorPostcode;
+    if (req.session.data['operator-postcode'] !== '')
+    {
+        operatorPostcode = req.session.data['operator-postcode'];
+    }
+    else{
+        operatorPostcode = req.session.data['operator-postcode-search'];
+    }
+    
+    selectedAtf[0].atfAddress =   new Address(req.session.data['operator-building-street'],  req.session.data['operator-town-city'],  req.session.data['operator-county'], operatorPostcode);
+    req.session.data['period'] = period;
+ */
     res.redirect('/version1-4/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites')
 })
 
