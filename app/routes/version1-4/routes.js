@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const Address = require('../../data/address');
-const Facility = require('../../data/facility');
-const Period = require('../../data/period');
-const Operator = require('../../data/operator');
-const Categories = require('../../data/categories');
-const Scheme = require('../../data/scheme');
-const Schemes = require('../../data/schemes');
+const Address = require('../../assets/javascripts/address');
+const Facility = require('../../assets/javascripts/facility');
+const Period = require('../../assets/javascripts/period');
+const Operator = require('../../assets/javascripts/operator');
+const Categories = require('../../assets/javascripts/categories');
+const Scheme = require('../../assets/javascripts/scheme');
+const Schemes = require('../../assets/javascripts/schemes');
 
 
 function CategoriesTotal(category){
@@ -59,11 +59,12 @@ function CategoriesTotal(category){
 router.get('/version1-4/AATF-Returns/My-facilities', function (req, res) {
 
     var period = req.session.data['period'];
-    
+    console.log(period);
+    //console.log(CategoriesTotal(period._operator._categories))
     period._operator._wee = CategoriesTotal(period._operator._categories);
     period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf);
 
-    console.log(period);
+    
     req.session.data['period'] = period;
 
     res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
@@ -184,10 +185,9 @@ router.post('/version1-4/AATF-Returns/save-and-continue-change', function (req, 
 
 router.post('/version1-4/AATF-Returns/non-obligated-save', function (req, res) {
 
-    var period = req.session.data.period;
-    var currentOperator = period._operator;
+    var period = req.session.data['period'];
 
-    currentOperator._categories = new Categories(req.session.data['large-household-appliances-input-SC004'],
+    period._operator._categories = new Categories(req.session.data['large-household-appliances-input-SC004'],
         req.session.data['small-household-appliances-input-SC004'],
         req.session.data['it-and-telecomms-input-SC004'],
         req.session.data['consumer-equipment-input-SC004'],
@@ -202,17 +202,16 @@ router.post('/version1-4/AATF-Returns/non-obligated-save', function (req, res) {
         req.session.data['gas-discharge-led-input-SC004'],
         req.session.data['photovolatic-panels-input-SC004']);
 
-    req.session.data.period = period;
-
+    req.session.data['period'] = period;
+    
     res.redirect('/version1-4/AATF-Returns/SC004_2-Are-you-reporting-on-any-non-obligated-weee-as-retained-by-a-dcf')
 })
 
 router.post('/version1-4/AATF-Returns/dcf-save', function (req, res) {
 
-    var period = req.session.data.period;
-    var currentOperator = period._operator;
+    var period = req.session.data['period'];    
 
-    currentOperator._categoriesDcf = new Categories(req.session.data['large-household-appliances-input-SC004c-DCF'],
+    period._operator._categoriesDcf = new Categories(req.session.data['large-household-appliances-input-SC004c-DCF'],
         req.session.data['small-household-appliances-input-SC004c-DCF'],
         req.session.data['it-and-telecomms-input-SC004c-DCF'],
         req.session.data['consumer-equipment-input-SC004c-DCF'],
@@ -227,7 +226,7 @@ router.post('/version1-4/AATF-Returns/dcf-save', function (req, res) {
         req.session.data['gas-discharge-led-input-SC004c-DCF'],
         req.session.data['photovolatic-panels-input-SC004c-DCF']);
 
-    req.session.data.period = period;
+    req.session.data['period'] = period;
 
     res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities');
 })
@@ -371,7 +370,6 @@ router.post('/version1-4/AATF-Returns/weee-reused-as-a-whole-appliance-this-faci
     });
 
     var updateScheme = updateFacility[0]._pcs.filter(function (scheme) {
-        console.log(scheme);
         if (scheme._id === req.session.data['schemeselect']) {
             return true;
         }
@@ -689,7 +687,6 @@ router.post('/version1-4/AATF-Returns/operator-address-postcode-atf-save', funct
             return true;
         }
     }); 
-    console.log(selectedAtf[0]);
 
     var newOperator = new Operator(operatorName, selectedScheme._sentOnOperatorCollection.length, '',  req.session.data['operator-building-street'],  req.session.data['operator-town-city'],  req.session.data['operator-county'], operatorPostcode);
     selectedAtf[0]._atfAddress = newOperator;
