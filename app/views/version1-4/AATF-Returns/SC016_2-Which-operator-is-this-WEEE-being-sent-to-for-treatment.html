@@ -35,10 +35,6 @@ href: "SC016-Are-you-sending-any-whole-weee"
 <h2 class="govuk-heading-l">Which operator is this whole WEEE being sent to for treatment?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
 <form action="/version1-4/AATF-Returns/operator-address-postcode-save" method="post" class="form" style="display: inline">
-    <input type="hidden" name="facility" id="facility" value="{{ data['facility'] }}"/>
-    <input type="hidden" name="facilityId" id="facilityId" value="{{ data['facility'] }}"/>
-    <input type="hidden" name="scheme" id="scheme" value="{{ data['scheme'] }}"/>
-    <input type="hidden" name="schemeId" id="schemeId" value="{{ data['schemeId'] }}"/>
     {{ govukInput({
     label: {
     text: "Site Name"
