@@ -26,27 +26,27 @@ href: "SC011-Whole-WEEE-sent-to-another-treatment"
 <table class="govuk-table govuk-!-font-size-16" id="atf-table-summary" style="margin-bottom: 0px;">
     <thead class="govuk-table__head">
         <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">ATF name</th>
-            <th class="govuk-table__header" scope="col"></th>
-            <th class="govuk-table__header" scope="col"></th>
-            <th class="govuk-table__header" scope="col"></th>
-            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col">ATF Name</th>
+            <th class="govuk-table__header" scope="col">Operator Address</th>
+            <th class="govuk-table__header" scope="col">ATF Address</th>
+            <th class="govuk-table__header" scope="col">WEEE sent on (t)</th>
+            <th class="govuk-table__header" scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
             {% for sentOn in data['selectedScheme']._sentOnOperatorCollection %}
             <tr class="govuk-table__row">
                   <td class="govuk-table__cell" scope="col">{{sentOn._name}}</td>
+                  <td class="govuk-table__cell" scope="col">{{ sentOn._address._street }} {{ sentOn._address._town }} {{ sentOn._address._country }} {{ sentOn._address._postcode }}</td>
+                  <td class="govuk-table__cell" scope="col">{{ sentOn._atfAddress._street }} {{ sentOn._atfAddress._town }} {{ sentOn._atfAddress._country }} {{ sentOn._atfAddress._postcode }}</td>
                   <td class="govuk-table__cell" scope="col">-</td>
-                  <td class="govuk-table__cell" scope="col">-</td>
-                  <td class="govuk-table__cell" scope="col">-</td>
-                  <td class="govuk-table__cell" scope="col">-</td>
+                  <td class="govuk-table__cell" scope="col">Enter data</td>
               </tr>
               {% endfor %}
     </tbody>
 </table>
 <div class="govuk-!-padding-bottom-2"></div>
-<a href="/version1-4/AATF-Returns/SC016_2-Which-operator-is-this-WEEE-being-sent-to-for-treatment" class="govuk-link--no-visited-state govuk-link">Add an ATF</a>
+<a href="/version1-4/AATF-Returns/SC016_2-Which-operator-is-this-WEEE-being-sent-to-for-treatment" class="govuk-link--no-visited-state govuk-link">Add another ATF</a>
 <div class="govuk-!-padding-bottom-8"></div>
 <form action="/version1-4/AATF-Returns/atf-treatment-save" method="post" class="form" style="display: block">
     <button type="submit" class="govuk-button" id="atf-treatment-save">

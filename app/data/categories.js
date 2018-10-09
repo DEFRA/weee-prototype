@@ -12,13 +12,13 @@ class Categories{
         this._electricalAndElectronicTools = electricalAndElectronicTools;
         this._toysLeisureAndSportsEquipment = toysLeisureAndSportsEquipment;
         this._medicalDevices = medicalDevices;
-        this._monitoringAndControlInstruments = medicalDevices;
+        this._monitoringAndControlInstruments = monitoringAndControlInstruments;
         this._automaticDispensers = automaticDispensers;
         this._appliancesContainingRefrigerants = appliancesContainingRefrigerants;
         this._gasDischargeLampsAndLedLightSources = gasDischargeLampsAndLedLightSources;
         this._displayEquipment = displayEquipment;
         this._photovoltaicPanel = photovoltaicPanel;
-    }
+    }    
 }
 
 module.exports = Categories;

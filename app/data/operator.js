@@ -6,7 +6,9 @@ class Operator{
         this._id = id;
         this._approvalNumber = approvalNumber;
         this._address = new Address(street, town, country, postcode);        
-    }
+    }  
 }
-  
+
+
+
 module.exports = Operator;
