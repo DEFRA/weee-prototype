@@ -228,7 +228,7 @@ router.post('/version1-4/AATF-Returns/dcf-save', function (req, res) {
 
     req.session.data['period'] = period;
 
-    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities');
+    res.redirect('/version1-4/AATF-Returns/My-facilities');
 })
 
 router.post('/version1-4/AATF-Returns/facility-save', function (req, res) {
@@ -436,7 +436,7 @@ router.post('/version1-4/AATF-Returns/reuse-treatment-save', function (req, res)
 })
 
 router.post('/version1-4/AATF-Returns/upload-an-aatf-return-select', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+    res.redirect('/version1-4/AATF-Returns/My-facilities')
 })
 
 router.post('/version1-4/AATF-Returns/upload-an-aatf-return', function (req, res) {
@@ -473,7 +473,7 @@ router.post('/version1-4/AATF-Returns/what-to-do-select', function (req, res) {
     } else if (answer === '2') {
         res.redirect('/version1-4/AATF-Returns/PCS-Table')
     } else if (answer === '3') {
-        res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+        res.redirect('/version1-4/AATF-Returns/My-facilities')
     }
 })
 
@@ -578,7 +578,7 @@ router.post('/version1-4/AATF-Returns/non-obligated-weee-answer', function (req,
     let answer = req.session.data['non-obligated-weee']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+        res.redirect('/version1-4/AATF-Returns/My-facilities')
     } else {
         res.redirect('/version1-4/AATF-Returns/SC004_1-Enter-non-obligated-WEEE')
     }
@@ -588,7 +588,7 @@ router.post('/version1-4/AATF-Returns/non-obligated-weee-DCF-answer', function (
     let answer = req.session.data['non-obligated-weee-DCF']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+        res.redirect('/version1-4/AATF-Returns/My-facilities')
     } else {
         res.redirect('/version1-4/AATF-Returns/SC004_2a-Add-any-DCF-data')
     }
@@ -729,7 +729,7 @@ router.post('/version1-4/AATF-Returns/facility-address-postcode-save', function 
 })
 
 router.post('/version1-4/AATF-Returns/nil-return-confirm', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+    res.redirect('/version1-4/AATF-Returns/My-facilities')
 })
 
 router.post('/version1-4/AATF-Returns/nil-return-cancel', function (req, res) {
