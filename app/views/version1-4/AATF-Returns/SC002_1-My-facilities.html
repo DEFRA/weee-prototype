@@ -43,9 +43,9 @@ href: "/version1-4/SC002-Portal-Landing-Page"
         </select>
     </div>
 
-    <button type="submit" class="govuk-button">
+   <!--  <button type="submit" class="govuk-button">
         Continue
-    </button>
+    </button> -->
     <br />
     <div class="govuk-!-margin-bottom-4"></div>
     <h4 class="govuk-heading-s">Non-obligated WEEE</h4>
@@ -61,9 +61,9 @@ href: "/version1-4/SC002-Portal-Landing-Page"
         <tbody>
             {% set operator = data['period']._operator %}
             <tr class="govuk-table__row">
-                <td class="govuk-table__cell" scope="col">{{operator._name }}</td>
-                <td class="govuk-table__cell" scope="col">-</td>
-                <td class="govuk-table__cell" scope="col">-</td>
+                <td class="govuk-table__cell" scope="col">{{ operator._name }}</td>
+                <td class="govuk-table__cell" scope="col">{{ operator._wee }}</td>
+                <td class="govuk-table__cell" scope="col">{{ operator._weeDcf }}</td>
                 <td class="govuk-table__cell" scope="col"><a href="SC004-Would-you-like-to-report-on-any-non-obligated-weee?operator={{operator._name }}" class="govuk-link govuk-link--no-visited-state">Start
                         report</a></td>
             </tr>
