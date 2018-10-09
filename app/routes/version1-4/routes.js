@@ -68,6 +68,22 @@ router.get('/version1-4/AATF-Returns/SC002_1-My-facilities', function (req, res)
     res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
 })
 
+router.get('/version1-4/AATF-Returns/WEEE-received-for-treatment', function(req, res){
+    var schemeId = req.query['schemeId'];
+    var schemes = req.session.data['schemes'];
+
+    var selectedScheme = schemes._schemes.filter(function(scheme){
+        if (scheme._id === schemeId){
+            return true;
+        }
+    });
+
+    req.session.data['selectedScheme'] = selectedScheme[0];
+    
+    res.render('version1-4/AATF-Returns/SC009-Enter-WEEE-that-has-been-received-for-treatment');
+})
+
+
 router.get('/version1-4/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for-treatment', function(req, res){
     var schemeId = req.query['schemeId'];
     var schemes = req.session.data['schemes'];
