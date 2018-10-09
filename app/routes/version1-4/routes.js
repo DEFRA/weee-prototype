@@ -31,7 +31,7 @@ router.get('/version1-4/AATF-Returns/aatf-option-select', function(req, res){
     }
     if (req.session.data['aatf-return-option'] === 'aatfUpload')
     {
-        res.redirect('/version1-4/facilityDisplay');
+        res.redirect('/version1-4/AATF-Returns/SC014-Upload-an-aatf-return');
     }
 })
 
@@ -346,16 +346,6 @@ router.post('/version1-4/AATF-Returns/whole-weee-answer', function (req, res) {
         res.redirect('/version1-4/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance')
     } else {
         res.redirect('/version1-4/AATF-Returns/SC016_2-Which-operator-is-this-WEEE-being-sent-to-for-treatment?facility=' + req.session.data.facilityId + '&facilityId=' + req.session.data.facilityId + '&scheme=' + req.session.data.scheme + '&schemeId=' + req.session.data.schemeId)
-    }
-})
-
-router.post('/version1-4/AATF-Returns/aatf-option-select', function (req, res) {
-    let answer = req.session.data['aatf-return-option']
-
-    if (answer === '1') {
-        res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on')
-    } else if (answer === '3') {
-        res.redirect('/version1-4/AATF-Returns/SC014-Upload-an-aatf-return')
     }
 })
 
