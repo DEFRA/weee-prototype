@@ -5,6 +5,7 @@ const Period = require('../../data/period');
 const Operator = require('../../data/operator');
 const Categories = require('../../data/categories');
 const Scheme = require('../../data/scheme');
+const Schemes = require('../../data/schemes');
 
 
 function CategoriesTotal(category){
@@ -55,15 +56,14 @@ function CategoriesTotal(category){
         return '-';
     }
 }
-router.get('/version1-4/AATF-Returns/SC002_1-My-facilities', function (req, res) {
+router.get('/version1-4/AATF-Returns/My-facilities', function (req, res) {
+
     var period = req.session.data['period'];
     
     period._operator._wee = CategoriesTotal(period._operator._categories);
     period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf);
-    
-    for (i = 0; i < period._facilities.length; i++){
-        //period._facilities[i]
-    }
+
+    req.session.data['period'] = period;
 
     res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
 })
@@ -116,6 +116,13 @@ router.get('/version1-4/AATF-Returns/aatf-option-select', function (req, res) {
 })
 
 router.post('/version1-4/login-button', function (req, res) {
+
+    var scheme = new Schemes();
+    var period = new Period("2018");
+    
+    req.session.data['schemes'] = scheme;
+    req.session.data['period'] = period;
+
     res.redirect('/version1-4/SC002-What-would-you-like-to-do')
 })
 
