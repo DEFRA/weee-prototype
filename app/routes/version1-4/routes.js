@@ -306,7 +306,15 @@ router.post('/version1-4/AATF-Returns/atf-treatment-save', function (req, res) {
 })
 
 router.post('/version1-4/AATF-Returns/reuse-treatment-save', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
+    res.redirect('/version1-4/AATF-Returns/SC017-What-do-you-want-to-do-now')
+})
+
+router.post('/version1-4/AATF-Returns/upload-an-aatf-return-select', function (req, res) {
+    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+})
+
+router.post('/version1-4/AATF-Returns/upload-an-aatf-return', function (req, res) {
+    res.redirect('/version1-4/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
 })
 
 router.post('/version1-4/AATF-Returns/add-another-scheme-answer', function (req, res) {
@@ -326,6 +334,28 @@ router.post('/version1-4/AATF-Returns/whole-weee-answer', function (req, res) {
         res.redirect('/version1-4/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance')
     } else {
         res.redirect('/version1-4/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment')
+    }
+})
+
+router.post('/version1-4/AATF-Returns/aatf-option-select', function (req, res) {
+    let answer = req.session.data['aatf-return-option']
+
+    if (answer === '1') {
+        res.redirect('/version1-4/AATF-Returns/SC006_1-What-PCS-do-you-want-to-report-on')
+    } else if (answer === '3') {
+        res.redirect('/version1-4/AATF-Returns/SC014-Upload-an-aatf-return')
+    }
+})
+
+router.post('/version1-4/AATF-Returns/what-to-do-select', function (req, res) {
+    let answer = req.session.data['what-to-do-option']
+
+    if (answer === '1') {
+        res.redirect('/version1-4/AATF-Returns/SC015-Check-your-AATF-return')
+    } else if (answer === '2') {
+        res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
+    } else if (answer === '3') {
+        res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
     }
 })
 
@@ -351,7 +381,7 @@ router.post('/version1-4/AATF-Returns/reusing-weee-answer', function (req, res) 
     let answer = req.session.data['reusing-weee']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table')
+        res.redirect('/version1-4/AATF-Returns/SC017-What-do-you-want-to-do-now')
     } else {
         res.redirect('/version1-4/AATF-Returns/SC008_2-Enter-WEEE-that-has-been-reused-as-a-whole-appliance')
         
