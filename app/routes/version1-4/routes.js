@@ -63,6 +63,7 @@ router.get('/version1-4/AATF-Returns/My-facilities', function (req, res) {
     period._operator._wee = CategoriesTotal(period._operator._categories);
     period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf);
 
+    console.log(period);
     req.session.data['period'] = period;
 
     res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
