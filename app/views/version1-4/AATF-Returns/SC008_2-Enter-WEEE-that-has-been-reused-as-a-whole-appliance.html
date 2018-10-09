@@ -7,10 +7,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-text: "Back",
-href: "SC008b-Operator-Address-Postcode-Locator-2"
-}) }}
 <style>
     #weee-reused-as-a-whole-appliance-table .govuk-form-group {
         margin-bottom: 10px;
@@ -36,6 +32,7 @@ href: "SC008b-Operator-Address-Postcode-Locator-2"
          $('#detailSummary').append(detail);*/
     });
 </script>
+<div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Enter WEEE that has been reused as a whole appliance at this facility</h2>
 <div>
     <p id="detailSummary">{{data['facilitySelect']}}</p>

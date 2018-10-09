@@ -7,10 +7,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-text: "Back",
-href: "SC006-PCS-Summary"
-}) }}
 <style>
     #weee-received-table .govuk-form-group {
         margin-bottom: 10px;
@@ -38,6 +34,7 @@ href: "SC006-PCS-Summary"
         $('#pcs').val(urlPCS);
     });
 </script>
+<div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Enter WEEE that has been received for treatment</h2>
 <div>
    <p id="detailSummary">{{data['facilitySelect']}}</p>

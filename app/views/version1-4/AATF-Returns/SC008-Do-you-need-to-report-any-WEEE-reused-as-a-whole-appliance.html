@@ -6,10 +6,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-text: "Back",
-href: "SC016-Are-you-sending-any-whole-weee"
-}) }}
 <style>
     #main-content {
         padding-top: 0px;
@@ -29,6 +25,7 @@ href: "SC016-Are-you-sending-any-whole-weee"
         }
     });
 </script>
+<div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Are you reusing any WEEE as a whole appliance?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
 <form action="/version1-4/AATF-Returns/reusing-weee-answer" id="form1" method="post" class="form" style="display: inline">

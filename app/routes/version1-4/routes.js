@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const Address = require('../../assets/javascripts/address');
-const Facility = require('../../assets/javascripts/facility');
-const Period = require('../../assets/javascripts/period');
-const Operator = require('../../assets/javascripts/operator');
-const Categories = require('../../assets/javascripts/categories');
-const Scheme = require('../../assets/javascripts/scheme');
-const Schemes = require('../../assets/javascripts/schemes');
+const Address = require('../../data/address');
+const Facility = require('../../data/facility');
+const Period = require('../../data/period');
+const Operator = require('../../data/operator');
+const Categories = require('../../data/categories');
+const Scheme = require('../../data/scheme');
+const Schemes = require('../../data/schemes');
 
 
 function CategoriesTotal(category){

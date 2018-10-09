@@ -6,15 +6,12 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-    text: "Back",
-    href: "SC016-Are-you-sending-any-whole-weee"
-    }) }}
 <style>
     #main-content {
         padding-top: 0px;
     }
 </style>
+<div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Is the ATF address the same as the operator?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
 <form action="/version1-4/AATF-Returns/atf-same-as-operator-answer" method="post" class="form" style="display: inline">
