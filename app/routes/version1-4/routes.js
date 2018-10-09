@@ -27,7 +27,7 @@ router.get('/version1-4/AATF-Returns/aatf-option-select', function(req, res){
     }
     if (req.session.data['aatf-return-option'] === 'aatfNilReturn')
     {
-        res.redirect('/version1-4/facilityDisplay');
+        res.redirect('/version1-4/AATF-Returns/SC013_1-Confirmation-of-nil-return');
     }
     if (req.session.data['aatf-return-option'] === 'aatfUpload')
     {
@@ -500,6 +500,14 @@ router.post('/version1-4/AATF-Returns/submit-aatf-return', function (req, res) {
 
 router.post('/version1-4/AATF-Returns/facility-address-postcode-save', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC007-AATF-Tasklist')
+})
+
+router.post('/version1-4/AATF-Returns/nil-return-confirm', function (req, res) {
+    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+})
+
+router.post('/version1-4/AATF-Returns/nil-return-cancel', function (req, res) {
+    res.redirect('/version1-4/AATF-Returns/SC002_1a-Make-an-AATF-return-options')
 })
 
 module.exports = router;
