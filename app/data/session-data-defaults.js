@@ -16,10 +16,6 @@ Example usage:
 ============================================================================
 
 */
-const Period = require('./period');
-const Schemes = require('./schemes');
-
 module.exports = {
-  "period" : new Period("2018"),
-  "schemes" : new Schemes(),
+
 }

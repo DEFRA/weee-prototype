@@ -3,6 +3,7 @@ const Operator = require('./operator');
 
 class Period{
     constructor(name){
+        console.log('period constructor')
         this._name = name;
         this._facilities = [];
         this._facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));

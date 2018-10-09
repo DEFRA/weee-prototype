@@ -15,7 +15,7 @@ href: "/version1-4/SC002-Portal-Landing-Page"
         padding-top: 0px;
     }
 </style>
-<h2 class="govuk-heading-l">My Facilities</h2>
+<h2 class="govuk-heading-l">My AATF Reports</h2>
 <p class="govuk-!-width-three-quarters">You can edit, resubmit, and submit quarterly returns</p>
 <form action="/version1-4/AATF-Returns/save-and-continue" method="post" class="form">
     <div class="govuk-form-group govuk-!-margin-bottom-1">
@@ -64,8 +64,8 @@ href: "/version1-4/SC002-Portal-Landing-Page"
                 <td class="govuk-table__cell" scope="col">{{ operator._name }}</td>
                 <td class="govuk-table__cell" scope="col">{{ operator._wee }}</td>
                 <td class="govuk-table__cell" scope="col">{{ operator._weeDcf }}</td>
-                <td class="govuk-table__cell" scope="col"><a href="SC004-Would-you-like-to-report-on-any-non-obligated-weee?operator={{operator._name }}" class="govuk-link govuk-link--no-visited-state">Start
-                        report</a></td>
+                <td class="govuk-table__cell" scope="col"><a href="SC004-Would-you-like-to-report-on-any-non-obligated-weee?operator={{operator._name }}" class="govuk-link govuk-link--no-visited-state">Add
+                        data</a></td>
             </tr>
         </tbody>
     </table>
@@ -90,7 +90,7 @@ href: "/version1-4/SC002-Portal-Landing-Page"
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
-            <td class="govuk-table__cell" scope="col"><a href="Make-an-AATF-return-options?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td>
+            <td class="govuk-table__cell" scope="col"><a href="Make-an-AATF-return-options?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Add data</a></td>
         </tr>
         {% endfor %}
         </tbody>

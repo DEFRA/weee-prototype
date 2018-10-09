@@ -60,16 +60,17 @@ href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
             <!-- <td class="govuk-table__cell" scope="col"><a href="SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facility={{ data['facility'] }}&facilityId={{ data['facilityId'] }}&scheme={{scheme._name}}&schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td> -->
-            <td class="govuk-table__cell" scope="col"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td>
+            <td class="govuk-table__cell" scope="col"><a href="WEEE-received-for-treatment?schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td>
         </tr>
         {% endfor %}
         </tbody>
 </table>
 {% if schemeAdded> 0 %}
 <form action="/version1-4/AATF-Returns/multiple-pcs-save" method="post" class="form">
-<button type="submit" class="govuk-button" id="multiple-pcs-save">
+<!-- <button type="submit" class="govuk-button" id="multiple-pcs-save">
     Continue
-  </button>
+  </button> -->
 </form>
+<a href="My-facilities">My AATF Reports</a>
 {% endif %}
 {% endblock %}
