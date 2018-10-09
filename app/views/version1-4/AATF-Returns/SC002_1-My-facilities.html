@@ -53,11 +53,8 @@ href: "/version1-4/SC002-Portal-Landing-Page"
         <thead class="govuk-table__head">
             <tr class="govuk-table__row">
                 <th class="govuk-table__header" scope="col">Operator Name</th>
-                <th class="govuk-table__header" scope="col"></th>
-                <th class="govuk-table__header" scope="col">Street</th>
-                <th class="govuk-table__header" scope="col">Town</th>
-                <th class="govuk-table__header" scope="col">Country</th>
-                <th class="govuk-table__header" scope="col">Postcode</th>
+                <th class="govuk-table__header" scope="col">WEEE Received (t)</th>
+                <th class="govuk-table__header" scope="col">Retained by DCF (t)</th>
                 <th class="govuk-table__header" scope="col">Actions</th>
             </tr>
         </thead>
@@ -65,11 +62,8 @@ href: "/version1-4/SC002-Portal-Landing-Page"
             {% set operator = data['period']._operator %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell" scope="col">{{operator._name }}</td>
-                <td class="govuk-table__cell" scope="col">{{operator._approvalNumber }}</td>
-                <td class="govuk-table__cell" scope="col">{{operator._address._street }}</td>
-                <td class="govuk-table__cell" scope="col">{{operator._address._town }}</td>
-                <td class="govuk-table__cell" scope="col">{{operator._address._country }}</td>
-                <td class="govuk-table__cell" scope="col">{{operator._address._postcode }}</td>
+                <td class="govuk-table__cell" scope="col">-</td>
+                <td class="govuk-table__cell" scope="col">-</td>
                 <td class="govuk-table__cell" scope="col"><a href="SC004-Would-you-like-to-report-on-any-non-obligated-weee?operator={{operator._name }}" class="govuk-link govuk-link--no-visited-state">Start
                         report</a></td>
             </tr>
@@ -80,12 +74,11 @@ href: "/version1-4/SC002-Portal-Landing-Page"
     <table class="govuk-table govuk-!-font-size-16" id="facility-table">
         <thead class="govuk-table__head">
             <tr class="govuk-table__row">
-                <th class="govuk-table__header" scope="col">Facility Name</th>
+                <th class="govuk-table__header" scope="col">AATF Name</th>
                 <th class="govuk-table__header" scope="col">Approval number</th>
-                <th class="govuk-table__header" scope="col">Obligated WEEE</th>
-                <th class="govuk-table__header" scope="col">WEEE sent on for treatment</th>
-                <th class="govuk-table__header" scope="col">WEEE reused</th>
-                <th class="govuk-table__header" scope="col">Status</th>
+                <th class="govuk-table__header" scope="col">Received (t)</th>
+                <th class="govuk-table__header" scope="col">Sent to another ATF (t)</th>
+                <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
                 <th class="govuk-table__header" scope="col">Actions</th>
             </tr>
         </thead>
@@ -97,9 +90,7 @@ href: "/version1-4/SC002-Portal-Landing-Page"
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
-            <td class="govuk-table__cell" scope="col">Not started</td>
-            <td class="govuk-table__cell" scope="col"><a href="What-PCS-do-you-want-to-report-on?facility={{facility._name}}&facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Start
-                    report</a></td>
+            <td class="govuk-table__cell" scope="col"><a href="Make-an-AATF-return-options?facility={{facility._name}}&facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td>
         </tr>
         {% endfor %}
         </tbody>

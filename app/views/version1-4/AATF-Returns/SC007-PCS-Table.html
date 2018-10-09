@@ -8,50 +8,68 @@ GOV.UK Prototype Kit
 {% block content %}
 {{ govukBackLink({
 text: "Back",
-href: "SC006-Add-the-PCS-that-you-wish-to-report"
+href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
 }) }}
 <style>
-    #main-content {
+  #main-content {
     padding-top: 0px;
   }
-  #pcs-table-summary td {
+  #pcs-table td {
     padding-top: 5px;
     padding-bottom: 5px;
   }
 </style>
-<h2 class="govuk-heading-l">PCSs that you need to report WEEE received from</h2>
+<h2 class="govuk-heading-l">Which PCSs did the {{ data['selectedFacility']._name }} receive WEEE from</h2>
+<form action="/version1-4/AATF-Returns/add-pcs" method="post" class="form">
+    
 <div class="govuk-!-padding-bottom-4"></div>
-<table class="govuk-table govuk-!-font-size-16" id="pcs-table-summary">
-    <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <th class="govuk-table__header" scope="col">PCS Name</th>
-            <th class="govuk-table__header" scope="col">Approval No</th>
-            <th class="govuk-table__header" scope="col">Actions</th>
+  <div class="govuk-form-group">
+       <select class="govuk-select govuk-!-width-one-half" id="schemeselect" name="schemeselect">
+          {% for scheme in data['schemes']._schemes %}
+          <option value="{{ scheme._id }}">{{ scheme._name }}</option>
+          {% endfor %}
+      </select>
+    </div>
+  <div class="govuk-!-padding-bottom-4"></div>
+  <button type="submit" class="govuk-button" id="multiple-pcs-add">
+      Add
+    </button>
+  </form>
+  
+  {% set schemeAdded = data['selectedFacility']._pcs.length %}
+{% if schemeAdded> 0 %}
+<h2 class="govuk-heading-m">PCSs this AATF received WEEE from</h2>
+<table class="govuk-table" id="pcs-table">
+{% else %}
+<table class="govuk-table" id="pcs-table" style="display: none;">
+{% endif %}
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">PCS Name</th>
+      <th class="govuk-table__header" scope="col">Received (t)</th>
+      <th class="govuk-table__header" scope="col">Sent onto other ATF (t)</th>
+      <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
+      <th class="govuk-table__header" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for scheme in data['selectedFacility']._pcs %}
+      <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col">{{scheme._name}}</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <!-- <td class="govuk-table__cell" scope="col"><a href="SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facility={{ data['facility'] }}&facilityId={{ data['facilityId'] }}&scheme={{scheme._name}}&schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td> -->
+            <td class="govuk-table__cell" scope="col"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td>
         </tr>
-    </thead>
-    <tbody>
-            {% for scheme in data['currentFacility']._pcs %}
-            <tr class="govuk-table__row">
-                  <td class="govuk-table__cell" scope="col">{{scheme._name}}</td>
-                  <td class="govuk-table__cell" scope="col">{{scheme._id}}</td>
-                  <td class="govuk-table__cell" scope="col"><a href="SC009-Enter-WEEE-that-has-been-received-for-treatment.html" class="govuk-link govuk-link--no-visited-state">Report</a></td>
-              </tr>
-              {% endfor %}
-    </tbody>
+        {% endfor %}
+        </tbody>
 </table>
-<div class="govuk-!-padding-bottom-4"></div>
-<form action="/version1-4/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
-    <table class="govuk-table" style="width: 30%;">
-        <tr class="govuk-table__row">
-            <td>
-                <button type="submit" class="govuk-button" id="pcs-check-return" style="margin-bottom: 0px;">
-                    Check my return
-                </button>
-            </td>
-            <td>
-                <a href="SC002_1-My-facilities.html" class="govuk-link govuk-link--no-visited-state">My facilities</a>
-            </td>
-        </tr>
-    </table>
+{% if schemeAdded> 0 %}
+<form action="/version1-4/AATF-Returns/multiple-pcs-save" method="post" class="form">
+<button type="submit" class="govuk-button" id="multiple-pcs-save">
+    Save and Continue
+  </button>
 </form>
+{% endif %}
 {% endblock %}

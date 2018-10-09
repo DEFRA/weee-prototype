@@ -14,26 +14,28 @@ GOV.UK Prototype Kit
 <h2 class="govuk-heading-l">AATF quarterly return</h2>
 <div class="govuk-!-padding-bottom-7"></div>
 <form action="/version1-4/AATF-Returns/aatf-option-select" method="post" class="form">
+    <input type="hidden" id="facility" name="facility" value="{{ data['facility']}}">
+    <input type="hidden" id="facilityId" name="facilityId" value="{{ data['facilityId']}}">
 <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
         <div class="govuk-radios">
             <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="aatf-return-option-1" name="aatf-return-option" type="radio" value="england">
+                <input class="govuk-radios__input" id="aatf-return-option-1" name="aatf-return-option" type="radio" value="aatfReturn">
                 <label class="govuk-label govuk-radios__label" for="aatf-return-option-1">
-                    Make an AATF quarterly return
+                    Manually enter tonnage data
                 </label>
             </div>
             <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="aatf-return-option-2" name="aatf-return-option" type="radio" value="scotland">
+                <input class="govuk-radios__input" id="aatf-return-option-2" name="aatf-return-option" type="radio" value="aatfNilReturn">
                 <label class="govuk-label govuk-radios__label" for="aatf-return-option-2">
-                    Make a nil AATF quarterly return
+                    Notify of nil return 
                 </label>
             </div>
             <div class="govuk-radios__divider">or</div>
             <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="aatf-return-option-3" name="aatf-return-option" type="radio" value="abroad">
+                <input class="govuk-radios__input" id="aatf-return-option-3" name="aatf-return-option" type="radio" value="aatfUpload">
                 <label class="govuk-label govuk-radios__label" for="aatf-return-option-3">
-                    Upload an AATF quarterly return
+                    Upload data from a file
                 </label>
             </div>
         </div>

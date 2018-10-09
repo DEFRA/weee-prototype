@@ -15,21 +15,15 @@ href: "SC009-WEEE-received-for-treatment"
         padding-top: 0px;
     }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var pcsName = localStorage.getItem('completedPCS');
-        var pcsID = localStorage.getItem('completedPCSID');
-        var headerString = pcsName + " - " + pcsID;
-        $('#SC016-paragraph').html(headerString);
-        var sentCompletedArray = [];
-        localStorage.setItem('sentCompleteArray', JSON.stringify(sentCompletedArray));
-    });
-</script>
-<p id="SC016-paragraph" style="margin-bottom: 0px;"></p>
-<h2 class="govuk-heading-l" style="padding-top: 0px;">Are you sending any WEEE to another ATF for treatment?</h2>
+<p style="margin-bottom: 0px;">{{ data['scheme']}}</p>
+<h2 class="govuk-heading-l" style="padding-top: 0px;">Did you send any Wee to another ATF for treatment?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
 <form action="/version1-4/AATF-Returns/whole-weee-answer" method="post" class="form" style="display: inline">
+    <input type="hidden" name="facility" id="facility" value="{{ data['facility'] }}"/>
+    <input type="hidden" name="facilityId" id="facilityId" value="{{ data['facility'] }}"/>
+    <input type="hidden" name="scheme" id="scheme" value="{{ data['scheme'] }}"/>
+    <input type="hidden" name="schemeId" id="schemeId" value="{{ data['schemeId'] }}"/>
+
     <div class="govuk-radios govuk-radios--inline">
         <div class="govuk-radios__item">
             <input class="govuk-radios__input" id="whole-weee-yes" name="whole-weee" type="radio" value="true">
