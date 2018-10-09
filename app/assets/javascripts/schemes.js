@@ -1,4 +1,4 @@
-const Scheme = require('./Scheme');
+const Scheme = require('./scheme');
 
 
 class Schemes{
