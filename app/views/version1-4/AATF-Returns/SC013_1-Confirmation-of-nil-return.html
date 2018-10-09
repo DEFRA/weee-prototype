@@ -1,0 +1,32 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: ""
+}) }}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<h2 class="govuk-heading-l">You have chosen to submit your AATF return as nil. Is this correct?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-4/AATF-Returns/nil-return-confirm" method="post" class="form" style="display: inline">
+    <button type="submit" class="govuk-button">
+        Save and continue
+    </button>
+</form>
+<form action="/version1-4/AATF-Returns/nil-return-cancel" method="post" class="form" style="display: inline; margin-left: 5%;">
+    <button type="submit" class="govuk-button" style="background-color: #bfc1c3; color: black;">
+        Cancel
+    </button>
+</form>
+
+
+{% endblock %}

@@ -31,7 +31,20 @@ router.get('/version1-4/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-o
     res.render('version1-4/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee')
 })
 
-
+router.get('/version1-4/AATF-Returns/aatf-option-select', function(req, res){
+    if (req.session.data['aatf-return-option'] === 'aatfReturn')
+    {
+        res.redirect('/version1-4/AATF-Returns/PCS-Table');
+    }
+    if (req.session.data['aatf-return-option'] === 'aatfNilReturn')
+    {
+        res.redirect('/version1-4/AATF-Returns/SC013_1-Confirmation-of-nil-return');
+    }
+    if (req.session.data['aatf-return-option'] === 'aatfUpload')
+    {
+        res.redirect('/version1-4/AATF-Returns/SC014-Upload-an-aatf-return');
+    }
+})
 
 router.post('/version1-4/add-scheme', function (req, res) {
     //var facility = req.session.data['facilities'].filter(facility => facility.name = 'facility 1');
@@ -373,21 +386,6 @@ router.post('/version1-4/AATF-Returns/whole-weee-answer', function (req, res) {
     }
 })
 
-router.post('/version1-4/AATF-Returns/aatf-option-select', function (req, res) {
-    if (req.session.data['aatf-return-option'] === 'aatfReturn')
-    {
-        res.redirect('/version1-4/AATF-Returns/SC007-PCS-Table');
-    }
-    if (req.session.data['aatf-return-option'] === 'aatfNilReturn')
-    {
-        res.redirect('/version1-4/facilityDisplay');
-    }
-    if (req.session.data['aatf-return-option'] === 'aatfUpload')
-    {
-        res.redirect('/version1-4/facilityDisplay');
-    }
-})
-
 router.post('/version1-4/AATF-Returns/what-to-do-select', function (req, res) {
     let answer = req.session.data['what-to-do-option']
 
@@ -539,6 +537,14 @@ router.post('/version1-4/AATF-Returns/submit-aatf-return', function (req, res) {
 
 router.post('/version1-4/AATF-Returns/facility-address-postcode-save', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/SC007-AATF-Tasklist')
+})
+
+router.post('/version1-4/AATF-Returns/nil-return-confirm', function (req, res) {
+    res.redirect('/version1-4/AATF-Returns/SC002_1-My-facilities')
+})
+
+router.post('/version1-4/AATF-Returns/nil-return-cancel', function (req, res) {
+    res.redirect('/version1-4/AATF-Returns/SC002_1a-Make-an-AATF-return-options')
 })
 
 module.exports = router;
