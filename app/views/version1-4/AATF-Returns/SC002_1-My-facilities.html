@@ -6,15 +6,7 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-text: "Back",
-href: "/version1-4/SC002-Portal-Landing-Page"
-}) }}
-<style>
-    #main-content {
-        padding-top: 0px;
-    }
-</style>
+<div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">My AATF Reports</h2>
 <p class="govuk-!-width-three-quarters">You can edit, resubmit, and submit quarterly returns</p>
 <form action="/version1-4/AATF-Returns/save-and-continue" method="post" class="form">

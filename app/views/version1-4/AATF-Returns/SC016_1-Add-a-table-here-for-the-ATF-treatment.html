@@ -6,10 +6,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-text: "Back",
-href: "SC011-Whole-WEEE-sent-to-another-treatment"
-}) }}
 <style>
     #main-content {
     padding-top: 0px;
@@ -19,7 +15,7 @@ href: "SC011-Whole-WEEE-sent-to-another-treatment"
     padding-bottom: 5px;
   }
 </style>
-
+<div class="govuk-!-padding-bottom-3"></div>
 <p style="margin-bottom: 0px;">{{ data['selectedScheme']._name }}</p>
 <h2 class="govuk-heading-l" style="padding-top: 0px;">Report on whole WEEE sent to an ATF for treatment</h2>
 <div class="govuk-!-padding-bottom-4"></div>
@@ -40,7 +36,7 @@ href: "SC011-Whole-WEEE-sent-to-another-treatment"
                   <td class="govuk-table__cell" scope="col">{{ sentOn._address._street }} {{ sentOn._address._town }} {{ sentOn._address._country }} {{ sentOn._address._postcode }}</td>
                   <td class="govuk-table__cell" scope="col">{{ sentOn._atfAddress._address._street }} {{ sentOn._atfAddress._address._town }} {{ sentOn._atfAddress._address._country }} {{ sentOn._atfAddress._address._postcode }}</td>
                   <td class="govuk-table__cell" scope="col">-</td>
-                  <td class="govuk-table__cell" scope="col">Enter data</td>
+                  <td class="govuk-table__cell" scope="col">Add data</td>
               </tr>
               {% endfor %}
     </tbody>

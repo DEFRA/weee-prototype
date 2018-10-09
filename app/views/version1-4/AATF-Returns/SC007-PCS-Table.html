@@ -6,10 +6,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-text: "Back",
-href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
-}) }}
 <style>
   #main-content {
     padding-top: 0px;
@@ -19,6 +15,7 @@ href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
     padding-bottom: 5px;
   }
 </style>
+<div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Which PCSs did the {{ data['selectedFacility']._name }} receive WEEE from</h2>
 <form action="/version1-4/AATF-Returns/add-pcs" method="post" class="form">
     

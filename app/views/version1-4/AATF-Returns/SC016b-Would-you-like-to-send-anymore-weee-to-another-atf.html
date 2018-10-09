@@ -6,10 +6,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-text: "Back",
-href: "SC009-WEEE-received-for-treatment"
-}) }}
 <style>
     #main-content {
         padding-top: 0px;
@@ -25,6 +21,7 @@ href: "SC009-WEEE-received-for-treatment"
     });
 </script>
 <p id="SC016b-paragraph" style="margin-bottom: 0px;"></p>
+<div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l" style="padding-top: 0px;">Did you send any WEEE to another ATF for treatment?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
 <form action="/version1-4/AATF-Returns/whole-weee-answer" method="post" class="form" style="display: inline">

@@ -6,10 +6,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-{{ govukBackLink({
-text: "Back",
-href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
-}) }}
 <style>
   #main-content {
     padding-top: 0px;
@@ -25,6 +21,7 @@ href: "SC006x-Do-you-want-to-report-on-multiple-pcs"
         localStorage.setItem('singlePCS', "false");
     });
 </script>
+<div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Select all the PCSs that you need to report on</h2>
 <div class="govuk-!-padding-bottom-4"></div>
 
