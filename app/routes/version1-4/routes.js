@@ -511,7 +511,7 @@ router.post('/version1-4/AATF-Returns/reusing-weee-sent-to-another-site-answer',
     let answer = req.session.data['reusing-weee-sent-to-another-site']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/PCS-Table')
+        res.redirect('/version1-4/AATF-Returns/SC017-What-do-you-want-to-do-now')
     } else {
         res.redirect('/version1-4/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites')
     }
