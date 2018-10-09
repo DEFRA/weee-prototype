@@ -7,6 +7,7 @@ class Facility{
         this._id = id;
         this._approvalNumber = approvalNumber;
         this._pcs = [];
+        this._reusedSites = [];
        }
 
     /* constructor(name, id, approvalNumber, street, town, country, postcode){
