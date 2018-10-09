@@ -68,7 +68,6 @@ router.get('/version1-4/AATF-Returns/SC002_1-My-facilities', function (req, res)
     res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
 })
 
-<<<<<<< HEAD
 router.get('/version1-4/AATF-Returns/WEEE-received-for-treatment', function(req, res){
     var schemeId = req.query['schemeId'];
     var schemes = req.session.data['schemes'];
@@ -86,9 +85,6 @@ router.get('/version1-4/AATF-Returns/WEEE-received-for-treatment', function(req,
 
 
 router.get('/version1-4/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for-treatment', function(req, res){
-=======
-router.get('/version1-4/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for-treatment', function (req, res) {
->>>>>>> 14a3d19ee031150908785c1b76fe36178e31d12a
     var schemeId = req.query['schemeId'];
     var schemes = req.session.data['schemes'];
 
