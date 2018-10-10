@@ -28,13 +28,13 @@ GOV.UK Prototype Kit
     });
 </script>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">Which site is this WEEE being sent to for reuse as a whole appliance</h2>
+<h2 class="govuk-heading-l">Which site received the WEEE for reuse?</h2>
 <div class="govuk-!-padding-bottom-5"></div>
 <input type="hidden" id="atfId" name="atfId"/>
 <form action="/version1-4/AATF-Returns/operator-address-postcode-save-2" method="post" class="form" style="display: inline">
     {{ govukInput({
     label: {
-    text: "Site Name"
+    text: "Site name"
     },
     classes: "govuk-!-width-one-third",
     id: "operator-name-search-2",
@@ -56,7 +56,7 @@ GOV.UK Prototype Kit
     <details class="govuk-details">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
-                I can't find the operator's address
+                I can't find the site address
             </span>
         </summary>
         <div class="govuk-details__text">
@@ -94,7 +94,7 @@ GOV.UK Prototype Kit
             }) }}
             {{ govukInput({
             label: {
-            text: "Post code"
+            text: "Postcode"
             },
             classes: "govuk-!-width-one-third",
             id: "operator-postcode-2",

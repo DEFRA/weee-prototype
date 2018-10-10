@@ -16,7 +16,7 @@ GOV.UK Prototype Kit
   }
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">Which PCSs did {{ data['selectedFacility']._name }} receive WEEE from?</h2>
+<h2 class="govuk-heading-l">Which PCS(s) did {{ data['selectedFacility']._name }} receive WEEE from?</h2>
 <form action="/version1-4/AATF-Returns/add-pcs" method="post" class="form">
     
 <div class="govuk-!-padding-bottom-4"></div>
@@ -35,15 +35,15 @@ GOV.UK Prototype Kit
   
   {% set schemeAdded = data['selectedFacility']._pcs.length %}
 {% if schemeAdded> 0 %}
-<h2 class="govuk-heading-m">PCSs this AATF received WEEE from</h2>
+<h2 class="govuk-heading-m">PCS(s) this AATF received WEEE from</h2>
 <table class="govuk-table govuk-!-font-size-16" id="pcs-table">
 {% else %}
 <table class="govuk-table govuk-!-font-size-16" id="pcs-table" style="display: none;">
 {% endif %}
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header" scope="col">PCS Name</th>
-      <th class="govuk-table__header" scope="col">Received (t)</th>
+      <th class="govuk-table__header" scope="col">PCS name</th>
+      <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
       <th class="govuk-table__header" scope="col">Sent onto other ATF (t)</th>
       <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
       <th class="govuk-table__header" scope="col">Actions</th>
@@ -68,6 +68,6 @@ GOV.UK Prototype Kit
     Continue
   </button> -->
 </form>
-<a href="My-facilities">My AATF Reports</a>
+<a href="My-facilities">AATF returns</a>
 {% endif %}
 {% endblock %}
