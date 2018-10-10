@@ -542,7 +542,7 @@ router.post('/version1-4/AATF-Returns/reusing-weee-sent-to-another-site-answer',
     if (answer === 'false') {
         res.redirect('/version1-4/AATF-Returns/SC017-What-do-you-want-to-do-now')
     } else {
-        res.redirect('/version1-4/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites')
+        res.redirect('/version1-4/AATF-Returns/SC008_5-Which-site-is-this-WEEE-being-sent-to-for-reuse-as-a-whole-appliance')
     }
 })
 
@@ -747,8 +747,5 @@ router.post('/version1-4/AATF-Returns/nil-return-confirm', function (req, res) {
     res.redirect('/version1-4/AATF-Returns/My-facilities')
 })
 
-router.post('/version1-4/AATF-Returns/nil-return-cancel', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/SC002_1a-Make-an-AATF-return-options')
-})
 
 module.exports = router;
