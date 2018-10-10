@@ -11,8 +11,8 @@ GOV.UK Prototype Kit
     }
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">AATF quarterly return</h2>
-<div class="govuk-!-padding-bottom-7"></div>
+<h2 class="govuk-heading-l">How would you like to report your data for {{ data['selectedFacility']._name }}?</h2>
+<div class="govuk-!-padding-bottom-4"></div>
 <form action="/version1-4/AATF-Returns/aatf-option-select" method="post" class="form">
 <div class="govuk-form-group">
     <fieldset class="govuk-fieldset">
@@ -24,15 +24,18 @@ GOV.UK Prototype Kit
                 </label>
             </div>
             <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="aatf-return-option-2" name="aatf-return-option" type="radio" value="aatfNilReturn">
-                <label class="govuk-label govuk-radios__label" for="aatf-return-option-2">
-                    Notify of nil return 
+                <input class="govuk-radios__input" id="aatf-return-option-3" name="aatf-return-option" type="radio" value="aatfUpload">
+                <label class="govuk-label govuk-radios__label" for="aatf-return-option-3">
+                    Upload data
                 </label>
             </div>
             <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="aatf-return-option-3" name="aatf-return-option" type="radio" value="aatfUpload">
-                <label class="govuk-label govuk-radios__label" for="aatf-return-option-3">
-                    Upload data from a file
+              or
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="aatf-return-option-2" name="aatf-return-option" type="radio" value="aatfNilReturn">
+                <label class="govuk-label govuk-radios__label" for="aatf-return-option-2">
+                    This AATF has not received any WEEE (nil) 
                 </label>
             </div>
         </div>
