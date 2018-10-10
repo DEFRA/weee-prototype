@@ -113,7 +113,7 @@ router.get('/version1-4/AATF-Returns/aatf-option-select', function (req, res) {
         res.redirect('/version1-4/AATF-Returns/SC013_1-Confirmation-of-nil-return');
     }
     if (req.session.data['aatf-return-option'] === 'aatfUpload') {
-        res.redirect('/version1-4/AATF-Returns/SC014-Upload-an-aatf-return');
+        res.redirect('/version1-4/AATF-Returns/SC014_1-Upload-an-aatf-return-browse');
     }
 })
 
@@ -436,7 +436,12 @@ router.post('/version1-4/AATF-Returns/reuse-treatment-save', function (req, res)
 })
 
 router.post('/version1-4/AATF-Returns/upload-an-aatf-return-select', function (req, res) {
-    res.redirect('/version1-4/AATF-Returns/My-facilities')
+    var fileName = req.session.data['file-upload-1'];
+    if(fileName.indexOf('Correct File') != -1) {
+        
+    } else {
+        
+    }
 })
 
 router.post('/version1-4/AATF-Returns/upload-an-aatf-return', function (req, res) {
@@ -553,7 +558,7 @@ router.post('/version1-4/AATF-Returns/atf-same-as-operator-answer', function (re
     let answer = req.session.data['atf-same-as-operator']
 
     if (answer === 'false') {
-        res.redirect('/version1-4/AATF-Returns/SC016_2b-Provide-the-address-of-the-atf')
+        res.redirect('/version1-4/AATF-Returns/SC016_2b-Provide-the-address-of-the-ATF')
     } else {
 
         var operator = req.session.data["selectedOperator"];
