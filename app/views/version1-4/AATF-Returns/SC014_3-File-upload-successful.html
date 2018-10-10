@@ -12,14 +12,12 @@ GOV.UK Prototype Kit
     }
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">Is this file correct?</h2>
+<h2 class="govuk-heading-l">Your AATF data has been uploaded successfully</h2>
 <div class="govuk-!-padding-bottom-7"></div>
-<img src="../../../assets/images/icon-file-download.png" />
-{{ data['file-upload-1'] }}
-<form action="/version1-4/AATF-Returns/upload-an-aatf-return-is-this-correct" method="post" class="form">
+<form action="/version1-4/AATF-Returns/upload-an-aatf-successful" method="post" class="form">
     <div class="govuk-!-padding-bottom-4"></div>
     {{ govukButton({
-    text: "Save and continue"
+    text: "Continue"
     }) }}
 </form>
 {% endblock %}
