@@ -50,7 +50,7 @@ function CategoriesTotal(category){
         if (category._photovoltaicPanel){
             total += parseInt(category._photovoltaicPanel);
         }
-        return total;
+        return total.toFixed(3);
     }
     else{
         return '-';
@@ -391,21 +391,23 @@ router.post('/version1-4/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
 
     console.log(updateFacility);
     var updateScheme = updateFacility[0]._pcs.filter(function(scheme){
-        if (scheme._id === req.session.data['schemeselect']){
+        if (scheme._id === req.session.data["selectedScheme"]._id){
             return true;
         }
     });
 
     
-    
-/*     var sentOnUpdate = updateScheme[0]._sentOnOperatorCollection.filter(function(sentOn){
+    console.log('Whole-WEEE-sent-to-another-treatment-save update scheme');
+    console.log(updateScheme[0]);
+    var sentOnUpdate = updateScheme[0]._sentOnOperatorCollection.filter(function(sentOn){
         if (sentOn._id === selectedSentOnId){
             return true;
         }
-    
+    });
+
     sentOnUpdate[0]._sentToAnotherAtfForTreatmentb2c = new Categories(req.session.data['large-household-appliances-input-SC011'], req.session.data['small-household-appliances-input-SC011'], req.session.data['it-and-telecomms-input-SC011'], req.session.data['consumer-equipment-input-SC011'], req.session.data['lighting-equipment-input-SC011'], req.session.data['electrical-and-electronic-input-SC011'], req.session.data['toys-leisure-sports-input-SC011'], req.session.data['medical-devices-input-SC011'], req.session.data['monitoring-control-input-SC011'], req.session.data['automatic-dispensers-input-SC011'], req.session.data['display-equipment-input-SC011'], req.session.data['cooling-appliance-input-SC011'], req.session.data['gas-discharge-led-input-SC011'], req.session.data['photovolatic-panels-input-SC011']);
     sentOnUpdate[0]._sentToAnotherAtfForTreatmentb2b = new Categories(req.session.data['large-household-appliances-input-SC011-b2b'], req.session.data['small-household-appliances-input-SC011-b2b'], req.session.data['it-and-telecomms-input-SC011-b2b'], req.session.data['consumer-equipment-input-SC011-b2b'], req.session.data['lighting-equipment-input-SC011-b2b'], req.session.data['electrical-and-electronic-input-SC011-b2b'], req.session.data['toys-leisure-sports-input-SC011-b2b'], req.session.data['medical-devices-input-SC011-b2b'], req.session.data['monitoring-control-input-SC011-b2b'], req.session.data['automatic-dispensers-input-SC011-b2b'], req.session.data['display-equipment-input-SC011-b2b'], req.session.data['cooling-appliance-input-SC011-b2b'], req.session.data['gas-discharge-led-input-SC011-b2b'], req.session.data['photovolatic-panels-input-SC011-b2b']);
- */
+ 
     var items = [req.session.data['large-household-appliances-input-SC011'], req.session.data['small-household-appliances-input-SC011'], req.session.data['it-and-telecomms-input-SC011'], req.session.data['consumer-equipment-input-SC011'], req.session.data['lighting-equipment-input-SC011'], req.session.data['electrical-and-electronic-input-SC011'], req.session.data['toys-leisure-sports-input-SC011'], req.session.data['medical-devices-input-SC011'], req.session.data['monitoring-control-input-SC011'], req.session.data['automatic-dispensers-input-SC011'], req.session.data['display-equipment-input-SC011'], req.session.data['cooling-appliance-input-SC011'], req.session.data['gas-discharge-led-input-SC011'], req.session.data['photovolatic-panels-input-SC011']]
     var itemsb2b = [req.session.data['large-household-appliances-input-SC011-b2b'], req.session.data['small-household-appliances-input-SC011-b2b'], req.session.data['it-and-telecomms-input-SC011-b2b'], req.session.data['consumer-equipment-input-SC011-b2b'], req.session.data['lighting-equipment-input-SC011-b2b'], req.session.data['electrical-and-electronic-input-SC011-b2b'], req.session.data['toys-leisure-sports-input-SC011-b2b'], req.session.data['medical-devices-input-SC011-b2b'], req.session.data['monitoring-control-input-SC011-b2b'], req.session.data['automatic-dispensers-input-SC011-b2b'], req.session.data['display-equipment-input-SC011-b2b'], req.session.data['cooling-appliance-input-SC011-b2b'], req.session.data['gas-discharge-led-input-SC011-b2b'], req.session.data['photovolatic-panels-input-SC011-b2b']]
     var result = 0;
@@ -575,9 +577,16 @@ router.post('/version1-4/AATF-Returns/atf-same-as-operator-answer', function (re
 })
 
 router.post('/version1-4/AATF-Returns/non-obligated-weee-answer', function (req, res) {
+   
     let answer = req.session.data['non-obligated-weee']
 
     if (answer === 'false') {
+        let period = req.session.data['period'];
+
+        if (period._operator._categories){
+            period._operator._categories = null;
+            period._operator._categoriesDcf = null;
+        }
         res.redirect('/version1-4/AATF-Returns/My-facilities')
     } else {
         res.redirect('/version1-4/AATF-Returns/SC004_1-Enter-non-obligated-WEEE')
