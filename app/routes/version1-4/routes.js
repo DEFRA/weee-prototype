@@ -59,12 +59,10 @@ function CategoriesTotal(category){
 router.get('/version1-4/AATF-Returns/My-facilities', function (req, res) {
 
     var period = req.session.data['period'];
-    console.log(period);
-    //console.log(CategoriesTotal(period._operator._categories))
+    
     period._operator._wee = CategoriesTotal(period._operator._categories);
     period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf);
 
-    
     req.session.data['period'] = period;
 
     res.render('version1-4/AATF-Returns/SC002_1-My-facilities');
@@ -391,21 +389,23 @@ router.post('/version1-4/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
         }
     });
 
+    console.log(updateFacility);
     var updateScheme = updateFacility[0]._pcs.filter(function(scheme){
         if (scheme._id === req.session.data['schemeselect']){
             return true;
         }
     });
 
-    var sentOnUpdate = updateScheme[0]._sentOnOperatorCollection.filter(function(sentOn){
+    
+    
+/*     var sentOnUpdate = updateScheme[0]._sentOnOperatorCollection.filter(function(sentOn){
         if (sentOn._id === selectedSentOnId){
             return true;
         }
-    });
     
     sentOnUpdate[0]._sentToAnotherAtfForTreatmentb2c = new Categories(req.session.data['large-household-appliances-input-SC011'], req.session.data['small-household-appliances-input-SC011'], req.session.data['it-and-telecomms-input-SC011'], req.session.data['consumer-equipment-input-SC011'], req.session.data['lighting-equipment-input-SC011'], req.session.data['electrical-and-electronic-input-SC011'], req.session.data['toys-leisure-sports-input-SC011'], req.session.data['medical-devices-input-SC011'], req.session.data['monitoring-control-input-SC011'], req.session.data['automatic-dispensers-input-SC011'], req.session.data['display-equipment-input-SC011'], req.session.data['cooling-appliance-input-SC011'], req.session.data['gas-discharge-led-input-SC011'], req.session.data['photovolatic-panels-input-SC011']);
     sentOnUpdate[0]._sentToAnotherAtfForTreatmentb2b = new Categories(req.session.data['large-household-appliances-input-SC011-b2b'], req.session.data['small-household-appliances-input-SC011-b2b'], req.session.data['it-and-telecomms-input-SC011-b2b'], req.session.data['consumer-equipment-input-SC011-b2b'], req.session.data['lighting-equipment-input-SC011-b2b'], req.session.data['electrical-and-electronic-input-SC011-b2b'], req.session.data['toys-leisure-sports-input-SC011-b2b'], req.session.data['medical-devices-input-SC011-b2b'], req.session.data['monitoring-control-input-SC011-b2b'], req.session.data['automatic-dispensers-input-SC011-b2b'], req.session.data['display-equipment-input-SC011-b2b'], req.session.data['cooling-appliance-input-SC011-b2b'], req.session.data['gas-discharge-led-input-SC011-b2b'], req.session.data['photovolatic-panels-input-SC011-b2b']);
-
+ */
     var items = [req.session.data['large-household-appliances-input-SC011'], req.session.data['small-household-appliances-input-SC011'], req.session.data['it-and-telecomms-input-SC011'], req.session.data['consumer-equipment-input-SC011'], req.session.data['lighting-equipment-input-SC011'], req.session.data['electrical-and-electronic-input-SC011'], req.session.data['toys-leisure-sports-input-SC011'], req.session.data['medical-devices-input-SC011'], req.session.data['monitoring-control-input-SC011'], req.session.data['automatic-dispensers-input-SC011'], req.session.data['display-equipment-input-SC011'], req.session.data['cooling-appliance-input-SC011'], req.session.data['gas-discharge-led-input-SC011'], req.session.data['photovolatic-panels-input-SC011']]
     var itemsb2b = [req.session.data['large-household-appliances-input-SC011-b2b'], req.session.data['small-household-appliances-input-SC011-b2b'], req.session.data['it-and-telecomms-input-SC011-b2b'], req.session.data['consumer-equipment-input-SC011-b2b'], req.session.data['lighting-equipment-input-SC011-b2b'], req.session.data['electrical-and-electronic-input-SC011-b2b'], req.session.data['toys-leisure-sports-input-SC011-b2b'], req.session.data['medical-devices-input-SC011-b2b'], req.session.data['monitoring-control-input-SC011-b2b'], req.session.data['automatic-dispensers-input-SC011-b2b'], req.session.data['display-equipment-input-SC011-b2b'], req.session.data['cooling-appliance-input-SC011-b2b'], req.session.data['gas-discharge-led-input-SC011-b2b'], req.session.data['photovolatic-panels-input-SC011-b2b']]
     var result = 0;
@@ -658,10 +658,11 @@ router.post('/version1-4/AATF-Returns/operator-address-postcode-save', function 
     var newOperator = new Operator(operatorName, selectedScheme._sentOnOperatorCollection.length, '',  req.session.data['operator-building-street'],  req.session.data['operator-town-city'],  req.session.data['operator-county'], operatorPostcode);
     selectedScheme._sentOnOperatorCollection.push(newOperator); 
 
+    req.session.data['selectedScheme'] = selectedScheme;
     req.session.data['period'] = period;
     req.session.data['selectedOperator'] = newOperator;
     req.session.data['selectedSentOnForTreatmentId'] = selectedScheme._sentOnOperatorCollection.length - 1;
-
+    
     res.redirect('/version1-4/AATF-Returns/SC016_2a-Is-the-atf-address-the-same-as-the-facility')
 })
 
