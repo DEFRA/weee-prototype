@@ -193,6 +193,7 @@ app.locals.serviceName = config.serviceName
 const sessionName = 'govuk-prototype-kit-' + (Buffer.from(config.serviceName, 'utf8')).toString('hex')
 let sessionOptions = {
   secret: sessionName,
+  expires: new Date(Date.now() + 3600000),
   cookie: {
     maxAge: 1000 * 60 * 60 * 4, // 4 hours
     secure: isSecure

@@ -9,7 +9,7 @@ class Period{
         this._facilities.push(new Facility('ABB Ltd Woking', 2, 'WEE/AB1234GH/ATF'));
         this._facilities.push(new Facility('ABB Ltd Maidenhead', 3, 'WEE/AB1234GH/ATF'));
 
-        this._operator = new Operator('Abb Ltd', 1, 'WEE/AB1234GH/ATF', '1 Stratford Avenue', 'Hammersmith', 'United Kingdom', 'W4 5YH');
+        this._operator = new Operator('ABB Ltd', 1, 'WEE/AB1234GH/ATF', '1 Stratford Avenue', 'Hammersmith', 'United Kingdom', 'W4 5YH');
     }
 }
   
