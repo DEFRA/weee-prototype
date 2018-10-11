@@ -1,0 +1,44 @@
+{% extends "version1-5/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">What do you want to do now?</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<form action="/version1-5/AATF-Returns/what-to-do-select" method="post" class="form">
+<div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+        <div class="govuk-radios">
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="what-to-do-option-1" name="what-to-do-option" type="radio" value="1">
+                <label class="govuk-label govuk-radios__label" for="what-to-do-option-1">
+                    Check & submit my AATF return
+                </label>
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="what-to-do-option-2" name="what-to-do-option" type="radio" value="2">
+                <label class="govuk-label govuk-radios__label" for="what-to-do-option-2">
+                    Add more data from other PCSs for this AATF
+                </label>
+            </div>
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="what-to-do-option-3" name="what-to-do-option" type="radio" value="3">
+                <label class="govuk-label govuk-radios__label" for="what-to-do-option-3">
+                    Add data for a different AATF
+                </label>
+            </div>
+        </div>
+    </fieldset>
+</div>
+{{ govukButton({
+    text: "Continue"
+}) }}
+</form>
+{% endblock %}
