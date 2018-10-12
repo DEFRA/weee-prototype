@@ -181,6 +181,19 @@ router.get('/version1-5/AATF-Returns/Make-an-AATF-return-options', function (req
 
     res.redirect('/version1-5/AATF-Returns/SC002_1a-Make-an-AATF-return-options');
 })
+
+router.get('/version1-5/AATF-Returns/PCS-Table', function (req, res) {
+    var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
+        if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
+            return true;
+        }
+    });
+
+    req.session.data['selectedFacility'] = selectedFacility[0];
+
+    res.redirect('/version1-5/AATF-Returns/SC007-PCS-Table');
+})
+
 router.post('/version1-5/AATF-Returns/save-and-continue-change', function (req, res) {
     var items = [req.session.data['large-household-appliances-input-SC009'], req.session.data['small-household-appliances-input-SC009'], req.session.data['it-and-telecomms-input-SC009'], req.session.data['consumer-equipment-input-SC009'], req.session.data['lighting-equipment-input-SC009'], req.session.data['electrical-and-electronic-input-SC009'], req.session.data['toys-leisure-sports-input-SC009'], req.session.data['medical-devices-input-SC009'], req.session.data['monitoring-control-input-SC009'], req.session.data['automatic-dispensers-input-SC009'], req.session.data['display-equipment-input-SC009'], req.session.data['cooling-appliance-input-SC009'], req.session.data['gas-discharge-led-input-SC009'], req.session.data['photovolatic-panels-input-SC009']]
     var itemsb2b = [req.session.data['large-household-appliances-input-SC009-b2b'], req.session.data['small-household-appliances-input-SC009-b2b'], req.session.data['it-and-telecomms-input-SC009-b2b'], req.session.data['consumer-equipment-input-SC009-b2b'], req.session.data['lighting-equipment-input-SC009-b2b'], req.session.data['electrical-and-electronic-input-SC009-b2b'], req.session.data['toys-leisure-sports-input-SC009-b2b'], req.session.data['medical-devices-input-SC009-b2b'], req.session.data['monitoring-control-input-SC009-b2b'], req.session.data['automatic-dispensers-input-SC009-b2b'], req.session.data['display-equipment-input-SC009-b2b'], req.session.data['cooling-appliance-input-SC009-b2b'], req.session.data['gas-discharge-led-input-SC009-b2b'], req.session.data['photovolatic-panels-input-SC009-b2b']]
@@ -805,5 +818,41 @@ router.post('/version1-5/AATF-Returns/nil-return-confirm', function (req, res) {
     res.redirect('/version1-5/AATF-Returns/My-facilities')
 })
 
+
+router.get('/version1-5/AATF-Returns/Enter-WEEE-that-has-been-received-for-treatment', function (req, res) {
+    var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
+        if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
+            return true;
+        }
+    });
+
+    req.session.data['selectedFacility'] = selectedFacility[0];
+
+    res.redirect('/version1-5/AATF-Returns/SC009-Enter-WEEE-that-has-been-received-for-treatment');
+})
+
+router.get('/version1-5/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for-treatment', function (req, res) {
+    var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
+        if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
+            return true;
+        }
+    });
+
+    req.session.data['selectedFacility'] = selectedFacility[0];
+
+    res.redirect('/version1-5/AATF-Returns/SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment');
+})
+
+router.get('/version1-5/AATF-Returns/Enter-WEEE-that-has-been-received-for-treatment', function (req, res) {
+    var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
+        if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
+            return true;
+        }
+    });
+
+    req.session.data['selectedFacility'] = selectedFacility[0];
+
+    res.redirect('/version1-5/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance');
+})
 
 module.exports = router;
