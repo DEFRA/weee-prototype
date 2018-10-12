@@ -56,6 +56,29 @@ function CategoriesTotal(category) {
         return '-';
     }
 }
+
+router.post('/version1-5/AATF-Returns/find-scheme', function (req, res){
+    var searchTerm = req.session.data['SearchTerm'];
+    var schemes = req.session.data['schemes'];
+
+    var results = schemes._schemes.filter(function (scheme) {
+        console.log(searchTerm);
+        if (scheme._name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
+            return true;
+        }
+    });
+    //console.log(results);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify({ results: results }));
+});
+
+router.get('/version1-5/complete', function (req, res) {
+
+    var schemes = req.session.data['schemes'];
+
+    res.render('version1-5/auto-complete');
+})
+
 router.get('/version1-5/AATF-Returns/My-facilities', function (req, res) {
 
     var period = req.session.data['period'];
@@ -331,7 +354,7 @@ router.post('/version1-5/AATF-Returns/add-pcs', function (req, res) {
     });
 
     var selectedScheme = req.session.data.schemes._schemes.filter(function (scheme) {
-        if (scheme._id === req.session.data['schemeselect']) {
+        if (scheme._id === req.session.data['scheme-name-id']) {
             return true;
         }
     });

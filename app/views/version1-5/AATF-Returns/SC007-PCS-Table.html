@@ -18,21 +18,12 @@ GOV.UK Prototype Kit
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Which PCS(s) did {{ data['selectedFacility']._name }} receive WEEE from?</h2>
 <form action="/version1-5/AATF-Returns/add-pcs" method="post" class="form">
-    
-<div class="govuk-!-padding-bottom-4"></div>
-  <div class="govuk-form-group">
-       <select class="govuk-select govuk-!-width-one-half" id="schemeselect" name="schemeselect">
-          {% for scheme in data['schemes']._schemes %}
-          <option value="{{ scheme._id }}">{{ scheme._name }}</option>
-          {% endfor %}
-      </select>
-    </div>
-  <div class="govuk-!-padding-bottom-4"></div>
-  <button type="submit" class="govuk-button" id="multiple-pcs-add">
+    <input type="hidden" id="scheme-name-id" name="scheme-name-id">
+    <input class="govuk-input govuk-!-width-one-half" id="scheme-name" name="scheme-name" type="text">
+    <button type="submit" class="govuk-button" id="multiple-pcs-add">
       Add
     </button>
-  </form>
-  
+</form>
   {% set schemeAdded = data['selectedFacility']._pcs.length %}
 {% if schemeAdded> 0 %}
 <h2 class="govuk-heading-m">PCS(s) this AATF received WEEE from</h2>
