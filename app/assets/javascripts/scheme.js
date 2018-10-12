@@ -1,12 +1,14 @@
 $(document).ready(function () {
 
     var searchTerm = '';
-    $('#scheme-name')
+
+    if ($('#scheme-name').length){
+        $('#scheme-name')
         .focus(function () {
             searchTerm = $(this).val();
         })
         .blur(function () {
-            if (searchTerm != $(this).val()) {
+            if (searchTerm !== $(this).val()) {
                 $('scheme-name-id').val('');
             }
         })
@@ -49,4 +51,5 @@ $(document).ready(function () {
                 .append('<span class="govuk-body-s">' + item._name + '</span>')
                 .appendTo(ul);
         };
+    }
 });

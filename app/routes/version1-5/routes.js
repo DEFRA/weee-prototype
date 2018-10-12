@@ -72,6 +72,10 @@ router.post('/version1-5/AATF-Returns/find-scheme', function (req, res){
     res.send(JSON.stringify({ results: results }));
 });
 
+router.get('/paste', function(req, res){
+    res.render('version1-5/transform-paste');
+});
+
 router.get('/version1-5/complete', function (req, res) {
 
     var schemes = req.session.data['schemes'];
@@ -311,9 +315,6 @@ router.post('/version1-5/AATF-Returns/facility-cancel', function (req, res) {
 })
 
 router.post('/version1-5/AATF-Returns/facility-confirm', function (req, res) {
-
-
-
     res.redirect('/version1-5/AATF-Returns/SC006x-Do-you-want-to-report-on-multiple-pcs')
 })
 
@@ -341,8 +342,6 @@ router.post('/version1-5/AATF-Returns/scheme-cancel', function (req, res) {
 router.get('/version1-5/AATF-Returns/PCS-Table', function (req, res) {
     res.redirect('/version1-5/AATF-Returns/PCS-Table');
 })
-
-
 
 router.post('/version1-5/AATF-Returns/add-pcs', function (req, res) {
     var period = req.session.data['period'];
