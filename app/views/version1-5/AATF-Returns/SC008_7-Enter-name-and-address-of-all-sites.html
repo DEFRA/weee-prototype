@@ -1,0 +1,86 @@
+{% extends "version1-5/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+    padding-top: 0px;
+  }
+  #reuse-table-summary td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var pcsName = localStorage.getItem('completedPCS');
+        var pcsID = localStorage.getItem('completedPCSID');
+        var reuseCounter = localStorage.getItem('reuseCounter');
+        var headerString = pcsName + " - " + pcsID;
+        var atfCompletedArray = JSON.parse(localStorage.getItem('atfCompleteArray'));
+        /*
+                $('#SC016c-paragraph').html(headerString);
+                for (var i = 0; i < atfCompletedArray.length; i++) {
+                    $('#reuse-table-summary > tbody:last-child').append('<tr class="govuk-table__row"><td class="govuk-table__cell ">PLACEHOLDER</td><td class="govuk-table__cell ">2 Waterloo Avenue</td><td class="govuk-table__cell ">Guildford</td><td class="govuk-table__cell ">United Kingdom</td><td class="govuk-table__cell ">GU22 7UY</td><td class="govuk-table__cell "><a href="" class="govuk-link govuk-link--no-visited-state">Remove</a></td></tr>');
+                }
+                */
+    });
+</script>
+<p id="SC016c-paragraph" style="margin-bottom: 0px;"></p>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l" style="padding-top: 0px;">Report on WEEE reused as a whole appliance</h2>
+<table class="govuk-table govuk-!-font-size-16" id="reuse-table-sites" style="width:50%; display:inline-table;">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Household (B2C) (t)</th>
+            <th class="govuk-table__header" scope="col">Non-household (B2B) (t)</th>
+        </tr>
+    </thead>
+    <tr>
+        <td class="govuk-table__cell">10.200</td>
+        <td class="govuk-table__cell">14.080</td>
+    </tr>
+    <tbody>
+    </tbody>
+</table>
+<a href="#" class="govuk-link--no-visited-state govuk-link" style="margin-left: 10%;">Add data</a>
+<div class="govuk-!-padding-bottom-4"></div>
+<table class="govuk-table govuk-!-font-size-16" id="reuse-table-summary" style="margin-bottom: 0px;">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Site name</th>
+            <th class="govuk-table__header" scope="col">Street</th>
+            <th class="govuk-table__header" scope="col">Town</th>
+            <th class="govuk-table__header" scope="col">Country</th>
+            <th class="govuk-table__header" scope="col">Postcode</th>
+            <th class="govuk-table__header" scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reusedSite in data['selectedFacility']._reusedSites %}
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col">{{reusedSite[0]}}</td>
+            <td class="govuk-table__cell" scope="col"></td>
+            <td class="govuk-table__cell" scope="col"></td>
+            <td class="govuk-table__cell" scope="col"></td>
+            <td class="govuk-table__cell" scope="col">{{reusedSite[1]}}</td>
+            <td class="govuk-table__cell" scope="col"><a href="/" class="govuk-link--no-visited-state govuk-link">Remove</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-2"></div>
+<a href="/version1-5/AATF-Returns/SC008_5-Which-site-is-this-WEEE-being-sent-to-for-reuse-as-a-whole-appliance" class="govuk-link--no-visited-state govuk-link">Add
+    site</a>
+<div class="govuk-!-padding-bottom-8"></div>
+<form action="/version1-5/AATF-Returns/reuse-treatment-save" method="post" class="form" style="display: block">
+    <button type="submit" class="govuk-button" id="reuse-treatment-save">
+        Save and continue
+    </button>
+</form>
+{% endblock %}

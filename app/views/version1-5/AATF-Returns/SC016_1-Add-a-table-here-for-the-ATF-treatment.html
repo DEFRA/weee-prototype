@@ -1,0 +1,53 @@
+{% extends "version1-5/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+    padding-top: 0px;
+  }
+  #atf-table-summary td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<p style="margin-bottom: 0px;">{{ data['selectedScheme']._name }}</p>
+<h2 class="govuk-heading-l" style="padding-top: 0px;">Report on WEEE sent to an ATF for treatment</h2>
+<p class="govuk-body-s">You can report on multiple ATFs</p>
+<div class="govuk-!-padding-bottom-4"></div>
+<table class="govuk-table govuk-!-font-size-16" id="atf-table-summary" style="margin-bottom: 0px;">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">ATF name</th>
+            <th class="govuk-table__header" scope="col">Operator address</th>
+            <th class="govuk-table__header" scope="col">ATF address</th>
+            <th class="govuk-table__header" scope="col">WEEE sent on (t)</th>
+            <th class="govuk-table__header" scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+            {% for sentOn in data['selectedScheme']._sentOnOperatorCollection %}
+            <tr class="govuk-table__row">
+                  <td class="govuk-table__cell" scope="col">{{sentOn._name}}</td>
+                  <td class="govuk-table__cell" scope="col">{{ sentOn._address._street }} {{ sentOn._address._town }} {{ sentOn._address._country }} {{ sentOn._address._postcode }}</td>
+                  <td class="govuk-table__cell" scope="col">{{ sentOn._atfAddress._address._street }} {{ sentOn._atfAddress._address._town }} {{ sentOn._atfAddress._address._country }} {{ sentOn._atfAddress._address._postcode }}</td>
+                  <td class="govuk-table__cell" scope="col">-</td>
+                  <td class="govuk-table__cell" scope="col"><a href="SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment">Add data</a> </td>
+              </tr>
+              {% endfor %}
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-2"></div>
+<a href="/version1-5/AATF-Returns/SC016_2-Which-operator-is-this-WEEE-being-sent-to-for-treatment" class="govuk-link--no-visited-state govuk-link">Add another ATF</a>
+<div class="govuk-!-padding-bottom-8"></div>
+<form action="/version1-5/AATF-Returns/atf-treatment-save" method="post" class="form" style="display: block">
+    <button type="submit" class="govuk-button" id="atf-treatment-save">
+        Save and continue
+    </button>
+</form>
+{% endblock %}
