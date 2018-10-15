@@ -428,7 +428,7 @@ router.post('/version1-5/AATF-Returns/weee-reused-as-a-whole-appliance-this-faci
     });
 
     var updateScheme = updateFacility[0]._pcs.filter(function (scheme) {
-        if (scheme._id === req.session.data['schemeselect']) {
+        if (scheme._id === req.session.data['selectedScheme']._id) {
             return true;
         }
     });
