@@ -829,7 +829,19 @@ router.post('/version1-5/AATF-Returns/compliance-reporting-continue', function (
 })
 
 router.post('/version1-5/AATF-Returns/compliance-reporting-start', function (req, res) {
-    res.redirect('/version1-5/AATF-Returns/SC002_1-My-facilities')
+    res.redirect('/version1-5/AATF-Returns/SC002_1d-How-would-you-like-to-report')
+})
+
+router.post('/version1-5/AATF-Returns/compliance-reporting-end', function (req, res) {
+    let answer = req.session.data['compliance-reporting-option']
+
+    if (answer === '1') {
+        res.redirect('/version1-5/AATF-Returns/My-facilities')
+    } else if (answer === '2') {
+        res.redirect('/version1-5/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
+    } else if (answer === '3') {
+        res.redirect('/version1-5/AATF-Returns/SC013_1-Confirmation-of-nil-return')  
+    }
 })
 
 router.get('/version1-5/AATF-Returns/Enter-WEEE-that-has-been-received-for-treatment', function (req, res) {
