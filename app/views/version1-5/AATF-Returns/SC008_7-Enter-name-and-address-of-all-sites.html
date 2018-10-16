@@ -23,15 +23,22 @@ GOV.UK Prototype Kit
         var reuseCounter = localStorage.getItem('reuseCounter');
         var headerString = pcsName + " - " + pcsID;
         var atfCompletedArray = JSON.parse(localStorage.getItem('atfCompleteArray'));
-        /*
-                $('#SC016c-paragraph').html(headerString);
-                for (var i = 0; i < atfCompletedArray.length; i++) {
-                    $('#reuse-table-summary > tbody:last-child').append('<tr class="govuk-table__row"><td class="govuk-table__cell ">PLACEHOLDER</td><td class="govuk-table__cell ">2 Waterloo Avenue</td><td class="govuk-table__cell ">Guildford</td><td class="govuk-table__cell ">United Kingdom</td><td class="govuk-table__cell ">GU22 7UY</td><td class="govuk-table__cell "><a href="" class="govuk-link govuk-link--no-visited-state">Remove</a></td></tr>');
-                }
-                */
     });
 </script>
-<p id="SC016c-paragraph" style="margin-bottom: 0px;"></p>
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">PCS(s)</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">{{ data['selectedScheme']._name }}</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">WEEE reused summary</li>
+    </ol>
+</div>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l" style="padding-top: 0px;">Report on WEEE reused as a whole appliance</h2>
 <table class="govuk-table govuk-!-font-size-16" id="reuse-table-sites" style="width:50%; display:inline-table;">

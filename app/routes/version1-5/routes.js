@@ -111,7 +111,8 @@ router.get('/version1-5/AATF-Returns/My-facilities', function (req, res) {
 
     req.session.data['period'] = period;
 
-    res.render('version1-5/AATF-Returns/SC002_1-My-facilities');
+    //res.render('version1-5/AATF-Returns/SC002_1-My-facilities');
+    res.render('version1-5/AATF-Returns/SC002_1-My-facilities-2');
 })
 
 router.get('/version1-5/AATF-Returns/compliance-reporting', function (req, res) {
@@ -810,7 +811,12 @@ router.post('/version1-5/AATF-Returns/operator-address-postcode-save-2', functio
     var siteName = req.session.data['operator-name-search-2'];
     var sitePostcode = req.session.data['operator-postcode-search-2'];
     var siteAddress = req.session.data['site-address'];
-    var siteArray = [siteName, sitePostcode];
+    
+    if(siteAddress != '') {
+        var siteArray = [siteAddress, ''];
+    } else {
+        var siteArray = [siteName, sitePostcode];
+    }
 
     var updateFacility = period._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.session.data['selectedFacility']._id)) {
@@ -854,7 +860,7 @@ router.post('/version1-5/AATF-Returns/compliance-reporting-end', function (req, 
     let answer = req.session.data['compliance-reporting-option']
 
     if (answer === '1') {
-        res.redirect('/version1-5/AATF-Returns/My-facilities')
+        res.redirect('/version1-5/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee')
     } else if (answer === '2') {
         res.redirect('/version1-5/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
     } else if (answer === '3') {
@@ -872,6 +878,18 @@ router.get('/version1-5/AATF-Returns/Enter-WEEE-that-has-been-received-for-treat
     req.session.data['selectedFacility'] = selectedFacility[0];
 
     res.redirect('/version1-5/AATF-Returns/SC009-Enter-WEEE-that-has-been-received-for-treatment');
+})
+
+router.get('/version1-5/AATF-Returns/PCS-Table', function (req, res) {
+    var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
+        if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
+            return true;
+        }
+    });
+
+    req.session.data['selectedFacility'] = selectedFacility[0];
+
+    res.redirect('/version1-5/AATF-Returns/SC007-PCS-Table?');
 })
 
 router.get('/version1-5/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for-treatment', function (req, res) {
