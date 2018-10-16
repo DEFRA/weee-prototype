@@ -114,6 +114,11 @@ router.get('/version1-5/AATF-Returns/My-facilities', function (req, res) {
     res.render('version1-5/AATF-Returns/SC002_1-My-facilities');
 })
 
+router.get('/version1-5/AATF-Returns/compliance-reporting', function (req, res) {
+
+    res.render('version1-5/AATF-Returns/SC002_2-compliance-and-reporting');
+})
+
 router.get('/version1-5/AATF-Returns/WEEE-received-for-treatment', function (req, res) {
     var schemeId = req.query['schemeId'];
     var schemes = req.session.data['schemes'];
@@ -557,7 +562,7 @@ router.post('/version1-5/AATF-Returns/whole-weee-answer', function (req, res) {
     let answer = req.session.data['whole-weee']
 
     if (answer === 'false') {
-        res.redirect('/version1-5/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance')
+        res.redirect('/version1-5/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance?facilityId=' + req.session.data.facilityId)
     } else {
         res.redirect('/version1-5/AATF-Returns/SC016_2-Which-operator-is-this-WEEE-being-sent-to-for-treatment?facility=' + req.session.data.facilityId + '&facilityId=' + req.session.data.facilityId + '&scheme=' + req.session.data.scheme + '&schemeId=' + req.session.data.schemeId)
     }
@@ -804,6 +809,7 @@ router.post('/version1-5/AATF-Returns/operator-address-postcode-save-2', functio
     var period = req.session.data['period'];
     var siteName = req.session.data['operator-name-search-2'];
     var sitePostcode = req.session.data['operator-postcode-search-2'];
+    var siteAddress = req.session.data['site-address'];
     var siteArray = [siteName, sitePostcode];
 
     var updateFacility = period._facilities.filter(function (facility) {
@@ -836,6 +842,25 @@ router.post('/version1-5/AATF-Returns/nil-return-confirm', function (req, res) {
     res.redirect('/version1-5/AATF-Returns/My-facilities')
 })
 
+router.post('/version1-5/AATF-Returns/compliance-reporting-continue', function (req, res) {
+    res.redirect('/version1-5/AATF-Returns/SC002_1c-Start-report')
+})
+
+router.post('/version1-5/AATF-Returns/compliance-reporting-start', function (req, res) {
+    res.redirect('/version1-5/AATF-Returns/SC002_1d-How-would-you-like-to-report')
+})
+
+router.post('/version1-5/AATF-Returns/compliance-reporting-end', function (req, res) {
+    let answer = req.session.data['compliance-reporting-option']
+
+    if (answer === '1') {
+        res.redirect('/version1-5/AATF-Returns/My-facilities')
+    } else if (answer === '2') {
+        res.redirect('/version1-5/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
+    } else if (answer === '3') {
+        res.redirect('/version1-5/AATF-Returns/SC013_1-Confirmation-of-nil-return')  
+    }
+})
 
 router.get('/version1-5/AATF-Returns/Enter-WEEE-that-has-been-received-for-treatment', function (req, res) {
     var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
@@ -861,7 +886,7 @@ router.get('/version1-5/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for
     res.redirect('/version1-5/AATF-Returns/SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment');
 })
 
-router.get('/version1-5/AATF-Returns/Enter-WEEE-that-has-been-received-for-treatment', function (req, res) {
+router.get('/version1-5/AATF-Returns/Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance', function (req, res) {
     var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
             return true;

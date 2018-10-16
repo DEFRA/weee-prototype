@@ -32,27 +32,15 @@ GOV.UK Prototype Kit
 <div class="govuk-!-padding-bottom-5"></div>
 <input type="hidden" id="atfId" name="atfId" />
 <form action="/version1-5/AATF-Returns/operator-address-postcode-save-2" method="post" class="form" style="display: inline">
-    {{ govukInput({
-    label: {
-    text: "Site name"
-    },
-    classes: "govuk-!-width-one-third",
-    id: "operator-name-search-2",
-    name: "operator-name-search-2"
-    }) }}
-    {{ govukInput({
-    label: {
-    text: "Postcode"
-    },
-    classes: "govuk-!-width-one-third",
-    id: "operator-postcode-search-2",
-    name: "operator-postcode-search-2"
-    }) }}
-    <button type="submit" class="govuk-button" id="postcode-search-button">
-        Find address
+    <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-width-one-half" for="name">
+            Site address
+        </label>
+        <textarea class="govuk-input govuk-!-width-one-half" style="height: 200px;" id="site-address" name="site-address" type="text"></textarea>
+    </div>
+    <button type="submit" class="govuk-button" id="input-address-button">
+        Save and continue
     </button>
-    <br/>
-    <a href="SC008_5a-Manual-entry-of-site-address-for-reuse" class="govuk-link">I can't find the site address</a>
 
 </form>
 {% endblock %}

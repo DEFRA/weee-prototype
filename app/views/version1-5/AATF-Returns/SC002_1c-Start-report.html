@@ -1,0 +1,32 @@
+{% extends "version1-4/layout.html" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var compliance = localStorage.getItem('compliance-year');
+        var reporting = localStorage.getItem('reporting-period');
+        var output = 'You have not started your report for ABB Ltd for the period of ' + reporting + ' ' + compliance;
+        $('#report-heading').html(output);
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l" id="report-heading"></h2>
+<div class="govuk-!-padding-bottom-3"></div>
+<form action="/version1-5/AATF-Returns/compliance-reporting-start" method="post" class="form" style="display: inline">
+    <button type="submit" class="govuk-button">
+        Start report
+    </button>
+</form>
+<a class="govuk-link" href="/" style="margin-left: 20px;">I don't want to report on this period and year</a>
+{% endblock %}
