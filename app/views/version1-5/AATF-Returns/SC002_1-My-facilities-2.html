@@ -7,9 +7,8 @@ GOV.UK Prototype Kit
 
 {% block content %}
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">AATF returns for Abb Ltd</h2>
+<h2 class="govuk-heading-l">AATF return for Abb Ltd</h2>
 <!-- Change it so it pulls from operator, maybe-->
-<p class="govuk-!-width-three-quarters">You can create, edit, and submit quarterly returns</p>
 <form action="/version1-4/AATF-Returns/save-and-continue" method="post" class="form">
     <table class="govuk-table" style="width: 30%;">
         <tr class="govuk-table__row">
@@ -53,9 +52,7 @@ GOV.UK Prototype Kit
                 <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
                 <th class="govuk-table__header" scope="col">Sent to another ATF (t)</th>
                 <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
-                <th class="govuk-table__header" scope="col"></th>
                 <th class="govuk-table__header" scope="col">Actions</th>
-                <th class="govuk-table__header" scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -71,12 +68,6 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col"><a href="Report-options?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Add data</a>    
-            </td>
-            <td class="govuk-table__cell" scope="col">
-                <a href="SC014_1-Upload-an-aatf-return-browse?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Upload data</a>
-            </td>
-            <td class="govuk-table__cell" scope="col">
-                <a href="SC013_1-Confirmation-of-nil-return?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Nil return</a>
             </td>
         </tr>
         {% endfor %}
