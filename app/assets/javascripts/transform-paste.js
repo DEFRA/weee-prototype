@@ -45,10 +45,7 @@
                         }
                     }
                     var totalControl = tableRows[tableRowCount].cells[tableColumnCount].querySelector('[id*="tonne"]');
-                    totalControl.innerText = columnTotal.toFixed(3);
-                    console.log(columnTotal);
-                    
-
+                    totalControl.innerText = columnTotal.toFixed(3) + ' tonnes';
                 }
             }
         }
