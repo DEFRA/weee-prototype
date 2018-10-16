@@ -11,17 +11,8 @@ GOV.UK Prototype Kit
         padding-top: 0px;
     }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var compliance = localStorage.getItem('compliance-year');
-        var reporting = localStorage.getItem('reporting-period');
-        var output = 'ABB Ltd, AATF return for ' + reporting + ' ' + compliance;
-        $('#report-heading').html(output);
-    });
-</script>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l" id="report-heading"></h2>
+<h2 class="govuk-heading-l" id="report-heading">You have not started your return for ABB Ltd for the period of {{ data['return-period'] }} {{ data['return-year'] }}</h2>
 <div class="govuk-!-padding-bottom-3"></div>
 <form action="/version1-5/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee" method="post" class="form" style="display: inline">
     <button type="submit" class="govuk-button">
