@@ -73,7 +73,7 @@ router.get('/version1-5/AATF-Returns/paste-values-redirect', function(req, res){
     req.session.data['paste-page-title'] = req.query['title'];
     req.session.data['paste-return-page'] = req.query['returnUrl'];
 
-    res.render('version1-5/AATF-Returns/paste-values');
+    res.render('version1-5/AATF-Returns/paste-values-screen');
 });
 
 router.post('/version1-5/AATF-Returns/find-scheme', function (req, res){
