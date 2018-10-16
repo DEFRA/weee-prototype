@@ -73,7 +73,7 @@ router.get('/version1-5/AATF-Returns/paste-values-redirect', function(req, res){
     req.session.data['paste-page-title'] = req.query['title'];
     req.session.data['paste-return-page'] = req.query['returnUrl'];
 
-    res.render('version1-5/AATF-Returns/paste-values');
+    res.render('version1-5/AATF-Returns/paste-values-screen');
 });
 
 router.post('/version1-5/AATF-Returns/find-scheme', function (req, res){
@@ -598,7 +598,7 @@ router.post('/version1-5/AATF-Returns/multiple-pcs-save', function (req, res) {
 })
 
 router.post('/version1-5/AATF-Returns/pcs-check-my-return', function (req, res) {
-    res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return')
+    res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return-v2')
 })
 
 router.post('/version1-5/AATF-Returns/reusing-weee-answer', function (req, res) {

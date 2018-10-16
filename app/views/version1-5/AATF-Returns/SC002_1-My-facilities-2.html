@@ -65,7 +65,9 @@ GOV.UK Prototype Kit
                 <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
                 <th class="govuk-table__header" scope="col">Sent to another ATF (t)</th>
                 <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
+                <th class="govuk-table__header" scope="col"></th>
                 <th class="govuk-table__header" scope="col">Actions</th>
+                <th class="govuk-table__header" scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -80,15 +82,23 @@ GOV.UK Prototype Kit
             {% endif %}
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
-            <td class="govuk-table__cell" scope="col"><a href="PCS-Table?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Add data</a></td>
+            <td class="govuk-table__cell" scope="col"><a href="PCS-Table?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Add data</a>    
+            </td>
+            <td class="govuk-table__cell" scope="col">
+                <a href="SC014_1-Upload-an-aatf-return-browse?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Upload data</a>
+            </td>
+            <td class="govuk-table__cell" scope="col">
+                <a href="SC013_1-Confirmation-of-nil-return?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Nil return</a>
+            </td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
 </form>
-<form action="/version1-4/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
+<form action="/version1-5/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
     <button type="submit" class="govuk-button" id="pcs-check-return">
         Check my return
     </button>
 </form>
+
 {% endblock %}
