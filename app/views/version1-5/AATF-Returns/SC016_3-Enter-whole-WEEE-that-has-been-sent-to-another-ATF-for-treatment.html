@@ -16,21 +16,23 @@ GOV.UK Prototype Kit
         padding-top: 0px;
     }
 </style>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        var url = window.location.href;
-        var urlPCS = url.split('pcs=')[1];
-        urlPCS = urlPCS.split('&id=')[0];
-        urlPCS = urlPCS.replace(/%20/g, ' ');
-        localStorage.setItem('completedPCS', urlPCS);
-        var urlPCSID = url.split('id=')[1];
-        localStorage.setItem('completedPCSID', urlPCSID);
-
-        var detail = '</br>' + urlPCS + ' - ' + urlPCSID + '</br>';
-         $('#detailSummary').append(detail);
-    });
-</script> -->
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">PCS(s)</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">{{ data['selectedScheme']._name }}</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Sent to another ATF Summary</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">WEEE sent to another ATF</li>
+    </ol>
+</div>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">WEEE sent to another ATF for treatment</h2>
 <div>
