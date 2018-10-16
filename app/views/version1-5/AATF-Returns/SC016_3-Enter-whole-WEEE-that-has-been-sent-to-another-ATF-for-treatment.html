@@ -37,10 +37,19 @@ GOV.UK Prototype Kit
     <p id="detailSummary" style="margin-bottom: 0px;">{{data['facilitySelect']}}</p>
     <p>{{ data['operator-name'] }} {{ data['operator-name-search'] }} - {{ data['operator-postcode'] }} {{ data['operator-postcode-search'] }}</p>
 </div>
-<a href="" id="copy-data" name="copy-data">Copy and paste category data</a>
-<div style="display: none;">
-    <textarea class="govuk-textarea" id="paste-text-area" name="paste-text-area" style="height: 400px;"></textarea>
-</div>
+<details class="govuk-details govuk-!-font-size-16">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                I don't want to enter tonnage values in manually
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            <div class="govuk-body govuk-!-font-size-16">
+                You can copy and paste tonnage values in <a href="paste-values-redirect?returnUrl=SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment&title=WEEE sent to another ATF for treatment">here</a>
+            </div>
+        </div>
+    </details>
+    <input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
 <div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert" tabindex="-1"
     data-module="error-summary">
     <h2 class="govuk-error-summary__title" id="error-summary-title">
