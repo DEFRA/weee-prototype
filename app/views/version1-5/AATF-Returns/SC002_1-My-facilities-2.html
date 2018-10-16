@@ -11,6 +11,9 @@ GOV.UK Prototype Kit
     $(document).ready(function () {
         var compliance = localStorage.getItem('compliance-year');
         var reporting = localStorage.getItem('reporting-period-full');
+        if(reporting = 'Select a reporting period') {
+            reporting = '';
+        }
         $('#compliance-insert').html(compliance);
         $('#reporting-insert').html(reporting);
     });

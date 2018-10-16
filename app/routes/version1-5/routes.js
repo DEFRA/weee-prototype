@@ -811,12 +811,10 @@ router.post('/version1-5/AATF-Returns/operator-address-postcode-save-2', functio
     var siteName = req.session.data['operator-name-search-2'];
     var sitePostcode = req.session.data['operator-postcode-search-2'];
     var siteAddress = req.session.data['site-address'];
+    var siteArray = [];
+
+    siteArray = [siteName, sitePostcode];
     
-    if(siteAddress != '') {
-        var siteArray = [siteAddress, ''];
-    } else {
-        var siteArray = [siteName, sitePostcode];
-    }
 
     var updateFacility = period._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.session.data['selectedFacility']._id)) {
