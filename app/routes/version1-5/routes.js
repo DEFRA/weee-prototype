@@ -207,7 +207,7 @@ router.get('/version1-5/AATF-Returns/Make-an-AATF-return-options', function (req
     res.redirect('/version1-5/AATF-Returns/SC002_1a-Make-an-AATF-return-options');
 })
 
-router.get('/version1-5/AATF-Returns/PCS-Table', function (req, res) {
+router.get('/version1-5/AATF-Returns/Report-options', function (req, res) {
     var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
             return true;
@@ -216,7 +216,7 @@ router.get('/version1-5/AATF-Returns/PCS-Table', function (req, res) {
 
     req.session.data['selectedFacility'] = selectedFacility[0];
 
-    res.redirect('/version1-5/AATF-Returns/SC007-PCS-Table');
+    res.redirect('/version1-5/AATF-Returns/SC002_1d-How-would-you-like-to-report');
 })
 
 router.post('/version1-5/AATF-Returns/save-and-continue-change', function (req, res) {
@@ -886,7 +886,7 @@ router.post('/version1-5/AATF-Returns/compliance-reporting-end', function (req, 
     let answer = req.session.data['compliance-reporting-option']
 
     if (answer === '1') {
-        res.redirect('/version1-5/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee')
+        res.redirect('/version1-5/AATF-Returns/SC007-PCS-Table')
     } else if (answer === '2') {
         res.redirect('/version1-5/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
     } else if (answer === '3') {

@@ -16,12 +16,13 @@ GOV.UK Prototype Kit
     $(document).ready(function () {
         var compliance = localStorage.getItem('compliance-year');
         var reporting = localStorage.getItem('reporting-period');
-        var output = 'How would you like to report on the period of ' + reporting + ' ' + compliance + ' for ABB Ltd';
-        $('#report-heading').html(output);
+        /*
+        var output = 'How would you like to report on the AATF ';
+        $('#report-heading').html(output);*/
     });
 </script>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l" id="report-heading"></h2>
+<h2 class="govuk-heading-l" id="report-heading">How would you like to report on the AATF '{{data['selectedFacility']._name}}'</h2>
 <div class="govuk-!-padding-bottom-3"></div>
 <form action="/version1-5/AATF-Returns/compliance-reporting-end" method="post" class="form" style="display: inline">
     <div class="govuk-form-group">

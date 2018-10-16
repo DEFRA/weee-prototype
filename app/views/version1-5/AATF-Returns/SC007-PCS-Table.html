@@ -46,6 +46,7 @@ GOV.UK Prototype Kit
       <th class="govuk-table__header" scope="col">Sent onto other ATF (t)</th>
       <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
       <th class="govuk-table__header" scope="col">Actions</th>
+      <th class="govuk-table__header" scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -55,9 +56,9 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
-            <!-- <td class="govuk-table__cell" scope="col"><a href="SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facility={{ data['facility'] }}&facilityId={{ data['facilityId'] }}&scheme={{scheme._name}}&schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td> -->
             <td class="govuk-table__cell" scope="col"><a href="WEEE-received-for-treatment?schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Add data</a></td>
-        </tr>
+            <td class="govuk-table__cell" scope="col"><a href="/" class="govuk-link govuk-link--no-visited-state">Remove</a></td>
+          </tr>
         {% endfor %}
         </tbody>
 </table>
