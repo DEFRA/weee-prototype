@@ -16,7 +16,7 @@ GOV.UK Prototype Kit
     $(document).ready(function () {
         var compliance = localStorage.getItem('compliance-year');
         var reporting = localStorage.getItem('reporting-period');
-        var output = 'You have not started your return for ABB Ltd for the period of ' + reporting + ' ' + compliance;
+        var output = 'ABB Ltd, AATF return for ' + reporting + ' ' + compliance;
         $('#report-heading').html(output);
     });
 </script>
@@ -25,8 +25,8 @@ GOV.UK Prototype Kit
 <div class="govuk-!-padding-bottom-3"></div>
 <form action="/version1-5/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee" method="post" class="form" style="display: inline">
     <button type="submit" class="govuk-button">
-        Start report
+        Start return
     </button>
 </form>
-<a class="govuk-link" href="SC002_2-compliance-and-reporting.html" style="margin-left: 20px;">I don't want to report on this period and year</a>
+<a class="govuk-link" href="SC002_2-compliance-and-reporting.html" style="margin-left: 20px;">I don't want to start a return for this period and year</a>
 {% endblock %}
