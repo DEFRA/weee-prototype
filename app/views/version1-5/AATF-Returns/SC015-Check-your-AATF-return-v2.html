@@ -1,4 +1,4 @@
-{% extends "version1-5/layout.html" %}
+{% extends "version1-4/layout.html" %}
 {% from "input/macro.njk" import govukInput %}
 {% from "back-link/macro.njk" import govukBackLink %}
 {%- from "tag/macro.njk" import govukTag -%}
@@ -55,7 +55,7 @@ GOV.UK Prototype Kit
         <p>2018</p>
     </div>
     <div class="govuk-grid-column-one-quarter">
-            <a href="/SC002-What-would-you-like-to-do.html">Change1</a>
+            <a href="/version1-5/SC002-What-would-you-like-to-do">Change</a>
     </div>
 </div>
 <div class="govuk-grid-row">
@@ -103,7 +103,7 @@ GOV.UK Prototype Kit
         <tr class="govuk-table__row">
             <td class="govuk-table__cell">ABB LTD</td>
             <td class="govuk-table__cell">ATF/AB12345/WEEE</td>
-            <td class="govuk-table__cell"><a href="/SC002-What-would-you-like-to-do">Change</a></td>
+            <td class="govuk-table__cell"><a href="SC004-Would-you-like-to-report-on-any-non-obligated-weee">Change</a></td>
         </tr>
     </tbody>
 </table>
@@ -127,7 +127,7 @@ GOV.UK Prototype Kit
         <td class="govuk-table__cell" scope="col">1.233</td>
         <td class="govuk-table__cell" scope="col">2.568</td>
         <td class="govuk-table__cell" scope="col">1.2345</td>
-        <td class="govuk-table__cell" scope="col"><a href="">Change</a></td>
+        <td class="govuk-table__cell" scope="col"><a href="PCS-Table">Change</a></td>
     </tr>
     <tr class="govuk-table__row">
         <td class="govuk-table__cell" scope="col">ABB Ltd Woking</td>
@@ -135,7 +135,7 @@ GOV.UK Prototype Kit
         <td class="govuk-table__cell" scope="col">-</td>
         <td class="govuk-table__cell" scope="col">-</td>
         <td class="govuk-table__cell" scope="col">-</td>
-        <td class="govuk-table__cell" scope="col"><a href="">Change</a></td>
+        <td class="govuk-table__cell" scope="col"><a href="PCS-Table">Change</a></td>
     </tr>
     <tr class="govuk-table__row">
         <td class="govuk-table__cell" scope="col">ABB Ltd Maidenhead</td>
@@ -143,12 +143,12 @@ GOV.UK Prototype Kit
         <td class="govuk-table__cell" scope="col">2.233</td>
         <td class="govuk-table__cell" scope="col">4.568</td>
         <td class="govuk-table__cell" scope="col">6.235</td>
-        <td class="govuk-table__cell" scope="col"><a href="">Change</a></td>
+        <td class="govuk-table__cell" scope="col"><a href="PCS-Table">Change</a></td>
     </tr>
     </tbody>
 </table>
 
-<form action="/version1-5/AATF-Returns/submit-aatf-return" method="post" class="form">
+<form action="/version1-4/AATF-Returns/submit-aatf-return" method="post" class="form">
     {{ govukButton({
     text: "Submit"
     }) }}
