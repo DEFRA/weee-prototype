@@ -6,18 +6,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var compliance = localStorage.getItem('compliance-year');
-        var reporting = localStorage.getItem('reporting-period-full');
-        if(reporting = 'Select a reporting period') {
-            reporting = '';
-        }
-        $('#compliance-insert').html(compliance);
-        $('#reporting-insert').html(reporting);
-    });
-</script>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">AATF returns for Abb Ltd</h2>
 <!-- Change it so it pulls from operator, maybe-->
@@ -26,11 +14,11 @@ GOV.UK Prototype Kit
     <table class="govuk-table" style="width: 30%;">
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;">Compliance year</td>
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;" id="compliance-insert"></td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;" id="compliance-insert">{{ data['return-year'] }}</td>
         </tr>
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;">Reporting period</td>
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;" id="reporting-insert"></td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;" id="reporting-insert">{{ data['return-period-long'] }}</td>
         </tr>
     </table>
     <div class="govuk-!-margin-bottom-4"></div>
