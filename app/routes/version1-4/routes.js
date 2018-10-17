@@ -414,16 +414,12 @@ router.post('/version1-4/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
         }
     });
 
-    console.log(updateFacility);
     var updateScheme = updateFacility[0]._pcs.filter(function(scheme){
         if (scheme._id === req.session.data["selectedScheme"]._id){
             return true;
         }
     });
 
-    
-    console.log('Whole-WEEE-sent-to-another-treatment-save update scheme');
-    console.log(updateScheme[0]);
     var sentOnUpdate = updateScheme[0]._sentOnOperatorCollection.filter(function(sentOn){
         if (sentOn._id === selectedSentOnId){
             return true;
@@ -677,6 +673,18 @@ function GetSelectedScheme(period, facilityId, schemeId) {
     });
 
     return selectedScheme[0];
+}
+
+function GetSelectedAtf(period, facilityId, schemeId) {
+    var selectedScheme = GetSelectedScheme(period, facilityId, schemeId);
+
+    var selectedAtf = selectedScheme._sentOnOperatorCollection.filter(function (senton) {
+        if (parseInt(senton._id) === parseInt(req.session.data['selectedSentOnForTreatmentId'])) {
+            return true;
+        }
+    });
+
+    return selectedAtf[0];
 }
 
 router.post('/version1-4/AATF-Returns/operator-address-postcode-save', function (req, res) {
