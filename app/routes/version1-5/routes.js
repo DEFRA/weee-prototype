@@ -851,27 +851,27 @@ router.post('/version1-5/AATF-Returns/compliance-reporting-continue', function (
     var year = '';
     
     if (!req.session.data['compliance-year']){    
-        period = 'Q1';
+        year = '2018';
     }else{
-        period = req.session.data['compliance-year'];
+        year = req.session.data['compliance-year'];
     }
     if (!req.session.data['reporting-period']){
-        year = '2018';
+        period = 'Q1';
     } else{
-        year = req.session.data['reporting-period'];
+        period = req.session.data['reporting-period'];
     }
     
     var longPeriod = '';
-    if (req.session.data['reporting-period']==='Q1'){
+    if (period==='Q1'){
         longPeriod = 'Q1 Jan - Mar';
     }
-    if (req.session.data['reporting-period']==='Q2'){
+    if (period==='Q2'){
         longPeriod = 'Q2 Apr - Jun';
     }
-    if (req.session.data['reporting-period']==='Q3'){
+    if (period==='Q3'){
         longPeriod = 'Q3 Jul - Sep';
     }
-    if (req.session.data['reporting-period']==='Q4'){
+    if (period==='Q4'){
         longPeriod = 'Q4 Oct - Dec';
     }
     req.session.data['return-year'] = year;
