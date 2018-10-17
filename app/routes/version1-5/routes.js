@@ -834,7 +834,6 @@ router.post('/version1-5/AATF-Returns/submit-scheme-for-approval', function (req
 })
 
 router.post('/version1-5/AATF-Returns/submit-aatf-return', function (req, res) {
-    console.log(req)
     res.redirect('/version1-5/AATF-Returns/SC016-Submission-complete')
 })
 
@@ -851,7 +850,6 @@ router.post('/version1-5/AATF-Returns/compliance-reporting-continue', function (
     var period = '';
     var year = '';
     
-    console.log( req.session.data['compliance-year']);
     if (!req.session.data['compliance-year']){    
         year = '2018';
     }else{
