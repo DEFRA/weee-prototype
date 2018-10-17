@@ -131,8 +131,8 @@ router.get('/version1-5/AATF-Returns/WEEE-received-for-treatment', function (req
     });
 
     req.session.data['selectedScheme'] = selectedScheme[0];
-
-    res.render('version1-5/AATF-Returns/SC009-Enter-WEEE-that-has-been-received-for-treatment');
+    
+    res.redirect('SC009-Enter-WEEE-that-has-been-received-for-treatment');
 })
 
 
