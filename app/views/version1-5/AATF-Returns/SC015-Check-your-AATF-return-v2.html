@@ -23,22 +23,6 @@ GOV.UK Prototype Kit
         padding-top: 0px;
     }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var pcsNameArray = JSON.parse(localStorage.getItem('pcsNameArray'));
-        var pcsIDArray = JSON.parse(localStorage.getItem('pcsIDArray'));
-        $('.Scheme-2').css('display', 'none')
-        $('#scheme1').click(function () {
-            $('.Scheme-1').css('display', 'table-row')
-            $('.Scheme-2').css('display', 'none')
-        });
-        $('#scheme2').click(function () {
-            $('.Scheme-2').css('display', 'table-row')
-            $('.Scheme-1').css('display', 'none')
-        });
-    });
-</script>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Check your AATF return</h2>
 <span style="float:right">
@@ -52,7 +36,7 @@ GOV.UK Prototype Kit
         <p><strong>Compliance year</strong></p>
     </div>
     <div class="govuk-grid-column-one-quarter">
-        <p>2018</p>
+        <p>{{ data['return-year'] }}</p>
     </div>
     <div class="govuk-grid-column-one-quarter">
             <a href="/version1-5/SC002-What-would-you-like-to-do">Change</a>
@@ -63,7 +47,7 @@ GOV.UK Prototype Kit
         <p><strong>Reporting period</strong></p>
     </div>
     <div class="govuk-grid-column-one-quarter">
-        <p>Q1 Jan - Mar</p>
+        <p>{{ data['return-period-long'] }}</p>
     </div>
 </div>
 <div class="govuk-!-padding-bottom-4"></div>
@@ -71,7 +55,6 @@ GOV.UK Prototype Kit
     <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">Operator name</th>
-            <th class="govuk-table__header" scope="col">Approval No</th>
             <th class="govuk-table__header" scope="col">Street</th>
             <th class="govuk-table__header" scope="col">Town</th>
             <th class="govuk-table__header" scope="col">Country</th>
@@ -81,7 +64,6 @@ GOV.UK Prototype Kit
     <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
             <td class="govuk-table__cell ">ABB LTD</td>
-            <td class="govuk-table__cell ">ATF/AB12345/WEEE</td>
             <td class="govuk-table__cell ">1 Waterloo Avenue</td>
             <td class="govuk-table__cell ">Woking</td>
             <td class="govuk-table__cell ">United Kingdom</td>
