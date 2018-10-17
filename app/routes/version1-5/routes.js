@@ -81,12 +81,11 @@ router.post('/version1-5/AATF-Returns/find-scheme', function (req, res){
     var schemes = req.session.data['schemes'];
 
     var results = schemes._schemes.filter(function (scheme) {
-        console.log(searchTerm);
         if (scheme._name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
             return true;
         }
     });
-    //console.log(results);
+    
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({ results: results }));
 });
@@ -850,15 +849,18 @@ router.post('/version1-5/AATF-Returns/compliance-reporting-continue', function (
     
     var period = '';
     var year = '';
-    if (!req.session.data['compliance-year']){
+    
+    if (!req.session.data['compliance-year']){    
         period = 'Q1';
+    }else{
+        period = req.session.data['compliance-year'];
     }
     if (!req.session.data['reporting-period']){
         year = '2018';
+    } else{
+        year = req.session.data['reporting-period'];
     }
-    req.session.data['return-year'] = req.session.data['compliance-year'];
-    req.session.data['return-period'] = req.session.data['reporting-period'];
-
+    
     var longPeriod = '';
     if (req.session.data['reporting-period']==='Q1'){
         longPeriod = 'Q1 Jan - Mar';
@@ -872,7 +874,8 @@ router.post('/version1-5/AATF-Returns/compliance-reporting-continue', function (
     if (req.session.data['reporting-period']==='Q4'){
         longPeriod = 'Q4 Oct - Dec';
     }
-
+    req.session.data['return-year'] = year;
+    req.session.data['return-period'] = period;
     req.session.data['return-period-long'] = longPeriod;
     
     res.redirect('/version1-5/AATF-Returns/SC002_1c-Start-report');
