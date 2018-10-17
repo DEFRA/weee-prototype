@@ -574,7 +574,7 @@ router.post('/version1-5/AATF-Returns/what-to-do-select', function (req, res) {
     let answer = req.session.data['what-to-do-option']
 
     if (answer === '1') {
-        res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return')
+        res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return-v2')
     } else if (answer === '2') {
         res.redirect('/version1-5/AATF-Returns/PCS-Table')
     } else if (answer === '3') {
@@ -616,7 +616,7 @@ router.post('/version1-5/AATF-Returns/reusing-weee-answer-2', function (req, res
     let answer = req.session.data['reusing-weee-2']
 
     if (answer === 'false') {
-        res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return')
+        res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return-v2')
     } else {
         res.redirect('/version1-5/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2')
 
@@ -830,7 +830,7 @@ router.post('/version1-5/AATF-Returns/operator-address-postcode-save-2', functio
 })
 
 router.post('/version1-5/AATF-Returns/submit-scheme-for-approval', function (req, res) {
-    res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return')
+    res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return-v2')
 })
 
 router.post('/version1-5/AATF-Returns/submit-aatf-return', function (req, res) {
