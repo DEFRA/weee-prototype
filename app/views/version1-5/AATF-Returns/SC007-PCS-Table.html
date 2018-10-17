@@ -6,6 +6,7 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
+
 <style>
   #main-content {
     padding-top: 0px;
@@ -22,6 +23,19 @@ GOV.UK Prototype Kit
     </li>
     <li class="govuk-breadcrumbs__list-item" aria-current="page">PCS(s)</li>
   </ol>
+</div>
+<div class="govuk-error-summary govuk-!-width-one-half" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">Please select a PCS</a>
+            </li>
+        </ul>
+    </div>
 </div>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Which PCS(s) did {{ data['selectedFacility']._name }} receive WEEE from?</h2>
@@ -70,4 +84,5 @@ GOV.UK Prototype Kit
 </form>
 <a href="My-facilities">AATF returns</a>
 {% endif %}
+<script src="/public/javascripts/add-scheme-validation.js"></script>
 {% endblock %}

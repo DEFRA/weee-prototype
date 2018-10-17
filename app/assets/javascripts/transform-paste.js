@@ -1,7 +1,7 @@
 (function () {
     var pasteValues = document.querySelectorAll('#paste-values-hidden');
     
-    if (pasteValues && pasteValues[0].value)
+    if (pasteValues && pasteValues[0] && pasteValues[0].value)
     {    
         setTimeout(function () {
 
