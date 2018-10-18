@@ -19,8 +19,16 @@ GOV.UK Prototype Kit
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        let urlParams = new URLSearchParams(window.location.search);
-        let myParam = urlParams.get('title');
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results==null){
+            return null;
+            }
+            else{
+            return decodeURI(results[1]) || 0;
+            }
+        }
+        let myParam = $.urlParam('title');
         $('#heading-text').html(myParam);
     });
 </script>
