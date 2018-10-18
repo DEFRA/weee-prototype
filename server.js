@@ -9,6 +9,7 @@ const express = require('express')
 const nunjucks = require('nunjucks')
 const sessionInCookie = require('client-sessions')
 const sessionInMemory = require('express-session')
+const MemoryStore = require('memorystore')(sessionInMemory)
 const cookieParser = require('cookie-parser')
 
 // Run before other code to make sure variables from .env are available
@@ -210,6 +211,9 @@ if (useCookieSessionStore === 'true') {
 } else {
   app.use(sessionInMemory(Object.assign(sessionOptions, {
     name: sessionName,
+    store: new MemoryStore({
+      checkPeriod: 86400000
+    }),
     resave: false,
     saveUninitialized: false
   })))

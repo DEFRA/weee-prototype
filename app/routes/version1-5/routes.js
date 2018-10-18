@@ -612,18 +612,6 @@ router.post('/version1-5/AATF-Returns/reusing-weee-answer', function (req, res) 
     }
 })
 
-router.post('/version1-5/AATF-Returns/reusing-weee-answer-2', function (req, res) {
-    let answer = req.session.data['reusing-weee-2']
-
-    if (answer === 'false') {
-        res.redirect('/version1-5/AATF-Returns/SC015-Check-your-AATF-return-v2')
-    } else {
-        res.redirect('/version1-5/AATF-Returns/SC008b-Operator-Address-Postcode-Locator-2')
-
-        //res.redirect('/version1-5/AATF-Returns/SC008_1-Is-this-whole-weee-being-reused-at-this-facility')
-    }
-})
-
 router.post('/version1-5/AATF-Returns/reusing-weee-at-this-facility-answer', function (req, res) {
     let answer = req.session.data['reusing-weee-at-this-facility']
 
