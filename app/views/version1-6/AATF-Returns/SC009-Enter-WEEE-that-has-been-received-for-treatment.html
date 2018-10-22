@@ -103,6 +103,7 @@ GOV.UK Prototype Kit
                     </div>
                 </td>
             </tr>
+            {% set scheme = data['selectedScheme'] %}
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">1. Large household appliances</td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -110,11 +111,9 @@ GOV.UK Prototype Kit
                         <span id="large-household-appliances-input-SC009-error" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "large-household-appliances-input-SC009",
-                        name: "large-household-appliances-input-SC009"
-                        }) }}
+                        <input class="govuk-input govuk-!-width-two-thirds" id="large-household-appliances-input-SC009"
+                        name="large-household-appliances-input-SC009" value="{{ scheme._weeeReceived._largeHouseholdAppliances }}"
+                        type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -122,11 +121,9 @@ GOV.UK Prototype Kit
                         <span id="large-household-appliances-input-SC009-error-b2b" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "large-household-appliances-input-SC009-b2b",
-                        name: "large-household-appliances-input-SC009-b2b"
-                        }) }}
+                        <input class="govuk-input govuk-!-width-two-thirds" id="large-household-appliances-input-SC009-b2b"
+                        name="large-household-appliances-input-SC009-b2b" value="{{ scheme._weeeReceivedb2b._largeHouseholdAppliances }}"
+                        type="text">
                     </div>
                 </td>
             </tr>
@@ -138,11 +135,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "small-household-appliances-input-SC009",
-                        name: "small-household-appliances-input-SC009"
-                        }) }}
+                        <input class="govuk-input govuk-!-width-two-thirds" id="small-household-appliances-input-SC009"
+                        name="small-household-appliances-input-SC009" value="{{ data['small-household-appliances-input-SC009'] }}"
+                        type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -150,11 +145,9 @@ GOV.UK Prototype Kit
                         <span id="small-household-appliances-input-SC009-error-b2b" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "small-household-appliances-input-SC009-b2b",
-                        name: "small-household-appliances-input-SC009-b2b"
-                        }) }}
+                        <input class="govuk-input govuk-!-width-two-thirds" id="small-household-appliances-input-SC009-b2b"
+                        name="small-household-appliances-input-SC009-b2b" value="{{ data['small-household-appliances-input-SC009-b2b'] }}"
+                        type="text">
                     </div>
                 </td>
             </tr>
@@ -165,11 +158,9 @@ GOV.UK Prototype Kit
                         <span id="it-and-telecomms-input-SC009-error" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "it-and-telecomms-input-SC009",
-                        name: "it-and-telecomms-input-SC009"
-                        }) }}
+                        <input class="govuk-input govuk-!-width-two-thirds" id="it-and-telecomms-input-SC009"
+                        name="it-and-telecomms-input-SC009" value="{{ data['it-and-telecomms-input-SC009'] }}"
+                        type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -177,11 +168,9 @@ GOV.UK Prototype Kit
                         <span id="it-and-telecomms-input-SC009-error-b2b" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "it-and-telecomms-input-SC009-b2b",
-                        name: "it-and-telecomms-input-SC009-b2b"
-                        }) }}
+                        <input class="govuk-input govuk-!-width-two-thirds" id="it-and-telecomms-input-SC009-b2b"
+                        name="it-and-telecomms-input-SC009-b2b" value="{{ data['it-and-telecomms-input-SC009-b2b'] }}"
+                        type="text">
                     </div>
                 </td>
             </tr>
@@ -192,12 +181,9 @@ GOV.UK Prototype Kit
                         <span id="consumer-equipment-input-SC009-error" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "consumer-equipment-input-SC009",
-                        name: "consumer-equipment-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="consumer-equipment-input-SC009"
+                            name="consumer-equipment-input-SC009" value="{{ data['consumer-equipment-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -205,12 +191,9 @@ GOV.UK Prototype Kit
                         <span id="consumer-equipment-input-SC009-error-b2b" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "consumer-equipment-input-SC009-b2b",
-                        name: "consumer-equipment-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="consumer-equipment-input-SC009-b2b"
+                            name="consumer-equipment-input-SC009-b2b" value="{{ data['consumer-equipment-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -221,12 +204,9 @@ GOV.UK Prototype Kit
                         <span id="lighting-equipment-input-SC009-error" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "lighting-equipment-input-SC009",
-                        name: "lighting-equipment-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="lighting-equipment-input-SC009"
+                            name="lighting-equipment-input-SC009" value="{{ data['lighting-equipment-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -234,12 +214,9 @@ GOV.UK Prototype Kit
                         <span id="lighting-equipment-input-SC009-error-b2b" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "lighting-equipment-input-SC009-b2b",
-                        name: "lighting-equipment-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="lighting-equipment-input-SC009-b2b"
+                            name="lighting-equipment-input-SC009-b2b" value="{{ data['lighting-equipment-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -250,12 +227,9 @@ GOV.UK Prototype Kit
                         <span id="electrical-and-electronic-input-SC009-error" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "electrical-and-electronic-input-SC009",
-                        name: "electrical-and-electronic-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="electrical-and-electronic-input-SC009"
+                            name="electrical-and-electronic-input-SC009" value="{{ data['electrical-and-electronic-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -263,12 +237,9 @@ GOV.UK Prototype Kit
                         <span id="electrical-and-electronic-input-SC009-error-b2b" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "electrical-and-electronic-input-SC009-b2b",
-                        name: "electrical-and-electronic-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="electrical-and-electronic-input-SC009-b2b"
+                            name="electrical-and-electronic-input-SC009-b2b" value="{{ data['electrical-and-electronic-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -279,12 +250,9 @@ GOV.UK Prototype Kit
                         <span id="toys-leisure-sports-input-SC009-error" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "toys-leisure-sports-input-SC009",
-                        name: "toys-leisure-sports-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="toys-leisure-sports-input-SC009"
+                            name="toys-leisure-sports-input-SC009" value="{{ data['toys-leisure-sports-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -292,12 +260,9 @@ GOV.UK Prototype Kit
                         <span id="toys-leisure-sports-input-SC009-error-b2b" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "toys-leisure-sports-input-SC009-b2b",
-                        name: "toys-leisure-sports-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="toys-leisure-sports-input-SC009-b2b"
+                            name="toys-leisure-sports-input-SC009-b2b" value="{{ data['toys-leisure-sports-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -308,12 +273,9 @@ GOV.UK Prototype Kit
                         <span id="medical-devices-input-SC009-error" class="govuk-error-message govuk-!-font-size-14"
                             style="margin-bottom: 0px; display: none;">
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "medical-devices-input-SC009",
-                        name: "medical-devices-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="medical-devices-input-SC009"
+                            name="medical-devices-input-SC009" value="{{ data['medical-devices-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -322,12 +284,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "medical-devices-input-SC009-b2b",
-                        name: "medical-devices-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="medical-devices-input-SC009-b2b"
+                            name="medical-devices-input-SC009-b2b" value="{{ data['medical-devices-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -339,12 +298,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "monitoring-control-input-SC009",
-                        name: "monitoring-control-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="monitoring-control-input-SC009"
+                            name="monitoring-control-input-SC009" value="{{ data['monitoring-control-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -353,12 +309,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "monitoring-control-input-SC009-b2b",
-                        name: "monitoring-control-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="monitoring-control-input-SC009-b2b"
+                            name="monitoring-control-input-SC009-b2b" value="{{ data['monitoring-control-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -370,12 +323,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "automatic-dispensers-input-SC009",
-                        name: "automatic-dispensers-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="automatic-dispensers-input-SC009"
+                            name="automatic-dispensers-input-SC009" value="{{ data['automatic-dispensers-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -384,12 +334,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "automatic-dispensers-input-SC009-b2b",
-                        name: "automatic-dispensers-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="automatic-dispensers-input-SC009-b2b"
+                            name="automatic-dispensers-input-SC009-b2b" value="{{ data['automatic-dispensers-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -401,11 +348,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "display-equipment-input-SC009",
-                        name: "display-equipment-input-SC009"
-                        }) }}
+                        <input class="govuk-input govuk-!-width-two-thirds" id="display-equipment-input-SC009"
+                        name="display-equipment-input-SC009" value="{{ data['display-equipment-input-SC009'] }}"
+                        type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -414,12 +359,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "display-equipment-input-SC009-b2b",
-                        name: "display-equipment-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="display-equipment-input-SC009-b2b"
+                            name="display-equipment-input-SC009-b2b" value="{{ data['display-equipment-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -431,12 +373,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "cooling-appliance-input-SC009",
-                        name: "cooling-appliance-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="cooling-appliance-input-SC009"
+                            name="cooling-appliance-input-SC009" value="{{ data['cooling-appliance-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -445,12 +384,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "cooling-appliance-input-SC009-b2b",
-                        name: "cooling-appliance-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="cooling-appliance-input-SC009-b2b"
+                            name="cooling-appliance-input-SC009-b2b" value="{{ data['cooling-appliance-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -462,12 +398,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "gas-discharge-led-input-SC009",
-                        name: "gas-discharge-led-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="gas-discharge-led-input-SC009"
+                            name="gas-discharge-led-input-SC009" value="{{ data['gas-discharge-led-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -476,12 +409,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "gas-discharge-led-input-SC009-b2b",
-                        name: "gas-discharge-led-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="gas-discharge-led-input-SC009-b2b"
+                            name="gas-discharge-led-input-SC009-b2b" value="{{ data['gas-discharge-led-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -493,12 +423,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "photovolatic-panels-input-SC009",
-                        name: "photovolatic-panels-input-SC009"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="photovolatic-panels-input-SC009"
+                            name="photovolatic-panels-input-SC009" value="{{ data['photovolatic-panels-input-SC009'] }}"
+                            type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -507,12 +434,9 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                             Please fill in this field
                         </span>
-                        {{ govukInput({
-                        classes: "govuk-!-width-three-quarters",
-                        id: "photovolatic-panels-input-SC009-b2b",
-                        name: "photovolatic-panels-input-SC009-b2b"
-                        }) }}
-
+                        <input class="govuk-input govuk-!-width-two-thirds" id="photovolatic-panels-input-SC009-b2b"
+                            name="photovolatic-panels-input-SC009-b2b" value="{{ data['photovolatic-panels-input-SC009-b2b'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -521,10 +445,10 @@ GOV.UK Prototype Kit
                     <h3 class="govuk-heading-m">Total</h3>
                 </td>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
-                    <h3 class="govuk-heading-m" style="float: left" id="tonneTotal">0.000 tonnes</h3>
+                    <h3 class="govuk-heading-m" style="float: left" id="tonneTotal-sc009">0.000 tonnes</h3>
                 </td>
                 <td class="govuk-table__cell govuk-table__cell--numeric">
-                    <h3 class="govuk-heading-m" style="float: left" id="tonneTotalb2b">0.000 tonnes</h3>
+                    <h3 class="govuk-heading-m" style="float: left" id="tonneTotalb2b-sc009">0.000 tonnes</h3>
                 </td>
             </tr>
         </tbody>

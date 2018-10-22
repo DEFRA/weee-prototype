@@ -50,8 +50,8 @@ GOV.UK Prototype Kit
                   <td class="govuk-table__cell" scope="col">{{ sentOn._name }}</td>
                   <td class="govuk-table__cell" scope="col">{{ sentOn._address._street }} {{ sentOn._address._town }} {{ sentOn._address._country }} {{ sentOn._address._postcode }}</td>
                   <td class="govuk-table__cell" scope="col">{{ sentOn._atfAddress._address._street }} {{ sentOn._atfAddress._address._town }} {{ sentOn._atfAddress._address._country }} {{ sentOn._atfAddress._address._postcode }}</td>
-                  <td class="govuk-table__cell" scope="col">-</td>
-                  <td class="govuk-table__cell" scope="col"><a href="SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment">Add data</a></td>
+                  <td class="govuk-table__cell" scope="col">{{ sentOn._sentToResult }}</td>
+                  <td class="govuk-table__cell" scope="col"><a href="Sent-On-ATF?id={{sentOn._Id}}">Add data</a></td>
                   <td class="govuk-table__cell" scope="col">Remove</td>
               </tr>
               {% endfor %}
