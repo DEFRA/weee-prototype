@@ -1,0 +1,61 @@
+{% extends "version1-6/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="#" aria-current="page">{{ data['selectedFacility']._name }}</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item" aria-current="page">File errors</li>
+    </ol>
+  </div>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Your AATF data file for {{ data['facilitySelect'] }} contains 4 errors</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<p class="govuk-body govuk-!-font-weight-bold">You must resolve all errors listed in order to successfully upload your
+    file</p><br />
+<p class="govuk-body">Errors are problems with the XLSX file structure and content, which prevent this service from
+    validating your file. All errors must be addressed before we can continue the validation process</p>
+
+<details class="govuk-details" style="background-color: #B10E1E ; padding-top: 5px;">
+    <summary class="govuk-details__summary" style="color: black; font-weight: bold;">
+        <span class="govuk-details__summary-text">
+            View 4 errors
+        </span>
+    </summary>
+    <table class="govuk-table" style="background-color:#FDE3E6;">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><p class="govuk-!-font-weight-bold" style="display:inline;">1. PCS1:</p> No PCS has been selected (cell reference B2)</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><p class="govuk-!-font-weight-bold" style="display:inline;">2. PCS1:</p> WEEE received for category 1 household has been entered to too many decimal places, tonnage must be entered to 3dp or below (cell reference C5)</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><p class="govuk-!-font-weight-bold" style="display:inline;">3. PCS1:</p> ATF2 is missing the operator address (cell reference E36)</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><p class="govuk-!-font-weight-bold" style="display:inline;">4. PCS1:</p> Total WEEE re-used as whole appliance is 0 but re-use sites have been entered. If WEEE reused as whole appliance has been received from other sites, you must enter the total tonnages received for all sites by category (cell reference X33-X34)</td>
+        </tr>
+    </table>
+</details>
+<p class="govuk-body-s">To see your .xlsx file's full list, <a href="/" class="govuk-link--no-visited-state govuk-link">download your errors and warnings (CSV)</a></p>
+<form action="/version1-6/AATF-Returns/upload-an-aatf-failed" method="post" class="form">
+    <div class="govuk-!-padding-bottom-4"></div>
+    {{ govukButton({
+    text: "Continue"
+    }) }}
+</form>
+{% endblock %}

@@ -2,8 +2,17 @@ $(document).ready(function () {
     var beforeValue = 0;
     var grandTotal = 0.000;
     var errorTrigger = false;
-    var fieldIDs = ['large-household-appliances-input-SC004', 'large-household-appliances-input-SC004-b2b', 'small-household-appliances-input-SC004', 'small-household-appliances-input-SC004-b2b', 'it-and-telecomms-input-SC004', 'it-and-telecomms-input-SC004-b2b', 'consumer-equipment-input-SC004', 'consumer-equipment-input-SC004-b2b', 'lighting-equipment-input-SC004', 'lighting-equipment-input-SC004-b2b', 'electrical-and-electronic-input-SC004', 'electrical-and-electronic-input-SC004-b2b', 'toys-leisure-sports-input-SC004', 'toys-leisure-sports-input-SC004-b2b', 'medical-devices-input-SC004', 'medical-devices-input-SC004-b2b', 'monitoring-control-input-SC004', 'monitoring-control-input-SC004-b2b', 'automatic-dispensers-input-SC004', 'automatic-dispensers-input-SC004-b2b', 'display-equipment-input-SC004', 'display-equipment-input-SC004-b2b', 'cooling-appliance-input-SC004', 'cooling-appliance-input-SC004-b2b', 'gas-discharge-led-input-SC004', 'gas-discharge-led-input-SC004-b2b', 'photovolatic-panels-input-SC004', 'photovolatic-panels-input-SC004-b2b'];
+    var fieldIDs = ['large-household-appliances-input-SC004', 'small-household-appliances-input-SC004', 'it-and-telecomms-input-SC004', 'consumer-equipment-input-SC004', 'lighting-equipment-input-SC004', 'electrical-and-electronic-input-SC004', 'toys-leisure-sports-input-SC004', 'medical-devices-input-SC004', 'monitoring-control-input-SC004', 'automatic-dispensers-input-SC004', 'display-equipment-input-SC004', 'cooling-appliance-input-SC004', 'gas-discharge-led-input-SC004', 'photovolatic-panels-input-SC004'];
 
+    for(var i = 0; i < fieldIDs.length; i++) {
+        var fieldNumber = Number($('#' + fieldIDs[i]).val());
+        if(!isNaN(fieldNumber)) {
+            grandTotal += fieldNumber;
+        }        
+    }
+    grandTotal = grandTotal.toFixed(3);
+    $('#tonneTotal').html(grandTotal + ' tonnes');
+    
     function changeFunction(name) {
         var currentValue = $('#' + name).val();
         var errorString = name + '-error';

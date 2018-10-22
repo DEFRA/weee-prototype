@@ -4,6 +4,29 @@ $(document).ready(function () {
     var beforeValue = 0;
     var fieldIDs = ['large-household-appliances-input-SC009', 'large-household-appliances-input-SC009-b2b', 'small-household-appliances-input-SC009', 'small-household-appliances-input-SC009-b2b', 'it-and-telecomms-input-SC009', 'it-and-telecomms-input-SC009-b2b', 'consumer-equipment-input-SC009', 'consumer-equipment-input-SC009-b2b', 'lighting-equipment-input-SC009', 'lighting-equipment-input-SC009-b2b', 'electrical-and-electronic-input-SC009', 'electrical-and-electronic-input-SC009-b2b', 'toys-leisure-sports-input-SC009', 'toys-leisure-sports-input-SC009-b2b', 'medical-devices-input-SC009', 'medical-devices-input-SC009-b2b', 'monitoring-control-input-SC009', 'monitoring-control-input-SC009-b2b', 'automatic-dispensers-input-SC009', 'automatic-dispensers-input-SC009-b2b', 'display-equipment-input-SC009', 'display-equipment-input-SC009-b2b', 'cooling-appliance-input-SC009', 'cooling-appliance-input-SC009-b2b', 'gas-discharge-led-input-SC009', 'gas-discharge-led-input-SC009-b2b', 'photovolatic-panels-input-SC009', 'photovolatic-panels-input-SC009-b2b'];
 
+    for (var i = 0; i < fieldIDs.length; i++) {
+        var text = $('#' + fieldIDs[i]).val();
+        if (text == null) {
+
+        } else {
+            if (fieldIDs[i].indexOf('b2b') >= 0) {
+                var fieldNumberb2b = Number($('#' + fieldIDs[i]).val());
+                if (!isNaN(fieldNumberb2b)) {
+                    grandTotalb2b += fieldNumberb2b;
+                }
+            } else {
+                var fieldNumber = Number($('#' + fieldIDs[i]).val());
+                if (!isNaN(fieldNumber)) {
+                    grandTotal += fieldNumber;
+                }
+            }
+        }
+    }
+    grandTotal = grandTotal.toFixed(3);
+    grandTotalb2b = grandTotalb2b.toFixed(3);
+    $('#tonneTotal-sc009').html(grandTotal + ' tonnes');
+    $('#tonneTotalb2b-sc009').html(grandTotalb2b + ' tonnes');
+
     function changeFunction(name) {
         var currentValue = $('#'+name).val();
         var errorString = name + '-error';
@@ -21,7 +44,7 @@ $(document).ready(function () {
                 grandTotal = Number(grandTotal);
                 grandTotal = grandTotal + currentValue;
                 grandTotal = grandTotal.toFixed(3);
-                $('#tonneTotal').html(grandTotal + ' tonnes');
+                $('#tonneTotal-sc009').html(grandTotal + ' tonnes');
             }
         } else {
             if (isNaN(currentValue)) {
@@ -33,7 +56,7 @@ $(document).ready(function () {
                 grandTotal = Number(grandTotal);
                 grandTotal = grandTotal - beforeValue;
                 grandTotal = grandTotal.toFixed(3);
-                $('#tonneTotal').html(grandTotal + ' tonnes');
+                $('#tonneTotal-sc009').html(grandTotal + ' tonnes');
             } else {
                 $('#'+name).parent().parent().removeClass("govuk-form-group--error");
                 $('#'+errorString).text('');
@@ -44,7 +67,7 @@ $(document).ready(function () {
                 var difference = currentValue - beforeValue;
                 grandTotal = grandTotal + difference;
                 grandTotal = grandTotal.toFixed(3);
-                $('#tonneTotal').html(grandTotal + ' tonnes');
+                $('#tonneTotal-sc009').html(grandTotal + ' tonnes');
             }
         }
     }
@@ -67,7 +90,7 @@ $(document).ready(function () {
                 grandTotalb2b = Number(grandTotalb2b);
                 grandTotalb2b = grandTotalb2b + currentValue;
                 grandTotalb2b = grandTotalb2b.toFixed(3);
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
+                $('#tonneTotalb2b-sc009').html(grandTotalb2b + ' tonnes');
             }
         } else {
             if (isNaN(currentValue)) {
@@ -79,7 +102,7 @@ $(document).ready(function () {
                 grandTotalb2b = Number(grandTotalb2b);
                 grandTotalb2b = grandTotalb2b - beforeValue;
                 grandTotalb2b = grandTotalb2b.toFixed(3);
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
+                $('#tonneTotalb2b-sc009').html(grandTotalb2b + ' tonnes');
             } else {
                 $('#'+name).parent().parent().removeClass("govuk-form-group--error");
                 $('#'+errorString).text('');
@@ -90,7 +113,7 @@ $(document).ready(function () {
                 var difference = currentValue - beforeValue;
                 grandTotalb2b = grandTotalb2b + difference;
                 grandTotalb2b = grandTotalb2b.toFixed(3);
-                $('#tonneTotalb2b').html(grandTotalb2b + ' tonnes');
+                $('#tonneTotalb2b-sc009').html(grandTotalb2b + ' tonnes');
             }
         }
     }

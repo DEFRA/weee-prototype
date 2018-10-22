@@ -1,0 +1,53 @@
+{% extends "version1-6/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">PCS(s)</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">{{ data['selectedScheme']._name }}</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">WEEE reused at another site</li>
+    </ol>
+</div>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Has any of this WEEE gone directly to another site to be reused?</h2>
+<p>This is WEEE that has been received at the premises of the reuse establishment or undertaking directly rather than having been received at this AATF first</p>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-6/AATF-Returns/reusing-weee-sent-to-another-site-answer" method="post" class="form" style="display: inline">
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reusing-weee-sent-to-another-site--yes" name="reusing-weee-sent-to-another-site" type="radio" value="true">
+            <label class="govuk-label govuk-radios__label" for="reusing-weee-sent-to-another-site-yes">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reusing-weee-sent-to-another-site-no" name="reusing-weee-sent-to-another-site" type="radio" value="false">
+            <label class="govuk-label govuk-radios__label" for="reusing-weee-sent-to-another-site-no">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+
+    <button type="submit" class="govuk-button" id="weee-reused-at-another-site">
+        Continue
+    </button>
+</form>
+{% endblock %}
