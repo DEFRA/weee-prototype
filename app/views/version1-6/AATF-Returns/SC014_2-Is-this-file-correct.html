@@ -1,0 +1,56 @@
+{% extends "version1-6/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="#" aria-current="page">{{ data['selectedFacility']._name }}</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item" aria-current="page">File confirmation</li>
+    </ol>
+  </div>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Is this file correct?</h2>
+<div class="govuk-!-padding-bottom-3"></div>
+<img src="../../../../public/images/icon-file-download.png">
+<p>your_aatf_data.xlsx</p>
+<form action="/version1-6/AATF-Returns/upload-an-aatf-return-is-this-correct" method="post" class="form">
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+            <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="aatf-return-confirm-option-1" name="aatf-return-confirm-option" type="radio"
+                        value="1">
+                    <label class="govuk-label govuk-radios__label" for="aatf-return-confirm-option-1">
+                        Yes, upload this file and check for errors
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="aatf-return-confirm-option-2" name="aatf-return-confirm-option" type="radio"
+                        value="2">
+                    <label class="govuk-label govuk-radios__label" for="aatf-return-confirm-option-2">
+                       No, I want to change the file
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="govuk-!-padding-bottom-4"></div>
+    {{ govukButton({
+    text: "Continue"
+    }) }}
+</form>
+{% endblock %}

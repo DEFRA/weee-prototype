@@ -1,0 +1,23 @@
+{% extends "version1-6/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Your AATF data has been uploaded successfully</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<form action="/version1-6/AATF-Returns/upload-an-aatf-successful" method="post" class="form">
+    <div class="govuk-!-padding-bottom-4"></div>
+    {{ govukButton({
+    text: "Continue"
+    }) }}
+</form>
+{% endblock %}
