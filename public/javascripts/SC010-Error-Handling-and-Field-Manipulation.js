@@ -118,13 +118,65 @@ $(document).ready(function () {
         }
     }
 
+    function changeFunctionOnTheFly() {
+        grandTotal = 0;
+        $('.weee-input').each(function() {
+            var name = $(this).attr('id');
+            var errorString = name + '-error';
+            var elementValue = $(this).val();
+            if(isNaN(elementValue)) {
+                $('#' + name).parent().parent().addClass("govuk-form-group--error");
+                $('#' + name).parent().parent().css('padding-left', '15px');
+                $('#' + errorString).text('Please specify a numerical value');
+                $('#' + errorString).css('display', 'block');
+                $('#'+name).addClass('error-check');
+            } else {
+                $('#' + name).parent().parent().removeClass("govuk-form-group--error");
+                $('#' + name).parent().parent().css('padding-left', '0px');
+                $('#' + errorString).text('');
+                $('#' + errorString).css('display', 'none');
+                $('#'+name).removeClass('error-check');
+                var number = Number($(this).val());
+                grandTotal += number;
+            }
+        });
+        grandTotal = grandTotal.toFixed(3);
+        $('#tonneTotal-sc010').html(grandTotal + ' tonnes');
+    }
+
+    function changeFunctionOnTheFlyB2B() {
+        grandTotalb2b = 0;
+        $('.weee-input-b2b').each(function() {
+            var name = $(this).attr('id');
+            var errorString = name + '-error';
+            var elementValue = $(this).val();
+            if(isNaN(elementValue)) {
+                $('#' + name).parent().parent().addClass("govuk-form-group--error");
+                $('#' + name).parent().parent().css('padding-left', '15px');
+                $('#' + errorString).text('Please specify a numerical value');
+                $('#' + errorString).css('display', 'block');
+                $('#'+name).addClass('error-check');
+            } else {
+                $('#' + name).parent().parent().removeClass("govuk-form-group--error");
+                $('#' + name).parent().parent().css('padding-left', '0px');
+                $('#' + errorString).text('');
+                $('#' + errorString).css('display', 'none');
+                $('#'+name).removeClass('error-check');
+                var number = Number($(this).val());
+                grandTotalb2b += number;
+            }
+        });
+        grandTotalb2b = grandTotalb2b.toFixed(3);
+        $('#tonneTotalb2b-sc010').html(grandTotalb2b + ' tonnes');
+    }
+
     $('#large-household-appliances-input-SC010').on('focus', function () {
         beforeValue = $(this).val();
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#small-household-appliances-input-SC010').on('focus', function () {
@@ -132,8 +184,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#it-and-telecomms-input-SC010').on('focus', function () {
@@ -141,8 +193,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#consumer-equipment-input-SC010').on('focus', function () {
@@ -150,8 +202,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#lighting-equipment-input-SC010').on('focus', function () {
@@ -159,8 +211,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#electrical-and-electronic-input-SC010').on('focus', function () {
@@ -168,8 +220,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#toys-leisure-sports-input-SC010').on('focus', function () {
@@ -177,8 +229,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#medical-devices-input-SC010').on('focus', function () {
@@ -186,8 +238,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#monitoring-control-input-SC010').on('focus', function () {
@@ -195,8 +247,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#automatic-dispensers-input-SC010').on('focus', function () {
@@ -204,8 +256,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#display-equipment-input-SC010').on('focus', function () {
@@ -213,8 +265,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#cooling-appliance-input-SC010').on('focus', function () {
@@ -222,8 +274,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#gas-discharge-led-input-SC010').on('focus', function () {
@@ -231,8 +283,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#photovolatic-panels-input-SC010').on('focus', function () {
@@ -240,8 +292,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunction($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFly();
     });
 
     $('#large-household-appliances-input-SC010-b2b').on('focus', function () {
@@ -249,8 +301,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#small-household-appliances-input-SC010-b2b').on('focus', function () {
@@ -258,8 +310,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#it-and-telecomms-input-SC010-b2b').on('focus', function () {
@@ -267,8 +319,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#consumer-equipment-input-SC010-b2b').on('focus', function () {
@@ -276,8 +328,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#lighting-equipment-input-SC010-b2b').on('focus', function () {
@@ -285,8 +337,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#electrical-and-electronic-input-SC010-b2b').on('focus', function () {
@@ -294,8 +346,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#toys-leisure-sports-input-SC010-b2b').on('focus', function () {
@@ -303,8 +355,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#medical-devices-input-SC010-b2b').on('focus', function () {
@@ -312,8 +364,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#monitoring-control-input-SC010-b2b').on('focus', function () {
@@ -321,8 +373,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#automatic-dispensers-input-SC010-b2b').on('focus', function () {
@@ -330,8 +382,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#display-equipment-input-SC010-b2b').on('focus', function () {
@@ -339,8 +391,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#cooling-appliance-input-SC010-b2b').on('focus', function () {
@@ -348,8 +400,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#gas-discharge-led-input-SC010-b2b').on('focus', function () {
@@ -357,8 +409,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#photovolatic-panels-input-SC010-b2b').on('focus', function () {
@@ -366,8 +418,8 @@ $(document).ready(function () {
         if (!isNaN(beforeValue)) {
             beforeValue = Number(beforeValue);
         }
-    }).change(function () {
-        changeFunctionB2B($(this).attr('id'));
+    }).on('input', function () {
+        changeFunctionOnTheFlyB2B();
     });
 
     $('#weee-reused-save').click(function (event) {

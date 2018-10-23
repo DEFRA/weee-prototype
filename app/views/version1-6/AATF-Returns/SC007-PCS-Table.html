@@ -34,6 +34,16 @@ GOV.UK Prototype Kit
         </ul>
     </div>
 </div>
+<div class="govuk-error-summary govuk-!-width-one-half" aria-labelledby="error-summary-title" style="display: none" id="errorSummaryDuplicate" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">You cannot add a duplicate PCS</a>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Which PCS(s) did {{ data['selectedFacility']._name }} receive WEEE from?</h2>
 <form action="/version1-6/AATF-Returns/add-pcs" method="post" class="form">
@@ -52,7 +62,7 @@ GOV.UK Prototype Kit
 {% endif %}
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th class="govuk-table__header" scope="col">PCS name</th>
+      <th class="govuk-table__header" scope="col">PCS name2</th>
       <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
       <th class="govuk-table__header" scope="col">Sent onto other ATF (t)</th>
       <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
@@ -63,7 +73,7 @@ GOV.UK Prototype Kit
   <tbody>
       {% for scheme in data['selectedFacility']._pcs %}
       <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="col">{{scheme._name}}</td>
+            <td class="govuk-table__cell scheme_name" scope="col">{{scheme._name}}</td>
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
             <td class="govuk-table__cell" scope="col">-</td>
