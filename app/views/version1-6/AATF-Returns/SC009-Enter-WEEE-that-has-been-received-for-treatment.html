@@ -87,17 +87,17 @@ GOV.UK Prototype Kit
     <table class="govuk-table" id="weee-received-table">
         <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-                <td class="govuk-table__cell">
+                <td class="govuk-table__cell" style="width:40%">
                     <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
 
                     </div>
                 </td>
-                <td class="govuk-table__cell">
+                <td class="govuk-table__cell" style="width:30%">
                     <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
                         Household (B2C) in tonnes
                     </div>
                 </td>
-                <td class="govuk-table__cell">
+                <td class="govuk-table__cell" style="width:30%">
                     <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
                         Non-household (B2B) in tonnes
                     </div>
@@ -112,7 +112,7 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="large-household-appliances-input-SC009"
-                        name="large-household-appliances-input-SC009" value="{{ scheme._weeeReceived._largeHouseholdAppliances }}"
+                        name="large-household-appliances-input-SC009" value="{{ data['large-household-appliances-input-SC009'] }}"
                         type="text">
                     </div>
                 </td>
@@ -122,7 +122,7 @@ GOV.UK Prototype Kit
                             style="margin-bottom: 0px; display: none;">
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input-b2b" id="large-household-appliances-input-SC009-b2b"
-                        name="large-household-appliances-input-SC009-b2b" value="{{ scheme._weeeReceivedb2b._largeHouseholdAppliances }}"
+                        name="large-household-appliances-input-SC009-b2b" value="{{ data['large-household-appliances-input-SC009-b2b'] }}"
                         type="text">
                     </div>
                 </td>
