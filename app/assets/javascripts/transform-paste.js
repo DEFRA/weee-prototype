@@ -20,9 +20,10 @@
                 for (var tableRowCount = 1; tableRowCount < tableRows.length - 1; tableRowCount++) {
                     
                     for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns -1; tableColumnCount++){
-                        var copyValue = rowsData[tableRowCount-1];
+                        var copyValue = rowsData[tableRowCount-1].trim();
                         if (copyValue){
                             console.log('copy value' + copyValue)
+                            console.log('copy value' + copyValue.length)
                             var cellData = copyValue.split('\t');
                             var cellValue = cellData[tableColumnCount -1];
                             var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
@@ -45,7 +46,7 @@
                         }
                     }
                     var totalControl = tableRows[tableRowCount].cells[tableColumnCount].querySelector('[id*="tonne"]');
-                    totalControl.innerText = columnTotal.toFixed(3) + ' tonnes';np
+                    totalControl.innerText = columnTotal.toFixed(3) + ' tonnes';
                 }
             }
         }
