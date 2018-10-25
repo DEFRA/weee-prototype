@@ -27,6 +27,9 @@ GOV.UK Prototype Kit
 </script>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Non-obligated WEEE</h2>
+<div class="govuk-body govuk-!-font-size-19">
+    You can copy and paste tonnage values <a href="paste-values-redirect?returnUrl=SC004_1-Enter-non-obligated-WEEE&title=Non-obligated WEEE">here</a>
+</div>
 <p>Provide tonnage to 3 decimal places. For example 1.238</p>
 <div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
     tabindex="-1" data-module="error-summary">
@@ -41,18 +44,10 @@ GOV.UK Prototype Kit
         </ul>
     </div>
 </div>
-<details class="govuk-details govuk-!-font-size-16">
-    <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">
-            I don't want to enter tonnage values in manually
-        </span>
-    </summary>
-    <div class="govuk-details__text">
-        <div class="govuk-body govuk-!-font-size-16">
-            You can copy and paste tonnage values in <a href="paste-values-redirect?returnUrl=SC004_1-Enter-non-obligated-WEEE&title=Non-obligated WEEE">here</a>
-        </div>
-    </div>
-</details>
+
+
+
+
 <!-- <a href="" id="copy-data" name="copy-data">Copy and paste category data</a>
 <div style="display: none;">
     <textarea class="govuk-textarea" id="paste-text-area" name="paste-text-area" style="height: 400px;"></textarea>
@@ -62,7 +57,7 @@ GOV.UK Prototype Kit
 <form action="/version1-6/AATF-Returns/non-obligated-save" method="post" class="form">
     <table class="govuk-table" id="non-obligated-weee-table">
         <tbody class="govuk-table__body">
-            
+
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell"></td>
                 <td class="govuk-table__cell govuk-!-margin-bottom-0">
@@ -93,8 +88,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="small-household-appliances-input-SC004"
-                        name="small-household-appliances-input-SC004" value="{{ data['small-household-appliances-input-SC004'] }}"
-                        type="text">
+                            name="small-household-appliances-input-SC004" value="{{ data['small-household-appliances-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -107,8 +102,7 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="it-and-telecomms-input-SC004"
-                        name="it-and-telecomms-input-SC004" value="{{ data['it-and-telecomms-input-SC004'] }}"
-                        type="text">
+                            name="it-and-telecomms-input-SC004" value="{{ data['it-and-telecomms-input-SC004'] }}" type="text">
                     </div>
                 </td>
             </tr>
@@ -121,8 +115,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="consumer-equipment-input-SC004"
-                        name="consumer-equipment-input-SC004" value="{{ data['consumer-equipment-input-SC004'] }}"
-                        type="text">
+                            name="consumer-equipment-input-SC004" value="{{ data['consumer-equipment-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -136,8 +130,8 @@ GOV.UK Prototype Kit
                         </span>
 
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="lighting-equipment-input-SC004"
-                        name="lighting-equipment-input-SC004" value="{{ data['lighting-equipment-input-SC004'] }}"
-                        type="text">
+                            name="lighting-equipment-input-SC004" value="{{ data['lighting-equipment-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -151,8 +145,8 @@ GOV.UK Prototype Kit
                         </span>
 
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="electrical-and-electronic-input-SC004"
-                        name="electrical-and-electronic-input-SC004" value="{{ data['electrical-and-electronic-input-SC004'] }}"
-                        type="text">
+                            name="electrical-and-electronic-input-SC004" value="{{ data['electrical-and-electronic-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -166,8 +160,8 @@ GOV.UK Prototype Kit
                         </span>
 
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="toys-leisure-sports-input-SC004"
-                        name="toys-leisure-sports-input-SC004" value="{{ data['toys-leisure-sports-input-SC004'] }}"
-                        type="text">
+                            name="toys-leisure-sports-input-SC004" value="{{ data['toys-leisure-sports-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -181,8 +175,7 @@ GOV.UK Prototype Kit
                         </span>
 
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="medical-devices-input-SC004"
-                        name="medical-devices-input-SC004" value="{{ data['medical-devices-input-SC004'] }}"
-                        type="text">
+                            name="medical-devices-input-SC004" value="{{ data['medical-devices-input-SC004'] }}" type="text">
                     </div>
                 </td>
             </tr>
@@ -196,8 +189,8 @@ GOV.UK Prototype Kit
                         </span>
 
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="monitoring-control-input-SC004"
-                        name="monitoring-control-input-SC004" value="{{ data['monitoring-control-input-SC004'] }}"
-                        type="text">
+                            name="monitoring-control-input-SC004" value="{{ data['monitoring-control-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -211,8 +204,8 @@ GOV.UK Prototype Kit
                         </span>
 
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="automatic-dispensers-input-SC004"
-                        name="automatic-dispensers-input-SC004" value="{{ data['automatic-dispensers-input-SC004'] }}"
-                        type="text">
+                            name="automatic-dispensers-input-SC004" value="{{ data['automatic-dispensers-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -226,8 +219,8 @@ GOV.UK Prototype Kit
                         </span>
 
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="display-equipment-input-SC004"
-                        name="display-equipment-input-SC004" value="{{ data['display-equipment-input-SC004'] }}"
-                        type="text">
+                            name="display-equipment-input-SC004" value="{{ data['display-equipment-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -241,8 +234,8 @@ GOV.UK Prototype Kit
                         </span>
 
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="cooling-appliance-input-SC004"
-                        name="cooling-appliance-input-SC004" value="{{ data['cooling-appliance-input-SC004'] }}"
-                        type="text">
+                            name="cooling-appliance-input-SC004" value="{{ data['cooling-appliance-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -255,8 +248,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="gas-discharge-led-input-SC004"
-                        name="gas-discharge-led-input-SC004" value="{{ data['gas-discharge-led-input-SC004'] }}"
-                        type="text">
+                            name="gas-discharge-led-input-SC004" value="{{ data['gas-discharge-led-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -269,8 +262,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="photovolatic-panels-input-SC004"
-                        name="photovolatic-panels-input-SC004" value="{{ data['photovolatic-panels-input-SC004'] }}"
-                        type="text">
+                            name="photovolatic-panels-input-SC004" value="{{ data['photovolatic-panels-input-SC004'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>

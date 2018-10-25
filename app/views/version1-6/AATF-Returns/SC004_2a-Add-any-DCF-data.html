@@ -18,27 +18,20 @@ GOV.UK Prototype Kit
 
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Non-obligated WEEE as retained by a DCF</h2>
-<p class="govuk-body">This is WEEE that the DCF operator has retained under regulation 53 and has sent to you for treatment</p>
+<p class="govuk-body">This is WEEE that the DCF operator has retained under regulation 53 and has sent to you for
+    treatment</p>
+    <div class="govuk-body govuk-!-font-size-19">
+        You can copy and paste tonnage values <a href="paste-values-redirect?returnUrl=SC004_2a-Add-any-DCF-data&title=Non-obligated WEEE as retained by a DCF">here</a>
+    </div>
 <p class="govuk-body">Provide tonnage to 3 decimal places. For example 1.238</p>
 <!-- <a href="" id="copy-data" name="copy-data">Copy and paste category data</a>
 <div style="display: none;">
     <textarea class="govuk-textarea" id="paste-text-area" name="paste-text-area" style="height: 400px;"></textarea>
 </div> -->
-<details class="govuk-details govuk-!-font-size-16">
-        <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-                I don't want to enter tonnage values in manually
-            </span>
-        </summary>
-        <div class="govuk-details__text">
-            <div class="govuk-body govuk-!-font-size-16">
-                You can copy and paste tonnage values in <a href="paste-values-redirect?returnUrl=SC004_2a-Add-any-DCF-data&title=Non-obligated WEEE as retained by a DCF">here</a>
-            </div>
-        </div>
-    </details>
-    <input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
-<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert" tabindex="-1"
-    data-module="error-summary">
+
+<input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
+    tabindex="-1" data-module="error-summary">
     <h2 class="govuk-error-summary__title" id="error-summary-title">
         There is a problem
     </h2>
@@ -51,7 +44,7 @@ GOV.UK Prototype Kit
     </div>
 </div>
 <form action="/version1-6/AATF-Returns/dcf-save" method="post" class="form">
-   
+
     <table class="govuk-table" id="dcf-table">
         <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
@@ -99,8 +92,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="it-and-telecomms-input-SC004c-DCF"
-                        name="it-and-telecomms-input-SC004c-DCF" value="{{ data['it-and-telecomms-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="it-and-telecomms-input-SC004c-DCF" value="{{ data['it-and-telecomms-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -113,8 +106,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="consumer-equipment-input-SC004c-DCF"
-                        name="consumer-equipment-input-SC004c-DCF" value="{{ data['consumer-equipment-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="consumer-equipment-input-SC004c-DCF" value="{{ data['consumer-equipment-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -127,8 +120,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="lighting-equipment-input-SC004c-DCF"
-                        name="lighting-equipment-input-SC004c-DCF" value="{{ data['lighting-equipment-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="lighting-equipment-input-SC004c-DCF" value="{{ data['lighting-equipment-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -141,8 +134,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="electrical-and-electronic-input-SC004c-DCF"
-                        name="electrical-and-electronic-input-SC004c-DCF" value="{{ data['electrical-and-electronic-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="electrical-and-electronic-input-SC004c-DCF" value="{{ data['electrical-and-electronic-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -155,8 +148,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="toys-leisure-sports-input-SC004c-DCF"
-                        name="toys-leisure-sports-input-SC004c-DCF" value="{{ data['toys-leisure-sports-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="toys-leisure-sports-input-SC004c-DCF" value="{{ data['toys-leisure-sports-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -169,8 +162,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="medical-devices-input-SC004c-DCF"
-                        name="medical-devices-input-SC004c-DCF" value="{{ data['medical-devices-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="medical-devices-input-SC004c-DCF" value="{{ data['medical-devices-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -183,8 +176,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="monitoring-control-input-SC004c-DCF"
-                        name="monitoring-control-input-SC004c-DCF" value="{{ data['monitoring-control-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="monitoring-control-input-SC004c-DCF" value="{{ data['monitoring-control-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -197,8 +190,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="automatic-dispensers-input-SC004c-DCF"
-                        name="automatic-dispensers-input-SC004c-DCF" value="{{ data['automatic-dispensers-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="automatic-dispensers-input-SC004c-DCF" value="{{ data['automatic-dispensers-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -211,8 +204,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="display-equipment-input-SC004c-DCF"
-                        name="display-equipment-input-SC004c-DCF" value="{{ data['display-equipment-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="display-equipment-input-SC004c-DCF" value="{{ data['display-equipment-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -225,8 +218,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="cooling-appliance-input-SC004c-DCF"
-                        name="cooling-appliance-input-SC004c-DCF" value="{{ data['cooling-appliance-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="cooling-appliance-input-SC004c-DCF" value="{{ data['cooling-appliance-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -239,8 +232,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="gas-discharge-led-input-SC004c-DCF"
-                        name="gas-discharge-led-input-SC004c-DCF" value="{{ data['gas-discharge-led-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="gas-discharge-led-input-SC004c-DCF" value="{{ data['gas-discharge-led-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>
@@ -253,8 +246,8 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="photovolatic-panels-input-SC004c-DCF"
-                        name="photovolatic-panels-input-SC004c-DCF" value="{{ data['photovolatic-panels-input-SC004c-DCF'] }}"
-                        type="text">
+                            name="photovolatic-panels-input-SC004c-DCF" value="{{ data['photovolatic-panels-input-SC004c-DCF'] }}"
+                            type="text">
                     </div>
                 </td>
             </tr>

@@ -35,26 +35,19 @@ GOV.UK Prototype Kit
 </div>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">WEEE sent to another ATF for treatment</h2>
+<div class="govuk-body govuk-!-font-size-19">
+    You can copy and paste tonnage values <a href="paste-values-redirect?returnUrl=SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment&title=WEEE sent to another ATF for treatment">here</a>
+</div>
 <p class="govuk-body">Provide tonnage to 3 decimal places. For example 1.238</p>
 <div>
     <p id="detailSummary" style="margin-bottom: 0px;">{{data['facilitySelect']}}</p>
-    <p>{{ data['operator-name'] }} {{ data['operator-name-search'] }} - {{ data['operator-postcode'] }} {{ data['operator-postcode-search'] }}</p>
+    <p>{{ data['operator-name'] }} {{ data['operator-name-search'] }} - {{ data['operator-postcode'] }} {{
+        data['operator-postcode-search'] }}</p>
 </div>
-<details class="govuk-details govuk-!-font-size-16">
-        <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-                I don't want to enter tonnage values in manually
-            </span>
-        </summary>
-        <div class="govuk-details__text">
-            <div class="govuk-body govuk-!-font-size-16">
-                You can copy and paste tonnage values in <a href="paste-values-redirect?returnUrl=SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment&title=WEEE sent to another ATF for treatment">here</a>
-            </div>
-        </div>
-    </details>
-    <input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
-<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert" tabindex="-1"
-    data-module="error-summary">
+
+<input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
+    tabindex="-1" data-module="error-summary">
     <h2 class="govuk-error-summary__title" id="error-summary-title">
         There is a problem
     </h2>
@@ -72,7 +65,7 @@ GOV.UK Prototype Kit
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
                     <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
-                        
+
                     </div>
                 </td>
                 <td class="govuk-table__cell">
@@ -146,8 +139,7 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="it-and-telecomms-input-SC011"
-                            name="it-and-telecomms-input-SC011" value="{{ data['it-and-telecomms-input-SC011'] }}"
-                            type="text">
+                            name="it-and-telecomms-input-SC011" value="{{ data['it-and-telecomms-input-SC011'] }}" type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
@@ -271,8 +263,7 @@ GOV.UK Prototype Kit
                             Please fill in this field
                         </span>
                         <input class="govuk-input govuk-!-width-two-thirds weee-input" id="medical-devices-input-SC011"
-                            name="medical-devices-input-SC011" value="{{ data['medical-devices-input-SC011'] }}"
-                            type="text">
+                            name="medical-devices-input-SC011" value="{{ data['medical-devices-input-SC011'] }}" type="text">
                     </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-padding-bottom-0">
