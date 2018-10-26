@@ -15,7 +15,8 @@ GOV.UK Prototype Kit
 <script type="text/javascript">
     $(document).ready(function() {
         $('#file-upload-1').click(function(event) {
-            $('#file-upload-text').text('your_aatf_data.xlsx')
+            $('#file-upload-text').text('your_aatf_data.xlsx');
+            $('#upload-button').css('display', 'block');
             event.preventDefault();
         });
     });
@@ -43,7 +44,7 @@ GOV.UK Prototype Kit
     <p class="govuk-body" style="display:inline; margin-left: 5px;" id="file-upload-text">No file chosen</p>
     
     <div class="govuk-!-padding-bottom-7"></div>
-    <button type="submit" class="govuk-button">
+    <button type="submit" class="govuk-button" style="display: none;" id="upload-button">
         Save and continue
     </button>
 </form>
