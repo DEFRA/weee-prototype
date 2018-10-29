@@ -173,6 +173,11 @@ router.get('/version1-6/AATF-Returns/WEEE-received-for-treatment', function (req
     res.redirect('SC009-Enter-WEEE-that-has-been-received-for-treatment');
 })
 
+router.get('/version1-6/AATF-Returns/WEEE-received-for-treatment-paste', function (req, res) {
+    res.redirect('SC009-Enter-WEEE-that-has-been-received-for-treatment');
+})
+
+
 
 router.get('/version1-6/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for-treatment', function (req, res) {
     var schemeId = req.query['schemeId'];
@@ -451,12 +456,7 @@ router.post('/version1-6/AATF-Returns/add-pcs', function (req, res) {
 router.post('/version1-6/AATF-Returns/weee-received-for-treatment-save', function (req, res) {
     var period = req.session.data['period'];
     console.log('Select Facility');
-    var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
-        if (parseInt(facility._id) === parseInt(req.session.data['selectedFacility']._id)) {
-            return true;
-        }
-    });
-    console.log('Update Facility');
+
     var updateFacility = period._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.session.data['selectedFacility']._id)) {
             return true;
@@ -469,7 +469,7 @@ router.post('/version1-6/AATF-Returns/weee-received-for-treatment-save', functio
         }
     });
     console.log('Selection done');
-    
+    console.log( updateScheme[0]);
     updateScheme[0]._hasEnteredData = true;
     //console.log(updateScheme[0]);
     var items = [req.session.data['large-household-appliances-input-SC009'], req.session.data['small-household-appliances-input-SC009'], req.session.data['it-and-telecomms-input-SC009'], req.session.data['consumer-equipment-input-SC009'], req.session.data['lighting-equipment-input-SC009'], req.session.data['electrical-and-electronic-input-SC009'], req.session.data['toys-leisure-sports-input-SC009'], req.session.data['medical-devices-input-SC009'], req.session.data['monitoring-control-input-SC009'], req.session.data['automatic-dispensers-input-SC009'], req.session.data['display-equipment-input-SC009'], req.session.data['cooling-appliance-input-SC009'], req.session.data['gas-discharge-led-input-SC009'], req.session.data['photovolatic-panels-input-SC009']]

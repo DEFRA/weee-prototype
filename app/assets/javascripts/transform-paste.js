@@ -8,11 +8,8 @@
         var rowsData = pasteValues[0].value.split('\n');
         // check the rows and cells
         //var rowsDataCount = rowsData.length - 1;
-        var coloumnCount = 0;
-        console.log(rowsData);
         if (rowsData.length > 0) {
-            console.log('column count' + coloumnCount);
-            var enterDataTable = document.querySelectorAll('.govuk-table')[0];
+                        var enterDataTable = document.querySelectorAll('.govuk-table')[0];
             // rows
             var tableRows = enterDataTable.children[0].children;
             if (tableRows && tableRows.length > 1){
@@ -22,8 +19,6 @@
                     for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns -1; tableColumnCount++){
                         var copyValue = rowsData[tableRowCount-1].trim();
                         if (copyValue){
-                            console.log('copy value' + copyValue)
-                            console.log('copy value' + copyValue.length)
                             var cellData = copyValue.split('\t');
                             var cellValue = cellData[tableColumnCount -1];
                             var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
