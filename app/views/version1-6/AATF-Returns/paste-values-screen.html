@@ -19,8 +19,17 @@ GOV.UK Prototype Kit
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        let urlParams = new URLSearchParams(window.location.search);
-        let myParam = urlParams.get('title');
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results==null){
+            return null;
+            }
+            else{
+                return decodeURI(results[1]) || 0;
+            }
+        }
+
+        let myParam = $.urlParam('title');
         $('#heading-text').html(myParam);
     });
 </script>
@@ -31,6 +40,7 @@ GOV.UK Prototype Kit
 <p class="govuk-body">You can copy the WEEE in tonnes from an Excel spreadsheet.</p>
 <p class="govuk-body">Data entered here will be interpreted as category 1 at the top through to category 14 at the bottom.</p>
 <form action="/version1-6/AATF-Returns/paste-values-save" method="post" class="form" style="display: inline">
+    
     <textarea class="govuk-textarea" id="paste-text-area" name="paste-text-area" style="height: 400px;"></textarea>
     <button type="submit" class="govuk-button" id="paste-values-save">
         Save and continue
