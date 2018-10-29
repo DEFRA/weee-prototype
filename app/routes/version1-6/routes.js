@@ -444,25 +444,25 @@ router.post('/version1-6/AATF-Returns/add-pcs', function (req, res) {
 
 router.post('/version1-6/AATF-Returns/weee-received-for-treatment-save', function (req, res) {
     var period = req.session.data['period'];
-
+    console.log('Select Facility');
     var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.session.data['selectedFacility']._id)) {
             return true;
         }
     });
-
+    console.log('Update Facility');
     var updateFacility = period._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.session.data['selectedFacility']._id)) {
             return true;
         }
     });
-
+    console.log('Scheme');
     var updateScheme = updateFacility[0]._pcs.filter(function (scheme) {
         if (scheme._id === req.session.data['selectedScheme']._id) {
             return true;
         }
     });
-
+    console.log('Selection done');
     
     updateScheme[0]._hasEnteredData = true;
     //console.log(updateScheme[0]);
