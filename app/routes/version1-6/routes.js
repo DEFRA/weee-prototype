@@ -155,7 +155,7 @@ router.get('/version1-6/AATF-Returns/compliance-reporting', function (req, res) 
 router.get('/version1-6/AATF-Returns/WEEE-received-for-treatment', function (req, res) {
     var schemeId = req.query['schemeId'];
     var schemes = req.session.data['schemes'];
-
+    console.log('SCHEME');
     var selectedScheme = schemes._schemes.filter(function (scheme) {
         if (scheme._id === schemeId) {
             return true;
