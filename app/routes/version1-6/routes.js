@@ -140,11 +140,17 @@ router.get('/version1-6/AATF-Returns/My-facilities', function (req, res) {
 
     period._operator._wee = CategoriesTotal(period._operator._categories);
     period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf);
-
+    console.log(period._operator._wee);
+    if(period._operator._wee == '-') {
+        period._operator._wee = 'NIL';
+    }
+    if(period._operator._weeDcf == '-') {
+        period._operator._weeDcf = 'NIL';
+    }
     req.session.data['period'] = period;
 
     //res.render('version1-6/AATF-Returns/SC002_1-My-facilities');
-    res.render('version1-6/AATF-Returns/SC002_1-My-facilities-2');
+    res.render('version1-6/AATF-Returns/SC002_1-My-facilities-3');
 })
 
 router.get('/version1-6/AATF-Returns/compliance-reporting', function (req, res) {
@@ -954,6 +960,14 @@ router.post('/version1-6/AATF-Returns/compliance-reporting-end', function (req, 
     }
 })
 
+router.post('/version1-6/start-options-select', function (req, res) {
+    let answer = req.session.data['start-options']
+
+    if (answer === '1') {
+        res.redirect('/version1-6/AATF-Returns/SC002_2-compliance-and-reporting')
+    }
+})
+
 router.get('/version1-6/AATF-Returns/Enter-WEEE-that-has-been-received-for-treatment', function (req, res) {
     var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
@@ -1000,6 +1014,26 @@ router.get('/version1-6/AATF-Returns/Do-you-need-to-report-any-WEEE-reused-as-a-
     req.session.data['selectedFacility'] = selectedFacility[0];
 
     res.redirect('/version1-6/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance');
+})
+
+router.get('/version1-6/AATF-Returns/PCS-selection', function (req, res) {
+    var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
+        if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
+            return true;
+        }
+    });
+
+    req.session.data['selectedFacility'] = selectedFacility[0];
+
+    res.redirect('/version1-6/AATF-Returns/SC007_1-PCS-selection');
+})
+
+router.post('/version1-6/AATF-Returns/pcs-selection-form-save', function (req, res) {
+    res.redirect('/version1-6/AATF-Returns/SC009-Enter-WEEE-that-has-been-received-for-treatment');
+})
+
+router.post('/version1-6/AATF-Returns/pcs-selection-form-cancel', function (req, res) {
+    res.redirect('/version1-6/AATF-Returns/My-facilities');
 })
 
 module.exports = router;

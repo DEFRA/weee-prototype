@@ -12,19 +12,58 @@ GOV.UK Prototype Kit
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">What would you like to do?</h2>
-<div class="govuk-!-padding-bottom-7"></div>
-<h3 class="govuk-heading-m">
-    <a href="AATF-Returns/compliance-reporting" class="govuk-link govuk-link--no-visited-state">Make an AATF
-        quarterly return</a>
-</h3>
-<p class="govuk-!-width-three-quarters">Make an AATF quarterly return by reporting on Non-obligated WEEE and obligated
-    WEEE received for treatment and reuse</p>
-<div class="govuk-!-padding-bottom-7"></div>
-<h3 class="govuk-heading-m">
-    <a href="#" class="govuk-link govuk-link--no-visited-state">Make an AE return</a>
-</h3>
-<p class="govuk-!-width-three-quarters">Make an AE return</p>
-
-<div class="govuk-!-padding-bottom-7"></div>
+<form action="/version1-6/start-options-select" method="post" class="form">
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+            <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="start-options" name="start-options" type="radio"
+                        value="1">
+                    <label class="govuk-label govuk-radios__label" for="start-options-1">
+                        Make an AATF quarterly return
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="start-options-2" name="start-options" type="radio"
+                        value="2">
+                    <label class="govuk-label govuk-radios__label" for="start-options-2">
+                        Make an AE return
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="start-options-3" name="start-options" type="radio"
+                        value="3">
+                    <label class="govuk-label govuk-radios__label" for="start-options-3">
+                        Manage PCS members
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="start-options-4" name="start-options" type="radio"
+                        value="4">
+                    <label class="govuk-label govuk-radios__label" for="start-options-4">
+                        Manage EEE/WEEE data
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="start-options-5" name="start-options" type="radio"
+                        value="5">
+                    <label class="govuk-label govuk-radios__label" for="start-options-5">
+                        View registered office details
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="start-options-6" name="start-options" type="radio"
+                        value="6">
+                    <label class="govuk-label govuk-radios__label" for="start-options-6">
+                        Manage organisation contact details
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    {{ govukButton({
+    text: "Continue"
+    }) }}
+</form>
 
 {% endblock %}
