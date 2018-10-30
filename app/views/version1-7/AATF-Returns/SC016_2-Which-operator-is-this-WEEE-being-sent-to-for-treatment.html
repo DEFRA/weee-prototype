@@ -68,59 +68,7 @@ GOV.UK Prototype Kit
     <button type="submit" class="govuk-button" id="postcode-search-button">
         Find address
     </button>
-
-
-    <details class="govuk-details">
-        <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-                I can't find the operator's address
-            </span>
-        </summary>
-        <div class="govuk-details__text">
-            {{ govukInput({
-            label: {
-            text: "Operator name"
-            },
-            classes: "govuk-!-width-one-half",
-            id: "operator-name",
-            name: "operator-name"
-            }) }}
-            {{ govukInput({
-            label: {
-            text: "Building and street"
-            },
-            classes: "govuk-!-width-one-half",
-            id: "operator-building-street",
-            name: "operator-building-street"
-            }) }}
-            {{ govukInput({
-            label: {
-            text: "Town or city"
-            },
-            classes: "govuk-!-width-one-half",
-            id: "operator-town-city",
-            name: "operator-town-city"
-            }) }}
-            {{ govukInput({
-            label: {
-            text: "County"
-            },
-            classes: "govuk-!-width-one-third",
-            id: "operator-county",
-            name: "operator-county"
-            }) }}
-            {{ govukInput({
-            label: {
-            text: "Postcode"
-            },
-            classes: "govuk-!-width-one-third",
-            id: "operator-postcode",
-            name: "operator-postcode"
-            }) }}
-            <button type="submit" class="govuk-button" id="input-address-button">
-                Save and continue
-            </button>
-        </div>
-    </details>
+    <br/>
+    <a href="SC0016_4-operator-manual-entry" class="govuk-link">I can't find the site address</a>
 </form>
 {% endblock %}

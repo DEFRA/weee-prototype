@@ -15,16 +15,15 @@ GOV.UK Prototype Kit
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        var sentCompletedArray = [];
         $('#input-address-button').click(function () {
-            $('#operator-postcode-search').val('');
-            $('#operator-name-search').val('');
+            $('#operator-postcode-search-3').val('');
+            $('#operator-name-search-3').val('');
         })
         $('#postcode-search-button').click(function () {
-            $('#operator-postcode').val('');
-            $('#operator-name').val('');
-            var sentName = $('#operator-name-search').val();
-            localStorage.setItem('completedSENT', sentName);
+            $('#operator-postcode-3').val('');
+            $('#operator-name-3').val('');
+            var atfName = $('#operator-name-search-3').val();
+            localStorage.setItem('completedATF', atfName);
         })
     });
 </script>
@@ -42,33 +41,22 @@ GOV.UK Prototype Kit
         <li class="govuk-breadcrumbs__list-item">
             <a class="govuk-breadcrumbs__link" href="#">Sent to another ATF</a>
         </li>
-        <li class="govuk-breadcrumbs__list-item" aria-current="page">ATF address</li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Operator address</li>
     </ol>
 </div>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Which ATF was the WEEE sent to for treatment</h2>
-<div class="govuk-!-padding-bottom-5"></div>
+<input type="hidden" id="atfId" name="atfId" />
 <form action="/version1-7/AATF-Returns/operator-address-postcode-atf-save" method="post" class="form" style="display: inline">
-    {{ govukInput({
-    label: {
-    text: "ATF name"
-    },
-    classes: "govuk-!-width-one-third",
-    id: "operator-name-search-3",
-    name: "operator-name-search-3"
-    }) }}
-    {{ govukInput({
-    label: {
-    text: "Postcode"
-    },
-    classes: "govuk-!-width-one-third",
-    id: "operator-postcode-search-3",
-    name: "operator-postcode-search-3"
-    }) }}
-    <button type="submit" class="govuk-button" id="postcode-search-button-atf">
-        Find address
+    <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-width-one-half" for="name">
+            Site name and address
+        </label>
+        <textarea class="govuk-input govuk-!-width-one-half" style="height: 200px;" id="site-address-ATF" name="site-address-ATF" type="text"></textarea>
+    </div>
+    <button type="submit" class="govuk-button" id="input-address-button">
+        Save and continue
     </button>
-    <br/>
-    <a href="SC0016_5-ATF-manual-entry" class="govuk-link">I can't find the site address</a>
+
 </form>
 {% endblock %}

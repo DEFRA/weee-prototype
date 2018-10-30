@@ -46,11 +46,13 @@ GOV.UK Prototype Kit
         <tr class="govuk-table__row">
             <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;">{{loop.index + 1}}.</td>
             <td class="govuk-table__cell govuk-!-font-weight-bold">Obligated WEEE for {{facility._name}}</td>
-            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell">B2C</td>
+            <td class="govuk-table__cell">B2B</td>
         </tr>
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="PCS-selection?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">WEEE received at PCS(s)</a></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag">Nil</strong></td>
             <td class="govuk-table__cell"><strong class="govuk-tag">Nil</strong></td>
         </tr>
         <tr class="govuk-table__row">
@@ -58,11 +60,13 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
                     class="govuk-link govuk-link--no-visited-state">Sent to another ATF</a></td>
             <td class="govuk-table__cell govuk-!-font-size-16"><strong class="govuk-tag">Nil</strong></td>
+            <td class="govuk-table__cell govuk-!-font-size-16"><strong class="govuk-tag">Nil</strong></td>
         </tr>
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance?facilityId={{facility._id}}"
                     class="govuk-link govuk-link--no-visited-state">Reused as a whole appliance</a></td>
+            <td class="govuk-table__cell govuk-!-font-size-16"><strong class="govuk-tag">Nil</strong></td>
             <td class="govuk-table__cell govuk-!-font-size-16"><strong class="govuk-tag">Nil</strong></td>
         </tr>
     </table>

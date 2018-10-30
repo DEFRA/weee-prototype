@@ -148,7 +148,10 @@ router.get('/version1-7/AATF-Returns/My-facilities', function (req, res) {
         period._operator._weeDcf = 'NIL';
     }
     req.session.data['period'] = period;
-
+    console.log(period);
+    for(var i = 0; i < period._facilities; i++) {
+        console.log('Facility: ' + i);
+    }
     //res.render('version1-7/AATF-Returns/SC002_1-My-facilities');
     res.render('version1-7/AATF-Returns/SC002_1-My-facilities-3');
 })
@@ -563,10 +566,16 @@ router.post('/version1-7/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
     }
     sentOnUpdate[0]._sentToResult = result.toFixed(3);
     req.session.data['period'] = period;
-    req.session.data['selectedScheme'] = updateScheme[0];
+    req.session.data['selectedFacility'] = updateFacility[0];
     req.session.data['Whole-WEEE-sent-to-another-treatment-result'] = result.toFixed(3)
     req.session.data['paste-values'] = '';
-
+    var selectedFacility = req.session.data['selectedFacility'];
+    console.log('3');
+    for(var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
+        console.log(selectedFacility._sentOnOperatorCollection[i]);
+        console.log('*******************************');
+    }
+    
     res.redirect('/version1-7/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment')
 })
 
@@ -730,7 +739,11 @@ router.post('/version1-7/AATF-Returns/atf-same-as-operator-answer', function (re
 
         var newOperator = new Operator(operator._name, 0, '', operator._address._street, operator._address._town, operator._address._country, operator._address._postcode);
         selectedAtf[0]._atfAddress = newOperator;
-
+        console.log('2');
+        for(var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
+            console.log(selectedFacility._sentOnOperatorCollection[i]);
+            console.log('*******************************');
+        }
         req.session.data['period'] = period;
         res.redirect('/version1-7/AATF-Returns/SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment')
     }
@@ -802,61 +815,53 @@ function GetSelectedScheme(period, facilityId, schemeId) {
 router.post('/version1-7/AATF-Returns/operator-address-postcode-save', function (req, res) {
     var period = req.session.data['period'];
     var selectedFacility = Selectedfacility(req, req.session.data['selectedFacility']._id);
+    var siteAddress = req.session.data['site-address-operator'];
 
     if(!selectedFacility._sentOnOperatorCollection) {
         selectedFacility._sentOnOperatorCollection = [];
     }
-    /*
-    var selectedScheme = GetSelectedScheme(period, req.session.data["selectedFacility"]._id, req.session.data["selectedScheme"]._id);
-
-    if (!selectedScheme._sentOnOperatorCollection) {
-        selectedScheme._sentOnOperatorCollection = [];
-    }
-    */
     var operatorName;
     var operatorPostcode;
-    if (req.session.data['operator-name'] !== '') {
-        operatorName = req.session.data['operator-name'];
-    }
-    else {
-        operatorName = req.session.data['operator-name-search'];
-    }
-    if (req.session.data['operator-postcode'] !== '') {
-        operatorPostcode = req.session.data['operator-postcode'];
-    }
-    else {
-        operatorPostcode = req.session.data['operator-postcode-search'];
+
+    operatorName = req.session.data['operator-name-search'];
+    operatorPostcode = req.session.data['operator-postcode-search'];
+    console.log("op name: " + operatorName);
+    if(typeof operatorName === 'undefined' || operatorName == '') {
+        operatorName = siteAddress;
     }
 
     var newOperator = new Operator(operatorName, selectedFacility._sentOnOperatorCollection.length, '', req.session.data['operator-building-street'], req.session.data['operator-town-city'], req.session.data['operator-county'], operatorPostcode);
     selectedFacility._sentOnOperatorCollection.push(newOperator);
-
+    console.log('1');
+    for(var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
+        console.log(selectedFacility._sentOnOperatorCollection[i]);
+        console.log('*******************************');
+    }
     req.session.data['selectedFacility'] = selectedFacility;
     req.session.data['period'] = period;
     req.session.data['selectedOperator'] = newOperator;
     req.session.data['selectedSentOnForTreatmentId'] = selectedFacility._sentOnOperatorCollection.length - 1;
-
+    req.session.data['site-address-operator'] = '';
+    req.session.data['operator-name-search'] = '';
+    operatorPostcode = req.session.data['operator-postcode-search'] = '';
     res.redirect('/version1-7/AATF-Returns/SC016_2a-Is-the-atf-address-the-same-as-the-facility')
 })
 
 router.post('/version1-7/AATF-Returns/operator-address-postcode-atf-save', function (req, res) {
     var period = req.session.data['period'];
+    var siteAddress = req.session.data['site-address-ATF'];
     //var selectedScheme = GetSelectedScheme(period, req.session.data["selectedFacility"]._id, req.session.data["selectedScheme"]._id);
     var selectedFacility = Selectedfacility(req, req.session.data['selectedFacility']._id);
 
     var operatorName;
     var operatorPostcode;
-    if (req.session.data['operator-name'] !== '') {
-        operatorName = req.session.data['operator-name'];
-    }
-    else {
-        operatorName = req.session.data['operator-name-search'];
-    }
-    if (req.session.data['operator-postcode'] !== '') {
-        operatorPostcode = req.session.data['operator-postcode'];
-    }
-    else {
-        operatorPostcode = req.session.data['operator-postcode-search'];
+
+    operatorName = req.session.data['operator-name-search-3'];
+
+    operatorPostcode = req.session.data['operator-postcode-search-3'];
+    
+    if(typeof operatorPostcode === 'undefined' || operatorPostcode == '') {
+        operatorPostcode = siteAddress;
     }
 
     var selectedAtf = selectedFacility._sentOnOperatorCollection.filter(function (senton) {
@@ -864,12 +869,15 @@ router.post('/version1-7/AATF-Returns/operator-address-postcode-atf-save', funct
             return true;
         }
     });
-
+    
     var newOperator = new Operator(operatorName, selectedFacility._sentOnOperatorCollection.length, '', req.session.data['operator-building-street'], req.session.data['operator-town-city'], req.session.data['operator-county'], operatorPostcode);
     selectedAtf[0]._atfAddress = newOperator;
 
     req.session.data['period'] = period;
-
+    req.session.data['selectedFacility'] = selectedFacility;
+    req.session.data['site-address-operator-3'] = '';
+    req.session.data['operator-name-search-3'] = '';
+    operatorPostcode = req.session.data['operator-postcode-search-3'] = '';
     res.redirect('/version1-7/AATF-Returns/SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment')
 })
 
@@ -879,7 +887,9 @@ router.post('/version1-7/AATF-Returns/operator-address-postcode-save-2', functio
     var sitePostcode = req.session.data['operator-postcode-search-2'];
     var siteAddress = req.session.data['site-address'];
     var siteArray = [];
-
+    if(typeof siteName === 'undefined') {
+        siteName = siteAddress;
+    }
     siteArray = [siteName, sitePostcode];
 
 
@@ -1005,6 +1015,10 @@ router.get('/version1-7/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for
         }
     });
 
+    req.session.data['operator-name-search'] = '';
+    req.session.data['operator-postcode-search'] = '';
+    req.session.data['site-address-operator'] = '';
+
     req.session.data['selectedFacility'] = selectedFacility[0];
     if(selectedFacility[0]._sentOnOperatorCollection) {
         res.redirect('/version1-7/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment');
@@ -1077,6 +1091,10 @@ router.post('/version1-7/AATF-Returns/pcs-selection-form-save', function (req, r
 
 router.post('/version1-7/AATF-Returns/pcs-selection-form-cancel', function (req, res) {
     res.redirect('/version1-7/AATF-Returns/My-facilities');
+})
+
+router.get('/version1-7/AATF-Returns/add-another-atf', function (req, res) {
+    res.redirect('/version1-7/AATF-Returns/SC016_2-Which-operator-is-this-WEEE-being-sent-to-for-treatment');
 })
 
 module.exports = router;
