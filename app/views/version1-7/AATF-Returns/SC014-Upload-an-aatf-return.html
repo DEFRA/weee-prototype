@@ -1,0 +1,24 @@
+{% extends "version1-7/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Upload an AATF return</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<p class="govuk-body">Use this page to upload an AATF return. The document must be in XLSX format.</p>
+<form action="/version1-7/AATF-Returns/upload-an-aatf-return" method="post" class="form">
+    {{ govukButton({
+    text: "Add file"
+    }) }}
+    <br />
+    <a href="" class="govuk-link govuk-link--no-visited-state">Continue without adding a file</a>
+</form>
+{% endblock %}

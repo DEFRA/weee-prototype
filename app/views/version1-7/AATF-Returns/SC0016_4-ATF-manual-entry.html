@@ -1,0 +1,62 @@
+{% extends "version1-7/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#input-address-button').click(function () {
+            $('#operator-postcode-search-2').val('');
+            $('#operator-name-search-2').val('');
+        })
+        $('#postcode-search-button').click(function () {
+            $('#operator-postcode-2').val('');
+            $('#operator-name-2').val('');
+            var atfName = $('#operator-name-search-2').val();
+            localStorage.setItem('completedATF', atfName);
+        })
+    });
+</script>
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">PCS(s)</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">{{ data['selectedScheme']._name }}</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Sent to another ATF</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Operator address</li>
+    </ol>
+</div>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">What is the site address that the WEEE is being sent on to for reuse?</h2>
+<input type="hidden" id="atfId" name="atfId" />
+<form action="/version1-7/AATF-Returns/operator-address-postcode-save-2" method="post" class="form" style="display: inline">
+    <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-width-one-half" for="name">
+            Site name and address
+        </label>
+        <textarea class="govuk-input govuk-!-width-one-half" style="height: 200px;" id="site-address" name="site-address" type="text"></textarea>
+    </div>
+    <button type="submit" class="govuk-button" id="input-address-button">
+        Save and continue
+    </button>
+
+</form>
+{% endblock %}

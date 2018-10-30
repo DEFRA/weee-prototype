@@ -1,0 +1,270 @@
+{% extends "version1-7/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #dcf-table .govuk-form-group {
+        margin-bottom: 10px;
+    }
+
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Non-obligated WEEE as retained by a DCF</h2>
+<p class="govuk-body">This is WEEE that the DCF operator has retained under regulation 53 and has sent to you for
+    treatment</p>
+    <div class="govuk-body govuk-!-font-size-19">
+        You can copy and paste tonnage values <a href="paste-values-redirect?returnUrl=SC004_2a-Add-any-DCF-data&title=Non-obligated WEEE as retained by a DCF">here</a>
+    </div>
+<p class="govuk-body">Provide tonnage to 3 decimal places. For example 1.238</p>
+<!-- <a href="" id="copy-data" name="copy-data">Copy and paste category data</a>
+<div style="display: none;">
+    <textarea class="govuk-textarea" id="paste-text-area" name="paste-text-area" style="height: 400px;"></textarea>
+</div> -->
+
+<input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">Please specify all tonnage as numerical values</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<form action="/version1-7/AATF-Returns/dcf-save" method="post" class="form">
+
+    <table class="govuk-table" id="dcf-table">
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell"></td>
+                <td class="govuk-table__cell govuk-!-margin-bottom-0">
+                    <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-two-thirds">
+                        DCF data in tonnes
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">1. Large household appliances</td>
+                <td class="govuk-table__cell">
+                    <div class="govuk-form-group">
+                        <span id="large-household-appliances-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="large-household-appliances-input-SC004c-DCF"
+                            name="large-household-appliances-input-SC004c-DCF" value="{{ data['large-household-appliances-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">2. Small household appliances</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="small-household-appliances-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="small-household-appliances-input-SC004c-DCF"
+                            name="small-household-appliances-input-SC004c-DCF" value="{{ data['small-household-appliances-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">3. IT and telecommunications equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="it-and-telecomms-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="it-and-telecomms-input-SC004c-DCF"
+                            name="it-and-telecomms-input-SC004c-DCF" value="{{ data['it-and-telecomms-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">4. Consumer equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="consumer-equipment-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="consumer-equipment-input-SC004c-DCF"
+                            name="consumer-equipment-input-SC004c-DCF" value="{{ data['consumer-equipment-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">5. Lighting equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="lighting-equipment-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="lighting-equipment-input-SC004c-DCF"
+                            name="lighting-equipment-input-SC004c-DCF" value="{{ data['lighting-equipment-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">6. Electrical and electronic tools</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="electrical-and-electronic-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="electrical-and-electronic-input-SC004c-DCF"
+                            name="electrical-and-electronic-input-SC004c-DCF" value="{{ data['electrical-and-electronic-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">7. Toys, leisure and sports equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="toys-leisure-sports-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="toys-leisure-sports-input-SC004c-DCF"
+                            name="toys-leisure-sports-input-SC004c-DCF" value="{{ data['toys-leisure-sports-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">8. Medical devices</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="medical-devices-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="medical-devices-input-SC004c-DCF"
+                            name="medical-devices-input-SC004c-DCF" value="{{ data['medical-devices-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">9. Monitoring and control instruments</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="monitoring-control-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="monitoring-control-input-SC004c-DCF"
+                            name="monitoring-control-input-SC004c-DCF" value="{{ data['monitoring-control-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">10. Automatic dispensers</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="automatic-dispensers-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="automatic-dispensers-input-SC004c-DCF"
+                            name="automatic-dispensers-input-SC004c-DCF" value="{{ data['automatic-dispensers-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">11. Display equipment</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="display-equipment-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="display-equipment-input-SC004c-DCF"
+                            name="display-equipment-input-SC004c-DCF" value="{{ data['display-equipment-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">12. Appliances containing refrigerants</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="cooling-appliance-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="cooling-appliance-input-SC004c-DCF"
+                            name="cooling-appliance-input-SC004c-DCF" value="{{ data['cooling-appliance-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">13. Gas discharge lamps and LED light sources</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="gas-discharge-led-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="gas-discharge-led-input-SC004c-DCF"
+                            name="gas-discharge-led-input-SC004c-DCF" value="{{ data['gas-discharge-led-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">14. Photovoltaic panels</td>
+                <td class="govuk-table__cell govuk-!-padding-bottom-0">
+                    <div class="govuk-form-group">
+                        <span id="photovolatic-panels-input-SC004c-DCF-error" class="govuk-error-message govuk-!-font-size-14"
+                            style="margin-bottom: 0px; display: none;">
+                            Please fill in this field
+                        </span>
+                        <input class="govuk-input govuk-!-width-two-thirds weee-input" id="photovolatic-panels-input-SC004c-DCF"
+                            name="photovolatic-panels-input-SC004c-DCF" value="{{ data['photovolatic-panels-input-SC004c-DCF'] }}"
+                            type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                    <h3 class="govuk-heading-m">Total</h3>
+                </td>
+                <td class="govuk-table__cell govuk-table__cell--numeric">
+                    <h3 class="govuk-heading-m" style="float: left" id="tonneTotal-dcf">
+                        0.000 tonnes
+                    </h3>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="govuk-button" id="dcf-save">
+        Save and continue
+    </button>
+</form>
+{% endblock %}
