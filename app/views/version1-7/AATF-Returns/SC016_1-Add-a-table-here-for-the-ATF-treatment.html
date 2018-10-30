@@ -45,7 +45,7 @@ GOV.UK Prototype Kit
         </tr>
     </thead>
     <tbody>
-            {% for sentOn in data['selectedScheme']._sentOnOperatorCollection %}
+            {% for sentOn in data['selectedFacility']._sentOnOperatorCollection %}
             <tr class="govuk-table__row">
                   <td class="govuk-table__cell" scope="col">{{ sentOn._name }}</td>
                   <td class="govuk-table__cell" scope="col">{{ sentOn._address._street }} {{ sentOn._address._town }} {{ sentOn._address._country }} {{ sentOn._address._postcode }}</td>
