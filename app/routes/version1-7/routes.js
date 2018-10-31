@@ -143,7 +143,7 @@ router.get('/version1-7/AATF-Returns/My-facilities', function (req, res) {
 
     req.session.data['period'] = period;
     //console.log('My facilities');
-    for(var i = 0; i < period._facilities.length; i++) {
+    for (var i = 0; i < period._facilities.length; i++) {
         //console.log(period._facilities[i]._name);
     }
     //res.render('version1-7/AATF-Returns/SC002_1-My-facilities');
@@ -152,18 +152,25 @@ router.get('/version1-7/AATF-Returns/My-facilities', function (req, res) {
 
 router.get('/version1-7/AATF-Returns/PCS-Return', function (req, res) {
     var period = req.session.data['period'];
-    
-    for(var i = 0; i < period._facilities.length; i++) {
-        for(var j = 0; j < period._facilities[i]._pcs.length; j++) {
-            var weeeReceivedTotal = CategoriesTotal(period._facilities[i]._pcs[j]._weeeReceived);
-            var weeeReceivedTotalb2b = CategoriesTotal(period._facilities[i]._pcs[j]._weeeReceivedb2b);
-            period._facilities[i]._pcs[j]._weeeReceivedTotal = weeeReceivedTotal;
-            period._facilities[i]._pcs[j]._weeeReceivedTotalb2b = weeeReceivedTotalb2b;
-            //console.log(period._facilities[i]._pcs[j]);
-            //console.log('**************************');
+    var facilityId = req.query['facilityid'];
+    var localWEEETotal = 0.000;
+    var localWEEETotalb2b = 0.000;
+    console.log('facilityid: ' + facilityId);
+    for (var i = 0; i < period._facilities.length; i++) {
+        if (i == facilityId) {
+            console.log('in');
+            for (var j = 0; j < period._facilities[i]._pcs.length; j++) {
+                var weeeReceivedTotal = CategoriesTotal(period._facilities[i]._pcs[j]._weeeReceived);
+                var weeeReceivedTotalb2b = CategoriesTotal(period._facilities[i]._pcs[j]._weeeReceivedb2b);
+                localWEEETotal += Number(weeeReceivedTotal);
+                localWEEETotalb2b += Number(weeeReceivedTotalb2b);
+                period._facilities[i]._pcs[j]._weeeReceivedTotal = weeeReceivedTotal;
+                period._facilities[i]._pcs[j]._weeeReceivedTotalb2b = weeeReceivedTotalb2b;
+            }
         }
+        period._facilities[i]._weeeReceivedTotal = localWEEETotal.toFixed(3);
+        period._facilities[i]._weeeReceivedTotalb2b = localWEEETotalb2b.toFixed(3);
     }
-    console.log(period._facilities[0]._pcs);
     req.session.data['period'] = period;
     res.redirect('/version1-7/AATF-Returns/My-facilities');
 })
@@ -242,7 +249,7 @@ router.post('/version1-7/login-button', function (req, res) {
     var scheme = new Schemes();
     var period = new Period("2018");
 
-    period._operator._categories = new Categories('0','0','0','0','0','0','0','0','0','0','0','0','0','0');
+    period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
     resetNonObligated(req);
 
     req.session.data['schemes'] = scheme;
@@ -481,7 +488,7 @@ router.post('/version1-7/AATF-Returns/weee-received-for-treatment-save', functio
             return true;
         }
     });
-    console.log( updateScheme[0]);
+    console.log(updateScheme[0]);
     updateScheme[0]._hasEnteredData = true;
     updateFacility[0]._hasEnteredData = true;
     //console.log(updateScheme[0]);
@@ -495,7 +502,7 @@ router.post('/version1-7/AATF-Returns/weee-received-for-treatment-save', functio
         result += Number(itemsb2b[i])
     }
     req.session.data['WEEE-received-for-treatment-result'] = result.toFixed(3);
-    
+
     updateScheme[0]._weeeReceived = new Categories(req.session.data['large-household-appliances-input-SC009'], req.session.data['small-household-appliances-input-SC009'], req.session.data['it-and-telecomms-input-SC009'], req.session.data['consumer-equipment-input-SC009'], req.session.data['lighting-equipment-input-SC009'], req.session.data['electrical-and-electronic-input-SC009'], req.session.data['toys-leisure-sports-input-SC009'], req.session.data['medical-devices-input-SC009'], req.session.data['monitoring-control-input-SC009'], req.session.data['automatic-dispensers-input-SC009'], req.session.data['display-equipment-input-SC009'], req.session.data['cooling-appliance-input-SC009'], req.session.data['gas-discharge-led-input-SC009'], req.session.data['photovolatic-panels-input-SC009']);
     updateScheme[0]._weeeReceivedb2b = new Categories(req.session.data['large-household-appliances-input-SC009-b2b'], req.session.data['small-household-appliances-input-SC009-b2b'], req.session.data['it-and-telecomms-input-SC009-b2b'], req.session.data['consumer-equipment-input-SC009-b2b'], req.session.data['lighting-equipment-input-SC009-b2b'], req.session.data['electrical-and-electronic-input-SC009-b2b'], req.session.data['toys-leisure-sports-input-SC009-b2b'], req.session.data['medical-devices-input-SC009-b2b'], req.session.data['monitoring-control-input-SC009-b2b'], req.session.data['automatic-dispensers-input-SC009-b2b'], req.session.data['display-equipment-input-SC009-b2b'], req.session.data['cooling-appliance-input-SC009-b2b'], req.session.data['gas-discharge-led-input-SC009-b2b'], req.session.data['photovolatic-panels-input-SC009-b2b']);
     req.session.data['selectedScheme'] = updateScheme[0];
@@ -585,11 +592,11 @@ router.post('/version1-7/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
     req.session.data['paste-values'] = '';
     var selectedFacility = req.session.data['selectedFacility'];
     console.log('3');
-    for(var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
+    for (var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
         console.log(selectedFacility._sentOnOperatorCollection[i]);
         console.log('*******************************');
     }
-    
+
     res.redirect('/version1-7/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment')
 })
 
@@ -754,7 +761,7 @@ router.post('/version1-7/AATF-Returns/atf-same-as-operator-answer', function (re
         var newOperator = new Operator(operator._name, 0, '', operator._address._street, operator._address._town, operator._address._country, operator._address._postcode);
         selectedAtf[0]._atfAddress = newOperator;
         console.log('2');
-        for(var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
+        for (var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
             console.log(selectedFacility._sentOnOperatorCollection[i]);
             console.log('*******************************');
         }
@@ -769,7 +776,7 @@ router.post('/version1-7/AATF-Returns/non-obligated-weee-answer', function (req,
     let period = req.session.data['period'];
 
     if (answer === 'false') {
-        
+
         if (period._operator._categories) {
             period._operator._categories = null;
             period._operator._categoriesDcf = null;
@@ -831,7 +838,7 @@ router.post('/version1-7/AATF-Returns/operator-address-postcode-save', function 
     var selectedFacility = Selectedfacility(req, req.session.data['selectedFacility']._id);
     var siteAddress = req.session.data['site-address-operator'];
 
-    if(!selectedFacility._sentOnOperatorCollection) {
+    if (!selectedFacility._sentOnOperatorCollection) {
         selectedFacility._sentOnOperatorCollection = [];
     }
     var operatorName;
@@ -840,14 +847,14 @@ router.post('/version1-7/AATF-Returns/operator-address-postcode-save', function 
     operatorName = req.session.data['operator-name-search'];
     operatorPostcode = req.session.data['operator-postcode-search'];
     console.log("op name: " + operatorName);
-    if(typeof operatorName === 'undefined' || operatorName == '') {
+    if (typeof operatorName === 'undefined' || operatorName == '') {
         operatorName = siteAddress;
     }
 
     var newOperator = new Operator(operatorName, selectedFacility._sentOnOperatorCollection.length, '', req.session.data['operator-building-street'], req.session.data['operator-town-city'], req.session.data['operator-county'], operatorPostcode);
     selectedFacility._sentOnOperatorCollection.push(newOperator);
     console.log('1');
-    for(var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
+    for (var i = 0; i < selectedFacility._sentOnOperatorCollection.length; i++) {
         console.log(selectedFacility._sentOnOperatorCollection[i]);
         console.log('*******************************');
     }
@@ -873,8 +880,8 @@ router.post('/version1-7/AATF-Returns/operator-address-postcode-atf-save', funct
     operatorName = req.session.data['operator-name-search-3'];
 
     operatorPostcode = req.session.data['operator-postcode-search-3'];
-    
-    if(typeof operatorPostcode === 'undefined' || operatorPostcode == '') {
+
+    if (typeof operatorPostcode === 'undefined' || operatorPostcode == '') {
         operatorPostcode = siteAddress;
     }
 
@@ -883,7 +890,7 @@ router.post('/version1-7/AATF-Returns/operator-address-postcode-atf-save', funct
             return true;
         }
     });
-    
+
     var newOperator = new Operator(operatorName, selectedFacility._sentOnOperatorCollection.length, '', req.session.data['operator-building-street'], req.session.data['operator-town-city'], req.session.data['operator-county'], operatorPostcode);
     selectedAtf[0]._atfAddress = newOperator;
 
@@ -901,7 +908,7 @@ router.post('/version1-7/AATF-Returns/operator-address-postcode-save-2', functio
     var sitePostcode = req.session.data['operator-postcode-search-2'];
     var siteAddress = req.session.data['site-address'];
     var siteArray = [];
-    if(typeof siteName === 'undefined') {
+    if (typeof siteName === 'undefined') {
         siteName = siteAddress;
     }
     siteArray = [siteName, sitePostcode];
@@ -1019,7 +1026,7 @@ router.get('/version1-7/AATF-Returns/PCS-Table', function (req, res) {
     req.session.data['selectedFacility'] = selectedFacility[0];
 
     res.redirect('/version1-7/AATF-Returns/SC007-PCS-Table?');
-    
+
 })
 
 router.get('/version1-7/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for-treatment', function (req, res) {
@@ -1034,7 +1041,7 @@ router.get('/version1-7/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for
     req.session.data['site-address-operator'] = '';
 
     req.session.data['selectedFacility'] = selectedFacility[0];
-    if(selectedFacility[0]._sentOnOperatorCollection) {
+    if (selectedFacility[0]._sentOnOperatorCollection) {
         res.redirect('/version1-7/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment');
     } else {
         res.redirect('/version1-7/AATF-Returns/SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment');
@@ -1049,7 +1056,7 @@ router.get('/version1-7/AATF-Returns/Do-you-need-to-report-any-WEEE-reused-as-a-
     });
 
     req.session.data['selectedFacility'] = selectedFacility[0];
-    if(selectedFacility[0]._reusedSites[0]) {
+    if (selectedFacility[0]._reusedSites[0]) {
         res.redirect('/version1-7/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites');
     } else {
         res.redirect('/version1-7/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance');
@@ -1072,7 +1079,7 @@ router.get('/version1-7/AATF-Returns/PCS-selection', function (req, res) {
             return true;
         }
     });
-    if(typeof updateFacility[0]._pcs[0] === "undefined") {
+    if (typeof updateFacility[0]._pcs[0] === "undefined") {
         res.redirect('/version1-7/AATF-Returns/SC002_1d-How-would-you-like-to-report');
     } else {
         res.redirect('/version1-7/AATF-Returns/SC007-PCS-Table');
@@ -1095,7 +1102,7 @@ router.post('/version1-7/AATF-Returns/pcs-selection-form-save', function (req, r
             return true;
         }
     });
-    
+
     updateFacility[0]._pcs.push(selectedScheme[0]);
     req.session.data['selectedFacility'] = updateFacility[0];
     req.session.data['period'] = period;

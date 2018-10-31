@@ -86,7 +86,8 @@ GOV.UK Prototype Kit
     Continue
   </button> -->
 </form>
-<form action="/version1-7/AATF-Returns/PCS-Return" method="post" class="form" style="display: block">
+{% set facility = data['selectedFacility']._id %}
+<form action="/version1-7/AATF-Returns/PCS-Return?facilityid={{facility}}" method="post" class="form" style="display: block">
   <button type="submit" class="govuk-button">
       Save and continue
   </button>
