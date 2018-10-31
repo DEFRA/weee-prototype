@@ -1093,8 +1093,8 @@ router.post('/version1-7/AATF-Returns/pcs-selection-form-cancel', function (req,
     res.redirect('/version1-7/AATF-Returns/My-facilities');
 })
 
-router.get('/version1-7/AATF-Returns/add-another-atf', function (req, res) {
-    res.redirect('/version1-7/AATF-Returns/SC016_2-Which-operator-is-this-WEEE-being-sent-to-for-treatment');
+router.get('/version1-7/AATF-Returns/atf-summary', function (req, res) {
+    res.redirect('/version1-7/AATF-Returns/My-facilities');
 })
 
 module.exports = router;
