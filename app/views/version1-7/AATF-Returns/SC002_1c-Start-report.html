@@ -12,12 +12,12 @@ GOV.UK Prototype Kit
     }
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l" id="report-heading">ABB Ltd, AATF return for {{ data['return-period-long'] }} {{ data['return-year'] }}</h2>
+<h2 class="govuk-heading-l" id="report-heading">AATF return for ABB Ltd {{ data['return-year'] }} {{ data['return-period-long'] }}</h2>
 <div class="govuk-!-padding-bottom-3"></div>
 <form action="/version1-7/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee" method="post" class="form" style="display: inline">
     <button type="submit" class="govuk-button">
         Start return
     </button>
 </form>
-<a class="govuk-link" href="SC002_2-compliance-and-reporting.html" style="margin-left: 20px;">I don't want to start a return for this period and year</a>
+<a class="govuk-link" href="SC002_2-compliance-and-reporting.html" style="margin-left: 20px;">Back</a>
 {% endblock %}

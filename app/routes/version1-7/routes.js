@@ -981,6 +981,9 @@ router.post('/version1-7/start-options-select', function (req, res) {
     if (answer === '1') {
         res.redirect('/version1-7/AATF-Returns/SC002_2-compliance-and-reporting')
     }
+    if (answer === '2') {
+        res.redirect('/version1-7/AATF-Returns/ae-return')
+    }
 })
 
 router.get('/version1-7/AATF-Returns/Enter-WEEE-that-has-been-received-for-treatment', function (req, res) {
