@@ -141,7 +141,7 @@ $(document).ready(function () {
             }
         });
         grandTotal = grandTotal.toFixed(3);
-        $('#tonneTotal-sc010').html(grandTotal + ' tonnes');
+        $('#tonneTotal-sc011').html(grandTotal + ' tonnes');
     }
 
     function changeFunctionOnTheFlyB2B() {
@@ -167,7 +167,7 @@ $(document).ready(function () {
             }
         });
         grandTotalb2b = grandTotalb2b.toFixed(3);
-        $('#tonneTotalb2b-sc010').html(grandTotalb2b + ' tonnes');
+        $('#tonneTotalb2b-sc011').html(grandTotalb2b + ' tonnes');
     }
 
     $('#large-household-appliances-input-SC011').on('focus', function () {
