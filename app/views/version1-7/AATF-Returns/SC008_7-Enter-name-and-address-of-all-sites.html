@@ -47,8 +47,16 @@ GOV.UK Prototype Kit
         </tr>
     </thead>
     <tr>
-        <td class="govuk-table__cell">10.200</td>
-        <td class="govuk-table__cell">14.080</td>
+        {% if data['selectedFacility']._reusedb2c %}
+        <td class="govuk-table__cell">{{data['selectedFacility']._reusedb2c}}</td>
+        {% else %}
+        <td class="govuk-table__cell">-</td>
+        {% endif %}
+        {% if data['selectedFacility']._reusedb2b %}
+        <td class="govuk-table__cell">{{data['selectedFacility']._reusedb2b}}</td>
+        {% else %}
+        <td class="govuk-table__cell">-</td>
+        {% endif %}
         <td class="govuk-table__cell"><a href="#" class="govuk-link--no-visited-state govuk-link">Add data</a></td>
     </tr>
     <tbody>

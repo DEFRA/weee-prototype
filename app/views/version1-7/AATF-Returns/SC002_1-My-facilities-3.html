@@ -65,8 +65,16 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="PCS-selection?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">WEEE
                     received via or on behalf of PCS(s)</a></td>
+            {% if facility._totalb2c %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._totalb2c}}</strong></td>
+            {% else %}
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
+            {% endif %}
+            {% if facility._totalb2b %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._totalb2b}}</strong></td>
+            {% else %}
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
+            {% endif %}
         </tr>
         <tr class="govuk-table__row">       
             <td class="govuk-table__cell" style="border: 0px;"></td>
@@ -77,8 +85,16 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
                 class="govuk-link govuk-link--no-visited-state disabledLink">Sent to another ATF</a></td>         
             {% endif %}
-            <td class="govuk-table__cell govuk-!-font-size-16"><strong class="govuk-tag">-</strong></td>
-            <td class="govuk-table__cell govuk-!-font-size-16"><strong class="govuk-tag">-</strong></td>
+            {% if facility._sentonb2c %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._sentonb2c}}</strong></td>
+            {% else %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
+            {% endif %}
+            {% if facility._sentonb2b %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._sentonb2b}}</strong></td>
+            {% else %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
+            {% endif %}
         </tr>
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
@@ -89,8 +105,16 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><a href="Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance?facilityId={{facility._id}}"
                 class="govuk-link govuk-link--no-visited-state disabledLink">Reused as a whole appliance</a></td>
             {% endif %}
-            <td class="govuk-table__cell govuk-!-font-size-16"><strong class="govuk-tag">-</strong></td>
-            <td class="govuk-table__cell govuk-!-font-size-16"><strong class="govuk-tag">-</strong></td>
+            {% if facility._reusedb2c %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._reusedb2c}}</strong></td>
+            {% else %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
+            {% endif %}
+            {% if facility._reusedb2b %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._reusedb2b}}</strong></td>
+            {% else %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
+            {% endif %}
         </tr>
     </table>
 
