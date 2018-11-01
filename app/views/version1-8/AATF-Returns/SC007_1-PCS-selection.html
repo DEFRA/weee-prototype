@@ -1,0 +1,66 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<style>
+  #main-content {
+    padding-top: 0px;
+  }
+  #pcs-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">PCS(s)</li>
+  </ol>
+</div>
+<div class="govuk-error-summary govuk-!-width-one-half" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">Please select a PCS</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="govuk-error-summary govuk-!-width-one-half" aria-labelledby="error-summary-title" style="display: none" id="errorSummaryDuplicate" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">You cannot add a duplicate PCS</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Which PCS(s) did {{ data['selectedFacility']._name }} receive WEEE from?</h2>
+<p class="govuk-body">You can add more PCSs later</p>
+<form action="/version1-8/AATF-Returns/pcs-selection-form-save" method="post" class="form" style="display: inline;">
+    <input type="hidden" id="scheme-name-id" name="scheme-name-id">
+    <input class="govuk-input govuk-!-width-one-half" id="scheme-name" name="scheme-name" type="text" placeholder="Enter the PCS name">
+    <br />
+    <div class="govuk-!-padding-bottom-5"></div>
+    <button type="submit" class="govuk-button" id="pcs-selection-button-save" style="margin-right: 10px;">
+      Save and continue
+    </button>
+</form>
+<form action="/version1-8/AATF-Returns/pcs-selection-form-cancel" method="post" class="form" style="display: inline;">
+    <button type="submit" class="govuk-button" id="pcs-selection-button-cancel">
+        Cancel
+      </button>
+</form>
+
+<script src="/public/javascripts/add-scheme-validation-2.js"></script>
+{% endblock %}

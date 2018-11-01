@@ -1,0 +1,59 @@
+{% extends "version1-4/layout.html" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var compliance = localStorage.getItem('compliance-year');
+        var reporting = localStorage.getItem('reporting-period');
+        /*
+        var output = 'How would you like to report on the AATF ';
+        $('#report-heading').html(output);*/
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l" id="report-heading">How would you like to report on the AATF {{data['selectedFacility']._name}}</h2>
+<div class="govuk-!-padding-bottom-3"></div>
+<form action="/version1-8/AATF-Returns/compliance-reporting-end" method="post" class="form" style="display: inline">
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+            <div class="govuk-radios">
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="compliance-reporting-option-1" name="compliance-reporting-option" type="radio"
+                        value="1">
+                    <label class="govuk-label govuk-radios__label" for="compliance-reporting-option-1">
+                        Enter my data online
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="compliance-reporting-option-2" name="compliance-reporting-option" type="radio"
+                        value="2">
+                    <label class="govuk-label govuk-radios__label" for="compliance-reporting-option-2">
+                        Upload my data
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="compliance-reporting-option-3" name="compliance-reporting-option" type="radio"
+                        value="3">
+                    <label class="govuk-label govuk-radios__label" for="compliance-reporting-option-3">
+                        Make a nil return
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <button type="submit" class="govuk-button">
+        Continue
+    </button>
+</form>
+{% endblock %}
