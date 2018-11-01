@@ -711,7 +711,7 @@ router.post('/version1-8/AATF-Returns/multiple-pcs-save', function (req, res) {
 })
 
 router.post('/version1-8/AATF-Returns/pcs-check-my-return', function (req, res) {
-    res.redirect('/version1-8/AATF-Returns/SC015-Check-your-AATF-return-v2')
+    res.redirect('/version1-8/AATF-Returns/SC015-Check-your-AATF-return-v3')
 })
 
 router.post('/version1-8/AATF-Returns/reusing-weee-answer', function (req, res) {
