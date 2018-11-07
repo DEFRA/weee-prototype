@@ -569,7 +569,7 @@ router.post('/version1-8/AATF-Returns/weee-reused-as-a-whole-appliance-this-faci
     updateFacility[0]._weeeReusedb2b = new Categories(req.session.data['large-household-appliances-input-SC010-b2b'], req.session.data['small-household-appliances-input-SC010-b2b'], req.session.data['it-and-telecomms-input-SC010-b2b'], req.session.data['consumer-equipment-input-SC010-b2b'], req.session.data['lighting-equipment-input-SC010-b2b'], req.session.data['electrical-and-electronic-input-SC010-b2b'], req.session.data['toys-leisure-sports-input-SC010-b2b'], req.session.data['medical-devices-input-SC010-b2b'], req.session.data['monitoring-control-input-SC010-b2b'], req.session.data['automatic-dispensers-input-SC010-b2b'], req.session.data['display-equipment-input-SC010-b2b'], req.session.data['cooling-appliance-input-SC010-b2b'], req.session.data['gas-discharge-led-input-SC010-b2b'], req.session.data['photovolatic-panels-input-SC010-b2b']);
     req.session.data['paste-values'] = '';
 
-    res.redirect('/version1-8/AATF-Returns/SC008_5-Which-site-is-this-WEEE-being-sent-to-for-reuse-as-a-whole-appliance')
+    res.redirect('/version1-8/AATF-Returns/SC008_3-Is-this-whole-weee-being-sent-to-another-site')
 })
 
 router.post('/version1-8/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save', function (req, res) {
