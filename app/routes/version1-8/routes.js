@@ -740,6 +740,23 @@ router.post('/version1-8/AATF-Returns/reusing-weee-sent-to-another-site-answer',
     let answer = req.session.data['reusing-weee-sent-to-another-site']
 
     if (answer === 'false') {
+        var period = req.session.data['period'];
+        var updateFacility = period._facilities.filter(function (facility) {
+            if (parseInt(facility._id) === parseInt(req.session.data['selectedFacility']._id)) {
+                return true;
+            }
+        });
+        if (updateFacility[0]._weeeReusedb2c){
+            var reusedb2c = Number(CategoriesTotal(updateFacility[0]._weeeReusedb2c));
+            updateFacility[0]._reusedb2c = reusedb2c.toFixed(3);     
+        }
+        if (updateFacility[0]._weeeReusedb2b){
+            var reusedb2b = Number(CategoriesTotal(updateFacility[0]._weeeReusedb2b));
+            updateFacility[0]._reusedb2b = reusedb2b.toFixed(3);     
+        }  
+    
+        req.session.data['selectedFacility'] = updateFacility[0];
+        req.session.data['period'] = period;
         res.redirect('/version1-8/AATF-Returns/My-facilities')
     } else {
         res.redirect('/version1-8/AATF-Returns/SC008_5-Which-site-is-this-WEEE-being-sent-to-for-reuse-as-a-whole-appliance')
