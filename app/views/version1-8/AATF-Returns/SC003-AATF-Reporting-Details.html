@@ -1,0 +1,81 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">AATF return details</h2>
+<form action="/version1-8/AATF-Returns/save-and-continue" method="post" class="form">
+  {{ govukSelect({
+    id: "compliance-year",
+    name: "compliance-year",
+    classes: "govuk-!-width-one-third",
+    label: {
+      text: "Compliance year"
+    },
+    items: [
+      {
+        value: "",
+        text: "Select a compliance year"
+      },
+      {
+        value: "2017",
+        text: "2017"
+      },
+      {
+        value: "2018",
+        text: "2018"
+      },
+      {
+        value: "2019",
+        text: "2019"
+      }
+    ]
+  }) }}
+
+  {{ govukSelect({
+    id: "reporting-period",
+    name: "reporting-period",
+    classes: "govuk-!-width-one-third",
+    label: {
+      text: "Reporting period"
+    },
+    items: [
+      {
+        value: "",
+        text: "Select a reporting period"
+      },
+      {
+        value: "Q1 Jan - Mar",
+        text: "Q1 Jan - Mar"
+      },
+      {
+        value: "Q2 Apr - Jun",
+        text: "Q2 Apr - Jun"
+      },
+      {
+        value: "Q3 Jul - Sep",
+        text: "Q3 Jul - Sep"
+      },
+      {
+        value: "Q4 Oct - Dec",
+        text: "Q4 Oct - Dec"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Save and continue"
+  }) }}
+  
+</form>
+
+{% endblock %}

@@ -1,0 +1,210 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% from "tabs/macro.njk" import govukTabs %}
+{% from "table/macro.njk" import govukTable %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    .weee-table td {
+        border-bottom: 0px;
+        padding-bottom: 0px;
+        width: 75%;
+    }
+
+    .no-border {
+        border: none;
+    }
+
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Check your AATF return</li>
+    </ol>
+</div>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Check your AATF return for ABB Ltd</h2>
+
+<p style="display: inline">Check and review your AATF return before you proceed to submit</p>
+<div class="govuk-!-padding-bottom-9"></div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        <p><strong>Compliance year</strong></p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+        <p>{{ data['return-year'] }}</p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body">Change</p>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        <p><strong>Reporting period</strong></p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+        <p>{{ data['return-period-long'] }}</p>
+    </div>
+</div>
+<div class="govuk-!-padding-bottom-6"></div>
+<h4 class="govuk-heading-s" style="margin-bottom: 0px;">Non-obligated WEEE</h4>
+<table class="govuk-table govuk-!-font-size-16">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">WEEE received (t)</th>
+            <th class="govuk-table__header" scope="col">WEEE retained by a DCF (t)</th>
+            <th class="govuk-table__header" style="font-weight: normal"> </th>
+        </tr>
+    </thead>
+    {% set operator = data['period']._operator %}
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">{{ operator._wee }}</td>
+            <td class="govuk-table__cell">{{ operator._weeDcf }}</td>
+            <td class="govuk-table__cell">Change</td>
+        </tr>
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-6"></div>
+<h4 class="govuk-heading-s" style="margin-bottom: 0px;">Obligated WEEE</h4>
+<table class="govuk-table govuk-!-font-size-16">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col" style="border-bottom: 0px;"></th>
+            <th class="govuk-table__header" scope="col" style="border-bottom: 0px;" colspan="2">Sent on to another ATF (t)</th>
+            <th class="govuk-table__header" scope="col" style="border-bottom: 0px;" colspan="2">Reused as a whole appliance (t)</th>
+            <th class="govuk-table__header" scope="col" style="border-bottom: 0px;"></th>
+            <th class="govuk-table__header" scope="col" style="border-bottom: 0px;"></th>
+        </tr>
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">AATF name</th>
+            <th class="govuk-table__header" scope="col">B2C</th>
+            <th class="govuk-table__header" scope="col">B2B</th>
+            <th class="govuk-table__header" scope="col">B2C</th>
+            <th class="govuk-table__header" scope="col">B2B</th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        {% for facility in data['period']._facilities %}
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col">
+                {{facility._name}}
+            </td>
+            {% if facility._sentonb2c %}
+            <td class="govuk-table__cell" scope="col">
+                {{facility._sentonb2c}}
+            </td>
+            {% else %}
+            <td class="govuk-table__cell" scope="col">
+                -
+            </td>
+            {% endif %}
+            {% if facility._sentonb2b %}
+            <td class="govuk-table__cell" scope="col">
+                {{facility._sentonb2b}}
+            </td>
+            {% else %}
+            <td class="govuk-table__cell" scope="col">
+                -
+            </td>
+            {% endif %}
+            {% if facility._reusedb2c %}
+            <td class="govuk-table__cell" scope="col">
+                {{facility._reusedb2c}}
+            </td>
+            {% else %}
+            <td class="govuk-table__cell" scope="col">
+                -
+            </td>
+            {% endif %}
+            {% if facility._reusedb2b %}
+            <td class="govuk-table__cell" scope="col">
+                {{facility._reusedb2b}}
+            </td>
+            {% else %}
+            <td class="govuk-table__cell" scope="col">
+                -
+            </td>
+            {% endif %}
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col" colspan="5">
+                <details class="govuk-details" style="font-size: 16px;">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            {{facility._name}} PCS(s)
+                        </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <table class="govuk-table" style="font-size: 16px;">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col">PCS Name</th>
+                                    <th class="govuk-table__header" scope="col">Approval No</th>
+                                    <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
+                                </tr>
+                            </thead>
+                            {% for pcs in facility._pcs %}
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">{{pcs._name}}</td>
+                                    <td class="govuk-table__cell">{{pcs._id}}</td>
+                                    <td class="govuk-table__cell">{{pcs._weeeReceivedTotal}}</td>
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </details>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <!--
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+        <td class="govuk-table__cell" scope="col">ABB Ltd Darlaston</td>
+        <td class="govuk-table__cell" scope="col">WEE/AB1234GH/ATF</td>
+        <td class="govuk-table__cell" scope="col">1.233</td>
+        <td class="govuk-table__cell" scope="col">2.568</td>
+        <td class="govuk-table__cell" scope="col">1.2345</td>
+        <td class="govuk-table__cell" scope="col">Change</td>
+    </tr>
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell" scope="col">ABB Ltd Woking</td>
+        <td class="govuk-table__cell" scope="col">WEE/AB5678GH/ATF</td>
+        <td class="govuk-table__cell" scope="col">-</td>
+        <td class="govuk-table__cell" scope="col">-</td>
+        <td class="govuk-table__cell" scope="col">-</td>
+        <td class="govuk-table__cell" scope="col">Change</td>
+    </tr>
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell" scope="col">ABB Ltd Maidenhead</td>
+        <td class="govuk-table__cell" scope="col">WEE/AB9012GH/ATF</td>
+        <td class="govuk-table__cell" scope="col">2.233</td>
+        <td class="govuk-table__cell" scope="col">4.568</td>
+        <td class="govuk-table__cell" scope="col">6.235</td>
+        <td class="govuk-table__cell" scope="col">Change</td>
+    </tr>
+    </tbody>
+-->
+</table>
+
+<form action="/version1-8/AATF-Returns/submit-aatf-return" method="post" class="form" style="display:inline;">
+    {{ govukButton({
+    text: "Submit"
+    }) }}
+</form>
+<a style="padding-left: 20px;" href="My-facilities">AATF return</a>
+
+{% endblock %}

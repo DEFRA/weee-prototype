@@ -1,0 +1,48 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+
+{% endblock %}
+
+{% block content %}
+<style>
+  #sign-in-banner {
+    display: none;
+  }
+  #main-content {
+    padding-top: 30px;
+  }
+</style>
+<h2 class="govuk-heading-l">Waste electrical and electronic equipment</h2>
+<form action="/version1-8/login-button" method="post" class="form">
+  {{ govukInput({
+    label: {
+      text: "Email address",
+      classes: "govuk-!-width-one-third"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "email",
+    name: "email",
+    type: "email"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Password",
+      classes: "govuk-!-width-one-third"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "password",
+    name: "password",
+    type: "password"
+  }) }}
+
+  {{ govukButton({
+    text: "Sign in"
+  }) }}
+</form>
+<a href="#" class="govuk-link govuk-!-font-size-19">Create a user account</a>
+<div class="govuk-!-padding-bottom-4"></div>
+<a href="#" class="govuk-link govuk-!-font-size-19">Reset password</a>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#input-address-button').click(function () {
+            $('#operator-postcode-search-2').val('');
+            $('#operator-name-search-2').val('');
+        })
+        $('#postcode-search-button').click(function () {
+            $('#operator-postcode-2').val('');
+            $('#operator-name-2').val('');
+            var atfName = $('#operator-name-search-2').val();
+            localStorage.setItem('completedATF', atfName);
+        })
+    });
+</script>
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+            <a class="govuk-breadcrumbs__link" href="#">Reusing WEEE</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item" aria-current="page">Site address</li>
+    </ol>
+</div>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Which site received the WEEE for reuse?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<input type="hidden" id="atfId" name="atfId" />
+<form action="/version1-8/AATF-Returns/operator-address-postcode-save-2" method="post" class="form" style="display: inline">
+    {{ govukInput({
+    label: {
+    text: "Site name"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "operator-name-search-2",
+    name: "operator-name-search-2"
+    }) }}
+    {{ govukInput({
+    label: {
+    text: "Postcode"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "operator-postcode-search-2",
+    name: "operator-postcode-search-2"
+    }) }}
+    <button type="submit" class="govuk-button" id="postcode-search-button">
+        Find address
+    </button>
+    <br/>
+    <a href="SC008_5a-Manual-entry-of-site-address-for-reuse" class="govuk-link">I can't find the site address</a>
+
+</form>
+{% endblock %}
