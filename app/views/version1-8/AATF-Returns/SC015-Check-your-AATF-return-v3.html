@@ -151,7 +151,8 @@ GOV.UK Prototype Kit
                                 <tr class="govuk-table__row">
                                     <th class="govuk-table__header" scope="col">PCS Name</th>
                                     <th class="govuk-table__header" scope="col">Approval No</th>
-                                    <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
+                                    <th class="govuk-table__header" scope="col">Received for treatment B2C (t)</th>
+                                    <th class="govuk-table__header" scope="col">Received for treatment B2B (t)</th>
                                 </tr>
                             </thead>
                             {% for pcs in facility._pcs %}
@@ -160,6 +161,7 @@ GOV.UK Prototype Kit
                                     <td class="govuk-table__cell">{{pcs._name}}</td>
                                     <td class="govuk-table__cell">{{pcs._id}}</td>
                                     <td class="govuk-table__cell">{{pcs._weeeReceivedTotal}}</td>
+                                    <td class="govuk-table__cell">{{pcs._weeeReceivedTotalb2b}}</td>
                                 </tr>
                             </tbody>
                             {% endfor %}
