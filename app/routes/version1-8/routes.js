@@ -109,6 +109,23 @@ router.get('/version1-8/AATF-Returns/paste-values-redirect', function (req, res)
     res.render('version1-8/AATF-Returns/paste-values-screen');
 });
 
+router.get('/version1-8/AATF-Returns/select-your-pcs', function(req, res){
+    res.render('version1-8/AATF-Returns/SC019-select-your-pcs');
+});
+
+router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res){
+    res.redirect('/version1-8/AATF-Returns/My-facilities');
+});
+
+router.get('/version1-8/AATF-Returns/What-do-you-need-to-report-on', function (req, res){
+    res.render('version1-8/AATF-Returns/SC018-What-do-you-need-to-report-on');
+});
+
+router.post('/version1-8/AATF-Returns/What-do-you-need-to-report-on', function (req, res){
+    res.redirect('/version1-8/AATF-Returns/select-your-pcs');
+});
+
+
 router.post('/version1-8/AATF-Returns/find-scheme', function (req, res) {
     var searchTerm = req.session.data['SearchTerm'];
     var schemes = req.session.data['schemes'];
@@ -242,7 +259,7 @@ router.get('/version1-8/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for
 })
 */
 router.get('/version1-8/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee', function (req, res) {
-    res.render('version1-8/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee')
+    res.redirect('/version1-8/AATF-Returns//What-do-you-need-to-report-on');
 })
 
 router.get('/version1-8/AATF-Returns/aatf-option-select', function (req, res) {

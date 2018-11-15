@@ -1,0 +1,27 @@
+{% extends "version1-4/layout.html" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+    .govuk-table td, .govuk-table th {
+        border-bottom:0px;
+    }
+</style>
+
+<form action="/version1-8/AATF-Returns/select-your-pcs" method="post" class="form">
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Select all PCSs which your AATFs received WEEE from</h2>
+<p>These PCSs will be added to all of your AATFs</p>
+<div class="govuk-!-padding-bottom-5"></div>
+{{ govukButton({
+    text: "Add PCSs"
+}) }}
+</form>
+{% endblock %}
