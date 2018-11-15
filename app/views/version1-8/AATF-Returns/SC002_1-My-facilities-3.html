@@ -76,6 +76,7 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
             {% endif %}
         </tr>
+        {% if  data['senton'] == 'yes' %}
         <tr class="govuk-table__row">       
             <td class="govuk-table__cell" style="border: 0px;"></td>
             {% if facility._hasEnteredData %}
@@ -96,6 +97,8 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
             {% endif %}
         </tr>
+        {% endif %}
+        {% if  data['reusedoption'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             {% if facility._hasEnteredData %}
@@ -116,6 +119,7 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
             {% endif %}
         </tr>
+        {% endif %}
     </table>
 
     {% endfor %}

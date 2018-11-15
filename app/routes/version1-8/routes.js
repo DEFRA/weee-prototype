@@ -259,7 +259,7 @@ router.get('/version1-8/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for
 })
 */
 router.get('/version1-8/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee', function (req, res) {
-    res.redirect('/version1-8/AATF-Returns//What-do-you-need-to-report-on');
+    res.redirect('/version1-8/AATF-Returns/What-do-you-need-to-report-on');
 })
 
 router.get('/version1-8/AATF-Returns/aatf-option-select', function (req, res) {
