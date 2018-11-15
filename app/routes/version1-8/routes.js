@@ -114,6 +114,7 @@ router.get('/version1-8/AATF-Returns/select-your-pcs', function(req, res){
 });
 
 router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res){
+    console.log(req.session.data)
     res.redirect('/version1-8/AATF-Returns/My-facilities');
 });
 
