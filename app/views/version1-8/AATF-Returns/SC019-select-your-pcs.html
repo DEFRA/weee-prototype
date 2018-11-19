@@ -24,8 +24,24 @@ GOV.UK Prototype Kit
         <fieldset class="govuk-fieldset" aria-describedby="pcs-hint">
             <div class="govuk-checkboxes">
                 {% for scheme in data['schemes']._schemes %}
+                {% set schemeFound = false %}
                 <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="{{scheme._name}}-{{scheme._id}}" name="pcs-selection-check" type="checkbox" value="{{scheme._name}}#{{scheme._id}}">
+                    {% set selectedSchemes = data['period']._operator._selectedSchemes %}
+                    {% for chosenScheme in selectedSchemes %}
+                    {% if scheme._name == chosenScheme._name %}
+                    {% set schemeFound = true %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if schemeFound %}
+                    <input class="govuk-checkboxes__input" checked id="{{scheme._name}}-{{scheme._id}}" name="pcs-selection-check"
+                        type="checkbox" value="{{scheme._name}}#{{scheme._id}}">
+                    {% else %}
+                    <input class="govuk-checkboxes__input" id="{{scheme._name}}-{{scheme._id}}" name="pcs-selection-check"
+                        type="checkbox" value="{{scheme._name}}#{{scheme._id}}">
+                    {% endif %}
+
+
+
                     <label class="govuk-label govuk-checkboxes__label" for="pcs-{{scheme._name}}">
                         {{scheme._name}} - {{scheme._id}}
                     </label>

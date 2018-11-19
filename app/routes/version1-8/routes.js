@@ -110,10 +110,12 @@ router.get('/version1-8/AATF-Returns/paste-values-redirect', function (req, res)
 });
 
 router.get('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
+    console.log('get');
     res.render('version1-8/AATF-Returns/SC019-select-your-pcs');
 });
 
 router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
+    console.log('post');
     var period = req.session.data['period'];
     var pcs = req.session.data['pcs-selection-check'];
     var pcsName = [];
@@ -124,12 +126,39 @@ router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
         pcsIDs.push(str[1]);
     }
 
-    period._operator._selectedSchemes = [];
+    if (period._operator._selectedSchemes == undefined) {
+        console.log('undefined');
+        period._operator._selectedSchemes = [];
+        for (var i = 0; i < pcsName.length; i++) {
+            period._operator._selectedSchemes.push(new Scheme(pcsName[i], pcsIDs[i]));
+        }
+    } else {
+        console.log('defined');
+        for (var i = 0; i < pcsName.length; i++) {
+            var schemeFound = false;
+            for (var j = 0; j < period._operator._selectedSchemes.length; j++) {
+                if (pcsName[i] == period._operator._selectedSchemes[j]._name) {
+                    schemeFound = true;
+                }
+            }
+            if (!schemeFound) {
+                period._operator._selectedSchemes.push(new Scheme(pcsName[i], pcsIDs[i]));
+            }
+        }
 
-    for (var i = 0; i < pcsName.length; i++) {
-        period._operator._selectedSchemes.push(new Scheme(pcsName[i], pcsIDs[i]));
+        for (var i = 0; i < period._operator._selectedSchemes.length; i++) {
+            var schemeFound = false;
+            for (var j = 0; j < pcsName.length; j++) {
+                if (period._operator._selectedSchemes[i]._name == pcsName[j]) {
+                    schemeFound = true;
+                }
+            }
+            if (!schemeFound) {
+                period._operator._selectedSchemes.splice(i, 1);
+            }
+        }
     }
-
+    console.log(period._operator._selectedSchemes);
     req.session.data['period'] = period;
 
     res.redirect('/version1-8/AATF-Returns/My-facilities');
@@ -554,7 +583,7 @@ router.post('/version1-8/AATF-Returns/weee-received-for-treatment-save', functio
             return true;
         }
     });
-    
+
     updateScheme[0]._hasEnteredData = true;
     updateFacility[0]._hasEnteredData = true;
 
