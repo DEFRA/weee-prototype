@@ -17,6 +17,7 @@ class Schemes{
       this._schemes.push(new Scheme('Nilwaste','WEE/XP3638PJ/SCH'));
       this._schemes.push(new Scheme('Northern Compliance Limited','WEE/UP3438PR/SCH'));
       this._schemes.push(new Scheme('PV CYCLE UK','WEE/TP3838PS/SCH'));
+      /*
       this._schemes.push(new Scheme('Recolight','WEE/MP3838PR/SCH'));
       this._schemes.push(new Scheme('Recycle Telecom Producer Compliance Scheme','WEE/GP3538PG/SCH'));
       this._schemes.push(new Scheme('Recycling Lives Compliance Services Limited','WEE/XP3838PX/SCH'));
@@ -36,6 +37,7 @@ class Schemes{
       this._schemes.push(new Scheme('WEEECare','WEE/MP3538PZ/SCH'));
       this._schemes.push(new Scheme('WEEEComply','WEE/GP3338PL/SCH'));
       this._schemes.push(new Scheme('WEEELight','WEE/KP3238PU/SCH'));
+      */
     }
   }
   

@@ -17,10 +17,15 @@ GOV.UK Prototype Kit
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#receivedsection input[type=radio]').change(function() {
+        
+        if ($('input[name=receivedoption]:checked').val() == 'yes') {
+            $('#dcfsection').css('display', 'table-row');
+        }
+
+        $('#receivedsection input[type=radio]').change(function () {
             var thisValue = $(this).val();
 
-            if(thisValue == 'yes') {
+            if (thisValue == 'yes') {
                 $('#dcfsection').css('display', 'table-row');
             } else {
                 $('#dcfsection').css('display', 'none');
@@ -28,69 +33,71 @@ GOV.UK Prototype Kit
         });
     });
 </script>
-<div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">What do you need to report on?</h2>
-<div class="govuk-!-padding-bottom-5"></div>
-<table class="govuk-table">
-    <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-            <th class="govuk-table__header" style="width: 80%" scope="col"></th>
-            <th class="govuk-table__header" style="width: 10%" scope="col">Yes</th>
-            <th class="govuk-table__header" style="width: 10%" scope="col">No</th>
-        </tr>
-    </thead>
-    <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-                <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Have
-                    you sent any WEEE to
-                    any other AATFs or ATFs for
-                    treatment?</h3>
-                <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE that you received at your
-                    AATF(s) but not treated and was sent on for treatment elsewhere.</p>
-            </td>
-            <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
-                    type="radio" name="sentonoption" value="yes"></td>
-            <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
-                    type="radio" name="sentonoption" value="no"></td>
-        </tr>
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell">
-                <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Has
-                    any WEEE been reused as a whole appliance?</h3>
-            </td>
-            <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
-                    type="radio" name="reusedoption" value="yes"></td>
-            <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
-                    type="radio" name="reusedoption" value="no"></td>
-        </tr>
-        <tr class="govuk-table__row" id="receivedsection">
-            <td class="govuk-table__cell">
-                <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Have
-                    you received any non-obligated WEEE</h3>
-                <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE not received via or on
-                    behalf of a PCS. It should not include WEEE that has already been reported by another AATF.</p>
-            </td>
-            <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
-                    type="radio" name="receivedoption" value="yes"></td>
-            <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
-                    type="radio" name="receivedoption" value="no"></td>
-        </tr>
-        <tr class="govuk-table__row" id="dcfsection" style="display:none;">
-            <td class="govuk-table__cell" style="border-left: 5px solid rgb(191, 193, 195); padding-left: 20px;">
-                <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Have
-                    you received any non-obligated WEEE on behalf of a designated collection facility (DCF)</h3>
-                <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE not received via or on
-                    behalf of a PCS. It should not include WEEE that has already been reported by another AATF.</p>
-            </td>
-            <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
-                    type="radio" name="dcfoption" value="yes"></td>
-            <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
-                    type="radio" name="dcfoption" value="no"></td>
-        </tr>
-    </tbody>
-</table>
-<!--
+<form action="/version1-8/AATF-Returns/What-do-you-need-to-report-on" method="post" class="form">
+    <div class="govuk-!-padding-bottom-3"></div>
+    <h2 class="govuk-heading-l">What do you need to report on?</h2>
+    <div class="govuk-!-padding-bottom-5"></div>
+    <table class="govuk-table">
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th class="govuk-table__header" style="width: 80%" scope="col"></th>
+                <th class="govuk-table__header" style="width: 10%" scope="col">Yes</th>
+                <th class="govuk-table__header" style="width: 10%" scope="col">No</th>
+            </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                    <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Have
+                        you sent any WEEE to
+                        any other AATFs or ATFs for
+                        treatment?</h3>
+                    <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE that you received at
+                        your
+                        AATF(s) but not treated and was sent on for treatment elsewhere.</p>
+                </td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="sentonoption" value="yes"></td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="sentonoption" value="no"></td>
+            </tr>
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                    <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Has
+                        any WEEE been reused as a whole appliance?</h3>
+                </td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="reusedoption" value="yes"></td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="reusedoption" value="no"></td>
+            </tr>
+            <tr class="govuk-table__row" id="receivedsection">
+                <td class="govuk-table__cell">
+                    <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Have
+                        you received any non-obligated WEEE</h3>
+                    <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE not received via or on
+                        behalf of a PCS. It should not include WEEE that has already been reported by another AATF.</p>
+                </td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="receivedoption" value="yes"></td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="receivedoption" value="no"></td>
+            </tr>
+            <tr class="govuk-table__row" id="dcfsection" style="display:none;">
+                <td class="govuk-table__cell" style="border-left: 5px solid rgb(191, 193, 195); padding-left: 20px;">
+                    <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Have
+                        you received any non-obligated WEEE on behalf of a designated collection facility (DCF)</h3>
+                    <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE not received via or on
+                        behalf of a PCS. It should not include WEEE that has already been reported by another AATF.</p>
+                </td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="dcfoption" value="yes"></td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="dcfoption" value="no"></td>
+            </tr>
+        </tbody>
+    </table>
+    <!--
 <div id="sentOnOptionDiv">
     <div id="sentOnHeading" style="display:inline-block; vertical-align: top">
         <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal">Have you sent any WEEE to any other AATFs or ATFs for
@@ -112,4 +119,8 @@ GOV.UK Prototype Kit
     </div>
 </div>
 -->
+    {{ govukButton({
+    text: "Create"
+    }) }}
+</form>
 {% endblock %}

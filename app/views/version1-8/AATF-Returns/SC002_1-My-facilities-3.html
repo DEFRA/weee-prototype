@@ -57,7 +57,7 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
             {% endif %}
         </tr>
-        {% if  data['senton'] == 'yes' %}
+        {% if  data['sentonoption'] == 'yes' %}    
         <tr class="govuk-table__row">       
             <td class="govuk-table__cell" style="border: 0px;"></td>
             {% if facility._hasEnteredData %}
@@ -117,12 +117,14 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><a href="SC004_1-Enter-non-obligated-WEEE.html" class="govuk-link govuk-link--no-visited-state">Received</a></td>
             <td class="govuk-table__cell"><strong class="govuk-tag">{{ operator._wee }}</strong></td>
         </tr>
+        {% if data['dcfoption'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="SC004_2a-Add-any-DCF-data.html" class="govuk-link govuk-link--no-visited-state">Retained
                     by a DCF</a></td>
             <td class="govuk-table__cell"><strong class="govuk-tag">{{ operator._weeDcf }}</strong></td>
         </tr>
+        {% endif %}
     </table>
     <div class="govuk-!-padding-bottom-7"></div>
     {% endif %}
