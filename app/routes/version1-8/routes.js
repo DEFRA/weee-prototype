@@ -439,7 +439,7 @@ router.post('/version1-8/AATF-Returns/non-obligated-save', function (req, res) {
     req.session.data['paste-values'] = '';
     req.session.data['period'] = period;
 
-    res.redirect('/version1-8/AATF-Returns/SC004_2-Are-you-reporting-on-any-non-obligated-weee-as-retained-by-a-dcf')
+    res.redirect('/version1-8/AATF-Returns/My-Facilities');
 })
 
 router.post('/version1-8/AATF-Returns/dcf-save', function (req, res) {

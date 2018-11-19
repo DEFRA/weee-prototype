@@ -34,9 +34,9 @@ GOV.UK Prototype Kit
     <table class="govuk-table" style="width: 60%;">
         <tr class="govuk-table__row">
             {% if loop.index == 1 %}
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;">{{loop.index }}.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width:10%;">{{loop.index }}.</td>
             {% else %}
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; color: transparent;">{{loop.index + 1}}.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; color: transparent; width:10%;">{{loop.index + 1}}.</td>
             {% endif %}
             <td class="govuk-table__cell govuk-!-font-weight-bold">Obligated WEEE for {{facility._name}}</td>
             <td class="govuk-table__cell">B2C</td>
@@ -108,8 +108,8 @@ GOV.UK Prototype Kit
     {% if  data['receivedoption'] == 'yes' %}
     <table class="govuk-table" style="width: 60%;">
         <tr class="govuk-table__row">
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;">2.</td>
-            <td class="govuk-table__cell govuk-!-font-weight-bold">{{ operator._name }}'s Non-obligated WEEE</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width:10%;">2.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold">Non-obligated WEEE</td>
             <td class="govuk-table__cell"></td>
         </tr>
         <tr class="govuk-table__row">
