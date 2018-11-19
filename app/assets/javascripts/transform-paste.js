@@ -22,9 +22,10 @@
                                 if (copyValue) {
                                     var cellData = copyValue.split('\t');
                                     var cellValue = cellData[tableColumnCount - 1];
-                                    cellValue = parseInt(cellValue);
+                                    cellValue = parseFloat(cellValue).toFixed(3);
                                     var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
                                     if (!isNaN(cellValue)) {
+                                        console.log(cellValue);
                                         var convertedValue = parseFloat(cellValue).toFixed(3);
                                         input.value = convertedValue;
                                     }
