@@ -40,7 +40,7 @@ GOV.UK Prototype Kit
       <td class="govuk-table__cell">B2B</td>
       <td class="govuk-table__cell"></td>
     </tr>
-    {% for scheme in data['period']._operator._selectedSchemes %}
+    {% for scheme in data['selectedFacility']._pcs %}
     <tr class="govuk-table__row">
       <td class="govuk-table__cell">{{scheme._name}}</td>
       <td class="govuk-table__cell">{{scheme._id}}</td>
