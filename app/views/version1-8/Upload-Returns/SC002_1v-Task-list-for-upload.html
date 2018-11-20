@@ -31,16 +31,16 @@ GOV.UK Prototype Kit
     <div class="govuk-!-margin-bottom-4"></div>
     {% set operator = data['period']._operator %}
     {% for facility in data['period']._facilities %}
-    <table class="govuk-table" style="width: 60%;">
+    <table class="govuk-table" style="width: 70%;">
         <tr class="govuk-table__row">
             {% if loop.index == 1 %}
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;">{{loop.index }}.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width: 10%;">{{loop.index }}.</td>
             {% else %}
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; color: transparent;">{{loop.index + 1}}.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; color: transparent; width: 60%">{{loop.index + 1}}.</td>
             {% endif %}
             <td class="govuk-table__cell govuk-!-font-weight-bold">Obligated WEEE for {{facility._name}}</td>
-            <td class="govuk-table__cell">B2C</td>
-            <td class="govuk-table__cell">B2B</td>
+            <td class="govuk-table__cell" style="width: 15%;">B2C</td>
+            <td class="govuk-table__cell" style="width: 15%;">B2B</td>
         </tr>
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
