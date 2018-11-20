@@ -44,8 +44,8 @@ GOV.UK Prototype Kit
         </tr>
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
-            <td class="govuk-table__cell"><a href="PCS-selection?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">WEEE
-                    received via or on behalf of PCS(s)</a></td>
+            <td class="govuk-table__cell"><a href="Upload-your-facility-data?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">
+                    Upload data for {{facility._name}}</a></td>
             {% if facility._totalb2c %}
             <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._totalb2c}}</strong></td>
             {% else %}
@@ -57,58 +57,14 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
             {% endif %}
         </tr>
-        {% if  data['sentonoption'] == 'yes' %}    
-        <tr class="govuk-table__row">       
-            <td class="govuk-table__cell" style="border: 0px;"></td>
-            {% if facility._hasEnteredData %}
-            <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
-                    class="govuk-link govuk-link--no-visited-state">Sent to another ATF</a></td>
-            {% else %}
-            <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
-                class="govuk-link govuk-link--no-visited-state disabledLink">Sent to another ATF</a></td>         
-            {% endif %}
-            {% if facility._sentonb2c %}
-            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._sentonb2c}}</strong></td>
-            {% else %}
-            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
-            {% endif %}
-            {% if facility._sentonb2b %}
-            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._sentonb2b}}</strong></td>
-            {% else %}
-            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
-            {% endif %}
-        </tr>
-        {% endif %}
-        {% if  data['reusedoption'] == 'yes' %}
-        <tr class="govuk-table__row">
-            <td class="govuk-table__cell" style="border: 0px;"></td>
-            {% if facility._hasEnteredData %}
-            <td class="govuk-table__cell"><a href="Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance?facilityId={{facility._id}}"
-                    class="govuk-link govuk-link--no-visited-state">Reused as a whole appliance</a></td>
-            {% else %}
-            <td class="govuk-table__cell"><a href="Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance?facilityId={{facility._id}}"
-                class="govuk-link govuk-link--no-visited-state disabledLink">Reused as a whole appliance</a></td>
-            {% endif %}
-            {% if facility._reusedb2c %}
-            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._reusedb2c}}</strong></td>
-            {% else %}
-            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
-            {% endif %}
-            {% if facility._reusedb2b %}
-            <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._reusedb2b}}</strong></td>
-            {% else %}
-            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
-            {% endif %}
-        </tr>
-        {% endif %}
     </table>
 
     {% endfor %}
 
-    {% if  data['receivedoption'] == 'yes' %}
+    {% if  data['receivedoption-upload'] == 'yes' %}
     <table class="govuk-table" style="width: 60%;">
         <tr class="govuk-table__row">
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;">2.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width: 23px !important;">2.</td>
             <td class="govuk-table__cell govuk-!-font-weight-bold">{{ operator._name }}'s Non-obligated WEEE</td>
             <td class="govuk-table__cell"></td>
         </tr>
@@ -117,7 +73,7 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><a href="SC004_1-Enter-non-obligated-WEEE.html" class="govuk-link govuk-link--no-visited-state">Received</a></td>
             <td class="govuk-table__cell"><strong class="govuk-tag">{{ operator._wee }}</strong></td>
         </tr>
-        {% if data['dcfoption'] == 'yes' %}
+        {% if data['dcfoption-upload'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="SC004_2a-Add-any-DCF-data.html" class="govuk-link govuk-link--no-visited-state">Retained

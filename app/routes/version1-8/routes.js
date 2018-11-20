@@ -110,7 +110,6 @@ router.get('/version1-8/AATF-Returns/paste-values-redirect', function (req, res)
 });
 
 router.get('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
-    console.log('get');
     res.render('version1-8/AATF-Returns/SC019-select-your-pcs');
 });
 
@@ -174,6 +173,29 @@ router.post('/version1-8/AATF-Returns/What-do-you-need-to-report-on', function (
     res.redirect('/version1-8/AATF-Returns/select-your-pcs');
 });
 
+router.get('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload', function (req, res) {
+
+    res.redirect('/version1-8/Upload-Returns/SC002_1g-What-do-you-want-to-report-on-upload');
+});
+
+router.post('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload', function (req, res) {
+
+    res.redirect('/version1-8/Upload-Returns/SC002_1v-Task-list-for-upload');
+});
+
+router.get('/version1-8/Upload-Returns/Upload-your-facility-data', function(req, res) {
+    var period = req.session.data['period'];
+
+    var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
+        if (parseInt(facility._id) === parseInt(req.query['facilityId'])) {
+            return true;
+        }
+    });
+
+    req.session.data['selectedFacility'] = selectedFacility[0];
+
+    res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse');
+})
 
 router.post('/version1-8/AATF-Returns/find-scheme', function (req, res) {
     var searchTerm = req.session.data['SearchTerm'];
@@ -199,6 +221,8 @@ router.get('/version1-8/complete', function (req, res) {
 
     res.render('version1-8/auto-complete');
 })
+
+
 
 router.get('/version1-8/AATF-Returns/My-facilities', function (req, res) {
 
@@ -712,7 +736,23 @@ router.post('/version1-8/AATF-Returns/reuse-treatment-save', function (req, res)
 })
 
 router.post('/version1-8/Upload-Returns/upload-an-aatf-successful', function (req, res) {
-    res.redirect('/version1-8/Upload-Returns/SC002_1-My-facilities')
+    var selectedFacility = req.session.data['selectedFacility'];
+    var period = req.session.data['period'];
+
+    for (var i = 0; i < period._facilities.length; i++) {
+        console.log(period._facilities[i]._name);
+        console.log('selected: ' + selectedFacility._name);
+        if(period._facilities[i]._name == selectedFacility._name) {
+            var number = Math.floor((Math.random() * 100) + 1).toFixed(3);
+            period._facilities[i]._totalb2c = number;
+            number = Math.floor((Math.random() * 100) + 1).toFixed(3);
+            period._facilities[i]._totalb2b = number;
+        }
+    }
+    
+    req.session.data['period'] = period;
+
+    res.redirect('/version1-8/Upload-Returns/SC002_1v-Task-list-for-upload')
 })
 
 router.post('/version1-8/Upload-Returns/upload-an-aatf-failed', function (req, res) {
@@ -724,7 +764,7 @@ router.post('/version1-8/Upload-Returns/upload-an-aatf-return-is-this-correct', 
     var confirmation = req.session.data['aatf-return-confirm-option'];
     if (confirmation == '1') {
 
-        res.redirect('/version1-8/Upload-Returns/SC014_4-File-upload-failed');
+        res.redirect('/version1-8/Upload-Returns/SC014_3-File-upload-successful');
 
     } else if (confirmation == '2') {
         res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
@@ -1097,7 +1137,7 @@ router.post('/version1-8/AATF-Returns/compliance-reporting-end', function (req, 
     if (answer === '1') {
         res.redirect('/version1-8/AATF-Returns/What-do-you-need-to-report-on')
     } else if (answer === '2') {
-        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
+        res.redirect('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload')
     } else if (answer === '3') {
         res.redirect('/version1-8/AATF-Returns/SC013_1-Confirmation-of-nil-return')
     }
