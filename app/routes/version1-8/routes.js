@@ -7,10 +7,17 @@ const Categories = require('../../data/categories');
 const Scheme = require('../../data/scheme');
 const Schemes = require('../../data/schemes');
 
+function FormatTotal(number){
+    if (number){
+        return parseFloat(number).toFixed(3);
+    }
+
+    return '-';
+}
 
 function CategoriesTotal(category) {
-    var total = 0;
-    if (category) {
+    if (category !== 'undefined' && category) {
+        var total = 0;
         if (category._largeHouseholdAppliances) {
             total += parseFloat(category._largeHouseholdAppliances);
         }
@@ -53,11 +60,10 @@ function CategoriesTotal(category) {
         if (category._photovoltaicPanel) {
             total += parseFloat(category._photovoltaicPanel);
         }
-        return total.toFixed(3);
+        return total;
     }
-    else {
-        return '-';
-    }
+
+    return 0;
 }
 
 function resetNonObligated(req) {
@@ -126,13 +132,11 @@ router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
     }
 
     if (period._operator._selectedSchemes == undefined) {
-        console.log('undefined');
         period._operator._selectedSchemes = [];
         for (var i = 0; i < pcsName.length; i++) {
             period._operator._selectedSchemes.push(new Scheme(pcsName[i], pcsIDs[i]));
         }
     } else {
-        console.log('defined');
         for (var i = 0; i < pcsName.length; i++) {
             var schemeFound = false;
             for (var j = 0; j < period._operator._selectedSchemes.length; j++) {
@@ -164,7 +168,7 @@ router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
             period._facilities[i]._pcs.push(period._operator._selectedSchemes[selectedSchemeCount]);
         }
     }
-    console.log(period._facilities);
+    
     req.session.data['period'] = period;
 
     res.redirect('/version1-8/AATF-Returns/My-facilities');
@@ -206,6 +210,7 @@ router.get('/version1-8/complete', function (req, res) {
     res.render('version1-8/auto-complete');
 })
 
+
 router.get('/version1-8/AATF-Returns/My-facilities', function (req, res) {
 
     var period = req.session.data['period'];
@@ -217,22 +222,25 @@ router.get('/version1-8/AATF-Returns/My-facilities', function (req, res) {
 
     for (var i = 0; i < period._facilities.length; i++) {
         if (period._facilities[i]._pcs.length > 0) {
-            var totalb2c = 0;
-            var totalb2b = 0;
-            for (var j = 0; j < period._facilities[i]._pcs.length; j++) {
-                totalb2c += Number(CategoriesTotal(period._facilities[i]._pcs[j]._weeeReceived));
-                totalb2b += Number(CategoriesTotal(period._facilities[i]._pcs[j]._weeeReceivedb2b));
+            if (period._facilities[i]._hasEnteredData) {
+                var totalb2c = 0;
+                var totalb2b = 0;
+                for (var j = 0; j < period._facilities[i]._pcs.length; j++) {
+                    totalb2c += CategoriesTotal(period._facilities[i]._pcs[j]._weeeReceived);
+                    totalb2b += CategoriesTotal(period._facilities[i]._pcs[j]._weeeReceivedb2b);
+                }
+
+                period._facilities[i]._totalb2c = totalb2c.toFixed(3);
+                period._facilities[i]._totalb2b = totalb2b.toFixed(3);
             }
-            period._facilities[i]._totalb2c = totalb2c.toFixed(3);
-            period._facilities[i]._totalb2b = totalb2b.toFixed(3);
         }
 
         if (period._facilities[i]._sentOnOperatorCollection) {
             var sentonb2c = 0;
             var sentonb2b = 0;
             for (var j = 0; j < period._facilities[i]._sentOnOperatorCollection.length; j++) {
-                sentonb2c += Number(CategoriesTotal(period._facilities[i]._sentOnOperatorCollection[j]._sentToAnotherAtfForTreatmentb2c));
-                sentonb2b += Number(CategoriesTotal(period._facilities[i]._sentOnOperatorCollection[j]._sentToAnotherAtfForTreatmentb2b));
+                sentonb2c += FormatTotal(CategoriesTotal(period._facilities[i]._sentOnOperatorCollection[j]._sentToAnotherAtfForTreatmentb2c));
+                sentonb2b += FormatTotal(CategoriesTotal(period._facilities[i]._sentOnOperatorCollection[j]._sentToAnotherAtfForTreatmentb2b));
             }
             period._facilities[i]._sentonb2c = sentonb2c.toFixed(3);
             period._facilities[i]._sentonb2b = sentonb2b.toFixed(3);
@@ -314,7 +322,7 @@ router.get('/version1-8/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for
 })
 */
 router.get('/version1-8/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee', function (req, res) {
-    res.redirect('/version1-8/AATF-Returns/SC002_1d-How-would-you-like-to-report');
+    res.redirect('/version1-8/AATF-Returns/What-do-you-need-to-report-on');
 })
 
 router.get('/version1-8/AATF-Returns/aatf-option-select', function (req, res) {
@@ -338,7 +346,7 @@ router.get('/version1-8/AATF-Returns/aatf-option-select', function (req, res) {
         res.redirect('/version1-8/AATF-Returns/SC013_1-Confirmation-of-nil-return');
     }
     if (req.session.data['aatf-return-option'] === 'aatfUpload') {
-        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse');
+        res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse');
     }
 })
 
@@ -578,29 +586,14 @@ router.post('/version1-8/AATF-Returns/weee-received-for-treatment-save', functio
         }
     });
 
-    console.log(updateFacility);
     var updateFacilityScheme = updateFacility[0]._pcs.filter(function (scheme) {
         if (scheme._id === req.session.data['selectedScheme']._id) {
             return true;
         }
     });
 
-
-    /*
-    var updateScheme = updateFacility[0]._pcs.filter(function (scheme) {
-        if (scheme._id === req.session.data['selectedScheme']._id) {
-            return true;
-        }
-    });
-*/
-    /* var updateScheme = period._operator._selectedSchemes.filter(function (scheme) {
-        if (scheme._id === req.session.data['selectedScheme']._id) {
-            return true;
-        }
-    }); */
-
     updateFacilityScheme[0]._hasEnteredData = true;
-    updateFacilityScheme[0]._hasEnteredData = true;
+    updateFacility[0]._hasEnteredData = true;
 
     var items = [req.session.data['large-household-appliances-input-SC009'], req.session.data['small-household-appliances-input-SC009'], req.session.data['it-and-telecomms-input-SC009'], req.session.data['consumer-equipment-input-SC009'], req.session.data['lighting-equipment-input-SC009'], req.session.data['electrical-and-electronic-input-SC009'], req.session.data['toys-leisure-sports-input-SC009'], req.session.data['medical-devices-input-SC009'], req.session.data['monitoring-control-input-SC009'], req.session.data['automatic-dispensers-input-SC009'], req.session.data['display-equipment-input-SC009'], req.session.data['cooling-appliance-input-SC009'], req.session.data['gas-discharge-led-input-SC009'], req.session.data['photovolatic-panels-input-SC009']]
     var itemsb2b = [req.session.data['large-household-appliances-input-SC009-b2b'], req.session.data['small-household-appliances-input-SC009-b2b'], req.session.data['it-and-telecomms-input-SC009-b2b'], req.session.data['consumer-equipment-input-SC009-b2b'], req.session.data['lighting-equipment-input-SC009-b2b'], req.session.data['electrical-and-electronic-input-SC009-b2b'], req.session.data['toys-leisure-sports-input-SC009-b2b'], req.session.data['medical-devices-input-SC009-b2b'], req.session.data['monitoring-control-input-SC009-b2b'], req.session.data['automatic-dispensers-input-SC009-b2b'], req.session.data['display-equipment-input-SC009-b2b'], req.session.data['cooling-appliance-input-SC009-b2b'], req.session.data['gas-discharge-led-input-SC009-b2b'], req.session.data['photovolatic-panels-input-SC009-b2b']]
@@ -626,7 +619,7 @@ router.post('/version1-8/AATF-Returns/weee-received-for-treatment-save', functio
 
     req.session.data['paste-values'] = '';
     req.session.data['period'] = period;
-    console.log(period);
+    
     res.redirect('/version1-8/AATF-Returns/SC007-PCS-Table');
 })
 
@@ -728,32 +721,32 @@ router.post('/version1-8/AATF-Returns/reuse-treatment-save', function (req, res)
     res.redirect('/version1-8/AATF-Returns/My-facilities')
 })
 
-router.post('/version1-8/Upload-Returns/upload-an-aatf-successful', function (req, res) {
-    res.redirect('/version1-8/Upload-Returns/SC002_1-My-facilities')
+router.post('/version1-8/AATF-Returns/upload-an-aatf-successful', function (req, res) {
+    res.redirect('/version1-8/AATF-Returns/SC002_1-My-facilities')
 })
 
-router.post('/version1-8/Upload-Returns/upload-an-aatf-failed', function (req, res) {
-    res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
+router.post('/version1-8/AATF-Returns/upload-an-aatf-failed', function (req, res) {
+    res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
 })
 
-router.post('/version1-8/Upload-Returns/upload-an-aatf-return-is-this-correct', function (req, res) {
+router.post('/version1-8/AATF-Returns/upload-an-aatf-return-is-this-correct', function (req, res) {
     var fileName = req.session.data['file-upload-1'];
     var confirmation = req.session.data['aatf-return-confirm-option'];
     if (confirmation == '1') {
 
-        res.redirect('/version1-8/Upload-Returns/SC014_4-File-upload-failed');
+        res.redirect('/version1-8/AATF-Returns/SC014_4-File-upload-failed');
 
     } else if (confirmation == '2') {
-        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
+        res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
     }
 })
 
-router.post('/version1-8/Upload-Returns/upload-an-aatf-return-select', function (req, res) {
-    res.redirect('/version1-8/Upload-Returns/SC014_2-Is-this-file-correct')
+router.post('/version1-8/AATF-Returns/upload-an-aatf-return-select', function (req, res) {
+    res.redirect('/version1-8/AATF-Returns/SC014_2-Is-this-file-correct')
 })
 
-router.post('/version1-8/Upload-Returns/upload-an-aatf-return', function (req, res) {
-    res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
+router.post('/version1-8/AATF-Returns/upload-an-aatf-return', function (req, res) {
+    res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
 })
 
 router.post('/version1-8/AATF-Returns/add-another-scheme-answer', function (req, res) {
@@ -1111,9 +1104,9 @@ router.post('/version1-8/AATF-Returns/compliance-reporting-end', function (req, 
     let answer = req.session.data['compliance-reporting-option']
 
     if (answer === '1') {
-        res.redirect('/version1-8/AATF-Returns/What-do-you-need-to-report-on')
+        res.redirect('/version1-8/AATF-Returns/SC007_1-PCS-selection')
     } else if (answer === '2') {
-        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
+        res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
     } else if (answer === '3') {
         res.redirect('/version1-8/AATF-Returns/SC013_1-Confirmation-of-nil-return')
     }
@@ -1246,16 +1239,6 @@ router.get('/version1-8/AATF-Returns/atf-summary', function (req, res) {
 
 router.get('/version1-8/AATF-Returns/pcs-summary', function (req, res) {
     res.redirect('/version1-8/AATF-Returns/My-facilities');
-})
-
-router.post('/version1-8/landing-page', function (req, res) {
-    let answer = req.session.data['prototype-route'];
-
-    if (answer == "ui") {
-        res.redirect('/version1-8/SC001-Home');
-    } else if(answer == "upload") {
-        res.redirect('/version1-8/Upload-Returns/SC014-Upload-an-aatf-return');
-    }
 })
 
 module.exports = router;
