@@ -9,6 +9,7 @@ class Facility{
         this._pcs = [];
         this._reusedSites = [];
         this._hasEnteredData = false;
+        this._hasBeenUploaded = false;
        }
 
     /* constructor(name, id, approvalNumber, street, town, country, postcode){

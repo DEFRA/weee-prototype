@@ -740,13 +740,12 @@ router.post('/version1-8/Upload-Returns/upload-an-aatf-successful', function (re
     var period = req.session.data['period'];
 
     for (var i = 0; i < period._facilities.length; i++) {
-        console.log(period._facilities[i]._name);
-        console.log('selected: ' + selectedFacility._name);
         if(period._facilities[i]._name == selectedFacility._name) {
             var number = Math.floor((Math.random() * 100) + 1).toFixed(3);
             period._facilities[i]._totalb2c = number;
             number = Math.floor((Math.random() * 100) + 1).toFixed(3);
             period._facilities[i]._totalb2b = number;
+            period._facilities[i]._hasBeenUploaded = true;
         }
     }
     
