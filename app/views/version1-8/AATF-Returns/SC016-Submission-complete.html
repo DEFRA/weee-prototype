@@ -9,32 +9,30 @@ GOV.UK Prototype Kit
 
 {% block content %}
 <style>
-  #main-content {
+    #main-content {
     padding-top: 30px;
   }
 </style>
 <div class="govuk-panel govuk-panel--confirmation govuk-!-width-two-thirds" style="display: inline-block">
     <h1 class="govuk-panel__title" style="font-size: 2.5rem;">
-            You have successfully submitted your AATF return for {{ data['return-period-long'] }} {{ data['return-year'] }}
+        You have successfully submitted your AATF return for {{ data['return-period-long'] }} {{ data['return-year'] }}
     </h1>
 </div>
-<a href="/" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19" style="float: right">Home</a>
+<a href="/" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19"
+    style="float: right">Home</a>
 <div class="govuk-!-padding-bottom-8"></div>
 <div class="govuk-!-width-two-thirds">
-    <p class="govuk-body">Your AATF Quarterly Return has been submitted successfully. A confirmation email has been sent to your
+    <p class="govuk-body">Your AATF quarterly return has been submitted successfully. A confirmation email has been
+        sent to your
         registered email
         account.</p>
     <div class="govuk-!-padding-bottom-2"></div>
-    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Bookmark
-        this page</a>
-    <div class="govuk-!-padding-bottom-4"></div>
-    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Print
-        this page</a>
-    <div class="govuk-!-padding-bottom-4"></div>
-    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Save
-        as PDF</a>
-    <div class="govuk-!-padding-bottom-4"></div>
-    <h3 class="govuk-heading-m">What happens next?</h3>
-    <p class="govuk-body">Your return will now be reviewed by your Environmental Regulator</p>
+    <p class="govuk-body">If you have completed all your activities you can sign out or proceed to perform more
+        activities.</p>
 </div>
+<form action="/version1-8/AATF-Returns/perform-another-activity" method="post" class="form">
+    <button type="submit" class="govuk-button">
+        Perform another activity
+    </button>
+</form>
 {% endblock %}
