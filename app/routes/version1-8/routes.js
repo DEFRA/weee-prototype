@@ -237,12 +237,18 @@ router.get('/version1-8/AATF-Returns/My-facilities', function (req, res) {
 
     var period = req.session.data['period'];
 
-    period._operator._wee = CategoriesTotal(period._operator._categories);
-    period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf);
-
+    console.log(period._operator)
+    if (period._operator._categories){
+        period._operator._wee = CategoriesTotal(period._operator._categories).toFixed(3);
+    }
+    if (period._operator._categoriesDcf){
+        period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf).toFixed(3);
+    }
+    console.log(period._operator)
     req.session.data['period'] = period;
 
     for (var i = 0; i < period._facilities.length; i++) {
+        console.log(period._facilities[i])
         if (period._facilities[i]._pcs.length > 0) {
             if (period._facilities[i]._hasEnteredData) {
                 var totalb2c = 0;
@@ -261,8 +267,8 @@ router.get('/version1-8/AATF-Returns/My-facilities', function (req, res) {
             var sentonb2c = 0;
             var sentonb2b = 0;
             for (var j = 0; j < period._facilities[i]._sentOnOperatorCollection.length; j++) {
-                sentonb2c += FormatTotal(CategoriesTotal(period._facilities[i]._sentOnOperatorCollection[j]._sentToAnotherAtfForTreatmentb2c));
-                sentonb2b += FormatTotal(CategoriesTotal(period._facilities[i]._sentOnOperatorCollection[j]._sentToAnotherAtfForTreatmentb2b));
+                sentonb2c += CategoriesTotal(period._facilities[i]._sentOnOperatorCollection[j]._sentToAnotherAtfForTreatmentb2c);
+                sentonb2b += CategoriesTotal(period._facilities[i]._sentOnOperatorCollection[j]._sentToAnotherAtfForTreatmentb2b);
             }
             period._facilities[i]._sentonb2c = sentonb2c.toFixed(3);
             period._facilities[i]._sentonb2b = sentonb2b.toFixed(3);
@@ -376,7 +382,7 @@ router.post('/version1-8/login-button', function (req, res) {
     var scheme = new Schemes();
     var period = new Period("2018");
 
-    period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
     resetNonObligated(req);
 
     req.session.data['schemes'] = scheme;
