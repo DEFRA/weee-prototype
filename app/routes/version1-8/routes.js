@@ -715,13 +715,17 @@ router.post('/version1-8/AATF-Returns/Whole-WEEE-sent-to-another-treatment-save'
     var items = [req.session.data['large-household-appliances-input-SC011'], req.session.data['small-household-appliances-input-SC011'], req.session.data['it-and-telecomms-input-SC011'], req.session.data['consumer-equipment-input-SC011'], req.session.data['lighting-equipment-input-SC011'], req.session.data['electrical-and-electronic-input-SC011'], req.session.data['toys-leisure-sports-input-SC011'], req.session.data['medical-devices-input-SC011'], req.session.data['monitoring-control-input-SC011'], req.session.data['automatic-dispensers-input-SC011'], req.session.data['display-equipment-input-SC011'], req.session.data['cooling-appliance-input-SC011'], req.session.data['gas-discharge-led-input-SC011'], req.session.data['photovolatic-panels-input-SC011']]
     var itemsb2b = [req.session.data['large-household-appliances-input-SC011-b2b'], req.session.data['small-household-appliances-input-SC011-b2b'], req.session.data['it-and-telecomms-input-SC011-b2b'], req.session.data['consumer-equipment-input-SC011-b2b'], req.session.data['lighting-equipment-input-SC011-b2b'], req.session.data['electrical-and-electronic-input-SC011-b2b'], req.session.data['toys-leisure-sports-input-SC011-b2b'], req.session.data['medical-devices-input-SC011-b2b'], req.session.data['monitoring-control-input-SC011-b2b'], req.session.data['automatic-dispensers-input-SC011-b2b'], req.session.data['display-equipment-input-SC011-b2b'], req.session.data['cooling-appliance-input-SC011-b2b'], req.session.data['gas-discharge-led-input-SC011-b2b'], req.session.data['photovolatic-panels-input-SC011-b2b']]
     var result = 0;
+    var resultb2b = 0;
     for (var i = 0; i < items.length; i++) {
         result += Number(items[i])
     }
     for (var i = 0; i < itemsb2b.length; i++) {
-        result += Number(itemsb2b[i])
+        resultb2b += Number(itemsb2b[i])
     }
-    sentOnUpdate[0]._sentToResult = result.toFixed(3);
+    var resultTotal = result + resultb2b;
+    sentOnUpdate[0]._sentToB2B = resultb2b.toFixed(3);
+    sentOnUpdate[0]._sentToB2C = result.toFixed(3);
+    sentOnUpdate[0]._sentToResult = resultTotal.toFixed(3);
     req.session.data['period'] = period;
     req.session.data['selectedFacility'] = updateFacility[0];
     req.session.data['Whole-WEEE-sent-to-another-treatment-result'] = result.toFixed(3)
