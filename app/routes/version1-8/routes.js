@@ -1147,7 +1147,7 @@ router.post('/version1-8/AATF-Returns/compliance-reporting-end', function (req, 
     let answer = req.session.data['compliance-reporting-option']
 
     if (answer === '1') {
-        res.redirect('/version1-8/AATF-Returns/SC007_1-PCS-selection')
+        res.redirect('/version1-8/AATF-Returns/SC018-What-do-you-need-to-report-on')
     } else if (answer === '2') {
         res.redirect('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload')
     } else if (answer === '3') {
