@@ -314,7 +314,7 @@ router.get('/version1-8/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for
 })
 */
 router.get('/version1-8/AATF-Returns/SC004-Would-you-like-to-report-on-any-non-obligated-weee', function (req, res) {
-    res.redirect('/version1-8/AATF-Returns/What-do-you-need-to-report-on');
+    res.redirect('/version1-8/AATF-Returns/SC002_1d-How-would-you-like-to-report');
 })
 
 router.get('/version1-8/AATF-Returns/aatf-option-select', function (req, res) {
@@ -338,7 +338,7 @@ router.get('/version1-8/AATF-Returns/aatf-option-select', function (req, res) {
         res.redirect('/version1-8/AATF-Returns/SC013_1-Confirmation-of-nil-return');
     }
     if (req.session.data['aatf-return-option'] === 'aatfUpload') {
-        res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse');
+        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse');
     }
 })
 
@@ -728,32 +728,32 @@ router.post('/version1-8/AATF-Returns/reuse-treatment-save', function (req, res)
     res.redirect('/version1-8/AATF-Returns/My-facilities')
 })
 
-router.post('/version1-8/AATF-Returns/upload-an-aatf-successful', function (req, res) {
-    res.redirect('/version1-8/AATF-Returns/SC002_1-My-facilities')
+router.post('/version1-8/Upload-Returns/upload-an-aatf-successful', function (req, res) {
+    res.redirect('/version1-8/Upload-Returns/SC002_1-My-facilities')
 })
 
-router.post('/version1-8/AATF-Returns/upload-an-aatf-failed', function (req, res) {
-    res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
+router.post('/version1-8/Upload-Returns/upload-an-aatf-failed', function (req, res) {
+    res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
 })
 
-router.post('/version1-8/AATF-Returns/upload-an-aatf-return-is-this-correct', function (req, res) {
+router.post('/version1-8/Upload-Returns/upload-an-aatf-return-is-this-correct', function (req, res) {
     var fileName = req.session.data['file-upload-1'];
     var confirmation = req.session.data['aatf-return-confirm-option'];
     if (confirmation == '1') {
 
-        res.redirect('/version1-8/AATF-Returns/SC014_4-File-upload-failed');
+        res.redirect('/version1-8/Upload-Returns/SC014_4-File-upload-failed');
 
     } else if (confirmation == '2') {
-        res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
+        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
     }
 })
 
-router.post('/version1-8/AATF-Returns/upload-an-aatf-return-select', function (req, res) {
-    res.redirect('/version1-8/AATF-Returns/SC014_2-Is-this-file-correct')
+router.post('/version1-8/Upload-Returns/upload-an-aatf-return-select', function (req, res) {
+    res.redirect('/version1-8/Upload-Returns/SC014_2-Is-this-file-correct')
 })
 
-router.post('/version1-8/AATF-Returns/upload-an-aatf-return', function (req, res) {
-    res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
+router.post('/version1-8/Upload-Returns/upload-an-aatf-return', function (req, res) {
+    res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
 })
 
 router.post('/version1-8/AATF-Returns/add-another-scheme-answer', function (req, res) {
@@ -1111,9 +1111,9 @@ router.post('/version1-8/AATF-Returns/compliance-reporting-end', function (req, 
     let answer = req.session.data['compliance-reporting-option']
 
     if (answer === '1') {
-        res.redirect('/version1-8/AATF-Returns/SC007_1-PCS-selection')
+        res.redirect('/version1-8/AATF-Returns/What-do-you-need-to-report-on')
     } else if (answer === '2') {
-        res.redirect('/version1-8/AATF-Returns/SC014_1-Upload-an-aatf-return-browse')
+        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
     } else if (answer === '3') {
         res.redirect('/version1-8/AATF-Returns/SC013_1-Confirmation-of-nil-return')
     }
@@ -1246,6 +1246,16 @@ router.get('/version1-8/AATF-Returns/atf-summary', function (req, res) {
 
 router.get('/version1-8/AATF-Returns/pcs-summary', function (req, res) {
     res.redirect('/version1-8/AATF-Returns/My-facilities');
+})
+
+router.post('/version1-8/landing-page', function (req, res) {
+    let answer = req.session.data['prototype-route'];
+
+    if (answer == "ui") {
+        res.redirect('/version1-8/SC001-Home');
+    } else if(answer == "upload") {
+        res.redirect('/version1-8/Upload-Returns/SC014-Upload-an-aatf-return');
+    }
 })
 
 module.exports = router;

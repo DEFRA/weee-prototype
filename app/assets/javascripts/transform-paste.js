@@ -25,6 +25,7 @@
                                     cellValue = parseFloat(cellValue);
                                     var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
                                     if (!isNaN(cellValue)) {
+                                        console.log(cellValue);
                                         var convertedValue = parseFloat(cellValue).toFixed(3);
                                         input.value = convertedValue;
                                     }
