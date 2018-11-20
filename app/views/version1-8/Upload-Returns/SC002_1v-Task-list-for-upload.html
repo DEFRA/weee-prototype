@@ -71,14 +71,22 @@ GOV.UK Prototype Kit
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="SC004_1-Enter-non-obligated-WEEE.html" class="govuk-link govuk-link--no-visited-state">Received</a></td>
+            {% if operator._wee %}
             <td class="govuk-table__cell"><strong class="govuk-tag">{{ operator._wee }}</strong></td>
+            {% else %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
+            {% endif %}
         </tr>
         {% if data['dcfoption-upload'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="SC004_2a-Add-any-DCF-data.html" class="govuk-link govuk-link--no-visited-state">Retained
                     by a DCF</a></td>
+            {% if operator._weeDcf %}
             <td class="govuk-table__cell"><strong class="govuk-tag">{{ operator._weeDcf }}</strong></td>
+            {% else %}
+            <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
+            {% endif %}
         </tr>
         {% endif %}
     </table>

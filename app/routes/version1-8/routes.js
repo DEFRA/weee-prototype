@@ -115,6 +115,14 @@ router.get('/version1-8/AATF-Returns/paste-values-redirect', function (req, res)
     res.render('version1-8/AATF-Returns/paste-values-screen');
 });
 
+router.get('/version1-8/Upload-Returns/paste-values-redirect', function (req, res) {
+    req.session.data['paste-values'] = '';
+    req.session.data['paste-page-title'] = req.query['title'];
+    req.session.data['paste-return-page'] = req.query['returnUrl'];
+
+    res.render('version1-8/Upload-Returns/paste-values-screen');
+});
+
 router.get('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
     res.render('version1-8/AATF-Returns/SC019-select-your-pcs');
 });
@@ -203,6 +211,7 @@ router.get('/version1-8/Upload-Returns/Upload-your-facility-data', function(req,
         }
     });
 
+    req.session.data['firstUpload'] = true;
     req.session.data['selectedFacility'] = selectedFacility[0];
 
     res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse');
@@ -482,6 +491,31 @@ router.post('/version1-8/AATF-Returns/non-obligated-save', function (req, res) {
     req.session.data['period'] = period;
 
     res.redirect('/version1-8/AATF-Returns/My-Facilities');
+})
+
+router.post('/version1-8/Upload-Returns/non-obligated-save', function (req, res) {
+
+    var period = req.session.data['period'];
+
+    period._operator._categories = new Categories(req.session.data['large-household-appliances-input-SC004'],
+        req.session.data['small-household-appliances-input-SC004'],
+        req.session.data['it-and-telecomms-input-SC004'],
+        req.session.data['consumer-equipment-input-SC004'],
+        req.session.data['lighting-equipment-input-SC004'],
+        req.session.data['electrical-and-electronic-input-SC004'],
+        req.session.data['toys-leisure-sports-input-SC004'],
+        req.session.data['medical-devices-input-SC004'],
+        req.session.data['monitoring-control-input-SC004'],
+        req.session.data['automatic-dispensers-input-SC004'],
+        req.session.data['display-equipment-input-SC004'],
+        req.session.data['cooling-appliance-input-SC004'],
+        req.session.data['gas-discharge-led-input-SC004'],
+        req.session.data['photovolatic-panels-input-SC004']);
+
+    req.session.data['paste-values'] = '';
+    req.session.data['period'] = period;
+
+    res.redirect('/version1-8/Upload-Returns/SC002_1v-Task-list-for-upload');
 })
 
 router.post('/version1-8/AATF-Returns/dcf-save', function (req, res) {
@@ -772,24 +806,33 @@ router.post('/version1-8/Upload-Returns/upload-an-aatf-successful', function (re
     res.redirect('/version1-8/Upload-Returns/SC002_1v-Task-list-for-upload')
 })
 
-router.post('/version1-8/Upload-Returns/upload-an-aatf-failed', function (req, res) {
-    res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
+router.get('/version1-8/Upload-Returns/upload-an-aatf-failed', function (req, res) {
+    res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse?firstUpload=false')
 })
 
-router.post('/version1-8/Upload-Returns/upload-an-aatf-return-is-this-correct', function (req, res) {
-    var fileName = req.session.data['file-upload-1'];
+router.get('/version1-8/Upload-Returns/upload-an-aatf-return-is-this-correct', function (req, res) {
+    var upload = req.session.data['firstUpload'];
     var confirmation = req.session.data['aatf-return-confirm-option'];
-    if (confirmation == '1') {
+    console.log(upload)
 
-        res.redirect('/version1-8/Upload-Returns/SC014_3-File-upload-successful');
-
-    } else if (confirmation == '2') {
-        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse')
+    if (confirmation === '1'){
+        if (upload==='false') {
+            console.log(1)
+            res.redirect('/version1-8/Upload-Returns/SC014_3-File-upload-successful');
+        } else {
+            console.log(2)
+            res.redirect('/version1-8/Upload-Returns/SC014_4-File-upload-failed');
+        }
+    } else{
+        res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse?firstUpload=' + upload)
     }
 })
 
-router.post('/version1-8/Upload-Returns/upload-an-aatf-return-select', function (req, res) {
-    res.redirect('/version1-8/Upload-Returns/SC014_2-Is-this-file-correct')
+router.get('/version1-8/Upload-Returns/upload-an-aatf-return-select', function (req, res) {
+
+    var upload = req.session.data['firstUpload'];
+
+    res.redirect('/version1-8/Upload-Returns/SC014_2-Is-this-file-correct?firstUpload=' + upload)
 })
 
 router.post('/version1-8/Upload-Returns/upload-an-aatf-return', function (req, res) {
