@@ -16,12 +16,42 @@ GOV.UK Prototype Kit
 </style>
 
 <form action="/version1-8/AATF-Returns/select-your-pcs" method="post" class="form">
-<div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">Select all PCSs which your AATFs received WEEE from</h2>
-<p>These PCSs will be added to all of your AATFs</p>
-<div class="govuk-!-padding-bottom-5"></div>
-{{ govukButton({
+    <div class="govuk-!-padding-bottom-3"></div>
+    <h2 class="govuk-heading-l">Select all PCSs which your AATFs received WEEE from</h2>
+    <p>These PCSs will be added to all of your AATFs</p>
+    <div class="govuk-!-padding-bottom-5"></div>
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="pcs-hint">
+            <div class="govuk-checkboxes">
+                {% for scheme in data['schemes']._schemes %}
+                {% set schemeFound = false %}
+                <div class="govuk-checkboxes__item">
+                    {% set selectedSchemes = data['period']._operator._selectedSchemes %}
+                    {% for chosenScheme in selectedSchemes %}
+                    {% if scheme._name == chosenScheme._name %}
+                    {% set schemeFound = true %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if schemeFound %}
+                    <input class="govuk-checkboxes__input" checked id="{{scheme._name}}-{{scheme._id}}" name="pcs-selection-check"
+                        type="checkbox" value="{{scheme._name}}#{{scheme._id}}">
+                    {% else %}
+                    <input class="govuk-checkboxes__input" id="{{scheme._name}}-{{scheme._id}}" name="pcs-selection-check"
+                        type="checkbox" value="{{scheme._name}}#{{scheme._id}}">
+                    {% endif %}
+
+
+
+                    <label class="govuk-label govuk-checkboxes__label" for="pcs-{{scheme._name}}">
+                        {{scheme._name}} - {{scheme._id}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </fieldset>
+    </div>
+    {{ govukButton({
     text: "Add PCSs"
-}) }}
+    }) }}
 </form>
 {% endblock %}

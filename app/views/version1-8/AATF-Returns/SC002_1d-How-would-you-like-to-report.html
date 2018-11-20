@@ -22,7 +22,7 @@ GOV.UK Prototype Kit
     });
 </script>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l" id="report-heading">How would you like to report on the AATF {{data['selectedFacility']._name}}</h2>
+<h2 class="govuk-heading-l" id="report-heading">How would you like to report on the period of {{ data['return-year'] }} {{ data['return-period'] }} for ABB Ltd</h2>
 <div class="govuk-!-padding-bottom-3"></div>
 <form action="/version1-8/AATF-Returns/compliance-reporting-end" method="post" class="form" style="display: inline">
     <div class="govuk-form-group">
@@ -42,18 +42,12 @@ GOV.UK Prototype Kit
                         Upload my data
                     </label>
                 </div>
-                <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="compliance-reporting-option-3" name="compliance-reporting-option" type="radio"
-                        value="3">
-                    <label class="govuk-label govuk-radios__label" for="compliance-reporting-option-3">
-                        Make a nil return
-                    </label>
-                </div>
             </div>
         </fieldset>
     </div>
-    <button type="submit" class="govuk-button">
+    <button type="submit" class="govuk-button" style="display: inline;">
         Continue
     </button>
+    <a class="govuk-link" href="SC002_2-compliance-and-reporting.html" style="margin-left: 20px;">Back</a>
 </form>
 {% endblock %}
