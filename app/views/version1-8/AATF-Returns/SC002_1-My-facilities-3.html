@@ -6,12 +6,6 @@ GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
-<style>
-    .disabledLink {
-      color: grey !important; 
-      pointer-events: none;
-    }
-</style>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">AATF return for Abb Ltd</h2>
 <!-- Change it so it pulls from operator, maybe-->
@@ -60,13 +54,8 @@ GOV.UK Prototype Kit
         {% if  data['sentonoption'] == 'yes' %}    
         <tr class="govuk-table__row">       
             <td class="govuk-table__cell" style="border: 0px;"></td>
-            {% if facility._hasEnteredData %}
             <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
                     class="govuk-link govuk-link--no-visited-state">Sent to another AATF / ATF</a></td>
-            {% else %}
-            <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
-                class="govuk-link govuk-link--no-visited-state disabledLink">Sent to another AATF / ATF</a></td>         
-            {% endif %}
             {% if facility._sentonb2c %}
             <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._sentonb2c}}</strong></td>
             {% else %}
@@ -82,13 +71,10 @@ GOV.UK Prototype Kit
         {% if  data['reusedoption'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
-            {% if facility._hasEnteredData %}
+
             <td class="govuk-table__cell"><a href="Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance?facilityId={{facility._id}}"
                     class="govuk-link govuk-link--no-visited-state">Reused as a whole appliance</a></td>
-            {% else %}
-            <td class="govuk-table__cell"><a href="Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance?facilityId={{facility._id}}"
-                class="govuk-link govuk-link--no-visited-state disabledLink">Reused as a whole appliance</a></td>
-            {% endif %}
+
             {% if facility._reusedb2c %}
             <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._reusedb2c}}</strong></td>
             {% else %}

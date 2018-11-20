@@ -62,21 +62,21 @@ GOV.UK Prototype Kit
     {% endfor %}
 
     {% if  data['receivedoption-upload'] == 'yes' %}
-    <table class="govuk-table" style="width: 60%;">
+    <table class="govuk-table" style="width: 70%;">
         <tr class="govuk-table__row">
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width: 23px !important;">2.</td>
-            <td class="govuk-table__cell govuk-!-font-weight-bold">{{ operator._name }}'s Non-obligated WEEE</td>
-            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width: 10%">2.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="width: 60%;">{{ operator._name }}'s Non-obligated WEEE</td>
+            <td class="govuk-table__cell" style="width: 30%;"></td>
         </tr>
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
-            <td class="govuk-table__cell"><a href="SC004_1-Enter-non-obligated-WEEE.html" class="govuk-link govuk-link--no-visited-state">Received</a></td>
+            <td class="govuk-table__cell"><a href="\version1-8\AATF-Returns\SC004_1-Enter-non-obligated-WEEE.html?" class="govuk-link govuk-link--no-visited-state">Received</a></td>
             <td class="govuk-table__cell"><strong class="govuk-tag">{{ operator._wee }}</strong></td>
         </tr>
         {% if data['dcfoption-upload'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
-            <td class="govuk-table__cell"><a href="SC004_2a-Add-any-DCF-data.html" class="govuk-link govuk-link--no-visited-state">Retained
+            <td class="govuk-table__cell"><a href="\version1-8\AATF-Returns\SC004_2a-Add-any-DCF-data.html?" class="govuk-link govuk-link--no-visited-state">Retained
                     by a DCF</a></td>
             <td class="govuk-table__cell"><strong class="govuk-tag">{{ operator._weeDcf }}</strong></td>
         </tr>

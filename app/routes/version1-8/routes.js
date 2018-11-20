@@ -1210,7 +1210,7 @@ router.get('/version1-8/AATF-Returns/Are-you-sending-any-WEEE-to-another-ATF-for
     if (selectedFacility[0]._sentOnOperatorCollection) {
         res.redirect('/version1-8/AATF-Returns/SC016_1-Add-a-table-here-for-the-ATF-treatment');
     } else {
-        res.redirect('/version1-8/AATF-Returns/SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment');
+        res.redirect('/version1-8/AATF-Returns/SC016_2-Which-operator-is-this-WEEE-being-sent-to-for-treatment?facility=' + req.session.data.facilityId + '&facilityId=' + req.session.data.facilityId + '&scheme=' + req.session.data.scheme + '&schemeId=' + req.session.data.schemeId);
     }
 })
 
@@ -1225,7 +1225,7 @@ router.get('/version1-8/AATF-Returns/Do-you-need-to-report-any-WEEE-reused-as-a-
     if (selectedFacility[0]._reusedSites[0]) {
         res.redirect('/version1-8/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites');
     } else {
-        res.redirect('/version1-8/AATF-Returns/SC008-Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance');
+        res.redirect('/version1-8/AATF-Returns/SC008_2-Enter-WEEE-that-has-been-reused-as-a-whole-appliance');
     }
 })
 
@@ -1286,6 +1286,10 @@ router.get('/version1-8/AATF-Returns/atf-summary', function (req, res) {
 
 router.get('/version1-8/AATF-Returns/pcs-summary', function (req, res) {
     res.redirect('/version1-8/AATF-Returns/My-facilities');
+})
+
+router.post('/version1-8/AATF-Returns/perform-another-activity', function (req, res) {
+    res.redirect('/version1-8/SC002-What-would-you-like-to-do');
 })
 
 module.exports = router;
