@@ -12,7 +12,11 @@ GOV.UK Prototype Kit
     }
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">Your AATF data has been uploaded successfully</h2>
+{% if data['selectedFacility']._hasBeenUploaded %}
+<h2 class="govuk-heading-l">Data for {{data['selectedFacility']._name}} has been reuploaded successfully</h2>
+{% else %}
+<h2 class="govuk-heading-l">Data for {{data['selectedFacility']._name}} has been uploaded successfully</h2>
+{% endif %}
 <div class="govuk-!-padding-bottom-7"></div>
 <form action="/version1-8/Upload-Returns/upload-an-aatf-successful" method="post" class="form">
     <div class="govuk-!-padding-bottom-4"></div>
