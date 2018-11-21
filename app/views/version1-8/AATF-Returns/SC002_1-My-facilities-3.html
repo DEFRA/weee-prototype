@@ -7,9 +7,11 @@ GOV.UK Prototype Kit
 
 {% block content %}
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">AATF return for Abb Ltd</h2>
+<h2 class="govuk-heading-l" style="display: inline;">AATF return for Abb Ltd</h2>
+<a href="select-your-pcs?" class="govuk-link govuk-link--no-visited-state" style="float: right;">PCS Selection</a><br/>
+<a href="SC018-What-do-you-need-to-report-on?" class="govuk-link govuk-link--no-visited-state" style="float: right;">Reporting settings</a>
 <!-- Change it so it pulls from operator, maybe-->
-<form action="/version1-8/AATF-Returns/save-and-continue" method="post" class="form">
+<form action="/version1-8/AATF-Returns/save-and-continue" style="padding-top: 30px;" method="post" class="form">
     <table class="govuk-table" style="width: 30%;">
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;">Compliance year</td>
