@@ -33,12 +33,12 @@ GOV.UK Prototype Kit
     </ol>
 </div>
 <div class="govuk-!-padding-bottom-3"></div>
-{% if data['selectedFacility']._hasBeenUploaded %}
+{% if data['firstUpload'] === 'false' %}
 <h2 class="govuk-heading-l">Reupload data for {{data['selectedFacility']._name}}</h2>
 {% else %}
 <h2 class="govuk-heading-l">Upload data for {{data['selectedFacility']._name}}</h2>
 {% endif %}
-<div class="govuk-!-padding-bottom-5"></div>
+<div class="govuk-!-padding-bottom-3"></div>
 <p class="govuk-body">Use this page to upload your AATF data. The document you upload must be in .xlsx format. <br />
     Download the template to upload <a href="/public/doc/Option3_v0.7.xlsx" download class="govuk-link govuk-link--no-visited-state">here</a></p>
 

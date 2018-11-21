@@ -23,10 +23,11 @@ GOV.UK Prototype Kit
     </ol>
   </div>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">Your AATF data file for {{ data['facilitySelect'] }} contains 4 errors</h2>
-<div class="govuk-!-padding-bottom-7"></div>
+
+<h2 class="govuk-heading-l">Your AATF data file for {{ data['facilitySelect'] }} {{ data['return-year'] }} {{ data['return-period-long'] }} contains 4 errors</h2>
+<div class="govuk-!-padding-bottom-3"></div>
 <p class="govuk-body govuk-!-font-weight-bold">You must resolve all errors listed in order to successfully upload your
-    file</p><br />
+    file</p>
 <p class="govuk-body">Errors are problems with the XLSX file structure and content, which prevent this service from
     validating your file. All errors must be addressed before we can continue the validation process</p>
 
