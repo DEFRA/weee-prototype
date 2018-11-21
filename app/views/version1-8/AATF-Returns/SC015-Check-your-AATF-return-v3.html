@@ -123,8 +123,8 @@ GOV.UK Prototype Kit
     </thead>
     <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="col" colspan="3">
-                    <details class="govuk-details" style="font-size: 16px;">
+            <td class="govuk-table__cell" scope="col" colspan="2">
+                    <details class="govuk-details check-return" style="font-size: 16px;">
                             <summary class="govuk-details__summary">
                                 <span class="govuk-details__summary-text">
                                         {{facility._name}} PCSs
@@ -182,6 +182,24 @@ GOV.UK Prototype Kit
                         </details>
 
             </td>
+            <td class="govuk-table__cell align-center" scope="col">
+                    <table class="govuk-table govuk-!-font-size-16 no-margin">
+                            <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                            {% if facility._totalb2c %}
+                                            <td class="align-center">{{facility._totalb2c}}</td>
+                                            {% else %}
+                                            <td class="align-center">-</td>
+                                            {% endif %}
+                                            {% if facility._totalb2b %}
+                                            <td class="align-center">{{facility._totalb2b}}</td>
+                                            {% else %}
+                                            <td class="align-center">-</td>
+                                            {% endif %}
+                                    </tr>
+                            </tbody>
+                        </table>
+                </td>
             <td class="govuk-table__cell align-center" scope="col">
                 <table class="govuk-table govuk-!-font-size-16 no-margin">
                         <tbody class="govuk-table__body">
