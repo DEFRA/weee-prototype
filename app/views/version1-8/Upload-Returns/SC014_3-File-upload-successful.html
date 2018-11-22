@@ -12,16 +12,16 @@ GOV.UK Prototype Kit
     }
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
-{% if data['selectedFacility']._hasBeenUploaded %}
-<h2 class="govuk-heading-l">Data for {{data['selectedFacility']._name}} has been reuploaded successfully</h2>
-{% else %}
-<h2 class="govuk-heading-l">Data for {{data['selectedFacility']._name}} has been uploaded successfully</h2>
-{% endif %}
-<div class="govuk-!-padding-bottom-7"></div>
+<div style="width: 70%;">
+<h2 class="govuk-heading-l">Your AATF quarterly return has passed our validation checks</h2>
+<div class="govuk-!-padding-bottom-3"></div>
+<p class="govuk-body">Your return has passed our validation checks but it is your responsibility to ensure all of the information that you submit is correct.</p><br/>
+<p class="govuk-body">By submitting your return you are confirming that the information you've provided is accurate and complete.</p>
 <form action="/version1-8/Upload-Returns/upload-an-aatf-successful" method="post" class="form">
     <div class="govuk-!-padding-bottom-4"></div>
     {{ govukButton({
-    text: "Continue"
+    text: "AATF Tasklist"
     }) }}
 </form>
+</div>
 {% endblock %}
