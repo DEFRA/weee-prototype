@@ -1070,7 +1070,8 @@ function GetSelectedScheme(period, facilityId, schemeId) {
 router.post('/version1-8/AATF-Returns/operator-address-postcode-save', function (req, res) {
     var period = req.session.data['period'];
     var selectedFacility = Selectedfacility(req, req.session.data['selectedFacility']._id);
-    var siteAddress = req.session.data['site-address-operator'];
+    var siteNameManual = req.session.data['operator-name'];
+    var sitePostcodeManual = req.session.data['operator-postcode'];
 
     if (!selectedFacility._sentOnOperatorCollection) {
         selectedFacility._sentOnOperatorCollection = [];
@@ -1082,7 +1083,8 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save', function 
     operatorPostcode = req.session.data['operator-postcode-search'];
 
     if (typeof operatorName === 'undefined' || operatorName == '') {
-        operatorName = siteAddress;
+        operatorName = siteNameManual;
+        operatorPostcode = sitePostcodeManual;
     }
 
     var newOperator = new Operator(operatorName, selectedFacility._sentOnOperatorCollection.length, '', req.session.data['operator-building-street'], req.session.data['operator-town-city'], req.session.data['operator-county'], operatorPostcode);
@@ -1100,7 +1102,12 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save', function 
 
 router.post('/version1-8/AATF-Returns/operator-address-postcode-atf-save', function (req, res) {
     var period = req.session.data['period'];
-    var siteAddress = req.session.data['site-address-ATF'];
+    var operatorNameManual = req.session.data['aatf-name'];
+    var operatorBuildingManual = req.session.data['aatf-building'];
+    var operatorStreetManual = req.session.data['aatf-street'];
+    var operatorTownManual = req.session.data['aatf-town'];
+    var operatorCountyManual = req.session.data['aatf-county'];
+    var operatorPostCodeManual = req.session.data['aatf-postcode'];
     //var selectedScheme = GetSelectedScheme(period, req.session.data["selectedFacility"]._id, req.session.data["selectedScheme"]._id);
     var selectedFacility = Selectedfacility(req, req.session.data['selectedFacility']._id);
 
@@ -1112,7 +1119,8 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-atf-save', funct
     operatorPostcode = req.session.data['operator-postcode-search-3'];
 
     if (typeof operatorPostcode === 'undefined' || operatorPostcode == '') {
-        operatorPostcode = siteAddress;
+        operatorName = operatorNameManual;
+        operatorPostcode = operatorPostCodeManual;
     }
 
     var selectedAtf = selectedFacility._sentOnOperatorCollection.filter(function (senton) {
@@ -1136,12 +1144,24 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save-2', functio
     var period = req.session.data['period'];
     var siteName = req.session.data['operator-name-search-2'];
     var sitePostcode = req.session.data['operator-postcode-search-2'];
-    var siteAddress = req.session.data['site-address'];
+    var siteNameManual = req.session.data['reuse-name'];
+    var siteBuildingManual = req.session.data['reuse-building'];
+    var siteStreetManual = req.session.data['reuse-street'];
+    var siteTownManual = req.session.data['reuse-town'];
+    var siteCountyManual = req.session.data['reuse-county'];
+    var sitePostCodeManual = req.session.data['reuse-postcode'];
     var siteArray = [];
     if (typeof siteName === 'undefined') {
-        siteName = siteAddress;
+        siteName = siteNameManual;
+        sitePostcode = sitePostCodeManual;
+    } else {
+        siteBuildingManual = '';
+        siteCountyManual = '';
+        siteStreetManual = '';
+        siteTownManual = '';
     }
-    siteArray = [siteName, sitePostcode];
+    console.log(sitePostcode);
+    siteArray = [siteName, siteStreetManual, siteTownManual, siteCountyManual, sitePostcode];
 
 
     var updateFacility = period._facilities.filter(function (facility) {
@@ -1163,7 +1183,7 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save-2', functio
 
     req.session.data['selectedFacility'] = updateFacility[0];
     req.session.data['period'] = period;
-
+    console.log(req.session.data['selectedFacility']._reusedSites);
     res.redirect('/version1-8/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites')
 })
 
