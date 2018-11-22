@@ -14,9 +14,21 @@ GOV.UK Prototype Kit
     padding-top: 5px;
     padding-bottom: 5px;
   }
+
+  .align-top{
+        vertical-align: top;
+    }
+
+    .align-center{
+        text-align: center;
+        vertical-align: top;
+    }
+    .no-margin{
+        margin-bottom: 0;
+    }
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l" style="padding-top: 0px;">WEEE sent to another AATF / ATF for treatment</h2>
+<h2 class="govuk-heading-l" style="padding-top: 0px;">WEEE sent to AATFs / ATFs for treatment</h2>
 <p class="govuk-body-s">You can report on multiple  AATFs / ATFs</p>
 <div class="govuk-!-padding-bottom-4"></div>
 <table class="govuk-table govuk-!-font-size-16" id="atf-table-summary" style="margin-bottom: 0px;">
@@ -25,8 +37,21 @@ GOV.UK Prototype Kit
             <th class="govuk-table__header" scope="col">Operator name</th>
             <th class="govuk-table__header" scope="col">Operator address</th>
             <th class="govuk-table__header" scope="col">AATF / ATF address</th>
-            <th class="govuk-table__header" scope="col">B2C</th>
-            <th class="govuk-table__header" scope="col">B2B</th>
+            <th class="govuk-table__header align-top" scope="col">
+            <table class="govuk-table govuk-!-font-size-16 no-margin">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row">
+                        <th colspan="2" class="align-center">WEEE sent on</th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    <tr lass="govuk-table__row">
+                        <td class="align-center">B2C</td>
+                        <td class="align-center">B2B</td>
+                    </tr>
+                </tbody>
+            </table>
+        </th>
             <th class="govuk-table__header" scope="col">Actions</th>
             <th class="govuk-table__header" scope="col"></th>
         </tr>
@@ -37,8 +62,16 @@ GOV.UK Prototype Kit
                   <td class="govuk-table__cell" scope="col">{{ sentOn._name }}</td>
                   <td class="govuk-table__cell" scope="col">{{ sentOn._address._street }} {{ sentOn._address._town }} {{ sentOn._address._country }} {{ sentOn._address._postcode }}</td>
                   <td class="govuk-table__cell" scope="col">{{ sentOn._atfAddress._address._street }} {{ sentOn._atfAddress._address._town }} {{ sentOn._atfAddress._address._country }} {{ sentOn._atfAddress._address._postcode }}</td>
-                  <td class="govuk-table__cell" scope="col">{{ sentOn._sentToB2C }}</td>
-                  <td class="govuk-table__cell" scope="col">{{ sentOn._sentToB2B }}</td>
+                  <td class="govuk-table__cell align-center" scope="col">
+                        <table class="govuk-table govuk-!-font-size-16 no-margin">
+                            <tbody class="govuk-table__body">
+                                    <tr class="govuk-table__row">
+                                        <td class="align-center">{{ sentOn._sentToB2C }}</td>                                  
+                                        <td class="align-center">{{ sentOn._sentToB2B }}</td>
+                                    </tr>
+                            </tbody>
+                        </table>
+                    </td>
                   <td class="govuk-table__cell" scope="col"><a href="Sent-On-ATF?id={{sentOn._Id}}">Add data</a></td>
                   <td class="govuk-table__cell" scope="col">Remove</td>
               </tr>
