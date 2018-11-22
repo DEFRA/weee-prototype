@@ -15,7 +15,7 @@ GOV.UK Prototype Kit
 <h2 class="govuk-heading-l">Is this file correct?</h2>
 <div class="govuk-!-padding-bottom-3"></div>
 <img src="../../../../public/images/icon-file-download.png">
-<p>your_aatf_data.xlsx</p>
+<p>{{data['selectedFacility']._name}}.xlsx</p>
 <form action="/version1-8/Upload-Returns/upload-an-aatf-return-is-this-correct" method="get" class="form">
     <input type="hidden" name="firstUpload" value='{{ data["firstUpload"] }}'>
     <div class="govuk-form-group">

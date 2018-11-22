@@ -15,7 +15,7 @@ GOV.UK Prototype Kit
 <script type="text/javascript">
     $(document).ready(function() {
         $('#file-upload-1').click(function(event) {
-            $('#file-upload-text').text('your_aatf_data.xlsx');
+            $('#file-upload-text').text($('#fileName').val() + '.xlsx');
             $('#upload-button').css('display', 'block');
             event.preventDefault();
         });
@@ -36,6 +36,7 @@ GOV.UK Prototype Kit
     <button class="govuk-file-upload" id="file-upload-1">Choose file</button>
     <p class="govuk-body" style="display:inline; margin-left: 5px;" id="file-upload-text">No file chosen</p>
     <input type="hidden" name="firstUpload" value='{{ data["firstUpload"] }}'>
+    <input type="hidden" name="fileName" id="fileName" value='{{data["selectedFacility"]._name}}'>
     <div class="govuk-!-padding-bottom-7"></div>
     <button type="submit" class="govuk-button" style="display: none;" id="upload-button">
         Save and continue
