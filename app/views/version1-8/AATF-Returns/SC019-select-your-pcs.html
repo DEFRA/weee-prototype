@@ -22,7 +22,7 @@ GOV.UK Prototype Kit
     <div class="govuk-!-padding-bottom-5"></div>
     <div class="govuk-form-group">
         <fieldset class="govuk-fieldset" aria-describedby="pcs-hint">
-            <div class="govuk-checkboxes">
+            <div class="govuk-checkboxes" style="overflow-y: auto; max-height: 500px;" >
                 {% for scheme in data['schemes']._schemes %}
                 {% set schemeFound = false %}
                 <div class="govuk-checkboxes__item">
