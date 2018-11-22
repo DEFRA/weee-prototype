@@ -209,16 +209,6 @@ router.post('/version1-8/AATF-Returns/What-do-you-need-to-report-on', function (
     res.redirect('/version1-8/AATF-Returns/select-your-pcs');
 });
 
-router.get('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload', function (req, res) {
-
-    res.redirect('/version1-8/Upload-Returns/SC002_1g-What-do-you-want-to-report-on-upload');
-});
-
-router.post('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload', function (req, res) {
-
-    res.redirect('/version1-8/Upload-Returns/SC002_1v-Task-list-for-upload');
-});
-
 router.get('/version1-8/Upload-Returns/Upload-your-facility-data', function(req, res) {
     var period = req.session.data['period'];
 
@@ -1165,7 +1155,7 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save-2', functio
         siteStreetManual = '';
         siteTownManual = '';
     }
-    console.log(sitePostcode);
+    
     siteArray = [siteName, siteStreetManual, siteTownManual, siteCountyManual, sitePostcode];
 
 
@@ -1188,7 +1178,7 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save-2', functio
 
     req.session.data['selectedFacility'] = updateFacility[0];
     req.session.data['period'] = period;
-    console.log(req.session.data['selectedFacility']._reusedSites);
+    
     res.redirect('/version1-8/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites')
 })
 
@@ -1254,9 +1244,9 @@ router.post('/version1-8/AATF-Returns/compliance-reporting-end', function (req, 
     let answer = req.session.data['compliance-reporting-option']
 
     if (answer === '1') {
-        res.redirect('/version1-8/AATF-Returns/SC018-What-do-you-need-to-report-on')
+        res.redirect('/version1-8/AATF-Returns/SC018-What-do-you-need-to-report-on');
     } else if (answer === '2') {
-        res.redirect('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload')
+        res.redirect('/version1-8/Upload-Returns/sc002_1g_what_do_you_want_to_report_on_upload');
     } else if (answer === '3') {
         res.redirect('/version1-8/AATF-Returns/SC013_1-Confirmation-of-nil-return')
     }
@@ -1393,6 +1383,15 @@ router.get('/version1-8/AATF-Returns/pcs-summary', function (req, res) {
 
 router.post('/version1-8/AATF-Returns/perform-another-activity', function (req, res) {
     res.redirect('/version1-8/SC002-What-would-you-like-to-do');
+})
+
+router.post('/version1-8/Upload-Returns/sc002_1g_what_do_you_want_to_report_on_upload', function (req, res){
+    
+    if (req.session.data['receivedoption-upload'] === 'yes') {
+        res.redirect('/version1-8//Upload-Returns/sc002_1h_what_do_you_want_to_report_on_upload');
+    } else {
+        res.redirect('/version1-8//Upload-Returns/Task-list-for-upload');
+    }
 })
 
 module.exports = router;

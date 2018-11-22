@@ -15,7 +15,7 @@ GOV.UK Prototype Kit
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l" style="display: inline">AATF return task list for Abb Ltd</h2>
 <!-- <a href="" class="govuk-link govuk-link--no-visited-state" style="float: right;">PCS options</a><br/> -->
-<a href="What-do-you-want-to-report-on-upload?" class="govuk-link govuk-link--no-visited-state" style="float: right;">Report settings</a>
+
 
 <!-- Change it so it pulls from operator, maybe-->
 <form action="/version1-8/AATF-Returns/save-and-continue" method="post" class="form" style="padding-top: 30px;">
@@ -80,6 +80,7 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
             {% endif %}
         </tr>
+       
         {% if data['dcfoption-upload'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
@@ -96,12 +97,14 @@ GOV.UK Prototype Kit
     <div class="govuk-!-padding-bottom-7"></div>
     {% endif %}
 </form>
+
 <form action="/version1-8/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
     <input type="hidden" name="task-list-redirect" value='/version1-8/Upload-Returns/Task-list-for-upload'>
     <button type="submit" class="govuk-button" id="pcs-check-return">
         Check my return
     </button>
 </form>
+<a href="sc002_1g_what_do_you_want_to_report_on_upload?" class="govuk-link govuk-link--no-visited-state">Change what you want to report on</a> 
 <details class="govuk-details govuk-!-font-size-16">
         <summary class="govuk-details__summary">
             <span class="govuk-details__summary-text">
