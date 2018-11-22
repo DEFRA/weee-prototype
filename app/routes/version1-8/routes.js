@@ -98,6 +98,19 @@ function resetNonObligated(req) {
     req.session.data['photovolatic-panels-input-SC004c-DCF'] = '';
 }
 
+function SetupData(req){
+    var scheme = new Schemes();
+    var period = new Period("2018");
+
+    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+    resetNonObligated(req);
+
+    req.session.data['schemes'] = scheme;
+    req.session.data['period'] = period;
+    req.session.data['paste-values'] = '';
+}
+
+
 router.get('/version1-8/feedback', function (req, res){
     res.render('version1-8/feedback');
 });
@@ -389,16 +402,8 @@ router.get('/version1-8/AATF-Returns/aatf-option-select', function (req, res) {
     }
 })
 
+
 router.post('/version1-8/login-button', function (req, res) {
-    var scheme = new Schemes();
-    var period = new Period("2018");
-
-    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-    resetNonObligated(req);
-
-    req.session.data['schemes'] = scheme;
-    req.session.data['period'] = period;
-    req.session.data['paste-values'] = '';
     res.redirect('/version1-8/SC002-What-would-you-like-to-do')
 })
 
@@ -1244,6 +1249,8 @@ router.post('/version1-8/AATF-Returns/compliance-reporting-start', function (req
 })
 
 router.post('/version1-8/AATF-Returns/compliance-reporting-end', function (req, res) {
+    SetupData(req);
+
     let answer = req.session.data['compliance-reporting-option']
 
     if (answer === '1') {
