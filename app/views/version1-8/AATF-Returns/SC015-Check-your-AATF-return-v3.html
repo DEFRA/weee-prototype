@@ -52,9 +52,6 @@ GOV.UK Prototype Kit
     <div class="govuk-grid-column-one-quarter">
         <p>{{ data['return-year'] }}</p>
     </div>
-    <div class="govuk-grid-column-one-quarter">
-        <p class="govuk-body">Change</p>
-    </div>
 </div>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-quarter">
@@ -244,7 +241,7 @@ GOV.UK Prototype Kit
 <div class="govuk-!-padding-bottom-6"></div>
 <h4 class="govuk-heading-s" style="margin-bottom: 0px;">Non-obligated WEEE</h4>
 <div class="govuk-!-padding-bottom-6"></div>
-<table class="govuk-table govuk-!-font-size-16">
+<table class="govuk-table govuk-!-font-size-16" style="width: 50%;">
     <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">
@@ -253,7 +250,6 @@ GOV.UK Prototype Kit
             </th>
             <th class="govuk-table__header" scope="col">WEEE retained by a DCF (t)
             </th>
-            <th class="govuk-table__header" style="font-weight: normal"> </th>
         </tr>
     </thead>
     {% set operator = data['period']._operator %}
@@ -269,7 +265,6 @@ GOV.UK Prototype Kit
             {% else %}
             <td class="govuk-table__cell">-</td>
             {% endif %}
-            <td class="govuk-table__cell">Change</td>
         </tr>
     </tbody>
 </table>
