@@ -20,12 +20,6 @@ GOV.UK Prototype Kit
 <h2 class="govuk-heading-l">WEEE sent to another AATF / ATF for treatment</h2>
 
 <p class="govuk-body">Provide tonnage to 3 decimal places. For example 1.238</p>
-<div>
-    <p id="detailSummary" style="margin-bottom: 0px;">{{data['facilitySelect']}}</p>
-    <p>{{ data['operator-name'] }} {{ data['site-address-operator'] }} - {{ data['operator-postcode'] }} {{
-        data['operator-postcode-search'] }}</p>
-</div>
-
 <input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
 <div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
     tabindex="-1" data-module="error-summary">
