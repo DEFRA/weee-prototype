@@ -67,10 +67,10 @@ GOV.UK Prototype Kit
         {% for reusedSite in data['selectedFacility']._reusedSites %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" scope="col">{{reusedSite[0]}}</td>
-            <td class="govuk-table__cell" scope="col"></td>
-            <td class="govuk-table__cell" scope="col"></td>
-            <td class="govuk-table__cell" scope="col"></td>
             <td class="govuk-table__cell" scope="col">{{reusedSite[1]}}</td>
+            <td class="govuk-table__cell" scope="col">{{reusedSite[2]}}</td>
+            <td class="govuk-table__cell" scope="col">{{reusedSite[3]}}</td>
+            <td class="govuk-table__cell" scope="col">{{reusedSite[4]}}</td>
             <td class="govuk-table__cell" scope="col">Remove</td>
         </tr>
         {% endfor %}

@@ -28,14 +28,36 @@ GOV.UK Prototype Kit
     });
 </script>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">What is the site address that the WEEE is being sent on to for reuse?</h2>
+<h2 class="govuk-heading-l">Which site received the WEEE for reuse?</h2>
 <input type="hidden" id="atfId" name="atfId" />
 <form action="/version1-8/AATF-Returns/operator-address-postcode-save-2" method="post" class="form" style="display: inline">
     <div class="govuk-form-group">
         <label class="govuk-label govuk-!-width-one-half" for="name">
-            Site name and address
+            Site name
         </label>
-        <textarea class="govuk-input govuk-!-width-one-half" style="height: 200px;" id="site-address" name="site-address" type="text"></textarea>
+        <input class="govuk-input govuk-!-width-one-third" id="reuse-name" name="reuse-name" type="text">
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="reuse-building">
+            Building and street
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="reuse-building" name="reuse-building" type="text"> 
+        <div class="govuk-!-padding-bottom-3"></div>
+        <input class="govuk-input govuk-!-width-two-thirds" id="reuse-street" name="reuse-street" type="text">
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="reuse-town">
+            Town or city
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="reuse-town" name="reuse-town" type="text"> 
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="reuse-county">
+            County
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="reuse-county" name="reuse-county" type="text"> 
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="reuse-postcode">
+            Postcode
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="reuse-postcode" name="reuse-postcode" type="text"> 
     </div>
     <button type="submit" class="govuk-button" id="input-address-button">
         Save and continue
