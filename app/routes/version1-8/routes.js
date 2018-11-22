@@ -98,6 +98,10 @@ function resetNonObligated(req) {
     req.session.data['photovolatic-panels-input-SC004c-DCF'] = '';
 }
 
+router.get('/version1-8/feedback', function (req, res){
+    res.render('version1-8/feedback');
+});
+
 router.post('/version1-8/AATF-Returns/paste-values-save', function (req, res) {
     req.session.data['paste-values'] = req.session.data['paste-text-area'];
     res.redirect(req.session.data['paste-return-page']);// + req.session.data['paste-return-page']);
