@@ -120,7 +120,7 @@ GOV.UK Prototype Kit
     </thead>
     <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-            <td class="govuk-table__cell" scope="col" colspan="3">
+            <td class="govuk-table__cell" scope="col" colspan="2">
                     <details class="govuk-details check-return" style="font-size: 16px;">
                             <summary class="govuk-details__summary">
                                 <span class="govuk-details__summary-text">
@@ -143,12 +143,12 @@ GOV.UK Prototype Kit
                                             <td class="govuk-table__cell">{{pcs._name}}</td>
                                             <td class="govuk-table__cell">{{pcs._id}}</td>
 
-                                            {% if facility._weeeReceivedTotal %}
+                                            {% if pcs._weeeReceivedTotal %}
                                             <td class="govuk-table__cell">{{pcs._weeeReceivedTotal}}</td>
                                             {% else %}
                                             <td class="govuk-table__cell">-</td>
                                             {% endif %}
-                                            {% if facility._weeeReceivedTotalb2b %}
+                                            {% if pcs._weeeReceivedTotalb2b %}
                                             <td class="govuk-table__cell">{{pcs._weeeReceivedTotalb2b}}</td>
                                             {% else %}
                                             <td class="govuk-table__cell">-</td>
