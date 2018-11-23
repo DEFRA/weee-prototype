@@ -38,6 +38,7 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell" style="width:15%">B2C</td>
             <td class="govuk-table__cell" style="width:15%">B2B</td>
         </tr>
+        {% if  data['obligated-weee-received-check'] == 'yes' %} 
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="PCS-selection?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">WEEE
@@ -53,7 +54,8 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell"><strong class="govuk-tag">-</strong></td>
             {% endif %}
         </tr>
-        {% if  data['sentonoption'] == 'yes' %}    
+        {% endif %}
+        {% if  data['weee-sent-on-check'] == 'yes' %}    
         <tr class="govuk-table__row">       
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
@@ -70,7 +72,7 @@ GOV.UK Prototype Kit
             {% endif %}
         </tr>
         {% endif %}
-        {% if  data['reusedoption'] == 'yes' %}
+        {% if  data['reused-check'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
 
@@ -93,7 +95,7 @@ GOV.UK Prototype Kit
 
     {% endfor %}
 
-    {% if  data['receivedoption'] == 'yes' %}
+    {% if  data['non-obligated-check'] == 'yes' %}
     <table class="govuk-table" style="width: 70%;">
         <tr class="govuk-table__row">
             <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width:10%;">2.</td>

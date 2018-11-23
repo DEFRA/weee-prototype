@@ -7,8 +7,8 @@ const Categories = require('../../data/categories');
 const Scheme = require('../../data/scheme');
 const Schemes = require('../../data/schemes');
 
-function FormatTotal(number){
-    if (number){
+function FormatTotal(number) {
+    if (number) {
         return parseFloat(number).toFixed(3);
     }
 
@@ -98,7 +98,7 @@ function resetNonObligated(req) {
     req.session.data['photovolatic-panels-input-SC004c-DCF'] = '';
 }
 
-function SetupData(req){
+function SetupData(req) {
     var scheme = new Schemes();
     var period = new Period("2018");
 
@@ -111,7 +111,7 @@ function SetupData(req){
 }
 
 
-router.get('/version1-8/feedback', function (req, res){
+router.get('/version1-8/feedback', function (req, res) {
     res.render('version1-8/feedback');
 });
 
@@ -145,7 +145,7 @@ router.get('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
 });
 
 router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
-    
+
     var period = req.session.data['period'];
     var pcs = req.session.data['pcs-selection-check'];
     var pcsName = [];
@@ -186,14 +186,14 @@ router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
             }
         }
     }
-    
-    for (var i = 0; i < period._facilities.length; i++){
+
+    for (var i = 0; i < period._facilities.length; i++) {
         period._facilities[i]._pcs = [];
-        for (var selectedSchemeCount = 0; selectedSchemeCount < period._operator._selectedSchemes.length; selectedSchemeCount ++) {
+        for (var selectedSchemeCount = 0; selectedSchemeCount < period._operator._selectedSchemes.length; selectedSchemeCount++) {
             period._facilities[i]._pcs.push(period._operator._selectedSchemes[selectedSchemeCount]);
         }
     }
-    
+
     req.session.data['period'] = period;
 
     res.redirect('/version1-8/AATF-Returns/My-facilities');
@@ -205,8 +205,13 @@ router.get('/version1-8/AATF-Returns/What-do-you-need-to-report-on', function (r
 });
 
 router.post('/version1-8/AATF-Returns/What-do-you-need-to-report-on', function (req, res) {
+    let answer = req.session.data['obligated-weee-received-check'];
 
-    res.redirect('/version1-8/AATF-Returns/select-your-pcs');
+    if (answer != "yes") {
+        res.redirect('My-facilities');
+    } else {
+        res.redirect('/version1-8/AATF-Returns/select-your-pcs');
+    }
 });
 
 router.get('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload', function (req, res) {
@@ -219,7 +224,7 @@ router.post('/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload', f
     res.redirect('/version1-8/Upload-Returns/SC002_1v-Task-list-for-upload');
 });
 
-router.get('/version1-8/Upload-Returns/Upload-your-facility-data', function(req, res) {
+router.get('/version1-8/Upload-Returns/Upload-your-facility-data', function (req, res) {
     var period = req.session.data['period'];
 
     var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
@@ -263,13 +268,13 @@ router.get('/version1-8/AATF-Returns/My-facilities', function (req, res) {
 
     var period = req.session.data['period'];
 
-    if (period._operator._categories){
+    if (period._operator._categories) {
         period._operator._wee = CategoriesTotal(period._operator._categories).toFixed(3);
     }
-    if (period._operator._categoriesDcf){
+    if (period._operator._categoriesDcf) {
         period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf).toFixed(3);
     }
-    
+
     req.session.data['period'] = period;
 
     for (var i = 0; i < period._facilities.length; i++) {
@@ -528,13 +533,13 @@ router.post('/version1-8/Upload-Returns/non-obligated-save', function (req, res)
 router.get('/version1-8/Upload-Returns/Task-list-for-upload', function (req, res) {
     var period = req.session.data['period'];
 
-    if (period._operator._categories){
+    if (period._operator._categories) {
         period._operator._wee = CategoriesTotal(period._operator._categories).toFixed(3);
     }
-    if (period._operator._categoriesDcf){
+    if (period._operator._categoriesDcf) {
         period._operator._weeDcf = CategoriesTotal(period._operator._categoriesDcf).toFixed(3);
     }
-    
+
     req.session.data['period'] = period;
 
     res.render('version1-8/Upload-Returns/SC002_1v-Task-list-for-upload');
@@ -728,7 +733,7 @@ router.post('/version1-8/AATF-Returns/weee-received-for-treatment-save', functio
 
     req.session.data['paste-values'] = '';
     req.session.data['period'] = period;
-    
+
     res.redirect('/version1-8/AATF-Returns/SC007-PCS-Table');
 })
 
@@ -833,7 +838,7 @@ router.post('/version1-8/Upload-Returns/upload-an-aatf-successful', function (re
     var period = req.session.data['period'];
 
     for (var i = 0; i < period._facilities.length; i++) {
-        if(period._facilities[i]._name == selectedFacility._name) {
+        if (period._facilities[i]._name == selectedFacility._name) {
             var number = Math.floor((Math.random() * 100) + 1).toFixed(3);
             period._facilities[i]._totalb2c = number;
             number = Math.floor((Math.random() * 100) + 1).toFixed(3);
@@ -841,7 +846,7 @@ router.post('/version1-8/Upload-Returns/upload-an-aatf-successful', function (re
             period._facilities[i]._hasBeenUploaded = true;
         }
     }
-    
+
     req.session.data['period'] = period;
 
     res.redirect('/version1-8/Upload-Returns/SC002_1v-Task-list-for-upload')
@@ -855,13 +860,13 @@ router.get('/version1-8/Upload-Returns/upload-an-aatf-return-is-this-correct', f
     var upload = req.session.data['firstUpload'];
     var confirmation = req.session.data['aatf-return-confirm-option'];
 
-    if (confirmation === '1'){
-        if (upload==='false') {
+    if (confirmation === '1') {
+        if (upload === 'false') {
             res.redirect('/version1-8/Upload-Returns/SC014_3-File-upload-successful');
         } else {
             res.redirect('/version1-8/Upload-Returns/SC014_4-File-upload-failed');
         }
-    } else{
+    } else {
         res.redirect('/version1-8/Upload-Returns/SC014_1-Upload-an-aatf-return-browse?firstUpload=' + upload)
     }
 })

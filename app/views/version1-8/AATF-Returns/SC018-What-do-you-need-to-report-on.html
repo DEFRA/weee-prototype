@@ -17,16 +17,9 @@ GOV.UK Prototype Kit
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        
-        if ($('input[name=receivedoption]:checked').val() == 'yes') {
-            $('#dcfsection').css('display', 'table-row');
-        }
-
-        $('#receivedsection input[type=radio]').change(function () {
-            var thisValue = $(this).val();
-
-            if (thisValue == 'yes') {
-                $('#dcfsection').css('display', 'table-row');
+        $('#non-obligated-check').change(function () {
+            if (this.checked) {
+                $('#dcfsection').css('display', 'block');
             } else {
                 $('#dcfsection').css('display', 'none');
             }
@@ -37,6 +30,109 @@ GOV.UK Prototype Kit
     <div class="govuk-!-padding-bottom-3"></div>
     <h2 class="govuk-heading-l">What do you need to report on?</h2>
     <div class="govuk-!-padding-bottom-5"></div>
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="pcs-hint">
+            <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                    {% if data['obligated-weee-received-check'] == 'yes' %}
+                    <input class="govuk-checkboxes__input" checked id="obligated-weee-received-check" name="obligated-weee-received-check"
+                        type="checkbox" value="yes">
+                    {% else %}
+                    <input class="govuk-checkboxes__input" id="obligated-weee-received-check" name="obligated-weee-received-check"
+                        type="checkbox" value="yes">
+                    {% endif %}
+                    <label class="govuk-label govuk-checkboxes__label govuk-!-font-size-24" for="obligated-weee-received-check">
+                        Obligated WEEE received on behalf of producer compliance schemes (PCS) <p class="govuk-body govuk-!-font-size-16"
+                            style="padding-top:10px; color: gray;">This
+                            is WEEE from designated collection facilities (DCFs), distributors and find holders which a
+                            PCS has arranged for you to treat.</p>
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    {% if data['weee-sent-on-check'] == 'yes' %}
+                    <input class="govuk-checkboxes__input" checked id="weee-sent-on-check" name="weee-sent-on-check"
+                        type="checkbox" value="yes">
+                    {% else %}
+                    <input class="govuk-checkboxes__input" id="weee-sent-on-check" name="weee-sent-on-check" type="checkbox"
+                        value="yes">
+                    {% endif %}
+                    <label class="govuk-label govuk-checkboxes__label govuk-!-font-size-24" for="weee-sent-on-check">
+                        WEEE sent to another AATF or ATF for treatment <p class="govuk-body govuk-!-font-size-16" style="padding-top:10px; color: gray;">This
+                            is WEEE that you
+                            received at your AATF(s) which you have not treated and was sent on for treatment
+                            elsewhere.</p>
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    {% if data['reused-check'] == 'yes' %}
+                    <input class="govuk-checkboxes__input" checked id="reused-check" name="reused-check" type="checkbox"
+                        value="yes">
+                    {% else %}
+                    <input class="govuk-checkboxes__input" id="reused-check" name="reused-check" type="checkbox" value="yes">
+                    {% endif %}
+                    <label class="govuk-label govuk-checkboxes__label govuk-!-font-size-24" for="reused-check">
+                        WEEE reused as a whole appliance <p class="govuk-body govuk-!-font-size-16" style="padding-top:10px; color: gray;">This
+                            is WEEE that has been refurbished
+                            or repaired to the point it is no longer waste.</p>
+                    </label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                    {% if data['non-obligated-check'] == 'yes' %}
+                    <input class="govuk-checkboxes__input" id="non-obligated-check" checked name="non-obligated-check"
+                        type="checkbox" value="yes">
+                    {% else %}
+                    <input class="govuk-checkboxes__input" id="non-obligated-check" name="non-obligated-check" type="checkbox"
+                        value="yes">
+                    {% endif %}
+                    <label class="govuk-label govuk-checkboxes__label govuk-!-font-size-24" for="non-obligated-check">
+                        Non-obligated WEEE <p class="govuk-body govuk-!-font-size-16" style="padding-top:10px; color: gray;">This
+                            is WEEE that you received at your AATF(s) other
+                            than from or on behalf of a PCS. It should not include WEEE that has alread been reported
+                            by another AATF(s).</p>
+                    </label>
+                </div>
+                {% if data['non-obligated-check'] == 'yes' %}
+                <div id="dcfsection" style="border-left: 5px solid rgb(191, 193, 195); padding-left: 10px; margin-left: 40px;">
+                    {% else %}
+                    <div id="dcfsection" style="display:none; border-left: 5px solid rgb(191, 193, 195); padding-left: 10px; margin-left: 40px;">
+
+                        {% endif %}
+                        <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal;">Was any of this
+                            non-obligated WEEE received on behalf of a DCF?</h3>
+                        <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE that a local
+                            authority
+                            who is a DCF operator has been allowed to keep under regulation 53 and has sent to you for
+                            treatment.</p>
+                        <div class="govuk-form-group">
+                            <fieldset class="govuk-fieldset">
+                                <div class="govuk-radios govuk-radios--inline">
+                                    <div class="govuk-radios__item">
+                                        {% if data['dcfoption'] == 'yes' %}
+                                        <input class="govuk-radios__input" id="dcfoption-yes" name="dcfoption" type="radio"
+                                            value="yes" checked="checked">
+                                        {% else %}
+                                        <input class="govuk-radios__input" id="dcfoption-yes" name="dcfoption" type="radio"
+                                            value="yes">
+                                        {% endif %}
+                                        <label class="govuk-label govuk-radios__label" for="dcfoption-yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="govuk-radios__item">
+                                        <input class="govuk-radios__input" id="dcfoption-no" name="dcfoption" type="radio"
+                                            value="no">
+                                        <label class="govuk-label govuk-radios__label" for="dcfoption-no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+        </fieldset>
+    </div>
+    <!--
     <table class="govuk-table">
         <thead class="govuk-table__head">
             <tr class="govuk-table__row">
@@ -96,28 +192,7 @@ GOV.UK Prototype Kit
             </tr>
         </tbody>
     </table>
-    <!--
-<div id="sentOnOptionDiv">
-    <div id="sentOnHeading" style="display:inline-block; vertical-align: top">
-        <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal">Have you sent any WEEE to any other AATFs or ATFs for
-            treatment?</h3>
-    </div>
-    <div class="govuk-radios govuk-radios--inline" style="display:inline-block">
-        <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="changed-name-1" name="changed-name" type="radio" value="yes">
-            <label class="govuk-label govuk-radios__label" for="changed-name-1">
-                Yes
-            </label>
-        </div>
-        <div class="govuk-radios__item">
-            <input class="govuk-radios__input" id="changed-name-2" name="changed-name" type="radio" value="no">
-            <label class="govuk-label govuk-radios__label" for="changed-name-2">
-                No
-            </label>
-        </div>
-    </div>
-</div>
--->
+    -->
     {{ govukButton({
     text: "Continue"
     }) }}
