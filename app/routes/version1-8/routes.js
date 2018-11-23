@@ -1261,6 +1261,12 @@ router.post('/version1-8/start-options-select', function (req, res) {
     let answer = req.session.data['start-options']
 
     if (answer === '1') {
+        SetupData(req);
+        req.session.data['obligated-weee-received-check'] = '';
+        req.session.data['weee-sent-on-check'] = '';
+        req.session.data['reused-check'] = '';
+        req.session.data['non-obligated-check'] = '';
+        req.session.data['non-obligated-check'] = '';
         res.redirect('/version1-8/AATF-Returns/SC002_2-compliance-and-reporting')
     }
     if (answer === '2') {
