@@ -42,7 +42,8 @@ GOV.UK Prototype Kit
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Check your AATF return for ABB Ltd</h2>
-<a href='{{ data["task-list-redirect"] }}' class="govuk-link govuk-link--no-visited-state" style="float:right;">AATF task list</a> 
+<a href='{{ data["task-list-redirect"] }}' class="govuk-link govuk-link--no-visited-state" style="float:right;">AATF
+    task list</a>
 <p style="display: inline">Check and review your AATF return before you proceed to submit</p>
 <div class="govuk-!-padding-bottom-9"></div>
 <div class="govuk-grid-row">
@@ -72,19 +73,19 @@ GOV.UK Prototype Kit
             <th class="govuk-table__header align-top" scope="col" style="width:20%;">{{facility._name}}</th>
             <th class="govuk-table__header align-top" scope="col" style="width:20%;">{{facility._approvalNumber}}</th>
             <th class="govuk-table__header align-top" scope="col" style="width:20%;">
-                    <table class="govuk-table govuk-!-font-size-16 no-margin">
-                            <thead class="govuk-table__head">
-                                <tr class="govuk-table__row">
-                                    <th colspan="2" class="align-center">Received for treatment (t)</th>
-                                </tr>
-                            </thead>
-                            <tbody class="govuk-table__body">
-                                <tr lass="govuk-table__row">
-                                    <td class="align-center">B2C</td>
-                                    <td class="align-center">B2B</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th colspan="2" class="align-center">Received for treatment (t)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr lass="govuk-table__row">
+                            <td class="align-center">B2C</td>
+                            <td class="align-center">B2B</td>
+                        </tr>
+                    </tbody>
+                </table>
             </th>
             <th class="govuk-table__header align-top" scope="col" style="width:20%;">
                 <table class="govuk-table govuk-!-font-size-16 no-margin">
@@ -101,7 +102,7 @@ GOV.UK Prototype Kit
                     </tbody>
                 </table>
             </th>
-            <th class="govuk-table__header align-top"" scope="col" style="width:20%;">
+            <th class="govuk-table__header align-top"" scope=" col" style="width:20%;">
                 <table class="govuk-table govuk-!-font-size-16 no-margin">
                     <thead class="govuk-table__head">
                         <tr class="govuk-table__row">
@@ -121,119 +122,119 @@ GOV.UK Prototype Kit
     <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" scope="col" colspan="2">
-                    <details class="govuk-details check-return" style="font-size: 16px;">
-                            <summary class="govuk-details__summary">
-                                <span class="govuk-details__summary-text">
-                                        {{facility._name}} PCSs
-                                </span>                       
-                            </summary>
-                            <div class="govuk-details__text" >
-                                <table class="govuk-table" style="font-size: 16px; width: 100%;">
-                                    <thead class="govuk-table__head">
-                                        <tr class="govuk-table__row">
-                                            <th class="govuk-table__header" scope="col" style="width:40%">PCS Name</th>
-                                            <th class="govuk-table__header" scope="col" style="width:35%">Approval No</th>
-                                            <th class="govuk-table__header" scope="col" style="width:15%"></th>
-                                            <th class="govuk-table__header" scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    {% for pcs in facility._pcs %}
-                                    <tbody class="govuk-table__body">
-                                        <tr class="govuk-table__row">
-                                            <td class="govuk-table__cell">{{pcs._name}}</td>
-                                            <td class="govuk-table__cell">{{pcs._id}}</td>
+                <details class="govuk-details check-return" style="font-size: 16px;">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            {{facility._name}} PCSs
+                        </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <table class="govuk-table" style="font-size: 16px; width: 100%;">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col" style="width:40%">PCS Name</th>
+                                    <th class="govuk-table__header" scope="col" style="width:35%">Approval No</th>
+                                    <th class="govuk-table__header" scope="col" style="width:15%"></th>
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            {% for pcs in facility._pcs %}
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">{{pcs._name}}</td>
+                                    <td class="govuk-table__cell">{{pcs._id}}</td>
 
-                                            {% if pcs._weeeReceivedTotal %}
-                                            <td class="govuk-table__cell">{{pcs._weeeReceivedTotal}}</td>
-                                            {% else %}
-                                            <td class="govuk-table__cell">-</td>
-                                            {% endif %}
-                                            {% if pcs._weeeReceivedTotalb2b %}
-                                            <td class="govuk-table__cell">{{pcs._weeeReceivedTotalb2b}}</td>
-                                            {% else %}
-                                            <td class="govuk-table__cell">-</td>
-                                            {% endif %}
-                                        </tr>
-                                        
-                                    </tbody>
-                                    {% endfor %}
+                                    {% if pcs._weeeReceivedTotal %}
+                                    <td class="govuk-table__cell">{{pcs._weeeReceivedTotal}}</td>
+                                    {% else %}
+                                    <td class="govuk-table__cell">-</td>
+                                    {% endif %}
+                                    {% if pcs._weeeReceivedTotalb2b %}
+                                    <td class="govuk-table__cell">{{pcs._weeeReceivedTotalb2b}}</td>
+                                    {% else %}
+                                    <td class="govuk-table__cell">-</td>
+                                    {% endif %}
+                                </tr>
 
-                                    <tfoot>
-                                        <tr class="govuk-table__row">
-                                                <td class="govuk-table__cell"></td>
-                                                <td class="govuk-table__cell"></td>
-                                                {% if facility._totalb2c %}
-                                                <td class="govuk-table__cell">{{facility._totalb2c}}</td>
-                                                {% else %}
-                                                <td class="govuk-table__cell">-</td>
-                                                {% endif %}
-                                                {% if facility._totalb2b %}
-                                                <td class="govuk-table__cell">{{facility._totalb2b}}</td>
-                                                {% else %}
-                                                <td class="govuk-table__cell">-</td>
-                                                {% endif %}
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </details>
+                            </tbody>
+                            {% endfor %}
+
+                            <tfoot>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell"></td>
+                                    <td class="govuk-table__cell"></td>
+                                    {% if facility._totalb2c %}
+                                    <td class="govuk-table__cell">{{facility._totalb2c}}</td>
+                                    {% else %}
+                                    <td class="govuk-table__cell">-</td>
+                                    {% endif %}
+                                    {% if facility._totalb2b %}
+                                    <td class="govuk-table__cell">{{facility._totalb2b}}</td>
+                                    {% else %}
+                                    <td class="govuk-table__cell">-</td>
+                                    {% endif %}
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </details>
 
             </td>
-            <td class="govuk-table__cell align-center" scope="col">
-                    <table class="govuk-table govuk-!-font-size-16 no-margin">
-                            <tbody class="govuk-table__body">
-                                    <tr class="govuk-table__row">
-                                            {% if facility._totalb2c %}
-                                            <td class="align-center">{{facility._totalb2c}}</td>
-                                            {% else %}
-                                            <td class="align-center">-</td>
-                                            {% endif %}
-                                            {% if facility._totalb2b %}
-                                            <td class="align-center">{{facility._totalb2b}}</td>
-                                            {% else %}
-                                            <td class="align-center">-</td>
-                                            {% endif %}
-                                    </tr>
-                            </tbody>
-                        </table>
-                </td>
             <td class="govuk-table__cell align-center" scope="col">
                 <table class="govuk-table govuk-!-font-size-16 no-margin">
-                        <tbody class="govuk-table__body">
-                            <tr lass="govuk-table__row">
-                                {% if facility._sentonb2c %}
-                                <td class="align-center">{{facility._sentonb2c}}</td>
-                                {% else %}
-                                <td class="align-center">-</td>
-                                {% endif %}
-                                {% if facility._sentonb2b %}
-                                <td class="align-center">{{facility._sentonb2b}}</td>
-                                {% else %}
-                                <td class="align-center">-</td>
-                                {% endif %}
-                            </tr>
-                        </tbody>
-                    </table>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            {% if facility._totalb2c %}
+                            <td class="align-center">{{facility._totalb2c}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                            {% if facility._totalb2b %}
+                            <td class="align-center">{{facility._totalb2b}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                </table>
             </td>
-            <td class="govuk-table__cell align-center" scope="col"> 
-                    <table class="govuk-table govuk-!-font-size-16 no-margin">
-                            <tbody class="govuk-table__body">
-                                <tr lass="govuk-table__row">
-                                        {% if facility._reusedb2c %}
-                                        <td class="align-center">{{facility._reusedb2c}}</td>
-                                        {% else %}
-                                        <td class="align-center">-</td>
-                                        {% endif %}
-                                        {% if facility._reusedb2b %}
-                                        <td class="align-center">{{facility._reusedb2b}}</td>
-                                        {% else %}
-                                        <td class="align-center">-</td>
-                                        {% endif %}
-                                </tr>
-                            </tbody>
-                        </table>
+            <td class="govuk-table__cell align-center" scope="col">
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <tbody class="govuk-table__body">
+                        <tr lass="govuk-table__row">
+                            {% if facility._sentonb2c %}
+                            <td class="align-center">{{facility._sentonb2c}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                            {% if facility._sentonb2b %}
+                            <td class="align-center">{{facility._sentonb2b}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                </table>
             </td>
-        </tr>  
+            <td class="govuk-table__cell align-center" scope="col">
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <tbody class="govuk-table__body">
+                        <tr lass="govuk-table__row">
+                            {% if facility._reusedb2c %}
+                            <td class="align-center">{{facility._reusedb2c}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                            {% if facility._reusedb2b %}
+                            <td class="align-center">{{facility._reusedb2b}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
     </tbody>
 </table>
 {% endfor %}
@@ -245,7 +246,7 @@ GOV.UK Prototype Kit
     <thead class="govuk-table__head">
         <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">
-                    WEEE received (t)
+                WEEE received (t)
 
             </th>
             <th class="govuk-table__header" scope="col">WEEE retained by a DCF (t)
@@ -255,7 +256,7 @@ GOV.UK Prototype Kit
     {% set operator = data['period']._operator %}
     <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-                {% if operator._wee %}
+            {% if operator._wee %}
             <td class="govuk-table__cell">{{ operator._wee }}</td>
             {% else %}
             <td class="govuk-table__cell">-</td>
@@ -272,9 +273,12 @@ GOV.UK Prototype Kit
 
 <form action="/version1-8/AATF-Returns/submit-aatf-return" method="post" class="form" style="display:inline;">
     {{ govukButton({
-    text: "Submit"
+    text: "Continue"
     }) }}
 </form>
+<button type="submit" class="govuk-button" style="margin-left: 20px; background-color: gray;">
+    Save as draft
+</button>
 
 
 {% endblock %}
