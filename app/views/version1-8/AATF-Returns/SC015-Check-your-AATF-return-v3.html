@@ -24,19 +24,20 @@ GOV.UK Prototype Kit
         padding-top: 0px;
     }
 
-    .align-top{
+    .align-top {
         vertical-align: top;
     }
 
-    .align-center{
+    .align-center {
         text-align: center;
         vertical-align: top;
     }
-    .no-margin{
+
+    .no-margin {
         margin-bottom: 0;
     }
 
-    .cell-border{
+    .cell-border {
         border-bottom: 1px solid #bfc1c3;
     }
 </style>
@@ -138,12 +139,28 @@ GOV.UK Prototype Kit
                                     <th class="govuk-table__header" scope="col"></th>
                                 </tr>
                             </thead>
+                            {% set period = data['period'] %}
+                            {% if period._uploadRoute %}
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Ecosurety</td>
+                                    <td class="govuk-table__cell">WEE/UP3838PL/SCH</td>
+                                    <td class="govuk-table__cell">24</td>
+                                    <td class="govuk-table__cell">65</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Interlevin</td>
+                                    <td class="govuk-table__cell">WEE/GP3138PQ/SCH</td>
+                                    <td class="govuk-table__cell">7</td>
+                                    <td class="govuk-table__cell">12</td>
+                                </tr>
+                            </tbody>
+                            {% else %}
                             {% for pcs in facility._pcs %}
                             <tbody class="govuk-table__body">
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">{{pcs._name}}</td>
                                     <td class="govuk-table__cell">{{pcs._id}}</td>
-
                                     {% if pcs._weeeReceivedTotal %}
                                     <td class="govuk-table__cell">{{pcs._weeeReceivedTotal}}</td>
                                     {% else %}
@@ -155,10 +172,10 @@ GOV.UK Prototype Kit
                                     <td class="govuk-table__cell">-</td>
                                     {% endif %}
                                 </tr>
-
                             </tbody>
                             {% endfor %}
-
+                            {% endif %}
+                            {% if period._uploadRoute == false %}
                             <tfoot>
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell"></td>
@@ -175,6 +192,7 @@ GOV.UK Prototype Kit
                                     {% endif %}
                                 </tr>
                             </tfoot>
+                            {% endif %}
                         </table>
                     </div>
                 </details>

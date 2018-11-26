@@ -1282,6 +1282,9 @@ router.post('/version1-8/AATF-Returns/compliance-reporting-end', function (req, 
     if (answer === '1') {
         res.redirect('/version1-8/AATF-Returns/SC018-What-do-you-need-to-report-on');
     } else if (answer === '2') {
+        var period = req.session.data['period'];
+        period._uploadRoute = true;
+        req.session.data['period'] = period;
         res.redirect('/version1-8/Upload-Returns/sc002_1g_what_do_you_want_to_report_on_upload');
     } else if (answer === '3') {
         res.redirect('/version1-8/AATF-Returns/SC013_1-Confirmation-of-nil-return')
