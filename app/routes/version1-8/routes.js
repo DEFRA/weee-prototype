@@ -1177,7 +1177,8 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save-2', functio
     var siteCountyManual = req.session.data['reuse-county'];
     var sitePostCodeManual = req.session.data['reuse-postcode'];
     var siteArray = [];
-    if (typeof siteName === 'undefined') {
+    console.log(siteName);
+    if (typeof siteName === 'undefined' || siteName == '') {
         siteName = siteNameManual;
         sitePostcode = sitePostCodeManual;
     } else {
@@ -1188,7 +1189,7 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save-2', functio
     }
 
     siteArray = [siteName, siteStreetManual, siteTownManual, siteCountyManual, sitePostcode];
-
+    console.log(siteArray);
 
     var updateFacility = period._facilities.filter(function (facility) {
         if (parseInt(facility._id) === parseInt(req.session.data['selectedFacility']._id)) {
@@ -1431,6 +1432,13 @@ router.post('/version1-8/Upload-Returns/sc002_1g_what_do_you_want_to_report_on_u
     } else {
         res.redirect('/version1-8/Upload-Returns/Task-list-for-upload');
     }
+})
+
+router.get('/version1-8/AATF-Returns/reuse-site-manual-wipe', function(req, res) {
+    req.session.data['operator-name-search-2'] = '';
+    req.session.data['operator-postcode-search-2'] = '';
+    console.log(req.session.data['operator-name-search-2']);
+    res.redirect('/version1-8/AATF-Returns/SC008_5a-Manual-entry-of-site-address-for-reuse');
 })
 
 module.exports = router;
