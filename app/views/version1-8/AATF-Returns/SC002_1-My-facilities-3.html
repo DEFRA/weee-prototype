@@ -30,17 +30,19 @@ GOV.UK Prototype Kit
             {% if loop.index == 1 %}
             <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width:10%;">{{loop.index }}.</td>
             {% else %}
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; color: transparent; width:10%;">{{loop.index + 1}}.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; color: transparent; width:10%;">{{loop.index
+                + 1}}.</td>
             {% endif %}
-            <td class="govuk-table__cell govuk-!-font-weight-bold" style="width:60%">Obligated WEEE - {{facility._name}}</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="width:60%">Obligated WEEE -
+                {{facility._name}}</td>
             <td class="govuk-table__cell" style="width:15%">B2C</td>
             <td class="govuk-table__cell" style="width:15%">B2B</td>
         </tr>
-        {% if  data['obligated-weee-received-check'] == 'yes' %} 
+        {% if data['obligated-weee-received-check'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
-            <td class="govuk-table__cell"><a href="PCS-selection?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">WEEE
-                    received on behalf of PCS(s)</a></td>
+            <td class="govuk-table__cell"><a href="PCS-selection?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">
+                    Received on behalf of PCS(s)</a></td>
             {% if facility._totalb2c %}
             <td class="govuk-table__cell"><strong class="govuk-tag">{{facility._totalb2c}}</strong></td>
             {% else %}
@@ -53,8 +55,8 @@ GOV.UK Prototype Kit
             {% endif %}
         </tr>
         {% endif %}
-        {% if  data['weee-sent-on-check'] == 'yes' %}    
-        <tr class="govuk-table__row">       
+        {% if data['weee-sent-on-check'] == 'yes' %}
+        <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
             <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
                     class="govuk-link govuk-link--no-visited-state">Sent to another AATF / ATF</a></td>
@@ -70,7 +72,7 @@ GOV.UK Prototype Kit
             {% endif %}
         </tr>
         {% endif %}
-        {% if  data['reused-check'] == 'yes' %}
+        {% if data['reused-check'] == 'yes' %}
         <tr class="govuk-table__row">
             <td class="govuk-table__cell" style="border: 0px;"></td>
 
@@ -93,7 +95,7 @@ GOV.UK Prototype Kit
 
     {% endfor %}
 
-    {% if  data['non-obligated-check'] == 'yes' %}
+    {% if data['non-obligated-check'] == 'yes' %}
     <table class="govuk-table" style="width: 70%;">
         <tr class="govuk-table__row">
             <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px; width:10%;">2.</td>
@@ -131,36 +133,37 @@ GOV.UK Prototype Kit
         Check my return
     </button>
 </form>
-<a href="SC018-What-do-you-need-to-report-on?" class="govuk-link govuk-link--no-visited-state" style="padding-left:20px">Change what you want to report on</a> 
+<a href="SC018-What-do-you-need-to-report-on?" class="govuk-link govuk-link--no-visited-state" style="padding-left:20px">Change
+    what you want to report on</a>
 <details class="govuk-details govuk-!-font-size-16">
-        <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-                Some of my AATFs are missing
-            </span>
-        </summary>
-        <div class="govuk-details__text">
-            <div class="govuk-body govuk-!-font-size-16">
-                Contact your environmental regulator<br /><br />
-                <b>England</b><br />
-                Environment Agency<br />
-                Producer Responsibility Regulatroy Services<br />
-                Telephone: 03708 506 506<br /><br>
+    <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+            Some of my AATFs are missing
+        </span>
+    </summary>
+    <div class="govuk-details__text">
+        <div class="govuk-body govuk-!-font-size-16">
+            Contact your environmental regulator<br /><br />
+            <b>England</b><br />
+            Environment Agency<br />
+            Producer Responsibility Regulatroy Services<br />
+            Telephone: 03708 506 506<br /><br>
 
-                <b>Northern Ireland</b><br />
-                Northern Ireland Environment Agency<br />
-                Producer Responsibility Unit<br />
-                Telephone: 02 890 569338<br /><br />
+            <b>Northern Ireland</b><br />
+            Northern Ireland Environment Agency<br />
+            Producer Responsibility Unit<br />
+            Telephone: 02 890 569338<br /><br />
 
-                <b>Scotland</b><br />
-                Scottish Environment Protection Agency<br />
-                Producer Compliance and Waste Shipments Unit<br />
-                Telephone: 01786 457700<br /><br />
+            <b>Scotland</b><br />
+            Scottish Environment Protection Agency<br />
+            Producer Compliance and Waste Shipments Unit<br />
+            Telephone: 01786 457700<br /><br />
 
-                <b>Wales</b><br />
-                Natural Resources Wales<br />
-                Producer Responsibility Unit<br />
-                Telephone: 03000 65 3096
-            </div>
+            <b>Wales</b><br />
+            Natural Resources Wales<br />
+            Producer Responsibility Unit<br />
+            Telephone: 03000 65 3096
         </div>
-    </details>
+    </div>
+</details>
 {% endblock %}
