@@ -173,24 +173,50 @@ router.post('/version1-8/AATF-Returns/select-your-pcs', function (req, res) {
                 period._operator._selectedSchemes.push(new Scheme(pcsName[i], pcsIDs[i]));
             }
         }
-
+        var arrayOfSchemesToDelete = [];
+        var schemeRemoved = false;
         for (var i = 0; i < period._operator._selectedSchemes.length; i++) {
             var schemeFound = false;
+            var schemeName = period._operator._selectedSchemes[i]._name;
             for (var j = 0; j < pcsName.length; j++) {
                 if (period._operator._selectedSchemes[i]._name == pcsName[j]) {
                     schemeFound = true;
+                    schemeRemoved = true;
                 }
             }
             if (!schemeFound) {
-                period._operator._selectedSchemes.splice(i, 1);
+                console.log(schemeName);
+                arrayOfSchemesToDelete.push(i);
+            }
+        }
+        if (schemeRemoved) {
+            for (var i = arrayOfSchemesToDelete.length -1; i >= 0; i--) {
+                period._operator._selectedSchemes.splice(arrayOfSchemesToDelete[i], 1);
+                for(var k = 0; k < period._facilities.length; k++) {
+                    period._facilities[k]._pcs.splice(arrayOfSchemesToDelete[i], 1);
+                }
             }
         }
     }
-
     for (var i = 0; i < period._facilities.length; i++) {
-        period._facilities[i]._pcs = [];
-        for (var selectedSchemeCount = 0; selectedSchemeCount < period._operator._selectedSchemes.length; selectedSchemeCount++) {
-            period._facilities[i]._pcs.push(period._operator._selectedSchemes[selectedSchemeCount]);
+        if (period._facilities[i]._pcs.length == 0) {
+            period._facilities[i]._pcs = [];
+            for (var selectedSchemeCount = 0; selectedSchemeCount < period._operator._selectedSchemes.length; selectedSchemeCount++) {
+                period._facilities[i]._pcs.push(period._operator._selectedSchemes[selectedSchemeCount]);
+            }
+        } else {
+            for (var k = 0; k < pcsName.length; k++) {
+                var schemeFound = false;
+                for (var j = 0; j < period._facilities[i]._pcs.length; j++) {
+                    if (pcsName[k] == period._facilities[i]._pcs[j]._name) {
+                        schemeFound = true;
+                    }
+                }
+                if (!schemeFound) {
+                    period._facilities[i]._pcs.push(new Scheme(pcsName[k], pcsIDs[k]));
+                    period._operator._selectedSchemes.push(new Scheme(pcsName[k], pcsIDs[k]));
+                }
+            }
         }
     }
 
@@ -214,7 +240,7 @@ router.post('/version1-8/AATF-Returns/What-do-you-need-to-report-on', function (
     }
 });
 
-router.get('/version1-8/Upload-Returns/Upload-your-facility-data', function(req, res) {
+router.get('/version1-8/Upload-Returns/Upload-your-facility-data', function (req, res) {
     var period = req.session.data['period'];
 
     var selectedFacility = req.session.data['period']._facilities.filter(function (facility) {
@@ -1160,7 +1186,7 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save-2', functio
         siteStreetManual = '';
         siteTownManual = '';
     }
-    
+
     siteArray = [siteName, siteStreetManual, siteTownManual, siteCountyManual, sitePostcode];
 
 
@@ -1183,7 +1209,7 @@ router.post('/version1-8/AATF-Returns/operator-address-postcode-save-2', functio
 
     req.session.data['selectedFacility'] = updateFacility[0];
     req.session.data['period'] = period;
-    
+
     res.redirect('/version1-8/AATF-Returns/SC008_7-Enter-name-and-address-of-all-sites')
 })
 
@@ -1245,6 +1271,11 @@ router.post('/version1-8/AATF-Returns/compliance-reporting-start', function (req
 
 router.post('/version1-8/AATF-Returns/compliance-reporting-end', function (req, res) {
     SetupData(req);
+    req.session.data['obligated-weee-received-check'] = '';
+    req.session.data['weee-sent-on-check'] = '';
+    req.session.data['reused-check'] = '';
+    req.session.data['non-obligated-check'] = '';
+    req.session.data['non-obligated-check'] = '';
 
     let answer = req.session.data['compliance-reporting-option']
 
@@ -1261,12 +1292,6 @@ router.post('/version1-8/start-options-select', function (req, res) {
     let answer = req.session.data['start-options']
 
     if (answer === '1') {
-        SetupData(req);
-        req.session.data['obligated-weee-received-check'] = '';
-        req.session.data['weee-sent-on-check'] = '';
-        req.session.data['reused-check'] = '';
-        req.session.data['non-obligated-check'] = '';
-        req.session.data['non-obligated-check'] = '';
         res.redirect('/version1-8/AATF-Returns/SC002_2-compliance-and-reporting')
     }
     if (answer === '2') {
@@ -1396,8 +1421,8 @@ router.post('/version1-8/AATF-Returns/perform-another-activity', function (req, 
     res.redirect('/version1-8/SC002-What-would-you-like-to-do');
 })
 
-router.post('/version1-8/Upload-Returns/sc002_1g_what_do_you_want_to_report_on_upload', function (req, res){
-    
+router.post('/version1-8/Upload-Returns/sc002_1g_what_do_you_want_to_report_on_upload', function (req, res) {
+
     if (req.session.data['receivedoption-upload'] === 'yes') {
         res.redirect('/version1-8//Upload-Returns/sc002_1h_what_do_you_want_to_report_on_upload');
     } else {
