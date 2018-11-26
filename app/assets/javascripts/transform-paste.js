@@ -12,12 +12,12 @@
                 // rows
                 var tableRows = enterDataTable.children[0].children;
                 if (tableRows && tableRows.length > 1) {
-                    var tableRowColumns = tableRows[0].cells.length;
-                    for (var tableRowCount = 1; tableRowCount < tableRows.length - 1; tableRowCount++) {
+                    var tableRowColumns = tableRows[1].cells.length;
+                    for (var tableRowCount = 2; tableRowCount < tableRows.length - 1; tableRowCount++) {
 
                         for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns - 1; tableColumnCount++) {
-                            if (rowsData[tableRowCount - 1]) {
-                                var copyValue = rowsData[tableRowCount - 1];
+                            if (rowsData[tableRowCount - 2]) {
+                                var copyValue = rowsData[tableRowCount - 2];
 
                                 if (copyValue) {
                                     var cellData = copyValue.split('\t');
@@ -37,7 +37,7 @@
                     // totals
                     for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns - 1; tableColumnCount++) {
                         var columnTotal = 0;
-                        for (var tableRowCount = 1; tableRowCount < tableRows.length - 1; tableRowCount++) {
+                        for (var tableRowCount = 2; tableRowCount < tableRows.length - 1; tableRowCount++) {
                             var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
                             if (input.value && !isNaN(input.value)) {
                                 columnTotal += parseFloat(input.value);

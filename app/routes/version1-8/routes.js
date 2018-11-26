@@ -1424,9 +1424,9 @@ router.post('/version1-8/AATF-Returns/perform-another-activity', function (req, 
 router.post('/version1-8/Upload-Returns/sc002_1g_what_do_you_want_to_report_on_upload', function (req, res) {
 
     if (req.session.data['receivedoption-upload'] === 'yes') {
-        res.redirect('/version1-8//Upload-Returns/sc002_1h_what_do_you_want_to_report_on_upload');
+        res.redirect('/version1-8/Upload-Returns/sc002_1h_what_do_you_want_to_report_on_upload');
     } else {
-        res.redirect('/version1-8//Upload-Returns/Task-list-for-upload');
+        res.redirect('/version1-8/Upload-Returns/Task-list-for-upload');
     }
 })
 
