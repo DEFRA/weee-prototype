@@ -145,14 +145,14 @@ GOV.UK Prototype Kit
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">Ecosurety</td>
                                     <td class="govuk-table__cell">WEE/UP3838PL/SCH</td>
-                                    <td class="govuk-table__cell">24</td>
-                                    <td class="govuk-table__cell">65</td>
+                                    <td class="govuk-table__cell">24.000</td>
+                                    <td class="govuk-table__cell">65.000</td>
                                 </tr>
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell">Interlevin</td>
                                     <td class="govuk-table__cell">WEE/GP3138PQ/SCH</td>
-                                    <td class="govuk-table__cell">7</td>
-                                    <td class="govuk-table__cell">12</td>
+                                    <td class="govuk-table__cell">7.000</td>
+                                    <td class="govuk-table__cell">12.000</td>
                                 </tr>
                             </tbody>
                             {% else %}
@@ -175,7 +175,17 @@ GOV.UK Prototype Kit
                             </tbody>
                             {% endfor %}
                             {% endif %}
-                            {% if period._uploadRoute == false %}
+                            {% if period._uploadRoute %}
+                            <tfoot>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell"></td>
+                                    <td class="govuk-table__cell"></td>
+                                    <td class="govuk-table__cell">31.000</td>
+                                    <td class="govuk-table__cell">78.000</td>
+
+                                </tr>
+                            </tfoot>
+                            {% else %}
                             <tfoot>
                                 <tr class="govuk-table__row">
                                     <td class="govuk-table__cell"></td>
@@ -201,6 +211,12 @@ GOV.UK Prototype Kit
             <td class="govuk-table__cell align-center" scope="col">
                 <table class="govuk-table govuk-!-font-size-16 no-margin">
                     <tbody class="govuk-table__body">
+                        {% if period._uploadRoute %}
+                        <tr class="govuk-table__row">
+                            <td class="align-center">31.000</td>
+                            <td class="align-center">78.000</td>
+                        </tr>
+                        {% else %}
                         <tr class="govuk-table__row">
                             {% if facility._totalb2c %}
                             <td class="align-center">{{facility._totalb2c}}</td>
@@ -213,12 +229,19 @@ GOV.UK Prototype Kit
                             <td class="align-center">-</td>
                             {% endif %}
                         </tr>
+                        {% endif %}
                     </tbody>
                 </table>
             </td>
             <td class="govuk-table__cell align-center" scope="col">
                 <table class="govuk-table govuk-!-font-size-16 no-margin">
                     <tbody class="govuk-table__body">
+                        {% if period._uploadRoute %}
+                        <tr class="govuk-table__row">
+                            <td class="align-center">7.000</td>
+                            <td class="align-center">3.400</td>
+                        </tr>
+                        {% else %}
                         <tr lass="govuk-table__row">
                             {% if facility._sentonb2c %}
                             <td class="align-center">{{facility._sentonb2c}}</td>
@@ -231,12 +254,19 @@ GOV.UK Prototype Kit
                             <td class="align-center">-</td>
                             {% endif %}
                         </tr>
+                        {% endif %}
                     </tbody>
                 </table>
             </td>
             <td class="govuk-table__cell align-center" scope="col">
                 <table class="govuk-table govuk-!-font-size-16 no-margin">
                     <tbody class="govuk-table__body">
+                        {% if period._uploadRoute %}
+                        <tr class="govuk-table__row">
+                            <td class="align-center">11.500</td>
+                            <td class="align-center">2.100</td>
+                        </tr>
+                        {% else %}
                         <tr lass="govuk-table__row">
                             {% if facility._reusedb2c %}
                             <td class="align-center">{{facility._reusedb2c}}</td>
@@ -249,6 +279,7 @@ GOV.UK Prototype Kit
                             <td class="align-center">-</td>
                             {% endif %}
                         </tr>
+                        {% endif %}
                     </tbody>
                 </table>
             </td>
