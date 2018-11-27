@@ -27,7 +27,10 @@ GOV.UK Prototype Kit
 </script>
 <div class="govuk-!-padding-bottom-3"></div>
 <h2 class="govuk-heading-l">Non-obligated WEEE</h2>
-
+<p class="govuk-body">This
+        is WEEE that you received at your AATF(s) other
+        than from or on behalf of a PCS. It should not include WEEE that has already been reported
+        by another AATF(s).</p>
 <p>Provide tonnage to 3 decimal places. For example 1.238</p>
 <div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
     tabindex="-1" data-module="error-summary">
@@ -51,12 +54,18 @@ GOV.UK Prototype Kit
 <form action="/version1-8/Upload-Returns/non-obligated-save" method="post" class="form">
     <table class="govuk-table" id="non-obligated-weee-table">
         <tbody class="govuk-table__body">
-
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell" style="border-bottom: 0px;">
+                </td>
+                <td class="govuk-table__cell govuk-!-margin-bottom-0" style="border-bottom: 0px;">
+                    <div class="govuk-body govuk-!-font-size-19">
+                        <a href="paste-values-redirect?returnUrl=/version1-8/Upload-Returns/SC004_1-Enter-non-obligated-WEEE&title=Non-obligated WEEE">Use
+                            copy and paste to populate the table</a>
+                    </div>
+                </td>
+            </tr>
             <tr class="govuk-table__row">
                 <td class="govuk-table__cell">
-                    <div class="govuk-body govuk-!-font-size-19">
-                        <a href="paste-values-redirect?returnUrl=/version1-8/Upload-Returns/SC004_1-Enter-non-obligated-WEEE&title=Non-obligated WEEE">Use copy and paste to populate the table</a>
-                    </div>
                 </td>
                 <td class="govuk-table__cell govuk-!-margin-bottom-0">
                     <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-two-thirds">
