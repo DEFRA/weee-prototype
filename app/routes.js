@@ -8,10 +8,11 @@ const version5 = require('./routes/version1-5/routes')
 const version6 = require('./routes/version1-6/routes')
 const version7 = require('./routes/version1-7/routes')
 const version8 = require('./routes/version1-8/routes')
+const version9 = require('./routes/version1-9/routes')
 
 // default
 router.get('/', function (req, res) {
-    res.redirect('/version1-8/SC001-Home')
+    res.redirect('/version1-9/SC001-Home')
 })
 
 //Index of versions route
@@ -27,5 +28,6 @@ router.use(version5);
 router.use(version6);
 router.use(version7);
 router.use(version8);
+router.use(version9);
 
 module.exports = router

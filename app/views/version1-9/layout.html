@@ -40,34 +40,64 @@ serviceName: serviceName,
 serviceUrl: "/",
 containerClasses: "govuk-width-container"
 }) }}
-
-
+<style>
+@media screen and (min-width:0\0) and (min-resolution: +72dpi) {
+  .govuk-footer__meta {
+    display: block;
+  }
+}
+</style>
 <div class="govuk-phase-banner" style="margin: 0 auto; max-width: 950px;">
   <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
       alpha
     </strong>
     <span class="govuk-phase-banner__text">
       This is a new service – your
-      <a class="govuk-link" href="#">feedback</a> will help us to improve it.
+      <a class="govuk-link" href="/version1-9/feedback">feedback</a> will help us to improve it.
     </span>
   </p>
 </div>
+
+<div  class="govuk-width-container "style="border-bottom: 1px solid rgb(191, 193, 195);" id="sign-in-banner">
+  <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+          <div class="username-title-display font-xsmall"  style="padding: 5px; font-family: 'nta',Arial,sans-serif; font-weight: 400; text-transform: none; margin: 0 auto; ">
+            <ul id="activity-banner" style="margin-top: 0px; margin-bottom: 0px; list-style-type:none; padding-left: 0;">
+              <li id="activity-banner-org">
+                
+                  <span style="text-decoration:underline; font-weight: bold;">Organisation:</span>
+                  <span class="username-format" style="color: #0b0c0c">ABB Ltd</span>
+                
+              </li>
+              <li id="activity-banner-activity">
+                <span style="text-decoration:underline; font-weight: bold;">Activity:</span>
+                <span class="username-format">AATF return</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+    <div class="govuk-grid-column-one-half">
+        <div class="username-title-display font-xsmall"  style="text-align: right; padding: 5px; font-family: 'nta',Arial,sans-serif; font-weight: 400; text-transform: none; margin: 0 auto; float: right;">
+          <ul style="margin-top: 0px; margin-bottom: 0px; list-style-type:none;">
+            <li>
+              <div class="text-secondary" style="color: #6f777b">
+                Signed in as:
+                <span class="username-format" style="font-weight: bold; color: #0b0c0c">Trevor Phillips</span>
+              </div>
+            </li>
+            <li>
+              <a class="link-submit" href="#" style="font-size: 16p; line-height: 1.25; font-family: 'nta',Arial,sans-serif; font-weight:400; text-transform: none;">Sign
+                out</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+    
+  </div>
+</div>
+</div>
 {% endblock %}
 
-{% block content %}
-
-<h2 class="govuk-heading-l">External prototypes</h2>
-<h3 class="govuk-heading-m"><a href="/version1-1/SC001-Home.html">Version 1.1</a></h3>
-<h3 class="govuk-heading-m"><a href="/version1-2/SC001-Home.html">Version 1.2</a></h3>
-<h3 class="govuk-heading-m"><a href="/version1-3/SC001-Home.html">Version 1.3</a></h3>
-<h3 class="govuk-heading-m"><a href="/version1-4/SC001-Home.html">Version 1.4</a></h3>
-<h3 class="govuk-heading-m"><a href="/version1-5/SC001-Home.html">Version 1.5</a></h3>
-<h3 class="govuk-heading-m"><a href="/version1-6/SC001-Home.html">Version 1.6</a></h3>
-<h3 class="govuk-heading-m"><a href="/version1-7/SC001-Home.html">Version 1.7</a></h3>
-<h3 class="govuk-heading-m"><a href="/version1-8/SC001-Home.html">Version 1.8</a></h3>
-<h3 class="govuk-heading-m"><a href="/version1-9/SC001-Home.html">Version 1.9</a></h3>
-
-{% endblock %}
 {% if useAutoStoreData %}
 {% block footer %}
 
@@ -76,6 +106,7 @@ containerClasses: "govuk-width-container"
     <div class="govuk-footer__navigation">
       <div class="govuk-footer__section"  style="border-bottom: 1px rgb(191, 193, 195) solid">
         <h2 class="govuk-footer__heading govuk-heading-m govuk-!-margin-bottom-2" style="border-bottom: 0px;">Contact us</h2>
+
         <ul class="govuk-footer__list govuk-footer__list--columns-2">
           <li class="govuk-footer__list-item">
             <h4 class="govuk-heading-s">England</h4>
@@ -121,6 +152,21 @@ containerClasses: "govuk-width-container"
               <a class="govuk-footer__link" href="#">
                 Cookies
               </a>
+            </li>
+            <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link"  href="/public/doc/Return_Test_Data1.xlsx" download>
+                  Scenerio one
+                </a>
+            </li>
+            <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link"  href="/public/doc/Return_Test_Data2.xlsx" download>
+                    Scenerio two
+                </a>
+            </li>
+            <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link" href="/public/doc/Return_Test_Data3.xlsx" download>
+                    Scenerio three
+                </a>
             </li>
           </ul>
 

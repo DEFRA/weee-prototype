@@ -1,0 +1,55 @@
+{% extends "version1-9/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "error-summary/macro.njk" import govukErrorSummary %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #non-obligated-weee-table .govuk-form-group {
+        margin-bottom: 10px;
+    }
+
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.urlParam = function(name){
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results==null){
+            return null;
+            }
+            else{
+                return decodeURI(results[1]) || 0;
+            }
+        }
+
+        let myParam = $.urlParam('title');
+        $('#heading-text').html(myParam);
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<!--<h2 class="govuk-heading-l">{{ data['paste-page-title'] }}</h2>-->
+<h2 class="govuk-heading-l" id="heading-text"></h2>
+<p class="govuk-body">Provide tonnage to 3 decimal places for 14 categories. For example 1.238</p>
+<p class="govuk-body">You can copy the WEEE in tonnes from an Excel spreadsheet.</p>
+<p class="govuk-body">Data entered here will be interpreted as category 1 at the top through to category 14 at the bottom.</p>
+<form action="/version1-9/AATF-Returns/paste-values-save" method="post" class="form" style="display: inline">
+    
+    <textarea class="govuk-textarea" placeholder="Paste values here" id="paste-text-area" name="paste-text-area" style="height: 400px;"></textarea>
+    <button type="submit" class="govuk-button" id="paste-values-save">
+        Save and continue
+    </button>
+    
+</form>
+<form action="/version1-9/AATF-Returns/paste-values-cancel" method="post" class="form" style="display: inline">
+    <button type="submit" class="govuk-button" style="background-color: #bfc1c3; color: #0b0c0c">
+            Cancel
+        </button>
+    </form>
+{% endblock %}

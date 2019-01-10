@@ -1,0 +1,82 @@
+{% extends "version1-9/layout.html" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+    .govuk-table td, .govuk-table th {
+        border-bottom:0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#addPCS').click(function (event) {
+            if ($('input:checkbox:checked').length == 0) {
+                $('#errorSummary').css('display', 'block');
+                event.preventDefault();
+            } else {
+                $('#errorSummary').css('display', 'none');
+            }
+        })
+    });
+</script>
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none; margin-bottom: 25px;" id="errorSummary" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">Please select at least 1 PCS</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<form action="/version1-9/AATF-Returns/select-your-pcs" method="post" class="form">
+    <div class="govuk-!-padding-bottom-3"></div>
+    <h2 class="govuk-heading-l">Select all the PCSs that you received WEEE from</h2>
+    <p>These PCSs will be added to all of your AATFs</p>
+    <div class="govuk-!-padding-bottom-5"></div>
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="pcs-hint">
+            <div class="govuk-checkboxes" style="overflow-y: auto; max-height: 500px;">
+                {% for scheme in data['schemes']._schemes %}
+                {% set schemeFound = false %}
+                <div class="govuk-checkboxes__item">
+                    {% set selectedSchemes = data['period']._operator._selectedSchemes %}
+                    {% for chosenScheme in selectedSchemes %}
+                    {% if scheme._name == chosenScheme._name %}
+                    {% set schemeFound = true %}
+                    {% endif %}
+                    {% endfor %}
+                    {% if schemeFound %}
+                    <input class="govuk-checkboxes__input" checked id="{{scheme._name}}-{{scheme._id}}" name="pcs-selection-check"
+                        type="checkbox" value="{{scheme._name}}#{{scheme._id}}">
+                    {% else %}
+                    <input class="govuk-checkboxes__input" id="{{scheme._name}}-{{scheme._id}}" name="pcs-selection-check"
+                        type="checkbox" value="{{scheme._name}}#{{scheme._id}}">
+                    {% endif %}
+
+
+
+                    <label class="govuk-label govuk-checkboxes__label" for="pcs-{{scheme._name}}">
+                        {{scheme._name}} - {{scheme._id}}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </fieldset>
+    </div>
+    <button type="submit" class="govuk-button" id='addPCS'>
+        Add PCSs
+    </button>
+</form>
+{% endblock %}
