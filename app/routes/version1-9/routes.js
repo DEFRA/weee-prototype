@@ -136,7 +136,7 @@ router.get('/version1-9/Upload-Returns/paste-values-redirect', function (req, re
     req.session.data['paste-values'] = '';
     req.session.data['paste-page-title'] = req.query['title'];
     req.session.data['paste-return-page'] = req.query['returnUrl'];
-
+    console.log(req.session.data['paste-return-page']);
     res.render('version1-9/Upload-Returns/paste-values-screen');
 });
 
