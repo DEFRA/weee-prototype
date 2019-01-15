@@ -312,9 +312,13 @@ GOV.UK Prototype Kit
         <tr class="govuk-table__row">
             <th class="govuk-table__header" scope="col">
                 WEEE received (t)
-
             </th>
-            <th class="govuk-table__header" scope="col">WEEE retained by a DCF (t)
+            <th class="govuk-table__header" scope="col">
+            </th>
+            <th class="govuk-table__header" scope="col">
+                WEEE retained by a DCF (t)
+            </th>
+            <th class="govuk-table__header" scope="col">
             </th>
         </tr>
     </thead>
@@ -326,11 +330,13 @@ GOV.UK Prototype Kit
             {% else %}
             <td class="govuk-table__cell">-</td>
             {% endif %}
+            <td class="govuk-table__cell"><a href="SC004_1-Enter-non-obligated-WEEE.html" class="govuk-link govuk-link--no-visited-state">Change</a></td>
             {% if operator._weeDcf %}
             <td class="govuk-table__cell">{{ operator._weeDcf }}</td>
             {% else %}
             <td class="govuk-table__cell">-</td>
             {% endif %}
+            <td class="govuk-table__cell"><a href="SC004_2a-Add-any-DCF-data.html" class="govuk-link govuk-link--no-visited-state">Change</a></td>
         </tr>
     </tbody>
 </table>
