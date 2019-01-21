@@ -25,18 +25,11 @@ GOV.UK Prototype Kit
             return null;
             }
             else{
-                return decodeURI(results[1]) || 0;
+                return decodeURIComponent(results[1]) || 0;
             }
         }
 
         let myParam = $.urlParam('title');
-        //Decode was giving an error when encountering the encoded variable for %, try catch suppresses the error and allows original value to be used which is correct
-        try {
-            myParam = decodeURIComponent(myParam);
-        } catch (err) {
-
-        }
-        
 
         $('#heading-text').html(myParam);
     });
