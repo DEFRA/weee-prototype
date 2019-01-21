@@ -30,6 +30,7 @@ GOV.UK Prototype Kit
         }
 
         let myParam = $.urlParam('title');
+        myParam = decodeURIComponent(myParam);
         $('#heading-text').html(myParam);
     });
 </script>

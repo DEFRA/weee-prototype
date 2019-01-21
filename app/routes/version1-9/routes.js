@@ -1119,6 +1119,7 @@ router.post('/version1-9/AATF-Returns/operator-address-postcode-save', function 
     req.session.data['selectedFacility'] = selectedFacility;
     req.session.data['period'] = period;
     req.session.data['selectedOperator'] = newOperator;
+    req.session.data['selectedOperatorName'] = encodeURIComponent(newOperator._name);
     req.session.data['selectedSentOnForTreatmentId'] = selectedFacility._sentOnOperatorCollection.length - 1;
     req.session.data['site-address-operator'] = '';
     req.session.data['operator-name-search'] = '';

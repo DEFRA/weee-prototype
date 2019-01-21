@@ -17,7 +17,7 @@ GOV.UK Prototype Kit
     }
 </style>
 <div class="govuk-!-padding-bottom-3"></div>
-<h2 class="govuk-heading-l">WEEE sent to {{ data['selectedOperator']._name }} for treatment</h2>
+<h2 class="govuk-heading-l" id="heading2"> WEEE sent to {{data['selectedOperator']._name }} for treatment</h2>
 <p class="govuk-body">This
     is WEEE that you
     received at your AATF(s) which you have not treated and was sent on for treatment
@@ -46,7 +46,7 @@ GOV.UK Prototype Kit
                 <td class="govuk-table__cell" colspan="2" style="border-bottom: 0px;">
                     <div class="govuk-body govuk-!-font-weight-bold govuk-!-margin-bottom-1 govuk-!-width-three-quarters">
                         <div class="govuk-body govuk-!-font-size-19">
-                            <a href="paste-values-redirect?returnUrl=SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment&title=WEEE sent to {{ data['selectedOperator']._name }} for treatment">Use
+                            <a id="" href="paste-values-redirect?returnUrl=SC016_3-Enter-whole-WEEE-that-has-been-sent-to-another-ATF-for-treatment&title=WEEE sent to {{ data['selectedOperatorName'] }} for treatment">Use
                                 copy and paste to populate the table</a>
                         </div>
                     </div>
