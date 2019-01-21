@@ -30,7 +30,14 @@ GOV.UK Prototype Kit
         }
 
         let myParam = $.urlParam('title');
-        myParam = decodeURIComponent(myParam);
+        //Decode was giving an error when encountering the encoded variable for %, try catch suppresses the error and allows original value to be used which is correct
+        try {
+            myParam = decodeURIComponent(myParam);
+        } catch (err) {
+
+        }
+        
+
         $('#heading-text').html(myParam);
     });
 </script>
