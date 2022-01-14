@@ -1,0 +1,49 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+  
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Waste Electric and Electronic Equipment v2
+        <span class="govuk-caption-xl">prototype kit {{releaseVersion}}</span>
+      </h1>{{releaseVersion | log }}
+      <p>
+        This is the prototype development kit produced by Guido.
+		Each new designed page will be appended at the bottom list for you to view.
+      </p>
+
+      <h2 class="govuk-heading-m">Examples and documentation</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="/docs/tutorials-and-examples">Example pages and documentation</a>
+        </li>
+        <li>
+          <a href="https://design-system.service.gov.uk">GOV.UK Design System</a>
+        </li>
+      </ul>
+	  
+	  <!-- added by Guido -->
+	  <hr class="govuk-section-break govuk-section-break--visible">
+
+      <h2 class="govuk-heading-m">Click on these links to view newly designed pages</h2>
+	  
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="screen01">Choose activity AATF</a>
+        </li>
+        <li>
+          <a href="screen02">Choose an AATF site</a>
+        </li>
+        <li>
+          <a href="screen03">Manage Evidence</a>
+        </li>
+      </ul>
+	  
+    </div>
+  </div>
+
+{% endblock %}
