@@ -10,7 +10,7 @@ journeys where users are returning or logging in to an existing application.
 Example usage:
 
 "organisation": "ABB Ltd",
-"full-name": "Guido Cangelosi",
+"full-name": "Emily Munro",
 
 "options-chosen": [ "foo", "bar" ]
 
@@ -20,8 +20,9 @@ Example usage:
 
 module.exports = 
 {
-
-	"organisation": "ABB Ltd",
-	"signin-name": "Guido Cangelosi"
-
+	header:
+	{
+		"organisation": "ABB Ltd",
+		"signin-name": "Emily Munro"
+	}
 }
