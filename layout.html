@@ -95,7 +95,11 @@
   
   {% block afterContent %}
    <div class="govuk-footer__container">  
-    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+    <a class="govuk-footer__link" href="javascript:window.history.back()">
+	<img src="public/images/back-left-arrow.png" style="width: 8px;" /> 
+	<span style="font-size: 20px;">back</span>
+	</a>
+	<br />&nbsp;<br />&nbsp;
    </div>
   {% endblock %}
 
@@ -178,8 +182,10 @@
 			  </span>
 			</div>
 			<div class="govuk-footer__meta-item">
-			  <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">©
-				Crown copyright</a>
+			  <a class="govuk-footer__link govuk-footer__copyright-logo" 
+			     href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">
+				 &copy; Crown copyright
+			  </a>
 			</div>
 		  </div>
 		</div>

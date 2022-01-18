@@ -1,0 +1,236 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Choose an AATF site
+{% endblock %}
+
+{% block content %}
+<style>
+/*
+.search-text-input
+{
+	border: 0px solid black;
+    float:left;
+    height:28px;
+    margin:.0 0 0 0; 
+    padding:0 0 0 0; 
+    width:150px; 
+	font-size: 16px;
+    outline: none;
+}
+#button-holder img
+{
+    cursor:pointer;
+    float:right;
+    height:26px;
+    margin:0 0 0 0;
+    width:26px;
+}
+*/
+</style>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full" style="border: 0px solid black;">
+
+      <h1 class="govuk-heading-l">Manage evidence notes for ABB1</h1>
+	  
+	  <button class="govuk-button" data-module="govuk-button">Create new evidence note</button>
+
+      <form class="form" action="/url/of/next/page" method="post">
+	  
+		<div class="element-spacer">
+		<div class="govuk-label--m">Search by reference number</div>
+		<div class="govuk-input"style="width: 200px;">
+			<input type="text" id="input-search" placeholder=" " class="search-text-input" />
+			<span id="button-holder"><img src="public/images/search.jpg" /></span>
+		</div>
+		</div>
+		
+		<div class="element-spacer">
+		
+			<label class="govuk-heading-s">Filter by:</label>
+			
+			<table>
+				<tr>
+				
+				<td>
+					<input type="Date" value="Date" style="font-size: 18px; padding: 5px; border: 2px solid black;" />
+				</td>
+				
+				<td>
+					<select class="govuk-select" text="Compliance year">
+						<option value="0">Compliance year</option>
+						<option value="1">2021</option>
+						<option value="2">2020</option>
+						<option value="3">2019</option>
+					</select>
+				</td>
+				
+				<td>
+					<input class="govuk-select" type="text" name="example" list="issuersList" value="Issued to">
+					<datalist id="issuersList">
+						<option value="ABB 1 Ltd" />
+						<option value="ABB 2 Ltd" />
+						<option value="ABB 3 Ltd" />
+						<option value="NBC 1 Ltd" />
+						<option value="NBC 2 Ltd" />
+						<option value="NBC 3 Ltd" />
+						<option value="CBS 1 Ltd" />
+						<option value="CBS 2 Ltd" />
+						<option value="CBS 3 Ltd" />
+						<option value="PBS 1 Ltd" />
+						<option value="PBS 2 Ltd" />
+						<option value="PBS 3 Ltd" />
+					</datalist>
+				</td>
+				
+				<td>
+					<select class="govuk-select" text="Type">
+						<option value="0">Type</option>
+						<option value="1">Household</option>
+						<option value="2">Shop</option>
+						<option value="3">Service company</option>
+					</select>
+				</td>
+				
+				<td>
+					<select class="govuk-select" text="Status">
+						<option value="0">Status</option>
+						<option value="1">Draft</option>
+						<option value="2">Submitted</option>
+						<option value="3">Approved</option>
+						<option value="4">Rejected</option>
+						<option value="5">Returned</option>
+						<option value="6">Void</option>
+					</select>
+				</td>
+				
+				<td>
+					<select class="govuk-select" text="Category" style="max-width: 150px;">
+						<option value="0">Category</option>
+						<option value="1">1- Large household appliances</option>
+						<option value="2">2- Small household appliances</option>
+						<option value="3">3- IT and telecommunications equipment</option>
+						<option value="4">4- Consumer equipment</option>
+						<option value="5">5- Lighting equipment</option>
+						<option value="6">6- Electrical and electronic tools</option>
+						<option value="7">7- Toys, leisure and sports equipment</option>
+						<option value="8">8- Medical devices</option>
+						<option value="9">9- Monitoring and control instruments</option>
+						<option value="10">10- Automatic dispensers</option>
+						<option value="11">11- Display equipment</option>
+						<option value="12">12- Cooling appliances containing refridgerants</option>
+						<option value="13">13- Gas discharge lamps</option>
+						<option value="14">14- Photovoltaic panels</option>
+					</select>
+				</td>
+				
+				</tr>
+			</table>
+		
+		</div>
+		
+		<div class="element-spacer">
+		<table class="govuk-table">
+		  <thead class="govuk-table__head">
+		  
+			<tr class="govuk-table__row">
+			  <th scope="col" class="govuk-table__header">Reference number</th>
+			  <th scope="col" class="govuk-table__header">Submitted date (GMT)</th>
+			  <th scope="col" class="govuk-table__header">Issued to</th>
+			  <th scope="col" class="govuk-table__header">Type</th>
+			  <th scope="col" class="govuk-table__header">Status</th>
+			  <th scope="col" class="govuk-table__header">&nbsp;</th>
+			</tr>
+		  </thead>
+		  
+		  <tbody class="govuk-table__body">
+			<tr class="govuk-table__row">
+			  <td class="govuk-table__cell">1279</td>
+			  <td class="govuk-table__cell">-</td>
+			  <td class="govuk-table__cell">PCS1</td>
+			  <td class="govuk-table__cell">Household</td>
+			  <td class="govuk-table__cell">Draft</td>
+			  <td class="govuk-table__cell">
+				<a = href="#">View</a>
+				<a = href="#">Edit</a>
+			  </td>
+			</tr>
+			<tr class="govuk-table__row">
+			  <td class="govuk-table__cell">1389</td>
+			  <td class="govuk-table__cell">12/11/2021</td>
+			  <td class="govuk-table__cell">PCS2</td>
+			  <td class="govuk-table__cell">Household</td>
+			  <td class="govuk-table__cell">Submitted</td>
+			  <td class="govuk-table__cell">
+				<a = href="#">View</a>
+				<a = href="#">Edit</a>
+			  </td>
+			</tr>
+			<tr class="govuk-table__row">
+			  <td class="govuk-table__cell">1486</td>
+			  <td class="govuk-table__cell">13/11/2021</td>
+			  <td class="govuk-table__cell">PCS3</td>
+			  <td class="govuk-table__cell">Household</td>
+			  <td class="govuk-table__cell">Approved</td>
+			  <td class="govuk-table__cell">
+				<a = href="#">View</a>
+				<a = href="#">Edit</a>
+			  </td>
+			</tr>
+			<tr class="govuk-table__row">
+			  <td class="govuk-table__cell">1499</td>
+			  <td class="govuk-table__cell">13/11/2021</td>
+			  <td class="govuk-table__cell">PCS4</td>
+			  <td class="govuk-table__cell">Household</td>
+			  <td class="govuk-table__cell">Rejected</td>
+			  <td class="govuk-table__cell">
+				<a = href="#">View</a>
+				<a = href="#">Edit</a>
+			  </td>
+			</tr>
+			<tr class="govuk-table__row">
+			  <td class="govuk-table__cell">1543</td>
+			  <td class="govuk-table__cell">14/11/2021</td>
+			  <td class="govuk-table__cell">PCS5</td>
+			  <td class="govuk-table__cell">Household</td>
+			  <td class="govuk-table__cell">Returned</td>
+			  <td class="govuk-table__cell">
+				<a = href="#">View</a>
+				<a = href="#">Edit</a>
+			  </td>
+			</tr>
+			<tr class="govuk-table__row">
+			  <td class="govuk-table__cell">1599</td>
+			  <td class="govuk-table__cell">14/11/2021</td>
+			  <td class="govuk-table__cell">PCS6</td>
+			  <td class="govuk-table__cell">Household</td>
+			  <td class="govuk-table__cell">Void</td>
+			  <td class="govuk-table__cell">
+				<a = href="#">View</a>
+				<a = href="#">Edit</a>
+			  </td>
+			</tr>
+			
+			<tr>
+			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-6 of 50</td>
+			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				<span style="float: right;">
+				Prev 1 
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">Next</a>
+				</span>
+			  </td>
+			</tr>
+		  </tbody>
+		  
+		</table>
+		</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
