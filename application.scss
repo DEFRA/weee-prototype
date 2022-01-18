@@ -47,3 +47,65 @@ $govuk-assets-path: '/govuk/assets/';
   margin: 0 auto; 
   max-width: 950px;
 }
+
+.search-text-input
+{
+	border: 0px solid black;
+    float:left;
+    height:28px;
+    margin:.0 0 0 0; 
+    padding:0 0 0 0; 
+    width:150px; 
+	font-size: 16px;
+    outline: none;
+}
+
+#button-holder img
+{
+    cursor:pointer;
+    float:right;
+    height:26px;
+    margin:0 0 0 0;
+    width:26px;
+}
+
+.civica-select
+{
+	width: 220px; 
+	border: 1px solid gray; 
+	padding: 0px; 
+	margin: 2px;
+}
+
+.civica-textfield
+{
+	width: 180px; 
+	border: 1px solid gray; 
+	padding: 0px; 
+	margin: 2px;
+	height: 38px;
+}
+
+.dynamic-col-1
+{
+	visibility: visible;
+	width: 450px;
+}
+
+.dynamic-col-2
+{
+	visibility: visible;
+	width: 280px;
+}
+
+.dynamic-col-3
+{
+	visibility: visible;
+	width: 280px;
+}
+
+.dynamic-col-4
+{
+	display: none;
+	width: 8px;
+}

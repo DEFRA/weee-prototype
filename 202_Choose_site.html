@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Choose an AATF site
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Choose an AATF site</h1>
+
+      <form class="form" action="screen03" method="post">
+	  
+		{{ govukRadios
+			({
+			  idPrefix: "choose-activity",
+			  name: "choose-activity",
+			  fieldset: 
+			  {
+				legend: 
+				{
+				  text: "",
+				  isPageHeading: true,
+				  classes: "govuk-fieldset__legend--l"
+				}
+			  },
+			  items: 
+			  [
+				{
+				  value: "1",
+				  text: "ABB 1",
+				  checked: true
+				},
+				{
+				  value: "2",
+				  text: "ABB 2"
+				},
+				{
+				  value: "3",
+				  text: "ABB 3"
+				}
+			  ]
+			}) 
+		}}
+		
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
