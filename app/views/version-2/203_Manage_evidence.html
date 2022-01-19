@@ -5,7 +5,29 @@
 {% endblock %}
 
 {% block content %}
-
+<style>
+/*
+.search-text-input
+{
+	border: 0px solid black;
+    float:left;
+    height:28px;
+    margin:.0 0 0 0; 
+    padding:0 0 0 0; 
+    width:150px; 
+	font-size: 16px;
+    outline: none;
+}
+#button-holder img
+{
+    cursor:pointer;
+    float:right;
+    height:26px;
+    margin:0 0 0 0;
+    width:26px;
+}
+*/
+</style>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" style="border: 0px solid black;">
 
@@ -16,13 +38,16 @@
       <form class="form" action="/url/of/next/page" method="post">
 	  
 		<div class="element-spacer">
-			<label for="toto1" style="font-size: 18px; padding: 5px;">Search by reference number</label><br />
-			<input type="textbox" name="toto1" style="font-size: 18px; padding: 5px; border: 2px solid black; width: 300px;" />
+		<div class="govuk-label--m">Search by reference number</div>
+		<div class="govuk-input"style="width: 200px;">
+			<input type="text" id="input-search" placeholder=" " class="search-text-input" />
+			<span id="button-holder"><img src="public/images/search.jpg" /></span>
+		</div>
 		</div>
 		
 		<div class="element-spacer">
 		
-			<label style="font-size: 18px; padding: 5px;">Filter by:</label>
+			<label class="govuk-heading-s">Filter by:</label>
 			
 			<table>
 				<tr>
@@ -34,19 +59,28 @@
 				<td>
 					<select class="govuk-select" text="Compliance year">
 						<option value="0">Compliance year</option>
-						<option value="1">2020</option>
-						<option value="2">2021</option>
-						<option value="3">2022</option>
+						<option value="1">2021</option>
+						<option value="2">2020</option>
+						<option value="3">2019</option>
 					</select>
 				</td>
 				
 				<td>
-					<select class="govuk-select" text="Issued to">
-						<option value="0">Issued to</option>
-						<option value="1">ABB 1 Ltd</option>
-						<option value="2">ABB 2 Ltd</option>
-						<option value="3">ABB 3 Ltd</option>
-					</select>
+					<input class="govuk-select" type="text" name="example" list="issuersList" value="Issued to">
+					<datalist id="issuersList">
+						<option value="ABB 1 Ltd" />
+						<option value="ABB 2 Ltd" />
+						<option value="ABB 3 Ltd" />
+						<option value="NBC 1 Ltd" />
+						<option value="NBC 2 Ltd" />
+						<option value="NBC 3 Ltd" />
+						<option value="CBS 1 Ltd" />
+						<option value="CBS 2 Ltd" />
+						<option value="CBS 3 Ltd" />
+						<option value="PBS 1 Ltd" />
+						<option value="PBS 2 Ltd" />
+						<option value="PBS 3 Ltd" />
+					</datalist>
 				</td>
 				
 				<td>
@@ -71,16 +105,27 @@
 				</td>
 				
 				<td>
-					<select class="govuk-select" text="Category">
+					<select class="govuk-select" text="Category" style="max-width: 150px;">
 						<option value="0">Category</option>
-						<option value="1">Category 1</option>
-						<option value="2">Category 2</option>
-						<option value="3">Category 3</option>
+						<option value="1">1- Large household appliances</option>
+						<option value="2">2- Small household appliances</option>
+						<option value="3">3- IT and telecommunications equipment</option>
+						<option value="4">4- Consumer equipment</option>
+						<option value="5">5- Lighting equipment</option>
+						<option value="6">6- Electrical and electronic tools</option>
+						<option value="7">7- Toys, leisure and sports equipment</option>
+						<option value="8">8- Medical devices</option>
+						<option value="9">9- Monitoring and control instruments</option>
+						<option value="10">10- Automatic dispensers</option>
+						<option value="11">11- Display equipment</option>
+						<option value="12">12- Cooling appliances containing refridgerants</option>
+						<option value="13">13- Gas discharge lamps</option>
+						<option value="14">14- Photovoltaic panels</option>
 					</select>
 				</td>
 				
 				</tr>
-			<table>
+			</table>
 		
 		</div>
 		
