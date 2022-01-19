@@ -17,8 +17,11 @@ Example usage:
 
 */
 
-module.exports = {
-
-  // Insert values here
-
+module.exports = 
+{
+	header:
+	{
+		"organisation": "ABB Ltd",
+		"signin-name": "Emily Munro"
+	}
 }

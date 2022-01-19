@@ -47,43 +47,7 @@
     serviceUrl: "/",
     containerClasses: "govuk-width-container civica-align-left"
   }) }}
-  
-<div  class="govuk-width-container "style="border-bottom: 1px solid rgb(191, 193, 195);" id="sign-in-banner">
-  <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half">
-          <div class="username-title-display font-xsmall"  style="padding: 5px; font-family: 'nta',Arial,sans-serif; font-weight: 400; text-transform: none; margin: 0 auto; ">
-            <ul id="activity-banner" style="margin-top: 0px; margin-bottom: 0px; list-style-type:none; padding-left: 0;">
-              <li id="activity-banner-org">
-                
-                  <span style="text-decoration:underline; font-weight: bold;">Organisation</span>:
-                  <span class="username-format" style="color: #0b0c0c">{{ data['header']['organisation'] }}</span>
-                
-              </li>
-              <li id="activity-banner-activity" style="display: none;">
-                <span style="text-decoration:underline; font-weight: bold;">Activity:</span>
-                <span class="username-format">AATF return</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-    <div class="govuk-grid-column-one-half">
-        <div class="username-title-display font-xsmall"  style="text-align: right; padding: 5px; font-family: 'nta',Arial,sans-serif; font-weight: 400; text-transform: none; margin: 0 auto; float: right;">
-          <ul style="margin-top: 0px; margin-bottom: 0px; list-style-type:none;">
-            <li>
-              <div class="text-secondary" style="color: #6f777b">
-                Signed in as:
-                <span class="username-format" style="font-weight: bold; color: #0b0c0c">{{data['header']['signin-name']}}</span>
-              </div>
-            </li>
-            <li>
-              <a class="link-submit" href="#" style="font-size: 16p; line-height: 1.25; font-family: 'nta',Arial,sans-serif; font-weight:400; text-transform: none;">Sign out</a>
-            </li>
-          </ul>
-        </div>
-    </div>
-    
-  </div>
-</div>
+
 
 {% endblock %}
 

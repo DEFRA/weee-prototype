@@ -6,7 +6,7 @@ const version2 = require('./routes/version-2/routes');
 // Add your routes here - above the module.exports line
 
 router.get('/', function (req, res) {
-    res.redirect('/version-2/index')
+    res.redirect('/versions-home')
 })
 
 //Index of versions route
