@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "version-2/layout.html" %}
 
 {% block pageTitle %}
   Choose an AATF site
@@ -11,7 +11,7 @@
 
       <h1 class="govuk-heading-xl">Choose an AATF site</h1>
 
-      <form class="form" action="screen03" method="post">
+      <form class="form" action="203_Manage_evidence" method="post">
 	  
 		{{ govukRadios
 			({
@@ -45,8 +45,10 @@
 			}) 
 		}}
 		
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
-
+		{{ govukButton({
+			text: "Continue"
+		  }) }}
+  
       </form>
 
     </div>

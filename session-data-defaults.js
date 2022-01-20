@@ -9,8 +9,7 @@ journeys where users are returning or logging in to an existing application.
 
 Example usage:
 
-"organisation": "ABB Ltd",
-"full-name": "Emily Munro",
+"full-name": "Sarah Philips",
 
 "options-chosen": [ "foo", "bar" ]
 

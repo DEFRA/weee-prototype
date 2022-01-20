@@ -1,0 +1,121 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+$govuk-new-link-styles: true;
+
+// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
+
+// Patterns that aren't in Frontend
+@import "patterns/step-by-step-header";
+@import "patterns/step-by-step-nav";
+@import "patterns/step-by-step-related";
+@import "patterns/task-list";
+@import "patterns/related-items";
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+.signout { font-size: 13px; font-family: arial; }
+
+.element-spacer
+{
+	margin-top: 32px; 
+	margin-bottom: 32px;
+}
+
+.civica-align-left > div:first-child
+{ 
+	border: 0px solid white; 
+	max-width: 180px;
+	transform: scale(0.72);
+	margin-right: 0px;
+}
+
+.civica-align-left > div:last-child
+{ 
+	border: 0px solid white; 
+	font-size: 12px;
+	transform: scale(0.9);
+	margin-left: -30px;
+}
+
+.search-text-input
+{
+	border: 0px solid black;
+    float:left;
+    height:28px;
+    margin:.0 0 0 0; 
+    padding:0 0 0 0; 
+    width:150px; 
+	font-size: 16px;
+    outline: none;
+}
+
+#button-holder img
+{
+    cursor:pointer;
+    float:right;
+    height:26px;
+    margin:0 0 0 0;
+    width:26px;
+}
+
+.civica-select
+{
+	width: 220px; 
+	border: 1px solid gray; 
+	padding: 0px; 
+	margin: 2px;
+}
+
+.civica-textfield
+{
+	width: 180px; 
+	border: 1px solid gray; 
+	padding-right: 4px; 
+	margin: 0px;
+	height: 38px;
+	font-size: 22px;
+	text-align: right;
+}
+
+.dynamic-col-1
+{
+	visibility: visible;
+	width: 450px;
+}
+
+.dynamic-col-2
+{
+	visibility: visible;
+	width: 280px;
+}
+
+.dynamic-col-3
+{
+	visibility: visible;
+	width: 280px;
+}
+
+.dynamic-col-4
+{
+	display: none;
+	width: 8px;
+}
+
+.grey-button
+{
+	background-color: #ccc;
+	width: 150px; 
+	height: 40px;
+	font-size: 18px;
+	font-weight: 500;
+}
+
+.govuk-footer__container 
+{
+  margin: 0 auto; 
+  max-width: 950px;
+}

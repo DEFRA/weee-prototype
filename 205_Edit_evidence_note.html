@@ -1,14 +1,14 @@
 {% extends "version-2/layout.html" %}
 
 {% block pageTitle %}
-  Choose an AATF site
+  Edit evidence note
 {% endblock %}
 
 {% block content %}
 
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full" style="border: 0px solid black;">
+    <div class="govuk-grid-column-full">
 
       <form class="form" action="/url/of/next/page" method="post">
 	  
@@ -18,14 +18,12 @@
 	  
 		<h3 class="govuk-heading-m">Period in which WEEE was recieved for treatment</h3>
 
-		<div style="border: 0px solid darkgray; width: 540px;">
+		<div class="govuk-!-padding-bottom-7 govuk-grid-column-two-thirds">
 			<div class="govuk-label--s" style="float: left; font-weight: 300;">Start date<br /><input type="Date" value="Date" style="font-size: 18px; padding: 5px 0 5px 0; border: 2px solid black; width: 240px;" /></div>
 			<div class="govuk-label--s" style="float: right; font-weight: 300;">End date<br /><input type="Date" value="Date" style="font-size: 18px; padding: 5px 0 5px 0; border: 2px solid black; width: 240px;" /></div>
 		</div>
 		
-		<div style="clear: both; height: 40px;">&nbsp;</div>
-
-		<div style="width: 540px; border: 0px solid darkgray;">
+		<div class="govuk-!-padding-bottom-7 govuk-grid-column-two-thirds">
 		
 			<input class="govuk-select" style="width: 244px;" type="text" name="example" list="recipientsList" value="Recipient name">
 			<datalist id="recipientsList">
@@ -45,26 +43,26 @@
 
 			<select class="govuk-select" style="width: 244px; float: right;" text="Compliance year">
 				<option value="0">Compliance year</option>
-				<option value="1">2021</option>
-				<option value="2">2020</option>
-				<option value="3">2019</option>
+				<option value="1">2022</option>
+				<option value="2">2021</option>
+				<option value="3">2020</option>
 			</select>		
 		</div>
 		
-		<div style="clear: both; height: 40px;">&nbsp;</div>
-
-		<div style="width: 540px; border: 0px solid darkgray;">
+		<div class="govuk-!-padding-bottom-7 govuk-grid-column-two-thirds">
 		
 			<select class="govuk-select" style="width: 244px;" text="type of waste">
-				<option value="0">Compliance year</option>
-				<option value="1">1- </option>
-				<option value="2">2- </option>
-				<option value="3">3- </option>
+				<option value="0">Type of waste</option>
+				<option value="1">Household</option>
+				<option value="2">Non-household</option>
 			</select>		
 
 			<select class="govuk-select" style="width: 244px; float: right;" text="Actual or protocol">
-				<option value="0">actual</option>
-				<option value="1">protocol</option>
+				<option value="0">Actual or protocol</option>
+				<option value="0">Actual</option>
+				<option value="1">National protocol</option>
+				<option value="2">Site protocol</option>
+				<option value="3">Re-use network weights</option>
 			</select>		
 		</div>
 		
@@ -101,15 +99,15 @@
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell dynamic-col-1">1- Large household appliances</td>
-						<td class="govuk-table__cell dynamic-col-2"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell dynamic-col-3"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell dynamic-col-2"><input type="text" class="civica-textfield" value="12.105" /></td>
+						<td class="govuk-table__cell dynamic-col-3"><input type="text" class="civica-textfield" value="3.150" /></td>
 						<td class="govuk-table__cell dynamic-col-4 civica-visibility"><select class="govuk-select govuk-table__header civica-select"> <option>actual</option> <option>protocol</option> </select></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell dynamic-col-1">2- Small household appliances</td>
-						<td class="govuk-table__cell dynamic-col-2"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell dynamic-col-3"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell dynamic-col-2"><input type="text" class="civica-textfield" value="10.500" /></td>
+						<td class="govuk-table__cell dynamic-col-3"><input type="text" class="civica-textfield" value="8.100" /></td>
 						<td class="govuk-table__cell dynamic-col-4 civica-visibility"><select class="govuk-select govuk-table__header civica-select"> <option>actual</option> <option>protocol</option> </select></td>
 					</tr>
 				
@@ -192,8 +190,8 @@
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell dynamic-col-1">14- Photovoltaic panels</td>
-						<td class="govuk-table__cell dynamic-col-2"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell dynamic-col-3"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell dynamic-col-2"><input type="text" class="civica-textfield" value="22.605" /></td>
+						<td class="govuk-table__cell dynamic-col-3"><input type="text" class="civica-textfield" value="11.250" /></td>
 						<td class="govuk-table__cell dynamic-col-4 civica-visibility"><select class="govuk-select govuk-table__header civica-select"> <option>actual</option> <option>protocol</option> </select></td>
 					</tr>
 
@@ -201,14 +199,23 @@
 			</table>
 		
 		</div>
+		
+		<div>
+		
+		{{ govukButton({
+			text: "Submit evidence note"
+		  }) }}
+
+		{{ govukButton({
+			text: "Save as draft"
+		  }) }}
+		<button class="grey-button">Save as draft</button>
+
+		</div>
 
       </form>
 
     </div>
   </div>
-
-  <div class="govuk-footer__container">  
-	<a  class="govuk-back-link" href="javascript:window.history.back()">Back</a>
-   </div>
 
 {% endblock %}
