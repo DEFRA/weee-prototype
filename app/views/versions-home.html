@@ -52,8 +52,30 @@
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% block content %}
-<h2 class="govuk-heading-l">External prototypes</h2>
-<h3 class="govuk-heading-m"><a href="/version-1/index.html">Version 1</a></h3>
+<h1 class="govuk-heading-l">External prototypes</h2>
+<h2 class="govuk-heading-m"><a>Version 1 (no Heroku version)</a></h3>
+<p>Only Axure prototypes available</p>
+<hr class="govuk-section-break govuk-section-break--visible">
+</br>
+<h2 class="govuk-heading-m"><a href="version-2/index">Version 2 Journey</a></h3>
+<h3 class="govuk-heading-s">Click on these links to view the designed pages</h2>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>
+    <a href="version-2/201_Choose_activity_AATF">2.01 Choose activity AATF</a>
+  </li>
+  <li>
+    <a href="version-2/202_Choose_site">2.02 Choose an AATF site</a>
+  </li>
+  <li>
+    <a href="version-2/203_Manage_evidence">2.03 Manage Evidence</a>
+  </li>
+  <li>
+    <a href="version-2/205_Create_evidence_note_no_protocol">2.05 Create evidence note (no protocol)</a>
+  </li>
+</ul>
+
+</div>
 
 {% endblock %}
 {% if useAutoStoreData %}
