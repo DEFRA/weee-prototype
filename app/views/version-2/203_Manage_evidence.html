@@ -31,12 +31,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" style="border: 0px solid black;">
 
-      <h1 class="govuk-heading-l">Manage evidence notes for ABB1</h1>
+      <h1 class="govuk-heading-l">Manage evidence notes for {{data['choose-aatf-site']}}</h1>
 	  
-	  <button class="govuk-button" data-module="govuk-button">Create new evidence note</button>
-
-      <form class="form" action="/url/of/next/page" method="post">
-	  
+      <form class="form" action="/create-new-evidence-redirect" method="post">
+		<button class="govuk-button" data-module="govuk-button" type="submit">Create new evidence note</button>
 		<div class="element-spacer">
 		<div class="govuk-label--m">Search by reference number</div>
 		<div class="govuk-input"style="width: 200px;">
