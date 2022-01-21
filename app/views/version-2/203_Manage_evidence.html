@@ -1,41 +1,25 @@
 {% extends "version-2/layout.html" %}
 
 {% block pageTitle %}
-  Choose an AATF site
+  Manage evidence note
 {% endblock %}
 
 {% block content %}
-<style>
-/*
-.search-text-input
-{
-	border: 0px solid black;
-    float:left;
-    height:28px;
-    margin:.0 0 0 0; 
-    padding:0 0 0 0; 
-    width:150px; 
-	font-size: 16px;
-    outline: none;
-}
-#button-holder img
-{
-    cursor:pointer;
-    float:right;
-    height:26px;
-    margin:0 0 0 0;
-    width:26px;
-}
-*/
-</style>
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full" style="border: 0px solid black;">
 
-      <h1 class="govuk-heading-l">Manage evidence notes for {{data['choose-aatf-site']}}</h1>
+      <h1 class="govuk-heading-l">Manage evidence notes for ABB1</h1>
 	  
-      <form class="form" action="/create-new-evidence-redirect" method="post">
-		<button class="govuk-button" data-module="govuk-button" type="submit">Create new evidence note</button>
-		<div class="element-spacer">
+
+      <form class="form" action="205_Create_evidence_note" method="post">
+
+		{{ govukButton({
+			text: "Create new evidence note"
+		  }) }}
+	  
+	  
+		<div class="govuk-!-padding-bottom-7">
 		<div class="govuk-label--m">Search by reference number</div>
 		<div class="govuk-input"style="width: 200px;">
 			<input type="text" id="input-search" placeholder=" " class="search-text-input" />
@@ -43,7 +27,7 @@
 		</div>
 		</div>
 		
-		<div class="element-spacer">
+		<div class="govuk-!-padding-bottom-7">
 		
 			<label class="govuk-heading-s">Filter by:</label>
 			
@@ -64,7 +48,7 @@
 				</td>
 				
 				<td>
-					<input class="govuk-select" type="text" name="example" list="issuersList" value="Issued to">
+					<input class="govuk-select" style="width: 130px;" type="text" name="example" list="issuersList" value="Issued to">
 					<datalist id="issuersList">
 						<option value="ABB 1 Ltd" />
 						<option value="ABB 2 Ltd" />
@@ -127,7 +111,7 @@
 		
 		</div>
 		
-		<div class="element-spacer">
+		<div class="govuk-!-padding-bottom-7">
 		<table class="govuk-table">
 		  <thead class="govuk-table__head">
 		  
@@ -149,8 +133,8 @@
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Draft</td>
 			  <td class="govuk-table__cell">
-				<a = href="#">View</a>
-				<a = href="#">Edit</a>
+				<a href="207a_View_evidence_note.html">View</a>
+				<a href="205_Edit_evidence_note.html">Edit</a>
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -160,8 +144,8 @@
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Submitted</td>
 			  <td class="govuk-table__cell">
-				<a = href="#">View</a>
-				<a = href="#">Edit</a>
+				<a href="#">View</a>
+				<a href="#">Edit</a>
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -171,8 +155,8 @@
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Approved</td>
 			  <td class="govuk-table__cell">
-				<a = href="#">View</a>
-				<a = href="#">Edit</a>
+				<a href="#">View</a>
+				<a href="#">Edit</a>
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -182,8 +166,8 @@
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Rejected</td>
 			  <td class="govuk-table__cell">
-				<a = href="#">View</a>
-				<a = href="#">Edit</a>
+				<a href="#">View</a>
+				<a href="#">Edit</a>
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -193,8 +177,8 @@
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Returned</td>
 			  <td class="govuk-table__cell">
-				<a = href="#">View</a>
-				<a = href="#">Edit</a>
+				<a href="#">View</a>
+				<a href="#">Edit</a>
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -204,8 +188,8 @@
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Void</td>
 			  <td class="govuk-table__cell">
-				<a = href="#">View</a>
-				<a = href="#">Edit</a>
+				<a href="#">View</a>
+				<a href="#">Edit</a>
 			  </td>
 			</tr>
 			
@@ -231,7 +215,4 @@
     </div>
   </div>
 
-  <div class="govuk-footer__container">  
-	<a  class="govuk-back-link" href="javascript:window.history.back()">Back</a>
-   </div>
 {% endblock %}
