@@ -48,7 +48,7 @@
     containerClasses: "govuk-width-container civica-align-left"
   }) }}
   
-<div  class="govuk-width-container "style="border-bottom: 1px solid rgb(191, 193, 195);" id="sign-in-banner">
+<div class="govuk-width-container" style="border-bottom: 1px solid rgb(191, 193, 195);" id="sign-in-banner">
   <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-half">
           <div class="username-title-display font-xsmall"  style="padding: 5px; font-family: 'nta',Arial,sans-serif; font-weight: 400; text-transform: none; margin: 0 auto; ">
@@ -94,11 +94,13 @@
   {% block footer %}
   
   {% block afterContent %}
-  
+	<div class="govuk-footer__container">  
+		<a  class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+	</div>  
   {% endblock %}
 
 	<footer class="govuk-footer" role="contentinfo">
-	  <div class="govuk-width-container" style="max-width: 920px;">
+	  <div class="govuk-width-container" style="max-width: 920px;">          <!-- style="max-width: 920px;"> -->
 		<div class="govuk-footer__navigation">
 		  <div class="govuk-footer__section">
 			<h2 class="govuk-footer__heading govuk-heading-m govuk-!-margin-bottom-2" style="border-bottom: 0px;">Contact us</h2>
