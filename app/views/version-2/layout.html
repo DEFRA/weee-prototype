@@ -52,14 +52,12 @@
   <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-half">
           <div class="username-title-display font-xsmall"  style="padding: 5px; font-family: 'nta',Arial,sans-serif; font-weight: 400; text-transform: none; margin: 0 auto; ">
-            <ul id="activity-banner" style="margin-top: 0px; margin-bottom: 0px; list-style-type:none; padding-left: 0;">
-              <li id="activity-banner-org">
-                
+            <ul id="activity-banner" style="margin-top: 0px; margin-bottom: 5px; list-style-type:none; padding-left: 0; padding-top: 5px; padding-bottom: 5px;">
+              <li id="activity-banner-org" style="padding-bottom: 5px;">
                   <span style="text-decoration:underline; font-weight: bold;">Organisation</span>:
                   <span class="username-format" style="color: #0b0c0c">{{ data['header']['organisation'] }}</span>
-                
               </li>
-              <li id="activity-banner-activity" style="display: none;">
+              <li id="activity-banner-activity">
                 <span style="text-decoration:underline; font-weight: bold;">Activity:</span>
                 <span class="username-format">AATF return</span>
               </li>
@@ -81,9 +79,12 @@
           </ul>
         </div>
     </div>
-    
   </div>
 </div>
+
+<div class="govuk-footer__container">  
+	<a  class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+</div>  
 
 {% endblock %}
 
@@ -94,9 +95,11 @@
   {% block footer %}
   
   {% block afterContent %}
+	<!-- moved to top of page
 	<div class="govuk-footer__container">  
 		<a  class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 	</div>  
+	-->
   {% endblock %}
 
 	<footer class="govuk-footer" role="contentinfo">
