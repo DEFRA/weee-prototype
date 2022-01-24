@@ -72,7 +72,6 @@ $govuk-assets-path: '/govuk/assets/';
 
 .civica-textfield
 {
-	/*width: 180px; */
 	border: 1px solid gray; 
 	padding-right: 4px; 
 	margin: 0px;
@@ -100,5 +99,17 @@ $govuk-assets-path: '/govuk/assets/';
 {
 	border-bottom: 0px; 
 	padding-left: 24px; 
+	font-weight: 600;
+}
+
+.civica-font-size-19
+{
+	font-size: 19px;
+	font-weight: 300;
+}
+
+.civica-font-size-22
+{
+	font-size: 22px;
 	font-weight: 600;
 }
