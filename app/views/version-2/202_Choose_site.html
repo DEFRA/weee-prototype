@@ -11,12 +11,12 @@
 
       <h1 class="govuk-heading-xl">Choose an AATF site</h1>
 
-      <form class="form" action="/version-2/203_Manage_evidence" method="post">
+      <form class="form" action="/version-2/manage-evidence-redirect" method="post">
 	  
 		{{ govukRadios
 			({
-			  idPrefix: "choose-activity",
-			  name: "choose-activity",
+			  idPrefix: "choose-site",
+			  name: "choose-site",
 			  fieldset: 
 			  {
 				legend: 
@@ -29,16 +29,16 @@
 			  items: 
 			  [
 				{
-				  value: "1",
+				  value: "ABB 1",
 				  text: "ABB 1",
 				  checked: true
 				},
 				{
-				  value: "2",
+				  value: "ABB 2",
 				  text: "ABB 2"
 				},
 				{
-				  value: "3",
+				  value: "ABB 3",
 				  text: "ABB 3"
 				}
 			  ]
