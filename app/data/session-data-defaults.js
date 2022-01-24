@@ -16,6 +16,7 @@ Example usage:
 ============================================================================
 
 */
+const EvidenceNote = require('./evidence-note');
 
 module.exports = 
 {
@@ -23,5 +24,5 @@ module.exports =
 	{
 		"organisation": "ABB Ltd",
 		"signin-name": "Emily Munro"
-	}
+	},
 }
