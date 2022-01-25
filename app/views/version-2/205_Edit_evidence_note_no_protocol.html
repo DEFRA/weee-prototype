@@ -6,64 +6,152 @@
 
 {% block content %}
 
-<form class="form" action="/url/of/next/page" method="post">
+<form class="form" action="/version-2/edit-evidence-note" method="post">
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-two-thirds">
   
 		<h1 class="govuk-heading-l">Enter evidence note details</h1>
 	  
-		<input type="hidden" value="Reference number: 1673" />
+		<input type="hidden" name="reference" value="{{ data['selected-evidence-note']._reference }}" />
 	  
-		<h3 class="govuk-heading-m">Period in which WEEE was recieved for treatment</h3>
-
-		<div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
-			<div class="govuk-label--s" style="float: left; font-weight: 300;">Start date<br /><input type="Date" value="Date" style="font-size: 18px; padding: 5px 0 5px 0; border: 2px solid black; width: 240px;" /></div>
-			<div class="govuk-label--s" style="float: right; font-weight: 300;">End date<br /><input type="Date" value="Date" style="font-size: 18px; padding: 5px 0 5px 0; border: 2px solid black; width: 240px;" /></div>
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-full">
+				<h3 class="govuk-heading-s">Period in which WEEE was recieved for treatment</h3>
+			</div>
+			<div class="govuk-grid-column-one-half">
+				<div class="govuk-label--s">Start date<br /></div><input type="Date" class="govuk-input" value="{{ data['selectedStartDate'] }}" name="startDate"/>
+			</div>
+			<div class="govuk-grid-column-one-half">
+				<div class="govuk-label--s">End date<br /></div><input type="Date" class="govuk-input" value="{{ data['selectedEndDate'] }}" name="endDate" />
+			</div>
 		</div>
-		
-		<div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
-		
-			<input class="govuk-select" style="width: 244px;" type="text" name="example" list="recipientsList" value="Recipient name">
-			<datalist id="recipientsList">
-				<option value="ABB 1 Ltd" />
-				<option value="ABB 2 Ltd" />
-				<option value="ABB 3 Ltd" />
-				<option value="NBC 1 Ltd" />
-				<option value="NBC 2 Ltd" />
-				<option value="NBC 3 Ltd" />
-				<option value="CBS 1 Ltd" />
-				<option value="CBS 2 Ltd" />
-				<option value="CBS 3 Ltd" />
-				<option value="PBS 1 Ltd" />
-				<option value="PBS 2 Ltd" />
-				<option value="PBS 3 Ltd" />
+
+		<div class="govuk-grid-row">
+			<div class="govuk-!-padding-top-3 govuk-grid-column-one-half">
+
+			<input class="govuk-input govuk-select" type="text" name="pcs" list="recipientsList" value="{{ data['selected-evidence-note']._pcs }}">
+			<datalist id="recipientsList" class="govuk-input">
+
+				{% if data['schemes'] %}
+				
+					{% for scheme in data['schemes']._schemes %}
+						<option value="{{scheme._name}}" />
+					{% endfor %}
+
+				{% else %}
+					<option value="ABB 2 Ltd" />
+					<option value="ABB 3 Ltd" />
+					<option value="NBC 1 Ltd" />
+					<option value="NBC 2 Ltd" />
+					<option value="NBC 3 Ltd" />
+					<option value="CBS 1 Ltd" />
+					<option value="CBS 2 Ltd" />
+					<option value="CBS 3 Ltd" />
+					<option value="PBS 1 Ltd" />
+					<option value="PBS 2 Ltd" />
+					<option value="PBS 3 Ltd" />
+				{% endif %}
+
 			</datalist>
+			</div>
 
-			<select class="govuk-select" style="width: 244px; float: right;" text="Compliance year">
-				<option value="0">Compliance year</option>
-				<option value="1">2022</option>
-				<option value="2">2021</option>
-				<option value="3">2020</option>
-			</select>		
+			<div class="govuk-!-padding-top-3 govuk-grid-column-one-half">
+				{{ govukSelect({
+					id: "year",
+					name: "year",
+					classes: "govuk-input",
+					items: [
+					  {
+						value: "0",
+						text: "Compliance year"
+					  },
+					  {
+						value: "2022",
+						text: "2022",
+						selected: data['selected-evidence-note']._year === '2022'
+					  },
+					  {
+						value: "2021",
+						text: "2021",
+						selected: data['selected-evidence-note']._year === '2021'
+					  },
+					  {
+						value: "2020",
+						text: "2020",
+						selected: data['selected-evidence-note']._year === '2020'
+					  }
+					]
+				  }) }}
+			</div>
 		</div>
-		
-		<div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
-		
-			<select class="govuk-select" style="width: 244px;" text="type of waste">
-				<option value="0">Type of waste</option>
-				<option value="1">Household</option>
-				<option value="2">Non-household</option>
-			</select>		
 
-			<select class="govuk-select" style="width: 244px; float: right;" text="Actual or protocol">
-				<option value="0">Actual or protocol</option>
-				<option value="0">Actual</option>
-				<option value="1">National protocol</option>
-				<option value="2">Site protocol</option>
-				<option value="3">Re-use network weights</option>
-			</select>		
+		<div class="govuk-grid-row">
+			<div class=" govuk-grid-column-one-half">
+
+
+				{{ govukSelect({
+					id: "wasteType",
+					name: "wasteType",
+					classes: "govuk-input",
+					items: [
+					  {
+						value: "0",
+						text: "Type of waste"
+					  },
+					  {
+						value: "Household",
+						text: "Household",
+						selected: data['selected-evidence-note']._wasteType === 'Household'
+					  },
+					  {
+						value: "Non-household",
+						text: "Non-household",
+						selected: data['selected-evidence-note']._wasteType === 'Non-household'
+					  }
+					]
+				  }) }}
+
+			</div>	
+			<div class="govuk-grid-column-one-half">
+
+				{{ govukSelect({
+					id: "protocol",
+					name: "protocol",
+					classes: "govuk-input",
+					items: [
+					  {
+						value: "0",
+						text: "Actual or protocol"
+					  },
+					  {
+						value: "Actual",
+						text: "Actual",
+						selected: data['selected-evidence-note']._protocol === 'Actual'
+					  },
+					  {
+						value: "National protocol",
+						text: "National protocol",
+						selected: data['selected-evidence-note']._protocol === 'National protocol'
+					  },
+					  {
+						value: "Site protocol",
+						text: "Site protocol",
+						selected: data['selected-evidence-note']._protocol === 'Site protocol'
+					  },
+					  {
+						value: "Re-use network weights",
+						text: "Re-use network weights",
+						selected: data['selected-evidence-note']._protocol === 'Re-use network weights'
+					  }
+					]
+				  }) }}
+			</div>	
+
 		</div>
+
+		</div>
+
 		
 	    <div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
 			<p>
@@ -78,15 +166,14 @@
 		</div>
 		
 		<input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
-		
 	    <div class="govuk-!-padding-top-3 govuk-grid-column-full">
 		
 			<table class="govuk-table">
 				<thead class="govuk-table__head">
 					<tr>
-						<th scope="col" class="govuk-table__header">Category</th>
-						<th scope="col" class="govuk-table__header">Total received (tonnes)</th>
-						<th scope="col" class="govuk-table__header">Re-used as whole appliances (tonnes)</th>
+						<th scope="col" class="govuk-table__header govuk-!-width-one-half">Category</th>
+						<th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Total received (tonnes)</th>
+						<th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Re-used as whole appliances (tonnes)</th>
 					</tr>
 				</thead>
 				
@@ -94,113 +181,123 @@
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">1- Large household appliances</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" value="35.200" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" value="15.015" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received1" id="received1" class="govuk-input" value="{{ data['selected-evidence-note']._received._largeHouseholdAppliances }}" /></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed1" id="reUsed1" class="govuk-input" value="{{ data['selected-evidence-note']._reused._largeHouseholdAppliances }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">2- Small household appliances</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" value="10.100" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" value="2.005" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received2" id="received2" class="govuk-input" value="{{ data['selected-evidence-note']._received._smallHouseholdAppliances }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed2" id="reUsed2" class="govuk-input" value="{{ data['selected-evidence-note']._reused._smallHouseholdAppliances }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">3- IT and telecommunications equipment</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received3" id="received3" class="govuk-input" value="{{ data['selected-evidence-note']._received._itAndTelecommunicationsEquipment }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed3" id="reUsed3" class="govuk-input" value="{{ data['selected-evidence-note']._reused._itAndTelecommunicationsEquipment }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">4- Consumer equipment</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received4" id="received4" class="govuk-input" value="{{ data['selected-evidence-note']._received._consumerEquipment }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed4" id="reUsed4" class="govuk-input" value="{{ data['selected-evidence-note']._reused._consumerEquipment }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">5- Lighting equipment</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received5" id="received5" class="govuk-input" value="{{ data['selected-evidence-note']._received._lightingEquipment }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed5" id="reUsed5" class="govuk-input" value="{{ data['selected-evidence-note']._reused._lightingEquipment }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">6- Electrical and electronic tools</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received6" id="received6" class="govuk-input" value="{{ data['selected-evidence-note']._received._electricalAndElectronicTools }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed6" id="reUsed6" class="govuk-input" value="{{ data['selected-evidence-note']._reused._electricalAndElectronicTools }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">7- Toys, leisure and sports equipment</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received7" id="received7" class="govuk-input" value="{{ data['selected-evidence-note']._received._toysLeisureAndSportsEquipment }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed7" id="reUsed7" class="govuk-input" value="{{ data['selected-evidence-note']._reused._toysLeisureAndSportsEquipment }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">8- Medical devices</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received8" id="received8" class="govuk-input" value="{{ data['selected-evidence-note']._received._medicalDevices }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed8" id="reUsed8" class="govuk-input" value="{{ data['selected-evidence-note']._reused._medicalDevices }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">9- Monitoring and control instruments</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received9" id="received9" class="govuk-input" value="{{ data['selected-evidence-note']._received._monitoringAndControlInstruments }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed9" id="reUsed9" class="govuk-input" value="{{ data['selected-evidence-note']._reused._monitoringAndControlInstruments }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">10- Automatic dispensers</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received10" id="received10" class="govuk-input" value="{{ data['selected-evidence-note']._received._automaticDispensers }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed10" id="reUsed10" class="govuk-input" value="{{ data['selected-evidence-note']._reused._automaticDispensers }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">11- Display equipment</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received11" id="received11" class="govuk-input" value="{{ data['selected-evidence-note']._received._appliancesContainingRefrigerants }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed11" id="reUsed11" class="govuk-input" value="{{ data['selected-evidence-note']._reused._appliancesContainingRefrigerants }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">12- Cooling appliances containing refridgerants</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received12" id="received12" class="govuk-input" value="{{ data['selected-evidence-note']._received._gasDischargeLampsAndLedLightSources }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed12" id="reUsed12" class="govuk-input" value="{{ data['selected-evidence-note']._reused._gasDischargeLampsAndLedLightSources }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">13- Gas discharge lamps</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received13" id="received13" class="govuk-input" value="{{ data['selected-evidence-note']._received._displayEquipment }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed13" id="reUsed13" class="govuk-input" value="{{ data['selected-evidence-note']._reused._displayEquipment }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">14- Photovoltaic panels</td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
-						<td class="govuk-table__cell"><input type="text" class="civica-textfield" /></td>
+						<td class="govuk-table__cell"><input type="text" name="received14" id="received14" class="govuk-input" value="{{ data['selected-evidence-note']._received._photovoltaicPanel }}"/></td>
+						<td class="govuk-table__cell"><input type="text" name="reUsed14" id="reUsed14" class="govuk-input" value="{{ data['selected-evidence-note']._reused._photovoltaicPanel }}"/></td>
 					</tr>
 				
 					<tr class="govuk-table__row">
-						<td class="govuk-table__cell total-row">Total</td>
-						<td class="govuk-table__cell total-row" style="text-align: right;">45.300</td>
-						<td class="govuk-table__cell total-row" style="text-align: right; padding-right: 30px;">17.020</td>
+						<td class="govuk-table__cell">
+							<h3 class="govuk-heading-s">Total</h3>
+						</td>
+						<td class="govuk-table__cell govuk-table__cell--numeric">
+							<h3 class="govuk-heading-s" style="float: left" id="tonneTotalReceived">0.000 tonnes</h3>
+						</td>
+						<td class="govuk-table__cell govuk-table__cell--numeric">
+							<h3 class="govuk-heading-s" style="float: left" id="tonneTotalReUsed">0.000 tonnes</h3>
+						</td>
 					</tr>
 
 				</tbody>
 			</table>
 		
+			<div class="govuk-!-margin-top-3">
+	
+				{{ govukButton({
+					text: "Submit evidence note",
+					name: "action",
+					value: "submit"
+				  }) }}
+			
+				{{ govukButton({
+					text: "Save", classes: "govuk-button--secondary",
+					name: "action",
+					value: "save"
+				  }) }}
+			
+			</div>
 		</div>
 		
     </div>
   </div>
   
-<div class="govuk-!-margin-top-3">
-	
-	{{ govukButton({
-		text: "Submit evidence note"
-	  }) }}
-
-	{{ govukButton({
-		text: "Save as draft", classes: "govuk-button--secondary"
-	  }) }}
-
-</div>
 
 </form>
 {% endblock %}
