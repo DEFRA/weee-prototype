@@ -7,11 +7,11 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full" style="border: 0px solid black;">
+    <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-l">Manage evidence notes for PCS1</h1>
 
-      <form class="form" action="205_Create_evidence_note" method="post">
+      <form id="sf1" name="sf1" class="form" action="210_Review_evidence_note" method="post">
 
 		<div class="govuk-!-padding-bottom-7">
 		<div class="govuk-label--m">Search by reference number</div>
@@ -94,8 +94,8 @@
 				
 				</tr>
 			</table>
-		
 		</div>
+		
 		
 		<div class="govuk-!-padding-bottom-7">
 		<table class="govuk-table">
@@ -111,7 +111,7 @@
 			</tr>
 		  </thead>
 		  
-		  <tbody class="govuk-table__body">
+		  <tbody class="govuk-table__body" id="rowset">
 			<tr class="govuk-table__row">
 			  <td class="govuk-table__cell">1279</td>
 			  <td class="govuk-table__cell">12/11/2021</td>
@@ -119,7 +119,7 @@
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Submitted</td>
 			  <td class="govuk-table__cell">
-				<a href="210_Review_evidence_note.html">Review evidence</a>
+				<a href="#" onclick="save('1279')">Review evidence</a>
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -129,7 +129,8 @@
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Submitted</td>
 			  <td class="govuk-table__cell">
-				<a href="210_Review_evidence.html">Review evidence</a>
+				<a href="#" onclick="save('1389')">Review evidence</a>
+				<!-- a href="/version-2/210-review-evidence-redirect?num=1389">Review evidence</a -->
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -194,5 +195,36 @@
 
     </div>
   </div>
+
+<script type="text/javascript">
+
+	// set row background colour when row has unreviewed "Submitted" status
+	const rowSet = document.getElementsByTagName('tr');
+
+	for (let i = 0; i < rowSet.length; i++) 
+	{
+		const cells = rowSet[i].childNodes;
+		
+		for ( let j = 0; j < cells.length; j++ )
+		{
+			if ( cells[j].innerText === "Submitted" )
+			{ 
+				rowSet[i].style.backgroundColor = "#eee";
+			}
+		}
+	}
+	
+	// persists the selected row to hidden input
+	function save(selectedId)
+	{
+		//alert(selectedId);
+		var store = window.sessionStorage;
+		store.setItem('evnumber', selectedId);
+		//console.log(req.session.data['evidence-number']);
+		//req.session.data['evidence-number'] = selectedId;
+		//alert(selectedId);
+		document.sf1.submit();
+	}
+</script>
 
 {% endblock %}
