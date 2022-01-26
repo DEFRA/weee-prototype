@@ -56,15 +56,8 @@ router.post('/version-2/choose-site-redirect', function(req, res){
     facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', receieved1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
     facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', receieved2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
 
-    var date = new Date(2021, 03, 13, 18, 00, 0);
+    var date = new Date();
     facility._evidenceNotes[1]._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-
-    facility._evidenceNotes.forEach(element => {
-        if (element._submittedDate){
-            element._searchDate = moment(element._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
-            //element._searchDate = _submittedDate
-        }
-    });
 
     req.session.data['facilities']  = facilities;
     req.session.data['chosen-facility'] = facility; 
@@ -104,8 +97,9 @@ router.post('/version-2/save-create-evidence-note', function(req, res){
 
     if (req.session.data['action'] === 'submit'){
         status = 'Submitted'
-        evidenceNote._submittedDate = moment('DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-        evidenceNote._searchDate = moment(element._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
+        var date = new Date();
+        evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+        evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
     } else {
         status = 'Draft'
     };
@@ -258,7 +252,8 @@ router.post('/version-2/edit-evidence-note', function(req, res){
     var status = '';
     if (req.session.data['action'] === 'submit'){
         status = 'Submitted'
-        evidenceNote._submittedDate = moment().format('DD/MM/YYYY HH:mm:ss');
+        var date = new Date();
+        evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
         evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
     } else {
         status = 'Draft'
