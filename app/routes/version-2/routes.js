@@ -103,7 +103,7 @@ router.post('/version-2/save-create-evidence-note', function(req, res){
     } else {
         status = 'Draft'
     };
-    
+    evidenceNote._status = status;
     facility._evidenceNotes.push(evidenceNote);
 
     res.redirect('/version-2/manage-evidence-redirect');
