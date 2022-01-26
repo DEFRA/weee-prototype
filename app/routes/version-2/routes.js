@@ -53,11 +53,18 @@ router.post('/version-2/choose-site-redirect', function(req, res){
     var receieved2 = new Categories(null, 56, null, 3, 1, 12, null, 80, 6, null, null, null, null, null);
     var reused2 = new Categories(null, 1, null, null, 6, 10, 2, 1, null, null, null, 1, 1, null);
 
+    var receieved3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
+    var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
+
+
     facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', receieved1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
     facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', receieved2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', receieved3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
 
-    var date = new Date();
+    var date = new Date(2020, 05, 1, 9, 4, 5);
+    var date2 = new Date(2021, 01, 4, 10, 4, 5);
     facility._evidenceNotes[1]._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+    facility._evidenceNotes[2]._submittedDate = moment(date2, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
     req.session.data['facilities']  = facilities;
     req.session.data['chosen-facility'] = facility; 
@@ -91,9 +98,34 @@ router.post('/version-2/save-create-evidence-note', function(req, res){
         req.session.data['reUsed10'], req.session.data['reUsed11'], req.session.data['reUsed12'], req.session.data['reUsed13'], req.session.data['reUsed14']);
 
     var status = '';
+    var startDate = '';
+    var endDate = '';
+    var pcs = '';
+    var year = '';
+    var protocol = '';
+    var wasteType = '';
 
-    var evidenceNote = new EvidenceNote(req.session.data['startDate'], req.session.data['endDate'], req.session.data['pcs'], 
-    req.session.data['year'], req.session.data['wasteType'], req.session.data['protocol'], receieved1, reused1, status, Math.floor(1000 + Math.random() * 9000), moment().format('DD/MM/YYYY HH:mm:ss'));
+    if (req.session.data['startDate']!==''){
+        startDate = req.session.data['startDate'];
+    }
+    if (req.session.data['endDate']!==''){
+        endDate = req.session.data['endDate'];
+    }
+    if (req.session.data['pcs']!=='Recipient name'){
+        pcs = req.session.data['pcs'];
+    }
+    if (req.session.data['year']!=='0'){
+        year = req.session.data['year'];
+    }
+    if (req.session.data['protocol']!=='0'){
+        protocol = req.session.data['protocol'];
+    }
+    
+    if (req.session.data['wasteType']!=='0'){
+        wasteType = req.session.data['wasteType'];
+    }
+    var evidenceNote = new EvidenceNote(startDate, endDate, pcs, 
+        year, wasteType, protocol, receieved1, reused1, status, Math.floor(1000 + Math.random() * 9000), moment().format('DD/MM/YYYY HH:mm:ss'));
 
     if (req.session.data['action'] === 'submit'){
         status = 'Submitted'
@@ -113,10 +145,18 @@ router.get('/version-2/edit-evidence-note-redirect', function(req, res){
     var facility = req.session.data['chosen-facility']; 
     var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
 
+    var pcs = '';
+    if (evidenceNote._pcs === ''){
+        pcs = 'Recipient name';
+    }
+    else{
+        pcs = evidenceNote._pcs;
+    }
     req.session.data['selected-evidence-note'] = evidenceNote;
     req.session.data['selectedStartDate'] = moment(evidenceNote._startDate).format('YYYY-MM-DD')
     req.session.data['selectedEndDate'] = moment(evidenceNote._endDate).format('YYYY-MM-DD')
-
+    req.session.data['selectedpcs'] = pcs;
+    
     //console.log(req.session.data['selected-evidence-note']);
     res.redirect('/version-2/205_Edit_evidence_note_no_protocol');
 });
@@ -230,12 +270,38 @@ router.post('/version-2/edit-evidence-note', function(req, res){
     
     var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.session.data['reference']));
     
-    evidenceNote._startDate = req.session.data['startDate']
-    evidenceNote._endDate = req.session.data['endDate'];
-    evidenceNote._pcs = req.session.data['pcs'];
-    evidenceNote._year = req.session.data['year'];
-    evidenceNote._wasteType = req.session.data['wasteType'];
-    evidenceNote._protocol = req.session.data['protocol']
+    var startDate = '';
+    var endDate = '';
+    var pcs = '';
+    var year = '';
+    var protocol = '';
+    var wasteType = '';
+
+    if (req.session.data['startDate']!==''){
+        startDate = req.session.data['startDate'];
+    }
+    if (req.session.data['endDate']!==''){
+        endDate = req.session.data['endDate'];
+    }
+    if (req.session.data['pcs']!=='Recipient name'){
+        pcs = req.session.data['pcs'];
+    }
+    if (req.session.data['year']!=='0'){
+        year = req.session.data['year'];
+    }
+    if (req.session.data['protocol']!=='0'){
+        protocol = req.session.data['protocol'];
+    }
+    if (req.session.data['wasteType']!=='0'){
+        wasteType = req.session.data['wasteType'];
+    }
+
+    evidenceNote._startDate = startDate;
+    evidenceNote._endDate = endDate;
+    evidenceNote._pcs = pcs;
+    evidenceNote._year = year;
+    evidenceNote._wasteType = wasteType;
+    evidenceNote._protocol = protocol;
     
     var receieved1 = new Categories(req.session.data['received1'], req.session.data['received2'], req.session.data['received3'], 
         req.session.data['received4'], req.session.data['received5'], req.session.data['received6'], req.session.data['received7'], req.session.data['received8'], 
@@ -255,11 +321,10 @@ router.post('/version-2/edit-evidence-note', function(req, res){
         var date = new Date();
         evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
         evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
-    } else {
-        status = 'Draft'
-    };
+        evidenceNote._status = status;
+    }
 
-    evidenceNote._status = status;
+    
 
     res.redirect('/version-2/manage-evidence-redirect');
 });
