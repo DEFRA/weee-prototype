@@ -1,5 +1,4 @@
-$(document).ready(function () {
-        
+
     var table = document.getElementById("evidence-table");
 
     if (table) {
@@ -23,6 +22,11 @@ $(document).ready(function () {
         document.getElementById("year-filter").addEventListener('change', (e) => {
             filter();        
         });
+
+        document.getElementById("input-search").addEventListener('change', (e) => {
+            search();        
+        });
+        
     }
     
 
@@ -36,6 +40,37 @@ $(document).ready(function () {
         }
         return true;
     }
+
+    function search() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        var searchFilter = document.getElementById("input-search").value;
+        var table = document.getElementById("evidence-table");
+        var tr = table.getElementsByClassName("govuk-table__row result-row");
+      
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            var displayRow = true;
+
+            if (searchFilter.trim() != '' && searchFilter != '') {
+                var td = tr[i].getElementsByTagName("td")[2];
+                
+                if (!IsMatch(td, searchFilter)){
+                    displayRow = false;
+                }
+            }
+
+
+            if (displayRow){
+                tr[i].style.display = "";
+            }
+            else{
+                tr[i].style.display = "none";
+            }
+            //tr[i].style.display = "";
+            //tr[i].style.display = "none";
+        }
+      }
 
     function filter() {
         // Declare variables
@@ -103,4 +138,3 @@ $(document).ready(function () {
             //tr[i].style.display = "none";
         }
       }
-});

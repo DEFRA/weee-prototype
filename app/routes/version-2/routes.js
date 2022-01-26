@@ -44,7 +44,7 @@ router.post('/version-2/choose-site-redirect', function(req, res){
         facilities = [];
     }
 
-    facility = facilities.find(fac => fac._approvalNumber === selectedFacility);
+    facility = facilities.find(fac => fac._name === selectedFacility);
     facility._evidenceNotes = [];
 
     var receieved1 = new Categories(48, 21, 1, null, null, 14, 32, 11, null, 3, 1, null, 5, null);
