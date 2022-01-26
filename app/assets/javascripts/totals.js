@@ -19,20 +19,11 @@ function calculateTotals(){
                 var fieldNumberReused = Number($('#' + fieldIDs[i]).val());
                 if (!isNaN(fieldNumberReused)) {
                     grandTotalReused += fieldNumberReused;
-
-                    if (fieldNumberReused!=0){
-                        $('#' + fieldIDs[i]).val(fieldNumberReused.toFixed(3));
-                    }
                 }
             } else {
                 var fieldNumber = Number($('#' + fieldIDs[i]).val());
                 if (!isNaN(fieldNumber)) {
                     grandTotalReceived += fieldNumber;
-
-                    if (fieldNumber!=0){
-                        $('#' + fieldIDs[i]).val(fieldNumber.toFixed(3));
-                    }
-                    
                 }
             }
         }
