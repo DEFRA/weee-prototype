@@ -9,9 +9,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">Manage evidence notes for PCS1</h1>
+      <h1 class="govuk-heading-m"> Manage evidence notes for PCS1 </h1>
+	  <!-- h1 class="govuk-heading-m">Manage evidence notes for {{ data['selected-evidence-note']._reference }}</h1 -->
 
-      <form id="sf1" name="sf1" class="form" action="210_Review_evidence_note" method="post">
+      <form id="sf1" name="sf1" class="form" action="/version-2/210_Review_evidence_note" method="post">
 
 		<div class="govuk-!-padding-bottom-7">
 		<div class="govuk-label--m">Search by reference number</div>
@@ -94,8 +95,8 @@
 				
 				</tr>
 			</table>
-		</div>
 		
+		</div>
 		
 		<div class="govuk-!-padding-bottom-7">
 		<table class="govuk-table">
@@ -111,15 +112,22 @@
 			</tr>
 		  </thead>
 		  
-		  <tbody class="govuk-table__body" id="rowset">
+		  <tbody class="govuk-table__body">
 			<tr class="govuk-table__row">
 			  <td class="govuk-table__cell">1279</td>
 			  <td class="govuk-table__cell">12/11/2021</td>
 			  <td class="govuk-table__cell">AATF1</td>
 			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Submitted</td>
 			  <td class="govuk-table__cell">
-				<a href="#" onclick="save('1279')">Review evidence</a>
+				{% if (data['chosen-status-1279']) %}
+				  {{ data['chosen-status-1279'] }}
+				{% else %}
+				  Submitted
+				{% endif %}
+			  </td>
+			  <td class="govuk-table__cell">
+				<!-- a href="#" onclick="save('1279')">Review evidence</a -->
+				<a href="/version-2/journey-2/review-evidence-note-redirect?id=1279">Review evidence</a>
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -127,10 +135,16 @@
 			  <td class="govuk-table__cell">12/11/2021</td>
 			  <td class="govuk-table__cell">AATF2</td>
 			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Submitted</td>
 			  <td class="govuk-table__cell">
-				<a href="#" onclick="save('1389')">Review evidence</a>
-				<!-- a href="/version-2/210-review-evidence-redirect?num=1389">Review evidence</a -->
+				{% if (data['chosen-status-1389']) %}
+				  {{ data['chosen-status-1389'] }}
+				{% else %}
+				  Submitted
+				{% endif %}
+			  </td>
+			  <td class="govuk-table__cell">
+				<!-- a href="#" onclick="save('1389')">Review evidence</a -->
+				<a href="/version-2/journey-2/review-evidence-note-redirect?id=1389">Review evidence</a>
 			  </td>
 			</tr>
 			<tr class="govuk-table__row">
@@ -214,16 +228,30 @@
 		}
 	}
 	
+	function getCurrentStatus()
+	{
+		if ( data['chosen-status'] === null || data['chosen-status'] === undefined || data['chosen-status'] === '' )
+		{
+			return 'Submitted';
+		}
+		else
+		{
+			data['chosen-status'];
+		}
+		
+		return 'Submitted';
+	}
+	
 	// persists the selected row to hidden input
 	function save(selectedId)
 	{
 		//alert(selectedId);
-		var store = window.sessionStorage;
-		store.setItem('evnumber', selectedId);
-		//console.log(req.session.data['evidence-number']);
+		//var store = window.sessionStorage;
+		//store.setItem('evnumber', '');
+		
 		//req.session.data['evidence-number'] = selectedId;
-		//alert(selectedId);
-		document.sf1.submit();
+		//console.log(req.session.data['evidence-number']);
+		//submit();
 	}
 </script>
 

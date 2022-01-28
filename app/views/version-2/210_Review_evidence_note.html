@@ -6,11 +6,7 @@
 
 {% block content %}
 
-<style>
-div { border: 0px solid black; }
-</style>
-
-<form class="form" action="209_Manage_evidence" method="post">
+<form class="form" action="/version-2/journey-2/choose-status-redirect" method="post">
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters" style="width: 90%;">
@@ -19,7 +15,8 @@ div { border: 0px solid black; }
 		
 		<p>After review, you can choose whether to approve, reject or return the evidence note.</p>
 
-		<h2 id="evnum" class="govuk-heading-m">Evidence note </h2>
+		<h2 class="govuk-heading-m">Evidence note #{{ data['evidence-number'] }}</h2>
+		
 
 		<div class="govuk-width-container govuk-grid-column-full govuk-!-margin-top-3 govuk-!-margin-left-0">
 		
@@ -211,8 +208,8 @@ div { border: 0px solid black; }
 <div class="govuk-!-margin-top-3 govuk-!-margin-bottom-9">
 	{{ govukRadios
 		({
-		  idPrefix: "choose-activity",
-		  name: "choose-activity",
+		  idPrefix: "choose-status",
+		  name: "choose-status",
 		  fieldset: 
 		  {
 			legend: 
@@ -226,12 +223,12 @@ div { border: 0px solid black; }
 		  [
 			{
 			  value: "1",
-			  text: "Approve evidence note"
+			  text: "Approve evidence note",
+			  checked: true
 			},
 			{
 			  value: "2",
-			  text: "Reject evidence note",
-			  onclick: "reject();"
+			  text: "Reject evidence note"
 			},
 			{
 			  value: "3",
@@ -250,28 +247,27 @@ div { border: 0px solid black; }
 <div class="govuk-!-margin-top-3">
 	{{ govukButton({
 		text: "Save and continue",
-		classes: "govuk-body civica-font-size-22"
+		classes: "civica-font-size-22"
 	  }) }}
 </div>
 
 <script>
-	function showReject(event)
+	function showNoteArea(event)
 	{
 		document.getElementById("note-area").style = "display: block;";
 	}
-	function hideReject(event)
+	function hideNoteArea(event)
 	{
 		document.getElementById("note-area").style = "display: none;";
 	}
-	document.getElementById("choose-activity").addEventListener("click", hideReject);
-	document.getElementById("choose-activity-2").addEventListener("click", showReject);
-	document.getElementById("choose-activity-3").addEventListener("click", hideReject);
+	document.getElementById("choose-status").addEventListener("click", hideNoteArea);
+	document.getElementById("choose-status-2").addEventListener("click", showNoteArea);
+	document.getElementById("choose-status-3").addEventListener("click", showNoteArea);
 
-	var store = window.sessionStorage;
-	var evidence = store.getItem("evnumber");
-	document.getElementById("evnum").text('Evidence note #' + evidence);
+	//var store = window.sessionStorage;
+	//var evidence = store.getItem("evnumber");
+	//document.getElementById("evnum").text('Evidence note ' + evidence);
 </script>
-
 </form>
 
 {% endblock %}
