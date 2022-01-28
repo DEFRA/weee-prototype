@@ -20,6 +20,7 @@ function SetupData(req) {
     req.session.data['facilities'] = facilities;
     req.session.data['schemes'] = schemes;
     req.session.data['paste-values'] = '';
+    
 }
 
 function SetupJourney2Data(req) 
@@ -43,10 +44,13 @@ router.post('/version-2/choose-activity-redirect', function (req, res)
     
     const activity = req.session.data['choose-activity'];
 
+
 	if ( activity === '7' )
 	{
         SetupData(req);
+
         res.redirect('/version-2/202_Choose_site');
+
 	}
 	
 	
@@ -56,8 +60,11 @@ router.post('/version-2/choose-activity-redirect', function (req, res)
         res.redirect('/version-2/209_Manage_evidence');
 	}
     
+
+    
     res.redirect('/version-2/index');
 });
+
 
 router.post('/version-2/choose-site-redirect', function(req, res){
     var facilities = req.session.data['facilities'];
@@ -78,6 +85,7 @@ router.post('/version-2/choose-site-redirect', function(req, res){
 
     var receieved3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
     var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
+
 
 
     facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', receieved1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));

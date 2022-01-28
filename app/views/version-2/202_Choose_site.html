@@ -11,39 +11,24 @@
 
       <h1 class="govuk-heading-xl">Choose an AATF site</h1>
 
-      <form class="form" action="203_Manage_evidence" method="post">
+
+      <form class="form" action="/version-2/choose-site-redirect" method="post">
 	  
-		{{ govukRadios
-			({
-			  idPrefix: "choose-activity",
-			  name: "choose-activity",
-			  fieldset: 
-			  {
-				legend: 
-				{
-				  text: "",
-				  isPageHeading: true,
-				  classes: "govuk-fieldset__legend--l"
-				}
-			  },
-			  items: 
-			  [
-				{
-				  value: "1",
-				  text: "ABB 1",
-				  checked: true
-				},
-				{
-				  value: "2",
-				  text: "ABB 2"
-				},
-				{
-				  value: "3",
-				  text: "ABB 3"
-				}
-			  ]
-			}) 
-		}}
+		<div class="govuk-form-group">
+			<fieldset class="govuk-fieldset">
+			  <div class="govuk-radios" data-module="govuk-radios">
+				{% for facility in data['facilities'] %}
+				<div class="govuk-radios__item">
+				  <input class="govuk-radios__input" id="choose-site" name="choose-site" type="radio" value="{{facility._name}}" checked>
+				  <label class="govuk-label govuk-radios__label" for="choose-site">
+					{{facility._name}}
+				  </label>
+				</div>
+				{% endfor %}
+			  </div>
+		  
+			</fieldset>
+		  </div>
 		
 		{{ govukButton({
 			text: "Continue"

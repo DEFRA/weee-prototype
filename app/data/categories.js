@@ -1,9 +1,10 @@
 class Categories{
+
     constructor(largeHouseholdAppliances, smallHouseholdAppliances, itAndTelecommunicationsEquipment, 
         consumerEquipment, lightingEquipment, electricalAndElectronicTools, 
         toysLeisureAndSportsEquipment, medicalDevices, monitoringAndControlInstruments,
-        automaticDispensers, appliancesContainingRefrigerants, gasDischargeLampsAndLedLightSources, 
-        displayEquipment, photovoltaicPanel){
+        automaticDispensers, displayEquipment, appliancesContainingRefrigerants, gasDischargeLampsAndLedLightSources, 
+        photovoltaicPanel){
         this._largeHouseholdAppliances = largeHouseholdAppliances;
         this._smallHouseholdAppliances = smallHouseholdAppliances;
         this._itAndTelecommunicationsEquipment = itAndTelecommunicationsEquipment;
