@@ -41,18 +41,13 @@ function SetupJourney2Data(req)
 
 router.post('/version-2/choose-activity-redirect', function (req, res) 
 {
-    
     const activity = req.session.data['choose-activity'];
-
 
 	if ( activity === '7' )
 	{
         SetupData(req);
-
         res.redirect('/version-2/202_Choose_site');
-
 	}
-	
 	
 	if ( activity === '12' )
 	{
@@ -60,11 +55,8 @@ router.post('/version-2/choose-activity-redirect', function (req, res)
         res.redirect('/version-2/209_Manage_evidence');
 	}
     
-
-    
     res.redirect('/version-2/index');
 });
-
 
 router.post('/version-2/choose-site-redirect', function(req, res){
     var facilities = req.session.data['facilities'];
@@ -383,7 +375,6 @@ router.get('/version-2/journey-2/review-evidence-note-redirect', function(req, r
 
     res.redirect('/version-2/210_Review_evidence_note');
 });
-
 
 router.post('/version-2/journey-2/choose-status-redirect', function (req, res) {
     
