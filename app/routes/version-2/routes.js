@@ -389,11 +389,15 @@ router.post('/version-2/journey-2/choose-status-redirect', function (req, res) {
 	if ( status === '2' )
 	{
         req.session.data['chosen-status-' + evidenceNumber] = 'Rejected';
+		//req.session.data['reject-return-reason'] = req.session.data['reject-return-reason']
+		console.log(req.session.data['reject-return-reason']);
 	}
  	
 	if ( status === '3' )
 	{
         req.session.data['chosen-status-' + evidenceNumber] = 'Returned';
+		//req.session.data['reject-return-reason'] = req.form['reject-return-reason']
+		console.log(req.session.data['reject-return-reason']);
 	}
    
 	res.redirect('/version-2/209_Manage_evidence');

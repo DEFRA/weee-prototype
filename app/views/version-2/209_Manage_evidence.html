@@ -30,7 +30,8 @@
 				<tr>
 				
 				<td>
-					<input type="Date" value="Date" style="font-size: 18px; padding: 5px; border: 2px solid black;" />
+					<!-- input type="Date" value="Date" id="date-filter" style="font-size: 18px; padding: 5px; border: 2px solid black;" / -->
+					<input type="Date" value="Date" class="govuk-input" id="date-filter" />
 				</td>
 				
 				<td>
@@ -99,7 +100,7 @@
 		</div>
 		
 		<div class="govuk-!-padding-bottom-7">
-		<table class="govuk-table">
+		<table class="govuk-table" id="evidence-table">
 		  <thead class="govuk-table__head">
 		  
 			<tr class="govuk-table__row">
@@ -113,7 +114,7 @@
 		  </thead>
 		  
 		  <tbody class="govuk-table__body">
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1279</td>
 			  <td class="govuk-table__cell">12/11/2021</td>
 			  <td class="govuk-table__cell">AATF1</td>
@@ -126,11 +127,14 @@
 				{% endif %}
 			  </td>
 			  <td class="govuk-table__cell">
-				<!-- a href="#" onclick="save('1279')">Review evidence</a -->
-				<a href="/version-2/journey-2/review-evidence-note-redirect?id=1279">Review evidence</a>
+				{% if (data['chosen-status-1279']) %}
+				  <a href="/version-2/journey-2/review-evidence-note-redirect?id=1279">View</a>
+				{% else %}
+				  <a href="/version-2/journey-2/review-evidence-note-redirect?id=1279">Review evidence</a>
+				{% endif %}
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1389</td>
 			  <td class="govuk-table__cell">12/11/2021</td>
 			  <td class="govuk-table__cell">AATF2</td>
@@ -143,44 +147,47 @@
 				{% endif %}
 			  </td>
 			  <td class="govuk-table__cell">
-				<!-- a href="#" onclick="save('1389')">Review evidence</a -->
-				<a href="/version-2/journey-2/review-evidence-note-redirect?id=1389">Review evidence</a>
+				{% if (data['chosen-status-1389']) %}
+				  <a href="/version-2/journey-2/review-evidence-note-redirect?id=1389">View</a>
+				{% else %}
+				  <a href="/version-2/journey-2/review-evidence-note-redirect?id=1389">Review evidence</a>
+				{% endif %}
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1486</td>
 			  <td class="govuk-table__cell">13/11/2021</td>
-			  <td class="govuk-table__cell">PCS3</td>
+			  <td class="govuk-table__cell">AATF3</td>
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Approved</td>
 			  <td class="govuk-table__cell">
 				<a href="#">View</a>
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1499</td>
 			  <td class="govuk-table__cell">13/11/2021</td>
-			  <td class="govuk-table__cell">PCS4</td>
+			  <td class="govuk-table__cell">AATF4</td>
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Rejected</td>
 			  <td class="govuk-table__cell">
 				<a href="#">View</a>
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1543</td>
 			  <td class="govuk-table__cell">14/11/2021</td>
-			  <td class="govuk-table__cell">PCS5</td>
+			  <td class="govuk-table__cell">AATF5</td>
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Returned</td>
 			  <td class="govuk-table__cell">
 				<a href="#">View</a>
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1599</td>
 			  <td class="govuk-table__cell">14/11/2021</td>
-			  <td class="govuk-table__cell">PCS6</td>
+			  <td class="govuk-table__cell">AATF6</td>
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Void</td>
 			  <td class="govuk-table__cell">
@@ -193,9 +200,9 @@
 			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
 				<span style="float: right;">
 				Prev 1 
-				<a href="#">2</a>
+				<!-- a href="#">2</a>
 				<a href="#">3</a>
-				<a href="#">4</a>
+				<a href="#">4</a -->
 				<a href="#">Next</a>
 				</span>
 			  </td>
@@ -228,6 +235,7 @@
 		}
 	}
 	
+	/*
 	function getCurrentStatus()
 	{
 		if ( data['chosen-status'] === null || data['chosen-status'] === undefined || data['chosen-status'] === '' )
@@ -241,18 +249,9 @@
 		
 		return 'Submitted';
 	}
-	
-	// persists the selected row to hidden input
-	function save(selectedId)
-	{
-		//alert(selectedId);
-		//var store = window.sessionStorage;
-		//store.setItem('evnumber', '');
-		
-		//req.session.data['evidence-number'] = selectedId;
-		//console.log(req.session.data['evidence-number']);
-		//submit();
-	}
+	*/
 </script>
+
+<script src="/public/javascripts/filter.js"></script>
 
 {% endblock %}
