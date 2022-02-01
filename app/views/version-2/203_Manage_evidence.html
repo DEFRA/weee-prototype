@@ -42,9 +42,8 @@
 				</td>
 
 				<td>
-
 					<select class="govuk-select" text="Compliance year" id="year-filter">
-						<option value="0">Compliance year</option>
+						<option value="Compliance year">Compliance year</option>
 						<option value="2022">2022</option>
 						<option value="2021">2021</option>
 						<option value="2020">2020</option>
@@ -52,7 +51,6 @@
 				</td>
 				
 				<td>
-
 					<input class="govuk-select" style="width: 130px;" type="text" name="example" list="issuersList" value="Issued to" id="pcs-filter">
 					<datalist id="issuersList">
 						{% if data['schemes'] %}
@@ -81,7 +79,7 @@
 				<td>
 
 					<select class="govuk-select" text="Type" id="type-filter">
-						<option value="0">Type</option>
+						<option value="Type">Type</option>
 						<option value="Household">Household</option>
 						<option value="Non-household">Non-household</option>
 					</select>
@@ -90,7 +88,7 @@
 				<td>
 
 					<select class="govuk-select" text="Status" id="status-filter">
-						<option value="0">Status</option>
+						<option value="Status">Status</option>
 						<option value="Draft">Draft</option>
 						<option value="Submitted">Submitted</option>
 						<option value="Approved">Approved</option>
@@ -181,7 +179,7 @@
 
 		{% else %}
 		
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 				<td class="govuk-table__cell">1279</td>
 				<td class="govuk-table__cell">-</td>
 				<td class="govuk-table__cell">PCS1</td>
@@ -192,7 +190,7 @@
 				  <a href="205_Edit_evidence_note.html">Edit</a>
 				</td>
 			  </tr>
-			  <tr class="govuk-table__row">
+			  <tr class="govuk-table__row result-row">
 				<td class="govuk-table__cell">1389</td>
 				<td class="govuk-table__cell">12/11/2021</td>
 				<td class="govuk-table__cell">PCS2</td>
@@ -202,7 +200,7 @@
 				  <a href="#">View</a>
 				</td>
 			  </tr>
-			  <tr class="govuk-table__row">
+			  <tr class="govuk-table__row result-row">
 				<td class="govuk-table__cell">1486</td>
 				<td class="govuk-table__cell">13/11/2021</td>
 				<td class="govuk-table__cell">PCS3</td>
@@ -212,7 +210,7 @@
 				  <a href="#">View</a>
 				</td>
 			  </tr>
-			  <tr class="govuk-table__row">
+			  <tr class="govuk-table__row result-row">
 				<td class="govuk-table__cell">1499</td>
 				<td class="govuk-table__cell">13/11/2021</td>
 				<td class="govuk-table__cell">PCS4</td>
@@ -222,7 +220,7 @@
 				  <a href="#">View</a>
 				</td>
 			  </tr>
-			  <tr class="govuk-table__row">
+			  <tr class="govuk-table__row result-row">
 				<td class="govuk-table__cell">1543</td>
 				<td class="govuk-table__cell">14/11/2021</td>
 				<td class="govuk-table__cell">PCS5</td>
@@ -232,7 +230,7 @@
 				  <a href="#">View</a>
 				</td>
 			  </tr>
-			  <tr class="govuk-table__row">
+			  <tr class="govuk-table__row result-row">
 				<td class="govuk-table__cell">1599</td>
 				<td class="govuk-table__cell">14/11/2021</td>
 				<td class="govuk-table__cell">PCS6</td>
