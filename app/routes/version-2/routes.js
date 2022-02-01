@@ -20,18 +20,40 @@ function SetupData(req) {
     req.session.data['facilities'] = facilities;
     req.session.data['schemes'] = schemes;
     req.session.data['paste-values'] = '';
+    
 }
 
-router.post('/version-2/choose-activity-redirect', function (req, res) {
-    
+function SetupJourney2Data(req) 
+{
+    var schemes = new Schemes();
+
+    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+    //resetNonObligated(req);
+
+
+    var facilities = [];
+    facilities.push(new Facility('PCS 1', 1, 'WEE/PCS1234GH/PCS'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+}
+
+router.post('/version-2/choose-activity-redirect', function (req, res) 
+{
     const activity = req.session.data['choose-activity'];
 
-    if (activity === '7') {
+	if ( activity === '7' )
+	{
         SetupData(req);
-
         res.redirect('/version-2/202_Choose_site');
-    }
-
+	}
+	
+	if ( activity === '12' )
+	{
+        SetupJourney2Data(req);
+        res.redirect('/version-2/209_Manage_evidence');
+	}
     
     res.redirect('/version-2/index');
 });
@@ -55,6 +77,7 @@ router.post('/version-2/choose-site-redirect', function(req, res){
 
     var receieved3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
     var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
+
 
 
     facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', receieved1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
@@ -342,5 +365,45 @@ router.get('/version-2/copy-paste-redirect', function(req, res){
 router.post('/version-2/cancel-copy-paste-redirect', function (req, res) {
     res.redirect('/version-2/' + req.session.data['paste-return-page']);
 });
+
+
+
+router.get('/version-2/journey-2/review-evidence-note-redirect', function(req, res)
+{
+	//var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
+	req.session.data['evidence-number'] = req.query['id'];
+
+    res.redirect('/version-2/210_Review_evidence_note');
+});
+
+router.post('/version-2/journey-2/choose-status-redirect', function (req, res) {
+    
+    const status = req.session.data['choose-status'];
+	const evidenceNumber  = req.session.data['evidence-number'];
+
+	if ( status === '1' )
+	{
+		req.session.data['chosen-status-' + evidenceNumber] = 'Approved';
+	}
+	
+	if ( status === '2' )
+	{
+        req.session.data['chosen-status-' + evidenceNumber] = 'Rejected';
+		//req.session.data['reject-return-reason'] = req.session.data['reject-return-reason']
+		console.log(req.session.data['reject-return-reason']);
+	}
+ 	
+	if ( status === '3' )
+	{
+        req.session.data['chosen-status-' + evidenceNumber] = 'Returned';
+		//req.session.data['reject-return-reason'] = req.form['reject-return-reason']
+		console.log(req.session.data['reject-return-reason']);
+	}
+   
+	res.redirect('/version-2/209_Manage_evidence');
+});
+
+
+
 
 module.exports = router;

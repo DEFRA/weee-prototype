@@ -1,7 +1,7 @@
-{% extends "version-2/layout.html" %}
+{% extends "version-2/layout2.html" %}
 
 {% block pageTitle %}
-  Choose an activity
+  Choose an activity (PCS Journey)
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,7 @@
 
       <h1 class="govuk-heading-l" style="font-weight: 600; font-family: arial;">What activity would you like to do?</h1>
 
-      <form class="form" action="/manage-evidence-redirect" method="post">
+      <form class="form" action="/version-2/choose-activity-redirect" method="post">
 
 		{{ govukRadios
 			({
@@ -29,19 +29,19 @@
 			  items: 
 			  [
 				{
-				  value: "1",
+				  value: "8",
 				  text: "Manage PCS members"
 				},
 				{
-				  value: "2",
+				  value: "9",
 				  text: "Manage PCS WEEE data"
 				},
 				{
-				  value: "3",
+				  value: "10",
 				  text: "Manage PCS contact details"
 				},
 				{
-				  value: "4",
+				  value: "11",
 				  text: "View PCS submissions history"
 				},
 				{
@@ -53,7 +53,7 @@
 				  text: "Manage organisation users"
 				},
 				{
-				  value: "7",
+				  value: "12",
 				  text: "Manage evidence notes",
 				  checked: true
 				}
@@ -66,7 +66,7 @@
 			text: "Continue"
 		  }) }}
 
-		<div><a href="#" class="element-spacer govuk-back-link" style="font-size: 20px;">Access another organisation</a></div>
+		<!-- div><a href="202_Choose_site" class="element-spacer govuk-back-link" style="font-size: 20px;">Access another organisation</a></div -->
 
       </form>
 

@@ -113,3 +113,15 @@ $govuk-assets-path: '/govuk/assets/';
 	font-size: 22px;
 	font-weight: 600;
 }
+
+.civica-submitted td
+{
+	background-color: #eee;
+}
+
+.civica-textarea
+{
+	border: 2px solid #ccc;
+	width: 900px;
+	height: 120px;
+}

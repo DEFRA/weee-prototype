@@ -1,4 +1,4 @@
-{% extends "version-2/layout.html" %}
+{% extends "version-2/layout2.html" %}
 
 {% block pageTitle %}
   Manage evidence note
@@ -7,11 +7,12 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full" style="border: 0px solid black;">
+    <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-l">Manage evidence notes for PCS1</h1>
+      <h1 class="govuk-heading-m"> Manage evidence notes for PCS1 </h1>
+	  <!-- h1 class="govuk-heading-m">Manage evidence notes for {{ data['selected-evidence-note']._reference }}</h1 -->
 
-      <form class="form" action="205_Create_evidence_note" method="post">
+      <form id="sf1" name="sf1" class="form" action="/version-2/210_Review_evidence_note" method="post" novalidate>
 
 		<div class="govuk-!-padding-bottom-7">
 		<div class="govuk-label--m">Search by reference number</div>
@@ -29,46 +30,44 @@
 				<tr>
 				
 				<td>
-					<input type="Date" value="Date" style="font-size: 18px; padding: 5px; border: 2px solid black;" />
+					<input type="Date" value="Date" class="govuk-input" id="date-filter" />
 				</td>
 				
 				<td>
-					<select class="govuk-select" text="Compliance year">
-						<option value="0">Compliance year</option>
-						<option value="1">2022</option>
-						<option value="2">2021</option>
-						<option value="3">2020</option>
+					<select class="govuk-select" text="Compliance year" id="year-filter">
+						<option value="Compliance year">Compliance year</option>
+						<option value="2022">2022</option>
+						<option value="2021">2021</option>
+						<option value="2020">2020</option>
 					</select>
 				</td>
 				
 				<td>
-					<input class="govuk-select" style="width: 130px;" type="text" name="example" list="issuersList" value="Issued by">
+					<input class="govuk-select" style="width: 130px;" type="text" name="example" list="issuersList" value="Issued by" id="pcs-filter">
 					<datalist id="issuersList">
-						<option value="AATF 1" />
-						<option value="AATF 2" />
-						<option value="AATF 3" />
+						<option value="AATF1" />
+						<option value="AATF2" />
+						<option value="AATF3" />
 					</datalist>
 				</td>
 				
 				<td>
-					<select class="govuk-select" text="Type">
-						<option value="0">Type</option>
-						<option value="1">Household</option>
-						<option value="2">Non-household</option>
+					<select class="govuk-select" text="Type" id="type-filter">
+						<option value="Type">Type</option>
+						<option value="Household">Household</option>
+						<option value="Non-household">Non-household</option>
 					</select>
 				</td>
 				
 				<td>
-					<select class="govuk-select" text="Status">
-						<option value="0">Status</option>
-						<option value="1">Draft</option>
-						<option value="2">Submitted</option>
-						<option value="3">Approved</option>
-						<option value="4">Rejected</option>
-						<hr />
-						<option value="5">Returned</option>
-						<hr />
-						<option value="6">Void</option>
+					<select class="govuk-select" text="Status" id="status-filter">
+						<option value="Status">Status</option>
+						<option value="Draft">Draft</option>
+						<option value="Submitted">Submitted</option>
+						<option value="Approved">Approved</option>
+						<option value="Rejected">Rejected</option>
+						<option value="Returned">Returned</option>
+						<option value="Void">Void</option>
 					</select>
 				</td>
 				
@@ -98,7 +97,7 @@
 		</div>
 		
 		<div class="govuk-!-padding-bottom-7">
-		<table class="govuk-table">
+		<table class="govuk-table" id="evidence-table">
 		  <thead class="govuk-table__head">
 		  
 			<tr class="govuk-table__row">
@@ -112,60 +111,80 @@
 		  </thead>
 		  
 		  <tbody class="govuk-table__body">
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1279</td>
 			  <td class="govuk-table__cell">12/11/2021</td>
 			  <td class="govuk-table__cell">AATF1</td>
 			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Submitted</td>
 			  <td class="govuk-table__cell">
-				<a href="210_Review_evidence_note.html">Review evidence</a>
+				{% if (data['chosen-status-1279']) %}
+				  {{ data['chosen-status-1279'] }}
+				{% else %}
+				  Submitted
+				{% endif %}
+			  </td>
+			  <td class="govuk-table__cell">
+				{% if (data['chosen-status-1279']) %}
+				  <a href="/version-2/journey-2/review-evidence-note-redirect?id=1279">View</a>
+				{% else %}
+				  <a href="/version-2/journey-2/review-evidence-note-redirect?id=1279">Review evidence</a>
+				{% endif %}
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1389</td>
 			  <td class="govuk-table__cell">12/11/2021</td>
 			  <td class="govuk-table__cell">AATF2</td>
 			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Submitted</td>
 			  <td class="govuk-table__cell">
-				<a href="210_Review_evidence.html">Review evidence</a>
+				{% if (data['chosen-status-1389']) %}
+				  {{ data['chosen-status-1389'] }}
+				{% else %}
+				  Submitted
+				{% endif %}
+			  </td>
+			  <td class="govuk-table__cell">
+				{% if (data['chosen-status-1389']) %}
+				  <a href="/version-2/journey-2/review-evidence-note-redirect?id=1389">View</a>
+				{% else %}
+				  <a href="/version-2/journey-2/review-evidence-note-redirect?id=1389">Review evidence</a>
+				{% endif %}
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1486</td>
 			  <td class="govuk-table__cell">13/11/2021</td>
-			  <td class="govuk-table__cell">PCS3</td>
+			  <td class="govuk-table__cell">AATF3</td>
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Approved</td>
 			  <td class="govuk-table__cell">
 				<a href="#">View</a>
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1499</td>
 			  <td class="govuk-table__cell">13/11/2021</td>
-			  <td class="govuk-table__cell">PCS4</td>
+			  <td class="govuk-table__cell">AATF4</td>
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Rejected</td>
 			  <td class="govuk-table__cell">
 				<a href="#">View</a>
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1543</td>
 			  <td class="govuk-table__cell">14/11/2021</td>
-			  <td class="govuk-table__cell">PCS5</td>
+			  <td class="govuk-table__cell">AATF5</td>
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Returned</td>
 			  <td class="govuk-table__cell">
 				<a href="#">View</a>
 			  </td>
 			</tr>
-			<tr class="govuk-table__row">
+			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1599</td>
 			  <td class="govuk-table__cell">14/11/2021</td>
-			  <td class="govuk-table__cell">PCS6</td>
+			  <td class="govuk-table__cell">AATF6</td>
 			  <td class="govuk-table__cell">Household</td>
 			  <td class="govuk-table__cell">Void</td>
 			  <td class="govuk-table__cell">
@@ -178,9 +197,9 @@
 			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
 				<span style="float: right;">
 				Prev 1 
-				<a href="#">2</a>
+				<!-- a href="#">2</a>
 				<a href="#">3</a>
-				<a href="#">4</a>
+				<a href="#">4</a -->
 				<a href="#">Next</a>
 				</span>
 			  </td>
@@ -194,5 +213,26 @@
 
     </div>
   </div>
+
+<script type="text/javascript">
+
+	// set row background colour when row has unreviewed "Submitted" status
+	const rowSet = document.getElementsByTagName('tr');
+
+	for (let i = 0; i < rowSet.length; i++) 
+	{
+		const cells = rowSet[i].childNodes;
+		
+		for ( let j = 0; j < cells.length; j++ )
+		{
+			if ( cells[j].innerText === "Submitted" )
+			{ 
+				rowSet[i].style.backgroundColor = "#eee";
+			}
+		}
+	}
+</script>
+
+<script src="/public/javascripts/filter.js"></script>
 
 {% endblock %}

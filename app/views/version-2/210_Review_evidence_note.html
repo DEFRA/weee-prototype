@@ -1,4 +1,4 @@
-{% extends "version-2/layout.html" %}
+{% extends "version-2/layout2.html" %}
 
 {% block pageTitle %}
   View submitted evidence note
@@ -6,21 +6,24 @@
 
 {% block content %}
 
-<style>
-div { border: 0px solid black; }
-</style>
-
-<form class="form" action="/url/of/next/page" method="post">
+<form class="form" action="/version-2/journey-2/choose-status-redirect" method="post">
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters" style="width: 90%;">
 	  
-		<h1 class="govuk-heading-l">Check evidence note details</h1>
+		{% if ( data['chosen-status-' + data['evidence-number']] ) %}
 		
-		<p>After review, you can choose whether to approve, reject or return the evidence note.</p>
+			<div>&nbsp;</div>
+			
+		{% else %}
 
-		<h2 class="govuk-heading-m">Evidence note 1279</h2>
+			<h1 class="govuk-heading-l">Check evidence note details</h1>
+			<p>After review, you can choose whether to approve, reject or return the evidence note.</p>
+
+		{% endif %}
 		
+
+		<h2 class="govuk-heading-m">Evidence note {{ data['evidence-number'] }}</h2>
 
 		<div class="govuk-width-container govuk-grid-column-full govuk-!-margin-top-3 govuk-!-margin-left-0">
 		
@@ -29,6 +32,15 @@ div { border: 0px solid black; }
 				<span class="govuk-body govuk-!-margin-left-2">Submitted</span>
 			</div>
 			
+			{% if ( data['reject-return-reason'] ) %}
+
+				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Reason:</span> 
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['reject-return-reason'] }}</span>
+				</div>
+
+			{% endif %}
+
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date created:</span> 
 				<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
@@ -209,46 +221,73 @@ div { border: 0px solid black; }
     </div>
   </div>
 
-<div class="govuk-!-margin-top-3 govuk-!-margin-bottom-9">
-	{{ govukRadios
-		({
-		  idPrefix: "choose-activity",
-		  name: "choose-activity",
-		  fieldset: 
-		  {
-			legend: 
-			{
-			  text: "Choose whether to approve, reject or return the evidence note",
-			  isPageHeading: true,
-			  classes: "govuk-fieldset__legend--l civica-font-size-19"
-			}
-		  },
-		  items: 
-		  [
-			{
-			  value: "1",
-			  text: "Approve evidence note",
-			  checked: true
-			},
-			{
-			  value: "2",
-			  text: "Reject evidence note"
-			},
-			{
-			  value: "3",
-			  text: "Return evidence note"
-			}
-		  ]
-		}) 
-	}}
-</div>
+{% if ( data['chosen-status-' + data['evidence-number']] ) %}
+
+	<div>&nbsp;</div>
+	
+{% else %}
+
+	<div class="govuk-!-margin-top-3 govuk-!-margin-bottom-9">
+		{{ govukRadios
+			({
+			  idPrefix: "choose-status",
+			  name: "choose-status",
+			  fieldset: 
+			  {
+				legend: 
+				{
+				  text: "Choose whether to approve, reject or return the evidence note",
+				  isPageHeading: true,
+				  classes: "govuk-fieldset__legend--l civica-font-size-19"
+				}
+			  },
+			  items: 
+			  [
+				{
+				  value: "1",
+				  text: "Approve evidence note",
+				  checked: true
+				},
+				{
+				  value: "2",
+				  text: "Reject evidence note"
+				},
+				{
+				  value: "3",
+				  text: "Return evidence note"
+				}
+			  ]
+			}) 
+		}}
 		
-<div class="govuk-!-margin-top-3">
-	{{ govukButton({
-		text: "Save and continue",
-		classes: "civica-font-size-22"
-	  }) }}
-</div>
+		<div id="note-area" style="display: none;">
+			<div class="govuk-input" style="border: 0 solid white;">What is the reason you are rejecting the evidence note?</div>
+			<textarea class="civica-textarea govuk-input" id="reject-return-reason" name="reject-return-reason"></textarea>
+		</div>
+	</div>
+			
+	<div class="govuk-!-margin-top-3">
+		{{ govukButton({
+			text: "Save and continue",
+			classes: "civica-font-size-22"
+		  }) }}
+	</div>
+
+{% endif %}
+
+<script>
+	function showNoteArea(event)
+	{
+		document.getElementById("note-area").style = "display: block;";
+	}
+	function hideNoteArea(event)
+	{
+		document.getElementById("note-area").style = "display: none;";
+	}
+	document.getElementById("choose-status").addEventListener("click", hideNoteArea);
+	document.getElementById("choose-status-2").addEventListener("click", showNoteArea);
+	document.getElementById("choose-status-3").addEventListener("click", showNoteArea);
+</script>
 
 </form>
 

@@ -38,12 +38,15 @@
 <form class="form" action="/version-2/edit-evidence-note" method="post">
 
   <div class="govuk-grid-row">
+
     <div class="govuk-grid-column-two-thirds">
   
 		<h1 class="govuk-heading-l">Enter evidence note details</h1>
 	  
+
 		<input type="hidden" name="reference" value="{{ data['selected-evidence-note']._reference }}" />
 	  
+
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-full">
 				<h3 class="govuk-heading-s">Period in which WEEE was received for treatment</h3>
@@ -114,7 +117,6 @@
 				  }) }}
 			</div>
 		</div>
-
 		<div class="govuk-grid-row">
 			<div class=" govuk-grid-column-one-half">
 
@@ -325,6 +327,5 @@
     </div>
   </div>
   
-
 </form>
 {% endblock %}
