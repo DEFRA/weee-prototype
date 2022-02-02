@@ -102,6 +102,7 @@ router.get('/version-2/manage-evidence-redirect', function(req, res){
 });
 
 router.post('/version-2/create-evidence-note-redirect', function(req, res){
+    req.session.data['paste-values'] = ''; 
     res.redirect('/version-2/205_Create_evidence_note_no_protocol');
 });
 

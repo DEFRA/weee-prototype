@@ -17,7 +17,7 @@
                 
                 if (tableRows && tableRows.length >= 1) {
                     var tableRowColumns = tableRows[0].cells.length;
-                    console.log('table col ' + tableRowColumns);
+                    
                     for (var tableRowCount = 0; tableRowCount < tableRows.length - 1; tableRowCount++) {
                         
                         for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns - 1 ; tableColumnCount++) {
@@ -35,8 +35,8 @@
                                     
                                     if (!isNaN(floatCellValue)) {
                                         var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
-                                        var convertedValue = parseFloat(floatCellValue).toFixed(3);
-                                        input.value = convertedValue;
+                                        //var convertedValue = parseFloat(floatCellValue).toFixed(3);
+                                        input.value = floatCellValue;
                                     }
                                     else{
                                         var select = tableRows[tableRowCount].cells[tableColumnCount].querySelector('select:first-of-type');
@@ -47,18 +47,24 @@
                         }
                     }
 
+                    
                     // totals
-                    /* for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns - 1; tableColumnCount++) {
+                     for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns - 1; tableColumnCount++) {
                         var columnTotal = 0;
-                        for (var tableRowCount = 2; tableRowCount < tableRows.length - 1; tableRowCount++) {
+                        for (var tableRowCount = 0; tableRowCount <= tableRows.length - 2; tableRowCount++) {
                             var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
-                            if (input.value && !isNaN(input.value)) {
-                                columnTotal += parseFloat(input.value);
+                            if (input){
+                                if (input.value && !isNaN(input.value)) {
+                                    columnTotal += parseFloat(input.value);
+                                }
                             }
+                            
                         }
+                        
                         var totalControl = tableRows[tableRowCount].cells[tableColumnCount].querySelector('[id*="tonne"]');
+                        
                         totalControl.innerText = columnTotal.toFixed(3) + ' tonnes';
-                    } */
+                    } 
                 }
             }
         });
@@ -119,17 +125,18 @@
                             }
 
                             // totals
-                            for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns - 1; tableColumnCount++) {
-                                var columnTotal = 0;
-                                for (var tableRowCount = 1; tableRowCount < tableRows.length - 1; tableRowCount++) {
-                                    var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
-                                    if (!isNaN(input.value)) {
-                                        columnTotal += parseFloat(input.value);
-                                    }
-                                }
-                                var totalControl = tableRows[tableRowCount].cells[tableColumnCount].querySelector('[id*="tonne"]');
-                                totalControl.innerText = columnTotal.toFixed(3);
-                            }
+                            console.log(tableRowColumns);
+                            //for (var tableColumnCount = 1; tableColumnCount <= tableRowColumns - 1; tableColumnCount++) {
+                                //var columnTotal = 0;
+                                //for (var tableRowCount = 1; tableRowCount < tableRows.length - 1; tableRowCount++) {
+                                    //var input = tableRows[tableRowCount].cells[tableColumnCount].querySelector('input:first-of-type');
+                                    //if (!isNaN(input.value)) {
+                                      //  columnTotal += parseFloat(input.value);
+                                    //}
+                                //}
+                                //var totalControl = tableRows[tableRowCount].cells[tableColumnCount].querySelector('[id*="tonne"]');
+                                //totalControl.innerText = columnTotal.toFixed(3);
+                            //}
                         }
                     }
                 }
