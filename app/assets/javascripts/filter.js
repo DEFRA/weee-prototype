@@ -54,9 +54,10 @@
             var displayRow = true;
 
             if (searchFilter.trim() != '' && searchFilter != '') {
-                var td = tr[i].getElementsByTagName("td")[0];
-                
-                if (!IsMatch(td, searchFilter)){
+                var td1 = tr[i].getElementsByTagName("td")[0];
+                var td2 = tr[i].getElementsByTagName("td")[2];
+
+                if (!IsMatch(td1, searchFilter) && !IsMatch(td2, searchFilter)){
                     displayRow = false;
                 }
             }
