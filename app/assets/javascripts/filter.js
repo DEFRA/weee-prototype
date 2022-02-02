@@ -102,8 +102,9 @@
             if (yearFilter != 'Compliance year') 
 			{
                 var td = tr[i].getElementsByTagName("td")[1];
-                
-                if (!IsMatch(td, yearFilter))
+                var td2 = tr[i].getElementsByTagName("td")[0];
+
+                if (!IsMatch(td, yearFilter) && !IsMatch(td2, yearFilter))
 				{
                     displayRow = false;
                 }
@@ -112,8 +113,9 @@
             if (dateFilter.trim() != '' && dateFilter != '') 
 			{
                 var td = tr[i].getElementsByTagName("td")[1];
-                
-                if (!IsMatch(td, dateFilter))
+                var td2 = tr[i].getElementsByTagName("td")[3];
+
+                if (!IsMatch(td, dateFilter) && !IsMatch(td2, dateFilter))
 				{
                     displayRow = false;
                 }
@@ -122,8 +124,9 @@
             if (pcsFilter.trim() != '' && pcsFilter != 'Issued to' && pcsFilter != 'Issued by') 
 			{
                 var td = tr[i].getElementsByTagName("td")[2];
-                
-                if (!IsMatch(td, pcsFilter))
+                var td2 = tr[i].getElementsByTagName("td")[4];
+
+                if (!IsMatch(td, pcsFilter) && !IsMatch(td2, pcsFilter))
 				{
                     displayRow = false;
                 }
@@ -132,8 +135,9 @@
             if (typeFilter != 'Type') 
 			{
                 var td = tr[i].getElementsByTagName("td")[3];
-                
-                if (!IsMatch(td, typeFilter))
+                var td2 = tr[i].getElementsByTagName("td")[5];
+
+                if (!IsMatch(td, typeFilter) && !IsMatch(td2, typeFilter))
 				{
                     displayRow = false;
                 }
@@ -142,8 +146,9 @@
             if (statusFilter != 'Status') 
 			{
                 var td = tr[i].getElementsByTagName("td")[4];
+                var td2 = tr[i].getElementsByTagName("td")[6];
 
-                if (!IsMatch(td, statusFilter))
+                if (!IsMatch(td, statusFilter) && !IsMatch(td2, statusFilter))
 				{
                     displayRow = false;
                 }
