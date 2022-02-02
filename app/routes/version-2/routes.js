@@ -39,9 +39,26 @@ function SetupJourney2Data(req)
     req.session.data['paste-values'] = '';
 }
 
+function SetupJourney3Data(req) 
+{
+    var schemes = new Schemes();
+
+    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+    //resetNonObligated(req);
+
+
+    var facilities = [];
+    facilities.push(new Facility('PCS 1', 1, 'WEE/PCS1234GH/PCS'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+}
+
 router.post('/version-2/choose-activity-redirect', function (req, res) 
 {
     const activity = req.session.data['choose-activity'];
+	//const journey = req.query['journey'];
 
 	if ( activity === '7' )
 	{
@@ -51,8 +68,14 @@ router.post('/version-2/choose-activity-redirect', function (req, res)
 	
 	if ( activity === '12' )
 	{
-        SetupJourney2Data(req);
-        res.redirect('/version-2/209_Manage_evidence');
+		SetupJourney2Data(req);
+		res.redirect('/version-2/209_Manage_evidence');
+	}
+	
+	if ( activity === '13' )
+	{
+		SetupJourney3Data(req);
+		res.redirect('/version-2/214_Manage_evidence_tabs');
 	}
     
     res.redirect('/version-2/index');
