@@ -14,7 +14,6 @@
 	  
 	  <div class="element-spacer">&nbsp;</div>
 
-      <form id="sf1" name="sf1" class="form" action="/version-2/210_Review_evidence_note" method="post" novalidate>
 
 
 <div class="govuk-tabs" data-module="govuk-tabs" style="margin-left: -20px; margin-right: -20px;">
@@ -236,6 +235,8 @@
 		</table>
 	</div>
 	
+    <form class="form" action="/version-2/journey-3/215-Transfer-evidence-note" method="post" novalidate>
+
 	<div class="govuk-!-padding-bottom-7">
 		<table class="govuk-table" id="evidence-table">
 		  <thead class="govuk-table__head">
@@ -251,7 +252,7 @@
 		  </thead>
 		  <tbody class="govuk-table__body">
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell"><input type="checkbox" /></td>
+			  <td class="govuk-table__cell"><input type="checkbox" value="1444" /></td>
 			  <td class="govuk-table__cell">1444</td>
 			  <td class="govuk-table__cell">12/11/2021</td>
 			  <td class="govuk-table__cell">AATF1</td>
@@ -262,7 +263,7 @@
 			  </td>
 			</tr>
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell"><input type="checkbox" /></td>
+			  <td class="govuk-table__cell"><input type="checkbox" value="1534" /></td>
 			  <td class="govuk-table__cell">1534</td>
 			  <td class="govuk-table__cell">12/11/2021</td>
 			  <td class="govuk-table__cell">AATF2</td>
@@ -273,7 +274,7 @@
 			  </td>
 			</tr>
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell"><input type="checkbox" /></td>
+			  <td class="govuk-table__cell"><input type="checkbox" value="1486" /></td>
 			  <td class="govuk-table__cell">1486</td>
 			  <td class="govuk-table__cell">13/11/2021</td>
 			  <td class="govuk-table__cell">AATF1</td>
@@ -284,7 +285,7 @@
 			  </td>
 			</tr>
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell"><input type="checkbox" /></td>
+			  <td class="govuk-table__cell"><input type="checkbox" value="1499" /></td>
 			  <td class="govuk-table__cell">1499</td>
 			  <td class="govuk-table__cell">13/11/2021</td>
 			  <td class="govuk-table__cell">AATF1</td>
@@ -295,7 +296,7 @@
 			  </td>
 			</tr>
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell"><input type="checkbox" /></td>
+			  <td class="govuk-table__cell"><input type="checkbox" value="1543" /></td>
 			  <td class="govuk-table__cell">1543</td>
 			  <td class="govuk-table__cell">14/11/2021</td>
 			  <td class="govuk-table__cell">AATF3</td>
@@ -306,7 +307,7 @@
 			  </td>
 			</tr>
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell"><input type="checkbox" /></td>
+			  <td class="govuk-table__cell"><input type="checkbox" value="1599" /></td>
 			  <td class="govuk-table__cell">1599</td>
 			  <td class="govuk-table__cell">14/11/2021</td>
 			  <td class="govuk-table__cell">AATF1</td>
@@ -330,12 +331,13 @@
 			</tr>
 		  </tbody>
 		</table>
-		
-		{{ govukButton({
-			text: "Transfer evidence"
-		}) }}
 
 	</div>
+		
+	{{ govukButton({
+		text: "Transfer evidence"
+	}) }}
+    </form>
 
   </div>
   
@@ -511,7 +513,6 @@
   
 </div>
 
-      </form>
 
     </div>
   </div>

@@ -390,7 +390,7 @@ router.post('/version-2/cancel-copy-paste-redirect', function (req, res) {
     res.redirect('/version-2/' + req.session.data['paste-return-page']);
 });
 
-
+// JOURNEY 2
 
 router.get('/version-2/journey-2/review-evidence-note-redirect', function(req, res)
 {
@@ -428,6 +428,48 @@ router.post('/version-2/journey-2/choose-status-redirect', function (req, res) {
 });
 
 
+// JOURNEY 3
 
+
+router.get('/version-2/journey-3/215-Transfer-evidence-note', function(req, res)
+{
+	//var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
+	//req.session.data['evidence-number'] = req.query['id'];
+
+    res.redirect('/version-2/215_Transfer_evidence_note');
+});
+
+
+router.get('/version-2/journey-3/216-Selected-evidence-note', function(req, res)
+{
+	//var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
+	//req.session.data['evidence-number'] = req.query['id'];
+
+    res.redirect('/version-2/216_Selected_evidence_note');
+});
+
+
+router.get('/version-2/journey-3/217-Transfer-note-init', function(req, res)
+{
+	// -----------------------------------
+	// Called from the versions-home page
+	// -----------------------------------
+	
+	//var evidenceNote = facility._evidenceNotes.find(find => find._reference === 1444);
+	//data['selected-evidence-note'] = evidenceNote;
+
+    res.redirect('/version-2/217_Transfer_note');
+});
+
+router.get('/version-2/journey-3/217-Transfer-note', function(req, res)
+{
+	// -----------------------------------
+	// Called from one page on journey 3
+	// -----------------------------------
+	//var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
+	//req.session.data['evidence-number'] = req.query['id'];
+
+    res.redirect('/version-2/217_Transfer_note');
+});
 
 module.exports = router;

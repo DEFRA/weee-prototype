@@ -15,7 +15,6 @@ div { border: 0px solid black; }
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters" style="width: 90%;">
 
-	  
 		<h1 class="govuk-heading-m">Evidence note {{ data['selected-evidence-note']._reference }}</h1>
 
 		<div class="govuk-width-container govuk-grid-column-full govuk-!-margin-top-3 govuk-!-margin-left-0">
@@ -55,7 +54,7 @@ div { border: 0px solid black; }
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
 		
 			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
-				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Issuing site:</div>
+				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Original AATF:</div>
 				<div class="govuk-grid-column-one-half govuk-body">
 					ABB ltd <br />
 					12 May Lane <br />
@@ -66,7 +65,7 @@ div { border: 0px solid black; }
 			</div>
 			
 			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
-				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Operator:</div>
+				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Transferring PCS:</div>
 				<div class="govuk-grid-column-one-half govuk-body">
 					ABB ltd <br />
 					12 May Lane <br />
@@ -89,7 +88,7 @@ div { border: 0px solid black; }
 		</div>                                  
 		  
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full govuk-body" style="padding: 0 0 0 0;">
-			By submitting this information you confirm that the following waste and electronic equipment from UK household has been received between <b>{{ data['selected-evidence-note']._startDate }}</b> and <b>{{ data['selected-evidence-note']._endDate }}</b> at this site. It has been reused as whole appliances to the extent set out below. No other evidence has been issued on these WEEE materials
+			By submitting this information you confirm that the following waste and electronic equipment from UK household has been transferred to the PCS stated above.
 		</div>
 		
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
@@ -98,8 +97,8 @@ div { border: 0px solid black; }
 				<thead class="govuk-table__head">
 					<tr>
 						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 48%;">Category</th>
-						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 27%;">Total received (tonnes)</th>
-						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 25%;">Re-used as whole appliances (tonnes)</th>
+						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 27%;">Total transferred (tonnes)</th>
+						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 25%;">Total re-used transferred (tonnes)</th>
 					</tr>
 				</thead>
 				

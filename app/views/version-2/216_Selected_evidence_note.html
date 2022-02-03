@@ -1,0 +1,124 @@
+{% extends "version-2/layout2.html" %}
+
+{% block pageTitle %}
+  Manage evidence (tabs)
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+
+	<h1 class="govuk-heading-l">Transfer from selected evidence notes</h1>
+	
+	<p class="govuk-label">
+	Choose the tonnage that you would like to transfer from each category, for each evidence note that you have selected. The total will appear underneath.
+	</p>
+
+	<div class="element-spacer govuk-form-group">
+		<span class="civica-font-size-19-bold" style="padding-right: 12px;">Evidence note 1444</span>
+		<a class="civica-font-size-19" href="#">View</a>
+		<div class="element-spacer-small">
+			<table class="govuk-table" id="evidence-table">
+				<thead class="govuk-table__head">
+					<tr class="govuk-table__row">
+						<th scope="col" class="govuk-table__header">Category</th>
+						<th scope="col" class="govuk-table__header">Total received (tonnes)</th>
+						<th scope="col" class="govuk-table__header">Total re-used (tonnes)</th>
+						<th scope="col" class="govuk-table__header">Transfer received (tonnes)</th>
+						<th scope="col" class="govuk-table__header">Transfer re-used (tonnes)</th>
+					</tr>
+				</thead>
+				<tbody class="govuk-table__body">
+					<tr class="govuk-table__row result-row">
+						<td class="govuk-table__cell">4</td>
+						<td class="govuk-table__cell">50</td>
+						<td class="govuk-table__cell">0</td>
+						<td class="govuk-table__cell"><input class="govuk-input" id="event-name" name="event-name" type="text" value="12"></td>
+						<td class="govuk-table__cell"><input class="govuk-input" id="event-name" name="event-name" type="text" value="0"></td>
+					</tr>
+					<tr class="govuk-table__row result-row">
+						<td class="govuk-table__cell">6</td>
+						<td class="govuk-table__cell">25</td>
+						<td class="govuk-table__cell">0</td>
+						<td class="govuk-table__cell"><input class="govuk-input" id="event-name" name="event-name" type="text" value="3"></td>
+						<td class="govuk-table__cell"><input class="govuk-input" id="event-name" name="event-name" type="text" value="0"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div class="element-spacer govuk-form-group">
+		<span class="civica-font-size-19-bold" style="padding-right: 12px;">Evidence note 1534</span>
+		<a class="civica-font-size-19" href="#">View</a>
+		<div class="element-spacer-small">
+			<table class="govuk-table" id="evidence-table">
+				<thead class="govuk-table__head">
+					<tr class="govuk-table__row">
+						<th scope="col" class="govuk-table__header">Category</th>
+						<th scope="col" class="govuk-table__header">Total received (tonnes)</th>
+						<th scope="col" class="govuk-table__header">Total re-used (tonnes)</th>
+						<th scope="col" class="govuk-table__header">Transfer received (tonnes)</th>
+						<th scope="col" class="govuk-table__header">Transfer re-used (tonnes)</th>
+					</tr>
+				</thead>
+				<tbody class="govuk-table__body">
+					<tr class="govuk-table__row result-row">
+						<td class="govuk-table__cell">4</td>
+						<td class="govuk-table__cell">20</td>
+						<td class="govuk-table__cell">0</td>
+						<td class="govuk-table__cell"><input class="govuk-input" id="event-name" name="event-name" type="text" value="10"></td>
+						<td class="govuk-table__cell"><input class="govuk-input" id="event-name" name="event-name" type="text" value="0"></td>
+					</tr>
+					<tr class="govuk-table__row result-row">
+						<td class="govuk-table__cell">6</td>
+						<td class="govuk-table__cell">30</td>
+						<td class="govuk-table__cell">0</td>
+						<td class="govuk-table__cell"><input class="govuk-input" id="event-name" name="event-name" type="text" value="14"></td>
+						<td class="govuk-table__cell"><input class="govuk-input" id="event-name" name="event-name" type="text" value="0"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="element-spacer">&nbsp;</div>
+	
+	<div class="element-spacer govuk-form-group">
+		<div class="element-spacer-small">
+			<table class="govuk-table" id="evidence-table">
+				<thead class="govuk-table__head">
+					<tr class="govuk-table__row">
+						<th scope="col" class="govuk-table__header">Category</th>
+						<th scope="col" class="govuk-table__header">Total tonnes transferred</th>
+					</tr>
+				</thead>
+				<tbody class="govuk-table__body">
+					<tr class="govuk-table__row result-row">
+						<td class="govuk-table__header">4</td>
+						<td class="govuk-table__header">6</td>
+					</tr>
+					<tr class="govuk-table__row result-row">
+						<td class="govuk-table__header">22</td>
+						<td class="govuk-table__header">17</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="element-spacer">&nbsp;</div>
+
+	<form class="form" action="/version-2/210_Review_evidence_note" method="post" novalidate>
+		<button class="govuk-button" data-module="govuk-button">
+		  Confirm
+		</button>
+	</form>
+
+	</div>
+</div>
+
+<script src="/public/javascripts/filter.js"></script>
+
+{% endblock %}

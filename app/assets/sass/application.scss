@@ -25,6 +25,12 @@ $govuk-assets-path: '/govuk/assets/';
 	margin-bottom: 32px;
 }
 
+.element-spacer-small
+{
+	margin-top: 16px; 
+	margin-bottom: 16px;
+}
+
 .civica-align-left > div:first-child
 { 
 	border: 0px solid white; 
@@ -106,6 +112,13 @@ $govuk-assets-path: '/govuk/assets/';
 {
 	font-size: 19px;
 	font-weight: 300;
+}
+
+.civica-font-size-19-bold
+{
+	font-size: 19px;
+	font-weight: 600;
+	font-family: 'nta',Arial,sans-serif;
 }
 
 .civica-font-size-22
