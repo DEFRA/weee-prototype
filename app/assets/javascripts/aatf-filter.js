@@ -54,10 +54,9 @@
             var displayRow = true;
 
             if (searchFilter.trim() != '' && searchFilter != '') {
-                var td1 = tr[i].getElementsByTagName("td")[0];
                 var td2 = tr[i].getElementsByTagName("td")[2];
 
-                if (!IsMatch(td1, searchFilter) && !IsMatch(td2, searchFilter)){
+                if (!IsMatch(td2, searchFilter)){
                     displayRow = false;
                 }
             }
@@ -101,10 +100,9 @@
 
             if (yearFilter != 'Compliance year') 
 			{
-                var td = tr[i].getElementsByTagName("td")[1];
                 var td2 = tr[i].getElementsByTagName("td")[0];
 
-                if (!IsMatch(td, yearFilter) && !IsMatch(td2, yearFilter))
+                if (!IsMatch(td2, yearFilter))
 				{
                     displayRow = false;
                 }
@@ -112,10 +110,9 @@
 
             if (dateFilter.trim() != '' && dateFilter != '') 
 			{
-                var td = tr[i].getElementsByTagName("td")[1];
                 var td2 = tr[i].getElementsByTagName("td")[3];
 
-                if (!IsMatch(td, dateFilter) && !IsMatch(td2, dateFilter))
+                if (!IsMatch(td2, dateFilter))
 				{
                     displayRow = false;
                 }
@@ -123,10 +120,9 @@
 
             if (pcsFilter.trim() != '' && pcsFilter != 'Issued to' && pcsFilter != 'Issued by') 
 			{
-                var td = tr[i].getElementsByTagName("td")[2];
                 var td2 = tr[i].getElementsByTagName("td")[4];
 
-                if (!IsMatch(td, pcsFilter) && !IsMatch(td2, pcsFilter))
+                if (!IsMatch(td2, pcsFilter))
 				{
                     displayRow = false;
                 }
@@ -134,10 +130,9 @@
 
             if (typeFilter != 'Type') 
 			{
-                var td = tr[i].getElementsByTagName("td")[3];
                 var td2 = tr[i].getElementsByTagName("td")[5];
 
-                if (!IsMatch(td, typeFilter) && !IsMatch(td2, typeFilter))
+                if (!IsMatch(td2, typeFilter))
 				{
                     displayRow = false;
                 }
@@ -145,10 +140,9 @@
 
             if (statusFilter != 'Status') 
 			{
-                var td = tr[i].getElementsByTagName("td")[4];
                 var td2 = tr[i].getElementsByTagName("td")[6];
 
-                if (!IsMatch(td, statusFilter) && !IsMatch(td2, statusFilter))
+                if (!IsMatch(td2, statusFilter))
 				{
                     displayRow = false;
                 }
