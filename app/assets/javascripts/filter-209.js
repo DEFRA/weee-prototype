@@ -27,9 +27,6 @@
             filter();
         });
 
-        document.getElementById("category-filter").addEventListener('change', (e) => {
-            filter();
-        });
     }
     
 
@@ -150,20 +147,6 @@
                 if (!IsMatch(td, statusFilter))
 				{
                     displayRow = false;
-                }
-            }
-
-            if (categoryFilter != '0'){
-                var td = tr[i].getElementsByTagName("td")[8];
-
-                if (td) 
-                {
-                    var txtValue = td.textContent || td.innerText;
-                    
-                    var filters = txtValue.split(',');
-                    if (!filters.includes(categoryFilter)){
-                        displayRow = false;
-                    }
                 }
             }
 

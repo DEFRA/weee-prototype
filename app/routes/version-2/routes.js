@@ -88,79 +88,80 @@ router.post('/version-2/choose-site-redirect', function(req, res){
     var date2 = new Date(2021, 01, 4, 10, 4, 5);
     facility._evidenceNotes[1]._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
     facility._evidenceNotes[2]._submittedDate = moment(date2, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-
+    
     req.session.data['facilities']  = facilities;
     req.session.data['chosen-facility'] = facility; 
 
-    
-    //console.log(req.session.data['chosen-facility']._evidenceNotes);
     res.redirect('/version-2/manage-evidence-redirect');
 });
 
 router.get('/version-2/manage-evidence-redirect', function(req, res){
-
     var facilities = req.session.data['facilities'];
     var selectedFacility = req.session.data['choose-site'];
 
-    facility = facilities.find(fac => fac._name === selectedFacility);
-    
-    console.log(facility._evidenceNotes[0]._received);
 
+for(var i = 0; i < facilities.length; i++){
+        var facility = facilities[i];
+        if (facility._evidenceNotes){
+            for (j = 0; j < facility._evidenceNotes.length; j++){
+                var evidenceNote = facility._evidenceNotes[j];
+                
+                evidenceNote._categoryFilter = [];
+                if (HasValue(evidenceNote._received._largeHouseholdAppliances) || HasValue(evidenceNote._reused._largeHouseholdAppliances)){
+                    evidenceNote._categoryFilter.push('1');
+                }
+                if (HasValue(evidenceNote._received._smallHouseholdAppliances) || HasValue(evidenceNote._reused._smallHouseholdAppliances)){
+                    evidenceNote._categoryFilter.push('2');
+                }
+                if (HasValue(evidenceNote._received._itAndTelecommunicationsEquipment) || HasValue(evidenceNote._reused._itAndTelecommunicationsEquipment)){
+                    evidenceNote._categoryFilter.push('3');
+                }
+                if (HasValue(evidenceNote._received._consumerEquipment) || HasValue(evidenceNote._reused._consumerEquipment)){
+                    evidenceNote._categoryFilter.push('4');
+                }
+                if (HasValue(evidenceNote._received._lightingEquipment) || HasValue(evidenceNote._reused._lightingEquipment)){
+                    evidenceNote._categoryFilter.push('5');
+                }
+                if (HasValue(evidenceNote._received._electricalAndElectronicTools) || HasValue(evidenceNote._reused._electricalAndElectronicTools)){
+                    evidenceNote._categoryFilter.push('6');
+                }
+                if (HasValue(evidenceNote._received._toysLeisureAndSportsEquipment) || HasValue(evidenceNote._reused._toysLeisureAndSportsEquipment)){
+                    evidenceNote._categoryFilter.push('7');
+                }
+                if (HasValue(evidenceNote._received._medicalDevices) || HasValue(evidenceNote._reused._medicalDevices)){
+                    evidenceNote._categoryFilter.push('8');
+                }
+                if (HasValue(evidenceNote._received._monitoringAndControlInstruments) || HasValue(evidenceNote._reused._monitoringAndControlInstruments)){
+                    evidenceNote._categoryFilter.push('9');
+                }
+                if (HasValue(evidenceNote._received._automaticDispensers) || HasValue(evidenceNote._reused._automaticDispensers)){
+                    evidenceNote._categoryFilter.push('10');
+                }
+                if (HasValue(evidenceNote._received._appliancesContainingRefrigerants) || HasValue(evidenceNote._reused._appliancesContainingRefrigerants)){
+                    evidenceNote._categoryFilter.push('12');
+                }
+                if (HasValue(evidenceNote._received._gasDischargeLampsAndLedLightSources) || HasValue(evidenceNote._reused._gasDischargeLampsAndLedLightSources)){
+                    evidenceNote._categoryFilter.push('13');
+                }
+                if (HasValue(evidenceNote._received._displayEquipment) || HasValue(evidenceNote._reused._displayEquipment)){
+                    evidenceNote._categoryFilter.push('11');
+                }
+                if (HasValue(evidenceNote._received._photovoltaicPanel) || HasValue(evidenceNote._reused._photovoltaicPanel)){
+                    evidenceNote._categoryFilter.push('14');
+                }
 
-    facility._evidenceNotes[0]._categoryFilter = [];
-
-    if (HasValue(facility._evidenceNotes[0]._received._largeHouseholdAppliances) || HasValue(facility._evidenceNotes[0]._reused._largeHouseholdAppliances)){
-        facility._evidenceNotes[0]._categoryFilter.push('1');
+                evidenceNote._categoryFilterString = evidenceNote._categoryFilter.join();
+            }
+        }
     }
-    if (HasValue(facility._evidenceNotes[0]._received._smallHouseholdAppliances) || HasValue(facility._evidenceNotes[0]._reused._smallHouseholdAppliances)){
-        facility._evidenceNotes[0]._categoryFilter.push('2');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._itAndTelecommunicationsEquipment) || HasValue(facility._evidenceNotes[0]._reused._itAndTelecommunicationsEquipment)){
-        facility._evidenceNotes[0]._categoryFilter.push('3');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._consumerEquipment) || HasValue(facility._evidenceNotes[0]._reused._consumerEquipment)){
-        facility._evidenceNotes[0]._categoryFilter.push('4');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._lightingEquipment) || HasValue(facility._evidenceNotes[0]._reused._lightingEquipment)){
-        facility._evidenceNotes[0]._categoryFilter.push('5');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._electricalAndElectronicTools) || HasValue(facility._evidenceNotes[0]._reused._electricalAndElectronicTools)){
-        facility._evidenceNotes[0]._categoryFilter.push('6');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._toysLeisureAndSportsEquipment) || HasValue(facility._evidenceNotes[0]._reused._toysLeisureAndSportsEquipment)){
-        facility._evidenceNotes[0]._categoryFilter.push('7');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._medicalDevices) || HasValue(facility._evidenceNotes[0]._reused._medicalDevices)){
-        facility._evidenceNotes[0]._categoryFilter.push('8');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._monitoringAndControlInstruments) || HasValue(facility._evidenceNotes[0]._reused._monitoringAndControlInstruments)){
-        facility._evidenceNotes[0]._categoryFilter.push('9');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._automaticDispensers) || HasValue(facility._evidenceNotes[0]._reused._automaticDispensers)){
-        facility._evidenceNotes[0]._categoryFilter.push('10');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._appliancesContainingRefrigerants) || HasValue(facility._evidenceNotes[0]._reused._appliancesContainingRefrigerants)){
-        facility._evidenceNotes[0]._categoryFilter.push('12');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._gasDischargeLampsAndLedLightSources) || HasValue(facility._evidenceNotes[0]._reused._gasDischargeLampsAndLedLightSources)){
-        facility._evidenceNotes[0]._categoryFilter.push('13');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._displayEquipment) || HasValue(facility._evidenceNotes[0]._reused._displayEquipment)){
-        facility._evidenceNotes[0]._categoryFilter.push('11');
-    }
-    if (HasValue(facility._evidenceNotes[0]._received._photovoltaicPanel) || HasValue(facility._evidenceNotes[0]._reused._photovoltaicPanel)){
-        facility._evidenceNotes[0]._categoryFilter.push('14');
-    }
-    
-    facility._evidenceNotes[0]._categoryFilterString = facility._evidenceNotes[0]._categoryFilter.join();
-
-    req.session.data['facilities']  = facilities;
+	
+	 req.session.data['facilities']  = facilities;
     req.session.data['chosen-facility'] = facility; 
-    
     res.redirect('/version-2/203_Manage_evidence');
 });
 
 function HasValue(value) {
+    console.log(value)
     if (value !== '' && value !== ' ' && value !== 0 && value != null && value !== undefined){
         return true;
     }
