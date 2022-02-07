@@ -55,6 +55,120 @@ function SetupJourney3Data(req)
     req.session.data['paste-values'] = '';
 }
 
+function SetupSiteData(req) 
+{
+    var facilities = [];
+	
+    facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
+    facilities.push(new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF'));
+    facilities.push(new Facility('ABB Ltd Maidenhead', 3, 'WEE/AB9012GH/ATF'));
+
+    req.session.data['facilities'] = facilities;
+}
+
+function SetupEvidenceData(req) 
+{
+    console.log("entered SetupEvidenceData()");
+
+	// use selected facility to populate its evidence notes
+    var facilities = req.session.data['facilities'];
+    var selectedFacility = req.session.data['choose-site'];
+    console.log("selectedFacility: " + selectedFacility);
+
+    if (!facilities || facilities.length === 0)
+	{
+        facilities = [];
+    }
+	
+	facility = facilities.find(fac => fac._name === selectedFacility);
+    facility._evidenceNotes = [];
+
+    var received1 = new Categories(48, 21, 1, null, null, 14, 32, 11, null, 3, 1, null, 5, null);
+    var reused1 = new Categories(2, null, 1, null, null, 3, null, 1, null, null, null, 1, 1, null);
+
+    var received2 = new Categories(null, 56, null, 3, 1, 12, null, 80, 6, null, null, null, null, null);
+    var reused2 = new Categories(null, 1, null, null, 6, 10, 2, 1, null, null, null, 1, 1, null);
+
+    var received3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
+    var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
+
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', received1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', received2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', received3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
+
+    var date = new Date(2020, 05, 1, 9, 4, 5);
+    var date2 = new Date(2021, 01, 4, 10, 4, 5);
+    facility._evidenceNotes[1]._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+    facility._evidenceNotes[2]._submittedDate = moment(date2, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+
+    req.session.data['facilities']  = facilities;
+    req.session.data['chosen-facility'] = facility; 
+
+    console.log(req.session.data['chosen-facility']._name);
+}
+
+function CategoriesTotal(category) {
+    if (category !== 'undefined' && category) {
+        var total = 0;
+        if (category._largeHouseholdAppliances) {
+            total += parseFloat(category._largeHouseholdAppliances);
+        }
+        if (category._smallHouseholdAppliances) {
+            total += parseFloat(category._smallHouseholdAppliances);
+        }
+        if (category._itAndTelecommunicationsEquipment) {
+            total += parseFloat(category._itAndTelecommunicationsEquipment);
+        }
+        if (category._consumerEquipment) {
+            total += parseFloat(category._consumerEquipment);
+        }
+        if (category._lightingEquipment) {
+            total += parseFloat(category._lightingEquipment);
+        }
+        if (category._electricalAndElectronicTools) {
+            total += parseFloat(category._electricalAndElectronicTools);
+        }
+        if (category._monitoringAndControlInstruments) {
+            total += parseFloat(category._monitoringAndControlInstruments);
+        }
+        if (category._toysLeisureAndSportsEquipment) {
+            total += parseFloat(category._toysLeisureAndSportsEquipment);
+        }
+        if (category._medicalDevices) {
+            total += parseFloat(category._medicalDevices);
+        }
+        if (category._automaticDispensers) {
+            total += parseFloat(category._automaticDispensers);
+        }
+        if (category._appliancesContainingRefrigerants) {
+            total += parseFloat(category._appliancesContainingRefrigerants);
+        }
+        if (category._gasDischargeLampsAndLedLightSources) {
+            total += parseFloat(category._gasDischargeLampsAndLedLightSources);
+        }
+        if (category._displayEquipment) {
+            total += parseFloat(category._displayEquipment);
+        }
+        if (category._photovoltaicPanel) {
+            total += parseFloat(category._photovoltaicPanel);
+        }
+        return formatTonnage(total);
+    }
+
+    return formatTonnage(0);
+}
+
+function formatTonnage(val){
+    if (val === undefined || val === '' || val === null) {
+        return '-';
+    }
+    
+    return parseFloat(val).toFixed(3) ;
+}
+
+
+// VERSION 2 - Journey 1
+
 router.post('/version-2/choose-activity-redirect', function (req, res) 
 {
     const activity = req.session.data['choose-activity'];
@@ -252,66 +366,6 @@ router.get('/version-2/view-evidence-note-redirect', function(req, res){
     res.redirect('/version-2/207a_View_evidence_note');
 });
 
-function CategoriesTotal(category) {
-    if (category !== 'undefined' && category) {
-        var total = 0;
-        if (category._largeHouseholdAppliances) {
-            total += parseFloat(category._largeHouseholdAppliances);
-        }
-        if (category._smallHouseholdAppliances) {
-            total += parseFloat(category._smallHouseholdAppliances);
-        }
-        if (category._itAndTelecommunicationsEquipment) {
-            total += parseFloat(category._itAndTelecommunicationsEquipment);
-        }
-        if (category._consumerEquipment) {
-            total += parseFloat(category._consumerEquipment);
-        }
-        if (category._lightingEquipment) {
-            total += parseFloat(category._lightingEquipment);
-        }
-        if (category._electricalAndElectronicTools) {
-            total += parseFloat(category._electricalAndElectronicTools);
-        }
-        if (category._monitoringAndControlInstruments) {
-            total += parseFloat(category._monitoringAndControlInstruments);
-        }
-        if (category._toysLeisureAndSportsEquipment) {
-            total += parseFloat(category._toysLeisureAndSportsEquipment);
-        }
-        if (category._medicalDevices) {
-            total += parseFloat(category._medicalDevices);
-        }
-        if (category._automaticDispensers) {
-            total += parseFloat(category._automaticDispensers);
-        }
-        if (category._appliancesContainingRefrigerants) {
-            total += parseFloat(category._appliancesContainingRefrigerants);
-        }
-        if (category._gasDischargeLampsAndLedLightSources) {
-            total += parseFloat(category._gasDischargeLampsAndLedLightSources);
-        }
-        if (category._displayEquipment) {
-            total += parseFloat(category._displayEquipment);
-        }
-        if (category._photovoltaicPanel) {
-            total += parseFloat(category._photovoltaicPanel);
-        }
-        return formatTonnage(total);
-    }
-
-    return formatTonnage(0);
-}
-
-
-function formatTonnage(val){
-    if (val === undefined || val === '' || val === null) {
-        return '-';
-    }
-    
-    return parseFloat(val).toFixed(3) ;
-}
-
 router.post('/version-2/edit-evidence-note', function(req, res){
     var facility = req.session.data['chosen-facility']; 
     
@@ -390,7 +444,8 @@ router.post('/version-2/cancel-copy-paste-redirect', function (req, res) {
     res.redirect('/version-2/' + req.session.data['paste-return-page']);
 });
 
-// JOURNEY 2
+
+// VERSION 2 - JOURNEY 2
 
 router.get('/version-2/journey-2/review-evidence-note-redirect', function(req, res)
 {
@@ -428,8 +483,7 @@ router.post('/version-2/journey-2/choose-status-redirect', function (req, res) {
 });
 
 
-// JOURNEY 3
-
+// VERSION 2 - JOURNEY 3
 
 router.get('/version-2/journey-3/215-Transfer-evidence-note', function(req, res)
 {
@@ -439,7 +493,6 @@ router.get('/version-2/journey-3/215-Transfer-evidence-note', function(req, res)
     res.redirect('/version-2/215_Transfer_evidence_note');
 });
 
-
 router.get('/version-2/journey-3/216-Selected-evidence-note', function(req, res)
 {
 	//var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
@@ -447,7 +500,6 @@ router.get('/version-2/journey-3/216-Selected-evidence-note', function(req, res)
 
     res.redirect('/version-2/216_Selected_evidence_note');
 });
-
 
 router.get('/version-2/journey-3/217-Transfer-note-init', function(req, res)
 {
@@ -471,5 +523,26 @@ router.get('/version-2/journey-3/217-Transfer-note', function(req, res)
 
     res.redirect('/version-2/217_Transfer_note');
 });
+
+
+// VERSION 3 - AATF Journey
+
+router.get('/version-2/aatf-journey/301-choose-activity-aatf', function(req, res)
+{
+    res.redirect('/version-2/301_Choose_activity_AATF');
+});
+
+router.post('/version-2/aatf-journey/302-choose-site', function(req, res)
+{
+	SetupSiteData(req);
+    res.redirect('/version-2/302_Choose_site');
+});
+
+router.post('/version-2/aatf-journey/303-manage-evidence', function(req, res)
+{
+	SetupEvidenceData(req);
+    res.redirect('/version-2/303_Manage_evidence');
+});
+
 
 module.exports = router;

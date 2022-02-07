@@ -1,0 +1,78 @@
+{% extends "version-2/layout.html" %}
+
+{% block pageTitle %}
+  Choose an activity
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l" style="font-weight: 600; font-family: arial;">
+	  What activity would you like to do?
+	  </h1>
+
+      <form class="form" action="/version-2/aatf-journey/302-choose-site" method="post">
+
+		{{ govukRadios
+			({
+			  idPrefix: "choose-activity",
+			  name: "choose-activity",
+			  fieldset: 
+			  {
+				legend: 
+				{
+				  text: "",
+				  isPageHeading: true,
+				  classes: "govuk-fieldset__legend--l"
+				}
+			  },
+			  items: 
+			  [
+				{
+				  value: "1",
+				  text: "Manage evidence notes",
+				  checked: true
+				},
+				{
+				  value: "2",
+				  text: "Manage AATF returns"
+				},
+				{
+				  value: "3",
+				  text: "Manage AATF contact details"
+				},
+				{
+				  value: "4",
+				  text: "Manage AE returns"
+				},
+				{
+				  value: "5",
+				  text: "Manage AE contact details"
+				},
+				{
+				  value: "6",
+				  text: "View organisation details"
+				},
+				{
+				  value: "7",
+				  text: "Manage organisation users"
+				}
+			  ]
+			}) 
+		}}
+
+
+		{{ govukButton({
+			text: "Continue"
+		  }) }}
+
+      </form>
+
+	<div><a href="#" class="element-spacer govuk-back-link" style="font-size: 20px;">Access another organisation</a></div>
+
+    </div>
+  </div>
+
+{% endblock %}
