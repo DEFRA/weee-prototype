@@ -620,5 +620,15 @@ router.post('/version-2/aatf-journey/305-create-evidence', function(req, res)
     res.redirect('/version-2/305_Create_evidence_note_no_protocol');
 });
 
+router.post('/version-2/aatf-journey/307a-view-submitted-evidence-note', function(req, res)
+{
+	//Setup303EvidenceNotes();
+	var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
+	req.session.data['evidence-number'] = req.query['id'];
+	console.log(evidenceNote);
+
+    //res.redirect('/version-2/305_Create_evidence_note_no_protocol');
+});
+
 
 module.exports = router;
