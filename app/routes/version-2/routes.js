@@ -5,107 +5,6 @@ const Facility = require('../../data/facility');
 const Schemes = require('../../data/schemes');
 const moment = require('../version-2/moment');
 
-function SetupData(req) {
-    var schemes = new Schemes();
-
-    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-    //resetNonObligated(req);
-
-
-    var facilities = [];
-    facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
-    facilities.push(new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF'));
-    facilities.push(new Facility('ABB Ltd Maidenhead', 3, 'WEE/AB9012GH/ATF'));
-
-    req.session.data['facilities'] = facilities;
-    req.session.data['schemes'] = schemes;
-    req.session.data['paste-values'] = '';
-    
-}
-
-function SetupJourney2Data(req) 
-{
-    var schemes = new Schemes();
-
-    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-    //resetNonObligated(req);
-
-
-    var facilities = [];
-    facilities.push(new Facility('PCS 1', 1, 'WEE/PCS1234GH/PCS'));
-
-    req.session.data['facilities'] = facilities;
-    req.session.data['schemes'] = schemes;
-    req.session.data['paste-values'] = '';
-}
-
-function SetupJourney3Data(req) 
-{
-    var schemes = new Schemes();
-
-    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
-    //resetNonObligated(req);
-
-
-    var facilities = [];
-    facilities.push(new Facility('PCS 1', 1, 'WEE/PCS1234GH/PCS'));
-
-    req.session.data['facilities'] = facilities;
-    req.session.data['schemes'] = schemes;
-    req.session.data['paste-values'] = '';
-}
-
-function SetupSiteData(req) 
-{
-    var facilities = [];
-	
-    facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
-    facilities.push(new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF'));
-    facilities.push(new Facility('ABB Ltd Maidenhead', 3, 'WEE/AB9012GH/ATF'));
-
-    req.session.data['facilities'] = facilities;
-}
-
-function SetupEvidenceData(req) 
-{
-    console.log("entered SetupEvidenceData()");
-
-	// use selected facility to populate its evidence notes
-    var facilities = req.session.data['facilities'];
-    var selectedFacility = req.session.data['choose-site'];
-    console.log("selectedFacility: " + selectedFacility);
-
-    if (!facilities || facilities.length === 0)
-	{
-        facilities = [];
-    }
-	
-	facility = facilities.find(fac => fac._name === selectedFacility);
-    facility._evidenceNotes = [];
-
-    var received1 = new Categories(48, 21, 1, null, null, 14, 32, 11, null, 3, 1, null, 5, null);
-    var reused1 = new Categories(2, null, 1, null, null, 3, null, 1, null, null, null, 1, 1, null);
-
-    var received2 = new Categories(null, 56, null, 3, 1, 12, null, 80, 6, null, null, null, null, null);
-    var reused2 = new Categories(null, 1, null, null, 6, 10, 2, 1, null, null, null, 1, 1, null);
-
-    var received3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
-    var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
-
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', received1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', received2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', received3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
-
-    var date = new Date(2020, 05, 1, 9, 4, 5);
-    var date2 = new Date(2021, 01, 4, 10, 4, 5);
-    facility._evidenceNotes[1]._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-    facility._evidenceNotes[2]._submittedDate = moment(date2, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-
-    req.session.data['facilities']  = facilities;
-    req.session.data['chosen-facility'] = facility; 
-
-    console.log(req.session.data['chosen-facility']._name);
-}
 
 function CategoriesTotal(category) {
     if (category !== 'undefined' && category) {
@@ -164,6 +63,112 @@ function formatTonnage(val){
     }
     
     return parseFloat(val).toFixed(3) ;
+}
+
+
+function SetupData(req) 
+{
+    var schemes = new Schemes();
+
+    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+    //resetNonObligated(req);
+
+
+    var facilities = [];
+    facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
+    facilities.push(new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF'));
+    facilities.push(new Facility('ABB Ltd Maidenhead', 3, 'WEE/AB9012GH/ATF'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+    
+}
+
+function SetupJourney2Data(req) 
+{
+    var schemes = new Schemes();
+
+    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+    //resetNonObligated(req);
+
+
+    var facilities = [];
+    facilities.push(new Facility('PCS 1', 1, 'WEE/PCS1234GH/PCS'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+}
+
+function SetupJourney3Data(req) 
+{
+    var schemes = new Schemes();
+
+    //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+    //resetNonObligated(req);
+
+
+    var facilities = [];
+    facilities.push(new Facility('PCS 1', 1, 'WEE/PCS1234GH/PCS'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+}
+
+function SetupV3AATFSiteData(req) 
+{
+    var facilities = [];
+	
+    facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
+    facilities.push(new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF'));
+    facilities.push(new Facility('ABB Ltd Maidenhead', 3, 'WEE/AB9012GH/ATF'));
+
+    req.session.data['facilities'] = facilities;
+}
+
+function SetupV3AATFEvidenceData(req) 
+{
+    console.log("entered SetupEvidenceData()");
+
+	// use selected facility to populate its evidence notes
+    var selectedFacility = req.session.data['choose-site'];
+    console.log("selectedFacility: " + selectedFacility);
+
+/*
+    var facilities = req.session.data['facilities'];
+    if (!facilities || facilities.length === 0)
+	{
+        facilities = [];
+    }
+	
+	facility = facilities.find(fac => fac._name === selectedFacility);
+    facility._evidenceNotes = [];
+
+    var received1 = new Categories(48, 21, 1, null, null, 14, 32, 11, null, 3, 1, null, 5, null);
+    var reused1 = new Categories(2, null, 1, null, null, 3, null, 1, null, null, null, 1, 1, null);
+
+    var received2 = new Categories(null, 56, null, 3, 1, 12, null, 80, 6, null, null, null, null, null);
+    var reused2 = new Categories(null, 1, null, null, 6, 10, 2, 1, null, null, null, 1, 1, null);
+
+    var received3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
+    var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
+
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', received1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', received2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', received3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
+
+    var date = new Date(2020, 05, 1, 9, 4, 5);
+    var date2 = new Date(2021, 01, 4, 10, 4, 5);
+    facility._evidenceNotes[1]._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+    facility._evidenceNotes[2]._submittedDate = moment(date2, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+
+    req.session.data['facilities']  = facilities;
+    req.session.data['chosen-facility'] = facility; 
+
+    console.log(req.session.data['chosen-facility']._name);
+*/	
 }
 
 
@@ -534,14 +539,20 @@ router.get('/version-2/aatf-journey/301-choose-activity-aatf', function(req, res
 
 router.post('/version-2/aatf-journey/302-choose-site', function(req, res)
 {
-	SetupSiteData(req);
+	SetupV3AATFSiteData(req);
     res.redirect('/version-2/302_Choose_site');
 });
 
 router.post('/version-2/aatf-journey/303-manage-evidence', function(req, res)
 {
-	SetupEvidenceData(req);
+	SetupV3AATFEvidenceData(req);
     res.redirect('/version-2/303_Manage_evidence');
+});
+
+router.post('/version-2/aatf-journey/305-create-evidence', function(req, res)
+{
+	SetupV3AATFEvidenceData(req);
+    res.redirect('/version-2/305_Create_evidence_note_no_protocol');
 });
 
 
