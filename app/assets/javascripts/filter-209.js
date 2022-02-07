@@ -26,6 +26,10 @@
         document.getElementById("type-filter").addEventListener('change', (e) => {
             filter();
         });
+
+        document.getElementById("category-filter").addEventListener('change', (e) => {
+            filter();
+        });
     }
     
 
@@ -79,7 +83,8 @@
         var yearFilter = document.getElementById("year-filter").value;
         var typeFilter = document.getElementById("type-filter").value;
         var statusFilter = document.getElementById("status-filter").value;
-		
+		var categoryFilter = document.getElementById("category-filter").value;
+
 		// change format to dd/MM/yyyy
 		var dateFilter = document.getElementById("date-filter").value;
 		if ( dateFilter != '' )
@@ -145,6 +150,20 @@
                 if (!IsMatch(td, statusFilter))
 				{
                     displayRow = false;
+                }
+            }
+
+            if (categoryFilter != '0'){
+                var td = tr[i].getElementsByTagName("td")[8];
+
+                if (td) 
+                {
+                    var txtValue = td.textContent || td.innerText;
+                    
+                    var filters = txtValue.split(',');
+                    if (!filters.includes(categoryFilter)){
+                        displayRow = false;
+                    }
                 }
             }
 

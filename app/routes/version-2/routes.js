@@ -98,9 +98,74 @@ router.post('/version-2/choose-site-redirect', function(req, res){
 });
 
 router.get('/version-2/manage-evidence-redirect', function(req, res){
+
+    var facilities = req.session.data['facilities'];
+    var selectedFacility = req.session.data['choose-site'];
+
+    facility = facilities.find(fac => fac._name === selectedFacility);
+    
+    console.log(facility._evidenceNotes[0]._received);
+
+
+    facility._evidenceNotes[0]._categoryFilter = [];
+
+    if (HasValue(facility._evidenceNotes[0]._received._largeHouseholdAppliances) || HasValue(facility._evidenceNotes[0]._reused._largeHouseholdAppliances)){
+        facility._evidenceNotes[0]._categoryFilter.push('1');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._smallHouseholdAppliances) || HasValue(facility._evidenceNotes[0]._reused._smallHouseholdAppliances)){
+        facility._evidenceNotes[0]._categoryFilter.push('2');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._itAndTelecommunicationsEquipment) || HasValue(facility._evidenceNotes[0]._reused._itAndTelecommunicationsEquipment)){
+        facility._evidenceNotes[0]._categoryFilter.push('3');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._consumerEquipment) || HasValue(facility._evidenceNotes[0]._reused._consumerEquipment)){
+        facility._evidenceNotes[0]._categoryFilter.push('4');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._lightingEquipment) || HasValue(facility._evidenceNotes[0]._reused._lightingEquipment)){
+        facility._evidenceNotes[0]._categoryFilter.push('5');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._electricalAndElectronicTools) || HasValue(facility._evidenceNotes[0]._reused._electricalAndElectronicTools)){
+        facility._evidenceNotes[0]._categoryFilter.push('6');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._toysLeisureAndSportsEquipment) || HasValue(facility._evidenceNotes[0]._reused._toysLeisureAndSportsEquipment)){
+        facility._evidenceNotes[0]._categoryFilter.push('7');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._medicalDevices) || HasValue(facility._evidenceNotes[0]._reused._medicalDevices)){
+        facility._evidenceNotes[0]._categoryFilter.push('8');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._monitoringAndControlInstruments) || HasValue(facility._evidenceNotes[0]._reused._monitoringAndControlInstruments)){
+        facility._evidenceNotes[0]._categoryFilter.push('9');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._automaticDispensers) || HasValue(facility._evidenceNotes[0]._reused._automaticDispensers)){
+        facility._evidenceNotes[0]._categoryFilter.push('10');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._appliancesContainingRefrigerants) || HasValue(facility._evidenceNotes[0]._reused._appliancesContainingRefrigerants)){
+        facility._evidenceNotes[0]._categoryFilter.push('12');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._gasDischargeLampsAndLedLightSources) || HasValue(facility._evidenceNotes[0]._reused._gasDischargeLampsAndLedLightSources)){
+        facility._evidenceNotes[0]._categoryFilter.push('13');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._displayEquipment) || HasValue(facility._evidenceNotes[0]._reused._displayEquipment)){
+        facility._evidenceNotes[0]._categoryFilter.push('11');
+    }
+    if (HasValue(facility._evidenceNotes[0]._received._photovoltaicPanel) || HasValue(facility._evidenceNotes[0]._reused._photovoltaicPanel)){
+        facility._evidenceNotes[0]._categoryFilter.push('14');
+    }
+    
+    facility._evidenceNotes[0]._categoryFilterString = facility._evidenceNotes[0]._categoryFilter.join();
+
+    req.session.data['facilities']  = facilities;
+    req.session.data['chosen-facility'] = facility; 
+    
     res.redirect('/version-2/203_Manage_evidence');
 });
 
+function HasValue(value) {
+    if (value !== '' && value !== ' ' && value !== 0 && value != null && value !== undefined){
+        return true;
+    }
+    return false;
+}
 router.post('/version-2/create-evidence-note-redirect', function(req, res){
     req.session.data['paste-values'] = ''; 
     res.redirect('/version-2/205_Create_evidence_note_no_protocol');
