@@ -1,0 +1,155 @@
+{% extends "version-2/layout2.html" %}
+
+{% block pageTitle %}
+  Manage evidence (tabs)
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+
+	<h1 class="govuk-heading-l">Transfer evidence to another PCS</h1>
+
+		<div class="element-spacer">
+			<label class="govuk-heading-s">Which scheme would you like to transfer evidence to?</label><br />
+			<select class="govuk-select" text="PCS" id="pcs-filter" style="width: 200px;">
+				<option value="PCS">PCS</option>
+				<option value="PCS1">PCS 1</option>
+				<option value="PCS2">PCS 2</option>
+				<option value="PCS3">PCS 3</option>
+				<option value="PCS4">PCS 4</option>
+			</select>
+		</div>
+		
+		<div class="element-spacer">&nbsp;</div>
+
+		<div class="element-spacer govuk-form-group">
+		<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+			<legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+			  <h1 class="govuk-fieldset__heading">
+				Which categories are you transferring from?
+			  </h1>
+			</legend>
+			<div id="waste-hint" class="govuk-hint">
+			</div>
+			
+			<div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-1" name="waste" type="checkbox" value="1">
+				<label class="govuk-label govuk-checkboxes__label" for="waste">
+				  1. Large household appliances
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="2">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-2">
+				  2. Small household appliances
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="3">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+				  3. IT and telecommunications equipment
+				</label>
+			  </div>
+
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="4">
+				<label class="govuk-label govuk-checkboxes__label" for="waste">
+				  4. Consumer equipment
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="5">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-2">
+				  5. Lighting equipment
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="6">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+				  6. Electrical and electronic tools
+				</label>
+			  </div>
+
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="7">
+				<label class="govuk-label govuk-checkboxes__label" for="waste">
+				  7. Toys, leisure and sports equipment
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="8">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-2">
+				  8. Medical devices
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="9">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+				  9. Monitoring and control instruments
+				</label>
+			  </div>
+			
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="10">
+				<label class="govuk-label govuk-checkboxes__label" for="waste">
+				  10. Automatic dispensers
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="11">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-2">
+				  11. Display equipment
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-3" name="waste" type="checkbox" value="12">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+				  12. Cooling appliances containing refridgerants
+				</label>
+			  </div>
+
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste" name="waste" type="checkbox" value="13">
+				<label class="govuk-label govuk-checkboxes__label" for="waste">
+				  13. Gas discharge lamps
+				</label>
+			  </div>
+			  
+			  <div class="govuk-checkboxes__item">
+				<input class="govuk-checkboxes__input" id="waste-2" name="waste" type="checkbox" value="14">
+				<label class="govuk-label govuk-checkboxes__label" for="waste-2">
+				  14. Photovoltaic panels
+				</label>
+			  </div>
+			  
+			</div>
+		</fieldset>
+		</div>
+
+		<div class="element-spacer">&nbsp;</div>
+
+	<form class="form" action="/version-2/journey-3/216-Selected-evidence-note" method="post" novalidate>
+
+		<button class="govuk-button" data-module="govuk-button">
+		  Save and continue
+		</button>
+
+	</form>
+
+	</div>
+</div>
+
+<script src="/public/javascripts/filter.js"></script>
+
+{% endblock %}
