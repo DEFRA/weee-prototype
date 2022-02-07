@@ -161,7 +161,6 @@ for(var i = 0; i < facilities.length; i++){
 });
 
 function HasValue(value) {
-    console.log(value)
     if (value !== '' && value !== ' ' && value !== 0 && value != null && value !== undefined){
         return true;
     }
