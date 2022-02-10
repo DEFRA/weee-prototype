@@ -12,8 +12,10 @@ class EvidenceNote{
      this._reused = reused;
      this._status = status;
      this._reference = reference;
-     this._submittedDate = null;
+     this._submittedDate = '-';
      this._createdDate = createdDate;
+	 this._sortOrder = 0;
+	 this._isVisible = false;
     }
 }
 
