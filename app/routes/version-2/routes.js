@@ -1043,6 +1043,14 @@ router.get('/version-2/aatf-journey/307-view-evidence-note', function(req, res)
     res.redirect('/version-2/307_View_evidence_note');
 });
 
+router.get('/version-2/aatf-journey/305-edit-evidence-note', function(req, res)
+{
+	req.session.data['evidence-number'] = req.query['id'];
+	//req.session.data['status'] = req.query['status'];
+
+    res.redirect('/version-2/205_Edit_evidence_note_no_protocol');  // we re-use the journey 1 edit note
+});
+
 
 
 module.exports = router;
