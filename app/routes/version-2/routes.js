@@ -5,6 +5,12 @@ const Facility = require('../../data/facility');
 const Schemes = require('../../data/schemes');
 const moment = require('../version-2/moment');
 
+function HasValue(value) {
+    if (value !== '' && value !== ' ' && value !== 0 && value != null && value !== undefined){
+        return true;
+    }
+    return false;
+}
 
 function CategoriesTotal(category) {
     if (category !== 'undefined' && category) {
@@ -66,8 +72,7 @@ function formatTonnage(val){
 }
 
 
-function SetupData(req) 
-{
+function SetupData(req) {
     var schemes = new Schemes();
 
     //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -85,8 +90,7 @@ function SetupData(req)
     
 }
 
-function SetupJourney2Data(req) 
-{
+function SetupJourney2Data(req) {
     var schemes = new Schemes();
 
     //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -101,8 +105,7 @@ function SetupJourney2Data(req)
     req.session.data['paste-values'] = '';
 }
 
-function SetupJourney3Data(req) 
-{
+function SetupJourney3Data(req) {
     var schemes = new Schemes();
 
     //period._operator._categories = new Categories('0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
@@ -117,8 +120,7 @@ function SetupJourney3Data(req)
     req.session.data['paste-values'] = '';
 }
 
-function SetupV3AATFSiteData(req) 
-{
+function SetupV3AATFSiteData(req) {
     var facilities = [];
 	
     facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
@@ -128,8 +130,7 @@ function SetupV3AATFSiteData(req)
     req.session.data['facilities'] = facilities;
 }
 
-function SetupV3AATFEvidenceData(req) 
-{
+function SetupV3AatfEvidenceData(req) {
     console.log("entered SetupEvidenceData()");
 
 	// use selected facility to populate its evidence notes
@@ -155,9 +156,9 @@ function SetupV3AATFEvidenceData(req)
     var received3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
     var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
 
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', received1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', received2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', received3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Scheme', '2020', 'Household', 'Actual', received1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
 
     var date = new Date(2020, 05, 1, 9, 4, 5);
     var date2 = new Date(2021, 01, 4, 10, 4, 5);
@@ -172,12 +173,14 @@ function SetupV3AATFEvidenceData(req)
 }
 
 
+
+// ------------------------------------------------------------------------------------
 // VERSION 2 - Journey 1
+// ------------------------------------------------------------------------------------
 
 router.post('/version-2/choose-activity-redirect', function (req, res) 
 {
     const activity = req.session.data['choose-activity'];
-	//const journey = req.query['journey'];
 
 	if ( activity === '7' )
 	{
@@ -220,11 +223,9 @@ router.post('/version-2/choose-site-redirect', function(req, res){
     var receieved3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
     var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
 
-
-
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Compliance Scheme', '2020', 'Household', 'Actual', receieved1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', receieved2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Compliance Scheme', '2021', 'Household', 'Actual', receieved3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Scheme', '2020', 'Household', 'Actual', receieved1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', receieved2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', receieved3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
 
     var date = new Date(2020, 05, 1, 9, 4, 5);
     var date2 = new Date(2021, 01, 4, 10, 4, 5);
@@ -302,12 +303,6 @@ for(var i = 0; i < facilities.length; i++){
     res.redirect('/version-2/203_Manage_evidence');
 });
 
-function HasValue(value) {
-    if (value !== '' && value !== ' ' && value !== 0 && value != null && value !== undefined){
-        return true;
-    }
-    return false;
-}
 router.post('/version-2/create-evidence-note-redirect', function(req, res){
     req.session.data['paste-values'] = ''; 
     res.redirect('/version-2/205_Create_evidence_note_no_protocol');
@@ -433,7 +428,7 @@ router.get('/version-2/view-evidence-note-redirect', function(req, res){
     req.session.data['receivedTotal'] = CategoriesTotal(evidenceNote._received);
     req.session.data['reusedTotal'] = CategoriesTotal(evidenceNote._reused);
 
-    res.redirect('/version-2/207a_View_evidence_note');
+    res.redirect('/version-2/207_View_evidence_note');
 });
 
 router.post('/version-2/edit-evidence-note', function(req, res){
@@ -514,8 +509,58 @@ router.post('/version-2/cancel-copy-paste-redirect', function (req, res) {
     res.redirect('/version-2/' + req.session.data['paste-return-page']);
 });
 
+router.get('/version-2/journey1/view-submitted-evidence-note', function(req, res) {
+	
+	var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
+	
+	facility._evidenceNotes = [];
 
+    var received1 = new Categories(48, 21, 1, null, null, 14, 32, 11, null, 3, 1, null, 5, null);
+    var reused1 = new Categories(2, null, 1, null, null, 3, null, 1, null, null, null, 1, 1, null);
+
+    var received2 = new Categories(null, 56, null, 3, 1, 12, null, 80, 6, null, null, null, null, null);
+    var reused2 = new Categories(null, 1, null, null, 6, 10, 2, 1, null, null, null, 1, 1, null);
+
+    var received3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
+    var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
+
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received2, reused2, "Submitted", 1389, '01/12/2021 10:28:37'));
+    facility._evidenceNotes[0]._submittedDate = moment(new Date(2020, 05, 1, 9, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+
+    req.session.data['chosen-facility'] = facility; 
+	
+	res.redirect('/version-2/view-evidence-note-redirect?id=1389');
+});
+
+router.get('/version-2/journey1/view-draft-evidence-note', function(req, res) {
+	
+	var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
+	
+	facility._evidenceNotes = [];
+
+    var received1 = new Categories(48, 21, 1, null, null, 14, 32, 11, null, 3, 1, null, 5, null);
+    var reused1 = new Categories(2, null, 1, null, null, 3, null, 1, null, null, null, 1, 1, null);
+
+    var received2 = new Categories(null, 56, null, 3, 1, 12, null, 80, 6, null, null, null, null, null);
+    var reused2 = new Categories(null, 1, null, null, 6, 10, 2, 1, null, null, null, 1, 1, null);
+
+    var received3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
+    var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
+
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Scheme', '2020', 'Household', 'Actual', received1, reused1, "Draft", 1389, '11/11/2021 11:32:40'));
+    facility._evidenceNotes[0]._submittedDate = moment(new Date(2021, 01, 4, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+
+    req.session.data['chosen-facility'] = facility; 
+	
+	res.redirect('/version-2/view-evidence-note-redirect?id=1389');
+});
+
+
+
+
+// ------------------------------------------------------------------------------------
 // VERSION 2 - JOURNEY 2
+// ------------------------------------------------------------------------------------
 
 router.get('/version-2/journey-2/review-evidence-note-redirect', function(req, res)
 {
@@ -553,7 +598,11 @@ router.post('/version-2/journey-2/choose-status-redirect', function (req, res) {
 });
 
 
+
+
+// ------------------------------------------------------------------------------------
 // VERSION 2 - JOURNEY 3
+// ------------------------------------------------------------------------------------
 
 router.get('/version-2/journey-3/215-Transfer-evidence-note', function(req, res)
 {
@@ -595,40 +644,405 @@ router.get('/version-2/journey-3/217-Transfer-note', function(req, res)
 });
 
 
+
+
+// ------------------------------------------------------------------------------------
 // VERSION 3 - AATF Journey
+// ------------------------------------------------------------------------------------
 
 router.get('/version-2/aatf-journey/301-choose-activity-aatf', function(req, res)
 {
     res.redirect('/version-2/301_Choose_activity_AATF');
 });
 
-router.post('/version-2/aatf-journey/302-choose-site', function(req, res)
+router.get('/version-2/aatf-journey/302-choose-site', function(req, res)
 {
-	SetupV3AATFSiteData(req);
+	Setup302Data(req);
     res.redirect('/version-2/302_Choose_site');
 });
 
-router.post('/version-2/aatf-journey/303-manage-evidence', function(req, res)
+router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res)
 {
-	SetupV3AATFEvidenceData(req);
+    //var selectedFacility = req.session.data['choose-site'];
+	var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
+	
+	facility._evidenceNotes = [];
+
+
+
+	// [0..4] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', received, reused, "Submitted", 1389, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', received, reused, "Approved", 1211, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', received, reused, "Rejected", 1255, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', received, reused, "Submitted", 1329, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', received, reused, "Draft", 1321, '11/11/2021 11:32:40'));
+
+
+	// [5..9] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', received, reused, "Draft", 1150, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', received, reused, "Submitted", 1189, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', received, reused, "Approved", 1367, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', received, reused, "Rejected", 1890, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', received, reused, "Draft", 1391, '11/11/2021 11:32:40'));
+
+
+	// [10..14] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', received, reused, "Submitted", 1122, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', received, reused, "Approved", 1379, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', received, reused, "Rejected", 1654, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', received, reused, "Draft", 1288, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', received, reused, "Draft", 1659, '11/11/2021 11:32:40'));
+	
+
+	// [15..19] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', received, reused, "Submitted", 1122, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', received, reused, "Approved", 1387, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', received, reused, "Rejected", 1654, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', received, reused, "Draft", 1366, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', received, reused, "Draft", 1659, '11/11/2021 11:32:40'));
+
+	// [20..24] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', received, reused, "Submitted", 1122, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', received, reused, "Submitted", 1322, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', received, reused, "Submitted", 1654, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', received, reused, "Draft", 1381, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', received, reused, "Draft", 1659, '11/11/2021 11:32:40'));
+
+	
+	// 2021
+
+	// [25..29] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Submitted", 1352, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received, reused, "Draft", 1334, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Submitted", 1377, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received, reused, "Approved", 1324, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Rejected", 1317, '11/11/2021 11:32:40'));
+
+	// [30..34] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Submitted", 1259, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Submitted", 1267, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Rejected", 1216, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received, reused, "Draft", 1344, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received, reused, "Approved", 1351, '11/11/2021 11:32:40'));
+
+	// [35..39] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Approved", 1488, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Approved", 1469, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Submitted", 1472, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Submitted", 1429, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received, reused, "Draft", 1499, '11/11/2021 11:32:40'));
+
+	// [40..44] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Approved", 1481, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Approved", 1461, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Submitted", 1471, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Submitted", 1422, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received, reused, "Draft", 1425, '11/11/2021 11:32:40'));
+
+	// [45..49] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Approved", 1581, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Approved", 1561, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Submitted", 1571, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Submitted", 1522, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received, reused, "Draft", 1525, '11/11/2021 11:32:40'));
+
+	// [50..54] -------------------------------------------
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Approved", 1688, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Approved", 1665, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Recycling Lives', '2021', 'Household', 'Actual', received, reused, "Submitted", 1676, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Epic', '2021', 'Household', 'Actual', received, reused, "Submitted", 1623, '11/11/2021 11:32:40'));
+
+    received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '31/01/2021', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', received, reused, "Draft", 1627, '11/11/2021 11:32:40'));
+
+	
+	
+	
+	// ------------------------------------------------------------------------------------------
+	// Submitted evidence notes 
+	// facility._evidenceNotes[0]._submittedDate = moment(new Date(2022, 01, 4, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	// ------------------------------------------------------------------------------------------
+	
+	facility._evidenceNotes[0]._submittedDate = moment(new Date(2022, 01, 4, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[1]._submittedDate = moment(new Date(2022, 01, 4, 11, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[2]._submittedDate = moment(new Date(2022, 01, 4, 12, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[3]._submittedDate = moment(new Date(2022, 01, 4, 13, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	
+	facility._evidenceNotes[6]._submittedDate = moment(new Date(2022, 01, 5, 14, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[7]._submittedDate = moment(new Date(2022, 01, 5, 15, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[8]._submittedDate = moment(new Date(2022, 01, 5, 16, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	
+	facility._evidenceNotes[10]._submittedDate = moment(new Date(2022, 01, 6, 17, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[11]._submittedDate = moment(new Date(2022, 01, 6, 18, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[12]._submittedDate = moment(new Date(2022, 01, 6, 19, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	
+	facility._evidenceNotes[15]._submittedDate = moment(new Date(2022, 01, 7, 20, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[16]._submittedDate = moment(new Date(2022, 01, 7, 21, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[17]._submittedDate = moment(new Date(2022, 01, 7, 22, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+
+	facility._evidenceNotes[20]._submittedDate = moment(new Date(2022, 01, 8, 30, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[21]._submittedDate = moment(new Date(2022, 01, 8, 30, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[22]._submittedDate = moment(new Date(2022, 01, 8, 30, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	
+	facility._evidenceNotes[25]._submittedDate = moment(new Date(2021, 01, 9, 20, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[27]._submittedDate = moment(new Date(2021, 01, 9, 20, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[30]._submittedDate = moment(new Date(2021, 01, 9, 20, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	
+	facility._evidenceNotes[31]._submittedDate = moment(new Date(2021, 01, 8, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[37]._submittedDate = moment(new Date(2021, 01, 8, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[38]._submittedDate = moment(new Date(2021, 01, 8, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	
+	facility._evidenceNotes[42]._submittedDate = moment(new Date(2021, 01, 7, 11, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[43]._submittedDate = moment(new Date(2021, 01, 7, 12, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[47]._submittedDate = moment(new Date(2021, 01, 7, 13, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[48]._submittedDate = moment(new Date(2021, 01, 7, 14, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	
+	facility._evidenceNotes[52]._submittedDate = moment(new Date(2021, 01, 6, 15, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	facility._evidenceNotes[53]._submittedDate = moment(new Date(2021, 01, 6, 16, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+
+
+	// Sort by Status then Submitted Date 
+	// Draft first then submitted in descending date order
+	// Draft, Rejected, Approved, Submitted
+	for ( var o = 0; o < facility._evidenceNotes.length; o++ )
+	{
+		var order = facility._evidenceNotes[o]._sortOrder;
+		var status = facility._evidenceNotes[o]._status;
+		
+		if ( status === 'Draft' )
+		{
+			facility._evidenceNotes[o]._sortOrder = 0;
+		}
+		if ( status === 'Submitted' )
+		{
+			facility._evidenceNotes[o]._sortOrder = 1;
+		}
+		if ( status !== 'Draft' && status !== 'Submitted' )
+		{
+			facility._evidenceNotes[o]._sortOrder = 2;
+		}
+		
+		console.log(`sort order: ${facility._evidenceNotes[o]._sortOrder} --- status: ${status}`);
+	}
+	
+	//facility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : -1);
+	facility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : (a._sortOrder === b._sortOrder) ? ((a._submittedDate > b._submittedDate) ? -1 : 1) : -1 );
+	
+	
+	// assign true is evidence note is visible -- 
+	// page size is hard-coded but should be stored in session is changed by UI
+	
+	var pageSize = 10;
+	
+	for ( var v = 0; v < facility._evidenceNotes.length; v++ )
+	{
+		facility._evidenceNotes[v]._isVisible = false;
+		
+		if ( v < pageSize )
+		{
+			facility._evidenceNotes[v]._isVisible = true;
+		}
+	}
+
+	
+	
+	var totalApprovedNotes = 0;
+	var totalSubmittedNotes = 0;
+	for(var j = 0; j < facility._evidenceNotes.length; j++)
+	{
+		if ( facility._evidenceNotes[j]._status === 'Approved' ) totalApprovedNotes++;
+		if ( facility._evidenceNotes[j]._status === 'Submitted' ) totalSubmittedNotes++;
+	}
+    req.session.data['total-approved-notes'] = totalApprovedNotes; 
+    req.session.data['total-submitted-notes'] = totalSubmittedNotes;
+	
+	console.log(`sort approved: ${totalApprovedNotes} --- submitted: ${totalSubmittedNotes}`);
+
+    req.session.data['chosen-facility'] = facility; 
+	
     res.redirect('/version-2/303_Manage_evidence');
 });
 
-router.post('/version-2/aatf-journey/305-create-evidence', function(req, res)
+router.get('/version-2/aatf-journey/305-create-evidence-note-no-protocol-init', function(req, res)
 {
-	SetupV3AATFEvidenceData(req);
+	// -----------------------------------
+	// Called from the versions-home page
+	// -----------------------------------
+	
+	//Setup305Data(req);
     res.redirect('/version-2/305_Create_evidence_note_no_protocol');
 });
 
-router.post('/version-2/aatf-journey/307a-view-submitted-evidence-note', function(req, res)
+router.get('/version-2/aatf-journey/305-create-evidence-note-no-protocol', function(req, res)
 {
-	//Setup303EvidenceNotes();
-	var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
-	req.session.data['evidence-number'] = req.query['id'];
-	console.log(evidenceNote);
-
-    //res.redirect('/version-2/305_Create_evidence_note_no_protocol');
+	// -----------------------------------
+	// Called from another page
+	// -----------------------------------
+	
+	//Setup305Data(req);
+    res.redirect('/version-2/305_Create_evidence_note_no_protocol');
 });
+
+router.get('/version-2/aatf-journey/307-view-evidence-note', function(req, res)
+{
+	req.session.data['evidence-number'] = req.query['id'];
+	req.session.data['status'] = req.query['status'];
+
+    res.redirect('/version-2/307_View_evidence_note');
+});
+
 
 
 module.exports = router;

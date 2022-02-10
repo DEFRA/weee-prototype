@@ -10,18 +10,6 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters" style="width: 90%;">
-	  
-		{% if ( data['chosen-status-' + data['evidence-number']] ) %}
-		
-			<div>&nbsp;</div>
-			
-		{% else %}
-
-			<h1 class="govuk-heading-l">Check evidence note details</h1>
-			<p>After review, you can choose whether to approve, reject or return the evidence note.</p>
-
-		{% endif %}
-		
 
 		<h2 class="govuk-heading-m">Evidence note {{ data['evidence-number'] }}</h2>
 
@@ -29,7 +17,7 @@
 		
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Status:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">Submitted</span>
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['status'] }}</span>
 			</div>
 			
 			{% if ( data['reject-return-reason'] ) %}
@@ -41,15 +29,37 @@
 
 			{% endif %}
 
-			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date created:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
-			</div>
-			
-			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
-			</div>
+			{% if ( data['status'] !== 'Draft' ) %}
+
+				{% if ( data['status'] !== 'Submitted' ) %}
+					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
+						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
+					</div>
+				{% endif %}
+
+				{% if ( data['status'] !== 'Approved' ) %}
+					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
+						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
+					</div>
+					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved:</span> 
+						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
+					</div>
+				{% endif %}
+
+				{% if ( data['status'] !== 'Rejected' ) %}
+					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
+						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
+					</div>
+					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date rejected:</span> 
+						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
+					</div>
+				{% endif %}
+			{% endif %}
 			
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Compliance period:</span> 
@@ -58,7 +68,7 @@
 			
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Type of waste:</span> 
-				<span class="govuk-body govuk-!-margin-left-2"><b>Household</b></span>
+				<span class="govuk-body govuk-!-margin-left-2">Household</span>
 			</div>
 			
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
@@ -105,7 +115,7 @@
 		</div>                                  
 		  
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full govuk-body" style="padding: 0 0 0 0;">
-			By submitting this information you confirm that the following waste and electronic equipment from UK <b>household</b> 
+			By submitting this information you confirm that the following waste and electronic equipment from UK household 
 			has been received between <b>10/09/2021</b> and <b>10/11/2021</b> at this site. 
 			It has been reused as whole appliances to the extent set out below. 
 			No other evidence has been issued on these WEEE materials
@@ -220,74 +230,13 @@
 		</div>
     </div>
   </div>
-
-{% if ( data['chosen-status-' + data['evidence-number']] ) %}
-
-	<div>&nbsp;</div>
-	
-{% else %}
-
-	<div class="govuk-!-margin-top-3 govuk-!-margin-bottom-9">
-		{{ govukRadios
-			({
-			  idPrefix: "choose-status",
-			  name: "choose-status",
-			  fieldset: 
-			  {
-				legend: 
-				{
-				  text: "Choose whether to approve, reject or return the evidence note",
-				  isPageHeading: true,
-				  classes: "govuk-fieldset__legend--l civica-font-size-19"
-				}
-			  },
-			  items: 
-			  [
-				{
-				  value: "1",
-				  text: "Approve evidence note",
-				  checked: true
-				},
-				{
-				  value: "2",
-				  text: "Reject evidence note"
-				},
-				{
-				  value: "3",
-				  text: "Return evidence note"
-				}
-			  ]
-			}) 
-		}}
 		
-		<div id="note-area" style="display: none;">
-			<div class="govuk-input" style="border: 0 solid white;">What is the reason you are rejecting the evidence note?</div>
-			<textarea class="civica-textarea govuk-input" id="reject-return-reason" name="reject-return-reason"></textarea>
-		</div>
-	</div>
-			
 	<div class="govuk-!-margin-top-3">
 		{{ govukButton({
-			text: "Save and continue",
+			text: "Download PDF",
 			classes: "civica-font-size-22"
 		  }) }}
 	</div>
-
-{% endif %}
-
-<script>
-	function showNoteArea(event)
-	{
-		document.getElementById("note-area").style = "display: block;";
-	}
-	function hideNoteArea(event)
-	{
-		document.getElementById("note-area").style = "display: none;";
-	}
-	document.getElementById("choose-status").addEventListener("click", hideNoteArea);
-	document.getElementById("choose-status-2").addEventListener("click", showNoteArea);
-	document.getElementById("choose-status-3").addEventListener("click", showNoteArea);
-</script>
 
 </form>
 
