@@ -650,19 +650,33 @@ router.get('/version-2/journey-3/217-Transfer-note', function(req, res)
 // VERSION 3 - AATF Journey
 // ------------------------------------------------------------------------------------
 
+router.get('/version-2/aatf-journey/index', function(req, res)
+{
+	req.session.data['header']['index-action-link'] = '/version2/201_Choose_activity_AATF';
+	
+    res.redirect('/version-2/index');
+});
+
 router.get('/version-2/aatf-journey/301-choose-activity-aatf', function(req, res)
 {
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'choose activity';
     res.redirect('/version-2/301_Choose_activity_AATF');
 });
 
 router.get('/version-2/aatf-journey/302-choose-site', function(req, res)
 {
-	Setup302Data(req);
+	SetupData(req);
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'choose site';
     res.redirect('/version-2/302_Choose_site');
 });
 
 router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res)
 {
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'Manage evidence notes';
+	
     //var selectedFacility = req.session.data['choose-site'];
 	var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
 	
@@ -1015,14 +1029,18 @@ router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res
     res.redirect('/version-2/303_Manage_evidence');
 });
 
+router.get('/version-2/aatf-journey/303-manage-evidence', function(req, res)
+{
+    res.redirect('/version-2/aatf-journey/303-manage-evidence-init');
+});
+
 router.get('/version-2/aatf-journey/305-create-evidence-note-no-protocol-init', function(req, res)
 {
 	// -----------------------------------
 	// Called from the versions-home page
 	// -----------------------------------
 	
-	//Setup305Data(req);
-    res.redirect('/version-2/305_Create_evidence_note_no_protocol');
+    res.redirect('/version-2/aatf-journey/305-create-evidence-note-no-protocol');
 });
 
 router.get('/version-2/aatf-journey/305-create-evidence-note-no-protocol', function(req, res)
@@ -1031,12 +1049,15 @@ router.get('/version-2/aatf-journey/305-create-evidence-note-no-protocol', funct
 	// Called from another page
 	// -----------------------------------
 	
-	//Setup305Data(req);
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'create evidence note';
     res.redirect('/version-2/305_Create_evidence_note_no_protocol');
 });
 
 router.get('/version-2/aatf-journey/307-view-evidence-note', function(req, res)
 {
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'view evidence note';
 	req.session.data['evidence-number'] = req.query['id'];
 	req.session.data['status'] = req.query['status'];
 
@@ -1045,6 +1066,8 @@ router.get('/version-2/aatf-journey/307-view-evidence-note', function(req, res)
 
 router.get('/version-2/aatf-journey/305-edit-evidence-note', function(req, res)
 {
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'edit evidence note';
 	req.session.data['evidence-number'] = req.query['id'];
 	//req.session.data['status'] = req.query['status'];
 

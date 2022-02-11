@@ -7,7 +7,8 @@
 
 {% block content %}
 <h2 class="govuk-heading-l">Sign in to your account</h2>
-<form method="post" action="201_Choose_activity_AATF" class="form">
+<!-- form method="post" action="201_Choose_activity_AATF" class="form" -->
+<form method="post" action="{{data['index-action-link']}}" class="form">
   {{ govukInput({
     label: {
       text: "Email address",
@@ -34,13 +35,5 @@
     text: "Continue"
   }) }}
 </form>
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-                
-
-      </div>
-  </div>
 
 {% endblock %}

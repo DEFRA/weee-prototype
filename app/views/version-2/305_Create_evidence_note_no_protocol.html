@@ -35,13 +35,12 @@
     </div>
 </div>
 
-<form class="form" action="/version-2/save-create-evidence-note" method="post">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
   
 		<h1 class="govuk-heading-l">Enter evidence note details</h1>
 	  
-		<input type="hidden" value="Reference number: 1673" />
+		<input id="evidence-number" type="hidden" value="{{ data['evidence-number'] }}" />
 	  
 		<div class="govuk-grid-row">
 			<div class="govuk-grid-column-full">
@@ -108,18 +107,20 @@
 
 	</div>
 		
-	<div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
-		<p>
-			Input tonnage below
-			<br />
-			Provide tonnage to 3 decimal places. For example 1.238
-		</p>
-	</div>
+	<div class="govuk-!-padding-top-3 govuk-grid-column-full">
+		<div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
+			<p>
+				Input tonnage below
+				<br />
+				Provide tonnage to 3 decimal places. For example 1.238
+			</p>
+		</div>
 
-	<div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
-		<a href="/version-2/copy-paste-redirect?returnUrl=205_Create_evidence_note_no_protocol" class="govuk-link">Use copy and paste to populate the table</a>
+		<div class="govuk-!-padding-top-3 govuk-grid-column-one-third">
+			<a href="/version-2/copy-paste-redirect?returnUrl=205_Create_evidence_note_no_protocol" class="govuk-link">Use copy and paste to populate the table</a>
+			<input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
+		</div>
 	</div>
-	<input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
 		
 	<div class="govuk-!-padding-top-3 govuk-grid-column-full">
 		
@@ -232,20 +233,21 @@
 
 			</tbody>
 		</table>
-			
-		<div class="govuk-!-margin-top-3">
-			<button type="submit" class="govuk-button" id="add-note" name="action" value="submit">
-				Submit evidence note
-			</button>
-			{{ govukButton({
-				text: "Save as draft", classes: "govuk-button--secondary",
-				name: "action",
-				value: "save"
-			  }) }}
-		</div>
+		
+		<form class="form" action="/version-2/save-create-evidence-note" method="post">
+			<div class="govuk-!-margin-top-3">
+				<button type="submit" class="govuk-button govuk-!-margin-1" id="add-note" name="action" value="submit">
+					Submit evidence note
+				</button>
+				{{ govukButton({
+					text: "Save as draft", 
+					name: "action",
+					classes: "govuk-button--secondary govuk-!-margin-1",
+					value: "save"
+				  }) }}
+			</div>
+		</form>
 	
 	</div>
-		
   </div>
-</form>
 {% endblock %}
