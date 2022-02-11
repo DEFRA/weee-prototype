@@ -685,7 +685,7 @@ router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res
 
     received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
     reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', received, reused, "Submitted", 1329, '11/11/2021 11:32:40'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', received, reused, "Returned", 1329, '11/11/2021 11:32:40'));
 
     received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
     reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -978,7 +978,7 @@ router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res
 	}
 	
 	//facility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : -1);
-	facility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : (a._sortOrder === b._sortOrder) ? ((a._submittedDate > b._submittedDate) ? -1 : 1) : -1 );
+	facility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : (a._sortOrder === b._sortOrder) ? ((a._submittedDate > b._submittedDate) ? 1 : -1) : -1 );
 	
 	
 	// assign true is evidence note is visible -- 
