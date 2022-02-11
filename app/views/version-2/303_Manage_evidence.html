@@ -264,11 +264,11 @@
 					  <td class="govuk-table__cell">{{ evidenceNote._submittedDate }}</td>
 					  <td class="govuk-table__cell">{{ evidenceNote._pcs }}</td>
 					  <td class="govuk-table__cell">{{ evidenceNote._wasteType }}</td>
-					  <!-- td class="govuk-table__cell">{{ evidenceNote._status }} [{{ evidenceNote._sortOrder }}]</td -->
+					  <!-- (for debug only) td class="govuk-table__cell">{{ evidenceNote._status }} [{{ evidenceNote._sortOrder }}]</td -->
 					  <td class="govuk-table__cell">{{ evidenceNote._status }}</td>
 					  <td class="govuk-table__cell">
 						  <a href="/version-2/aatf-journey/307-view-evidence-note?id={{ evidenceNote._reference }}&status={{ evidenceNote._status }}">View</a>
-						  {% if (evidenceNote._status === 'Draft' ) %}
+						  {% if ((evidenceNote._status === 'Draft' ) or (evidenceNote._status === 'Returned' )) %}
 							  <br />
 							  <a href="/version-2/aatf-journey/305-edit-evidence-note?id={{ evidenceNote._reference }}">Edit</a>
 						  {% endif %}
@@ -286,7 +286,7 @@
 					  <td class="govuk-table__cell">{{ evidenceNote._status }}</td>
 					  <td class="govuk-table__cell">
 						  <a href="/version-2/aatf-journey/307-view-evidence-note?id={{ evidenceNote._reference }}&status={{ evidenceNote._status }}">View</a>
-						  {% if (evidenceNote._status === 'Draft' ) %}
+						  {% if ((evidenceNote._status === 'Draft' ) or (evidenceNote._status === 'Returned' )) %}
 							  <br />
 							  <a href="/version-2/aatf-journey/305-edit-evidence-note?id={{ evidenceNote._reference }}">Edit</a>
 						  {% endif %}
