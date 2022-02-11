@@ -27,11 +27,4 @@ module.exports =
 		"site-name": "AATF",
 		"activity": "AATF return"
 	},
-	header2:
-	{
-		"organisation": "PCS 1",
-		"signin-name": "Emily Munro",
-		"site-name": "PCS",
-		"activity": "Manage evidence notes"
-	},
 }

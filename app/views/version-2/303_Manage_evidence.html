@@ -1,4 +1,4 @@
-{% extends "version-2/layout2.html" %}
+{% extends "version-2/layout.html" %}
 
 {% block pageTitle %}
   Manage evidence (tabs)
@@ -15,8 +15,7 @@
 	  <h1 class="govuk-heading-l element-spacer">Manage evidence notes for {{ data['chosen-facility']._name }}</h1>
 	  
 	  <div class="govuk-body element-spacer">
-	  Choose what you would like to view below. 
-	  A summary of total evidence against obligation, or list of all evidence notes.
+	  Choose what you would like to view below. A summary of total evidence issued per compliance year, or a list of all evidence notes.
 	  </div>
 
 <form class="form" action="/version-2/aatf-journey/305-create-evidence-note-no-protocol" method="post">
@@ -205,6 +204,7 @@
 				<td>
 					<select class="govuk-select" id="status-filter" style="width: 100%;">
 						<option value="Status"> </option>
+						<option value="Draft">Draft</option>
 						<option value="Submitted">Submitted</option>
 						<option value="Approved">Approved</option>
 						<option value="Rejected">Rejected</option>

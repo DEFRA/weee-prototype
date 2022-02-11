@@ -1,4 +1,4 @@
-{% extends "version-2/layout2.html" %}
+{% extends "version-2/layout.html" %}
 
 {% block pageTitle %}
   View submitted evidence note
@@ -29,38 +29,27 @@
 
 			{% endif %}
 
-			{% if ( data['status'] !== 'Draft' ) %}
 
-				{% if ( data['status'] !== 'Submitted' ) %}
-					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
-						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
-					</div>
-				{% endif %}
+			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
+				<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
+			</div>
 
-				{% if ( data['status'] !== 'Approved' ) %}
-					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
-						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
-					</div>
-					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved:</span> 
-						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
-					</div>
-				{% endif %}
-
-				{% if ( data['status'] !== 'Rejected' ) %}
-					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
-						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
-					</div>
-					<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-						<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date rejected:</span> 
-						<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
-					</div>
-				{% endif %}
+			{% if ( data['status'] === 'Approved' ) %}
+				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved:</span> 
+					<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
+				</div>
 			{% endif %}
-			
+
+			{% if ( data['status'] === 'Rejected' ) %}
+				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date rejected:</span> 
+					<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
+				</div>
+			{% endif %}
+				
+		
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Compliance period:</span> 
 				<span class="govuk-body govuk-!-margin-left-2">2021</span>
@@ -84,6 +73,7 @@
 				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Issuing site:</div>
 				<div class="govuk-grid-column-one-half govuk-body">
 					ABB ltd <br />
+					AATF12345 <br />
 					12 May Lane <br />
 					Hammersmith <br />
 					London <br />
@@ -115,7 +105,7 @@
 		</div>                                  
 		  
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full govuk-body" style="padding: 0 0 0 0;">
-			By submitting this information you confirm that the following waste and electronic equipment from UK household 
+			By submitting this information you confirm that the following waste and electronic equipment from UK <b>household</b> 
 			has been received between <b>10/09/2021</b> and <b>10/11/2021</b> at this site. 
 			It has been reused as whole appliances to the extent set out below. 
 			No other evidence has been issued on these WEEE materials
