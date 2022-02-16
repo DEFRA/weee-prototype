@@ -6,19 +6,16 @@
 
 {% block content %}
 
-<style> div,span { border: 0px solid red; } </style>
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <!-- h1 class="govuk-heading-l element-spacer"> Manage evidence notes for PCS1</h1 -->
 	  <h1 class="govuk-heading-l element-spacer">Manage evidence notes for {{ data['chosen-facility']._name }}</h1>
 	  
 	  <div class="govuk-body element-spacer">
 	  Choose what you would like to view below. A summary of total evidence issued per compliance year, or a list of all evidence notes.
 	  </div>
 
-<form class="form" action="/version-2/aatf-journey/305-create-evidence-note-no-protocol" method="post">
+<form class="form" action="/version-2/aatf-journey/305-create-evidence-note" method="post">
 	<div class="element-spacer">
 		{{ govukButton({
 			text: "Create new evidence note", classes: "govuk-!-font-weight-bold"
@@ -257,7 +254,7 @@
 
 			{% for evidenceNote in data['chosen-facility']._evidenceNotes %}
 			
-				{% if evidenceNote._isVisible === true %}
+				{% if evidenceNote._isVisible == true %}
 
 					<tr class="govuk-table__row result-row" style="display: '';">
 					  <td class="govuk-table__cell">{{ evidenceNote._reference }}</td>

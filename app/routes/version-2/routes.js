@@ -178,6 +178,12 @@ function SetupV3AatfEvidenceData(req) {
 // VERSION 2 - Journey 1
 // ------------------------------------------------------------------------------------
 
+router.get('/version-2/journey1/index', function(req, res)
+{
+	req.session.data['index-action-link'] = '/version-2/201_Choose_activity_AATF';
+    res.redirect('/version-2/index');
+});
+
 router.post('/version-2/choose-activity-redirect', function (req, res) 
 {
     const activity = req.session.data['choose-activity'];
@@ -562,6 +568,12 @@ router.get('/version-2/journey1/view-draft-evidence-note', function(req, res) {
 // VERSION 2 - JOURNEY 2
 // ------------------------------------------------------------------------------------
 
+router.get('/version-2/journey2/index', function(req, res)
+{
+	req.session.data['index-action-link'] = '/version-2/208_Choose_activity_PCS_journey_2';
+    res.redirect('/version-2/index');
+});
+
 router.get('/version-2/journey-2/review-evidence-note-redirect', function(req, res)
 {
 	//var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
@@ -603,6 +615,12 @@ router.post('/version-2/journey-2/choose-status-redirect', function (req, res) {
 // ------------------------------------------------------------------------------------
 // VERSION 2 - JOURNEY 3
 // ------------------------------------------------------------------------------------
+
+router.get('/version-2/journey3/index', function(req, res)
+{
+	req.session.data['index-action-link'] = '/version-2/208_Choose_activity_PCS_journey_3';
+    res.redirect('/version-2/index');
+});
 
 router.get('/version-2/journey-3/215-Transfer-evidence-note', function(req, res)
 {
@@ -650,39 +668,10 @@ router.get('/version-2/journey-3/217-Transfer-note', function(req, res)
 // VERSION 3 - AATF Journey
 // ------------------------------------------------------------------------------------
 
-router.get('/version-2/aatf-journey/index', function(req, res)
+function CreateFacilityWithEvidenceNotes()
 {
-	req.session.data['header']['index-action-link'] = '/version2/201_Choose_activity_AATF';
-	
-    res.redirect('/version-2/index');
-});
-
-router.get('/version-2/aatf-journey/301-choose-activity-aatf', function(req, res)
-{
-	req.session.data['header']['organisation'] = 'ABB Ltd';
-	req.session.data['header']['activity'] = 'choose activity';
-    res.redirect('/version-2/301_Choose_activity_AATF');
-});
-
-router.get('/version-2/aatf-journey/302-choose-site', function(req, res)
-{
-	SetupData(req);
-	req.session.data['header']['organisation'] = 'ABB Ltd';
-	req.session.data['header']['activity'] = 'choose site';
-    res.redirect('/version-2/302_Choose_site');
-});
-
-router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res)
-{
-	req.session.data['header']['organisation'] = 'ABB Ltd';
-	req.session.data['header']['activity'] = 'Manage evidence notes';
-	
-    //var selectedFacility = req.session.data['choose-site'];
 	var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
-	
 	facility._evidenceNotes = [];
-
-
 
 	// [0..4] -------------------------------------------
     received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -965,11 +954,97 @@ router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res
 	
 	facility._evidenceNotes[52]._submittedDate = moment(new Date(2021, 01, 6, 15, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
 	facility._evidenceNotes[53]._submittedDate = moment(new Date(2021, 01, 6, 16, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+	
+	return facility;
+}
+
+router.get('/version-2/aatf-journey/index', function(req, res)
+{
+	req.session.data['index-action-link'] = '/version-2/aatf-journey/301-choose-activity-aatf';
+    res.redirect('/version-2/index');
+});
+
+router.get('/version-2/aatf-journey/301-choose-activity-aatf', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'choose activity';
+    req.session.data['facilities'] = [];
+    req.session.data['schemes'] = new Schemes();
+    req.session.data['paste-values'] = '';
+    res.redirect('/version-2/301_Choose_activity_AATF');
+});
+
+router.get('/version-2/aatf-journey/302-choose-site', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'choose site';
+    var schemes = new Schemes();
+    var facilities = [];
+    facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
+    facilities.push(new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF'));
+    facilities.push(new Facility('ABB Ltd Maidenhead', 3, 'WEE/AB9012GH/ATF'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+
+    res.redirect('/version-2/302_Choose_site');
+});
+
+/*
+router.get('/version-2/aatf-journey/303-manage-evidence', function(req, res)
+{
+	// must pick-up the chosen facility
+    var facilities = req.session.data['facilities'];
+    var selectedFacility = req.session.data['choose-site'];
+
+    if (!facilities || facilities.length === 0){
+        facilities = [];
+    }
+
+    facility = facilities.find(fac => fac._name === selectedFacility);
+    facility._evidenceNotes = [];
+
+    var receieved1 = new Categories(48, 21, 1, null, null, 14, 32, 11, null, 3, 1, null, 5, null);
+    var reused1 = new Categories(2, null, 1, null, null, 3, null, 1, null, null, null, 1, 1, null);
+
+    var receieved2 = new Categories(null, 56, null, 3, 1, 12, null, 80, 6, null, null, null, null, null);
+    var reused2 = new Categories(null, 1, null, null, 6, 10, 2, 1, null, null, null, 1, 1, null);
+
+    var receieved3 = new Categories(1, 2, null, 3, 1, 12, null, 54, 6, null, null, null, null, null);
+    var reused3 = new Categories(1, 1, null, null, 6, 7, 2, 1, null, null, 5, 1, 1, null);
+
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2020', '01/01/2021', 'Waste Electrical Recycling Scheme', '2020', 'Household', 'Actual', receieved1, reused1, "Draft", Math.floor(1000 + Math.random() * 9000), '11/11/2021 11:32:40'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', receieved2, reused2, "Submitted", Math.floor(1000 + Math.random() * 9000), '01/12/2021 10:28:37'));
+    facility._evidenceNotes.push(new EvidenceNote('01/01/2021', '01/01/2022', 'Waste Electrical Recycling Scheme', '2021', 'Household', 'Actual', receieved3, reused3, "Returned", Math.floor(1000 + Math.random() * 9000), '01/05/2021 09:28:37'));
+
+    var date = new Date(2020, 05, 1, 9, 4, 5);
+    var date2 = new Date(2021, 01, 4, 10, 4, 5);
+    facility._evidenceNotes[1]._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+    facility._evidenceNotes[2]._submittedDate = moment(date2, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+    
+    req.session.data['facilities']  = facilities;
+    req.session.data['chosen-facility'] = facility; 
+	
+    res.redirect('/version-2/aatf-journey/303-manage-evidence-init');
+});
+*/
+
+
+router.get('/version-2/aatf-journey/303-manage-evidence', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'manage evidence notes';
+	
+    //var selectedFacility = req.session.data['choose-site'];
+	
+	var facility = CreateFacilityWithEvidenceNotes();
 
 
 	// Sort by Status then Submitted Date 
 	// Draft first then submitted in descending date order
 	// Draft, Rejected, Approved, Submitted
+	// WARNING: this sort must be done before pagination (lower down)
 	for ( var o = 0; o < facility._evidenceNotes.length; o++ )
 	{
 		var order = facility._evidenceNotes[o]._sortOrder;
@@ -977,14 +1052,17 @@ router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res
 		
 		if ( status === 'Draft' )
 		{
+			// draft must be at the top of the list
 			facility._evidenceNotes[o]._sortOrder = 0;
 		}
 		if ( status === 'Submitted' )
 		{
+			// submitted notes come second on the list
 			facility._evidenceNotes[o]._sortOrder = 1;
 		}
 		if ( status !== 'Draft' && status !== 'Submitted' )
 		{
+			// other types of notes will follow in unsorted order
 			facility._evidenceNotes[o]._sortOrder = 2;
 		}
 		
@@ -992,12 +1070,12 @@ router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res
 	}
 	
 	//facility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : -1);
+	// sort over 2 columns:  submitted date in descending order
 	facility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : (a._sortOrder === b._sortOrder) ? ((a._submittedDate > b._submittedDate) ? 1 : -1) : -1 );
 	
 	
-	// assign true is evidence note is visible -- 
+	// WARNING: make sure pagination is applied to sorted list first.
 	// page size is hard-coded but should be stored in session is changed by UI
-	
 	var pageSize = 10;
 	
 	for ( var v = 0; v < facility._evidenceNotes.length; v++ )
@@ -1010,48 +1088,39 @@ router.get('/version-2/aatf-journey/303-manage-evidence-init', function(req, res
 		}
 	}
 
-	
-	
+	// work out totals for first tab
 	var totalApprovedNotes = 0;
 	var totalSubmittedNotes = 0;
 	for(var j = 0; j < facility._evidenceNotes.length; j++)
 	{
+		//if ( facility._evidenceNotes[j]._status === 'Approved' && facility._evidenceNotes[j]._year == '2022' ) totalApprovedNotes++;
+		//if ( facility._evidenceNotes[j]._status === 'Submitted' && facility._evidenceNotes[j]._year == '2022' ) totalSubmittedNotes++;
 		if ( facility._evidenceNotes[j]._status === 'Approved' ) totalApprovedNotes++;
 		if ( facility._evidenceNotes[j]._status === 'Submitted' ) totalSubmittedNotes++;
 	}
     req.session.data['total-approved-notes'] = totalApprovedNotes; 
     req.session.data['total-submitted-notes'] = totalSubmittedNotes;
 	
-	console.log(`sort approved: ${totalApprovedNotes} --- submitted: ${totalSubmittedNotes}`);
+	//console.log(`sort approved: ${totalApprovedNotes} --- submitted: ${totalSubmittedNotes}`);
 
     req.session.data['chosen-facility'] = facility; 
 	
     res.redirect('/version-2/303_Manage_evidence');
 });
 
-router.get('/version-2/aatf-journey/303-manage-evidence', function(req, res)
+router.get('/version-2/aatf-journey/303-manage-evidence-pdf', function(req, res)
 {
-    res.redirect('/version-2/aatf-journey/303-manage-evidence-init');
+	// Print to PDF code should be here
+	// ...
+	
+    res.redirect('/version-2/307_PDF_printed_dialog');
 });
 
-router.get('/version-2/aatf-journey/305-create-evidence-note-no-protocol-init', function(req, res)
+router.get('/version-2/aatf-journey/305-create-evidence-note', function(req, res)
 {
-	// -----------------------------------
-	// Called from the versions-home page
-	// -----------------------------------
-	
-    res.redirect('/version-2/aatf-journey/305-create-evidence-note-no-protocol');
-});
-
-router.get('/version-2/aatf-journey/305-create-evidence-note-no-protocol', function(req, res)
-{
-	// -----------------------------------
-	// Called from another page
-	// -----------------------------------
-	
 	req.session.data['header']['organisation'] = 'ABB Ltd';
 	req.session.data['header']['activity'] = 'create evidence note';
-    res.redirect('/version-2/305_Create_evidence_note_no_protocol');
+    res.redirect('/version-2/305_Create_evidence_note');
 });
 
 router.get('/version-2/aatf-journey/307-view-evidence-note', function(req, res)
@@ -1069,9 +1138,132 @@ router.get('/version-2/aatf-journey/305-edit-evidence-note', function(req, res)
 	req.session.data['header']['organisation'] = 'ABB Ltd';
 	req.session.data['header']['activity'] = 'edit evidence note';
 	req.session.data['evidence-number'] = req.query['id'];
-	//req.session.data['status'] = req.query['status'];
+	
+	var facility = req.session.data['chosen-facility'];
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == req.query['id']);
+	
+	//req.session.data['selected-evidence-number'] = req.query['id'];
+	//req.session.data['selected-evidence-number'] = req.session.data['selected-evidence-note']._reference;
+	
+    res.redirect('/version-2/305_Edit_evidence_note');
+});
 
-    res.redirect('/version-2/205_Edit_evidence_note_no_protocol');  // we re-use the journey 1 edit note
+router.post('/version-2/aatf-journey/305-save-create-evidence-note', function(req, res){
+    var facility = req.session.data['chosen-facility']; 
+    var facilities = req.session.data['facilities'];
+	//console.log('facilities length: ' + facilities.length);
+    
+    var receieved1 = new Categories(req.session.data['received1'], req.session.data['received2'], req.session.data['received3'], 
+        req.session.data['received4'], req.session.data['received5'], req.session.data['received6'], req.session.data['received7'], req.session.data['received8'], 
+        req.session.data['received9'], req.session.data['received10'], req.session.data['received11'], req.session.data['received12'], req.session.data['received13'], 
+        req.session.data['received14']);
+    
+    var reused1 = new Categories(req.session.data['reUsed1'], req.session.data['reUsed2'], req.session.data['reUsed3'], req.session.data['reUsed4'], 
+        req.session.data['reUsed5'], req.session.data['reUsed6'], req.session.data['reUsed7'], req.session.data['reUsed8'], req.session.data['reUsed9'], 
+        req.session.data['reUsed10'], req.session.data['reUsed11'], req.session.data['reUsed12'], req.session.data['reUsed13'], req.session.data['reUsed14']);
+
+    var status = '';
+    var startDate = '';
+    var endDate = '';
+    var pcs = '';
+    var year = '';
+    var protocol = '';
+    var wasteType = '';
+
+    if (req.session.data['startDate']!==''){
+        startDate = req.session.data['startDate'];
+    }
+    if (req.session.data['endDate']!==''){
+        endDate = req.session.data['endDate'];
+    }
+    if (req.session.data['pcs']!=='Recipient name'){
+        pcs = req.session.data['pcs'];
+    }
+    if (req.session.data['year']!=='0'){
+        year = req.session.data['year'];
+    }
+    if (req.session.data['protocol']!=='0'){
+        protocol = req.session.data['protocol'];
+    }
+    
+    if (req.session.data['wasteType']!=='0'){
+        wasteType = req.session.data['wasteType'];
+    }
+    var evidenceNote = new EvidenceNote(startDate, endDate, pcs, 
+        year, wasteType, protocol, receieved1, reused1, status, Math.floor(1000 + Math.random() * 9000), moment().format('DD/MM/YYYY HH:mm:ss'));
+
+    if (req.session.data['action'] === 'submit'){
+        status = 'Submitted'
+        var date = new Date();
+        evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+        evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
+    } else {
+        status = 'Draft'
+    };
+    evidenceNote._status = status;
+    facility._evidenceNotes.push(evidenceNote);
+
+    res.redirect('/version-2/aatf-journey/303-manage-evidence');
+});
+
+
+
+router.post('/version-2/aatf-journey/305-save-evidence-note', function(req, res){
+    var facility = req.session.data['chosen-facility']; 
+    var facilities = req.session.data['facilities'];
+	var evidenceNumber = req.session.data['selected-evidence-note']._reference;
+    
+    var received1 = new Categories(req.session.data['received1'], req.session.data['received2'], req.session.data['received3'], 
+        req.session.data['received4'], req.session.data['received5'], req.session.data['received6'], req.session.data['received7'], req.session.data['received8'], 
+        req.session.data['received9'], req.session.data['received10'], req.session.data['received11'], req.session.data['received12'], req.session.data['received13'], 
+        req.session.data['received14']);
+    
+    var reused1 = new Categories(req.session.data['reUsed1'], req.session.data['reUsed2'], req.session.data['reUsed3'], req.session.data['reUsed4'], 
+        req.session.data['reUsed5'], req.session.data['reUsed6'], req.session.data['reUsed7'], req.session.data['reUsed8'], req.session.data['reUsed9'], 
+        req.session.data['reUsed10'], req.session.data['reUsed11'], req.session.data['reUsed12'], req.session.data['reUsed13'], req.session.data['reUsed14']);
+
+    var status = '';
+    var startDate = '';
+    var endDate = '';
+    var pcs = '';
+    var year = '';
+    var protocol = '';
+    var wasteType = '';
+
+    if (req.session.data['startDate']!==''){
+        startDate = req.session.data['startDate'];
+    }
+    if (req.session.data['endDate']!==''){
+        endDate = req.session.data['endDate'];
+    }
+    if (req.session.data['pcs']!=='Recipient name'){
+        pcs = req.session.data['pcs'];
+    }
+    if (req.session.data['year']!=='0'){
+        year = req.session.data['year'];
+    }
+    if (req.session.data['protocol']!=='0'){
+        protocol = req.session.data['protocol'];
+    }
+    
+    if (req.session.data['wasteType']!=='0'){
+        wasteType = req.session.data['wasteType'];
+    }
+    var evidenceNote = new EvidenceNote(startDate, endDate, pcs, 
+        year, wasteType, protocol, received1, reused1, status, evidenceNumber, moment().format('DD/MM/YYYY HH:mm:ss'));
+
+    if (req.session.data['action'] === 'submit'){
+        status = 'Submitted'
+        var date = new Date();
+        evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+        evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
+    } else {
+        status = 'Draft'
+    };
+    evidenceNote._status = status;
+    facility._evidenceNotes.push(evidenceNote);
+
+    res.redirect('/version-2/aatf-journey/303-manage-evidence');
 });
 
 
