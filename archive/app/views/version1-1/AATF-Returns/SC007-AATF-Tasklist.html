@@ -1,0 +1,111 @@
+{% extends "version1-1/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "SC006-Add-Scheme"
+}) }}
+<style>
+        #main-content {
+            padding-top: 0px;
+        }
+    </style>
+<h2 class="govuk-heading-l">AATF Quarterly Return for {{ data['facilitySelect'] }}</h2>
+<table class="govuk-table govuk-!-width-one-half" style="display: inline-table">
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell govuk-body govuk-!-font-weight-bold">Reporting year</td>
+        <td class="govuk-table__cell">{{ data['compliance-year'] }}</td>
+    </tr>
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell govuk-body govuk-!-font-weight-bold">Reporting period</td>
+        <td class="govuk-table__cell">{{ data['reporting-period'] }}</td>
+    </tr>
+</table>
+<a href="SC003a-AATF-Reporting-Details-Change" class="govuk-link govuk-link--no-visited-state govuk-!-font-size-19" style="float: right">Change</a>
+<div class="govuk-!-padding-bottom-4"></div>
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Facility Name</th>
+            <th class="govuk-table__header" scope="col">Approval No</th>
+            <th class="govuk-table__header" scope="col">Street</th>
+            <th class="govuk-table__header" scope="col">Town</th>
+            <th class="govuk-table__header" scope="col">Country</th>
+            <th class="govuk-table__header" scope="col">Post Code</th>
+            <th class="govuk-table__header" scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell ">{{ data['facilitySelect'] }}</td>
+            <td class="govuk-table__cell ">ATF/AB12345/WEEE</td>
+            <td class="govuk-table__cell ">1 Waterloo Avenue</td>
+            <td class="govuk-table__cell ">Woking</td>
+            <td class="govuk-table__cell ">United Kingdom</td>
+            <td class="govuk-table__cell ">GU21 BUY</td>
+            <td class="govuk-table__cell govuk-!-padding-left-2"><a href="SC005a-Select-Facility-Change"
+                    class="govuk-link govuk-link--no-visited-state">Change</a></td>
+        </tr>
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-4"></div>
+<details class="govuk-details" open="open">
+    <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+            {{ data['schemeSelect'] }}
+        </span>
+    </summary>
+    <div class="govuk-details__text">
+        <table class="govuk-table">
+            <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell "><a href="SC009-WEEE-received-for-treatment" class="govuk-link govuk-link--no-visited-state">WEEE
+                            received for treatment</a></td>
+                    <td class="govuk-table__cell ">
+                        <strong class="govuk-tag">
+                            {{ data['WEEE-received-for-treatment-result'] }}
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell "><a href="SC010-WEEE-reused-as-a-whole-appliance" class="govuk-link govuk-link--no-visited-state">WEEE
+                            reused as a whole appliance for which evidence has been issued</a><br />
+                    </td>
+                    <td class="govuk-table__cell ">
+                        <strong class="govuk-tag">
+                            {{ data['WEEE-resused-as-a-whole-appliance-result'] }}
+                        </strong>
+                    </td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <td class="govuk-table__cell "><a href="SC011-Whole-WEEE-sent-to-another-treatment"
+                            class="govuk-link govuk-link--no-visited-state">Whole
+                            WEEE sent to another ATF for treatment</a><br />
+                    </td>
+                    <td class="govuk-table__cell ">
+                        <strong class="govuk-tag">
+                            {{ data['Whole-WEEE-sent-to-another-treatment-result'] }}
+                        </strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</details>
+<form action="/version1-1/AATF-Returns/submit-scheme-for-approval" method="post" class="form" style="display: inline">
+    <button type="submit" class="govuk-button">
+        Save and continue
+    </button>
+</form>
+<form action="/version1-1/AATF-Returns/add-another-scheme" method="post" class="form govuk-!-margin-left-3" style="display: inline">
+    <button type="submit" class="govuk-button" style="background-color: #bfc1c3; color: #0b0c0c">
+        Add another PCS
+    </button>
+</form>
+{% endblock %}

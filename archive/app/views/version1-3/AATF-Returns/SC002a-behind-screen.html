@@ -1,0 +1,31 @@
+{% extends "version1-3/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+    text: "Back",
+    href: "/version1-3/SC002-Portal-Landing-Page"
+    }) }}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Upload an AATF quarterly return</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<p class="govuk-body">This would be a series of screens that enable you to upload a spreadsheet of your return data.</p>
+<div class="govuk-!-padding-bottom-4"></div>
+<p class="govuk-body">Do you currently use Excel spreadsheet software?<br/>What version of Excel do you use?<br/>What save options does your version of Excel provide?</p>
+<div class="govuk-!-padding-bottom-3"></div>
+<p class="govuk-body">Do you use any other spreadsheet software? e.g. Google Docs, Open Office, Numbers</p>
+<div class="govuk-!-padding-bottom-3"></div>
+<p class="govuk-body">Does the existing process of sending a spreadsheet work for you?<br/>We may be able to modify the template to be clearer and less error prone</p>
+<div class="govuk-!-padding-bottom-3"></div>
+<p class="govuk-body">What are your thoughts on uploading a spreadsheet that then highlights any errors?<br/>This would provide an opportunity to resend a successfully complete return</p>
+
+{% endblock %}

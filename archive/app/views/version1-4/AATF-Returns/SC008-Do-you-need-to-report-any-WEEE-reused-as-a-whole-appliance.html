@@ -1,0 +1,74 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var singlePCS = localStorage.getItem('singlePCS');
+
+        if(singlePCS == "true") {
+            $('#form2').css('display', 'inline');
+            $('#form1').css('display', 'none');
+        } else {
+            $('#form2').css('display', 'none');
+            $('#form1').css('display', 'inline');
+        }
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Has any WEEE been reused as a whole appliance?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-4/AATF-Returns/reusing-weee-answer" id="form1" method="post" class="form" style="display: inline">
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reusing-weee-yes" name="reusing-weee" type="radio" value="true">
+            <label class="govuk-label govuk-radios__label" for="reusing-weee-yes">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reusing-weee-no" name="reusing-weee" type="radio" value="false">
+            <label class="govuk-label govuk-radios__label" for="reusing-weee-no">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+
+    <button type="submit" class="govuk-button" id="are-you-reusing-weee-submit">
+        Continue
+    </button>
+</form>
+
+<form action="/version1-4/AATF-Returns/reusing-weee-answer-2" id="form2" method="post" class="form" style="display: none">
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reusing-weee-2-yes" name="reusing-weee-2" type="radio" value="true">
+            <label class="govuk-label govuk-radios__label" for="reusing-weee-2-yes">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="reusing-weee-2-no" name="reusing-weee-2" type="radio" value="false">
+            <label class="govuk-label govuk-radios__label" for="reusing-weee-2-no">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+
+    <button type="submit" class="govuk-button" id="are-you-reusing-weee-submit">
+        Continue
+    </button>
+</form>
+{% endblock %}

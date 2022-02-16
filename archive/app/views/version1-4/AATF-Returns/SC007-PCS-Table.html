@@ -1,0 +1,73 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+  #main-content {
+    padding-top: 0px;
+  }
+  #pcs-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Which PCS(s) did {{ data['selectedFacility']._name }} receive WEEE from?</h2>
+<form action="/version1-4/AATF-Returns/add-pcs" method="post" class="form">
+    
+<div class="govuk-!-padding-bottom-4"></div>
+  <div class="govuk-form-group">
+       <select class="govuk-select govuk-!-width-one-half" id="schemeselect" name="schemeselect">
+          {% for scheme in data['schemes']._schemes %}
+          <option value="{{ scheme._id }}">{{ scheme._name }}</option>
+          {% endfor %}
+      </select>
+    </div>
+  <div class="govuk-!-padding-bottom-4"></div>
+  <button type="submit" class="govuk-button" id="multiple-pcs-add">
+      Add
+    </button>
+  </form>
+  
+  {% set schemeAdded = data['selectedFacility']._pcs.length %}
+{% if schemeAdded> 0 %}
+<h2 class="govuk-heading-m">PCS(s) this AATF received WEEE from</h2>
+<table class="govuk-table govuk-!-font-size-16" id="pcs-table">
+{% else %}
+<table class="govuk-table govuk-!-font-size-16" id="pcs-table" style="display: none;">
+{% endif %}
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">PCS name</th>
+      <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
+      <th class="govuk-table__header" scope="col">Sent onto other ATF (t)</th>
+      <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
+      <th class="govuk-table__header" scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for scheme in data['selectedFacility']._pcs %}
+      <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col">{{scheme._name}}</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <!-- <td class="govuk-table__cell" scope="col"><a href="SC016-Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facility={{ data['facility'] }}&facilityId={{ data['facilityId'] }}&scheme={{scheme._name}}&schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Enter data</a></td> -->
+            <td class="govuk-table__cell" scope="col"><a href="WEEE-received-for-treatment?schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Add data</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+</table>
+{% if schemeAdded> 0 %}
+<form action="/version1-4/AATF-Returns/multiple-pcs-save" method="post" class="form">
+<!-- <button type="submit" class="govuk-button" id="multiple-pcs-save">
+    Continue
+  </button> -->
+</form>
+<a href="My-facilities">AATF returns</a>
+{% endif %}
+{% endblock %}

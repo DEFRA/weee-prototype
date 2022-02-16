@@ -1,0 +1,28 @@
+{% extends "version1-5/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+
+{% endblock %}
+
+{% block content %}
+<style>
+  #sign-in-banner {
+    display: none;
+  }
+  #main-content {
+    padding-top: 30px;
+  }
+</style>
+
+<form action="/version1-5/login-button" method="post" class="form">
+    <input type="hidden" id="scheme-name-id" name="scheme-name-id">
+    <label class="govuk-label govuk-!-width-one-third" for="scheme">
+        Scheme
+      </label>
+    <input class="govuk-input govuk-!-width-one-half" id="scheme-name" name="scheme-name" type="text">
+</form>
+
+{% endblock %}
+
+

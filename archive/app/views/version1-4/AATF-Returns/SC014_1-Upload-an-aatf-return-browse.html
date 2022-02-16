@@ -1,0 +1,39 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#file-upload-1').click(function(event) {
+            $('#file-upload-text').text('your_aatf_data.xlsx')
+            event.preventDefault();
+        });
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Upload AATF data</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<p class="govuk-body">Use this page to upload your AATF data. The document you upload must be in .xlsx format. <br />
+    Download the template to upload <a href="/" class="govuk-link govuk-link--no-visited-state">here</a></p>
+
+<form action="/version1-4/AATF-Returns/upload-an-aatf-return-select" method="post" class="form">
+    <div class="govuk-!-padding-bottom-4"></div>
+    <button class="govuk-file-upload" id="file-upload-1">Choose file</button>
+    <p class="govuk-body" style="display:inline; margin-left: 5px;" id="file-upload-text">No file chosen</p>
+    
+    <div class="govuk-!-padding-bottom-7"></div>
+    <button type="submit" class="govuk-button">
+        Save and continue
+    </button>
+</form>
+{% endblock %}

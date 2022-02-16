@@ -1,0 +1,83 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">AATF return for Abb Ltd</h2>
+<!-- Change it so it pulls from operator, maybe-->
+<form action="/version1-4/AATF-Returns/save-and-continue" method="post" class="form">
+    <table class="govuk-table" style="width: 30%;">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;">Compliance year</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;" id="compliance-insert">{{ data['return-year'] }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;">Reporting period</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;" id="reporting-insert">{{ data['return-period-long'] }}</td>
+        </tr>
+    </table>
+    <div class="govuk-!-margin-bottom-4"></div>
+    <h4 class="govuk-heading-s">Non-obligated WEEE</h4>
+    <table class="govuk-table govuk-!-font-size-16" id="operator-table">
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">Operator name</th>
+                <th class="govuk-table__header" scope="col">WEEE received (t)</th>
+                <th class="govuk-table__header" scope="col">Retained by DCF (t)</th>
+                <th class="govuk-table__header" scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set operator = data['period']._operator %}
+            <tr class="govuk-table__row">
+                <td class="govuk-table__cell" scope="col">{{ operator._name }}</td>
+                <td class="govuk-table__cell" scope="col">{{ operator._wee }}</td>
+                <td class="govuk-table__cell" scope="col">{{ operator._weeDcf }}</td>
+                <td class="govuk-table__cell" scope="col"><a href="SC004-Would-you-like-to-report-on-any-non-obligated-weee?operator={{operator._name }}" class="govuk-link govuk-link--no-visited-state">Add
+                        data</a></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="govuk-!-margin-bottom-4"></div>
+    <h4 class="govuk-heading-s">Obligated WEEE</h4>
+    <table class="govuk-table govuk-!-font-size-16" id="facility-table">
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th class="govuk-table__header" scope="col">AATF name</th>
+                <th class="govuk-table__header" scope="col">Approval number</th>
+                <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
+                <th class="govuk-table__header" scope="col">Sent to another ATF (t)</th>
+                <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
+                <th class="govuk-table__header" scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+      {% for facility in data['period']._facilities %}
+      <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col">{{facility._name}}</td>
+            <td class="govuk-table__cell" scope="col">{{facility._approvalNumber}}</td>
+            {% if facility._hasEnteredData %}
+                <td class="govuk-table__cell" scope="col">20.456</td>
+            {% else %}
+             <td class="govuk-table__cell" scope="col">-</td>
+            {% endif %}
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col">-</td>
+            <td class="govuk-table__cell" scope="col"><a href="Report-options?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Add data</a>    
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</form>
+<form action="/version1-7/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
+    <button type="submit" class="govuk-button" id="pcs-check-return">
+        Check my return
+    </button>
+</form>
+
+{% endblock %}

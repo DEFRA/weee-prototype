@@ -1,0 +1,30 @@
+{% extends "version1-5/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">What would you like to do?</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<h3 class="govuk-heading-m">
+    <a href="AATF-Returns/compliance-reporting" class="govuk-link govuk-link--no-visited-state">Make an AATF
+        quarterly return</a>
+</h3>
+<p class="govuk-!-width-three-quarters">Make an AATF quarterly return by reporting on Non-obligated WEEE and obligated
+    WEEE received for treatment and reuse</p>
+<div class="govuk-!-padding-bottom-7"></div>
+<h3 class="govuk-heading-m">
+    <a href="#" class="govuk-link govuk-link--no-visited-state">Make an AE return</a>
+</h3>
+<p class="govuk-!-width-three-quarters">Make an AE return</p>
+
+<div class="govuk-!-padding-bottom-7"></div>
+
+{% endblock %}

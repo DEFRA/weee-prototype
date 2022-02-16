@@ -1,0 +1,121 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var compliance = localStorage.getItem('compliance-year');
+        var reporting = localStorage.getItem('reporting-period-full');
+        $('#compliance-insert').html(compliance);
+        $('#reporting-insert').html(reporting);
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">AATF returns for Abb Ltd</h2>
+<!-- Change it so it pulls from operator, maybe-->
+<p class="govuk-!-width-three-quarters">You can create, edit, and submit quarterly returns</p>
+<form action="/version1-8/AATF-Returns/save-and-continue" method="post" class="form">
+    <table class="govuk-table" style="width: 30%;">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;">Compliance year</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;" id="compliance-insert"></td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;">Reporting period</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;" id="reporting-insert"></td>
+        </tr>
+    </table>
+    <div class="govuk-!-margin-bottom-4"></div>
+    {% set operator = data['period']._operator %}
+    <table class="govuk-table" style="width: 60%;">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;">1.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold">{{ operator._name }}'s Non-obligated WEEE</td>
+            <td class="govuk-table__cell"></td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;"></td>
+            <td class="govuk-table__cell"><a href="SC004_1-Enter-non-obligated-WEEE.html" class="govuk-link govuk-link--no-visited-state">Received</a></td>
+            <td class="govuk-table__cell">{{ operator._wee }}</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;"></td>
+            <td class="govuk-table__cell"><a href="SC004_2a-Add-any-DCF-data.html" class="govuk-link govuk-link--no-visited-state">Retained
+                    by a DCF</a></td>
+            <td class="govuk-table__cell">{{ operator._weeDcf }}</td>
+        </tr>
+    </table>
+    {% for facility in data['period']._facilities %}
+    <table class="govuk-table" style="width: 60%;">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell govuk-!-font-weight-bold" style="border: 0px;">{{loop.index + 1}}.</td>
+            <td class="govuk-table__cell govuk-!-font-weight-bold">Obligated WEEE for {{facility._name}}</td>
+            <td class="govuk-table__cell"></td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;"></td>
+            <td class="govuk-table__cell"><a href="PCS-Table?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">PCS(s)</a></td>
+            <td class="govuk-table__cell"></td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;"></td>
+            <td class="govuk-table__cell"><a href="Enter-WEEE-that-has-been-received-for-treatment?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Received</a></td>
+            <td class="govuk-table__cell govuk-!-font-size-16">Nil</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;"></td>
+            <td class="govuk-table__cell"><a href="Are-you-sending-any-WEEE-to-another-ATF-for-treatment?facilityId={{facility._id}}"
+                    class="govuk-link govuk-link--no-visited-state">Sent to another AATF / ATF</a></td>
+            <td class="govuk-table__cell govuk-!-font-size-16">Nil</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" style="border: 0px;"></td>
+            <td class="govuk-table__cell"><a href="Do-you-need-to-report-any-WEEE-reused-as-a-whole-appliance?facilityId={{facility._id}}"
+                    class="govuk-link govuk-link--no-visited-state">Reused as a whole appliance</a></td>
+            <td class="govuk-table__cell govuk-!-font-size-16">Nil</td>
+        </tr>
+    </table>
+    {% endfor %}
+    <details class="govuk-details govuk-!-font-size-16">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                The facility that I want is not on the list
+            </span>
+        </summary>
+        <div class="govuk-details__text">
+            <div class="govuk-body govuk-!-font-size-16">
+                Contact the relevant authority<br/><br/>
+                <b>England</b><br/>
+                Environment Agency<br/>
+                Producer Responsibility Regulatroy Services<br/>
+                Telephone: 03708 506 506<br/><br>
+
+                <b>Northern Ireland</b><br/>
+                Northern Ireland Environment Agency<br/>
+                Producer Responsibility Unit<br/>
+                Telephone: 02 890 569338<br/><br/>
+
+                <b>Scotland</b><br/>
+                Scottish Environment Protection Agency<br/>
+                Producer Compliance and Waste Shipments Unit<br/>
+                Telephone: 01786 457700<br/><br/>
+
+                <b>Wales</b><br/>
+                Natural Resources Wales<br/>
+                Producer Responsibility Unit<br/>
+                Telephone: 03000 65 3096
+            </div>
+        </div>
+    </details>
+</form>
+<form action="/version1-8/AATF-Returns/pcs-check-my-return" method="post" class="form" style="display: inline">
+    <button type="submit" class="govuk-button" id="pcs-check-return">
+        Check my return
+    </button>
+</form>
+{% endblock %}

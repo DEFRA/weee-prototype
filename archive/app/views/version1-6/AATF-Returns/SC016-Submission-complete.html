@@ -1,0 +1,40 @@
+{% extends "version1-6/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% from "panel/macro.njk" import govukPanel %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+  #main-content {
+    padding-top: 30px;
+  }
+</style>
+<div class="govuk-panel govuk-panel--confirmation govuk-!-width-two-thirds" style="display: inline-block">
+    <h1 class="govuk-panel__title">
+            {{ data['return-period'] }}  {{ data['return-year'] }} Return complete
+    </h1>
+</div>
+<a href="/version1-6/SC002-Portal-Landing-Page" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19" style="float: right">Home</a>
+<div class="govuk-!-padding-bottom-8"></div>
+<div class="govuk-!-width-two-thirds">
+    <p class="govuk-body">Your AATF Quarterly Return has been submitted successfully. A confirmation email has been sent to your
+        registered email
+        account.</p>
+    <div class="govuk-!-padding-bottom-2"></div>
+    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Bookmark
+        this page</a>
+    <div class="govuk-!-padding-bottom-4"></div>
+    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Print
+        this page</a>
+    <div class="govuk-!-padding-bottom-4"></div>
+    <a href="" class="govuk-link govuk-link--no-visited-state govuk-!-font-weight-bold govuk-body govuk-!-font-size-19">Save
+        as PDF</a>
+    <div class="govuk-!-padding-bottom-4"></div>
+    <h3 class="govuk-heading-m">What happens next?</h3>
+    <p class="govuk-body">Your return will now be reviewed by your Environmental Regulator</p>
+</div>
+{% endblock %}

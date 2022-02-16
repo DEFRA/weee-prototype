@@ -1,0 +1,97 @@
+{% extends "version1-7/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<style>
+  #main-content {
+    padding-top: 0px;
+  }
+  #pcs-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="#">AATF Return</a>
+    </li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">PCS(s)</li>
+  </ol>
+</div>
+<div class="govuk-error-summary govuk-!-width-one-half" aria-labelledby="error-summary-title" style="display: none" id="errorSummary" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">Please select a PCS</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="govuk-error-summary govuk-!-width-one-half" aria-labelledby="error-summary-title" style="display: none" id="errorSummaryDuplicate" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">You cannot add a duplicate PCS</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Which PCS(s) did {{ data['selectedFacility']._name }} receive WEEE from?</h2>
+<form action="/version1-7/AATF-Returns/pcs-selection-form-save" method="post" class="form">
+    <input type="hidden" id="scheme-name-id" name="scheme-name-id">
+    <input class="govuk-input govuk-!-width-one-half" id="scheme-name" name="scheme-name" type="text" placeholder="Enter the PCS name">
+    <button type="submit" class="govuk-button" id="multiple-pcs-add">
+      Add
+    </button>
+</form>
+  {% set schemeAdded = data['selectedFacility']._pcs.length %}
+{% if schemeAdded> 0 %}
+<h2 class="govuk-heading-m">PCS(s) this AATF received WEEE from</h2>
+<table class="govuk-table govuk-!-font-size-16" id="pcs-table" style="width: 60%;">
+{% else %}
+<table class="govuk-table govuk-!-font-size-16" id="pcs-table" style="display: none; width: 60%;">
+{% endif %}
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">PCS name</th>
+      <th class="govuk-table__header" scope="col">Approval No</th>
+      <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
+      <th class="govuk-table__header" scope="col">Actions</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      {% for scheme in data['selectedFacility']._pcs %}
+      <tr class="govuk-table__row">
+            <td class="govuk-table__cell scheme_name" scope="col">{{scheme._name}}</td>
+            <td class="govuk-table__cell" scope="col">{{scheme._id}}</td>
+            <td class="govuk-table__cell" scope="col">{{scheme._weeeReceivedTotal}}</td>
+            <td class="govuk-table__cell" scope="col">Remove</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+</table>
+{% if schemeAdded> 0 %}
+<form action="/version1-7/AATF-Returns/multiple-pcs-save" method="post" class="form">
+<!-- <button type="submit" class="govuk-button" id="multiple-pcs-save">
+    Continue
+  </button> -->
+</form>
+{% set facility = data['selectedFacility']._id %}
+<form action="/version1-7/AATF-Returns/PCS-Return?facilityid={{facility}}" method="post" class="form" style="display: block">
+  <button type="submit" class="govuk-button">
+      Save and continue
+  </button>
+</form>
+{% endif %}
+<script src="/public/javascripts/add-scheme-validation.js"></script>
+{% endblock %}

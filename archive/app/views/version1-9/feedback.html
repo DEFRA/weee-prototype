@@ -1,0 +1,267 @@
+{% extends "version1-9/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+
+{% endblock %}
+
+{% block content %}
+<style>
+        #sign-in-banner {
+        display: none;
+      }
+      #main-content {
+        padding-top: 30px;
+      }
+    </style>
+<h2 class="govuk-heading-l">Providing my obligated data via spreadsheet upload:</h2>
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col" style="width: 70%"></th>
+          <th class="govuk-table__header" scope="col">Answer</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="row">1.Entering data into the spreadsheet was easy and straight forward</th>
+            <td class="govuk-table__cell">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-1-stronglyagree" name="1-1" type="radio" value="stronglyagree">
+                    <label class="govuk-label govuk-radios__label" for="1-1-stronglyagree">
+                        1. Strongly agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-1-agree"  name="1-1" type="radio" value="agree">
+                    <label class="govuk-label govuk-radios__label" for="1-1-agree">
+                      2. Agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-1-neutral"  name="1-1" type="radio" value="neutral">
+                    <label class="govuk-label govuk-radios__label" for="1-1-neutral">
+                      3. Neutral
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-1-disagree"  name="1-1" type="radio" value="disagree">
+                    <label class="govuk-label govuk-radios__label" for="1-1-disagree">
+                      4. Disagree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-1-strongly-disagree"  name="1-1" type="radio" value="stronglydisagree">
+                    <label class="govuk-label govuk-radios__label" for="1-1-strongly-disagree">
+                      5. Strongly disagree
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="row">2. I thought the steps I had to go through for the journey that includes the spreadsheet were clear and understandable</th>
+            <td class="govuk-table__cell"><fieldset class="govuk-fieldset">
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-2-strongly-agree" name="1-2" type="radio" value="stronglyagree">
+                    <label class="govuk-label govuk-radios__label" for="1-2-strongly-agree">
+                        1. Strongly agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-2-agree" name="1-2" type="radio" value="agree">
+                    <label class="govuk-label govuk-radios__label" for="1-2-agree">
+                      2. Agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-2-neutral" name="1-2" type="radio" value="neutral">
+                    <label class="govuk-label govuk-radios__label" for="1-2-neutral">
+                      3. Neutral
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-2-disagree" name="1-2" type="radio" value="disagree">
+                    <label class="govuk-label govuk-radios__label" for="1-2-disagree">
+                      4. Disagree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-2-strongly-disagree" name="1-2" type="radio" value="stronglydisagree">
+                    <label class="govuk-label govuk-radios__label" for="1-2-strongly-disagree">
+                      5. Strongly disagree
+                    </label>
+                  </div>
+                </div>
+              </fieldset></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="row">3. Overall, I thought the spreadsheet enabled me to feel confident about my submission</th>
+            <td class="govuk-table__cell"><fieldset class="govuk-fieldset">
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-3-strongly-agree" name="1-3" type="radio" value="stronglyagree">
+                    <label class="govuk-label govuk-radios__label" for="1-3-strongly-agree">
+                        1. Strongly agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-3-agree" name="1-3" type="radio" value="agree">
+                    <label class="govuk-label govuk-radios__label" for="1-3-agree">
+                      2. Agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-3-neutral" name="1-3" type="radio" value="neutral">
+                    <label class="govuk-label govuk-radios__label" for="1-3-neutral">
+                      3. Neutral
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-3-disagree" name="1-3" type="radio" value="disagree">
+                    <label class="govuk-label govuk-radios__label" for="1-3-disagree">
+                      4. Disagree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="1-3-strongly-disagree" name="1-3" type="radio" value="stronglydisagree">
+                    <label class="govuk-label govuk-radios__label" for="1-3-strongly-disagree">
+                      5. Strongly disagree
+                    </label>
+                  </div>
+                </div>
+              </fieldset></td>
+          </tr>
+        </tbody>
+</table>
+<h2 class="govuk-heading-l">Providing all of my data through the user interface:</h2>
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col" style="width: 70%"></th>
+          <th class="govuk-table__header" scope="col">Answer</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="row">1. Entering data into the online forms was easy and straight forward</th>
+            <td class="govuk-table__cell">
+              <fieldset class="govuk-fieldset">
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-1-strongly-agree" name="2-1" type="radio" value="stronglyagree">
+                    <label class="govuk-label govuk-radios__label" for="2-1-strongly-agree">
+                        1. Strongly agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-1-agree" name="2-1" type="radio" value="agree">
+                    <label class="govuk-label govuk-radios__label" for="2-1-agree">
+                      2. Agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-1-neutral" name="2-1" type="radio" value="neutral">
+                    <label class="govuk-label govuk-radios__label" for="2-1-neutral">
+                      3. Neutral
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-1-disagree" name="2-1" type="radio" value="disagree">
+                    <label class="govuk-label govuk-radios__label" for="2-1-disagree">
+                      4. Disagree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-1-strongly-disagree" name="2-1" type="radio" value="stronglydisagree">
+                    <label class="govuk-label govuk-radios__label" for="2-1-strongly-disagree">
+                      5. Strongly disagree
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="row">2. I thought the steps I had to go through online were clear and understandable</th>
+            <td class="govuk-table__cell"><fieldset class="govuk-fieldset">
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-2-strongly-agree" name="2-2" type="radio" value="stronglyagree">
+                    <label class="govuk-label govuk-radios__label" for="2-2-strongly-agree">
+                        1. Strongly agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-2-agree" name="2-2" type="radio" value="agree">
+                    <label class="govuk-label govuk-radios__label" for="2-2-agree">
+                      2. Agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-2-neutral" name="2-2" type="radio" value="neutral">
+                    <label class="govuk-label govuk-radios__label" for="2-2-neutral">
+                      3. Neutral
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-2-disagree" name="2-2" type="radio" value="disagree">
+                    <label class="govuk-label govuk-radios__label" for="2-2-disagree">
+                      4. Disagree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-2-strongly-disagree" name="2-2" type="radio" value="stronglydisagree">
+                    <label class="govuk-label govuk-radios__label" for="2-2-strongly-disagree">
+                      5. Strongly disagree
+                    </label>
+                  </div>
+                </div>
+              </fieldset></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="row">3. Overall, I thought the online forms enabled me to feel confident about my submission</th>
+            <td class="govuk-table__cell"><fieldset class="govuk-fieldset">
+                <div class="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-3-strongly-agree" name="2-3" type="radio" value="stronglyagree">
+                    <label class="govuk-label govuk-radios__label" for="2-3-strongly-agree">
+                        1. Strongly agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-3-agree" name="2-3" type="radio" value="agree">
+                    <label class="govuk-label govuk-radios__label" for="2-3-agree">
+                      2. Agree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-3-neutral" name="2-3" type="radio" value="neutral">
+                    <label class="govuk-label govuk-radios__label" for="2-3-neutral">
+                      3. Neutral
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-3-disagree" name="2-3" type="radio" value="disagree">
+                    <label class="govuk-label govuk-radios__label" for="2-3-disagree">
+                      4. Disagree
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="2-3-strongly-disagree" name="2-3" type="radio" value="stronglydisagree">
+                    <label class="govuk-label govuk-radios__label" for="2-3-strongly-disagree">
+                      5. Strongly disagree
+                    </label>
+                  </div>
+                </div>
+              </fieldset></td>
+          </tr>
+        </tbody>
+</table>
+
+
+{% endblock %}

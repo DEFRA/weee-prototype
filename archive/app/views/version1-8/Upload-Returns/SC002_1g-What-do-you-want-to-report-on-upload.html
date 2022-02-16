@@ -1,0 +1,79 @@
+{% extends "version1-8/layout.html" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+    .govuk-table td, .govuk-table th {
+        border-bottom:0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        if ($('input[name=receivedoption-upload]:checked').val() == 'yes') {
+            $('#dcfsection').css('display', 'table-row');
+        }
+
+        $('#receivedsection input[type=radio]').change(function () {
+            var thisValue = $(this).val();
+
+            if (thisValue == 'yes') {
+                $('#dcfsection').css('display', 'table-row');
+            } else {
+                $('#dcfsection').css('display', 'none');
+            }
+        });
+    });
+</script>
+<form action="/version1-8/Upload-Returns/What-do-you-want-to-report-on-upload" method="post" class="form">
+    <div class="govuk-!-padding-bottom-3"></div>
+    <h2 class="govuk-heading-l">What do you need to report on?</h2>
+    <div class="govuk-!-padding-bottom-5"></div>
+    <table class="govuk-table">
+        <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+                <th class="govuk-table__header" style="width: 80%" scope="col"></th>
+                <th class="govuk-table__header" style="width: 10%" scope="col">Yes</th>
+                <th class="govuk-table__header" style="width: 10%" scope="col">No</th>
+            </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            <tr class="govuk-table__row" id="receivedsection">
+                <td class="govuk-table__cell">
+                    <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Have
+                        you received any non-obligated WEEE</h3>
+                    <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE not received via or on
+                        behalf of a PCS. It should not include WEEE that has already been reported by another AATF.</p>
+                </td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="receivedoption-upload" value="yes"></td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="receivedoption-upload" value="no"></td>
+            </tr>
+            <tr class="govuk-table__row" id="dcfsection" style="display:none;">
+                <td class="govuk-table__cell" style="border-left: 5px solid rgb(191, 193, 195); padding-left: 20px;">
+                    <h3 class="govuk-heading-m govuk-!-font-size-24" style="font-weight: normal; margin-bottom: 0px;">Have
+                        you received any non-obligated WEEE on behalf of a designated collection facility (DCF)</h3>
+                    <p class="govuk-body govuk-!-font-size-16" style="color: gray;">This is WEEE that a DCF operator has retained under regulation 53 and has sent to you for treatment</p>
+                </td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="dcfoption-upload" value="yes"></td>
+                <td class="govuk-table__cell"><input class="govuk-radios__input" style="position: static; opacity: 1; width:30px;"
+                        type="radio" name="dcfoption-upload" value="no"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{ govukButton({
+    text: "Continue"
+    }) }}
+</form>
+{% endblock %}

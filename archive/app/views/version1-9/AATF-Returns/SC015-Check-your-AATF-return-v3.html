@@ -1,0 +1,352 @@
+{% extends "version1-9/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% from "tabs/macro.njk" import govukTabs %}
+{% from "table/macro.njk" import govukTable %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    .weee-table td {
+        border-bottom: 0px;
+        padding-bottom: 0px;
+        width: 75%;
+    }
+
+    .no-border {
+        border: none;
+    }
+
+    #main-content {
+        padding-top: 0px;
+    }
+
+    .align-top {
+        vertical-align: top;
+    }
+
+    .align-center {
+        text-align: center;
+        vertical-align: top;
+    }
+
+    .no-margin {
+        margin-bottom: 0;
+    }
+
+    .cell-border {
+        border-bottom: 1px solid #bfc1c3;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Check your AATF return for ABB Ltd</h2>
+<a href='{{ data["task-list-redirect"] }}' class="govuk-link govuk-link--no-visited-state" style="float:right;">AATF
+    task list</a>
+<p style="display: inline">Check and review your AATF return before you proceed to submit</p>
+<div class="govuk-!-padding-bottom-9"></div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        <p><strong>Compliance year</strong></p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+        <p>{{ data['return-year'] }}</p>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        <p><strong>Reporting period</strong></p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+        <p>{{ data['return-period-long'] }}</p>
+    </div>
+</div>
+
+<div class="govuk-!-padding-bottom-6"></div>
+<h4 class="govuk-heading-s" style="margin-bottom: 0px;">Obligated WEEE</h4>
+{% for facility in data['period']._facilities %}
+<div class="govuk-!-padding-bottom-6"></div>
+<table class="govuk-table govuk-!-font-size-16">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header align-top" scope="col" style="width:18%;">{{facility._name}}</th>
+            <th class="govuk-table__header align-top" scope="col" style="width:18%;">{{facility._approvalNumber}}</th>
+            <th class="govuk-table__header align-top" scope="col" style="width:18%;">
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th colspan="2" class="align-center">Received for treatment (t)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr lass="govuk-table__row">
+                            <td class="align-center">B2C</td>
+                            <td class="align-center">B2B</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </th>
+            <th class="govuk-table__header align-top" scope="col" style="width:18%;">
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th colspan="2" class="align-center">Sent to another AATF / ATF (t)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr class="govuk-table__row">
+                            <td class="align-center">B2C</td>
+                            <td class="align-center">B2B</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </th>
+            <th class="govuk-table__header align-top" scope="col" style="width:5%; padding-right: 0px;"></th>
+            <th class="govuk-table__header align-top"" scope=" col" style="width:18%;">
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th colspan="2" class="align-center">Reused as a whole appliance (t)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        <tr lass="govuk-table__row">
+                            <td class="align-center">B2C</td>
+                            <td class="align-center">B2B</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </th>
+            <th class="govuk-table__header align-top" scope="col" style="width:5%; padding-right: 0px;"></th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell" scope="col" colspan="2">
+                <details class="govuk-details check-return" style="font-size: 16px;">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            {{facility._name}} PCSs
+                        </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <table class="govuk-table" style="font-size: 16px; width: 100%;">
+                            <thead class="govuk-table__head">
+                                <tr class="govuk-table__row">
+                                    <th class="govuk-table__header" scope="col" style="width:40%">PCS Name</th>
+                                    <th class="govuk-table__header" scope="col" style="width:35%">Approval No</th>
+                                    <th class="govuk-table__header" scope="col" style="width:15%"></th>
+                                    <th class="govuk-table__header" scope="col"></th>
+                                    <th class="govuk-table__header" scope="col"></th>
+                                </tr>
+                            </thead>
+                            {% set period = data['period'] %}
+                            {% if period._uploadRoute %}
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Ecosurety</td>
+                                    <td class="govuk-table__cell">WEE/UP3838PL/SCH</td>
+                                    <td class="govuk-table__cell">24.000</td>
+                                    <td class="govuk-table__cell">65.000</td>
+                                </tr>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">Interlevin</td>
+                                    <td class="govuk-table__cell">WEE/GP3138PQ/SCH</td>
+                                    <td class="govuk-table__cell">7.000</td>
+                                    <td class="govuk-table__cell">12.000</td>
+                                </tr>
+                            </tbody>
+                            {% else %}
+                            {% for pcs in facility._pcs %}
+                            <tbody class="govuk-table__body">
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell">{{pcs._name}}</td>
+                                    <td class="govuk-table__cell">{{pcs._id}}</td>
+                                    {% if pcs._weeeReceivedTotal %}
+                                    <td class="govuk-table__cell">{{pcs._weeeReceivedTotal}}</td>
+                                    {% else %}
+                                    <td class="govuk-table__cell">-</td>
+                                    {% endif %}
+                                    {% if pcs._weeeReceivedTotalb2b %}
+                                    <td class="govuk-table__cell">{{pcs._weeeReceivedTotalb2b}}</td>
+                                    {% else %}
+                                    <td class="govuk-table__cell">-</td>
+                                    {% endif %}
+                                    <td class="govuk-table__cell"><a href="PCS-Selection?facilityId={{facility._id}}" class="govuk-link govuk-link--no-visited-state">Change</a></td>
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                            {% endif %}
+                            {% if period._uploadRoute %}
+                            <tfoot>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell"></td>
+                                    <td class="govuk-table__cell"></td>
+                                    <td class="govuk-table__cell">31.000</td>
+                                    <td class="govuk-table__cell">78.000</td>
+                                    <td class="govuk-table__cell"></td>
+                                </tr>
+                            </tfoot>
+                            {% else %}
+                            <tfoot>
+                                <tr class="govuk-table__row">
+                                    <td class="govuk-table__cell"></td>
+                                    <td class="govuk-table__cell"></td>
+                                    {% if facility._totalb2c %}
+                                    <td class="govuk-table__cell">{{facility._totalb2c}}</td>
+                                    {% else %}
+                                    <td class="govuk-table__cell">-</td>
+                                    {% endif %}
+                                    {% if facility._totalb2b %}
+                                    <td class="govuk-table__cell">{{facility._totalb2b}}</td>
+                                    {% else %}
+                                    <td class="govuk-table__cell">-</td>
+                                    {% endif %}
+                                    <td class="govuk-table__cell"></td>
+                                </tr>
+                            </tfoot>
+                            {% endif %}
+                        </table>
+                    </div>
+                </details>
+
+            </td>
+            <td class="govuk-table__cell align-center" scope="col">
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <tbody class="govuk-table__body">
+                        {% if period._uploadRoute %}
+                        <tr class="govuk-table__row">
+                            <td class="align-center">31.000</td>
+                            <td class="align-center">78.000</td>
+                        </tr>
+                        {% else %}
+                        <tr class="govuk-table__row">
+                            {% if facility._totalb2c %}
+                            <td class="align-center">{{facility._totalb2c}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                            {% if facility._totalb2b %}
+                            <td class="align-center">{{facility._totalb2b}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </td>
+            <td class="govuk-table__cell align-center" scope="col" style="padding-right: 0px;">
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <tbody class="govuk-table__body">
+                        {% if period._uploadRoute %}
+                        <tr class="govuk-table__row">
+                            <td class="align-center">7.000</td>
+                            <td class="align-center">3.400</td>
+                        </tr>
+                        {% else %}
+                        <tr lass="govuk-table__row">
+                            {% if facility._sentonb2c %}
+                            <td class="align-center">{{facility._sentonb2c}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                            {% if facility._sentonb2b %}
+                            <td class="align-center">{{facility._sentonb2b}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </td>
+            <td class="govuk-table__cell align-center" scope="col" style="padding-right: 0px;">
+                <a class="govuk-link govuk-link--no-visited-state" href="sent-to-change?">
+                    Change
+                </a>
+            </td>
+            <td class="govuk-table__cell align-center" scope="col" style="padding-right: 0px;">
+                <table class="govuk-table govuk-!-font-size-16 no-margin">
+                    <tbody class="govuk-table__body">
+                        {% if period._uploadRoute %}
+                        <tr class="govuk-table__row">
+                            <td class="align-center">11.500</td>
+                            <td class="align-center">2.100</td>
+                        </tr>
+                        {% else %}
+                        <tr lass="govuk-table__row">
+                            {% if facility._reusedb2c %}
+                            <td class="align-center">{{facility._reusedb2c}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                            {% if facility._reusedb2b %}
+                            <td class="align-center">{{facility._reusedb2b}}</td>
+                            {% else %}
+                            <td class="align-center">-</td>
+                            {% endif %}
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </td>
+            <td class="govuk-table__cell align-center" scope="col" style="padding-right: 0px;">
+                <a class="govuk-link govuk-link--no-visited-state" href="reused-change?">
+                    Change
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endfor %}
+
+<div class="govuk-!-padding-bottom-6"></div>
+<h4 class="govuk-heading-s" style="margin-bottom: 0px;">Non-obligated WEEE</h4>
+<div class="govuk-!-padding-bottom-6"></div>
+<table class="govuk-table govuk-!-font-size-16" style="width: 50%;">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">
+                WEEE received (t)
+            </th>
+            <th class="govuk-table__header" scope="col">
+            </th>
+            <th class="govuk-table__header" scope="col">
+                WEEE retained by a DCF (t)
+            </th>
+            <th class="govuk-table__header" scope="col">
+            </th>
+        </tr>
+    </thead>
+    {% set operator = data['period']._operator %}
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            {% if operator._wee %}
+            <td class="govuk-table__cell">{{ operator._wee }}</td>
+            {% else %}
+            <td class="govuk-table__cell">-</td>
+            {% endif %}
+            <td class="govuk-table__cell"><a href="SC004_1-Enter-non-obligated-WEEE.html" class="govuk-link govuk-link--no-visited-state">Change</a></td>
+            {% if operator._weeDcf %}
+            <td class="govuk-table__cell">{{ operator._weeDcf }}</td>
+            {% else %}
+            <td class="govuk-table__cell">-</td>
+            {% endif %}
+            <td class="govuk-table__cell"><a href="SC004_2a-Add-any-DCF-data.html" class="govuk-link govuk-link--no-visited-state">Change</a></td>
+        </tr>
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-6"></div>
+
+<form action="/version1-9/AATF-Returns/submit-aatf-return" method="post" class="form" style="display:inline;">
+    {{ govukButton({
+    text: "Submit"
+    }) }}
+</form>
+
+
+{% endblock %}

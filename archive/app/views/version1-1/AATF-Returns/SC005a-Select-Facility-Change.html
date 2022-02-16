@@ -1,0 +1,39 @@
+{% extends "version1-1/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "select/macro.njk" import govukSelect %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+    text: "Back",
+    href: "SC007-AATF-Tasklist"
+  }) }}
+  <style>
+      #main-content {
+          padding-top: 0px;
+      }
+  </style>
+<h2 class="govuk-heading-l">Select facility</h2>
+
+<p>Some guidance here on what to do</p>
+<form action="/version1-1/AATF-Returns/facility-save-change" method="post" class="form">
+{{ govukSelect({
+    id: "facilitySelect",
+    name: "facilitySelect",
+    classes: "govuk-!-width-one-half",
+    items: [
+      {
+        value: "Facility 1",
+        text: "Facility 1 - ATF/AB12345/WEEE"
+      }
+    ]
+}) }}
+
+{{ govukButton({
+    text: "Save and continue"
+}) }}
+</form>
+{% endblock %}

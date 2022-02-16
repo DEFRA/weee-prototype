@@ -1,0 +1,47 @@
+{% extends "version1-4/layout.html" %}
+
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+
+<div class="govuk-!-padding-bottom-3"></div>
+{% set operator = data['period']._operator %}
+<h2 class="govuk-heading-l">Compliance year and return period for {{ operator._name }}</h2>
+<div class="govuk-!-padding-bottom-4"></div>
+<form action="/version1-7/AATF-Returns/compliance-reporting-continue" method="post" class="form">
+    <div class="govuk-form-group govuk-!-margin-bottom-1">
+        <label class="govuk-label" for="compliance-year">
+            Compliance year
+        </label>
+        <select class="govuk-select govuk-!-width-one-third" id="compliance-year" name="compliance-year">
+            <option value="">Select a compliance year</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+        </select>
+    </div>
+    <div class="govuk-!-padding-bottom-4"></div>
+    <div class="govuk-form-group">
+        <label class="govuk-label" for="reporting-period">
+            Reporting period
+        </label>
+        <select class="govuk-select govuk-!-width-one-third" id="reporting-period" name="reporting-period">
+            <option value="">Select a reporting period</option>
+            <option value="Q1">Q1 Jan - Mar</option>
+            <option value="Q2">Q2 Apr - Jun</option>
+            <option value="Q3">Q3 Jul - Sep</option>
+            <option value="Q4">Q4 Oct - Dec</option>
+        </select>
+    </div>
+    <button type="submit" class="govuk-button" id="compliance-reporting-button">
+        Continue
+    </button>
+</form>
+{% endblock %}

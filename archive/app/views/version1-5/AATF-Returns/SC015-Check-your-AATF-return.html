@@ -1,0 +1,154 @@
+{% extends "version1-5/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% from "tabs/macro.njk" import govukTabs %}
+{% from "table/macro.njk" import govukTable %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    .weee-table td {
+        border-bottom: 0px;
+        padding-bottom: 0px;
+        width: 75%;
+    }
+
+    .no-border{
+        border: none;
+    }
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var pcsNameArray = JSON.parse(localStorage.getItem('pcsNameArray'));
+        var pcsIDArray = JSON.parse(localStorage.getItem('pcsIDArray'));
+        $('.Scheme-2').css('display', 'none')
+        $('#scheme1').click(function () {
+            $('.Scheme-1').css('display', 'table-row')
+            $('.Scheme-2').css('display', 'none')
+        });
+        $('#scheme2').click(function () {
+            $('.Scheme-2').css('display', 'table-row')
+            $('.Scheme-1').css('display', 'none')
+        });
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Check your AATF return</h2>
+<span style="float:right">
+    <a href="My-facilities">AATF returns</a>
+</span>
+<div class="govuk-!-padding-bottom-9"></div>
+<p style="display: inline">Check and review your AATF return before you proceed to submit</p>
+<div class="govuk-!-padding-bottom-9"></div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        <p><strong>Compliance year</strong></p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+        <p>2018</p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+            <a href="">Change</a>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-quarter">
+        <p><strong>Reporting period</strong></p>
+    </div>
+    <div class="govuk-grid-column-one-quarter">
+        <p>Q1 Jan - Mar</p>
+    </div>
+</div>
+<div class="govuk-!-padding-bottom-4"></div>
+<table class="govuk-table govuk-!-font-size-16">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Operator name</th>
+            <th class="govuk-table__header" scope="col">Street</th>
+            <th class="govuk-table__header" scope="col">Town</th>
+            <th class="govuk-table__header" scope="col">Country</th>
+            <th class="govuk-table__header" scope="col">Postcode</th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell ">ABB LTD</td>
+            <td class="govuk-table__cell ">1 Waterloo Avenue</td>
+            <td class="govuk-table__cell ">Woking</td>
+            <td class="govuk-table__cell ">United Kingdom</td>
+            <td class="govuk-table__cell ">GU21 BUY</td>
+        </tr>
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-5"></div>
+<h4 class="govuk-heading-s">Non-obligated WEEE</h4>
+<table class="govuk-table govuk-!-font-size-16">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">WEEE received (t)</th>
+            <th class="govuk-table__header" scope="col">WEEE retained by a DCF (t)</th>
+            <th class="govuk-table__header"  style="font-weight: normal"></th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell">-</td>
+            <td class="govuk-table__cell">-</td>
+            <td class="govuk-table__cell"><a href="">Change</a></td>
+        </tr>
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-5"></div>
+<h4 class="govuk-heading-s">Obligated WEEE</h4>
+<table class="govuk-table govuk-!-font-size-16">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">AATF name</th>
+            <th class="govuk-table__header" scope="col">Approval number</th>
+            <th class="govuk-table__header" scope="col">Received for treatment (t)</th>
+            <th class="govuk-table__header" scope="col">Sent to another ATF (t)</th>
+            <th class="govuk-table__header" scope="col">Reused as whole appliance (t)</th>
+            <th class="govuk-table__header"></th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+        <td class="govuk-table__cell" scope="col">ABB Ltd Darlaston</td>
+        <td class="govuk-table__cell" scope="col">WEE/AB1234GH/ATF</td>
+        <td class="govuk-table__cell" scope="col">1.233</td>
+        <td class="govuk-table__cell" scope="col">2.568</td>
+        <td class="govuk-table__cell" scope="col">1.2345</td>
+        <td class="govuk-table__cell" scope="col"><a href="">Change</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell" scope="col">ABB Ltd Woking</td>
+        <td class="govuk-table__cell" scope="col">WEE/AB1234GH/ATF</td>
+        <td class="govuk-table__cell" scope="col">-</td>
+        <td class="govuk-table__cell" scope="col">-</td>
+        <td class="govuk-table__cell" scope="col">-</td>
+        <td class="govuk-table__cell" scope="col"><a href="">Change</a></td>
+    </tr>
+    <tr class="govuk-table__row">
+        <td class="govuk-table__cell" scope="col">ABB Ltd Maidenhead</td>
+        <td class="govuk-table__cell" scope="col">WEE/AB1234GH/ATF</td>
+        <td class="govuk-table__cell" scope="col">2.233</td>
+        <td class="govuk-table__cell" scope="col">4.568</td>
+        <td class="govuk-table__cell" scope="col">6.235</td>
+        <td class="govuk-table__cell" scope="col"><a href="">Change</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="/version1-5/AATF-Returns/submit-aatf-return" method="post" class="form">
+    {{ govukButton({
+    text: "Submit"
+    }) }}
+</form>
+{% endblock %}

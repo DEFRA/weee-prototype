@@ -1,0 +1,39 @@
+{% extends "version1-9/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+        #main-content {
+            padding-top: 0px;
+        }
+    </style>
+    <div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Have you received any non-obligated WEEE?</h2>
+<p class="govuk-body">This is WEEE that you received at your AATF(s) other than from or on behalf of a PCS. It should not include WEEE that has already been reported by another AATF(s).</p>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-9/Upload-Returns/sc002_1g_what_do_you_want_to_report_on_upload" method="post" class="form" style="display: inline">
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="receivedoption-upload" name="receivedoption-upload" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="non-obligated-weee-yes">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="receivedoption-upload" name="receivedoption-upload" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="non-obligated-weee-no">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+    <button type="submit" class="govuk-button">
+        Continue
+    </button>
+</form>
+
+{% endblock %}

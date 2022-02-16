@@ -1,0 +1,37 @@
+{% extends "version1-2/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">What would you like to do?</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<h3 class="govuk-heading-m">
+    <a href="AATF-Returns/SC003-AATF-Reporting-Details" class="govuk-link govuk-link--no-visited-state">Make a
+        quarterly return</a>
+</h3>
+<p class="govuk-!-width-three-quarters">Make an AATF quarterly return by reporting on non obligated WEEE, DCF data, WEEE sent to another ATF for treatment and WEEE reused as a whole appliance</p>
+<div class="govuk-!-padding-bottom-7"></div>
+
+<h3 class="govuk-heading-m">
+    <a href="AATF-Returns/SC002a-behind-screen" class="govuk-link govuk-link--no-visited-state">Upload an AATF Quarterly Return</a>
+</h3>
+<p class="govuk-!-width-three-quarters">Download an AATF template to bulk upload a quarterly return</p>
+
+<div class="govuk-!-padding-bottom-7"></div>
+
+<h3 class="govuk-heading-m">
+    <a href="#" class="govuk-link govuk-link--no-visited-state">Create an AE return</a>
+</h3>
+<p class="govuk-!-width-three-quarters">Make a Nil AE return and details on how to contact the appropriate authority to make a numeric return</p>
+
+<div class="govuk-!-padding-bottom-7"></div>
+
+{% endblock %}

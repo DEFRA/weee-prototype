@@ -1,0 +1,55 @@
+{% extends "version1-1/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% from "details/macro.njk" import govukDetails %}
+{% from "select/macro.njk" import govukSelect %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "SC004-Non-Obligated-WEEE"
+}) }}
+
+<h2 class="govuk-heading-l">Select the facility for which you need to provide the quarterly return</h2>
+<form action="/version1-1/AATF-Returns/facility-save" method="post" class="form">
+  {{ govukSelect({
+  id: "facilitySelect",
+  name: "facilitySelect",
+  classes: "govuk-!-width-one-half",
+  items: [
+  {
+  value: "Facility 1",
+  text: "Facility 1 - ATF/AB12345/WEEE"
+  }
+  ]
+  }) }}
+  <style>
+      #main-content {
+          padding-top: 0px;
+      }
+  </style>
+
+  <details class="govuk-details govuk-!-width-two-thirds">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        The facility I want is not on the list
+      </span>
+    </summary>
+    <div class="govuk-body govuk-!-font-size-14">
+    <div class="govuk-details__text ">
+      If the facility that you require is not on the list, then please contact the environment agency via email
+    </div>
+    <div class="govuk-details__text govuk-!-padding-top-0">
+      environment_agency@ea.gov.uk
+    </div>
+  </div>
+  </details>
+
+  {{ govukButton({
+  text: "Save and continue"
+  }) }}
+</form>
+{% endblock %}

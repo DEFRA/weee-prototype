@@ -1,0 +1,39 @@
+
+{% extends "version-2/layout_no_signedin.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<h2 class="govuk-heading-l">Sign in to your account</h2>
+
+<form method="post" action="{{data['index-action-link']}}" class="form">
+  {{ govukInput({
+    label: {
+      text: "Email address",
+      classes: "govuk-!-width-one-third"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "email",
+    name: "email",
+    type: "email"
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: "Password",
+      classes: "govuk-!-width-one-third"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "password",
+    name: "password",
+    type: "password"
+  }) }}
+
+  {{ govukButton({
+    text: "Continue"
+  }) }}
+</form>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "version-2/layout.html" %}
+
+{% block pageTitle %}
+  Choose an activity (PCS Journey)
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l" style="font-weight: 600; font-family: arial;">What activity would you like to do?</h1>
+
+      <form class="form" action="/version-2/choose-activity-redirect" method="post">
+
+		{{ govukRadios
+			({
+			  idPrefix: "choose-activity",
+			  name: "choose-activity",
+			  fieldset: 
+			  {
+				legend: 
+				{
+				  text: "",
+				  isPageHeading: true,
+				  classes: "govuk-fieldset__legend--l"
+				}
+			  },
+			  items: 
+			  [
+				{
+				  value: "8",
+				  text: "Manage PCS members"
+				},
+				{
+				  value: "9",
+				  text: "Manage PCS WEEE data"
+				},
+				{
+				  value: "10",
+				  text: "Manage PCS contact details"
+				},
+				{
+				  value: "11",
+				  text: "View PCS submissions history"
+				},
+				{
+				  value: "5",
+				  text: "View organisation details"
+				},
+				{
+				  value: "6",
+				  text: "Manage organisation users"
+				},
+				{
+				  value: "13",
+				  text: "Manage evidence notes"
+				}
+			  ]
+			}) 
+		}}
+
+
+		{{ govukButton({
+			text: "Continue"
+		  }) }}
+
+		<!-- div><a href="202_Choose_site" class="element-spacer govuk-back-link" style="font-size: 20px;">Access another organisation</a></div -->
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

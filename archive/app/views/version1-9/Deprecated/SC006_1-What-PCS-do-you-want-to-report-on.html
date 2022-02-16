@@ -1,0 +1,79 @@
+{% extends "version1-3/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+  #main-content {
+    padding-top: 0px;
+  }
+  #pcs-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        localStorage.setItem('singlePCS', "false");
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Select all the PCSs that you need to report on</h2>
+<div class="govuk-!-padding-bottom-4"></div>
+
+  {{ govukSelect({
+  id: "multipleSchemeSelect",
+  name: "multipleSchemeSelect",
+  classes: "govuk-!-width-one-half",
+  items: [
+  {
+  value: "Accerio WEEE Scheme_WEE/KP3538PF/SCH",
+  text: "WEE/KP3538PF/SCH - Accerio WEEE Scheme"
+  },
+  {
+  value: "B2B Compliance_WEE/MP3338PT/SCH",
+  text: "WEE/MP3338PT/SCH - B2B Compliance"
+  },
+  {
+  value: "B2BWEEE Scheme_WEE/MP3038PL/SCH",
+  text: "WEE/MP3038PL/SCH - B2BWEEE Scheme"
+  },
+  {
+  value: "Comply Direct_WEE/UP3538PY/SCH",
+  text: "WEE/UP3538PY/SCH - Comply Direct"
+  },
+  {
+  value: "Ecosurety_WEE/UP3838PL/SCH",
+  text: "WEE/UP3838PL/SCH - Ecosurety"
+  }
+  ]
+  }) }}
+  <div class="govuk-!-padding-bottom-4"></div>
+  <button type="submit" class="govuk-button" id="multiple-pcs-add">
+    Add
+  </button>
+<div class="govuk-!-padding-bottom-7"></div>
+<table class="govuk-table" id="pcs-table" style="display: none;">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">PCS Name</th>
+      <th class="govuk-table__header" scope="col">Approval No</th>
+      <th class="govuk-table__header" scope="col">Street</th>
+      <th class="govuk-table__header" scope="col">Town</th>
+      <th class="govuk-table__header" scope="col">Country</th>
+      <th class="govuk-table__header" scope="col">Post Code</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<form action="/version1-9/AATF-Returns/multiple-pcs-save" method="post" class="form">
+<button type="submit" class="govuk-button" id="multiple-pcs-save" style="display: none;">
+    Save and Continue
+  </button>
+</form>
+{% endblock %}

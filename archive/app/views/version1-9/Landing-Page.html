@@ -1,0 +1,47 @@
+{% extends "version1-9/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+
+{% endblock %}
+
+{% block content %}
+<style>
+    #sign-in-banner {
+    display: none;
+  }
+  #main-content {
+    padding-top: 30px;
+  }
+</style>
+<h2 class="govuk-heading-l">Waste Electrical and Electronic Equipment</h2>
+<form action="/version1-9/landing-page" method="post" class="form">
+    <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="prototype-route-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h2 class="govuk-fieldset__heading">
+                    Please select your prototype route
+                </h2>
+            </legend>
+            <div class="govuk-radios govuk-radios--inline">
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="prototype-route-ui" name="prototype-route" type="radio" value="ui">
+                    <label class="govuk-label govuk-radios__label" for="prototype-route-ui">
+                        UI
+                    </label>
+                </div>
+                <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="prototype-route-upload" name="prototype-route" type="radio" value="upload">
+                    <label class="govuk-label govuk-radios__label" for="prototype-route-upload">
+                        Upload
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    {{ govukButton({
+        text: "Continue"
+      }) }}
+</form>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "version1-6/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+        #main-content {
+            padding-top: 0px;
+        }
+    </style>
+    <div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Is this the correct PCS that the WEEE has been received from?</h2>
+<div class="govuk-!-padding-bottom-7"></div>
+<table class="govuk-table">
+    <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">PCS Name</th>
+            <th class="govuk-table__header" scope="col">Approval No</th>
+            <th class="govuk-table__header" scope="col">Street</th>
+            <th class="govuk-table__header" scope="col">Town</th>
+            <th class="govuk-table__header" scope="col">Country</th>
+            <th class="govuk-table__header" scope="col">Post Code</th>
+        </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell ">{{ data['schemeSelect'] }}</td>
+            <td class="govuk-table__cell ">WEE/AB1234CD/SCH</td>
+            <td class="govuk-table__cell ">1 London Avenue</td>
+            <td class="govuk-table__cell ">Guildford</td>
+            <td class="govuk-table__cell ">United Kingdom</td>
+            <td class="govuk-table__cell ">GU24 7UY</td>
+        </tr>
+    </tbody>
+</table>
+<div class="govuk-!-padding-bottom-7"></div>
+<form action="/version1-6/AATF-Returns/scheme-confirm" method="post" class="form" style="display: inline">
+<button type="submit" class="govuk-button govuk-!-margin-right-3">
+    Confirm
+</button>
+</form>
+<form action="/version1-6/AATF-Returns/scheme-cancel" method="post" class="form" style="display: inline">
+<button type="submit" class="govuk-button" style="background-color: #bfc1c3; color: #0b0c0c">
+    Cancel
+</button>
+</form>
+
+{% endblock %}

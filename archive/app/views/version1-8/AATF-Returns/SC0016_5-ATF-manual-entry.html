@@ -1,0 +1,67 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#input-address-button').click(function () {
+            $('#operator-postcode-search-3').val('');
+            $('#operator-name-search-3').val('');
+        })
+        $('#postcode-search-button').click(function () {
+            $('#operator-postcode-3').val('');
+            $('#operator-name-3').val('');
+            var atfName = $('#operator-name-search-3').val();
+            localStorage.setItem('completedATF', atfName);
+        })
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Which AATF / ATF was the WEEE sent to for treatment?</h2>
+<input type="hidden" id="atfId" name="atfId" />
+<form action="/version1-8/AATF-Returns/operator-address-postcode-atf-save" method="post" class="form" style="display: inline">
+    <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-width-one-third" for="aatf-name">
+            AATF / ATF name
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="aatf-name" name="aatf-name" type="text">
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="aatf-building">
+            Building and street
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="aatf-building" name="aatf-building" type="text"> 
+        <div class="govuk-!-padding-bottom-3"></div>
+        <input class="govuk-input govuk-!-width-two-thirds" id="aatf-street" name="aatf-street" type="text">
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="aatf-town">
+            Town or city
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="aatf-town" name="aatf-town" type="text"> 
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="aatf-county">
+            County
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="aatf-county" name="aatf-county" type="text"> 
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="aatf-postcode">
+            Postcode
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="aatf-postcode" name="aatf-postcode" type="text"> 
+    </div>
+    <button type="submit" class="govuk-button" id="input-address-button">
+        Save and continue
+    </button>
+
+</form>
+{% endblock %}

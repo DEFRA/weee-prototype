@@ -1,0 +1,50 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "file-upload/macro.njk" import govukFileUpload %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Your AATF data file for {{ data['selectedFacility']._name }} {{ data['return-year'] }} {{ data['return-period-long'] }} contains 4 errors</h2>
+<div class="govuk-!-padding-bottom-3"></div>
+<p class="govuk-body govuk-!-font-weight-bold">You must resolve all errors listed in order to successfully upload your
+    file</p>
+<p class="govuk-body">Errors are problems with the .xlsx file content, which prevent this service from validating your file. All errors must be addressed before we can continue with the validation process.</p>
+
+<details class="govuk-details" style="background-color: #B10E1E ; padding-top: 5px;">
+    <summary class="govuk-details__summary" style="color: black; font-weight: bold;">
+        <span class="govuk-details__summary-text">
+            View 4 errors
+        </span>
+    </summary>
+    <table class="govuk-table" style="background-color:#FDE3E6;">
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><p class="govuk-!-font-weight-bold" style="display:inline;">1. Received for treatment:</p> No PCS has been selected (cell reference C11)</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><p class="govuk-!-font-weight-bold" style="display:inline;">2. Received for treatment:</p> WEEE received for category 1 household has been entered to too many decimal places, tonnage must be entered to 3dp or below (cell reference C14)</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><p class="govuk-!-font-weight-bold" style="display:inline;">3. Sent on for treatment:</p> ATF1 is missing the operator address (cell reference H13-H18)</td>
+        </tr>
+        <tr class="govuk-table__row">
+            <td class="govuk-table__cell"><p class="govuk-!-font-weight-bold" style="display:inline;">4. Reused:</p> Total WEEE re-used as whole appliance is 0 but re-use sites have been entered. If WEEE has been reused as a whole appliance at other sites, you must enter the total tonnages received by category (cell reference C12-D25)</td>
+        </tr>
+    </table>
+</details>
+<p class="govuk-body-s">To see your full list of errors, <a href="" class="govuk-link--no-visited-state govuk-link">download your errors and warnings (CSV)</a></p>
+<form action="/version1-8/Upload-Returns/upload-an-aatf-failed" method="get" class="form">
+    <input type="hidden" name="firstUpload" value='false'>
+    <div class="govuk-!-padding-bottom-4"></div>
+    {{ govukButton({
+    text: "Upload a new file"
+    }) }}
+</form>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "version1-9/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var sentCompletedArray = [];
+        $('#input-address-button').click(function () {
+            $('#operator-postcode-search').val('');
+            $('#operator-name-search').val('');
+        })
+        $('#postcode-search-button').click(function () {
+            $('#operator-postcode').val('');
+            $('#operator-name').val('');
+            var sentName = $('#operator-name-search').val();
+            localStorage.setItem('completedSENT', sentName);
+        })
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Which operator was the WEEE sent to for treatment?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-9/AATF-Returns/operator-address-postcode-save" method="post" class="form" style="display: inline">
+    {{ govukInput({
+    label: {
+    text: "Operator name"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "operator-name-search",
+    name: "operator-name-search"
+    }) }}
+    {{ govukInput({
+    label: {
+    text: "Postcode"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "operator-postcode-search",
+    name: "operator-postcode-search"
+    }) }}
+    <button type="submit" class="govuk-button" id="postcode-search-button">
+        Find address
+    </button>
+    <br/>
+    <a href="SC0016_4-operator-manual-entry" class="govuk-link">I can't find the operator address</a>
+</form>
+{% endblock %}

@@ -1,0 +1,190 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+$govuk-new-link-styles: true;
+
+// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
+
+// Patterns that aren't in Frontend
+@import "patterns/step-by-step-header";
+@import "patterns/step-by-step-nav";
+@import "patterns/step-by-step-related";
+@import "patterns/task-list";
+@import "patterns/related-items";
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+.signout { font-size: 13px; font-family: arial; }
+
+.element-spacer
+{
+	margin-top: 32px; 
+	margin-bottom: 32px;
+}
+
+.element-spacer-small
+{
+	margin-top: 16px; 
+	margin-bottom: 16px;
+}
+
+.cell-spacer td, th
+{
+	padding-right: 12px;
+}
+
+.civica-align-left > div:first-child
+{ 
+	border: 0px solid white; 
+	max-width: 180px;
+	transform: scale(0.72);
+	margin-right: 0px;
+}
+
+.civica-align-left > div:last-child
+{ 
+	border: 0px solid white; 
+	font-size: 12px;
+	transform: scale(0.9);
+	margin-left: -30px;
+}
+
+.search-text-input
+{
+	border: 0px solid black;
+    float:left;
+    height:28px;
+    margin:.0 0 0 0; 
+    padding:0 0 0 0; 
+    width:150px; 
+	font-size: 16px;
+    outline: none;
+}
+
+#button-holder img
+{
+    cursor:pointer;
+    float:right;
+    height:26px;
+    margin:0 0 0 0;
+    width:26px;
+}
+
+.civica-select
+{
+	width: 220px; 
+	border: 1px solid gray; 
+	padding: 0px; 
+	margin: 2px;
+}
+
+.civica-textfield
+{
+	border: 1px solid gray; 
+	padding-right: 4px; 
+	margin: 0px;
+	height: 30px;
+	font-size: 22px;
+	text-align: right;
+}
+
+.grey-button
+{
+	width: 200px; 
+	height: 40px;
+	font-size: 18px;
+	font-weight: 500;
+	border: 1px solid #ccc;
+}
+
+.govuk-footer__container 
+{
+  margin: 0 auto; 
+  max-width: 950px;
+}
+
+.summary-row td
+{
+	text-align: right;
+	padding-right: 52px;
+}
+
+.summary-row td:first-child
+{
+	text-align: left;
+	padding-left: 25px;
+}
+
+.total-row
+{
+	border-bottom: 0px; 
+	padding-left: 24px; 
+	font-weight: 600;
+}
+
+.total-row-no-padding td
+{
+	border-bottom: 0px; 
+	font-weight: 600;
+	text-align: right;
+	padding-right: 52px;
+}
+
+.civica-font-size-19
+{
+	font-size: 19px;
+	font-weight: 300;
+}
+
+.civica-font-size-19-bold
+{
+	font-size: 19px;
+	font-weight: 600;
+	font-family: 'nta',Arial,sans-serif;
+}
+
+.civica-font-size-22
+{
+	font-size: 22px;
+	font-weight: 600;
+}
+
+.civica-submitted td
+{
+	background-color: #eee;
+}
+
+.civica-textarea
+{
+	border: 2px solid #ccc;
+	width: 900px;
+	height: 120px;
+}
+
+.civica-total-cell-left
+{
+	padding-top: 20px; 
+	padding-bottom: 20px; 
+	height: 50px;
+	width: 280px; 
+	text-align: left;
+}
+
+.civica-total-cell-right
+{
+	padding-top: 10px; 
+	padding-bottom: 10px; 
+	height: 50px;
+	width: 80px; 
+	text-align: right;
+}
+
+.page-browser-key
+{
+	cursor: pointer;
+}
+
+

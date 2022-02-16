@@ -1,0 +1,72 @@
+{% extends "version1-2/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+  text: "Back",
+  href: "AATF-Returns/SC007-AATF-Tasklist"
+}) }}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<h2 class="govuk-heading-l">AATF reporting details</h2>
+<form action="/AATF-Returns/save-and-continue-change" method="post" class="form">
+  {{ govukSelect({
+    id: "compliance-year",
+    name: "compliance-year",
+    classes: "govuk-!-width-one-third",
+    label: {
+      text: "Compliance Year"
+    },
+    items: [
+      {
+        value: "2017",
+        text: "2017"
+      },
+      {
+        value: "2018",
+        text: "2018"
+      }
+    ]
+  }) }}
+
+  {{ govukSelect({
+    id: "reporting-period",
+    name: "reporting-period",
+    classes: "govuk-!-width-one-third",
+    label: {
+      text: "Reporting Period"
+    },
+    items: [
+      {
+        value: "Jan - Mar",
+        text: "Jan - Mar"
+      },
+      {
+        value: "Apr - Jun",
+        text: "Apr - Jun"
+      },
+      {
+        value: "Jul - Sep",
+        text: "Jul - Sep"
+      },
+      {
+        value: "Oct - Dec",
+        text: "Oct - Dec"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Save and continue"
+  }) }}
+  
+</form>
+
+{% endblock %}

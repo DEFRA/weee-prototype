@@ -1,0 +1,67 @@
+{% extends "version1-9/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#input-address-button').click(function () {
+            $('#operator-postcode-search-2').val('');
+            $('#operator-name-search-2').val('');
+        })
+        $('#postcode-search-button').click(function () {
+            $('#operator-postcode-2').val('');
+            $('#operator-name-2').val('');
+            var atfName = $('#operator-name-search-2').val();
+            localStorage.setItem('completedATF', atfName);
+        })
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Which operator was the WEEE sent to for treatment</h2>
+<input type="hidden" id="atfId" name="atfId" />
+<form action="/version1-9/AATF-Returns/operator-address-postcode-save" method="post" class="form" style="display: inline">
+    <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-width-one-half" for="name">
+            Operator name
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="operator-name" name="operator-name" type="text">
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="operator-building">
+            Building and street
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="operator-building" name="operator-building" type="text"> 
+        <div class="govuk-!-padding-bottom-3"></div>
+        <input class="govuk-input govuk-!-width-two-thirds" id="operator-street" name="operator-street" type="text">
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="operator-town">
+            Town or city
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="operator-town" name="operator-town" type="text"> 
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="operator-county">
+            County
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="operator-county" name="operator-county" type="text"> 
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="operator-postcode">
+            Postcode
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="operator-postcode" name="operator-postcode" type="text"> 
+    </div>
+    <button type="submit" class="govuk-button" id="input-address-button">
+        Save and continue
+    </button>
+
+</form>
+{% endblock %}

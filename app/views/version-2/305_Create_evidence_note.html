@@ -1,0 +1,255 @@
+{% extends "version-2/layout.html" %}
+
+{% block pageTitle %}
+  Create evidence note (protocol)
+{% endblock %}
+
+{% block content %}
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/evidence.js"></script>
+
+<form class="form" action="/version-2/aatf-journey/305-save-create-evidence-note" method="post">
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none; margin-bottom: 25px;" id="errorSummary" role="alert" tabindex="-1" data-module="error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#" id="recipientError">Please select a recipient</a>
+            </li>
+			<li>
+				<a href="#" id="startDateError">Please select a start date</a>
+			</li>
+			<li>
+				<a href="#" id="endDateError">Please select an end date</a>
+			</li>
+			<li>
+				<a href="#" id="yearError">Please select a compliance year</a>
+			</li>
+			<li>
+				<a href="#" id="wasteError">Please select type of waste</a>
+			</li>
+			<li>
+				<a href="#" id="protocolError">Please select protocol</a>
+			</li>
+        </ul>
+    </div>
+</div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+  
+		<h1 class="govuk-heading-l">Enter evidence note details</h1>
+	  
+		<input id="evidence-number" type="hidden" value="{{ data['evidence-number'] }}" />
+	  
+		<div class="govuk-grid-row">
+			<div class="govuk-grid-column-full">
+				<h3 class="govuk-heading-s">Period in which WEEE was received for treatment</h3>
+			</div>
+			<div class="govuk-grid-column-one-half">
+				<div class="govuk-label--s">Start date<br /><input type="Date" class="govuk-input" value="Date" name="startDate" id="startDate" /></div>
+			</div>
+			<div class="govuk-grid-column-one-half">
+				<div class="govuk-label--s">End date<br /><input type="Date" class="govuk-input" value="Date" name="endDate" id="endDate"/></div>
+			</div>
+		</div>
+
+		<div class="govuk-grid-row">
+			<div class="govuk-!-padding-top-3 govuk-grid-column-one-half">
+			<div class="govuk-label--s">Receiving PCS</div>
+			<input class="govuk-input govuk-select" type="text" id="pcs" name="pcs" list="recipientsList" value="">
+			<datalist id="recipientsList" class="govuk-input">
+				{% if data['schemes'] %}
+				
+					{% for scheme in data['schemes']._schemes %}
+						<option value="{{scheme._name}}" />
+					{% endfor %}
+				{% else %}
+					<option value="ABB 2 Ltd" />
+					<option value="ABB 3 Ltd" />
+					<option value="NBC 1 Ltd" />
+					<option value="NBC 2 Ltd" />
+					<option value="NBC 3 Ltd" />
+					<option value="CBS 1 Ltd" />
+					<option value="CBS 2 Ltd" />
+					<option value="CBS 3 Ltd" />
+					<option value="PBS 1 Ltd" />
+					<option value="PBS 2 Ltd" />
+					<option value="PBS 3 Ltd" />
+				{% endif %}
+			</datalist>
+			</div>
+		</div>
+
+		<div class="govuk-grid-row">
+			<div class="govuk-!-padding-top-3 govuk-grid-column-one-half">
+				<div class="govuk-label--s">Type of waste</div>
+				<select class="govuk-input govuk-select" name="wasteType" id="wasteType">
+					<option value="0"> </option>
+					<option value="Household">Household</option>
+					<option value="Non-household">Non-household</option>
+				</select>	
+			</div>	
+		</div>
+
+		<div class="govuk-grid-row">
+			<div class="govuk-!-padding-top-3 govuk-grid-column-one-half">
+				<div class="govuk-label--s">Actual or protocol</div>
+				<select class="govuk-input govuk-select" name="protocol" id="protocol">
+					<option value="0"> </option>
+					<option value="Actual">Actual</option>
+					<option value="National protocol">National protocol</option>
+					<option value="Site protocol">Site protocol</option>
+					<option value="Re-use network weights">Re-use network weights</option>
+				</select>	
+			</div>	
+		</div>
+
+	</div>
+		
+	<div class="govuk-!-padding-top-3 govuk-grid-column-full">
+		<div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
+			<p>
+				Input tonnage below
+				<br />
+				Provide tonnage to 3 decimal places. For example 1.238
+			</p>
+		</div>
+
+		<div class="govuk-!-padding-top-3 govuk-grid-column-one-third">
+			<a href="/version-2/copy-paste-redirect?returnUrl=205_Create_evidence_note_no_protocol" class="govuk-link">Use copy and paste to populate the table</a>
+			<input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
+		</div>
+	</div>
+		
+	<div class="govuk-!-padding-top-3 govuk-grid-column-full">
+		
+		<table class="govuk-table">
+			<thead class="govuk-table__head">
+				<tr>
+					<th scope="col" class="govuk-table__header govuk-!-width-one-half">Category</th>
+					<th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Total received (tonnes)</th>
+					<th scope="col" class="govuk-table__header govuk-!-width-one-quarter">Re-used as whole appliances (tonnes)</th>
+				</tr>
+			</thead>
+			
+			<tbody class="govuk-table__body">
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">1- Large household appliances</td>
+					<td class="govuk-table__cell"><input type="text" name="received1" id="received1" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed1" id="reUsed1" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">2- Small household appliances</td>
+					<td class="govuk-table__cell"><input type="text" name="received2" id="received2" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed2" id="reUsed2" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">3- IT and telecommunications equipment</td>
+					<td class="govuk-table__cell"><input type="text" name="received3" id="received3" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed3" id="reUsed3" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">4- Consumer equipment</td>
+					<td class="govuk-table__cell"><input type="text" name="received4" id="received4" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed4" id="reUsed4" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">5- Lighting equipment</td>
+					<td class="govuk-table__cell"><input type="text" name="received5" id="received5"  class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed5" id="reUsed5" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">6- Electrical and electronic tools</td>
+					<td class="govuk-table__cell"><input type="text" name="received6" id="received6"  class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed6" id="reUsed6" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">7- Toys, leisure and sports equipment</td>
+					<td class="govuk-table__cell"><input type="text" name="received7" id="received7" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed7" id="reUsed7" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">8- Medical devices</td>
+					<td class="govuk-table__cell"><input type="text" name="received8" id="received8" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed8" id="reUsed8" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">9- Monitoring and control instruments</td>
+					<td class="govuk-table__cell"><input type="text" name="received9" id="received9" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed9" id="reUsed9" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">10- Automatic dispensers</td>
+					<td class="govuk-table__cell"><input type="text" name="received10" id="received10" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed10" id="reUsed10" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">11- Display equipment</td>
+					<td class="govuk-table__cell"><input type="text" name="received11" id="received11" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed11" id="reUsed11" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">12- Cooling appliances containing refridgerants</td>
+					<td class="govuk-table__cell"><input type="text" name="received12" id="received12" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed12" id="reUsed12" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">13- Gas discharge lamps</td>
+					<td class="govuk-table__cell"><input type="text" name="received13" id="received13" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed13" id="reUsed13" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">14- Photovoltaic panels</td>
+					<td class="govuk-table__cell"><input type="text" name="received14" id="received14" class="govuk-input" /></td>
+					<td class="govuk-table__cell"><input type="text" name="reUsed14" id="reUsed14" class="govuk-input" /></td>
+				</tr>
+			
+				<tr class="govuk-table__row">
+					<td class="govuk-table__cell">
+						<h3 class="govuk-heading-s">Total</h3>
+					</td>
+					<td class="govuk-table__cell govuk-table__cell--numeric">
+						<h3 class="govuk-heading-s" style="float: left" id="tonneTotalReceived">0.000 tonnes</h3>
+					</td>
+					<td class="govuk-table__cell govuk-table__cell--numeric">
+						<h3 class="govuk-heading-s" style="float: left" id="tonneTotalReUsed">0.000 tonnes</h3>
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+		
+	
+			<div class="govuk-!-margin-top-3">
+				<button type="submit" class="govuk-button govuk-!-margin-1" id="add-note" name="action" value="submit">
+					Submit evidence note
+				</button>
+				{{ govukButton({
+					text: "Save as draft", 
+					name: "action",
+					classes: "govuk-button--secondary govuk-!-margin-1",
+					value: "save"
+				  }) }}
+			</div>
+		</form>
+	
+	</div>
+  </div>
+{% endblock %}

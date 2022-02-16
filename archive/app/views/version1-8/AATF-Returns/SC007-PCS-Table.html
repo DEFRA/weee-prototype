@@ -1,0 +1,54 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<style>
+  #main-content {
+    padding-top: 0px;
+  }
+
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">WEEE received for treatment at {{ data['selectedFacility']._name }}</h2>
+<div class="govuk-!-padding-bottom-3"></div>
+<table class="govuk-table">
+  <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell" style="border-bottom: 0px;"></td>
+      <td class="govuk-table__cell" style="border-bottom: 0px;"></td>
+      <td class="govuk-table__cell govuk-!-font-weight-bold" colspan="2" style="border-bottom: 0px;">Received for
+        treatment (t)</td>
+      <td class="govuk-table__cell" style="border-bottom: 0px;"></td>
+    </tr>
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell govuk-!-font-weight-bold">PCS Name</td>
+      <td class="govuk-table__cell govuk-!-font-weight-bold">Approval No</td>
+      <td class="govuk-table__cell">B2C</td>
+      <td class="govuk-table__cell">B2B</td>
+      <td class="govuk-table__cell"></td>
+    </tr>
+    {% for scheme in data['selectedFacility']._pcs %}
+    <tr class="govuk-table__row">
+      <td class="govuk-table__cell">{{scheme._name}}</td>
+      <td class="govuk-table__cell">{{scheme._id}}</td>
+      <td class="govuk-table__cell">{{scheme._weeeReceivedTotal}}</td>
+      <td class="govuk-table__cell">{{scheme._weeeReceivedTotalb2b}}</td>
+      <td class="govuk-table__cell"><a href="WEEE-received-for-treatment?schemeId={{scheme._id}}" class="govuk-link govuk-link--no-visited-state">Add
+          data</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="govuk-!-padding-bottom-3"></div>
+<form action="/version1-8/AATF-Returns/My-facilities" method="post" class="form" style="display: inline;">
+  <button type="submit" class="govuk-button" style="margin-right: 20px;">
+    AATF task list
+  </button>
+</form>
+<a href="select-your-pcs" class="govuk-link govuk-link--no-visited-state">Change PCS selection</a>
+{% endblock %}

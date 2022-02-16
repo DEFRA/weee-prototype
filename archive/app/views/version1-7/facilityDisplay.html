@@ -1,0 +1,30 @@
+{% extends "version1-7/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<h2 class="govuk-heading-l">Facility data</h2>
+
+<ul>
+  {% for facility in data['facilities'] %}
+     <li>{{ facility._name }}</li>
+  {% endfor %}
+</ul>
+
+<form action="/version1-7/add-scheme" method="post" class="form">
+  
+  <input id="schemeName" name="schemeName" type="text" />
+  {{ govukButton({
+    text: "Save and continue"
+  }) }}
+</form>
+
+{% endblock %}

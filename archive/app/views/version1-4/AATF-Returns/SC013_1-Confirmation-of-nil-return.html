@@ -1,0 +1,41 @@
+{% extends "version1-4/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">You have chosen to submit your AATF return as nil. Is this correct?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-4/AATF-Returns/nil-return-confirm" method="post" class="form">
+
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="nil-return-option-1" name="nil-return-option" type="radio" value="yes">
+            <label class="govuk-label govuk-radios__label" for="aatf-return-option-1">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="nil-return-option-2" name="nil-return-option" type="radio" value="no">
+            <label class="govuk-label govuk-radios__label" for="aatf-return-option-2">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+
+    {{ govukButton({
+        text: "Continue"
+    }) }}
+    </form>
+
+
+{% endblock %}

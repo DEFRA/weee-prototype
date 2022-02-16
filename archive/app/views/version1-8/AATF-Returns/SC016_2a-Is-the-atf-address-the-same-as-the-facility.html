@@ -1,0 +1,39 @@
+{% extends "version1-8/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Is the AATF / ATF address the same as the operator?</h2>
+<div class="govuk-!-padding-bottom-5"></div>
+<form action="/version1-8/AATF-Returns/atf-same-as-operator-answer" method="post" class="form" style="display: inline">
+    <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="atf-same-as-operator-yes" name="atf-same-as-operator" type="radio" value="true">
+            <label class="govuk-label govuk-radios__label" for="atf-same-as-operator-yes">
+                Yes
+            </label>
+        </div>
+        <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="atf-same-as-operator-no" name="atf-same-as-operator" type="radio" value="false">
+            <label class="govuk-label govuk-radios__label" for="atf-same-as-operator-no">
+                No
+            </label>
+        </div>
+    </div>
+    <div class="govuk-!-padding-bottom-5"></div>
+
+    <button type="submit" class="govuk-button" id="weee-reused-at-this-facility">
+        Continue
+    </button>
+</form>
+
+{% endblock %}

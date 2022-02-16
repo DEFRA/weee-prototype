@@ -1,0 +1,67 @@
+{% extends "version1-9/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "back-link/macro.njk" import govukBackLink %}
+{%- from "tag/macro.njk" import govukTag -%}
+{% block pageTitle %}
+GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<style>
+    #main-content {
+        padding-top: 0px;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#input-address-button').click(function () {
+            $('#operator-postcode-search-2').val('');
+            $('#operator-name-search-2').val('');
+        })
+        $('#postcode-search-button').click(function () {
+            $('#operator-postcode-2').val('');
+            $('#operator-name-2').val('');
+            var atfName = $('#operator-name-search-2').val();
+            localStorage.setItem('completedATF', atfName);
+        })
+    });
+</script>
+<div class="govuk-!-padding-bottom-3"></div>
+<h2 class="govuk-heading-l">Which site received the WEEE for reuse?</h2>
+<input type="hidden" id="atfId" name="atfId" />
+<form action="/version1-9/AATF-Returns/operator-address-postcode-save-2" method="post" class="form" style="display: inline">
+    <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-width-one-half" for="name">
+            Site name
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="reuse-name" name="reuse-name" type="text">
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="reuse-building">
+            Building and street
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="reuse-building" name="reuse-building" type="text"> 
+        <div class="govuk-!-padding-bottom-3"></div>
+        <input class="govuk-input govuk-!-width-two-thirds" id="reuse-street" name="reuse-street" type="text">
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="reuse-town">
+            Town or city
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="reuse-town" name="reuse-town" type="text"> 
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="reuse-county">
+            County
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="reuse-county" name="reuse-county" type="text"> 
+        <div class="govuk-!-padding-bottom-5"></div>
+        <label class="govuk-label govuk-!-width-two-thirds" for="reuse-postcode">
+            Postcode
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" id="reuse-postcode" name="reuse-postcode" type="text"> 
+    </div>
+    <button type="submit" class="govuk-button" id="input-address-button">
+        Save and continue
+    </button>
+
+</form>
+{% endblock %}
