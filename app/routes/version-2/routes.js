@@ -1039,12 +1039,10 @@ router.get('/version-2/aatf-journey/303-manage-evidence', function(req, res)
 */
 
 
-router.get('/version-2/aatf-journey/303-manage-evidence', function(req, res)
+router.get('/version-2/aatf-journey/303-manage-evidence-redirect', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'ABB Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
-	
-    var selectedFacility = req.session.data['choose-site'];
 	
 	var facility = req.session.data['chosen-facility'];
 
@@ -1212,7 +1210,7 @@ router.post('/version-2/aatf-journey/305-save-create-evidence-note', function(re
     evidenceNote._status = status;
     facility._evidenceNotes.push(evidenceNote);
 
-    res.redirect('/version-2/aatf-journey/303-manage-evidence');
+    res.redirect('/version-2/aatf-journey/303-manage-evidence-redirect');
 });
 
 
@@ -1281,7 +1279,7 @@ router.post('/version-2/302-choose-site-redirect', function(req, res){
     var facility = CreateFacilityWithEvidenceNotes(req);
     req.session.data['chosen-facility'] = facility; 
 
-    res.redirect('/version-2/aatf-journey/303-manage-evidence');
+    res.redirect('/version-2/aatf-journey/303-manage-evidence-redirect');
 });
 
 router.get('/version-2/305-edit-evidence-note-redirect', function(req, res){
