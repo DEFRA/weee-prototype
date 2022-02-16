@@ -1283,6 +1283,7 @@ router.post('/version-2/302-choose-site-redirect', function(req, res){
 });
 
 router.get('/version-2/305-edit-evidence-note-redirect', function(req, res){
+    
     var facility = req.session.data['chosen-facility']; 
     var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
 

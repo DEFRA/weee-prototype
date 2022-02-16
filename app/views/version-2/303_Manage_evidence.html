@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/tabs.js"></script>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
@@ -28,13 +29,13 @@
     Contents
   </h2>
   <ul class="govuk-tabs__list">
-    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-      <a class="govuk-tabs__tab" href="#evidence-summary">
+    <li class="govuk-tabs__list-item">
+      <a id="evidence-summary" class="govuk-tabs__tab" onclick="tabClicked('tab_evidence-summary');" href="#evidence-summary">
         Evidence summary
       </a>
     </li>
     <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#all-evidence">
+      <a id="all-evidence" class="govuk-tabs__tab" onclick="tabClicked('tab_all-evidence');" href="#all-evidence">
         View all evidence
       </a>
     </li>
