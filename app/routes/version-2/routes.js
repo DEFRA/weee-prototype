@@ -1271,7 +1271,7 @@ router.post('/version-2/aatf-journey/305-save-evidence-note', function(req, res)
     facility._evidenceNotes.push(evidenceNote);
 
     
-    res.redirect('/version-2/aatf-journey/303-manage-evidence');
+    res.redirect('/version-2/aatf-journey/303-manage-evidence-redirect');
 });
 
 router.post('/version-2/302-choose-site-redirect', function(req, res){
