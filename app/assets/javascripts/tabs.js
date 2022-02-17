@@ -8,7 +8,7 @@
        
         if (selected || selected !== '')
         {
-            $(selected).attr('aria-expanded','true');
+            $(selected).attr('aria-selected','true');
         }
     });
 
