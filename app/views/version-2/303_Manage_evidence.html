@@ -36,7 +36,7 @@
       </a>
     </li>
     <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#all-evidence" onclick="tabClicked('tab_all-evidence')">
+      <a id="tab_all-evidence" class="govuk-tabs__tab" href="#all-evidence" onclick="tabClicked('tab_all-evidence')">
         View all evidence
       </a>
     </li>
@@ -44,6 +44,7 @@
   
   <!-- FIRST TAB -->
   <div class="govuk-tabs__panel govuk-!-padding-7" id="evidence-summary">
+  
 	<div class="govuk-grid-row govuk-!-padding-bottom-2">
 		<label for="year-filter-1" class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-22">Key performance indicators for compliance period</label>
 		<select class="govuk-select" text="Compliance year" id="year-filter-1" style="margin: 12px;">
@@ -151,11 +152,12 @@
 		  </tbody>
 		</table>
 	</div>
+  
   </div>
 
   <!-- SECOND TAB -->
-  <!-- div class="govuk-tabs__panel govuk-!-padding-7 govuk-tabs__panel--hidden" id="all-evidence" -->
   <div class="govuk-tabs__panel govuk-!-padding-7" id="all-evidence">
+  
 	<div class="govuk-grid-row govuk-!-padding-bottom-7">
 		<div class="govuk-heading-s">Search by reference number</div>
 		<div class="govuk-input" style="width: 200px;">
@@ -315,7 +317,9 @@
 		  </tbody>
 		</table>
 	</div>
+  
   </div>
+  
 </div>
 
     </div>

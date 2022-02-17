@@ -1108,6 +1108,9 @@ router.get('/version-2/aatf-journey/303-manage-evidence-redirect', function(req,
 
     req.session.data['chosen-facility'] = facility; 
 	
+	//var selected = sessionStorage.getItem('selectedTab');
+	//req.session.data['selectedTab'] = selected;
+	
     res.redirect('/version-2/303_Manage_evidence');
 });
 
