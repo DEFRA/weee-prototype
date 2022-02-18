@@ -5,12 +5,11 @@
 {% endblock %}
 
 {% block content %}
-<form class="form" action="/version-2/aatf-journey/305-create-evidence" method="post">
+<form class="form" action="/version-2/pcs-journey/314-transfer-evidence" method="post">
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <!-- h1 class="govuk-heading-l element-spacer"> Manage evidence notes for PCS1</h1 -->
 	  <h1 class="govuk-heading-l element-spacer">Manage evidence notes for {{ data['chosen-facility']._name }}</h1>
 	  
 	  <div class="govuk-body element-spacer">Choose what you would like to view below. A summary of total evidence against obligation, or list of all evidence notes.</div>
@@ -26,20 +25,36 @@
     Contents
   </h2>
   <ul class="govuk-tabs__list">
-    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+    
+	<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
       <a class="govuk-tabs__tab" href="#evidence-summary">
         Evidence summary
       </a>
     </li>
+	
+	<li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#review-evidence">
+        Evidence summary
+      </a>
+    </li>
+	
+	<li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#transfer-evidence">
+        Evidence summary
+      </a>
+    </li>
+
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#all-evidence">
         View all evidence
       </a>
     </li>
+	
   </ul>
+
   
   <!-- FIRST TAB -->
-  <div class="govuk-tabs__panel" id="evidence-summary">
+  <div id="evidence-summary" class="govuk-tabs__panel">
 	<div class="govuk-grid-row govuk-!-padding-bottom-7">
 		<label for="year-filter" class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-22" style="margin: 12px;">Key performance indicators for compliance period</label>
 		<select class="govuk-select" text="Compliance year" id="year-filter" style="margin: 12px;">
@@ -80,7 +95,7 @@
 		  <tbody class="govuk-table__body">
 		  
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1</td>
+			  <td class="govuk-table__cell">1. Large household appliances</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -90,7 +105,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">2</td>
+			  <td class="govuk-table__cell">2. Small household appliances</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -100,7 +115,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">3</td>
+			  <td class="govuk-table__cell">3. IT and telecommunications</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -110,7 +125,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">4</td>
+			  <td class="govuk-table__cell">4. Consumer equipment</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -120,7 +135,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">5</td>
+			  <td class="govuk-table__cell">5. Lighting equipment</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -130,7 +145,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">6</td>
+			  <td class="govuk-table__cell">6. Electrical and electronic tools</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -140,7 +155,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">7</td>
+			  <td class="govuk-table__cell">7. Toys, leisure and sports equipment</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -150,7 +165,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">8</td>
+			  <td class="govuk-table__cell">8. Medical devices</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -160,7 +175,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">9</td>
+			  <td class="govuk-table__cell">9. Monitoring and control instruments</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -170,7 +185,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">10</td>
+			  <td class="govuk-table__cell">10. Automatic dispensars</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -180,7 +195,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">11</td>
+			  <td class="govuk-table__cell">11. Display equipment</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -190,7 +205,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">12</td>
+			  <td class="govuk-table__cell">12. Cooling appliances containing refridgerants</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -200,7 +215,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">13</td>
+			  <td class="govuk-table__cell">13. Gas discharge lamps</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -210,7 +225,7 @@
 			</tr>
 
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">14</td>
+			  <td class="govuk-table__cell">14. Photovoltaic panels</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">3000</td>
 			  <td class="govuk-table__cell">130</td>
@@ -224,9 +239,9 @@
 			  <td class="govuk-table__cell">Total</td>
 			  <td class="govuk-table__cell">14,225</td>
 			  <td class="govuk-table__cell">13,334</td>
-			  <td class="govuk-table__cell">&nbsp;</td>
-			  <td class="govuk-table__cell">&nbsp;</td>
-			  <td class="govuk-table__cell">&nbsp;</td>
+			  <td class="govuk-table__cell">2,000</td>
+			  <td class="govuk-table__cell">13,334;</td>
+			  <td class="govuk-table__cell">2,000</td>
 			  <td class="govuk-table__cell">-891</td>
 			</tr>
 			
@@ -236,7 +251,21 @@
   </div>
 
   <!-- SECOND TAB -->
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="all-evidence">
+  <div id="review-evidence" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+	<div class="govuk-grid-row govuk-!-padding-bottom-7">
+		<div>second tab content</div>
+	</div>
+  </div>
+
+  <!-- THIRD TAB -->
+  <div id="transfer-evidence" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+	<div class="govuk-grid-row govuk-!-padding-bottom-7">
+		<div>third tab content</div>
+	</div>
+  </div>
+
+  <!-- FOURTH TAB -->
+  <div id="all-evidence" class="govuk-tabs__panel govuk-tabs__panel--hidden">
 	<div class="govuk-grid-row govuk-!-padding-bottom-7">
 		<div class="govuk-heading-s">Search by reference number</div>
 		<div class="govuk-input" style="width: 200px;">
@@ -320,6 +349,7 @@
 			  <th scope="col" class="govuk-table__header">&nbsp;</th>
 			</tr>
 		  </thead>
+		  
 		  <tbody class="govuk-table__body">
 			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1279</td>
@@ -395,6 +425,7 @@
 		</table>
 	</div>
   </div>
+
 </div>
 
 
@@ -403,6 +434,6 @@
 
 </form>
 
-<script src="/public/javascripts/filter-303.js"></script>
+<!-- script src="/public/javascripts/filter-310.js"></script -->
 
 {% endblock %}

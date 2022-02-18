@@ -673,7 +673,8 @@ function CreateFacilityWithEvidenceNotes(req)
     var selectedFacility = req.session.data['choose-site'];
 	var facilities = req.session.data['facilities'];
     
-	facility = facilities.find(fac => fac._name === selectedFacility);
+	//facility = facilities.find(fac => fac._name === selectedFacility);
+	facility = facilities.find(fac => fac._name == selectedFacility);
 
     if (facility._evidenceNotes.length === 0){
         facility._evidenceNotes = [];
@@ -961,6 +962,7 @@ function CreateFacilityWithEvidenceNotes(req)
         facility._evidenceNotes[53]._submittedDate = moment(new Date(2021, 01, 6, 16, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
         
     }
+	
 	//var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
 	
 	return facility;
@@ -1056,20 +1058,27 @@ router.get('/version-2/aatf-journey/303-manage-evidence-redirect', function(req,
 		var order = facility._evidenceNotes[o]._sortOrder;
 		var status = facility._evidenceNotes[o]._status;
 		
+		// we want editable records listed first
+		
 		if ( status === 'Draft' )
 		{
 			// draft must be at the top of the list
 			facility._evidenceNotes[o]._sortOrder = 0;
 		}
+		if ( status === 'Returned' )
+		{
+			// Returned must be at the top of the list but after Draft
+			facility._evidenceNotes[o]._sortOrder = 1;
+		}
 		if ( status === 'Submitted' )
 		{
 			// submitted notes come second on the list
-			facility._evidenceNotes[o]._sortOrder = 1;
+			facility._evidenceNotes[o]._sortOrder = 2;
 		}
 		if ( status !== 'Draft' && status !== 'Submitted' )
 		{
 			// other types of notes will follow in unsorted order
-			facility._evidenceNotes[o]._sortOrder = 2;
+			facility._evidenceNotes[o]._sortOrder = 3;
 		}
 	}
 	
@@ -1291,6 +1300,132 @@ router.get('/version-2/305-edit-evidence-note-redirect', function(req, res){
     
     res.redirect('/version-2/305_Edit_evidence_note');
 });
+
+
+
+
+
+
+// ------------------------------------------------------------------------------------
+// VERSION 3 - PCS Journey
+// ------------------------------------------------------------------------------------
+
+router.get('/version-2/pcs-journey/index', function(req, res)
+{
+	req.session.data['index-action-link'] = '/version-2/pcs-journey/309-choose-activity-pcs';
+    res.redirect('/version-2/index');
+});
+
+router.get('/version-2/pcs-journey/309-choose-activity-pcs', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'PCS Ltd';
+	req.session.data['header']['activity'] = 'choose activity';
+    req.session.data['facilities'] = [];
+    req.session.data['schemes'] = new Schemes();
+    req.session.data['paste-values'] = '';
+    res.redirect('/version-2/309_Choose_activity_PCS');
+});
+
+router.get('/version-2/pcs-journey/309-choose-site', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'PCS Ltd';
+	req.session.data['header']['activity'] = 'choose site';
+    var schemes = new Schemes();
+    var facilities = [];
+    facilities.push(new Facility('PCS Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
+    facilities.push(new Facility('PCS Ltd Woking', 2, 'WEE/AB5678GH/ATF'));
+    facilities.push(new Facility('PCS Ltd Maidenhead', 3, 'WEE/AB9012GH/ATF'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+
+    res.redirect('/version-2/309_Choose_site');
+});
+
+router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'PCS Ltd';
+	req.session.data['header']['activity'] = 'manage evidence notes (tabs)';
+	
+	var selectedFacility = CreateFacilityWithEvidenceNotes(req);
+
+	// Sort by Status then Submitted Date 
+	// Draft first then submitted in descending date order
+	// Draft, Rejected, Approved, Submitted
+	// WARNING: this sort must be done before pagination (lower down)
+	for ( var o = 0; o < selectedFacility._evidenceNotes.length; o++ )
+	{
+		var order = selectedFacility._evidenceNotes[o]._sortOrder;
+		var status = selectedFacility._evidenceNotes[o]._status;
+		
+		// we want editable records listed first
+		
+		if ( status === 'Draft' )
+		{
+			// draft must be at the top of the list
+			selectedFacility._evidenceNotes[o]._sortOrder = 0;
+		}
+		if ( status === 'Returned' )
+		{
+			// Returned must be at the top of the list but after Draft
+			selectedFacility._evidenceNotes[o]._sortOrder = 1;
+		}
+		if ( status === 'Submitted' )
+		{
+			// submitted notes come second on the list
+			selectedFacility._evidenceNotes[o]._sortOrder = 2;
+		}
+		if ( status !== 'Draft' && status !== 'Submitted' )
+		{
+			// other types of notes will follow in unsorted order
+			selectedFacility._evidenceNotes[o]._sortOrder = 3;
+		}
+	}
+	
+	// sort over 2 columns:  submitted date in descending order
+	selectedFacility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : (a._sortOrder === b._sortOrder) ? ((a._submittedDate > b._submittedDate) ? -1 : 1) : -1 );
+	
+	
+	// WARNING: make sure pagination is applied to sorted list first.
+	// page size is hard-coded but should be stored in session is changed by UI
+	var pageSize = 10;
+	
+	for ( var v = 0; v < selectedFacility._evidenceNotes.length; v++ )
+	{
+		selectedFacility._evidenceNotes[v]._isVisible = false;
+		
+		if ( v < pageSize )
+		{
+			selectedFacility._evidenceNotes[v]._isVisible = true;
+		}
+	}
+
+	// work out totals for first tab
+	var totalApprovedNotes = 0;
+	var totalSubmittedNotes = 0;
+	for(var j = 0; j < selectedFacility._evidenceNotes.length; j++)
+	{
+		if ( selectedFacility._evidenceNotes[j]._status === 'Approved' ) totalApprovedNotes++;
+		if ( selectedFacility._evidenceNotes[j]._status === 'Submitted' ) totalSubmittedNotes++;
+	}
+    req.session.data['total-approved-notes'] = totalApprovedNotes; 
+    req.session.data['total-submitted-notes'] = totalSubmittedNotes;
+	
+    req.session.data['chosen-facility'] = selectedFacility; 
+	
+    res.redirect('/version-2/310_Manage_evidence_tabs');
+});
+
+router.get('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'PCS Ltd';
+	req.session.data['header']['activity'] = 'transfer evidence note to scheme';
+	
+    res.redirect('/version-2/314_Transfer_evidence_note');
+});
+
+
 
 
 
