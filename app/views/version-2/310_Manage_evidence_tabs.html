@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/tabs.js"></script>
 <form class="form" action="/version-2/pcs-journey/314-transfer-evidence" method="post">
 
   <div class="govuk-grid-row">
@@ -27,25 +29,25 @@
   <ul class="govuk-tabs__list">
     
 	<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-      <a class="govuk-tabs__tab" id="tab-evidence-summary" href="#evidence-summary">
+      <a class="govuk-tabs__tab" id="tab-evidence-summary" href="#evidence-summary" onclick="tabClicked('evidence-summary')">
         Evidence summary
       </a>
     </li>
 	
 	<li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" id="tab-evidence-review" href="#evidence-review">
+      <a class="govuk-tabs__tab" id="tab-evidence-review" href="#evidence-review" onclick="tabClicked('evidence-review')">
         Review evidence
       </a>
     </li>
 	
 	<li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" id="tab-evidence-transfer" href="#evidence-transfer">
+      <a class="govuk-tabs__tab" id="tab-evidence-transfer" href="#evidence-transfer" onclick="tabClicked('evidence-transfer')">
         Transfer evidence
       </a>
     </li>
 
     <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" id="tab-evidence-all" href="#evidence-all">
+      <a class="govuk-tabs__tab" id="tab-evidence-all" href="#evidence-all" onclick="tabClicked('evidence-all')">
         View all reviewed evidence
       </a>
     </li>

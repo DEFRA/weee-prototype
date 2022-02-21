@@ -26,6 +26,7 @@
 
                     // set tabs to selected value
                     var selectedTabLink = $("a[id*='" + selected + "']");
+                    
                     selectedTabLink.attr('aria-selected','true');
                     selectedTabLink.parent().addClass('govuk-tabs__list-item--selected');
 
