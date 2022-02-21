@@ -14,36 +14,62 @@ const moment = require('./moment');
 
 router.post('/version-2/pcs-journey/transfer-redirect', function(req, res)
 {
+    req.session.data['selected-transfer-categories'] = [];
+    
     res.redirect('/version-2/314_Transfer_evidence_note');
 });
 
 router.post('/version-2/pcs-journey/314-save-and-continue', function(req, res){
+
+    var selectedTransferCategories = [];
     
+    if (req.session.data['waste-1'] && req.session.data['waste-1'][0] === 'on'){
+        selectedTransferCategories.push(1);
+    }
+    if (req.session.data['waste-2'] && req.session.data['waste-2'][0] === 'on'){
+        selectedTransferCategories.push(2);
+    }
+    if (req.session.data['waste-3'] && req.session.data['waste-3'][0] === 'on'){
+        selectedTransferCategories.push(3);
+    }
+    if (req.session.data['waste-4'] && req.session.data['waste-4'][0] === 'on'){
+        selectedTransferCategories.push(4);
+    }
+    if (req.session.data['waste-5'] && req.session.data['waste-5'][0] === 'on'){
+        selectedTransferCategories.push(5);
+    }
+    if (req.session.data['waste-6'] && req.session.data['waste-6'][0] === 'on'){
+        selectedTransferCategories.push(6);
+    }
+    if (req.session.data['waste-7'] && req.session.data['waste-7'][0] === 'on'){
+        selectedTransferCategories.push(7);
+    }
+    if (req.session.data['waste-8'] && req.session.data['waste-8'][0] === 'on'){
+        selectedTransferCategories.push(8);
+    }
+    if (req.session.data['waste-9'] && req.session.data['waste-9'][0] === 'on'){
+        selectedTransferCategories.push(9);
+    }
+    if (req.session.data['waste-10'] && req.session.data['waste-10'][0] === 'on'){
+        selectedTransferCategories.push(10);
+    }
+    if (req.session.data['waste-11'] && req.session.data['waste-11'][0] === 'on'){
+        selectedTransferCategories.push(11);
+    }
+    if (req.session.data['waste-12'] && req.session.data['waste-12'][0] === 'on'){
+        selectedTransferCategories.push(12);
+    }
+    if (req.session.data['waste-13'] && req.session.data['waste-13'][0] === 'on'){
+        selectedTransferCategories.push(13);
+    }
+    if (req.session.data['waste-14'] && req.session.data['waste-14'][0] === 'on'){
+        selectedTransferCategories.push(14);
+    }
+
+    //console.log(selectedTransferCategories);
+
+    req.session.data['selected-transfer-categories'] = selectedTransferCategories;
 });
 
-router.post('/version-2/choose-activity-redirect', function (req, res) 
-{
-    const activity = req.session.data['choose-activity'];
-
-	if ( activity === '7' )
-	{
-        SetupData(req);
-        res.redirect('/version-2/202_Choose_site');
-	}
-	
-	if ( activity === '12' )
-	{
-		SetupJourney2Data(req);
-		res.redirect('/version-2/209_Manage_evidence');
-	}
-	
-	if ( activity === '13' )
-	{
-		SetupJourney3Data(req);
-		res.redirect('/version-2/214_Manage_evidence_tabs');
-	}
-    
-    res.redirect('/version-2/index');
-});
 
 module.exports = router;
