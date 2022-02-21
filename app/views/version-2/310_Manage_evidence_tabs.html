@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/tabs.js"></script>
 <form class="form" action="/version-2/pcs-journey/314-transfer-evidence" method="post">
 
   <div class="govuk-grid-row">
@@ -27,25 +29,25 @@
   <ul class="govuk-tabs__list">
     
 	<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
-      <a class="govuk-tabs__tab" href="#evidence-summary">
+      <a class="govuk-tabs__tab" id="tab-evidence-summary" href="#evidence-summary" onclick="tabClicked('evidence-summary')">
         Evidence summary
       </a>
     </li>
 	
 	<li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#review-evidence">
+      <a class="govuk-tabs__tab" id="tab-evidence-review" href="#evidence-review" onclick="tabClicked('evidence-review')">
         Review evidence
       </a>
     </li>
 	
 	<li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#transfer-evidence">
+      <a class="govuk-tabs__tab" id="tab-evidence-transfer" href="#evidence-transfer" onclick="tabClicked('evidence-transfer')">
         Transfer evidence
       </a>
     </li>
 
     <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#all-evidence">
+      <a class="govuk-tabs__tab" id="tab-evidence-all" href="#evidence-all" onclick="tabClicked('evidence-all')">
         View all reviewed evidence
       </a>
     </li>
@@ -253,7 +255,7 @@
   </div>
 
   <!-- SECOND TAB -->
-  <div id="review-evidence" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  <div id="evidence-review" class="govuk-tabs__panel govuk-tabs__panel--hidden">
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
@@ -409,7 +411,7 @@
   </div>
 
   <!-- THIRD TAB -->
-  <div id="transfer-evidence" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  <div id="evidence-transfer" class="govuk-tabs__panel govuk-tabs__panel--hidden">
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
@@ -561,7 +563,7 @@
   </div>
 
   <!-- FOURTH TAB -->
-  <div id="all-evidence" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  <div id="evidence-all" class="govuk-tabs__panel govuk-tabs__panel--hidden">
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
