@@ -31,13 +31,13 @@
     Contents
   </h2>
   <ul class="govuk-tabs__list">
-    <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#evidence-summary" onclick="tabClicked('tab_evidence-summary')">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a id="tab-evidence-summary" class="govuk-tabs__tab" href="#evidence-summary" onclick="tabClicked('evidence-summary')">
         Evidence summary
       </a>
     </li>
-    <li class="govuk-tabs__list-item">
-      <a id="tab_all-evidence" class="govuk-tabs__tab" href="#all-evidence" onclick="tabClicked('tab_all-evidence')">
+    <li class="govuk-tabs__list-item ">
+      <a id="tab-evidence-all" class="govuk-tabs__tab " href="#evidence-all" onclick="tabClicked('evidence-all')">
         View all evidence notes
       </a>
     </li>
@@ -159,7 +159,7 @@
   </div>
 
   <!-- SECOND TAB -->
-  <div class="govuk-tabs__panel govuk-!-padding-7" id="all-evidence">
+  <div class="govuk-tabs__panel govuk-!-padding-7" id="evidence-all">
   
 	<div class="govuk-grid-row govuk-!-padding-bottom-7">
 		<div class="govuk-heading-s">Search by reference number</div>
