@@ -1,0 +1,95 @@
+{% extends "version-2/layout.html" %}
+
+{% block pageTitle %}
+  View submitted evidence note
+{% endblock %}
+
+{% block content %}
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+		<form class="form" action="/version-2/pcs-journey/315-save-and-continue" method="post">
+			<div class="govuk-grid-row">
+			<div class="govuk-grid-column-full">
+			
+			<h1 class="govuk-heading-l">Transfer tonnage from selected evidence notes</h1>
+			<p>Choose the tonnage that you would like to transfer from each category, for each evidence note that you have selected. The total will appear underneath.</p>
+	
+			{% if data['selected-transfer-aatfs'] %}
+
+			{% for aatf in data['selected-transfer-aatfs'] %}
+				<h2 class="govuk-heading-m">{{aatf._name}}</h2>
+
+				{% for transfer in aatf._notes %}
+				<h3 class="govuk-heading-s">Reference ID: {{transfer._id}}</h2>
+
+					<table class="govuk-table">
+						<caption class="govuk-table__caption govuk-table__caption--l "></caption>
+						<thead class="govuk-table__head">
+						  <tr class="govuk-table__row">
+							<th scope="col" class="govuk-table__header">Category</th>
+							<th scope="col" class="govuk-table__header">Total received (tonnes)</th>
+							<th scope="col" class="govuk-table__header">Total re-used (tonnes)</th>
+							<th scope="col" class="govuk-table__header">Transfer received (tonnes)</th>
+							<th scope="col" class="govuk-table__header">Transfer re-used (tonnes)</th>
+						  </tr>
+						</thead>
+						<tbody class="govuk-table__body">
+							{% for category in transfer._categories %}
+								<tr class="govuk-table__row">
+									<td class="govuk-table__cell">{{category._category._id}}. {{category._category._description}} </td>
+									<td class="govuk-table__cell">{{category._receivedTonnage}}</td>
+									<td class="govuk-table__cell">{{category._reusedTonnage}}</td>
+									<td class="govuk-table__cell"><input type="text" name="transfer-rec-category-{{category._category._id}}-{{aatf._id}}-{{transfer._id}}" id="transfer-rec-category-{{category._category._id}}-{{aatf._id}}-{{transfer._id}}" class="govuk-input" /></td>
+									<td class="govuk-table__cell"><input type="text" name="transfer-reused-category-{{category._category._id}}-{{aatf._id}}-{{transfer._id}}" id="transfer-reused-category-{{category._category._id}}-{{aatf._id}}-{{transfer._id}}" class="govuk-input" /></td>
+								</tr>
+					
+							{% endfor %}
+
+						</tbody>
+					  </table>
+
+				{% endfor %}
+				
+			{% endfor %}
+
+
+
+			<h2 class="govuk-heading-m">Summary of total evidence transferred</h2>
+			<table class="govuk-table">
+				<caption class="govuk-table__caption govuk-table__caption--l "></caption>
+				<thead class="govuk-table__head">
+				  <tr class="govuk-table__row">
+					<th scope="col" class="govuk-table__header">Category</th>
+					<th scope="col" class="govuk-table__header">Total transferred (tonnes)</th>
+					<th scope="col" class="govuk-table__header">Total re-used transferred (tonnes)</th>
+				  </tr>
+				</thead>
+				<tbody class="govuk-table__body">
+					
+					{% for category in data['selected-transfer-aatfs'][0]._notes[0]._categories %}
+						<tr class="govuk-table__row">
+							<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
+							<td class="govuk-table__cell"><span id="{{category._category._id}}-total-received"></span></td>
+							<td class="govuk-table__cell"><span id="{{category._category._id}}-total-reused"></span></td>	
+						</tr>
+					{% endfor %}
+				</tbody>
+			  </table>
+
+			{% endif %}
+
+			<div class="govuk-!-margin-top-7">
+				{{ govukButton({
+					text: "Save and Continue",
+					classes: "civica-font-size-22"
+				}) }}
+			</div>
+		</div>
+			</div>
+		</form>
+		
+	
+	
+
+		<script src="/public/javascripts/transfer-totals.js"></script>
+{% endblock %}

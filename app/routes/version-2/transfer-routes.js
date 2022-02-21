@@ -1,8 +1,12 @@
 const router = require('express').Router();
 const Categories = require('../../data/categories');
+const CategoryItems = require('../../data/category-items');
 const EvidenceNote = require('../../data/evidence-note');
 const Facility = require('../../data/facility');
 const Schemes = require('../../data/schemes');
+const TransferAatf = require('../../data/transferAatf');
+const TransferAatfCategory = require('../../data/transferAatfCategory');
+const TransferAatfNote = require('../../data/transferAatfNotes');
 const moment = require('./moment');
 
 
@@ -12,7 +16,128 @@ const moment = require('./moment');
     res.redirect('/version-2/314_Transfer_evidence_note');
 }); */
 
-router.post('/version-2/pcs-journey/transfer-redirect', function(req, res)
+router.get('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
+{
+
+    var selectedTransferCategories = req.session.data['selected-transfer-categories'];
+    var categoryItems = new CategoryItems();
+
+    //console.log(categoryItems);
+    if (!selectedTransferCategories){
+        selectedTransferCategories = [4, 6];
+    }
+
+    var tempData = [
+        {
+            aatfid: 1,
+            evidenceNote: 1399,
+            aatf: "Recycle team (AATF12344)",
+            category : [{
+                id : 4,
+                received: 50,
+                reused: 0
+            },
+            {
+                id : 6,
+                received: 25,
+                reused: 0
+            }]
+        },
+        {
+            aatfid: 1,
+            aatf: "Recycle team (AATF12344)",
+            evidenceNote: 1400,
+            category : [{
+                id : 4,
+                received: 20,
+                reused: 0
+            },
+            {
+                id : 6,
+                received: 30,
+                reused: 0
+            }]
+        },
+        {
+            aatfid: 2,
+            aatf: "WEEE waste (AATF147283)",
+            evidenceNote: 1450,
+            category : [{
+                id : 4,
+                received: 50,
+                reused: 0
+            },
+            {
+                id : 6,
+                received: 25,
+                reused: 0
+            }]
+        },
+        {
+            aatfid: 2,
+            aatf: "WEEE waste (AATF147283)",
+            evidenceNote: 1400,
+            category : [{
+                id : 4,
+                received: 20,
+                reused: 0
+            },
+            {
+                id : 6,
+                received: 30,
+                reused: 0
+            }]
+        },
+        {
+            aatfid: 2,
+            aatf: "WEEE waste (AATF147283)",
+            evidenceNote: 1345,
+            category : [{
+                id : 4,
+                received: 20,
+                reused: 0
+            },
+            {
+                id : 6,
+                received: 30,
+                reused: 0
+            }]
+        }
+    ]; 
+
+    var aatfs = [];
+    for(var tempCount = 0; tempCount < tempData.length; tempCount++){
+        var note = tempData[tempCount];
+        
+        var findAatf = aatfs.find(a => a._id === note.aatfid);
+
+        if(!findAatf) {
+            findAatf = new TransferAatf(note.aatfid, note.aatf);
+            aatfs.push(findAatf);
+        }
+
+        var newEvidenceNote = new TransferAatfNote(note.evidenceNote);
+
+        for(var categoryCount = 0; categoryCount < note.category.length; categoryCount++) {
+            var noteCategory = note.category[categoryCount];
+            
+            var category = categoryItems._categoryItems.find(c => c._id === noteCategory.id);
+
+            newEvidenceNote._categories.push(new TransferAatfCategory(category, noteCategory.received, noteCategory.reused));
+        }
+        
+        findAatf._notes.push(newEvidenceNote);
+    }
+    
+    req.session.data['selected-transfer-aatfs'] = aatfs;
+    res.redirect('/version-2/315_Selected_Evidence_notes');
+});
+
+router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
+
+});
+
+router.post('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
 {
     req.session.data['selected-transfer-categories'] = [];
     
