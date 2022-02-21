@@ -66,7 +66,7 @@
 
 		<div class="govuk-grid-row govuk-!-padding-top-3 govuk-!-padding-bottom-3">
 			<div class="govuk-grid-column-one-half">
-			
+			<div class="govuk-label--s">Receiving PCS</div>
 			<input class="govuk-input govuk-select" type="text" name="pcs" list="recipientsList" value="{{ data['selectedpcs'] }}" id="pcs">
 			<datalist id="recipientsList" class="govuk-input">
 
@@ -97,7 +97,7 @@
 		
 		<div class="govuk-grid-row govuk-!-padding-top-3 govuk-!-padding-bottom-0">
 			<div class="govuk-grid-column-one-half govuk-!-padding-bottom-0">
-
+				<div class="govuk-label--s">Type of waste</div>
 				{{ govukSelect({
 					id: "wasteType",
 					name: "wasteType",
@@ -125,7 +125,7 @@
 		
 		<div class="govuk-grid-row govuk-!-padding-top-0 govuk-!-padding-bottom-0">
 			<div class="govuk-grid-column-one-half govuk-!-padding-bottom-0">
-
+				<div class="govuk-label--s">Actual or protocol</div>
 				{{ govukSelect({
 					id: "protocol",
 					name: "protocol",
