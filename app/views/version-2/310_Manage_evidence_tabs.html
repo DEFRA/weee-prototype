@@ -70,15 +70,15 @@
 	<div class="govuk-grid-row govuk-!-padding-bottom-7">
 		<div class="govuk-grid-column-full">
 		  <div class="govuk-grid-column-one-quarter">
-			<div class="govuk-heading-l">14,225</div>
+			<div class="govuk-heading-l">{{ data['total-tonnes-obligation'] }}</div>
 			<pre class="govuk-body">Tonnes in obligation</pre>
 		  </div>
 		  <div class="govuk-grid-column-one-quarter">
-			<div class="govuk-heading-l">13,334</div>
+			<div class="govuk-heading-l">{{ data['total-tonnes-received'] }}</div>
 			<pre class="govuk-body">Tonnes received</pre>
 		  </div>
 		  <div class="govuk-grid-column-two-quarters">
-			<div class="govuk-heading-l">891</div>
+			<div class="govuk-heading-l">{{ data['total-tonnes-required'] }}</div>
 			<pre class="govuk-body">Tonnes required to meet obligation</pre>
 		  </div>
 		</div>
@@ -410,6 +410,11 @@
 	</div>
   </div>
 
+
+
+
+
+
   <!-- THIRD TAB -->
   <div id="evidence-transfer" class="govuk-tabs__panel govuk-tabs__panel--hidden">
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
@@ -424,12 +429,11 @@
 		<div class="govuk-heading-s">Filter by:</div>
 		<table>
 		  <tr class="govuk-table__row">
-				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Submitted date</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Month received</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued to</th>
-				<th class="govuk-body govuk-!-text-align-left">Type</th>
-				<th class="govuk-body govuk-!-text-align-left">Status</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 80px;">Category</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 350px;">Issued by</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 350px;">Category</th>
+				<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
 		  </tr>
 		  <tr class="govuk-table__row">
 			<td>
@@ -443,7 +447,7 @@
 				</select>
 			</td>
 			<td>
-				<input class="govuk-select" type="text" name="example" style="width: 220px;" list="issuersList" id="pcs-filter">
+				<input class="govuk-select" type="text" name="example" style="width: 100%;" list="issuersList" id="pcs-filter">
 				<datalist id="issuersList">
 					<option value="AATF1" />
 					<option value="AATF2" />
@@ -451,24 +455,8 @@
 				</datalist>
 			</td>
 			<td>
-				<select class="govuk-select" text="Type" id="type-filter">
+				<select class="govuk-select" style="width: 100%;" text="Category" id="category-filter">
 					<option value="0"> </option>
-					<option value="Household">Household</option>
-					<option value="Non-household">Non-household</option>
-				</select>
-			</td>
-			<td>
-				<select class="govuk-select" style="width: 100%;">
-					<option value="0"> </option>
-					<option value="Submitted">Submitted</option>
-					<option value="Approved">Approved</option>
-					<option value="Rejected">Rejected</option>
-					<option value="Returned">Returned</option>
-					<option value="Void">Void</option>
-				</select>
-			</td>
-			<td>
-				<select class="govuk-select" style="width: 80px;" text="Category" id="category-filter">
 					<option value="1">1. Large household appliances</option>
 					<option value="2">2. Small household appliances</option>
 					<option value="3">3. IT and telecommunications equipment</option>
@@ -485,6 +473,7 @@
 					<option value="14">14. Photovoltaic panels</option>
 				</select>
 			</td>
+			<td>&nbsp;</td>
 		  </tr>		  
 		  <tr><td colspan="5" style="height: 50px;">&nbsp;</td></tr>
 		  <tr class="govuk-table__row">
@@ -518,21 +507,42 @@
 		  
 		  <tbody class="govuk-table__body">
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1400</td>
+			  <td class="govuk-table__cell">
+				  <div class="govuk-checkboxes__item govuk-checkboxes--small">
+					<input class="govuk-checkboxes__input" id="chk1400" value="1400" name="references" type="checkbox">
+					<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+					  1400
+					</label>
+				  </div>
+			  </td>
 			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
 			  <td class="govuk-table__cell">Electrical Waste Recycling Group Limited (Huddersfield)</td>
 			  <td class="govuk-table__cell govuk-!-text-align-right">55</td>
 			  <td class="govuk-table__cell govuk-!-text-align-right"><a href="#">View</a></td>
 			</tr>
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1399</td>
+			  <td class="govuk-table__cell">
+				  <div class="govuk-checkboxes__item govuk-checkboxes--small">
+					<input class="govuk-checkboxes__input" id="chk1399" value="1399" name="references" type="checkbox">
+					<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+					  1399
+					</label>
+				  </div>
+			  </td>
 			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
 			  <td class="govuk-table__cell">Environcom England Ltd</td>
 			  <td class="govuk-table__cell govuk-!-text-align-right">73</td>
 			  <td class="govuk-table__cell govuk-!-text-align-right"><a href="#">View</a></td>
 			</tr>
 			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1398</td>
+			  <td class="govuk-table__cell">
+				  <div class="govuk-checkboxes__item govuk-checkboxes--small">
+					<input class="govuk-checkboxes__input" id="chk1398" value="1398" name="references" type="checkbox">
+					<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+					  1398
+					</label>
+				  </div>
+			  </td>
 			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
 			  <td class="govuk-table__cell">Recycling Lives Ltd (Recycling Park)</td>
 			  <td class="govuk-table__cell govuk-!-text-align-right">20</td>
@@ -561,6 +571,11 @@
 		</table>
 	</div>
   </div>
+  
+  
+  
+  
+  
 
   <!-- FOURTH TAB -->
   <div id="evidence-all" class="govuk-tabs__panel govuk-tabs__panel--hidden">
