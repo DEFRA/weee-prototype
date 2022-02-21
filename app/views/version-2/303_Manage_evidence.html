@@ -13,12 +13,13 @@
 
 	  <h1 class="govuk-heading-l element-spacer">Manage evidence notes for {{ data['chosen-facility']._name }}</h1>
 	  
-	  <div class="govuk-body element-spacer">
-	  Choose what you would like to view below. A summary of total evidence issued per compliance year, or a list of all evidence notes.
+	  <div class="govuk-body-l govuk-!-padding-bottom-7">
+	  Choose what you would like to view below. 
+	  A summary of total evidence or a list of all evidence notes.
 	  </div>
 
 <form class="form" action="/version-2/aatf-journey/305-create-evidence-note" method="post">
-	<div class="element-spacer">
+	<div class="govuk-!-padding-bottom-7">
 		{{ govukButton({
 			text: "Create new evidence note", classes: "govuk-!-font-weight-bold"
 		  }) }}
@@ -37,7 +38,7 @@
     </li>
     <li class="govuk-tabs__list-item">
       <a id="tab_all-evidence" class="govuk-tabs__tab" href="#all-evidence" onclick="tabClicked('tab_all-evidence')">
-        View all evidence
+        View all evidence notes
       </a>
     </li>
   </ul>
@@ -46,7 +47,9 @@
   <div class="govuk-tabs__panel govuk-!-padding-7" id="evidence-summary">
   
 	<div class="govuk-grid-row govuk-!-padding-bottom-2">
-		<label for="year-filter-1" class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-22">Key performance indicators for compliance period</label>
+		<label for="year-filter-1" class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-22">
+		Summary of evidence for compliance year
+		</label>
 		<select class="govuk-select" text="Compliance year" id="year-filter-1" style="margin: 12px;">
 			<option value="2022">2022</option>
 			<option value="2021">2021</option>
