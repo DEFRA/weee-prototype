@@ -17,13 +17,13 @@
 			<h2 class="govuk-heading-m">Which scheme would you like to transfer evidence to?</h2>
 
 			<div class="govuk-form-group govuk-!-margin-bottom-7">
-			  <select class="govuk-select">
+			  <select class="govuk-select" name="transfer-selected-pcs">
 				<option value=" "> </option>
 
 				{% if data['schemes'] %}
 				
 					{% for scheme in data['schemes']._schemes %}
-						<option value="{{scheme._name}}" />
+						<option value="{{scheme._id}}">{{scheme._name}}</option>
 					{% endfor %}
 
 				{% else %}

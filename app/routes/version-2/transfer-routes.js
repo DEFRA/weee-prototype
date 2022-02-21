@@ -16,16 +16,12 @@ const moment = require('./moment');
     res.redirect('/version-2/314_Transfer_evidence_note');
 }); */
 
-router.get('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
-{
-
+function setupAatfs(req){
     var selectedTransferCategories = req.session.data['selected-transfer-categories'];
     var categoryItems = new CategoryItems();
 
-    //console.log(categoryItems);
-    if (!selectedTransferCategories){
-        selectedTransferCategories = [4, 6];
-    }
+    console.log(selectedTransferCategories);
+    
 
     var tempData = [
         {
@@ -118,27 +114,80 @@ router.get('/version-2/pcs-journey/315-selected-evidence-notes', function(req, r
 
         var newEvidenceNote = new TransferAatfNote(note.evidenceNote);
 
-        for(var categoryCount = 0; categoryCount < note.category.length; categoryCount++) {
-            var noteCategory = note.category[categoryCount];
-            
-            var category = categoryItems._categoryItems.find(c => c._id === noteCategory.id);
+        if (!selectedTransferCategories){
+            for(var categoryCount = 0; categoryCount < note.category.length; categoryCount++) {
+                var noteCategory = note.category[categoryCount];
+                
+                var category = categoryItems._categoryItems.find(c => c._id === noteCategory.id);
+    
+                newEvidenceNote._categories.push(new TransferAatfCategory(category, noteCategory.received, noteCategory.reused));
+            }
+        } else {
+            for(var categoryCount = 0; categoryCount < selectedTransferCategories.length; categoryCount++) {
+                var noteCategory = selectedTransferCategories[categoryCount];
+                
+                var category = categoryItems._categoryItems.find(c => c._id === noteCategory);
+    
+                var rec = 0;
+                var reused = 0;
+                if (noteCategory.received){
+                    rec = noteCategory.received;
+                } else{
+                    rec = Math.floor(Math.random() * 10);
+                }
+                if (noteCategory.reused){
+                    reused = noteCategory.reused;
+                } else{
+                    reused = Math.floor(Math.random() * 10);
+                }
 
-            newEvidenceNote._categories.push(new TransferAatfCategory(category, noteCategory.received, noteCategory.reused));
+                newEvidenceNote._categories.push(new TransferAatfCategory(category, rec, reused));
+            }
         }
+        
         
         findAatf._notes.push(newEvidenceNote);
     }
     
     req.session.data['selected-transfer-aatfs'] = aatfs;
+}
+router.get('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
+{
+    setupAatfs(req);
+    res.redirect('/version-2/315_Selected_Evidence_notes');
+});
+
+router.post('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
+{
+    setupAatfs(req);
     res.redirect('/version-2/315_Selected_Evidence_notes');
 });
 
 router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
+    var aatfs = req.session.data['selected-transfer-aatfs'];
+    //console.log(req.session.data);
+    for(var aatfCount=0; aatfCount < aatfs.length; aatfCount++){
+        var aatf = aatfs[aatfCount];
+        
+        for (var noteCount = 0; noteCount < aatf._notes.length; noteCount ++){
+            var note = aatf._notes[noteCount];
 
+            for (var categoryCount = 0; categoryCount < note._categories.length; categoryCount++){
+                var category = note._categories[categoryCount];
+
+                var receivedTransfer = "transfer-rec-category-" + category._category._id + "-" + aatf._id + "-" + note._id;
+                var reusedTransfer = "transfer-reused-category-" + category._category._id + "-" + aatf._id + "-" + note._id;
+
+                category._transferReceivedTonnage = req.session.data[receivedTransfer];
+                category._transferReusedTonnage = req.session.data[reusedTransfer];
+            }
+        }
+    }
 });
 
 router.post('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
 {
+    req.session.data['schemes'] = new Schemes();
     req.session.data['selected-transfer-categories'] = [];
     
     res.redirect('/version-2/314_Transfer_evidence_note');
@@ -194,6 +243,8 @@ router.post('/version-2/pcs-journey/314-save-and-continue', function(req, res){
     //console.log(selectedTransferCategories);
 
     req.session.data['selected-transfer-categories'] = selectedTransferCategories;
+
+    res.redirect('/version-2/pcs-journey/315-selected-evidence-notes');
 });
 
 
