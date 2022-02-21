@@ -20,8 +20,10 @@
 				<h2 class="govuk-heading-m">{{aatf._name}}</h2>
 
 				{% for transfer in aatf._notes %}
-				<h3 class="govuk-heading-s">Reference ID: {{transfer._id}}</h2>
-
+				<div class="govuk-grid-column-one-quarter">
+				<h3 class="govuk-heading-s">Reference ID: {{transfer._id}}</h2> 
+				</div>
+				<p><a class="govuk-link">View</a></p>
 					<table class="govuk-table">
 						<caption class="govuk-table__caption govuk-table__caption--l "></caption>
 						<thead class="govuk-table__head">
