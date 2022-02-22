@@ -17,12 +17,12 @@
 		
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Reference ID:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">{{ data['evidence-number'] }}</span>
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._reference }}</span>
 			</div>
 		
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Status:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">{{ data['status'] }}</span>
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._status }}</span>
 			</div>
 			
 			{% if ( data['reject-return-reason'] ) %}
@@ -37,37 +37,37 @@
 
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:48:37</span>
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._submittedDate }}</span>
 			</div>
 
-			{% if ( data['status'] === 'Approved' ) %}
+			{% if ( data['selected-evidence-note']._status === 'Approved' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved:</span> 
-					<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-approved'] }}</span>
 				</div>
 			{% endif %}
 
-			{% if ( data['status'] === 'Rejected' ) %}
+			{% if ( data['selected-evidence-note']._status === 'Rejected' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date rejected:</span> 
-					<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-rejected'] }}</span>
 				</div>
 			{% endif %}
 				
 		
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Compliance period:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">2021</span>
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._year }}</span>
 			</div>
 			
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Type of waste:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">Household</span>
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._wasteType }}</span>
 			</div>
 			
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Actual or protocol:</span> 
-				<span class="govuk-body govuk-!-margin-left-2">Actual</span>
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._protocol }}</span>
 			</div>
 		
 		</div>
@@ -78,7 +78,7 @@
 				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Issuing site:</div>
 				<div class="govuk-grid-column-one-half govuk-body">
 					ABB ltd <br />
-					<b>AATF12345</b> <br />
+					<b>WEE/AB0001YZ/ATF</b> <br />
 					12 May Lane <br />
 					Hammersmith <br />
 					London <br />
@@ -111,9 +111,9 @@
 		  
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full govuk-body" style="padding: 0 0 0 0;">
 			By submitting this information you confirm that the following waste and electronic equipment from UK <b>household</b> 
-			has been received between <b>10/09/2021</b> and <b>10/11/2021</b> at this site. 
+			has been received between <b>{{ data['selected-evidence-note']._startDate }}</b> and <b>{{ data['selected-evidence-note']._endDate }}</b> at this site. 
 			It has been reused as whole appliances to the extent set out below. 
-			No other evidence has been issued on these WEEE materials
+			No other evidence has been issued on these WEEE materials.
 		</div>
 		
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
@@ -225,14 +225,14 @@
 		</div>
     </div>
   </div>
-		
+
+<form class="form" action="/version-2/317_PDF_printed_dialog" method="post">	
 	<div class="govuk-!-margin-top-3">
 		{{ govukButton({
 			text: "Download PDF",
 			classes: "civica-font-size-22"
 		  }) }}
 	</div>
-
 </form>
 
 {% endblock %}

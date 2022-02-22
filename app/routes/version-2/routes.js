@@ -1580,12 +1580,16 @@ router.get('/version-2/pcs-journey/312-download-approved-evidence-pdf', function
 {
 	req.session.data['header']['organisation'] = 'PCS Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
-	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
+	//var reason = data['reject-return-reason'];
 	
-	var status = data['choose-status'];
-	var reason = data['reject-return-reason'];
+	var evidenceNote = data['selected-evidence-note'];
+	evidenceNote._status = data['choose-status'];
+	req.session.data['selected-evidence-note'] = evidenceNote;
+	
+	if ( evidenceNote._status == 'Approved' ) req.session.data['date-approved'] = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	if ( evidenceNote._status == 'Rejected' ) req.session.data['date-rejected'] = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
-    res.redirect('/version-2/311_Review_evidence_note');
+    res.redirect('/version-2/312_Download_approved_evidence');
 });
 
 
