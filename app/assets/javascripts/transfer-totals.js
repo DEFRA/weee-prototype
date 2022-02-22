@@ -53,7 +53,8 @@ $(document).ready(function () {
             $('#' + totalReceivedId).html(catReceivedTotal.toFixed(3));
             $('#' + totalReusedId).html(catReusedTotal.toFixed(3));
 
-
+            $('#' + totalReceivedId + "-hidden").val(catReceivedTotal.toString());
+            $('#' + totalReusedId + "-hidden").val(catReusedTotal.toString());
         });
 
 

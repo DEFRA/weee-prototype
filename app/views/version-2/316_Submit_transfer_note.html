@@ -1,0 +1,149 @@
+{% extends "version-2/layout.html" %}
+
+{% block pageTitle %}
+  View submitted evidence note
+{% endblock %}
+
+{% block content %}
+		<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+		<form class="form" action="/version-2/pcs-journey/316-save-and-continue" method="post">
+			<div class="govuk-grid-row">
+			<div class="govuk-grid-column-full">
+			
+			<h1 class="govuk-heading-l">Check evidence transfer details before submitting</h1>
+
+
+			<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
+		
+				<div class="govuk-grid-column-one-half" style="padding: 0 0 0 0;">  
+					<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Transferring PCS:</div>
+					<div class="govuk-grid-column-one-half govuk-body">
+						Recycling Plant <br />
+						12 May Lane<br />
+						Hammersmith <br />
+						London <br />
+						SW13 TYH
+					</div>
+				</div>
+				
+				<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
+					<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Receiving PCS:</div>
+					<div class="govuk-grid-column-one-half govuk-body">
+						Waste Collectors <br />
+						1 Bart avenue <br />
+						Reading <br />
+						RG1 ATR
+					</div>
+				</div>
+				
+			</div>    
+			
+			<p>By submitting this information you confirm that the following waste and electronic equipment from UK household has been transferred to the PCS stated above.</p>
+	
+			<h2 class="govuk-heading-m">Total transferred</h2>
+
+			<table class="govuk-table">
+				<caption class="govuk-table__caption govuk-table__caption--l "></caption>
+				<thead class="govuk-table__head">
+				  <tr class="govuk-table__row">
+					<th scope="col" class="govuk-table__header">Category</th>
+					<th scope="col" class="govuk-table__header">Total transferred (tonnes)</th>
+					<th scope="col" class="govuk-table__header">Total re-used transferred (tonnes)</th>
+				  </tr>
+				</thead>
+				<tbody class="govuk-table__body">
+					
+					{% for category in data['selected-transfer-categories'] %}
+						<tr class="govuk-table__row civica-transfer-totals-row">
+							<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
+							<td class="govuk-table__cell civica-align-right"><span id="{{category._category._id}}-total-received">
+								{% if category._totalReceived === '0' %}
+								<span>-</span>
+								{% else %}
+								{{category._totalReceived}}
+								{% endif %}
+							</span></td>
+							<td class="govuk-table__cell civica-align-right"><span id="{{category._category._id}}-total-reused">
+								{% if category._totalReused === '0' %}
+								<span>-</span>
+								{% else %}
+								{{category._totalReused}}
+								{% endif %}
+							</span></td>	
+						</tr>
+					{% endfor %}
+				</tbody>
+			  </table>
+
+			<h2 class="govuk-heading-m">Breakdown of evidence transferred</h2>
+			
+			{% if data['selected-transfer-aatfs'] %}
+
+			{% for aatf in data['selected-transfer-aatfs'] %}
+				<h3 class="govuk-heading-s">Original AATF: {{aatf._name}}</h2>
+
+				<table class="govuk-table">
+					<caption class="govuk-table__caption govuk-table__caption--l "></caption>
+					<thead class="govuk-table__head">
+						<tr class="govuk-table__row">
+						<th scope="col" class="govuk-table__header">Reference ID</th>
+						<th scope="col" class="govuk-table__header">Category</th>
+						<th scope="col" class="govuk-table__header">Total transferred (tonnes)</th>
+						<th scope="col" class="govuk-table__header">Total re-used transferred (tonnes)</th>
+						</tr>
+					</thead>
+					<tbody class="govuk-table__body">
+						{% for transfer in aatf._notes %}
+
+						{% for i in range(0, transfer._categories.length) %}
+						<tr class="govuk-table__row">
+									
+							{% if i === 0 %}
+								<td class="govuk-table__cell" rowspan="{{transfer._categories.length}}">{{transfer._id}} </td>
+							{% endif %}
+
+							<td class="govuk-table__cell">{{transfer._categories[i]._category._id}}. {{transfer._categories[i]._category._description}} </td>
+							<td class="govuk-table__cell civica-align-right">
+								
+								{% if transfer._categories[i]._receivedTonnage === 0 %}
+								<span>-</span>
+								{% else %}
+								{{transfer._categories[i]._receivedTonnage}}
+								{% endif %}
+
+							
+							</td>
+							<td class="govuk-table__cell civica-align-right">
+								{% if transfer._categories[i]._reusedTonnage === 0 %}
+								<span>-</span>
+								{% else %}
+								{{transfer._categories[i]._reusedTonnage}}
+								{% endif %}
+								
+						</tr>
+						{% endfor %}
+
+						{% endfor %}
+					</tbody>
+					</table>
+			{% endfor %}	
+			{% endif %}
+
+
+
+			<div class="govuk-!-margin-top-7">
+				{{ govukButton({
+					text: "Submit transfer"
+				}) }}
+
+				{{ govukButton({
+					text: "Save as draft",
+					classes: "govuk-button--secondary"
+				}) }}
+			</div>
+		</div>
+			</div>
+		</form>
+		
+{% endblock %}
