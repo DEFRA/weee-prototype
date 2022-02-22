@@ -17,26 +17,25 @@ router.get('/version-2/pcs-journey/317-view-transfer-note', function(req, res){
 });
 
 
-/* router.get('/version-2/pcs-journey/transfer-redirect', function(req, res)
+router.get('/version-2/pcs-journey/316-submit-transfer-note', function(req, res)
 {
-    res.redirect('/version-2/314_Transfer_evidence_note');
-}); */
+    setupAatfs(req);
+
+    res.redirect('/version-2/316_Submit_transfer_note');
+});
 
 router.post('/version-2/pcs-journey/316-save-and-continue', function(req, res){
     
 
-    res.redirect('/version-2/317-view-transfer-note');
+    res.redirect('/version-2/pcs-journey/317-view-transfer-note');
 });
 
-router.get('/version-2/pcs-journey/316-submit-transfer-note', function(req, res){
-    
-    res.redirect('/version-2/316_Submit_transfer_note');
-});
 
 
 function setupAatfs(req){
     var selectedTransferCategories = req.session.data['selected-transfer-categories'];
     var categoryItems = new CategoryItems();
+    var aatfs = req.session.data['selected-transfer-aatfs'];
 
     var tempData = [
         {
@@ -116,7 +115,9 @@ function setupAatfs(req){
         }
     ]; 
 
-    var aatfs = [];
+    if (!aatfs){
+        aatfs = [];
+        //var aatfs = [];
     for(var tempCount = 0; tempCount < tempData.length; tempCount++){
         var note = tempData[tempCount];
         
@@ -161,14 +162,16 @@ function setupAatfs(req){
                 }
 
                 newEvidenceNote._categories.push(new TransferAatfCategory(category, rec, reused));
-
-            
             }
         }
         
         
         findAatf._notes.push(newEvidenceNote);
+        }
     }
+
+
+    
     
     req.session.data['selected-transfer-categories'] = selectedTransferCategories;
     req.session.data['selected-transfer-aatfs'] = aatfs;
@@ -297,10 +300,8 @@ router.post('/version-2/pcs-journey/314-save-and-continue', function(req, res){
         selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
 
-    //console.log(selectedTransferCategories);
-
     req.session.data['selected-transfer-categories'] = selectedTransferCategories;
-console.log(req.session.data['selected-transfer-categories']);
+
     res.redirect('/version-2/pcs-journey/315-selected-evidence-notes');
 });
 

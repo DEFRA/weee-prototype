@@ -1547,6 +1547,9 @@ router.get('/version-2/pcs-journey/309-choose-activity-pcs', function(req, res)
     req.session.data['facilities'] = [];
     req.session.data['schemes'] = new Schemes();
     req.session.data['paste-values'] = '';
+    req.session.data['selected-transfer-aatfs'] = null;
+    req.session.data['selected-transfer-categories'] = null;
+
     res.redirect('/version-2/309_Choose_activity_PCS');
 });
 
