@@ -1485,7 +1485,7 @@ router.get('/version-2/pcs-journey/309-choose-site', function(req, res)
 router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'PCS Ltd';
-	req.session.data['header']['activity'] = 'manage evidence notes (tabs)';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 	
 	var selectedFacility = CreatePCSFacilitiesWithEvidenceNotes(req);
 
@@ -1557,14 +1557,16 @@ router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
     req.session.data['total-tonnes-received'] = formatTotalTonnage(tonnesReceived.toFixed(0));
     req.session.data['total-tonnes-required'] = formatTotalTonnage(tonnesRequired.toFixed(0));
 	
-    req.session.data['chosen-facility'] = selectedFacility; 
+    req.session.data['chosen-facility'] = selectedFacility;
+	req.session.data['chosen-facility-transferable-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
 	req.session.data['chosen-facility-submitted-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
 	req.session.data['chosen-facility-reviewed-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Approved' || n._status === 'Rejected' || n._status === 'Returned'));
 	
     res.redirect('/version-2/310_Manage_evidence_tabs');
 });
 
-router.get('/version-2/pcs-journey/review-evidence-note-redirect', function(req, res)
+// this is called when loading the Review Evidence page
+router.get('/version-2/pcs-journey/311-review-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'PCS Ltd';
 	req.session.data['header']['activity'] = 'review evidence notes';
@@ -1572,6 +1574,20 @@ router.get('/version-2/pcs-journey/review-evidence-note-redirect', function(req,
 
     res.redirect('/version-2/311_Review_evidence_note');
 });
+
+// this is called by Review Evidence page when posting back user's input
+router.get('/version-2/pcs-journey/312-download-approved-evidence-pdf', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'PCS Ltd';
+	req.session.data['header']['activity'] = 'manage evidence notes';
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
+	
+	var status = data['choose-status'];
+	var reason = data['reject-return-reason'];
+
+    res.redirect('/version-2/311_Review_evidence_note');
+});
+
 
 router.get('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
 {

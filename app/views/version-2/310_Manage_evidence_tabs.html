@@ -7,7 +7,7 @@
 {% block content %}
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 <script src="/public/javascripts/tabs.js"></script>
-<form class="form" action="/version-2/pcs-journey/314-transfer-evidence-note" method="post">
+
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
@@ -350,9 +350,9 @@
 			</tr>
 		  </thead>
 		  
-		  <tbody class="govuk-table__body">
-		  
 		  {% if data['chosen-facility'] %}
+		  
+		  <tbody class="govuk-table__body">
 		  
 			{% for evidenceNote in data['chosen-facility-submitted-notes'] %}
 
@@ -367,7 +367,7 @@
 					<td class="govuk-table__cell">{{evidenceNote._wasteType}}</td>
 					<td class="govuk-table__cell">{{evidenceNote._status}}</td>  <!-- this should be always be 'Submitted' -->
 					<td class="govuk-table__cell">
-					  <a href="/version-2/pcs-journey/review-evidence-note-redirect?id={{evidenceNote._reference}}">Review evidence</a>
+					  <a href="/version-2/pcs-journey/311-review-evidence-note?id={{evidenceNote._reference}}">Review evidence</a>
 					</td>
 				</tr>
 				
@@ -547,6 +547,57 @@
 			</tr>
 		  </thead>
 		  
+		  {% if data['chosen-facility'] %}
+		  
+		  <tbody class="govuk-table__body">
+		  
+			{% for evidenceNote in data['chosen-facility-transferable-notes'] %}
+
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
+				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._searchDate}}</td>
+				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._categoryFilterString}}</td>
+
+				  <td class="govuk-table__cell">
+					  <div class="govuk-checkboxes__item govuk-checkboxes--small">
+						<input class="govuk-checkboxes__input" id="chk{{evidenceNote._reference}}" value="1400" name="references" type="checkbox">
+						<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+						  {{evidenceNote._reference}}
+						</label>
+					  </div>
+				  </td>
+				  <td class="govuk-table__cell">{{evidenceNote._startDate}}-{{evidenceNote._endDate}}</td>
+				  <td class="govuk-table__cell">{{evidenceNote._pcs}}</td>
+				  <td class="govuk-table__cell govuk-!-text-align-right">{{evidenceNote._received}}</td>
+				  <td class="govuk-table__cell govuk-!-text-align-right">
+					<a href="#">View</a>
+				  </td>
+				</tr>
+				
+		  	{% endfor %}
+
+		  </tbody>
+		  <tfooter>
+			  <tr>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-submitted-notes'].length }} of {{data['chosen-facility-submitted-notes'].length }}</td>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				  <span style="float: right;">
+					<!--
+					<a href="#">Prev</a>
+					<a href="#"> 1 </a>
+					<a href="#"> 2 </a>
+					<a href="#"> 3 </a>
+					<a href="#"> 4 </a>
+					<a href="#">Next</a>
+					-->
+					Prev 1 2 3 4 5 Next
+				  </span>
+				</td>
+			  </tr>
+		  </tfooter>
+		  
+		  {% else %}
+		  
 		  <tbody class="govuk-table__body">
 			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">
@@ -610,13 +661,18 @@
 			  </td>
 			</tr>
 		  </tfooter>
+		  
+		  {% endif %}
+		  
 		</table>
 
+		<form class="form" action="/version-2/pcs-journey/314-transfer-evidence-note" method="post">
 		<div class="element-spacer">
 			{{ govukButton({
 				text: "Transfer evidence", classes: "govuk-!-font-weight-bold"
 			  }) }}
 		</div>
+		</form>
 	</div>
   </div>
   
@@ -864,6 +920,7 @@
 		  
 		</table>
 	</div>
+  
   </div>
 
 </div>
@@ -872,7 +929,7 @@
     </div>
   </div>
 
-</form>
+
 
 <!-- script src="/public/javascripts/filter-310.js"></script -->
 
