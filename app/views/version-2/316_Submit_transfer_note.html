@@ -30,7 +30,14 @@
 				<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
 					<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Receiving PCS:</div>
 					<div class="govuk-grid-column-one-half govuk-body">
-						Waste Collectors <br />
+						
+						{% if data['transfer-selected-pcs'] %}
+								<span> {{data['transfer-selected-pcs']}}</span>
+								{% else %}
+								<span>Waste Collectors</span>
+								{% endif %}
+						
+						 <br />
 						1 Bart avenue <br />
 						Reading <br />
 						RG1 ATR

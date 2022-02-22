@@ -161,6 +161,8 @@ function setupAatfs(req){
                 }
 
                 newEvidenceNote._categories.push(new TransferAatfCategory(category, rec, reused));
+
+            
             }
         }
         
@@ -178,12 +180,12 @@ router.get('/version-2/pcs-journey/315-selected-evidence-notes', function(req, r
     res.redirect('/version-2/315_Selected_Evidence_notes');
 });
 
-router.post('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
+/* router.post('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
 {
     setupAatfs(req);
     
     res.redirect('/version-2/315_Selected_Evidence_notes');
-});
+}); */
 
 router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
     var aatfs = req.session.data['selected-transfer-aatfs'];
@@ -235,53 +237,70 @@ router.post('/version-2/pcs-journey/314-save-and-continue', function(req, res){
 
     var selectedTransferCategories = [];
     
+    var categoryItems = new CategoryItems();
+    
+
     if (req.session.data['waste-1'] && req.session.data['waste-1'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(1, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 1);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-2'] && req.session.data['waste-2'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(2, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 2);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-3'] && req.session.data['waste-3'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(3, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 3);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-4'] && req.session.data['waste-4'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(4, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 4);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-5'] && req.session.data['waste-5'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(5, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 5);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-6'] && req.session.data['waste-6'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(6, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 6);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-7'] && req.session.data['waste-7'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(7, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 7);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-8'] && req.session.data['waste-8'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(8, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 8);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-9'] && req.session.data['waste-9'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(9, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 9);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-10'] && req.session.data['waste-10'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(10, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 10);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-11'] && req.session.data['waste-11'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(11, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 11);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-12'] && req.session.data['waste-12'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(12, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 12);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-13'] && req.session.data['waste-13'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(13, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 13);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-14'] && req.session.data['waste-14'][0] === 'on'){
-        selectedTransferCategories.push(new TransferAatfCategory(14, 0, 0));
+        var category = categoryItems._categoryItems.find(c => c._id === 14);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
 
     //console.log(selectedTransferCategories);
 
     req.session.data['selected-transfer-categories'] = selectedTransferCategories;
-
+console.log(req.session.data['selected-transfer-categories']);
     res.redirect('/version-2/pcs-journey/315-selected-evidence-notes');
 });
 
