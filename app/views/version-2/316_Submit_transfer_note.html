@@ -141,11 +141,15 @@
 
 			<div class="govuk-!-margin-top-7">
 				{{ govukButton({
-					text: "Submit transfer"
+					text: "Submit transfer",
+					name: "action",
+					value: "submit"
 				}) }}
 
 				{{ govukButton({
 					text: "Save as draft",
+					name: "action",
+					value: "save",
 					classes: "govuk-button--secondary"
 				}) }}
 			</div>

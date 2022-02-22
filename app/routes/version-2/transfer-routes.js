@@ -8,6 +8,7 @@ const TransferAatf = require('../../data/transferAatf');
 const TransferAatfCategory = require('../../data/transferAatfCategory');
 const TransferAatfNote = require('../../data/transferAatfNotes');
 const TransferCategory = require('../../data/transferCategory');
+const TransferNote = require('../../data/transferNote');
 const moment = require('./moment');
 
 
@@ -21,6 +22,15 @@ router.post('/version-2/pcs-journey/317-save-and-continue', function(req, res){
 router.get('/version-2/pcs-journey/317-view-transfer-note', function(req, res){
 
     setupAatfs(req);
+    console.log('test')
+    var note = req.session.data['new-transfer-note'];
+    if (!note) {
+
+        var aatfs = req.session.data['selected-transfer-aatfs'];
+        var newNote = new TransferNote(Math.floor(Math.random() * 5000), aatfs, "Submitted", 2022);
+
+        req.session.data['new-transfer-note'] = newNote;
+    }
 
     res.redirect('/version-2/317_View_transfer_note');
 });
@@ -37,9 +47,16 @@ router.post('/version-2/pcs-journey/316-save-and-continue', function(req, res){
     
     var aatfs = req.session.data['selected-transfer-aatfs'];
 
-    for(var aatfCount=0; aatfCount < aatfs.length; aatfCount++) {
+    var status = '';
+    if (req.session.data['action'] === 'submit'){
+        status = 'Submitted'
+    } else {
+        status = 'Draft'
+    };
 
-    }
+    var newNote = new TransferNote(Math.floor(Math.random() * 5000), aatfs, status, 2022);
+
+    req.session.data['new-transfer-note'] = newNote;
 
     res.redirect('/version-2/pcs-journey/317-view-transfer-note');
 });
