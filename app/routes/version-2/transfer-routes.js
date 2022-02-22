@@ -11,8 +11,17 @@ const TransferCategory = require('../../data/transferCategory');
 const moment = require('./moment');
 
 
+router.post('/version-2/pcs-journey/317-save-and-continue', function(req, res){
+    
+
+    res.redirect('/version-2/317_PDF_printed_dialog');
+});
+
 
 router.get('/version-2/pcs-journey/317-view-transfer-note', function(req, res){
+
+    setupAatfs(req);
+
     res.redirect('/version-2/317_View_transfer_note');
 });
 
@@ -26,6 +35,11 @@ router.get('/version-2/pcs-journey/316-submit-transfer-note', function(req, res)
 
 router.post('/version-2/pcs-journey/316-save-and-continue', function(req, res){
     
+    var aatfs = req.session.data['selected-transfer-aatfs'];
+
+    for(var aatfCount=0; aatfCount < aatfs.length; aatfCount++) {
+
+    }
 
     res.redirect('/version-2/pcs-journey/317-view-transfer-note');
 });
@@ -170,9 +184,6 @@ function setupAatfs(req){
         }
     }
 
-
-    
-    
     req.session.data['selected-transfer-categories'] = selectedTransferCategories;
     req.session.data['selected-transfer-aatfs'] = aatfs;
 }
@@ -183,12 +194,6 @@ router.get('/version-2/pcs-journey/315-selected-evidence-notes', function(req, r
     res.redirect('/version-2/315_Selected_Evidence_notes');
 });
 
-/* router.post('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
-{
-    setupAatfs(req);
-    
-    res.redirect('/version-2/315_Selected_Evidence_notes');
-}); */
 
 router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
     var aatfs = req.session.data['selected-transfer-aatfs'];
@@ -231,13 +236,15 @@ router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
 router.post('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
 {
     req.session.data['schemes'] = new Schemes();
-    req.session.data['selected-transfer-categories'] = [];
+    req.session.data['selected-transfer-categories'] = null;
+    req.session.data['selected-transfer-aatfs'] = null;
     
     res.redirect('/version-2/314_Transfer_evidence_note');
 });
 
 router.post('/version-2/pcs-journey/314-save-and-continue', function(req, res){
 
+    
     var selectedTransferCategories = [];
     
     var categoryItems = new CategoryItems();
