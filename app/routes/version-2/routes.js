@@ -1647,6 +1647,9 @@ router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
 	
     req.session.data['chosen-facility'] = selectedFacility; 
 	
+	var submittedNotes = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
+	req.session.data['chosen-facility-submitted-notes'] = submittedNotes;
+	
     res.redirect('/version-2/310_Manage_evidence_tabs');
 });
 

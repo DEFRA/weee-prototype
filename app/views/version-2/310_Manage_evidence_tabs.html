@@ -54,6 +54,9 @@
 	
   </ul>
 
+
+
+
   
   <!-- FIRST TAB -->
   <div id="evidence-summary" class="govuk-tabs__panel">
@@ -254,7 +257,11 @@
 	</div>
   </div>
 
-  <!-- SECOND TAB -->
+
+
+
+
+  <!-- SECOND TAB (submitted notes only) -->
   <div id="evidence-review" class="govuk-tabs__panel govuk-tabs__panel--hidden">
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
@@ -362,6 +369,43 @@
 		  </thead>
 		  
 		  <tbody class="govuk-table__body">
+		  
+		  {% if data['chosen-facility'] %}
+		  
+			{% for evidenceNote in data['chosen-facility-submitted-notes'] %}
+
+				<tr class="govuk-table__row result-row">
+					<td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
+					<td class="govuk-table__cell" style="display: none;">{{evidenceNote._searchDate}}</td>
+					<td class="govuk-table__cell" style="display: none;">{{evidenceNote._categoryFilterString}}</td>
+
+					<td class="govuk-table__cell">{{evidenceNote._reference}}</td>
+					<td class="govuk-table__cell">{{evidenceNote._startDate}}-{{evidenceNote._endDate}}</td>
+					<td class="govuk-table__cell">{{evidenceNote._pcs}}</td>
+					<td class="govuk-table__cell">{{evidenceNote._wasteType}}</td>
+					<td class="govuk-table__cell">{{evidenceNote._status}}</td>  <!-- this should be always be 'Submitted' -->
+					<td class="govuk-table__cell">
+					  <a href="/version-2/pcs-journey/review-evidence-note-redirect?id={{evidenceNote._reference}}">Review evidence</a>
+					</td>
+				</tr>
+				
+		  	{% endfor %}
+
+			  <tr>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-submitted-notes'].length }} of {{data['chosen-facility-submitted-notes'].length }}</td>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				  <span style="float: right;">
+				  Prev 1 
+ 				  <a href="#">2</a>
+				  <a href="#">3</a>
+				  <a href="#">4</a> 
+				  Next
+				  </span>
+				</td>
+			  </tr>
+		  
+		  {% else %}
+		  
 			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell govuk-!-padding-0">1279</td>
 			  <td class="govuk-table__cell govuk-!-padding-0">12/11/2021-12/12/2021</td>
@@ -386,6 +430,9 @@
 			  <td class="govuk-table__cell govuk-!-padding-0">Submitted</td>
 			  <td class="govuk-table__cell govuk-!-padding-0"><a href="#">Review evidence</a></td>
 			</tr>
+			
+		  {% endif %}
+			
 		  </tbody>
 		  
 		  <tfooter>
