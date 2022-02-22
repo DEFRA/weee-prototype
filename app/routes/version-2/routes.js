@@ -1347,7 +1347,9 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', 180.005, 10.001, "Submitted", 1211, '11/11/2021 11:32:40'));
+        var newNote = new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', 180.005, 10.001, "Submitted", 1211, '11/11/2021 11:32:40');
+        newNote._aatf = "Intelligent Waste Management Ltd";
+        facility._evidenceNotes.push(newNote);
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -1369,7 +1371,9 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', 130.256, 20.002, "Submitted", 1189, '11/11/2021 11:32:40'));
+        var newNote = new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', 130.256, 20.002, "Submitted", 1189, '11/11/2021 11:32:40');
+        newNote._aatf = "Recycling Lives Ltd (Recycling Park)";
+        facility._evidenceNotes.push(newNote);
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -1387,7 +1391,9 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         // [10..14] -------------------------------------------
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 308.005, 0.005, "Submitted", 1122, '11/11/2021 11:32:40'));
+        var newNote = new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 308.005, 0.005, "Submitted", 1122, '11/11/2021 11:32:40')
+        newNote._aatf = "Environcom England Ltd";
+        facility._evidenceNotes.push(newNote);
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -1409,7 +1415,9 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         // [15..19] -------------------------------------------
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 225.664, 6.369, "Submitted", 1122, '11/11/2021 11:32:40'));
+        var newNote1 = new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 225.664, 6.369, "Submitted", 1123, '11/11/2021 11:32:40')
+        newNote1._aatf = "Electrical Waste Recycling Group Limited (Huddersfield)";
+        facility._evidenceNotes.push(newNote1);
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
