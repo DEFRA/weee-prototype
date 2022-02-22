@@ -255,6 +255,7 @@
 
   <!-- SECOND TAB (submitted notes only) -->
   <div id="evidence-review" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
@@ -267,12 +268,11 @@
 		<div class="govuk-heading-s">Filter by:</div>
 		<table>
 		  <tr class="govuk-table__row">
-				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Submitted date</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Month received</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued to</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued by</th>
 				<th class="govuk-body govuk-!-text-align-left">Type</th>
-				<th class="govuk-body govuk-!-text-align-left">Status</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 80px;">Category</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 120px;">Category</th>
 		  </tr>
 		  <tr class="govuk-table__row">
 			<td>
@@ -301,17 +301,7 @@
 				</select>
 			</td>
 			<td>
-				<select class="govuk-select" style="width: 100%;">
-					<option value="0"> </option>
-					<option value="Submitted">Submitted</option>
-					<option value="Approved">Approved</option>
-					<option value="Rejected">Rejected</option>
-					<option value="Returned">Returned</option>
-					<option value="Void">Void</option>
-				</select>
-			</td>
-			<td>
-				<select class="govuk-select" style="width: 80px;" text="Category" id="category-filter">
+				<select class="govuk-select" style="width: 120px;" text="Category" id="category-filter">
 					<option value="1">1. Large household appliances</option>
 					<option value="2">2. Small household appliances</option>
 					<option value="3">3. IT and telecommunications equipment</option>
@@ -383,18 +373,25 @@
 				
 		  	{% endfor %}
 
+		  </tbody>
+		  <tfooter>
 			  <tr>
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-submitted-notes'].length }} of {{data['chosen-facility-submitted-notes'].length }}</td>
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
 				  <span style="float: right;">
-				  Prev 1 
- 				  <a href="#">2</a>
-				  <a href="#">3</a>
-				  <a href="#">4</a> 
-				  Next
+					<!--
+					<a href="#">Prev</a>
+					<a href="#"> 1 </a>
+					<a href="#"> 2 </a>
+					<a href="#"> 3 </a>
+					<a href="#"> 4 </a>
+					<a href="#">Next</a>
+					-->
+					Prev 1 2 3 4 5 Next
 				  </span>
 				</td>
 			  </tr>
+		  </tfooter>
 		  
 		  {% else %}
 		  
@@ -423,20 +420,21 @@
 			  <td class="govuk-table__cell govuk-!-padding-0"><a href="#">Review evidence</a></td>
 			</tr>
 			
-		  {% endif %}
-			
 		  </tbody>
-		  
 		  <tfooter>
 			<tr>
 			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-6 of 50</td>
 			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
 				<span style="float: right;">
-				Prev 1 
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">Next</a>
+					<!--
+					<a href="#">Prev</a>
+					<a href="#"> 1 </a>
+					<a href="#"> 2 </a>
+					<a href="#"> 3 </a>
+					<a href="#"> 4 </a>
+					<a href="#">Next</a>
+					-->
+					Prev 1 2 3 4 5 Next
 				</span>
 			  </td>
 			</tr>
@@ -445,7 +443,12 @@
 			  </td>
 			</tr>
 		  </tfooter>
+
+		  {% endif %}
+			
+		  
 		</table>
+	
 	</div>
   </div>
 
@@ -624,6 +627,7 @@
 
   <!-- FOURTH TAB -->
   <div id="evidence-all" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
@@ -634,7 +638,7 @@
 
 	<div class="govuk-grid-row govuk-!-margin-1">
 		<div class="govuk-heading-s">Filter by:</div>
-		<table>
+		<table border="0">
 		  <tr class="govuk-table__row">
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Submitted date</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
@@ -680,7 +684,7 @@
 				</select>
 			</td>
 			<td>
-				<select class="govuk-select" style="width: 80px;" text="Category" id="category-filter">
+				<select class="govuk-select" style="width: 100%;" text="Category" id="category-filter">
 					<option value="1">1. Large household appliances</option>
 					<option value="2">2. Small household appliances</option>
 					<option value="3">3. IT and telecommunications equipment</option>
@@ -698,15 +702,16 @@
 				</select>
 			</td>
 		  </tr>		  
-		  <tr><td colspan="5" style="height: 50px;">&nbsp;</td></tr>
+		  <tr><td colspan="6" style="height: 50px;">&nbsp;</td></tr>
 		  <tr class="govuk-table__row">
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
-			<td class="govuk-body govuk-!-text-align-right">View</td>
-			<td>
-				<select class="govuk-select" style="width: 80px;" text="page-size" id="quarter-filter">
+			<!-- td class="govuk-body govuk-!-text-align-right">View</td -->
+			<td colspan="2" class="govuk-body govuk-!-text-align-right">
+				View 
+				<select class="govuk-select" style="width: 55px;" text="page-size" id="quarter-filter">
 					<option value="10">10</option>
 					<option value="25">25</option>
 					<option value="50">50</option>
@@ -720,94 +725,143 @@
 		<table class="govuk-table">
 		  <thead class="govuk-table__head">
 			<tr class="govuk-table__row">
-			  <th scope="col" class="govuk-table__header" style="width: 100px;">Reference ID</th>
-			  <th scope="col" class="govuk-table__header" style="width: 220px;">WEEE received between</th>
+			  <th scope="col" class="govuk-table__header" style="width:  80px;">Reference ID</th>
+			  <th scope="col" class="govuk-table__header" style="width: 210px;">WEEE received between</th>
 			  <th scope="col" class="govuk-table__header">Issued by</th>
-			  <th scope="col" class="govuk-table__header" style="width: 120px;">Type</th>
-			  <th scope="col" class="govuk-table__header" style="width: 120px;">Status</th>
-			  <th scope="col" class="govuk-table__header" style="width: 80px;">&nbsp;</th>
+			  <th scope="col" class="govuk-table__header" style="width:  90px;">Type</th>
+			  <th scope="col" class="govuk-table__header" style="width:  90px;">Status</th>
+			  <th scope="col" class="govuk-table__header" style="width:  40px;">&nbsp;</th>
 			</tr>
 		  </thead>
 		  
-		  <tbody class="govuk-table__body">
-			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1279</td>
-			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
-			  <td class="govuk-table__cell">AATF1</td>
-			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Approved</td>
-			  <td class="govuk-table__cell"><a href="#">View</a></td>
-			</tr>
-			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1389</td>
-			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
-			  <td class="govuk-table__cell">AATF2</td>
-			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Approved</td>
-			  <td class="govuk-table__cell"><a href="#">View</a></td>
-			</tr>
-			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1456</td>
-			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
-			  <td class="govuk-table__cell">AATF1</td>
-			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Rejected</td>
-			  <td class="govuk-table__cell"><a href="#">View</a></td>
-			</tr>
-			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1876</td>
-			  <td class="govuk-table__cell">20/09/2021-21/10/2021</td>
-			  <td class="govuk-table__cell">AATF1</td>
-			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Approved</td>
-			  <td class="govuk-table__cell"><a href="#">View</a></td>
-			</tr>
-			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1899</td>
-			  <td class="govuk-table__cell">15/09/2021-15/10/2021</td>
-			  <td class="govuk-table__cell">AATF2</td>
-			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Returned</td>
-			  <td class="govuk-table__cell">
-				<a href="#">View</a>
-			  </td>
-			</tr>
-			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1998</td>
-			  <td class="govuk-table__cell">10/06/2021-09/07/2021</td>
-			  <td class="govuk-table__cell">AATF1</td>
-			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Approved</td>
-			  <td class="govuk-table__cell"><a href="#">View</a></td>
-			</tr>
-			<tr class="govuk-table__row result-row">
-			  <td class="govuk-table__cell">1999</td>
-			  <td class="govuk-table__cell">12/06/2021-07/07/2021</td>
-			  <td class="govuk-table__cell">AATF2</td>
-			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Approved</td>
-			  <td class="govuk-table__cell"><a href="#">View</a></td>
-			</tr>
-		  </tbody>
+		  {% if data['chosen-facility'] %}
 		  
-		  <tfooter>
-			<tr>
-			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-6 of 50</td>
-			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
-				<span style="float: right;">
-				Prev 1 
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">Next</a>
-				</span>
-			  </td>
-			</tr>
-			<tr>
-			  <td>
-			  </td>
-			</tr>
-		  </tfooter>
+			<tbody class="govuk-table__body">
+		  
+				{% for evidenceNote in data['chosen-facility-reviewed-notes'] %}
+
+					<tr class="govuk-table__row result-row">
+						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
+						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._searchDate}}</td>
+						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._categoryFilterString}}</td>
+
+						<td class="govuk-table__cell">{{evidenceNote._reference}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._startDate}}-{{evidenceNote._endDate}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._pcs}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._wasteType}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._status}}</td>  <!-- this should be always be 'Submitted' -->
+						<td class="govuk-table__cell">
+						  <a href="/version-2/pcs-journey/review-evidence-note-redirect?id={{evidenceNote._reference}}">View</a>
+						</td>
+					</tr>
+
+				{% endfor %}
+		  
+			</tbody>
+			
+			<tfooter>
+			  <tr>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-reviewed-notes'].length }} of {{data['chosen-facility-reviewed-notes'].length }}</td>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				  <span style="float: right;">
+					<!--
+					<a href="#">Prev</a>
+					<a href="#"> 1 </a>
+					<a href="#"> 2 </a>
+					<a href="#"> 3 </a>
+					<a href="#"> 4 </a>
+					<a href="#">Next</a>
+					-->
+					Prev 1 2 3 4 5 Next
+				  </span>
+				</td>
+			  </tr>
+			</tfooter>
+
+		  {% else %}
+		  
+			  <tbody class="govuk-table__body">
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1279</td>
+				  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+				  <td class="govuk-table__cell">AATF1</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1389</td>
+				  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+				  <td class="govuk-table__cell">AATF2</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1456</td>
+				  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+				  <td class="govuk-table__cell">AATF1</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Rejected</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1876</td>
+				  <td class="govuk-table__cell">20/09/2021-21/10/2021</td>
+				  <td class="govuk-table__cell">AATF1</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1899</td>
+				  <td class="govuk-table__cell">15/09/2021-15/10/2021</td>
+				  <td class="govuk-table__cell">AATF2</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Returned</td>
+				  <td class="govuk-table__cell">
+					<a href="#">View</a>
+				  </td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1998</td>
+				  <td class="govuk-table__cell">10/06/2021-09/07/2021</td>
+				  <td class="govuk-table__cell">AATF1</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1999</td>
+				  <td class="govuk-table__cell">12/06/2021-07/07/2021</td>
+				  <td class="govuk-table__cell">AATF2</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+			  </tbody>
+		  
+			  <tfooter>
+				<tr>
+				  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-6 of 50</td>
+				  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+					<span style="float: right;">
+					Prev 1 
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">Next</a>
+					</span>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+				  </td>
+				</tr>
+			  </tfooter>
+		  
+		  {% endif %}
+		  
 		</table>
 	</div>
   </div>
