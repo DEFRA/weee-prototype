@@ -7,8 +7,14 @@ const Schemes = require('../../data/schemes');
 const TransferAatf = require('../../data/transferAatf');
 const TransferAatfCategory = require('../../data/transferAatfCategory');
 const TransferAatfNote = require('../../data/transferAatfNotes');
+const TransferCategory = require('../../data/transferCategory');
 const moment = require('./moment');
 
+
+
+router.get('/version-2/pcs-journey/317-view-transfer-note', function(req, res){
+    res.redirect('/version-2/317_View_transfer_note');
+});
 
 
 /* router.get('/version-2/pcs-journey/transfer-redirect', function(req, res)
@@ -16,12 +22,21 @@ const moment = require('./moment');
     res.redirect('/version-2/314_Transfer_evidence_note');
 }); */
 
+router.post('/version-2/pcs-journey/316-save-and-continue', function(req, res){
+    
+
+    res.redirect('/version-2/317-view-transfer-note');
+});
+
+router.get('/version-2/pcs-journey/316-submit-transfer-note', function(req, res){
+    
+    res.redirect('/version-2/316_Submit_transfer_note');
+});
+
+
 function setupAatfs(req){
     var selectedTransferCategories = req.session.data['selected-transfer-categories'];
     var categoryItems = new CategoryItems();
-
-    console.log(selectedTransferCategories);
-    
 
     var tempData = [
         {
@@ -115,18 +130,22 @@ function setupAatfs(req){
         var newEvidenceNote = new TransferAatfNote(note.evidenceNote);
 
         if (!selectedTransferCategories){
+            selectedTransferCategories = [];
             for(var categoryCount = 0; categoryCount < note.category.length; categoryCount++) {
                 var noteCategory = note.category[categoryCount];
                 
                 var category = categoryItems._categoryItems.find(c => c._id === noteCategory.id);
     
                 newEvidenceNote._categories.push(new TransferAatfCategory(category, noteCategory.received, noteCategory.reused));
+
+                
+                selectedTransferCategories.push(new TransferCategory(category, 0, 0));
             }
         } else {
             for(var categoryCount = 0; categoryCount < selectedTransferCategories.length; categoryCount++) {
                 var noteCategory = selectedTransferCategories[categoryCount];
                 
-                var category = categoryItems._categoryItems.find(c => c._id === noteCategory);
+                var category = categoryItems._categoryItems.find(c => c._id === noteCategory._category._id);
     
                 var rec = 0;
                 var reused = 0;
@@ -142,6 +161,8 @@ function setupAatfs(req){
                 }
 
                 newEvidenceNote._categories.push(new TransferAatfCategory(category, rec, reused));
+
+            
             }
         }
         
@@ -149,23 +170,27 @@ function setupAatfs(req){
         findAatf._notes.push(newEvidenceNote);
     }
     
+    req.session.data['selected-transfer-categories'] = selectedTransferCategories;
     req.session.data['selected-transfer-aatfs'] = aatfs;
 }
 router.get('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
 {
     setupAatfs(req);
+    
     res.redirect('/version-2/315_Selected_Evidence_notes');
 });
 
-router.post('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
+/* router.post('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
 {
     setupAatfs(req);
+    
     res.redirect('/version-2/315_Selected_Evidence_notes');
-});
+}); */
 
 router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
     var aatfs = req.session.data['selected-transfer-aatfs'];
-    //console.log(req.session.data);
+    var selectedTransferCategories = req.session.data['selected-transfer-categories'];
+    
     for(var aatfCount=0; aatfCount < aatfs.length; aatfCount++){
         var aatf = aatfs[aatfCount];
         
@@ -183,6 +208,21 @@ router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
             }
         }
     }
+
+    for(var categoryCount = 0; categoryCount < selectedTransferCategories.length; categoryCount++) {
+        var category = selectedTransferCategories[categoryCount];
+        
+        var receivedTotal = category._category._id + "-total-received-hidden";
+        var reusedTotal = category._category._id + "-total-reused-hidden";
+        
+        category._totalReceived = req.session.data[receivedTotal] ;
+        category._totalReused = req.session.data[reusedTotal] ;
+    } 
+
+    req.session.data['selected-transfer-categories'] = selectedTransferCategories;
+    
+    res.redirect('/version-2/pcs-journey/316-submit-transfer-note');
+    
 });
 
 router.post('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
@@ -197,53 +237,70 @@ router.post('/version-2/pcs-journey/314-save-and-continue', function(req, res){
 
     var selectedTransferCategories = [];
     
+    var categoryItems = new CategoryItems();
+    
+
     if (req.session.data['waste-1'] && req.session.data['waste-1'][0] === 'on'){
-        selectedTransferCategories.push(1);
+        var category = categoryItems._categoryItems.find(c => c._id === 1);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-2'] && req.session.data['waste-2'][0] === 'on'){
-        selectedTransferCategories.push(2);
+        var category = categoryItems._categoryItems.find(c => c._id === 2);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-3'] && req.session.data['waste-3'][0] === 'on'){
-        selectedTransferCategories.push(3);
+        var category = categoryItems._categoryItems.find(c => c._id === 3);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-4'] && req.session.data['waste-4'][0] === 'on'){
-        selectedTransferCategories.push(4);
+        var category = categoryItems._categoryItems.find(c => c._id === 4);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-5'] && req.session.data['waste-5'][0] === 'on'){
-        selectedTransferCategories.push(5);
+        var category = categoryItems._categoryItems.find(c => c._id === 5);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-6'] && req.session.data['waste-6'][0] === 'on'){
-        selectedTransferCategories.push(6);
+        var category = categoryItems._categoryItems.find(c => c._id === 6);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-7'] && req.session.data['waste-7'][0] === 'on'){
-        selectedTransferCategories.push(7);
+        var category = categoryItems._categoryItems.find(c => c._id === 7);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-8'] && req.session.data['waste-8'][0] === 'on'){
-        selectedTransferCategories.push(8);
+        var category = categoryItems._categoryItems.find(c => c._id === 8);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-9'] && req.session.data['waste-9'][0] === 'on'){
-        selectedTransferCategories.push(9);
+        var category = categoryItems._categoryItems.find(c => c._id === 9);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-10'] && req.session.data['waste-10'][0] === 'on'){
-        selectedTransferCategories.push(10);
+        var category = categoryItems._categoryItems.find(c => c._id === 10);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-11'] && req.session.data['waste-11'][0] === 'on'){
-        selectedTransferCategories.push(11);
+        var category = categoryItems._categoryItems.find(c => c._id === 11);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-12'] && req.session.data['waste-12'][0] === 'on'){
-        selectedTransferCategories.push(12);
+        var category = categoryItems._categoryItems.find(c => c._id === 12);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-13'] && req.session.data['waste-13'][0] === 'on'){
-        selectedTransferCategories.push(13);
+        var category = categoryItems._categoryItems.find(c => c._id === 13);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
     if (req.session.data['waste-14'] && req.session.data['waste-14'][0] === 'on'){
-        selectedTransferCategories.push(14);
+        var category = categoryItems._categoryItems.find(c => c._id === 14);
+        selectedTransferCategories.push(new TransferAatfCategory(category, 0, 0));
     }
 
     //console.log(selectedTransferCategories);
 
     req.session.data['selected-transfer-categories'] = selectedTransferCategories;
-
+console.log(req.session.data['selected-transfer-categories']);
     res.redirect('/version-2/pcs-journey/315-selected-evidence-notes');
 });
 

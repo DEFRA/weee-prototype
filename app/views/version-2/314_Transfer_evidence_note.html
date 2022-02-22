@@ -23,7 +23,7 @@
 				{% if data['schemes'] %}
 				
 					{% for scheme in data['schemes']._schemes %}
-						<option value="{{scheme._id}}">{{scheme._name}}</option>
+						<option value="{{scheme._name}}">{{scheme._name}}</option>
 					{% endfor %}
 
 				{% else %}
@@ -127,8 +127,7 @@
 		
 	<div class="govuk-!-margin-top-7">
 		{{ govukButton({
-			text: "Save and Continue",
-			classes: "civica-font-size-22"
+			text: "Save and continue"
 		  }) }}
 	</div>
 
