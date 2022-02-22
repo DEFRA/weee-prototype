@@ -256,6 +256,8 @@ router.post('/version-2/pcs-journey/314-transfer-evidence-note', function(req, r
     req.session.data['selected-transfer-categories'] = null;
     req.session.data['selected-transfer-aatfs'] = null;
     
+    console.log(req.session.data['evidence-note-1400']);
+    
     res.redirect('/version-2/314_Transfer_evidence_note');
 });
 
