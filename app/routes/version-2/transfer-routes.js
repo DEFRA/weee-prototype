@@ -22,7 +22,7 @@ router.post('/version-2/pcs-journey/317-save-and-continue', function(req, res){
 router.get('/version-2/pcs-journey/317-view-transfer-note', function(req, res){
 
     setupAatfs(req);
-    console.log('test')
+    
     var note = req.session.data['new-transfer-note'];
     if (!note) {
 

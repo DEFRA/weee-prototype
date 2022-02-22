@@ -14,14 +14,6 @@
 
 	  <h1 class="govuk-heading-l element-spacer">Manage evidence notes for {{ data['chosen-facility']._name }}</h1>
 	  
-	  <div class="govuk-body element-spacer">Choose what you would like to view below. A summary of total evidence against obligation, or list of all evidence notes.</div>
-
-		<div class="element-spacer">
-			{{ govukButton({
-				text: "Create new evidence note", classes: "govuk-!-font-weight-bold"
-			  }) }}
-		</div>
-
 <div class="govuk-tabs" data-module="govuk-tabs" style="margin-left: -20px; margin-right: -20px;">
   <h2 class="govuk-tabs__title">
     Contents
@@ -616,6 +608,12 @@
 			</tr>
 		  </tfooter>
 		</table>
+
+		<div class="element-spacer">
+			{{ govukButton({
+				text: "Transfer evidence", classes: "govuk-!-font-weight-bold"
+			  }) }}
+		</div>
 	</div>
   </div>
   
