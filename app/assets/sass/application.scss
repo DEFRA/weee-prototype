@@ -200,3 +200,12 @@ $govuk-assets-path: '/govuk/assets/';
 .civica-transfer-totals-row {
 	background-color: govuk-colour("light-grey");
 }
+
+.civica-no-border {
+	border: none !important;
+	padding: 0;
+}
+
+.civica-transfer-vertical-middle{
+	vertical-align: middle;
+}
