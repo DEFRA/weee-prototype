@@ -27,7 +27,7 @@ router.get('/version-2/pcs-journey/317-view-transfer-note', function(req, res){
     if (!note) {
 
         var aatfs = req.session.data['selected-transfer-aatfs'];
-        var newNote = new TransferNote(Math.floor(Math.random() * 5000), aatfs, "Submitted", 2022);
+        var newNote = new TransferNote(Math.floor(Math.random() * 5000), aatfs, "Submitted", 2021);
 
         req.session.data['new-transfer-note'] = newNote;
     }
@@ -54,7 +54,7 @@ router.post('/version-2/pcs-journey/316-save-and-continue', function(req, res){
         status = 'Draft'
     };
 
-    var newNote = new TransferNote(Math.floor(Math.random() * 5000), aatfs, status, 2022);
+    var newNote = new TransferNote(Math.floor(Math.random() * 5000), aatfs, status, 2021);
 
     req.session.data['new-transfer-note'] = newNote;
 
