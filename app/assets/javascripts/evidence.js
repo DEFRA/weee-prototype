@@ -53,9 +53,7 @@ $(document).ready(function () {
 
     $('#transferEvidenceButton').click(function (event) {
         
-        
         var hasError = true;
-        
         var evidenceNoteSelection = $('[name*="chk"]');
 
         evidenceNoteSelection.each(function(){
@@ -63,8 +61,6 @@ $(document).ready(function () {
                 hasError = false;
             }
         });
-
-        console.log(evidenceNoteSelection)
 
         if (hasError) {
             event.preventDefault();
@@ -74,8 +70,5 @@ $(document).ready(function () {
         else{
             $('#transferEvidenceErrorSummary').css('display', 'none');
         }
-
     });
-
-
 });
