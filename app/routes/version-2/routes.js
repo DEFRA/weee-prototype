@@ -1584,6 +1584,7 @@ router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
 
 router.get('/version-2/pcs-journey/320-view-evidence-note', function(req, res)
 {
+    var facility = req.session.data['chosen-facility']; 
 	req.session.data['header']['organisation'] = 'PCS Ltd';
 	req.session.data['header']['activity'] = 'view evidence note';
 	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
@@ -1595,6 +1596,7 @@ router.get('/version-2/pcs-journey/320-view-evidence-note', function(req, res)
 // this is called when loading the Review Evidence page
 router.get('/version-2/pcs-journey/311-review-evidence-note', function(req, res)
 {
+    var facility = req.session.data['chosen-facility']; 
 	req.session.data['header']['organisation'] = 'PCS Ltd';
 	req.session.data['header']['activity'] = 'review evidence notes';
 	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));

@@ -144,20 +144,20 @@
 									<td class="govuk-table__cell">{{transfer._categories[i]._category._id}}. {{transfer._categories[i]._category._description}} </td>
 									<td class="govuk-table__cell civica-align-right">
 										
-										{% if transfer._categories[i]._receivedTonnage === 0 %}
-										<span>-</span>
-										{% else %}
-										{{transfer._categories[i]._receivedTonnage}}
-										{% endif %}
+										{% if transfer._categories[i]._transferReceivedTonnage === 0 %}
+								<span>-</span>
+								{% else %}
+								{{transfer._categories[i]._transferReceivedTonnage}}
+								{% endif %}
 		
 									
 									</td>
 									<td class="govuk-table__cell civica-align-right">
-										{% if transfer._categories[i]._reusedTonnage === 0 %}
-										<span>-</span>
-										{% else %}
-										{{transfer._categories[i]._reusedTonnage}}
-										{% endif %}
+										{% if transfer._categories[i]._transferReusedTonnage === 0 %}
+								<span>-</span>
+								{% else %}
+								{{transfer._categories[i]._transferReusedTonnage}}
+								{% endif %}
 										
 								</tr>
 								{% endfor %}

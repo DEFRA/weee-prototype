@@ -235,7 +235,7 @@ function setupAatfs(req){
                     var rec = Math.floor(Math.random() * 10);
 
                     var reused = rec - (Math.floor(Math.random() * 7));
-                    if (reused < 0){
+                    if (reused < 0 || reused === 0){
                         reused = 0;
                     }
 
@@ -274,8 +274,16 @@ router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
                 var receivedTransfer = "transfer-rec-category-" + category._category._id + "-" + aatf._id + "-" + note._id;
                 var reusedTransfer = "transfer-reused-category-" + category._category._id + "-" + aatf._id + "-" + note._id;
 
-                category._transferReceivedTonnage = req.session.data[receivedTransfer];
-                category._transferReusedTonnage = req.session.data[reusedTransfer];
+                var transferReceivedTonnage = req.session.data[receivedTransfer];
+                if (!transferReceivedTonnage){
+                    transferReceivedTonnage = 0;
+                }
+                var transferReusedTonnage = req.session.data[reusedTransfer];
+                if (!transferReusedTonnage){
+                    transferReusedTonnage = 0;
+                }
+                category._transferReceivedTonnage = transferReceivedTonnage;
+                category._transferReusedTonnage = transferReusedTonnage;
             }
         }
     }
