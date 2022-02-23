@@ -271,12 +271,13 @@
 		<div class="govuk-heading-s">Filter by:</div>
 		<table>
 		  <tr class="govuk-table__row">
-				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Month received</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Date received from</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued by</th>
 				<th class="govuk-body govuk-!-text-align-left">Type</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 120px;">Category</th>
 		  </tr>
+		  
 		  <tr class="govuk-table__row">
 			<td>
 				<input class="govuk-select" type="Date" id="date-filter" style="width: 175px;" />
@@ -322,7 +323,16 @@
 					<option value="14">14. Photovoltaic panels</option>
 				</select>
 			</td>
-		  </tr>		  
+		  </tr>		
+		  <tr class="govuk-table__row">
+			<th class="govuk-body govuk-!-text-align-left" style="width: 175px;" colspan="5">Date received to</th>
+	  </tr>
+	  
+	  <tr class="govuk-table__row">
+		<td colspan="5">
+			<input class="govuk-select" type="Date" id="date-filter" style="width: 175px;" />
+		</td>
+	  </tr>  
 		  <tr><td colspan="5" style="height: 50px;">&nbsp;</td></tr>
 		  <tr class="govuk-table__row">
 			<td>&nbsp;</td>
