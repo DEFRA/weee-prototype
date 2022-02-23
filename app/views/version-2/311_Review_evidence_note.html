@@ -6,11 +6,11 @@
 
 {% block content %}
 
-<form class="form" action="/version-2/pcs-journey/312-download-approved-evidence-pdf" method="post">
+<form class="form" action="/version-2/pcs-journey/311-review-evidence-note-save" method="post">
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters" style="width: 90%;">
-
+		<input type="hidden" name="evidence-note-reference" value="{{ data['selected-evidence-note']._reference }}"/>
 		<h1 class="govuk-heading-l">Check evidence note details</h1>
 		<p class="govuk-body govuk-!-margin-bottom-7">
 			After review, you can choose whether to approve, reject or return the evidence note.

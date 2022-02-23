@@ -1600,6 +1600,8 @@ router.get('/version-2/pcs-journey/311-review-evidence-note', function(req, res)
 	req.session.data['header']['organisation'] = 'PCS Ltd';
 	req.session.data['header']['activity'] = 'review evidence notes';
 	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
+    req.session.data['chosen-status-' + req.query['id']]  = null;
+    req.session.data['reject-return-reason'] = null;
 
     res.redirect('/version-2/311_Review_evidence_note');
 });
@@ -1630,6 +1632,7 @@ router.get('/version-2/pcs-journey/314-transfer-evidence-note', function(req, re
 	
     res.redirect('/version-2/314_Transfer_evidence_note');
 });
+
 
 
 

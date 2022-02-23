@@ -400,4 +400,37 @@ router.post('/version-2/pcs-journey/314-save-and-continue', function(req, res){
 });
 
 
+router.post('/version-2/pcs-journey/311-review-evidence-note-save', function(req, res){
+
+    
+    var facility = req.session.data['chosen-facility']; 
+    var evidenceNoteReference = req.session.data["evidence-note-reference"];
+	req.session.data['header']['activity'] = 'View evidence note';
+
+    var evidenceNote = facility._evidenceNotes.find(note => note._reference == Number(evidenceNoteReference));
+    
+    const status = req.session.data['choose-status'];
+	if ( status === '1' )
+	{
+        evidenceNote._status = 'Approved';
+		req.session.data['chosen-status-' + evidenceNoteReference] = 'Approved';
+	}
+	
+	if ( status === '2' )
+	{
+        evidenceNote._status = 'Rejected';
+        req.session.data['chosen-status-' + evidenceNoteReference] = 'Rejected';
+	}
+ 	
+	if ( status === '3' )
+	{
+        evidenceNote._status = 'Returned';
+        req.session.data['chosen-status-' + evidenceNoteReference] = 'Returned';
+	}
+
+	req.session.data['selected-evidence-note'] = evidenceNote;
+    res.redirect('/version-2/320_View_evidence_note');
+});
+
+
 module.exports = router;
