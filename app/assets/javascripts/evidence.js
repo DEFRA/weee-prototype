@@ -49,5 +49,33 @@ $(document).ready(function () {
             $('#errorSummary').css('display', 'none');
         }
 
-    })
+    });
+
+    $('#transferEvidenceButton').click(function (event) {
+        
+        
+        var hasError = true;
+        
+        var evidenceNoteSelection = $('[name*="chk"]');
+
+        evidenceNoteSelection.each(function(){
+            if ($(this).is(":checked")){
+                hasError = false;
+            }
+        });
+
+        console.log(evidenceNoteSelection)
+
+        if (hasError) {
+            event.preventDefault();
+            $("html, body").animate({ scrollTop: 0 }, "linear");
+            $('#transferEvidenceErrorSummary').css('display', 'block');
+        }
+        else{
+            $('#transferEvidenceErrorSummary').css('display', 'none');
+        }
+
+    });
+
+
 });

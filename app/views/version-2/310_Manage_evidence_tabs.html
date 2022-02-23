@@ -7,6 +7,7 @@
 {% block content %}
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 <script src="/public/javascripts/tabs.js"></script>
+<script src="/public/javascripts/evidence.js"></script>
 
 
   <div class="govuk-grid-row">
@@ -462,6 +463,20 @@
   <!-- THIRD TAB -->
   <div id="evidence-transfer" class="govuk-tabs__panel govuk-tabs__panel--hidden">
   
+	<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="transferEvidenceErrorSummary" role="alert" tabindex="-1"
+    data-module="error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#">Please select evidence notes to be transfered</a>
+            </li>
+        </ul>
+    </div>
+	</div>
+
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
@@ -675,7 +690,8 @@
 		
 		<div class="element-spacer">
 			{{ govukButton({
-				text: "Transfer evidence", classes: "govuk-!-font-weight-bold"
+				text: "Transfer evidence", classes: "govuk-!-font-weight-bold",
+				attributes: {id : "transferEvidenceButton"}
 			  }) }}
 		</div>
 		
