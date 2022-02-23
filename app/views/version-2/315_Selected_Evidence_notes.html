@@ -17,7 +17,7 @@
 			{% if data['selected-transfer-aatfs'] %}
 
 			{% for aatf in data['selected-transfer-aatfs'] %}
-				<h2 class="govuk-heading-m">{{aatf._name}}</h2>
+				<h2 class="govuk-heading-m">{{aatf._name}} ({{aatf._reference}})</h2>
 
 				{% for transfer in aatf._notes %}
 				

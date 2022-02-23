@@ -456,7 +456,7 @@
 
 
 
-
+  <form class="form" action="/version-2/pcs-journey/314-transfer-evidence-note" method="post">
   <!-- THIRD TAB -->
   <div id="evidence-transfer" class="govuk-tabs__panel govuk-tabs__panel--hidden">
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
@@ -560,14 +560,14 @@
 
 				  <td class="govuk-table__cell">
 					  <div class="govuk-checkboxes__item govuk-checkboxes--small">
-						<input class="govuk-checkboxes__input" id="chk{{evidenceNote._reference}}" value="1400" name="references" type="checkbox">
-						<label class="govuk-label govuk-checkboxes__label" for="waste-3">
+						<input class="govuk-checkboxes__input" id="chk{{evidenceNote._reference}}" name="chk{{evidenceNote._reference}}" type="checkbox">
+						<label class="govuk-label govuk-checkboxes__label" for="chk{{evidenceNote._reference}}">
 						  {{evidenceNote._reference}}
 						</label>
 					  </div>
 				  </td>
 				  <td class="govuk-table__cell">{{evidenceNote._startDate}}-{{evidenceNote._endDate}}</td>
-				  <td class="govuk-table__cell">{{evidenceNote._pcs}}</td>
+				  <td class="govuk-table__cell">{{evidenceNote._aatf}}</td>
 				  <td class="govuk-table__cell govuk-!-text-align-right">{{evidenceNote._received}}</td>
 				  <td class="govuk-table__cell govuk-!-text-align-right">
 					<a href="#">View</a>
@@ -666,7 +666,7 @@
 		  
 		</table>
 
-		<form class="form" action="/version-2/pcs-journey/314-transfer-evidence-note" method="post">
+		
 		<div class="element-spacer">
 			{{ govukButton({
 				text: "Transfer evidence", classes: "govuk-!-font-weight-bold"
