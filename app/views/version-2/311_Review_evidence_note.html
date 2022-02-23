@@ -48,14 +48,14 @@
 			{% if ( data['selected-evidence-note']._status === 'Approved' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved:</span> 
-					<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-approved'] }}</span>
 				</div>
 			{% endif %}
 
 			{% if ( data['selected-evidence-note']._status === 'Rejected' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date rejected:</span> 
-					<span class="govuk-body govuk-!-margin-left-2">12/11/21 11:45:37</span>
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-rejected'] }}</span>
 				</div>
 			{% endif %}
 				

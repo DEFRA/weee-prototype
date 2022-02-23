@@ -456,9 +456,12 @@
 
 
 
-  <form class="form" action="/version-2/pcs-journey/314-transfer-evidence-note" method="post">
+  
+
+
   <!-- THIRD TAB -->
   <div id="evidence-transfer" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
@@ -535,7 +538,10 @@
 		</table>
 	</div>
 	
+	<form class="form" action="/version-2/pcs-journey/314-transfer-evidence-note" method="post">
+	
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
+	
 		<table class="govuk-table">
 		  <thead class="govuk-table__head">
 			<tr class="govuk-table__row">
@@ -549,7 +555,7 @@
 		  
 		  {% if data['chosen-facility'] %}
 		  
-		  <tbody class="govuk-table__body">
+		  <tbody class="govuk-table__body">		  
 		  
 			{% for evidenceNote in data['chosen-facility-transferable-notes'] %}
 
@@ -577,6 +583,7 @@
 		  	{% endfor %}
 
 		  </tbody>
+		  
 		  <tfooter>
 			  <tr>
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-submitted-notes'].length }} of {{data['chosen-facility-submitted-notes'].length }}</td>
@@ -665,15 +672,17 @@
 		  {% endif %}
 		  
 		</table>
-
 		
 		<div class="element-spacer">
 			{{ govukButton({
 				text: "Transfer evidence", classes: "govuk-!-font-weight-bold"
 			  }) }}
 		</div>
-		</form>
+		
 	</div>
+	
+	</form>
+	
   </div>
   
   
