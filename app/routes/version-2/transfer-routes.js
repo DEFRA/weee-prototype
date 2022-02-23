@@ -429,6 +429,8 @@ router.post('/version-2/pcs-journey/311-review-evidence-note-save', function(req
 	}
 
 	req.session.data['selected-evidence-note'] = evidenceNote;
+    req.session.data['chosen-facility'] = facility;
+    
     res.redirect('/version-2/320_View_evidence_note');
 });
 

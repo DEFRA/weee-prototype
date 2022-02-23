@@ -1465,7 +1465,8 @@ router.get('/version-2/pcs-journey/309-choose-activity-pcs', function(req, res)
     req.session.data['paste-values'] = '';
     req.session.data['selected-transfer-aatfs'] = null;
     req.session.data['selected-transfer-categories'] = null;
-
+    req.session.data['chosen-facility'] = null;
+    
     res.redirect('/version-2/309_Choose_activity_PCS');
 });
 
@@ -1490,6 +1491,8 @@ router.get('/version-2/pcs-journey/309-choose-site', function(req, res)
 
 router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
 {
+    var chosenFacility = req.session.data['chosen-facility'];
+
 	req.session.data['header']['organisation'] = 'PCS Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
 	
@@ -1503,7 +1506,13 @@ router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
     req.session.data['schemes'] = schemes;
     req.session.data['paste-values'] = '';
 
-	var selectedFacility = CreatePCSFacilitiesWithEvidenceNotes(req);
+    var selectedFacility = null;
+    if (!chosenFacility){
+        selectedFacility = CreatePCSFacilitiesWithEvidenceNotes(req);
+    }
+	else{
+        selectedFacility = chosenFacility;
+    }
 
 	// Sort by Status then Submitted Date 
 	// Draft first then submitted in descending date order
