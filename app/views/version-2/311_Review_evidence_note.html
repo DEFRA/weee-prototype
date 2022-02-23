@@ -92,7 +92,7 @@
 			</div>
 			
 			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
-				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Operator:</div>
+				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0; text-align: right;">Operator:</div>
 				<div class="govuk-grid-column-one-half govuk-body">
 					ABB ltd <br />
 					12 May Lane <br />
@@ -103,7 +103,7 @@
 			</div>
 			
 			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
-				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Receiving PCS:</div>
+				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0; text-align: right;">Receiving PCS:</div>
 				<div class="govuk-grid-column-one-half govuk-body">
 					PCS6 <br />
 					1 Bart avenue <br />
@@ -270,7 +270,7 @@
 		}}
 		
 		<div id="note-area" style="display: none;">
-			<div class="govuk-input" style="border: 0 solid white;">What is the reason you are rejecting the evidence note?</div>
+			<div class="govuk-input" style="border: 0;" id="reason-legend"> </div>
 			<textarea class="civica-textarea govuk-input" id="reject-return-reason" name="reject-return-reason"></textarea>
 		</div>
 	</div>
@@ -285,8 +285,14 @@
 {% endif %}
 
 <script>
-	function showNoteArea(event)
+	function showNoteArea2(event)
 	{
+	    document.getElementById("reason-legend").innerText = "What is the reason you are rejecting the evidence note?";
+		document.getElementById("note-area").style = "display: block;";
+	}
+	function showNoteArea3(event)
+	{
+	    document.getElementById("reason-legend").innerText = "What is the reason you are returning the evidence note?";
 		document.getElementById("note-area").style = "display: block;";
 	}
 	function hideNoteArea(event)
@@ -294,8 +300,8 @@
 		document.getElementById("note-area").style = "display: none;";
 	}
 	document.getElementById("choose-status").addEventListener("click", hideNoteArea);
-	document.getElementById("choose-status-2").addEventListener("click", showNoteArea);
-	document.getElementById("choose-status-3").addEventListener("click", showNoteArea);
+	document.getElementById("choose-status-2").addEventListener("click", showNoteArea2);
+	document.getElementById("choose-status-3").addEventListener("click", showNoteArea3);
 </script>
 
 </form>
