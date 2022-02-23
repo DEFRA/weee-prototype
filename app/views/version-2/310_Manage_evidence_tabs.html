@@ -56,10 +56,10 @@
   <!-- FIRST TAB -->
   <div id="evidence-summary" class="govuk-tabs__panel">
 	<div class="govuk-grid-row govuk-!-padding-bottom-7">
-		<label for="year-filter" class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-22" style="margin: 12px;">
+		<label for="year-filter-1" class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-22" style="margin: 12px;">
 		Evidence summary for compliance year
 		</label>
-		<select class="govuk-select" text="Compliance year" id="year-filter" style="margin: 12px;">
+		<select class="govuk-select" text="Compliance year" id="year-filter-1" style="margin: 12px;">
 			<option value="2022">2022</option>
 			<option value="2021">2021</option>
 			<option value="2020">2020</option>
@@ -94,7 +94,7 @@
 			  <th scope="col" class="govuk-table__header">Difference</th>
 			</tr>
 		  </thead>
-		  <tbody class="govuk-table__body">
+		  <tbody class="govuk-table__body" id="tbody-results-1">
 		  
 			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell">1. Large household appliances</td>
@@ -260,9 +260,9 @@
   <div id="evidence-review" class="govuk-tabs__panel govuk-tabs__panel--hidden">
   
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
-		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
+		<label for="input-search-2" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
-			<input type="text" id="input-search" placeholder=" " class="search-text-input" />
+			<input type="text" id="input-search-2" placeholder=" " class="search-text-input" />
 			<span id="button-holder"><img src="/public/images/search.jpg" /></span>
 		</div>
 	</div>
@@ -271,26 +271,26 @@
 		<div class="govuk-heading-s">Filter by:</div>
 		<table>
 		  <tr class="govuk-table__row">
-				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Date received from</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued by</th>
-				<th class="govuk-body govuk-!-text-align-left">Type</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 120px;">Category</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 200px;">Date received from</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">Compliance year</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued by</th>
+			<th class="govuk-body govuk-!-text-align-left">Type</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 100px;">Category</th>
 		  </tr>
 		  
 		  <tr class="govuk-table__row">
 			<td>
-				<input class="govuk-select" type="Date" id="date-filter" style="width: 175px;" />
+				<input class="govuk-select" type="Month" id="quarter-filter-from-2" style="width: 200px; padding: 0;" />
 			</td>
 			<td>
-				<select class="govuk-select" id="year-filter" style="width: 175px;" text="Compliance year">
+				<select class="govuk-select" id="year-filter-2" style="width: 150px;" text="Compliance year">
 					<option value="2022">2022</option>
 					<option value="2021">2021</option>
 					<option value="2020">2020</option>
 				</select>
 			</td>
 			<td>
-				<input class="govuk-select" type="text" name="example" style="width: 220px;" list="issuersList" id="pcs-filter">
+				<input class="govuk-select" type="text" id="pcs-filter-2" name="example" style="width: 220px;" list="issuersList">
 				<datalist id="issuersList">
 					<option value="AATF1" />
 					<option value="AATF2" />
@@ -298,14 +298,14 @@
 				</datalist>
 			</td>
 			<td>
-				<select class="govuk-select" text="Type" id="type-filter">
+				<select class="govuk-select" text="Type" id="type-filter-2">
 					<option value="0"> </option>
 					<option value="Household">Household</option>
 					<option value="Non-household">Non-household</option>
 				</select>
 			</td>
 			<td>
-				<select class="govuk-select" style="width: 120px;" text="Category" id="category-filter">
+				<select class="govuk-select" id="category-filter-2" style="width: 100px;" text="Category">
 					<option value="0"> </option>
 					<option value="1">1. Large household appliances</option>
 					<option value="2">2. Small household appliances</option>
@@ -325,23 +325,18 @@
 			</td>
 		  </tr>		
 		  <tr class="govuk-table__row">
-			<th class="govuk-body govuk-!-text-align-left" style="width: 175px;" colspan="5">Date received to</th>
-	  </tr>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 200px;" colspan="5">
+				Date received to <br />
+				<input class="govuk-select" type="Month" id="month-filter-to-2" style="width: 200px; padding: 0;" />
+			</th>
+	      </tr>
 	  
-	  <tr class="govuk-table__row">
-		<td colspan="5">
-			<input class="govuk-select" type="Date" id="date-filter" style="width: 175px;" />
-		</td>
-	  </tr>  
-		  <tr><td colspan="5" style="height: 50px;">&nbsp;</td></tr>
+		  <tr><td colspan="5" style="height: 30px;">&nbsp;</td></tr>
+		  
 		  <tr class="govuk-table__row">
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td class="govuk-body govuk-!-text-align-right">View</td>
+			<td class="govuk-body govuk-!-text-align-right" colspan="5">View</td>
 			<td>
-				<select class="govuk-select" style="width: 80px;" text="page-size" id="quarter-filter">
+				<select class="govuk-select" style="width: 80px;" text="page-size" id="pagesize-filter-2">
 					<option value="10">10</option>
 					<option value="25">25</option>
 					<option value="50">50</option>
@@ -366,7 +361,7 @@
 		  
 		  {% if data['chosen-facility'] %}
 		  
-		  <tbody class="govuk-table__body">
+		  <tbody class="govuk-table__body" id="tbody-results-2">
 		  
 			{% for evidenceNote in data['chosen-facility-submitted-notes'] %}
 
@@ -393,15 +388,13 @@
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-submitted-notes'].length }} of {{data['chosen-facility-submitted-notes'].length }}</td>
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
 				  <span style="float: right;">
-					<!--
 					<a href="#">Prev</a>
 					<a href="#"> 1 </a>
 					<a href="#"> 2 </a>
 					<a href="#"> 3 </a>
 					<a href="#"> 4 </a>
 					<a href="#">Next</a>
-					-->
-					Prev 1 2 3 4 5 Next
+					<!-- Prev 1 2 3 4 5 Next -->
 				  </span>
 				</td>
 			  </tr>
@@ -409,6 +402,7 @@
 		  
 		  {% else %}
 		  
+		  <tbody>
 			<tr class="govuk-table__row result-row">
 			  <td class="govuk-table__cell govuk-!-padding-0">1279</td>
 			  <td class="govuk-table__cell govuk-!-padding-0">12/11/2021-12/12/2021</td>
@@ -433,7 +427,6 @@
 			  <td class="govuk-table__cell govuk-!-padding-0">Submitted</td>
 			  <td class="govuk-table__cell govuk-!-padding-0"><a href="#">Review evidence</a></td>
 			</tr>
-			
 		  </tbody>
 		  <tfooter>
 			<tr>
@@ -459,7 +452,6 @@
 		  </tfooter>
 
 		  {% endif %}
-			
 		  
 		</table>
 	
@@ -476,24 +468,31 @@
   <!-- THIRD TAB -->
   <div id="evidence-transfer" class="govuk-tabs__panel govuk-tabs__panel--hidden">
   
-	<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none" id="transferEvidenceErrorSummary" role="alert" tabindex="-1"
-    data-module="error-summary">
-    <h2 class="govuk-error-summary__title" id="error-summary-title">
-        There is a problem
-    </h2>
-    <div class="govuk-error-summary__body">
-        <ul class="govuk-list govuk-error-summary__list">
-            <li>
-                <a href="#">Please select evidence notes to be transfered</a>
-            </li>
-        </ul>
-    </div>
+	<div class="govuk-error-summary" 
+	     aria-labelledby="error-summary-title" 
+		 style="display: none" 
+		 id="transferEvidenceErrorSummary" 
+		 role="alert" 
+		 tabindex="-1"
+		 data-module="error-summary">
+		 
+		<h2 class="govuk-error-summary__title" id="error-summary-title">
+			There is a problem
+		</h2>
+		<div class="govuk-error-summary__body">
+			<ul class="govuk-list govuk-error-summary__list">
+				<li>
+					<a href="#">Please select evidence notes to be transfered</a>
+				</li>
+			</ul>
+		</div>
+		
 	</div>
 
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
-		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
+		<label for="input-search-3" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
-			<input type="text" id="input-search" placeholder=" " class="search-text-input" />
+			<input type="text" id="input-search-3" placeholder=" " class="search-text-input" />
 			<span id="button-holder"><img src="/public/images/search.jpg" /></span>
 		</div>
 	</div>
@@ -502,25 +501,26 @@
 		<div class="govuk-heading-s">Filter by:</div>
 		<table>
 		  <tr class="govuk-table__row">
-				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Month received</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 350px;">Issued by</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 350px;">Category</th>
-				<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 200px;">Month received</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 350px;">Issued by</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 350px;">Category</th>
+			<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
 		  </tr>
 		  <tr class="govuk-table__row">
 			<td>
-				<input class="govuk-select" type="Date" id="date-filter" style="width: 175px;" />
+				<!-- input class="govuk-select" type="Date" id="date-filter" style="width: 175px;" / -->
+				<input class="govuk-select" type="Month" id="quarter-filter-3" style="width: 200px; padding: 0;" />
 			</td>
 			<td>
-				<select class="govuk-select" id="year-filter" style="width: 175px;" text="Compliance year">
+				<select class="govuk-select" id="year-filter-3" style="width: 175px;" text="Compliance year">
 					<option value="2022">2022</option>
 					<option value="2021">2021</option>
 					<option value="2020">2020</option>
 				</select>
 			</td>
 			<td>
-				<input class="govuk-select" type="text" name="example" style="width: 100%;" list="issuersList" id="pcs-filter">
+				<input class="govuk-select" id="pcs-filter-3" type="text" name="example" style="width: 100%;" list="issuersList">
 				<datalist id="issuersList">
 					<option value="AATF1" />
 					<option value="AATF2" />
@@ -528,7 +528,7 @@
 				</datalist>
 			</td>
 			<td>
-				<select class="govuk-select" style="width: 100%;" text="Category" id="category-filter">
+				<select class="govuk-select" text="Category" id="category-filter-3" style="width: 100%;">
 					<option value="0"> </option>
 					<option value="1">1. Large household appliances</option>
 					<option value="2">2. Small household appliances</option>
@@ -550,13 +550,9 @@
 		  </tr>		  
 		  <tr><td colspan="5" style="height: 50px;">&nbsp;</td></tr>
 		  <tr class="govuk-table__row">
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td class="govuk-body govuk-!-text-align-right">View</td>
-			<td>
-				<select class="govuk-select" style="width: 80px;" text="page-size" id="quarter-filter">
+			<td colspan="5" class="govuk-body govuk-!-text-align-right">
+				View 
+				<select class="govuk-select" style="width: 80px;" text="page-size" id="pagesize-filter-3">
 					<option value="10">10</option>
 					<option value="25">25</option>
 					<option value="50">50</option>
@@ -583,7 +579,7 @@
 		  
 		  {% if data['chosen-facility'] %}
 		  
-		  <tbody class="govuk-table__body">		  
+		  <tbody class="govuk-table__body" id="tbody-results-3">		  
 		  
 			{% for evidenceNote in data['chosen-facility-transferable-notes'] %}
 
@@ -617,14 +613,12 @@
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-submitted-notes'].length }} of {{data['chosen-facility-submitted-notes'].length }}</td>
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
 				  <span style="float: right;">
-					<!--
 					<a href="#">Prev</a>
 					<a href="#"> 1 </a>
 					<a href="#"> 2 </a>
 					<a href="#"> 3 </a>
 					<a href="#"> 4 </a>
 					<a href="#">Next</a>
-					-->
 					Prev 1 2 3 4 5 Next
 				  </span>
 				</td>
@@ -711,10 +705,12 @@
 	</div>
 	
 	</form>
-	
   </div>
   
   
+
+
+
   
   
   
@@ -723,9 +719,9 @@
   <div id="evidence-all" class="govuk-tabs__panel govuk-tabs__panel--hidden">
   
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
-		<label for="input-search" class="govuk-heading-s">Search by reference ID</label>
+		<label for="input-search-4" class="govuk-heading-s">Search by reference ID</label>
 		<div class="govuk-input" style="width: 200px;">
-			<input type="text" id="input-search" placeholder=" " class="search-text-input" />
+			<input type="text" id="input-search-4" placeholder=" " class="search-text-input" />
 			<span id="button-holder"><img src="/public/images/search.jpg" /></span>
 		</div>
 	</div>
@@ -734,7 +730,7 @@
 		<div class="govuk-heading-s">Filter by:</div>
 		<table border="0">
 		  <tr class="govuk-table__row">
-				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Submitted date</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 200px;">Date received</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued by</th>
 				<th class="govuk-body govuk-!-text-align-left">Type</th>
@@ -743,17 +739,18 @@
 		  </tr>
 		  <tr class="govuk-table__row">
 			<td>
-				<input class="govuk-select" type="Date" id="date-filter" style="width: 175px;" />
+				<input class="govuk-select" type="Date" id="date-filter-4" style="width: 200px;" />
+				<!-- input class="govuk-select" type="Month" id="quarter-filter-4" style="width: 200px; padding: 0;" / -->
 			</td>
 			<td>
-				<select class="govuk-select" id="year-filter" style="width: 175px;" text="Compliance year">
+				<select class="govuk-select" id="year-filter-4" style="width: 175px;" text="Compliance year">
 					<option value="2022">2022</option>
 					<option value="2021">2021</option>
 					<option value="2020">2020</option>
 				</select>
 			</td>
 			<td>
-				<input class="govuk-select" type="text" name="example" style="width: 220px;" list="issuersList" id="pcs-filter">
+				<input class="govuk-select" id="pcs-filter-4" type="text" name="example" style="width: 220px;" list="issuersList">
 				<datalist id="issuersList">
 					<option value="AATF1" />
 					<option value="AATF2" />
@@ -761,14 +758,14 @@
 				</datalist>
 			</td>
 			<td>
-				<select class="govuk-select" text="Type" id="type-filter">
+				<select class="govuk-select" text="Type" id="type-filter-4">
 					<option value="0"> </option>
 					<option value="Household">Household</option>
 					<option value="Non-household">Non-household</option>
 				</select>
 			</td>
 			<td>
-				<select class="govuk-select" style="width: 100%;">
+				<select class="govuk-select" style="width: 100%;" id="status-filter-4">
 					<option value="0"> </option>
 					<option value="Submitted">Submitted</option>
 					<option value="Approved">Approved</option>
@@ -778,7 +775,7 @@
 				</select>
 			</td>
 			<td>
-				<select class="govuk-select" style="width: 100%;" text="Category" id="category-filter">
+				<select class="govuk-select" id="category-filter-4" style="width: 100%;" text="Category">
 					<option value="0"> </option>
 					<option value="1">1. Large household appliances</option>
 					<option value="2">2. Small household appliances</option>
@@ -806,7 +803,7 @@
 			<!-- td class="govuk-body govuk-!-text-align-right">View</td -->
 			<td colspan="2" class="govuk-body govuk-!-text-align-right">
 				View 
-				<select class="govuk-select" style="width: 55px;" text="page-size" id="pagesize-filter">
+				<select class="govuk-select" style="width: 55px;" id="pagesize-filter-4">
 					<option value="10">10</option>
 					<option value="25">25</option>
 					<option value="50">50</option>
@@ -831,7 +828,7 @@
 		  
 		  {% if data['chosen-facility'] %}
 		  
-			<tbody class="govuk-table__body">
+			<tbody class="govuk-table__body" id="tbody-results-4">
 		  
 				{% for evidenceNote in data['chosen-facility-reviewed-notes'] %}
 
@@ -859,15 +856,13 @@
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-reviewed-notes'].length }} of {{data['chosen-facility-reviewed-notes'].length }}</td>
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
 				  <span style="float: right;">
-					<!--
 					<a href="#">Prev</a>
 					<a href="#"> 1 </a>
 					<a href="#"> 2 </a>
 					<a href="#"> 3 </a>
 					<a href="#"> 4 </a>
 					<a href="#">Next</a>
-					-->
-					Prev 1 2 3 4 5 Next
+					<!-- Prev 1 2 3 4 5 Next -->
 				  </span>
 				</td>
 			  </tr>
