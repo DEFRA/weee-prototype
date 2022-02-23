@@ -222,7 +222,8 @@ function setupAatfs(req){
                 aatfs.push(findAatf);
             }
     
-            var newEvidenceNote = new TransferAatfNote(note._reference);
+            if (findAatf._notes.length === 0){
+                var newEvidenceNote = new TransferAatfNote(note._reference);
 
                 for(var categoryCount = 0; categoryCount < selectedTransferCategories.length; categoryCount++) {
                     var noteCategory = selectedTransferCategories[categoryCount];
@@ -236,10 +237,8 @@ function setupAatfs(req){
                     newEvidenceNote._categories.push(new TransferAatfCategory(category, rec, reused));
                 }
          
-            
-            
-            findAatf._notes.push(newEvidenceNote);
-        
+                findAatf._notes.push(newEvidenceNote);
+            }   
         }
     }
 
