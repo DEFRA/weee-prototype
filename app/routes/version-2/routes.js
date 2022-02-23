@@ -1626,7 +1626,7 @@ router.get('/version-2/pcs-journey/312-download-approved-evidence-pdf', function
 router.get('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'PCS Ltd';
-	req.session.data['header']['activity'] = 'transfer evidence note to scheme';
+	req.session.data['header']['activity'] = 'Transfer evidence';
 	
     res.redirect('/version-2/314_Transfer_evidence_note');
 });

@@ -309,6 +309,7 @@ router.post('/version-2/pcs-journey/314-transfer-evidence-note', function(req, r
     req.session.data['schemes'] = new Schemes();
     req.session.data['selected-transfer-categories'] = null;
     req.session.data['selected-transfer-aatfs'] = null;
+    req.session.data['header']['activity'] = 'Transfer Evidence';
     var transferableNotes = req.session.data['chosen-facility-transferable-notes'];
     var selectedTransferableNotes = [];
 
