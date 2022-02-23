@@ -75,7 +75,8 @@ function setupAatfs(req){
         {
             aatfid: 1,
             evidenceNote: 1399,
-            aatf: "Recycle team (AATF12344)",
+            aatf: "Recycle team",
+            aatfRef: "AATF12344",
             category : [{
                 id : 4,
                 received: 50,
@@ -89,7 +90,8 @@ function setupAatfs(req){
         },
         {
             aatfid: 1,
-            aatf: "Recycle team (AATF12344)",
+            aatf: "Recycle team",
+            aatfRef: "AATF12344",
             evidenceNote: 1400,
             category : [{
                 id : 4,
@@ -104,7 +106,8 @@ function setupAatfs(req){
         },
         {
             aatfid: 2,
-            aatf: "WEEE waste (AATF147283)",
+            aatf: "WEEE waste",
+            aatfRef: "AATF147283",
             evidenceNote: 1450,
             category : [{
                 id : 4,
@@ -119,7 +122,8 @@ function setupAatfs(req){
         },
         {
             aatfid: 2,
-            aatf: "WEEE waste (AATF147283)",
+            aatf: "WEEE waste",
+            aatfRef: "AATF147283",
             evidenceNote: 1400,
             category : [{
                 id : 4,
@@ -134,7 +138,8 @@ function setupAatfs(req){
         },
         {
             aatfid: 2,
-            aatf: "WEEE waste (AATF147283)",
+            aatf: "WEEE waste",
+            aatfRef: "AATF147283",
             evidenceNote: 1345,
             category : [{
                 id : 4,
@@ -163,7 +168,7 @@ function setupAatfs(req){
             var findAatf = aatfs.find(a => a._id === note.aatfid);
     
             if(!findAatf) {
-                findAatf = new TransferAatf(note.aatfid, note.aatf);
+                findAatf = new TransferAatf(note.aatfid, note.aatf, note.aatfRef);
                 aatfs.push(findAatf);
             }
     
@@ -218,7 +223,7 @@ function setupAatfs(req){
             var findAatf = aatfs.find(a => a._id === note._aatf);
 
             if(!findAatf) {
-                findAatf = new TransferAatf(note._aatf, note._aatf);
+                findAatf = new TransferAatf(note._aatf, note._aatf, 'AATF' + Math.floor(Math.random() * (19999 - 10000 + 1) + 10000).toString());
                 aatfs.push(findAatf);
             }
     
