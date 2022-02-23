@@ -1332,11 +1332,9 @@ router.get('/version-2/305-edit-evidence-note-redirect', function(req, res){
 
 function CreatePCSFacilitiesWithEvidenceNotes(req)
 {
-    var selectedFacility = req.session.data['choose-site'];
-	var facilities = req.session.data['facilities'];
-	facility = facilities.find(fac => fac._name == selectedFacility);
+    var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
 
-    if (facility._evidenceNotes.length === 0)
+    if (facility._evidenceNotes == null || facility._evidenceNotes.length === 0)
 	{
         facility._evidenceNotes = [];
 
@@ -1449,8 +1447,6 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         
     }
 	
-	//var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
-	
 	return facility;
 }
 
@@ -1473,6 +1469,7 @@ router.get('/version-2/pcs-journey/309-choose-activity-pcs', function(req, res)
     res.redirect('/version-2/309_Choose_activity_PCS');
 });
 
+/*
 router.get('/version-2/pcs-journey/309-choose-site', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'PCS Ltd';
@@ -1489,12 +1486,23 @@ router.get('/version-2/pcs-journey/309-choose-site', function(req, res)
 
     res.redirect('/version-2/309_Choose_site');
 });
+*/
 
 router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'PCS Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
 	
+	var schemes = new Schemes();
+    var facilities = [];
+    facilities.push(new Facility('PCS Ltd Darlaston', 1, 'WEE/AB1234GH/ATF'));
+    facilities.push(new Facility('PCS Ltd Woking', 2, 'WEE/AB5678GH/ATF'));
+    facilities.push(new Facility('PCS Ltd Maidenhead', 3, 'WEE/AB9012GH/ATF'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+
 	var selectedFacility = CreatePCSFacilitiesWithEvidenceNotes(req);
 
 	// Sort by Status then Submitted Date 
