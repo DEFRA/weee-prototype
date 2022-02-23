@@ -1565,6 +1565,17 @@ router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
     res.redirect('/version-2/310_Manage_evidence_tabs');
 });
 
+
+router.get('/version-2/pcs-journey/320-view-evidence-note', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'PCS Ltd';
+	req.session.data['header']['activity'] = 'view evidence note';
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
+
+    res.redirect('/version-2/320_View_evidence_note');
+});
+
+
 // this is called when loading the Review Evidence page
 router.get('/version-2/pcs-journey/311-review-evidence-note', function(req, res)
 {
@@ -1588,6 +1599,7 @@ router.get('/version-2/pcs-journey/312-download-approved-evidence-pdf', function
 	
 	if ( evidenceNote._status == 'Approved' ) req.session.data['date-approved'] = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 	if ( evidenceNote._status == 'Rejected' ) req.session.data['date-rejected'] = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	if ( evidenceNote._status == 'Returned' ) req.session.data['date-returned'] = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
     res.redirect('/version-2/312_Download_approved_evidence');
 });

@@ -698,7 +698,7 @@
 		  <tr class="govuk-table__row">
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Submitted date</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued to</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued by</th>
 				<th class="govuk-body govuk-!-text-align-left">Type</th>
 				<th class="govuk-body govuk-!-text-align-left">Status</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 80px;">Category</th>
@@ -767,7 +767,7 @@
 			<!-- td class="govuk-body govuk-!-text-align-right">View</td -->
 			<td colspan="2" class="govuk-body govuk-!-text-align-right">
 				View 
-				<select class="govuk-select" style="width: 55px;" text="page-size" id="quarter-filter">
+				<select class="govuk-select" style="width: 55px;" text="page-size" id="pagesize-filter">
 					<option value="10">10</option>
 					<option value="25">25</option>
 					<option value="50">50</option>
@@ -807,7 +807,7 @@
 						<td class="govuk-table__cell">{{evidenceNote._wasteType}}</td>
 						<td class="govuk-table__cell">{{evidenceNote._status}}</td>  <!-- this should be always be 'Submitted' -->
 						<td class="govuk-table__cell">
-						  <a href="/version-2/pcs-journey/review-evidence-note-redirect?id={{evidenceNote._reference}}">View</a>
+						  <a href="/version-2/pcs-journey/320-view-evidence-note?id={{evidenceNote._reference}}">View</a>
 						</td>
 					</tr>
 
@@ -931,6 +931,6 @@
 
 
 
-<!-- script src="/public/javascripts/filter-310.js"></script -->
+<script src="/public/javascripts/filter-310.js"></script>
 
 {% endblock %}
