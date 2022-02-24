@@ -1,13 +1,14 @@
-{% extends "version-2/layout.html" %}
+{% extends "version-2/layout_no_back.html" %}
 
 {% block pageTitle %}
   View submitted evidence note
 {% endblock %}
 
 {% block content %}
-
+<a class="govuk-back-link" href="/version-2/pcs-journey/310-manage-evidence">Manage evidence notes</a>
+<div class="govuk-!-padding-bottom-5"></div>
 <form class="form" action="/version-2/317_PDF_printed_dialog" method="post">
-
+	
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters" style="width: 90%;">
 
