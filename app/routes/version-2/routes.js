@@ -1332,7 +1332,7 @@ router.get('/version-2/305-edit-evidence-note-redirect', function(req, res){
 
 function CreatePCSFacilitiesWithEvidenceNotes(req)
 {
-    var facility = new Facility('ABB Ltd Woking', 2, 'WEE/AB5678GH/ATF');
+    var facility = new Facility('Recycling Team Ltd', 2, 'WEE/AB5678GH/ATF');
 
     if (facility._evidenceNotes == null || facility._evidenceNotes.length === 0)
 	{
