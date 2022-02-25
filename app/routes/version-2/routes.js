@@ -1131,13 +1131,7 @@ router.get('/version-2/aatf-journey/303-manage-evidence-redirect', function(req,
 	}
     req.session.data['total-approved-notes'] = totalApprovedNotes; 
     req.session.data['total-submitted-notes'] = totalSubmittedNotes;
-	
-	//console.log(`sort approved: ${totalApprovedNotes} --- submitted: ${totalSubmittedNotes}`);
-
     req.session.data['chosen-facility'] = facility; 
-	
-	//var selected = sessionStorage.getItem('selectedTab');
-	//req.session.data['selectedTab'] = selected;
 	
     res.redirect('/version-2/303_Manage_evidence');
 });
@@ -1640,6 +1634,52 @@ router.get('/version-2/pcs-journey/314-transfer-evidence-note', function(req, re
 	req.session.data['header']['activity'] = 'Transfer evidence';
 	
     res.redirect('/version-2/314_Transfer_evidence_note');
+});
+
+
+
+
+
+// ------------------------------------------------------------------------------------
+// Version 4 - AATF journey
+// ------------------------------------------------------------------------------------
+
+router.get('/version-2/aatf-journey-v4/index', function(req, res)
+{
+	req.session.data['index-action-link'] = '/version-2/aatf-journey-v4/401-choose-activity-aatf';
+    res.redirect('/version-2/index');
+});
+
+router.get('/version-2/aatf-journey-v4/401-choose-activity-aatf', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'choose activity';
+    req.session.data['facilities'] = [];
+    req.session.data['schemes'] = new Schemes();
+    req.session.data['paste-values'] = '';
+    req.session.data['selected-transfer-aatfs'] = null;
+    req.session.data['selected-transfer-categories'] = null;
+    req.session.data['chosen-facility'] = null;
+    
+    res.redirect('/version-2/401_Choose_activity_AATF');
+});
+
+
+router.get('/version-2/aatf-journey-v4/402-choose-site', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'choose site';
+    var schemes = new Schemes();
+    var facilities = [];
+    facilities.push(new Facility('ABB Ltd Darlaston', 1, 'WEEE/1004636/ATF'));
+    facilities.push(new Facility('ABB Ltd Woking', 2, 'WEEE/1004637/ATF'));
+    facilities.push(new Facility('ABB Ltd Maidenhead', 3, 'WEEE/1004638/ATF'));
+
+    req.session.data['facilities'] = facilities;
+    req.session.data['schemes'] = schemes;
+    req.session.data['paste-values'] = '';
+
+    res.redirect('/version-2/402_Choose_site');
 });
 
 
