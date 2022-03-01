@@ -43,21 +43,21 @@
 				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._submittedDate }}</span>
 			</div>
 
-			{% if ( data['status'] === 'Approved' ) %}
+			{% if ( data['selected-evidence-note']._status === 'Approved' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved:</span> 
 					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-approved'] }}</span>
 				</div>
 			{% endif %}
 
-			{% if ( data['status'] === 'Rejected' ) %}
+			{% if ( data['selected-evidence-note']._status === 'Rejected' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date rejected:</span> 
 					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-rejected'] }}</span>
 				</div>
 			{% endif %}
 
-			{% if ( data['status'] === 'Returned' ) %}
+			{% if ( data['selected-evidence-note']._status === 'Returned' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date returned:</span> 
 					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-returned'] }}</span>
@@ -122,7 +122,7 @@
 			By submitting this information you confirm that the following waste and electronic equipment from UK <b>household</b> 
 			has been received between <b>{{ data['selected-evidence-note']._startDate }}</b> and <b>{{ data['selected-evidence-note']._endDate }}</b> at this site. 
 			It has been reused as whole appliances to the extent set out below. 
-			No other evidence has been issued on these WEEE materials
+			No other evidence has been issued on these WEEE materials.
 		</div>
 		
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">

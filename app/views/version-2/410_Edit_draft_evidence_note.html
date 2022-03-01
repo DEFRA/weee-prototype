@@ -9,8 +9,6 @@
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 <script src="/public/javascripts/evidence.js"></script>
 
-<style>div { border: 0px solid black; } </style>
-
 <div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none; margin-bottom: 25px;" id="errorSummary" role="alert"
     tabindex="-1" data-module="error-summary">
     <h2 class="govuk-error-summary__title" id="error-summary-title">
@@ -40,7 +38,7 @@
     </div>
 </div>
 
-<form class="form" action="/version-2/aatf-journey-v4/405-save-evidence-note" method="post">
+<form class="form" action="/version-2/aatf-journey-v4/save-evidence-note" method="post">
 
   <div class="govuk-grid-row">
 
@@ -50,7 +48,7 @@
 		
 		<h2 class="govuk-heading-m">Reference ID: {{ data['selected-evidence-note']._reference }}</h2>
 	  
-		<input type="hidden" name="reference" value="{{ data['selected-evidence-note']._reference }}" />
+		<input type="hidden" id="reference" name="reference" value="{{ data['selected-evidence-note']._reference }}" />
 
 		<div class="govuk-grid-row govuk-!-padding-top-3 govuk-!-padding-bottom-3">
 			<div class="govuk-grid-column-full">
