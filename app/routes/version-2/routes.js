@@ -1331,7 +1331,6 @@ router.get('/version-2/305-edit-evidence-note-redirect', function(req, res){
 // VERSION 3 - PCS Journey
 // ------------------------------------------------------------------------------------
 
-
 function CreatePCSFacilitiesWithEvidenceNotes(req)
 {
     var facility = new Facility('Recycling Team Ltd', 2, 'WEE/AB5678GH/ATF');
@@ -1591,7 +1590,6 @@ router.get('/version-2/pcs-journey/310-manage-evidence', function(req, res)
     res.redirect('/version-2/310_Manage_evidence_tabs');
 });
 
-
 router.get('/version-2/pcs-journey/320-view-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'PCS Ltd';
@@ -1601,7 +1599,6 @@ router.get('/version-2/pcs-journey/320-view-evidence-note', function(req, res)
 
     res.redirect('/version-2/320_View_evidence_note');
 });
-
 
 // this is called when loading the Review Evidence page
 router.get('/version-2/pcs-journey/311-review-evidence-note', function(req, res)
@@ -1633,7 +1630,6 @@ router.get('/version-2/pcs-journey/312-download-approved-evidence-pdf', function
 
     res.redirect('/version-2/312_Download_approved_evidence');
 });
-
 
 router.get('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
 {
@@ -1947,6 +1943,89 @@ router.get('/version-2/aatf-journey-v4/410-edit-draft-evidence-note', function(r
     req.session.data['selectedpcs'] = (evidenceNote._pcs === '') ? 'Recipient name' : evidenceNote._pcs;
     
     res.redirect('/version-2/410_Edit_draft_evidence_note');
+});
+
+
+router.post('/version-2/aatf-journey-v4/405-save-evidence-note', function(req, res)
+{
+    var facility = req.session.data['chosen-facility']; 
+    var facilities = req.session.data['facilities'];
+	var evidenceNumber = req.session.data['selected-evidence-note']._reference;
+    
+    var received1 = new Categories(req.session.data['received1'], req.session.data['received2'], req.session.data['received3'], 
+        req.session.data['received4'], req.session.data['received5'], req.session.data['received6'], req.session.data['received7'], req.session.data['received8'], 
+        req.session.data['received9'], req.session.data['received10'], req.session.data['received11'], req.session.data['received12'], req.session.data['received13'], 
+        req.session.data['received14']);
+    
+    var reused1 = new Categories(req.session.data['reUsed1'], req.session.data['reUsed2'], req.session.data['reUsed3'], req.session.data['reUsed4'], 
+        req.session.data['reUsed5'], req.session.data['reUsed6'], req.session.data['reUsed7'], req.session.data['reUsed8'], req.session.data['reUsed9'], 
+        req.session.data['reUsed10'], req.session.data['reUsed11'], req.session.data['reUsed12'], req.session.data['reUsed13'], req.session.data['reUsed14']);
+
+    var status = '';
+    var startDate = '';
+    var endDate = '';
+    var pcs = '';
+    var year = '';
+    var protocol = '';
+    var wasteType = '';
+
+    if (req.session.data['startDate']!=='')
+	{
+        startDate = req.session.data['startDate'];
+    }
+	
+    if (req.session.data['endDate']!=='')
+	{
+        endDate = req.session.data['endDate'];
+    }
+	
+    if (req.session.data['pcs']!=='Recipient name')
+	{
+        pcs = req.session.data['pcs'];
+    }
+	
+    if (req.session.data['year']!=='0')
+	{
+        year = req.session.data['year'];
+    }
+	
+    if (req.session.data['protocol']!=='0')
+	{
+        protocol = req.session.data['protocol'];
+    }
+    
+    if (req.session.data['wasteType']!=='0')
+	{
+        wasteType = req.session.data['wasteType'];
+    }
+	
+    var evidenceNote = new EvidenceNote(startDate, endDate, pcs, 
+                                        year, wasteType, protocol, 
+										received1, reused1, status, evidenceNumber, 
+										moment().format('DD/MM/YYYY HH:mm:ss'));
+
+    if (req.session.data['action'] === 'submit')
+	{
+        status = 'Submitted'
+        var date = new Date();
+        evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+        evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
+    } 
+	else 
+	{
+        status = 'Draft'
+    };
+
+    evidenceNote._status = status;
+	
+    var evidenceNoteIndex = facility._evidenceNotes.findIndex(find => find._reference == Number(evidenceNumber));
+
+	facility._evidenceNotes[evidenceNoteIndex] = evidenceNote;  // we do not push - we replace object item
+    //facility._evidenceNotes.push(evidenceNote);
+	
+	req.session.data['chosen-facility'] = facility;  // refresh persisted facility before exiting
+    
+    res.redirect('/version-2/aatf-journey-v4/403-manage-evidence');
 });
 
 
