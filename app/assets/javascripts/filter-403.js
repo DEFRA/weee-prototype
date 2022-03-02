@@ -1,8 +1,12 @@
 
+	window.addEventListener('load', function () 
+	{
+		filterEventBinding();     // event binding to filters
+		setupPagination();        // pagination on tab2 and tab3
+	})
 
-
+	// -----------------------------------------------------------------------------
     
-
     function IsMatch(td, compare)
 	{
         if (td) 
@@ -15,8 +19,6 @@
 		
         return true;
     }
-
-
 
     function IsDateWithinRange_UNUSED_BUT_KEEP_FOR_FUTURE_EXPANSION(td, compare)
 	{
@@ -55,7 +57,6 @@
         return true;
     }
 
-
     function IsReceivedDateInMonthSelected(td, compare)
 	{
 		// this will pick-up the date range within the data row column - split received month/year and check it against if month/year picked in widget
@@ -81,7 +82,6 @@
         return true;
     }
 	
-
 	function ConvertFromHtmlDateParts(someDateString)
 	{
 		// substitute day and month to get US format date (are we digitally colonised ?)
@@ -95,7 +95,6 @@
 		return month + "/" + day + "/" + year;  // US format
 	}
 
-
 	function SubstituteDateParts(someDateString)
 	{
 		// substitute day and month to get US format date (are we digitally colonised ?)
@@ -108,11 +107,6 @@
 		
 		return month + "/" + day + "/" + year;  // US format
 	}
-	
-	
-
-
-	// -----------------------------------------------------------------------------
 
     function searchTab2() 
 	{
@@ -178,11 +172,29 @@
         }
     }
 
+	function filterDateTab3()
+	{
+		var dateFilter = document.getElementById("date-filter-3").value;
+        var table = document.getElementById("tbody-results-3");
+        var trs = table.getElementsByClassName("govuk-table__row result-row");
+		
+        for (i = 0; i < trs.length; i++) 
+		{
+			var displayRow = true;
+			
+            if (dateFilter != '') 
+			{
+                var cell = trs[i].getElementsByTagName("td")[4];
 
-
-
-
-
+                if (!IsMatch(cell, dateFilter))
+				{
+                    displayRow = false;
+                }
+            }
+			
+            trs[i].style.display = (displayRow) ? "" : "none";
+		}
+	}
 
 	function filterYearTab2()
 	{
@@ -232,10 +244,6 @@
 		}
 	}
 
-
-
-
-
 	function filterPcsTab2()
 	{
 		var pcsFilter = document.getElementById("pcs-filter-2").value;
@@ -284,9 +292,6 @@
 		}
 	}
 
-
-
-
 	function filterStatusTab2()
 	{
 		var statusFilter = document.getElementById("status-filter-2").value;
@@ -326,10 +331,6 @@
             trs[i].style.display = (displayRow) ? "" : "none";
 		}
 	}
-
-
-
-
 
 	function filterTypeTab2()
 	{
@@ -379,7 +380,6 @@
 		}
 	}
 
-
 	function filterEventBinding()
 	{
         document.getElementById("input-search-2").addEventListener('change', (e) => {
@@ -389,14 +389,9 @@
             searchTab3();        
         });
 
-/*
-        document.getElementById("date-from-filter-3").addEventListener('change', (e) => {
-            filterDateFromTab3();
+        document.getElementById("date-filter-3").addEventListener('change', (e) => {
+            filterDateTab3();
         });
-        document.getElementById("date-to-filter-3").addEventListener('change', (e) => {
-            filterDateToTab3();
-        });
-
 
         document.getElementById("year-filter-2").addEventListener('change', (e) => {
             filterYearTab2();
@@ -404,7 +399,7 @@
         document.getElementById("year-filter-3").addEventListener('change', (e) => {
             filterYearTab3();
         });
-*/
+
 
         document.getElementById("pcs-filter-2").addEventListener('change', (e) => {
             filterPcsTab2();
@@ -440,7 +435,7 @@
         });
 	}
 
-
+	// This is called by the page numbers in table footer
     function pageView(pageNumberAsString) 
 	{
 		if ( pageNumberAsString === 'p' ) pageNumberAsString = '1';
@@ -449,10 +444,11 @@
 		var pageSize = document.getElementById("page-size-keeper").value;
 		var pageNumber = Number(pageNumberAsString);
 		
-		var pageMin = (pageNumber - 1) * pageSize;
+		//var pageMin = (pageNumber - 1) * pageSize;
+		var pageMin = ((pageNumber - 1) * pageSize) + 1;
 		var pageMax = pageMin + (pageSize - 1);
 		
-        var table = document.getElementById("tbody-results");
+        var table = document.getElementById("tbody-results-2");
         var trs = table.getElementsByClassName("govuk-table__row result-row");
 
         // Loop through all table rows, and hide those who don't match the search query
@@ -469,8 +465,6 @@
         }
     }
 
-
-
 	function numberWithCommas(x)
 	{
 		x = x.toString();
@@ -480,18 +474,10 @@
 		return x;
 	}
 
-	window.addEventListener('load', function () 
+	function setupPagination() 
 	{
-		
-		// event binding to filters
-		filterEventBinding();
-
-
-		
-		
-		/*
-		var table = document.getElementById("tbody-summary");
-		var trs = table.getElementsByClassName("summary-row");
+		var table = document.getElementById("tbody-results-2");
+		var trs = table.getElementsByClassName("result-row");
 		
 		var total1 = 0;
 		var total2 = 0;
@@ -507,12 +493,11 @@
 		
 		document.getElementById("total-1").innerText = numberWithCommas(total1);
 		document.getElementById("total-2").innerText = numberWithCommas(total2);
-		*/
+		
 		
 		
 		// paginator
 		
-		/*
 		document.getElementById("page-size-filter").addEventListener('change', (e) => 
 		{
 			document.getElementById("page-size-keeper").value = document.getElementById("page-size-filter").value;
@@ -561,7 +546,6 @@
 		{
 			pageView('p');        
 		});
-
 		document.getElementById("page-browser-1").addEventListener('click', (e) => 
 		{
 			pageView('1');        
@@ -570,33 +554,26 @@
 		{
 			pageView('2');        
 		});
-
 		document.getElementById("page-browser-3").addEventListener('click', (e) => 
 		{
 			pageView('3');        
 		});
-
 		document.getElementById("page-browser-4").addEventListener('click', (e) => 
 		{
 			pageView('4');        
 		});
-
 		document.getElementById("page-browser-5").addEventListener('click', (e) => 
 		{
 			pageView('5');        
 		});
-
 		document.getElementById("page-browser-6").addEventListener('click', (e) => 
 		{
 			pageView('6');        
 		});
-
 		document.getElementById("page-browser-n").addEventListener('click', (e) => 
 		{
 			pageView('n');        
 		});
-		*/
-	})
 
-
+	}
 

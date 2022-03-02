@@ -315,14 +315,16 @@
 			  <tr>
 				<td class="govuk-table__cell" colspan="2" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-draft-returned-notes'].length }} of {{data['chosen-facility-draft-returned-notes'].length }}</td>
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				  <input type="hidden" id="page-size-keeper" value="1" />
 				  <span style="float: right;">
 					<a href="#">Prev</a>
-					<a href="#"> 1 </a>
-					<a href="#"> 2 </a>
-					<a href="#"> 3 </a>
-					<a href="#"> 4 </a>
+					<a href="#">&nbsp; 1 &nbsp;</a>
+					<!--
+					<a href="#">&nbsp; 2 &nbsp;</a>
+					<a href="#">&nbsp; 3 &nbsp;</a>
+					<a href="#">&nbsp; 4 &nbsp;</a>
+					-->
 					<a href="#">Next</a>
-					<!-- Prev 1 2 3 4 5 Next -->
 				  </span>
 				</td>
 			  </tr>
@@ -331,7 +333,7 @@
 		  {% else %}
 		  
 			  <tbody class="govuk-table__body">
-				<tr class="govuk-table__row result-row">
+				<tr class="govuk-table__row">
 				  <td class="govuk-table__cell" colspan="6">no evidence notes found</td>
 				</tr>
 			  </tbody>
@@ -371,7 +373,7 @@
 		<div class="govuk-heading-s">Filter by:</div>
 		<table border="0">
 		  <tr class="govuk-table__row">
-				<th class="govuk-body govuk-!-text-align-left" style="width: 200px;">Submitted date from</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 200px;">Submitted date</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued to</th>
 				<th class="govuk-body govuk-!-text-align-left">Type of waste</th>
@@ -380,7 +382,7 @@
 		  </tr>
 		  <tr class="govuk-table__row">
 			<td>
-				<input class="govuk-select" type="Date" id="date-filter-from-3" style="width: 200px; padding: 0;" />
+				<input class="govuk-select" type="Date" id="date-filter-3" style="width: 200px; padding: 0;" />
 			</td>
 			<td>
 				<select class="govuk-select" id="year-filter-3" style="width: 175px;" text="Compliance year">
@@ -416,17 +418,6 @@
 				</select>
 			</td>
 			<td>&nbsp;</td>
-		  </tr>
-		  
-		  <tr>
-			<td class="govuk-body govuk-!-text-align-left">Submitted date to</td>
-			<td colspan="5">&nbsp;</td>
-		  </tr>
-		  <tr>
-			<td>
-				<input class="govuk-select" type="Date" id="date-filter-to-3" style="width: 200px; padding: 0;" />
-			</td>
-			<td colspan="5">&nbsp;</td>
 		  </tr>
 		  
 		  <tr><td colspan="6" style="height: 30px;">&nbsp;</td></tr>
@@ -490,10 +481,12 @@
 				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
 				  <span style="float: right;">
 					<a href="#">Prev</a>
-					<a href="#"> 1 </a>
-					<a href="#"> 2 </a>
-					<a href="#"> 3 </a>
-					<a href="#"> 4 </a>
+					<a href="#">&nbsp; 1 &nbsp;</a>
+					<!--
+					<a href="#">&nbsp; 2 &nbsp;</a>
+					<a href="#">&nbsp; 3 &nbsp;</a>
+					<a href="#">&nbsp; 4 &nbsp;</a>
+					-->
 					<a href="#">Next</a>
 				  </span>
 				</td>
@@ -503,7 +496,7 @@
 		  {% else %}
 		  
 			  <tbody class="govuk-table__body">
-				<tr class="govuk-table__row result-row">
+				<tr class="govuk-table__row">
 				  <td class="govuk-table__cell" colspan="6">no evidence notes found</td>
 				</tr>
 			  </tbody>

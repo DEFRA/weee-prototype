@@ -1701,57 +1701,8 @@ function CreateAATFFacilitiesWithEvidenceNotes(req)
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', 560.111, 2.002, "Approved", 1391, '11/11/2021 11:32:40'));
+        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', 560.111, 2.002, "Void", 1391, '11/11/2021 11:32:40'));
     
-    
-        // [10..14] -------------------------------------------
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        var newNote = new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 308.005, 0.005, "Submitted", 1122, '11/11/2021 11:32:40')
-        newNote._aatf = "Environcom England Ltd";
-        facility._evidenceNotes.push(newNote);
-    
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', 192.222, 10.521, "Rejected", 1379, '11/11/2021 11:32:40'));
-    
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 290.252, 30.005, "Void", 1654, '11/11/2021 11:32:40'));
-    
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', 122.125, 2.101, "Void", 1288, '11/11/2021 11:32:40'));
-    
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 365.001, 2.001, "Void", 1659, '11/11/2021 11:32:40'));
-        
-    
-        // [15..19] -------------------------------------------
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        var newNote1 = new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 225.664, 6.369, "Submitted", 1123, '11/11/2021 11:32:40')
-        newNote1._aatf = "Electrical Waste Recycling Group Limited (Huddersfield)";
-        facility._evidenceNotes.push(newNote1);
-    
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', 329.152, 2.354, "Approved", 1387, '11/11/2021 11:32:40'));
-    
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 241.005, 4.105, "Returned", 1654, '11/11/2021 11:32:40'));
-    
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', 260.102, 10.005, "Rejected", 1366, '11/11/2021 11:32:40'));
-    
-        received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Waste Electrical Recycling Scheme', '2022', 'Household', 'Actual', 270.256, 10.102, "Void", 1659, '11/11/2021 11:32:40'));
-    
-   
         
         // ------------------------------------------------------------------------------------------
         // Submitted evidence notes 
@@ -1760,8 +1711,6 @@ function CreateAATFFacilitiesWithEvidenceNotes(req)
         
         facility._evidenceNotes[1]._submittedDate = moment(new Date(2022, 01, 4, 11, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
         facility._evidenceNotes[6]._submittedDate = moment(new Date(2022, 01, 5, 14, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
-        facility._evidenceNotes[10]._submittedDate = moment(new Date(2022, 01, 6, 17, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
-        facility._evidenceNotes[15]._submittedDate = moment(new Date(2022, 01, 7, 20, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
         
     }
 	
