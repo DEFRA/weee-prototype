@@ -12,6 +12,7 @@ class EvidenceNote{
      this._reused = reused;
      this._status = status;
      this._reference = reference;
+     this._approvedDate = '-';
      this._submittedDate = '-';
      this._returnedDate = '-';
      this._rejectedDate = '-';
