@@ -1895,20 +1895,29 @@ router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', functi
 {
 	req.session.data['header']['organisation'] = 'ABB Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
-    var facility = req.session.data['chosen-facility']; 
+    var facility = req.session.data['chosen-facility'];
 	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
 
     res.redirect('/version-2/405_View_draft_or_submitted_note');
 });
 
-router.get('/version-2/aatf-journey-v4/407-pdf-print-dialog', function(req, res)
+router.post('/version-2/aatf-journey-v4/407-pdf-print-or-edit-dialog', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'ABB Ltd';
-	req.session.data['header']['activity'] = 'print evidence note';
-	
 	req.session.data['show-submission-panel'] = null;
+	
+	if ( req.session.data['action'] == 'submit1' )
+	{
+		req.session.data['header']['activity'] = 'print evidence note';
 
-    res.redirect('/version-2/407_PDF_printed_dialog');
+		res.redirect('/version-2/407_PDF_printed_dialog');
+	}
+	else
+	{
+		req.session.data['header']['activity'] = 'edit evidence note';
+		
+		res.redirect('/version-2/aatf-journey-v4/410-edit-draft-evidence-note');
+	}
 });
 
 router.get('/version-2/aatf-journey-v4/410-edit-draft-evidence-note', function(req, res)
@@ -2018,17 +2027,6 @@ router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
 
 router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res)
 {
-	//var chosenFacility = req.session.data['chosen-facility'];
-    //var selectedFacility = null;
-    //if (!chosenFacility)
-	//{
-    //    selectedFacility = CreateAATFFacilitiesWithEvidenceNotes(req);
-    //}
-	//else
-	//{
-    //    selectedFacility = chosenFacility;
-    //}
-	
 	selectedFacility = CreateAATFFacilitiesWithEvidenceNotes(req);
 	
 	// extract highest reference number and increment by 1
@@ -2101,31 +2099,29 @@ router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res
                                         year, wasteType, protocol, 
 										received1, reused1, status, newIndex, 
 										moment().format('DD/MM/YYYY'));
-
-	//newEvidenceNote._reference = newIndex;
 	
-    if (req.session.data['action'] == 'submit')
+    if (req.session.data['action'] == 'submit1')
 	{
-        status = 'Submitted'
+        newEvidenceNote._status = 'Submitted';
         var date = new Date();
-        newEvidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-        newEvidenceNote._searchDate = moment(newEvidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
+        newEvidenceNote._submittedDate = moment(date, 'DD/MM/YYYY').format('DD/MM/YYYY');
+        newEvidenceNote._searchDate = moment(newEvidenceNote._submittedDate, 'DD/MM/YYYY').format('YYYY-MM-DD');
+		req.session.data['show-submission-panel'] = true;
     } 
 	else 
 	{
-        status = 'Draft'
+        newEvidenceNote._status = 'Draft';
+		req.session.data['show-submission-panel'] = null;
     };
 
-    newEvidenceNote._status = status;
-	
 	selectedFacility._evidenceNotes.push(newEvidenceNote);
 	
-	req.session.data['chosen-facility'] = selectedFacility;  // refresh persisted facility before exiting
+	// refresh persisted facility before exiting and selected evidence note for display
+	req.session.data['chosen-facility'] = selectedFacility;
+	req.session.data['selected-evidence-note'] = newEvidenceNote;
     
-	req.session.data['show-submission-panel'] = true;
-    
-    //res.redirect('/version-2/aatf-journey-v4/403-manage-evidence');
-	res.redirect('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note');
+	//res.redirect('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note');  curiously, this refuses to work - 'selected-evidence-note' gets overwritten
+	res.redirect('/version-2/405_View_draft_or_submitted_note');
 });
 
 
