@@ -46,13 +46,13 @@
   
 		<h1 class="govuk-heading-l">Enter evidence note details</h1>
 		
-		<h2 class="govuk-heading-m">Reference ID: {{ data['selected-evidence-note']._reference }}</h2>
+		<h2 class="govuk-heading-m">Reference ID {{ data['selected-evidence-note']._reference }}</h2>
 	  
 		<input type="hidden" id="reference" name="reference" value="{{ data['selected-evidence-note']._reference }}" />
 
-		<div class="govuk-grid-row govuk-!-padding-top-3 govuk-!-padding-bottom-3">
-			<div class="govuk-grid-column-full">
-				<h3 class="govuk-body-s">Period in which WEEE was received for treatment</h3>
+		<div class="govuk-grid-row govuk-!-padding-top-3 govuk-!-padding-bottom-1">
+			<div class="govuk-grid-column-full" style="margin-bottom: -15px;">
+				<h3 class="govuk-body-m">Period in which WEEE was received for treatment</h3>
 			</div>
 			<div class="govuk-grid-column-one-half">
 				<div class="govuk-label--s">Start date<br /></div><input type="Date" class="govuk-input" value="{{ data['selectedStartDate'] }}" name="startDate" id="startDate"/>
@@ -64,7 +64,7 @@
 
 		<div class="govuk-grid-row govuk-!-padding-top-3 govuk-!-padding-bottom-3">
 			<div class="govuk-grid-column-one-half">
-			<div class="govuk-label--s">Receiving PCS</div>
+			<div class="govuk-label--s">Recipient</div>
 			<input class="govuk-input govuk-select" type="text" name="pcs" list="recipientsList" value="{{ data['selectedpcs'] }}" id="pcs">
 			<datalist id="recipientsList" class="govuk-input">
 
