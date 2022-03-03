@@ -1,4 +1,4 @@
-{% extends "version-2/layout.html" %}
+{% extends "version-2/layout_no_back.html" %}
 
 {% block pageTitle %}
   Choose an AATF site
@@ -9,10 +9,12 @@
 <script src="/public/javascripts/tabs.js"></script>
 <script>initTabs();</script>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<a href="/version-2/aatf-journey-v4/401-choose-activity-aatf">Back</a>
 
-      <h1 class="govuk-heading-xl">Which site would you like to manage evidence notes for?</h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">Which site would you like to manage evidence notes for?</h1>
 
       <form class="form" action="/version-2/aatf-journey-v4/403-manage-evidence" method="post">
 	  

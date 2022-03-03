@@ -13,6 +13,8 @@ class EvidenceNote{
      this._status = status;
      this._reference = reference;
      this._submittedDate = '-';
+     this._returnedDate = '-';
+     this._rejectedDate = '-';
      this._createdDate = createdDate;
 	 this._sortOrder = 0;
 	 this._isVisible = false;

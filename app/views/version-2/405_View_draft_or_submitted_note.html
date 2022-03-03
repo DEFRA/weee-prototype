@@ -9,7 +9,7 @@
 
 <div class="govuk-!-padding-bottom-5"></div>
 
-<form class="form" action="/version-2/407_PDF_printed_dialog" method="post">
+<form class="form" action="/version-2/aatf-journey-v4/407-pdf-print-dialog" method="post">
 	
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters" style="width: 90%;">
@@ -31,46 +31,49 @@
 				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._reference }}</span>
 			</div>
 		
+			<!-- -------------------------------------- -->
+
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Status</span> 
 				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._status }}</span>
 			</div>
 			
 			{% if ( data['reject-return-reason'] ) %}
-
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Reason</span> 
 					<span class="govuk-body govuk-!-margin-left-2">{{ data['reject-return-reason'] }}</span>
 				</div>
-
 			{% endif %}
 
-
-			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted</span> 
-				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._submittedDate }}</span>
-			</div>
-
-			{% if ( data['selected-evidence-note']._status === 'Approved' ) %}
+			{% if ( data['selected-evidence-note']._status === 'Submitted' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
-					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved</span> 
-					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-approved'] }}</span>
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted</span> 
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._submittedDate }}</span>
 				</div>
 			{% endif %}
 
 			{% if ( data['selected-evidence-note']._status === 'Rejected' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date rejected</span> 
-					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-rejected'] }}</span>
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._rejectedDate }}</span>
 				</div>
 			{% endif %}
 
 			{% if ( data['selected-evidence-note']._status === 'Returned' ) %}
 				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date returned</span> 
-					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-returned'] }}</span>
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._returnedDate] }}</span>
 				</div>
 			{% endif %}
+
+			{% if ( data['selected-evidence-note']._status === 'Approved' ) %}
+				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved</span> 
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._approvedDate }}</span>
+				</div>
+			{% endif %}
+			
+			<!-- -------------------------------------- -->
 		
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Compliance period</span> 
@@ -250,7 +253,7 @@
 			classes: "civica-font-size-22"
 		  }) }}
 		  
-		{% if ( data['selected-evidence-note']._status === 'Draft' ) %}
+		{% if ( data['selected-evidence-note']._status == 'Draft' ) %}
 		
 		{{ govukButton({
 			text: "Edit evidence note",

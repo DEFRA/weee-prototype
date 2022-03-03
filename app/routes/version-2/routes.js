@@ -1647,7 +1647,6 @@ router.get('/version-2/pcs-journey/314-transfer-evidence-note', function(req, re
 // Version 4 - AATF journey
 // ------------------------------------------------------------------------------------
 
-
 function CreateAATFFacilitiesWithEvidenceNotes(req)
 {
     var facility = new Facility('Recycling Team Ltd', 2, 'WEE/AB5678GH/ATF');
@@ -1709,12 +1708,28 @@ function CreateAATFFacilitiesWithEvidenceNotes(req)
         // facility._evidenceNotes[0]._submittedDate = moment(new Date(2022, 01, 4, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
         // ------------------------------------------------------------------------------------------
         
-        facility._evidenceNotes[1]._submittedDate = moment(new Date(2022, 01, 4, 11, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
-        facility._evidenceNotes[6]._submittedDate = moment(new Date(2022, 01, 5, 14, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY');
+        facility._evidenceNotes[1]._submittedDate = moment(new Date(2022, 01, 4, 11, 4, 5), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[3]._rejectedDate = moment(new Date(2022, 01, 4, 11, 4, 5), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[6]._submittedDate = moment(new Date(2022, 01, 5, 14, 4, 5), 'DD/MM/YYYY').format('DD/MM/YYYY');
         
     }
 	
 	return facility;
+}
+
+function getMax( numbers )
+{
+	var maximum = 0;
+	
+	for ( var n = 0; n < numbers.length; n++ )
+	{
+		if ( numbers[n] > maximum )
+		{
+			maximum = numbers[n];
+		}
+	}
+	
+	return maximum;
 }
 
 
@@ -1893,6 +1908,18 @@ router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', functi
 });
 
 
+
+router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'ABB Ltd';
+	req.session.data['header']['activity'] = 'print evidence note';
+	
+	req.session.data['show-submission-panel'] = null;
+
+    res.redirect('/version-2/407_PDF_printed_dialog');
+});
+
+
 router.get('/version-2/aatf-journey-v4/410-edit-draft-evidence-note', function(req, res)
 {
     var facility = req.session.data['chosen-facility'];
@@ -1973,7 +2000,7 @@ router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
     var evidenceNote = new EvidenceNote(startDate, endDate, pcs, 
                                         year, wasteType, protocol, 
 										received1, reused1, status, evidenceNumber, 
-										moment().format('DD/MM/YYYY HH:mm:ss'));
+										moment().format('DD/MM/YYYY'));
 
     if (req.session.data['action'] == 'submit')
 	{
@@ -1981,9 +2008,6 @@ router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
         var date = new Date();
         evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY').format('DD/MM/YYYY');
         evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY').format('YYYY-MM-DD');
-		
-        //evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-        //evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
     } 
 	else 
 	{
@@ -1997,10 +2021,8 @@ router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
 	facility._evidenceNotes[evidenceNoteIndex] = evidenceNote;
 	req.session.data['chosen-facility'] = facility;
 	
-	
 	req.session.data['show-submission-panel'] = true;
     
-    //res.redirect('/version-2/aatf-journey-v4/403-manage-evidence');
 	res.redirect('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note');
 });
 
@@ -2111,23 +2133,12 @@ router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res
 	
 	req.session.data['chosen-facility'] = selectedFacility;  // refresh persisted facility before exiting
     
-    res.redirect('/version-2/aatf-journey-v4/403-manage-evidence');
+	req.session.data['show-submission-panel'] = true;
+    
+    //res.redirect('/version-2/aatf-journey-v4/403-manage-evidence');
+	res.redirect('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note');
 });
 
-function getMax( numbers )
-{
-	var maximum = 0;
-	
-	for ( var n = 0; n < numbers.length; n++ )
-	{
-		if ( numbers[n] > maximum )
-		{
-			maximum = numbers[n];
-		}
-	}
-	
-	return maximum;
-}
 
 
 
