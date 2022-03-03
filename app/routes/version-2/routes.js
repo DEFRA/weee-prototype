@@ -1895,7 +1895,7 @@ router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', functi
 router.get('/version-2/aatf-journey-v4/410-edit-draft-evidence-note', function(req, res)
 {
     var facility = req.session.data['chosen-facility']; 
-    var evidenceNote = facility._evidenceNotes.find(find => find._reference === Number(req.query['id']));
+    var evidenceNote = facility._evidenceNotes.find(find => find._reference == Number(req.query['id']));
     
 	req.session.data['selected-evidence-note'] = evidenceNote;
     req.session.data['selectedStartDate'] = moment(evidenceNote._startDate).format('YYYY-MM-DD');
@@ -1964,16 +1964,19 @@ router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
 										received1, reused1, status, evidenceNumber, 
 										moment().format('DD/MM/YYYY HH:mm:ss'));
 
-    if (req.session.data['action'] === 'submit')
+    if (req.session.data['action'] == 'submit')
 	{
-        status = 'Submitted'
+        status = 'Submitted';
         var date = new Date();
-        evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-        evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
+        evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY').format('DD/MM/YYYY');
+        evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY').format('YYYY-MM-DD');
+		
+        //evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+        //evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
     } 
 	else 
 	{
-        status = 'Draft'
+        status = 'Draft';
     };
 
     evidenceNote._status = status;
@@ -1989,16 +1992,18 @@ router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
 
 router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res)
 {
-	var chosenFacility = req.session.data['chosen-facility'];
-    var selectedFacility = null;
-    if (!chosenFacility)
-	{
-        selectedFacility = CreateAATFFacilitiesWithEvidenceNotes(req);
-    }
-	else
-	{
-        selectedFacility = chosenFacility;
-    }
+	//var chosenFacility = req.session.data['chosen-facility'];
+    //var selectedFacility = null;
+    //if (!chosenFacility)
+	//{
+    //    selectedFacility = CreateAATFFacilitiesWithEvidenceNotes(req);
+    //}
+	//else
+	//{
+    //    selectedFacility = chosenFacility;
+    //}
+	
+	selectedFacility = CreateAATFFacilitiesWithEvidenceNotes(req);
 	
 	// extract highest reference number and increment by 1
 	var evidenceNumbers = [];
@@ -2007,7 +2012,7 @@ router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res
 	{
 		for (e = 0; e < selectedFacility._evidenceNotes.length; e++)
 		{
-			evidenceNumbers.push( new Number( facility._evidenceNotes[e]._reference ) );
+			evidenceNumbers.push( new Number( selectedFacility._evidenceNotes[e]._reference ) );
 		}
 	}
     else
@@ -2015,9 +2020,9 @@ router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res
 		evidenceNumbers.push( 0 );
 	}
 	
-	var nextIndex = evidenceNumbers.max() + 1;
+	var newIndex = getMax(evidenceNumbers) + 1;
 	
-    
+    // collect input data from the page
     var received1 = new Categories(req.session.data['received1'], req.session.data['received2'], req.session.data['received3'], 
         req.session.data['received4'], req.session.data['received5'], req.session.data['received6'], req.session.data['received7'], req.session.data['received8'], 
         req.session.data['received9'], req.session.data['received10'], req.session.data['received11'], req.session.data['received12'], req.session.data['received13'], 
@@ -2066,34 +2071,48 @@ router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res
     }
 	
 	// creation of the new note
-    var evidenceNote = new EvidenceNote(startDate, endDate, pcs, 
+    var newEvidenceNote = new EvidenceNote(startDate, endDate, pcs, 
                                         year, wasteType, protocol, 
-										received1, reused1, status, evidenceNumber, 
-										moment().format('DD/MM/YYYY HH:mm:ss'));
+										received1, reused1, status, newIndex, 
+										moment().format('DD/MM/YYYY'));
 
-	evidenceNote._reference = nextIndex;
+	//newEvidenceNote._reference = newIndex;
 	
-    if (req.session.data['action'] === 'submit')
+    if (req.session.data['action'] == 'submit')
 	{
         status = 'Submitted'
         var date = new Date();
-        evidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-        evidenceNote._searchDate = moment(evidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
+        newEvidenceNote._submittedDate = moment(date, 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+        newEvidenceNote._searchDate = moment(newEvidenceNote._submittedDate, 'DD/MM/YYYY HH:mm:ss').format('YYYY-MM-DD');
     } 
 	else 
 	{
         status = 'Draft'
     };
 
-    evidenceNote._status = status;
+    newEvidenceNote._status = status;
 	
-	selectedFacility._evidenceNotes.push(evidenceNote);
+	selectedFacility._evidenceNotes.push(newEvidenceNote);
 	
-	req.session.data['chosen-facility'] = facility;  // refresh persisted facility before exiting
+	req.session.data['chosen-facility'] = selectedFacility;  // refresh persisted facility before exiting
     
     res.redirect('/version-2/aatf-journey-v4/403-manage-evidence');
 });
 
+function getMax( numbers )
+{
+	var maximum = 0;
+	
+	for ( var n = 0; n < numbers.length; n++ )
+	{
+		if ( numbers[n] > maximum )
+		{
+			maximum = numbers[n];
+		}
+	}
+	
+	return maximum;
+}
 
 
 
