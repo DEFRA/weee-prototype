@@ -46,12 +46,12 @@
 		<!-- input id="evidence-number" type="hidden" value="{{ data['evidence-number'] }}" / -->
 	  
 		<div class="govuk-grid-row">
-			<div class="govuk-grid-column-full">
-				<h3 class="govuk-heading-s">Period in which WEEE was received for treatment</h3>
-			</div>
+			<div class="govuk-grid-column-full govuk-body-m" style="margin-bottom: 4px;">Period in which WEEE was received for treatment</div>
+			
 			<div class="govuk-grid-column-one-half">
 				<div class="govuk-label--s">Start date<br /><input type="Date" class="govuk-input" value="Date" name="startDate" id="startDate" /></div>
 			</div>
+			
 			<div class="govuk-grid-column-one-half">
 				<div class="govuk-label--s">End date<br /><input type="Date" class="govuk-input" value="Date" name="endDate" id="endDate"/></div>
 			</div>
@@ -59,7 +59,7 @@
 
 		<div class="govuk-grid-row">
 			<div class="govuk-!-padding-top-3 govuk-grid-column-one-half">
-			<div class="govuk-label--s">Receiving PCS</div>
+			<div class="govuk-label--s">Recipient</div>
 			<input class="govuk-input govuk-select" type="text" id="pcs" name="pcs" list="recipientsList" value="">
 			<datalist id="recipientsList" class="govuk-input">
 				{% if data['schemes'] %}
