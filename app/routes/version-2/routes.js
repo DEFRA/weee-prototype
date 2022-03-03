@@ -1885,7 +1885,7 @@ router.get('/version-2/aatf-journey-v4/404-create-evidence-note', function(req, 
 router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'ABB Ltd';
-	req.session.data['header']['activity'] = 'view evidence note';
+	req.session.data['header']['activity'] = 'manage evidence notes';
     var facility = req.session.data['chosen-facility']; 
 	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
 
