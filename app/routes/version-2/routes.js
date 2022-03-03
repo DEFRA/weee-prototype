@@ -1735,6 +1735,7 @@ router.get('/version-2/aatf-journey-v4/401-choose-activity-aatf', function(req, 
     req.session.data['selected-transfer-aatfs'] = null;
     req.session.data['selected-transfer-categories'] = null;
     req.session.data['chosen-facility'] = null;
+	req.session.data['show-submission-panel'] = null;
     
     res.redirect('/version-2/401_Choose_activity_AATF');
 });
@@ -1894,10 +1895,20 @@ router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', functi
 
 router.get('/version-2/aatf-journey-v4/410-edit-draft-evidence-note', function(req, res)
 {
-    var facility = req.session.data['chosen-facility']; 
-    var evidenceNote = facility._evidenceNotes.find(find => find._reference == Number(req.query['id']));
+    var facility = req.session.data['chosen-facility'];
+	
+	var evidenceNote = null;
+	
+	if ( req.query['id'] )
+	{
+		evidenceNote = facility._evidenceNotes.find(find => find._reference == Number(req.query['id']));
+		req.session.data['selected-evidence-note'] = evidenceNote;
+	}
+    else
+	{
+		evidenceNote = req.session.data['selected-evidence-note'];
+	}
     
-	req.session.data['selected-evidence-note'] = evidenceNote;
     req.session.data['selectedStartDate'] = moment(evidenceNote._startDate).format('YYYY-MM-DD');
     req.session.data['selectedEndDate'] = moment(evidenceNote._endDate).format('YYYY-MM-DD');
     req.session.data['selectedpcs'] = (evidenceNote._pcs === '') ? 'Recipient name' : evidenceNote._pcs;
@@ -1985,8 +1996,12 @@ router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
     var evidenceNoteIndex = facility._evidenceNotes.findIndex(find => find._reference == Number(evidenceNumber));
 	facility._evidenceNotes[evidenceNoteIndex] = evidenceNote;
 	req.session.data['chosen-facility'] = facility;
+	
+	
+	req.session.data['show-submission-panel'] = true;
     
-    res.redirect('/version-2/aatf-journey-v4/403-manage-evidence');
+    //res.redirect('/version-2/aatf-journey-v4/403-manage-evidence');
+	res.redirect('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note');
 });
 
 

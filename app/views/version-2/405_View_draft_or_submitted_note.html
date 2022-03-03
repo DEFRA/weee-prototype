@@ -13,6 +13,14 @@
 	
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-three-quarters" style="width: 90%;">
+	
+		{% if ( data['show-submission-panel'] ) %}
+		<div class="govuk-panel govuk-panel--confirmation">
+		  <div class="govuk-panel__body govuk-label--s govuk-!-font-size-24">
+			You have successfully submitted the evidence note with reference ID {{ data['selected-evidence-note']._reference }}
+		  </div>
+		</div>
+		{% endif %}
 
 		<h2 class="govuk-heading-m">Evidence note</h2>
 

@@ -52,7 +52,7 @@
 
 		<div class="govuk-grid-row govuk-!-padding-top-3 govuk-!-padding-bottom-3">
 			<div class="govuk-grid-column-full">
-				<h3 class="govuk-heading-s">Period in which WEEE was received for treatment</h3>
+				<h3 class="govuk-body-s">Period in which WEEE was received for treatment</h3>
 			</div>
 			<div class="govuk-grid-column-one-half">
 				<div class="govuk-label--s">Start date<br /></div><input type="Date" class="govuk-input" value="{{ data['selectedStartDate'] }}" name="startDate" id="startDate"/>
@@ -160,16 +160,18 @@
 
 		</div>
 		
-	    <div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
-			<p>
-				Input tonnage below
-				<br />
-				Provide tonnage to 3 decimal places. For example 1.238
-			</p>
-		</div>
+	    <div>
+			<div class="govuk-!-padding-top-3 govuk-grid-column-one-half">
+				<p>
+					Input tonnage below
+					<br />
+					Provide tonnage to 3 decimal places. For example 1.238
+				</p>
+			</div>
 
-		<div class="govuk-!-padding-top-3 govuk-grid-column-two-thirds">
-			<a href="/version-2/copy-paste-redirect?returnUrl=205_Edit_evidence_note_no_protocol" class="govuk-link">Use copy and paste to populate the table</a>
+			<div class="govuk-!-padding-top-3 govuk-grid-column-one-half">
+				<a href="/version-2/copy-paste-redirect?returnUrl=410_Edit_draft_evidence_note" class="govuk-link">Use copy and paste to populate the table</a>
+			</div>
 		</div>
 		
 		<input type="hidden" id="paste-values-hidden" name="paste-values-hidden" value="{{ data['paste-values'] }}">
