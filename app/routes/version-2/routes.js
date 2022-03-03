@@ -1732,13 +1732,11 @@ function getMax( numbers )
 	return maximum;
 }
 
-
 router.get('/version-2/aatf-journey-v4/index', function(req, res)
 {
 	req.session.data['index-action-link'] = '/version-2/aatf-journey-v4/401-choose-activity-aatf';
     res.redirect('/version-2/index');
 });
-
 
 router.get('/version-2/aatf-journey-v4/401-choose-activity-aatf', function(req, res)
 {
@@ -1754,7 +1752,6 @@ router.get('/version-2/aatf-journey-v4/401-choose-activity-aatf', function(req, 
     
     res.redirect('/version-2/401_Choose_activity_AATF');
 });
-
 
 router.get('/version-2/aatf-journey-v4/402-choose-site', function(req, res)
 {
@@ -1772,7 +1769,6 @@ router.get('/version-2/aatf-journey-v4/402-choose-site', function(req, res)
 
     res.redirect('/version-2/402_Choose_site');
 });
-
 
 router.get('/version-2/aatf-journey-v4/403-manage-evidence', function(req, res)
 {
@@ -1887,7 +1883,6 @@ router.get('/version-2/aatf-journey-v4/403-manage-evidence', function(req, res)
     res.redirect('/version-2/403_Manage_evidence');
 });
 
-
 router.get('/version-2/aatf-journey-v4/404-create-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'ABB Ltd';
@@ -1895,7 +1890,6 @@ router.get('/version-2/aatf-journey-v4/404-create-evidence-note', function(req, 
 	
     res.redirect('/version-2/404_Create_evidence_note');
 });
-
 
 router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', function(req, res)
 {
@@ -1907,9 +1901,7 @@ router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', functi
     res.redirect('/version-2/405_View_draft_or_submitted_note');
 });
 
-
-
-router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', function(req, res)
+router.get('/version-2/aatf-journey-v4/407-pdf-print-dialog', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'ABB Ltd';
 	req.session.data['header']['activity'] = 'print evidence note';
@@ -1918,7 +1910,6 @@ router.get('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note', functi
 
     res.redirect('/version-2/407_PDF_printed_dialog');
 });
-
 
 router.get('/version-2/aatf-journey-v4/410-edit-draft-evidence-note', function(req, res)
 {
@@ -1942,7 +1933,6 @@ router.get('/version-2/aatf-journey-v4/410-edit-draft-evidence-note', function(r
     
     res.redirect('/version-2/410_Edit_draft_evidence_note');
 });
-
 
 router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
 {
@@ -2025,7 +2015,6 @@ router.post('/version-2/aatf-journey-v4/save-evidence-note', function(req, res)
     
 	res.redirect('/version-2/aatf-journey-v4/405-view-draft-or-submitted-note');
 });
-
 
 router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res)
 {
