@@ -1,0 +1,98 @@
+{% extends "version-2/layout_no_back.html" %}
+
+{% block pageTitle %}
+  Choose an activity
+{% endblock %}
+
+{% block content %}
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+
+<div class="govuk-error-summary" aria-labelledby="error-summary-title" style="display: none; margin-bottom: 25px;" id="errorSummary" role="alert"
+    tabindex="-1" data-module="error-summary">
+    <h2 class="govuk-error-summary__title" id="error-summary-title">
+        There is a problem
+    </h2>
+    <div class="govuk-error-summary__body">
+        <ul class="govuk-list govuk-error-summary__list">
+            <li>
+                <a href="#" id="choiceError">Select the activity you would like to do</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<form class="form" action="/version-2/pcs-journey-v4/412-manage-evidence" method="post">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters">
+
+<div id="errorRedBorder" style="border-left: 5px solid transparent; padding-left: 16px;">
+
+      <h1 class="govuk-heading-l" style="font-weight: 600; font-family: arial;">What activity would you like to do?</h1>
+	  
+	  <div id="errorRedText" class="govuk-body" style="font-weight: 600; color: #d4351c; display: none;">Select the activity you would like to do</div>
+
+
+		{{ govukRadios
+			({
+			  idPrefix: "choose-activity",
+			  name: "choose-activity",
+			  fieldset: 
+			  {
+				legend: 
+				{
+				  text: "",
+				  isPageHeading: true,
+				  classes: "govuk-fieldset__legend--l"
+				}
+			  },
+			  items: 
+			  [
+				{
+				  value: "1",
+				  text: "Manage evidence notes"
+				},
+				{
+				  value: "2",
+				  text: "Manage PCS-members"
+				},
+				{
+				  value: "3",
+				  text: "Manage PCS WEEE data"
+				},
+				{
+				  value: "4",
+				  text: "Manage PCS contact details"
+				},
+				{
+				  value: "5",
+				  text: "Manage PCS submissions history"
+				},
+				{
+				  value: "6",
+				  text: "View organisation details"
+				},
+				{
+				  value: "7",
+				  text: "Manage organisation users"
+				}
+			  ]
+			}) 
+		}}
+</div>
+
+	<button type="submit" class="govuk-button" id="choose-activity-button" name="action" value="submit">
+		Continue
+	</button>
+
+
+	<div><a href="/version-2/pcs-journey-v4/411-choose-site" class="element-spacer" style="font-size: 20px;">Access another organisation</a></div>
+
+    </div>
+  </div>
+</form>
+
+<script src="/public/javascripts/choose-activity-error-logic.js"></script>
+<script>$("#activity-banner-activity").html("<li> </li>");</script>
+
+{% endblock %}

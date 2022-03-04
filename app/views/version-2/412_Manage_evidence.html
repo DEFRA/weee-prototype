@@ -1,0 +1,971 @@
+{% extends "version-2/layout_no_back.html" %}
+
+{% block pageTitle %}
+  Manage evidence (tabs)
+{% endblock %}
+
+{% block content %}
+<a class="govuk-back-link" href="/version-2/pcs-journey-v4/411-choose-activity-pcs">Back</a>
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/tabs.js"></script>
+<script src="/public/javascripts/evidence.js"></script>
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+	  <h1 class="govuk-heading-l element-spacer">Manage evidence notes for {{ data['chosen-facility']._name }}</h1>
+	  
+<div class="govuk-tabs" data-module="govuk-tabs" style="margin-left: -20px; margin-right: -20px;">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    
+	<li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" id="tab-evidence-summary" href="#evidence-summary" onclick="tabClicked('evidence-summary')">
+        Evidence summary
+      </a>
+    </li>
+	
+	<li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" id="tab-evidence-review" href="#evidence-review" onclick="tabClicked('evidence-review')">
+        Review evidence
+      </a>
+    </li>
+	
+	<li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" id="tab-evidence-transfer" href="#evidence-transfer" onclick="tabClicked('evidence-transfer')">
+        Transfer evidence
+      </a>
+    </li>
+
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" id="tab-evidence-all" href="#evidence-all" onclick="tabClicked('evidence-all')">
+        View all reviewed evidence
+      </a>
+    </li>
+	
+  </ul>
+
+
+
+
+  
+  <!-- FIRST TAB -->
+  <div id="evidence-summary" class="govuk-tabs__panel">
+	<div class="govuk-grid-row govuk-!-padding-bottom-7">
+		<label for="year-filter-1" class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-22" style="margin: 12px;">
+		Evidence summary for compliance year
+		</label>
+		<select class="govuk-select" text="Compliance year" id="year-filter-1" style="margin: 12px;">
+			<option value="2022">2022</option>
+			<option value="2021">2021</option>
+			<option value="2020">2020</option>
+		</select>
+	</div>
+	<div class="govuk-grid-row govuk-!-padding-bottom-7">
+		<div class="govuk-grid-column-full">
+		  <div class="govuk-grid-column-one-quarter">
+			<div class="govuk-heading-l">{{ data['total-tonnes-obligation'] }}</div>
+			<pre class="govuk-body">Tonnes in obligation</pre>
+		  </div>
+		  <div class="govuk-grid-column-one-quarter">
+			<div class="govuk-heading-l">{{ data['total-tonnes-received'] }}</div>
+			<pre class="govuk-body">Tonnes received</pre>
+		  </div>
+		  <div class="govuk-grid-column-two-quarters">
+			<div class="govuk-heading-l">{{ data['total-tonnes-required'] }}</div>
+			<pre class="govuk-body">Tonnes required to meet obligation</pre>
+		  </div>
+		</div>
+	</div>
+	<div class="govuk-!-padding-bottom-7">
+		<table class="govuk-table" id="evidence-summary-table">
+		  <thead class="govuk-table__head">
+			<tr class="govuk-table__row">
+			  <th scope="col" class="govuk-table__header">Category</th>
+			  <th scope="col" class="govuk-table__header">Obligation (tonnes)</th>
+			  <th scope="col" class="govuk-table__header">Evidence (tonnes)</th>
+			  <th scope="col" class="govuk-table__header">Re-used (tonnes)</th>
+			  <th scope="col" class="govuk-table__header">Transferred out (tonnes)</th>
+			  <th scope="col" class="govuk-table__header">Transferred in (tonnes)</th>
+			  <th scope="col" class="govuk-table__header">Difference</th>
+			</tr>
+		  </thead>
+		  <tbody class="govuk-table__body" id="tbody-results-1">
+		  
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">1. Large household appliances</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">2. Small household appliances</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">3. IT and telecommunications</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">4. Consumer equipment</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">5. Lighting equipment</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">6. Electrical and electronic tools</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">7. Toys, leisure and sports equipment</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">8. Medical devices</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">9. Monitoring and control instruments</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">10. Automatic dispensars</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">11. Display equipment</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell govuk-!-text-align-right">12. Cooling appliances containing refridgerants</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">13. Gas discharge lamps</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">14. Photovoltaic panels</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">130</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3456</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">1029</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">0</td>
+			</tr>
+			
+		  </tbody>
+		  
+		  <tfooter>
+			<tr class="total-row">
+			  <td class="govuk-table__cell" style="border-bottom: 0;">Total</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">14,225</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">13,334</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">2,000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">13,334</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">2,000</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">-891</td>
+			</tr>
+		  </tfooter>
+		</table>
+	</div>
+  </div>
+
+
+
+
+
+  <!-- SECOND TAB (submitted notes only) -->
+  <div id="evidence-review" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  
+	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
+		<label for="input-search-2" class="govuk-heading-s">Search by reference ID</label>
+		<div class="govuk-input" style="width: 200px;">
+			<input type="text" id="input-search-2" placeholder=" " class="search-text-input" />
+			<span id="button-holder"><img src="/public/images/search.jpg" /></span>
+		</div>
+	</div>
+
+	<div class="govuk-grid-row govuk-!-margin-1">
+		<div class="govuk-heading-s">Filter by:</div>
+		<table>
+		  <tr class="govuk-table__row">
+			<th class="govuk-body govuk-!-text-align-left" style="width: 200px;">Month received</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">Compliance year</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued by</th>
+			<th class="govuk-body govuk-!-text-align-left">Type</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 100px;">Category</th>
+		  </tr>
+		  
+		  <tr class="govuk-table__row">
+			<td>
+				<input class="govuk-select" type="Month" id="month-filter-2" style="width: 200px; padding: 0;" />
+			</td>
+			<td>
+				<select class="govuk-select" id="year-filter-2" style="width: 150px;" text="Compliance year">
+					<option value="2022">2022</option>
+					<option value="2021">2021</option>
+					<option value="2020">2020</option>
+				</select>
+			</td>
+			<td>
+				<input class="govuk-select" type="text" id="pcs-filter-2" name="example" style="width: 220px;" list="issuersList">
+				<datalist id="issuersList">
+					<option value="AATF1" />
+					<option value="AATF2" />
+					<option value="AATF3" />
+				</datalist>
+			</td>
+			<td>
+				<select class="govuk-select" text="Type" id="type-filter-2">
+					<option value="0"> </option>
+					<option value="Household">Household</option>
+					<option value="Non-household">Non-household</option>
+				</select>
+			</td>
+			<td>
+				<select class="govuk-select" id="category-filter-2" style="width: 100px;" text="Category">
+					<option value="0"> </option>
+					<option value="1">1. Large household appliances</option>
+					<option value="2">2. Small household appliances</option>
+					<option value="3">3. IT and telecommunications equipment</option>
+					<option value="4">4. Consumer equipment</option>
+					<option value="5">5. Lighting equipment</option>
+					<option value="6">6. Electrical and electronic tools</option>
+					<option value="7">7. Toys, leisure and sports equipment</option>
+					<option value="8">8. Medical devices</option>
+					<option value="9">9. Monitoring and control instruments</option>
+					<option value="10">10. Automatic dispensers</option>
+					<option value="11">11. Display equipment</option>
+					<option value="12">12. Cooling appliances containing refridgerants</option>
+					<option value="13">13. Gas discharge lamps</option>
+					<option value="14">14. Photovoltaic panels</option>
+				</select>
+			</td>
+		  </tr>
+		  <!--
+		  <tr class="govuk-table__row">
+			<th class="govuk-body govuk-!-text-align-left" style="width: 200px;" colspan="5">
+				Date received to <br />
+				<input class="govuk-select" type="Month" id="month-filter-to-2" style="width: 200px; padding: 0;" />
+			</th>
+	      </tr>
+		  -->
+	  
+		  <tr><td colspan="5" style="height: 30px;">&nbsp;</td></tr>
+		  
+		  <tr class="govuk-table__row">
+			<td class="govuk-body govuk-!-text-align-right" colspan="5">View</td>
+			<td>
+				<select class="govuk-select" style="width: 80px;" text="page-size" id="pagesize-filter-2">
+					<option value="10">10</option>
+					<option value="25">25</option>
+					<option value="50">50</option>
+				</select>
+			</td>
+		  </tr>
+		</table>
+	</div>
+	
+	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
+		<table class="govuk-table">
+		  <thead class="govuk-table__head">
+			<tr class="govuk-table__row">
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 100px;">Reference ID</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 140px;">WEEE received between</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1">Issued by</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 100px;">Type</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 100px;">Status</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 130px;">&nbsp;</th>
+			</tr>
+		  </thead>
+		  
+		  {% if data['chosen-facility'] %}
+		  
+		  <tbody class="govuk-table__body" id="tbody-results-2">
+		  
+			{% for evidenceNote in data['chosen-facility-submitted-notes'] %}
+
+				<tr class="govuk-table__row result-row">
+					<td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
+					<td class="govuk-table__cell" style="display: none;">{{evidenceNote._searchDate}}</td>
+					<td class="govuk-table__cell" style="display: none;">{{evidenceNote._categoryFilterString}}</td>
+
+					<td class="govuk-table__cell">{{evidenceNote._reference}}</td>
+					<td class="govuk-table__cell">{{evidenceNote._startDate}}-{{evidenceNote._endDate}}</td>
+					<td class="govuk-table__cell">{{evidenceNote._pcs}}</td>
+					<td class="govuk-table__cell">{{evidenceNote._wasteType}}</td>
+					<td class="govuk-table__cell">{{evidenceNote._status}}</td>  <!-- this should be always be 'Submitted' -->
+					<td class="govuk-table__cell">
+					  <a href="/version-2/pcs-journey/311-review-evidence-note?id={{evidenceNote._reference}}">Review evidence</a>
+					</td>
+				</tr>
+				
+		  	{% endfor %}
+
+		  </tbody>
+		  <tfooter>
+			  <tr>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-submitted-notes'].length }} of {{data['chosen-facility-submitted-notes'].length }}</td>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				  <span style="float: right;">
+					<a href="#">Prev</a>
+					<a href="#"> 1 </a>
+					<a href="#"> 2 </a>
+					<a href="#"> 3 </a>
+					<a href="#"> 4 </a>
+					<a href="#">Next</a>
+					<!-- Prev 1 2 3 4 5 Next -->
+				  </span>
+				</td>
+			  </tr>
+		  </tfooter>
+		  
+		  {% else %}
+		  
+		  <tbody>
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell govuk-!-padding-0">1279</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">12/11/2021-12/12/2021</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">AATF1</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">Household</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">Submitted</td>
+			  <td class="govuk-table__cell govuk-!-padding-0"><a href="#">Review evidence</a></td>
+			</tr>
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell govuk-!-padding-0">1389</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">12/11/2021-12/12/2021</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">AATF2</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">Household</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">Submitted</td>
+			  <td class="govuk-table__cell govuk-!-padding-0"><a href="#">Review evidence</a></td>
+			</tr>
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell govuk-!-padding-0">1456</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">12/11/2021-12/12/2021</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">AATF1</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">Household</td>
+			  <td class="govuk-table__cell govuk-!-padding-0">Submitted</td>
+			  <td class="govuk-table__cell govuk-!-padding-0"><a href="#">Review evidence</a></td>
+			</tr>
+		  </tbody>
+		  <tfooter>
+			<tr>
+			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-6 of 50</td>
+			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				<span style="float: right;">
+					<!--
+					<a href="#">Prev</a>
+					<a href="#"> 1 </a>
+					<a href="#"> 2 </a>
+					<a href="#"> 3 </a>
+					<a href="#"> 4 </a>
+					<a href="#">Next</a>
+					-->
+					Prev 1 2 3 4 5 Next
+				</span>
+			  </td>
+			</tr>
+			<tr>
+			  <td>
+			  </td>
+			</tr>
+		  </tfooter>
+
+		  {% endif %}
+		  
+		</table>
+	
+	</div>
+  </div>
+
+
+
+
+
+  
+
+
+  <!-- THIRD TAB -->
+  <div id="evidence-transfer" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  
+	<div class="govuk-error-summary" 
+	     aria-labelledby="error-summary-title" 
+		 style="display: none" 
+		 id="transferEvidenceErrorSummary" 
+		 role="alert" 
+		 tabindex="-1"
+		 data-module="error-summary">
+		 
+		<h2 class="govuk-error-summary__title" id="error-summary-title">
+			There is a problem
+		</h2>
+		<div class="govuk-error-summary__body">
+			<ul class="govuk-list govuk-error-summary__list">
+				<li>
+					<a href="#">Please select evidence notes to be transfered</a>
+				</li>
+			</ul>
+		</div>
+		
+	</div>
+
+	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
+		<label for="input-search-3" class="govuk-heading-s">Search by reference ID</label>
+		<div class="govuk-input" style="width: 200px;">
+			<input type="text" id="input-search-3" placeholder=" " class="search-text-input" />
+			<span id="button-holder"><img src="/public/images/search.jpg" /></span>
+		</div>
+	</div>
+
+	<div class="govuk-grid-row govuk-!-margin-1">
+		<div class="govuk-heading-s">Filter by:</div>
+		<table>
+		  <tr class="govuk-table__row">
+			<th class="govuk-body govuk-!-text-align-left" style="width: 200px;">Month received</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 350px;">Issued by</th>
+			<th class="govuk-body govuk-!-text-align-left" style="width: 350px;">Category</th>
+			<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
+		  </tr>
+		  <tr class="govuk-table__row">
+			<td>
+				<!-- input class="govuk-select" type="Date" id="date-filter" style="width: 200px;" / -->
+				<input class="govuk-select" type="Month" id="month-filter-3" style="width: 200px; padding: 0;" />
+			</td>
+			<td>
+				<select class="govuk-select" id="year-filter-3" style="width: 175px;" text="Compliance year">
+					<option value="2022">2022</option>
+					<option value="2021">2021</option>
+					<option value="2020">2020</option>
+				</select>
+			</td>
+			<td>
+				<input class="govuk-select" id="pcs-filter-3" type="text" name="example" style="width: 100%;" list="issuersList">
+				<datalist id="issuersList">
+					<option value="AATF1" />
+					<option value="AATF2" />
+					<option value="AATF3" />
+				</datalist>
+			</td>
+			<td>
+				<select class="govuk-select" text="Category" id="category-filter-3" style="width: 100%;">
+					<option value="0"> </option>
+					<option value="1">1. Large household appliances</option>
+					<option value="2">2. Small household appliances</option>
+					<option value="3">3. IT and telecommunications equipment</option>
+					<option value="4">4. Consumer equipment</option>
+					<option value="5">5. Lighting equipment</option>
+					<option value="6">6. Electrical and electronic tools</option>
+					<option value="7">7. Toys, leisure and sports equipment</option>
+					<option value="8">8. Medical devices</option>
+					<option value="9">9. Monitoring and control instruments</option>
+					<option value="10">10. Automatic dispensers</option>
+					<option value="11">11. Display equipment</option>
+					<option value="12">12. Cooling appliances containing refridgerants</option>
+					<option value="13">13. Gas discharge lamps</option>
+					<option value="14">14. Photovoltaic panels</option>
+				</select>
+			</td>
+			<td>&nbsp;</td>
+		  </tr>		  
+		  <tr><td colspan="5" style="height: 50px;">&nbsp;</td></tr>
+		  <tr class="govuk-table__row">
+			<td colspan="5" class="govuk-body govuk-!-text-align-right">
+				View 
+				<select class="govuk-select" style="width: 80px;" text="page-size" id="pagesize-filter-3">
+					<option value="10">10</option>
+					<option value="25">25</option>
+					<option value="50">50</option>
+				</select>
+			</td>
+		  </tr>
+		</table>
+	</div>
+	
+	<form class="form" action="/version-2/pcs-journey/314-transfer-evidence-note" method="post">
+	
+	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
+	
+		<table class="govuk-table">
+		  <thead class="govuk-table__head">
+			<tr class="govuk-table__row">
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 100px;">Reference ID</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 200px;">WEEE received between</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1">Issued by</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 90px;">Total (tonnes)</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 60px;">&nbsp;</th>
+			</tr>
+		  </thead>
+		  
+		  {% if data['chosen-facility'] %}
+		  
+		  <tbody class="govuk-table__body" id="tbody-results-3">		  
+		  
+			{% for evidenceNote in data['chosen-facility-transferable-notes'] %}
+
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
+				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._searchDate}}</td>
+				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._categoryFilterString}}</td>
+
+				  <td class="govuk-table__cell">
+					  <div class="govuk-checkboxes__item govuk-checkboxes--small">
+						<input class="govuk-checkboxes__input" id="chk{{evidenceNote._reference}}" name="chk{{evidenceNote._reference}}" type="checkbox">
+						<label class="govuk-label govuk-checkboxes__label" for="chk{{evidenceNote._reference}}">
+						  {{evidenceNote._reference}}
+						</label>
+					  </div>
+				  </td>
+				  <td class="govuk-table__cell">{{evidenceNote._startDate}}-{{evidenceNote._endDate}}</td>
+				  <td class="govuk-table__cell">{{evidenceNote._aatf}}</td>
+				  <td class="govuk-table__cell govuk-!-text-align-right">{{evidenceNote._received}}</td>
+				  <td class="govuk-table__cell govuk-!-text-align-right">
+					<a href="/version-2/pcs-journey/320-view-evidence-note?id={{evidenceNote._reference}}">View</a>
+				  </td>
+				</tr>
+				
+		  	{% endfor %}
+
+		  </tbody>
+		  
+		  <tfooter>
+			  <tr>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-submitted-notes'].length }} of {{data['chosen-facility-submitted-notes'].length }}</td>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				  <span style="float: right;">
+					<a href="#">Prev</a>
+					<a href="#"> 1 </a>
+					<a href="#"> 2 </a>
+					<a href="#"> 3 </a>
+					<a href="#"> 4 </a>
+					<a href="#">Next</a>
+				  </span>
+				</td>
+			  </tr>
+		  </tfooter>
+		  
+		  {% else %}
+		  
+		  <tbody class="govuk-table__body">
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">
+				  <div class="govuk-checkboxes__item govuk-checkboxes--small">
+					<input class="govuk-checkboxes__input" id="chk1400" name="evidence-note-1400" type="checkbox">
+					<label class="govuk-label govuk-checkboxes__label" for="chk1400">
+					  1400
+					</label>
+				  </div>
+			  </td>
+			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+			  <td class="govuk-table__cell">Electrical Waste Recycling Group Limited (Huddersfield)</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">55</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right"><a href="#">View</a></td>
+			</tr>
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">
+				  <div class="govuk-checkboxes__item govuk-checkboxes--small">
+					<input class="govuk-checkboxes__input" id="chk1399" name="evidence-note-1399" type="checkbox">
+					<label class="govuk-label govuk-checkboxes__label" for="chk1399">
+					  1399
+					</label>
+				  </div>
+			  </td>
+			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+			  <td class="govuk-table__cell">Environcom England Ltd</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">73</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right"><a href="#">View</a></td>
+			</tr>
+			<tr class="govuk-table__row result-row">
+			  <td class="govuk-table__cell">
+				  <div class="govuk-checkboxes__item govuk-checkboxes--small">
+					<input class="govuk-checkboxes__input" id="chk1398" name="evidence-note-1398" type="checkbox">
+					<label class="govuk-label govuk-checkboxes__label" for="chk1398">
+					  1398
+					</label>
+				  </div>
+			  </td>
+			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+			  <td class="govuk-table__cell">Recycling Lives Ltd (Recycling Park)</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">20</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right"><a href="#">View</a></td>
+			</tr>
+		  </tbody>
+		  
+		  <tfooter>
+			<tr>
+			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-6 of 50</td>
+			  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				<span style="float: right;">
+				Prev 1 
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">Next</a>
+				</span>
+			  </td>
+			</tr>
+			<tr>
+			  <td>
+			  </td>
+			</tr>
+		  </tfooter>
+		  
+		  {% endif %}
+		  
+		</table>
+		
+		<div class="element-spacer">
+			{{ govukButton({
+				text: "Transfer evidence", classes: "govuk-!-font-weight-bold",
+				attributes: {id : "transferEvidenceButton"}
+			  }) }}
+		</div>
+		
+	</div>
+	
+	</form>
+  </div>
+  
+  
+
+
+
+  
+  
+  
+
+  <!-- FOURTH TAB -->
+  <div id="evidence-all" class="govuk-tabs__panel govuk-tabs__panel--hidden">
+  
+	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
+		<label for="input-search-4" class="govuk-heading-s">Search by reference ID</label>
+		<div class="govuk-input" style="width: 200px;">
+			<input type="text" id="input-search-4" placeholder=" " class="search-text-input" />
+			<span id="button-holder"><img src="/public/images/search.jpg" /></span>
+		</div>
+	</div>
+
+	<div class="govuk-grid-row govuk-!-margin-1">
+		<div class="govuk-heading-s">Filter by:</div>
+		<table border="0">
+		  <tr class="govuk-table__row">
+				<th class="govuk-body govuk-!-text-align-left" style="width: 200px;">Month received</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 175px;">Compliance year</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 220px;">Issued by</th>
+				<th class="govuk-body govuk-!-text-align-left">Type</th>
+				<th class="govuk-body govuk-!-text-align-left">Status</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 80px;">Category</th>
+		  </tr>
+		  <tr class="govuk-table__row">
+			<td>
+				<!-- input class="govuk-select" type="Date" id="date-filter-4" style="width: 200px;" / -->
+				<input class="govuk-select" type="Month" id="month-filter-4" style="width: 200px; padding: 0;" />
+			</td>
+			<td>
+				<select class="govuk-select" id="year-filter-4" style="width: 175px;" text="Compliance year">
+					<option value="2022">2022</option>
+					<option value="2021">2021</option>
+					<option value="2020">2020</option>
+				</select>
+			</td>
+			<td>
+				<input class="govuk-select" id="pcs-filter-4" type="text" name="example" style="width: 220px;" list="issuersList">
+				<datalist id="issuersList">
+					<option value="AATF1" />
+					<option value="AATF2" />
+					<option value="AATF3" />
+				</datalist>
+			</td>
+			<td>
+				<select class="govuk-select" text="Type" id="type-filter-4">
+					<option value="0"> </option>
+					<option value="Household">Household</option>
+					<option value="Non-household">Non-household</option>
+				</select>
+			</td>
+			<td>
+				<select class="govuk-select" style="width: 100%;" id="status-filter-4">
+					<option value="0"> </option>
+					<option value="Submitted">Submitted</option>
+					<option value="Approved">Approved</option>
+					<option value="Rejected">Rejected</option>
+					<option value="Returned">Returned</option>
+					<option value="Void">Void</option>
+				</select>
+			</td>
+			<td>
+				<select class="govuk-select" id="category-filter-4" style="width: 100%;" text="Category">
+					<option value="0"> </option>
+					<option value="1">1. Large household appliances</option>
+					<option value="2">2. Small household appliances</option>
+					<option value="3">3. IT and telecommunications equipment</option>
+					<option value="4">4. Consumer equipment</option>
+					<option value="5">5. Lighting equipment</option>
+					<option value="6">6. Electrical and electronic tools</option>
+					<option value="7">7. Toys, leisure and sports equipment</option>
+					<option value="8">8. Medical devices</option>
+					<option value="9">9. Monitoring and control instruments</option>
+					<option value="10">10. Automatic dispensers</option>
+					<option value="11">11. Display equipment</option>
+					<option value="12">12. Cooling appliances containing refridgerants</option>
+					<option value="13">13. Gas discharge lamps</option>
+					<option value="14">14. Photovoltaic panels</option>
+				</select>
+			</td>
+		  </tr>		  
+		  <tr><td colspan="6" style="height: 50px;">&nbsp;</td></tr>
+		  <tr class="govuk-table__row">
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<!-- td class="govuk-body govuk-!-text-align-right">View</td -->
+			<td colspan="2" class="govuk-body govuk-!-text-align-right">
+				View 
+				<select class="govuk-select" style="width: 55px;" id="pagesize-filter-4">
+					<option value="10">10</option>
+					<option value="25">25</option>
+					<option value="50">50</option>
+				</select>
+			</td>
+		  </tr>
+		</table>
+	</div>
+	
+	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
+		<table class="govuk-table">
+		  <thead class="govuk-table__head">
+			<tr class="govuk-table__row">
+			  <th scope="col" class="govuk-table__header" style="width:  80px;">Reference ID</th>
+			  <th scope="col" class="govuk-table__header" style="width: 210px;">WEEE received between</th>
+			  <th scope="col" class="govuk-table__header">Issued by</th>
+			  <th scope="col" class="govuk-table__header" style="width:  90px;">Type</th>
+			  <th scope="col" class="govuk-table__header" style="width:  90px;">Status</th>
+			  <th scope="col" class="govuk-table__header" style="width:  40px;">&nbsp;</th>
+			</tr>
+		  </thead>
+		  
+		  {% if data['chosen-facility'] %}
+		  
+			<tbody class="govuk-table__body" id="tbody-results-4">
+		  
+				{% for evidenceNote in data['chosen-facility-reviewed-notes'] %}
+
+					<tr class="govuk-table__row result-row">
+						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
+						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._searchDate}}</td>
+						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._categoryFilterString}}</td>
+
+						<td class="govuk-table__cell">{{evidenceNote._reference}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._startDate}}-{{evidenceNote._endDate}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._pcs}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._wasteType}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._status}}</td>  <!-- this should be always be 'Submitted' -->
+						<td class="govuk-table__cell">
+						  <a href="/version-2/pcs-journey/320-view-evidence-note?id={{evidenceNote._reference}}">View</a>
+						</td>
+					</tr>
+
+				{% endfor %}
+		  
+			</tbody>
+			
+			<tfooter>
+			  <tr>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-{{data['chosen-facility-reviewed-notes'].length }} of {{data['chosen-facility-reviewed-notes'].length }}</td>
+				<td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+				  <span style="float: right;">
+					<a href="#">Prev</a>
+					<a href="#"> 1 </a>
+					<a href="#"> 2 </a>
+					<a href="#"> 3 </a>
+					<a href="#"> 4 </a>
+					<a href="#">Next</a>
+				  </span>
+				</td>
+			  </tr>
+			</tfooter>
+
+		  {% else %}
+		  
+			  <tbody class="govuk-table__body">
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1279</td>
+				  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+				  <td class="govuk-table__cell">AATF1</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1389</td>
+				  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+				  <td class="govuk-table__cell">AATF2</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1456</td>
+				  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
+				  <td class="govuk-table__cell">AATF1</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Rejected</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1876</td>
+				  <td class="govuk-table__cell">20/09/2021-21/10/2021</td>
+				  <td class="govuk-table__cell">AATF1</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1899</td>
+				  <td class="govuk-table__cell">15/09/2021-15/10/2021</td>
+				  <td class="govuk-table__cell">AATF2</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Returned</td>
+				  <td class="govuk-table__cell">
+					<a href="#">View</a>
+				  </td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1998</td>
+				  <td class="govuk-table__cell">10/06/2021-09/07/2021</td>
+				  <td class="govuk-table__cell">AATF1</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+				<tr class="govuk-table__row result-row">
+				  <td class="govuk-table__cell">1999</td>
+				  <td class="govuk-table__cell">12/06/2021-07/07/2021</td>
+				  <td class="govuk-table__cell">AATF2</td>
+				  <td class="govuk-table__cell">Household</td>
+				  <td class="govuk-table__cell">Approved</td>
+				  <td class="govuk-table__cell"><a href="#">View</a></td>
+				</tr>
+			  </tbody>
+		  
+			  <tfooter>
+				<tr>
+				  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px;">Showing 1-6 of 50</td>
+				  <td class="govuk-table__cell" colspan="3" style="border-bottom: 0px; padding-right: 8px;">
+					<span style="float: right;">
+					Prev 1 
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">Next</a>
+					</span>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+				  </td>
+				</tr>
+			  </tfooter>
+		  
+		  {% endif %}
+		  
+		</table>
+	</div>
+  
+  </div>
+
+</div>
+
+
+    </div>
+  </div>
+
+
+
+<script src="/public/javascripts/filter-412.js"></script>
+
+{% endblock %}

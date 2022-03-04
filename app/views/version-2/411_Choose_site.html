@@ -1,0 +1,46 @@
+{% extends "version-2/layout_no_back.html" %}
+
+{% block pageTitle %}
+  Choose an AATF site
+{% endblock %}
+
+{% block content %}
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/tabs.js"></script>
+<script>initTabs();</script>
+
+<div class="govuk-back-link govuk-grid-row" style="margin: 2px 2px 50px 0px;"><a href="/version-2/pcs-journey-v4/412-manage-evidence">Back</a></div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">Which site would you like to manage evidence notes for?</h1>
+
+      <form class="form" action="/version-2/pcs-journey-v4/412-manage-evidence" method="post">
+	  
+		<div class="govuk-form-group">
+			<fieldset class="govuk-fieldset">
+			  <div class="govuk-radios" data-module="govuk-radios">
+				{% for facility in data['facilities'] %}
+				<div class="govuk-radios__item">
+				  <input class="govuk-radios__input" id="choose-site-{{facility._id}}" name="choose-site" type="radio" value="{{facility._name}}">
+				  <label class="govuk-label govuk-radios__label" for="choose-site-{{facility._id}}">
+					{{ facility._name }} ({{ facility._approvalNumber }})
+				  </label>
+				</div>
+				{% endfor %}
+			  </div>
+		  
+			</fieldset>
+		  </div>
+		
+		{{ govukButton({
+			text: "Continue"
+		  }) }}
+  
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
