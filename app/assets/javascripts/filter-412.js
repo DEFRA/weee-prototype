@@ -1,7 +1,7 @@
 
 	window.addEventListener('load', function () 
 	{
-		filterEventBinding();     // event binding to filters
+		filterEventBinding();     // event binding to filters on tab2 and tab3
 		setupPagination();        // pagination on tab2 and tab3
 	})
 
@@ -20,7 +20,7 @@
         return true;
     }
 
-    function IsDateWithinRange_UNUSED_BUT_KEEP_FOR_FUTURE_EXPANSION(td, compare)
+    function IsDateWithinRange(td, dateFromFilter, dateToFilter)
 	{
 		// this will pick-up the date range within the data row column - split received date and inspect if month/year looked for
         if (td) 
@@ -32,19 +32,18 @@
 			var dateParts = txtDate.split("-");
 
 			// convert them into US format
-			var convertedPart1 = SubstituteDateParts(dateParts[0]);
-			var convertedPart2 = SubstituteDateParts(dateParts[1]);
+			var cellDateFrom = FormatYYYYMMDDasNumber(dateParts[0]);
+			var cellDateTo = FormatYYYYMMDDasNumber(dateParts[1]);
 			
 			// convert them into Date
-			var minDate = new Date(convertedPart1);
-			var maxDate = new Date(convertedPart2);
+			var minDate = FormatYYYYMMDDasNumber(dateFromFilter);
+			var maxDate = FormatYYYYMMDDasNumber(dateToFilter);
 			
-			// make it a date
-			var currentDate = new Date(ConvertFromHtmlDateParts(compare));
-			console.log(compare);
+			bool condition = (( cellDateFrom >= minDate && cellDateFrom <= maxDate ) 
+			               || ( cellDateTo >= minDate && cellDateTo <= maxDate ));
 			
-			// check if test date is within range
-			if ( currentDate > minDate && currentDate < maxDate )
+			// check if cell from/to dates are within range of filter from/to dates
+			if ( condition )
 			{
 				return true;
 			}
@@ -56,6 +55,22 @@
 		
         return true;
     }
+	
+	
+	function FormatYYYYMMDDasNumber(someDateString)
+	{
+		// substitute day and month to get US format date (are we digitally colonised ?)
+		console.log('date fed to FormatYYYYMMDDasNumber() => ' + someDateString);
+		
+		var dateParts = someDateString.split("/");  // expecting UK format date
+		
+		var day = dateParts[0];
+		var month = dateParts[1];
+		var year = dateParts[2];
+		
+		return Number(year + month + day);  // eg: 20220106 for 6 jan 2022, serial date for numerical compare
+	}
+
 
     function IsReceivedDateInMonthSelected(td, compare)
 	{
@@ -171,6 +186,32 @@
             }
         }
     }
+
+	function filterDateFromToTab2()
+	{
+		var dateFromFilter = document.getElementById("date-filter-from-2").value;
+		var dateToFilter = document.getElementById("date-filter-to-2").value;
+		
+        var table = document.getElementById("tbody-results-2");
+        var trs = table.getElementsByClassName("govuk-table__row result-row");
+		
+        for (i = 0; i < trs.length; i++) 
+		{
+			var displayRow = true;
+			
+            if (dateFilter != '') 
+			{
+                var cell = trs[i].getElementsByTagName("td")[4];
+
+                if (!IsDateWithinRange(cell, dateFromFilter, dateToFilter))
+				{
+                    displayRow = false;
+                }
+            }
+			
+            trs[i].style.display = (displayRow) ? "" : "none";
+		}
+	}
 
 	function filterDateTab3()
 	{
@@ -387,6 +428,14 @@
         });
         document.getElementById("input-search-3").addEventListener('change', (e) => {
             searchTab3();        
+        });
+
+        document.getElementById("date-filter-from-2").addEventListener('change', (e) => {
+            filterDateFromToTab2();
+        });
+
+        document.getElementById("date-filter-to-2").addEventListener('change', (e) => {
+            filterDateFromToTab2();
         });
 
         document.getElementById("date-filter-3").addEventListener('change', (e) => {

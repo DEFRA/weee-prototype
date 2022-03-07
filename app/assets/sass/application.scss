@@ -193,19 +193,34 @@ $govuk-assets-path: '/govuk/assets/';
 	height: 8px;
 }
 
-.civica-align-right {
+.civica-align-right 
+{
 	text-align: right;
 }
 
-.civica-transfer-totals-row {
+.civica-transfer-totals-row 
+{
 	background-color: govuk-colour("light-grey");
 }
 
-.civica-no-border {
+.civica-no-border 
+{
 	border: none !important;
 	padding: 0;
 }
 
-.civica-transfer-vertical-middle{
+.civica-transfer-vertical-middle
+{
 	vertical-align: middle;
+}
+
+#black-lollipop
+{
+	background-image: url('/public/images/686700.png');
+	color: white;
+}
+
+#black-lollipop span::after
+{
+	content: ' ';
 }

@@ -2133,10 +2133,35 @@ router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res
 // Version 4 - PCS journey
 // ------------------------------------------------------------------------------------
 
+// init pages
+
+router.get('/version-2/pcs-journey-v4/411-choose-activity-pcs-init', function(req, res)
+{
+    res.redirect('/version-2/pcs-journey-v4/411-choose-activity-pcs');
+});
+
+router.get('/version-2/pcs-journey-v4/411-choose-site-init', function(req, res)
+{
+    res.redirect('/version-2/pcs-journey-v4/411-choose-site');
+});
+
+router.get('/version-2/pcs-journey-v4/412-manage-evidence-init', function(req, res)
+{
+    //var facility = new Facility('Recycling Team Ltd', 1, 'WEE/AB5678GH/PCS');
+    //req.session.data['chosen-facility'] = facility._name;
+    req.session.data['chosen-facility'] = null;
+	
+    //req.session.data['chosen-facility'] = 'Recycling Team Ltd';
+	
+    res.redirect('/version-2/pcs-journey-v4/412-manage-evidence');
+});
+
+
+
 
 function CreatePCSFacilitiesWithEvidenceNotes(req)
 {
-    var facility = new Facility('Recycling Team Ltd', 2, 'WEE/AB5678GH/PCS');
+    var facility = new Facility('Recycling Team Ltd', 1, 'WEE/AB5678GH/PCS');
 
     if (facility._evidenceNotes == null || facility._evidenceNotes.length === 0)
 	{
@@ -2145,11 +2170,11 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         // [0..4] -------------------------------------------
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'ERP UK', '2022', 'Household', 'Actual', 150.025, 10.001, "Draft", 1389, '11/11/2021 11:32:40'));
+        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'M.D.J. Light Brothers Ltd - Greystone Quarry', '2022', 'Household', 'Actual', 150.025, 10.001, "Submitted", 1389, '11/11/2021 11:32:40'));
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        var newNote = new EvidenceNote('01/02/2022', '31/02/2022', 'ERP UK', '2022', 'Household', 'Actual', 180.005, 10.001, "Submitted", 1211, '11/11/2021 11:32:40');
+        var newNote = new EvidenceNote('01/02/2022', '11/02/2022', 'Environcom (North West) Ltd', '2022', 'Household', 'Actual', 180.005, 10.001, "Submitted", 1211, '11/11/2021 11:32:40');
         newNote._aatf = "Intelligent Waste Management Ltd";
         facility._evidenceNotes.push(newNote);
     
@@ -2173,7 +2198,7 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        var newNote = new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', 130.256, 20.002, "Submitted", 1189, '11/11/2021 11:32:40');
+        var newNote = new EvidenceNote('09/02/2022', '12/02/2022', 'M.D.J. Light Brothers Ltd - Greystone Quarry', '2022', 'Household', 'Actual', 130.256, 20.002, "Submitted", 1189, '11/11/2021 11:32:40');
         newNote._aatf = "Recycling Lives Ltd (Recycling Park)";
         facility._evidenceNotes.push(newNote);
     
@@ -2187,7 +2212,7 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', 560.111, 2.002, "Void", 1391, '11/11/2021 11:32:40'));
+        facility._evidenceNotes.push(new EvidenceNote('08/02/2022', '17/02/2022', 'Recycling Lives', '2022', 'Household', 'Actual', 560.111, 2.002, "Submitted", 1391, '11/11/2021 11:32:40'));
     
         
         // ------------------------------------------------------------------------------------------
@@ -2195,9 +2220,11 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         // facility._evidenceNotes[0]._submittedDate = moment(new Date(2022, 01, 4, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
         // ------------------------------------------------------------------------------------------
         
-        facility._evidenceNotes[1]._submittedDate = moment(new Date(2022, 01, 4, 11, 4, 5), 'DD/MM/YYYY').format('DD/MM/YYYY');
-        facility._evidenceNotes[3]._rejectedDate = moment(new Date(2022, 01, 4, 11, 4, 5), 'DD/MM/YYYY').format('DD/MM/YYYY');
-        facility._evidenceNotes[6]._submittedDate = moment(new Date(2022, 01, 5, 14, 4, 5), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[0]._submittedDate = moment(new Date(2022, 01, 4), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[1]._submittedDate = moment(new Date(2022, 01, 5), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[3]._rejectedDate = moment(new Date(2022, 01, 8), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[6]._submittedDate = moment(new Date(2022, 01, 9), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[9]._submittedDate = moment(new Date(2022, 01, 9), 'DD/MM/YYYY').format('DD/MM/YYYY');
         
     }
 	
@@ -2233,16 +2260,16 @@ router.get('/version-2/pcs-journey-v4/411-choose-site', function(req, res)
 	req.session.data['header']['activity'] = 'choose site';
     var schemes = new Schemes();
     var facilities = [];
-    facilities.push(new Facility('Recycling Team Ltd', 1, 'WEE/AB9012GH/PCS'));
-    facilities.push(new Facility('Environcom (North West) Ltd', 1, 'WEEE/1004636/PCS'));
-    facilities.push(new Facility('M.D.J. Light Brothers Ltd - Greystone Quarry', 2, 'WEEE/1004637/PCS'));
-    facilities.push(new Facility('Intelligent Waste Management Ltd', 3, 'WEEE/1004638/PCS'));
+    facilities.push(new Facility('Recycling Team Ltd', 1, 'WEE/AB5678GH/PCS'));
+    facilities.push(new Facility('Environcom (North West) Ltd', 2, 'WEEE/AB9012GH/PCS'));
+    facilities.push(new Facility('M.D.J. Light Brothers Ltd - Greystone Quarry', 3, 'WEEE/1004637/PCS'));
+    facilities.push(new Facility('Intelligent Waste Management Ltd', 4, 'WEEE/1004638/PCS'));
 
     req.session.data['facilities'] = facilities;
     req.session.data['schemes'] = schemes;
     req.session.data['paste-values'] = '';
 
-    res.redirect('/version-2/402_Choose_site');
+    res.redirect('/version-2/411_Choose_site');
 });
 
 router.get('/version-2/pcs-journey-v4/412-manage-evidence', function(req, res)
@@ -2339,12 +2366,17 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence', function(req, res)
 			totalApprovedNotes++;
 		}
 	}
-
+	
+	// we need to change the x coordinate of the number within the SVG 
+	// for 1-digit numbers x = 10 and for 2-digit numbers it is x = 5
+	var totalSubmittedNotesX = (totalSubmittedNotes.length == 1) ? 10 : 5;
+	
+    req.session.data['total-submitted-notes-x'] = totalSubmittedNotesX;
     req.session.data['total-submitted-notes'] = formatWith1000Separator(totalSubmittedNotes);
     req.session.data['total-approved-notes'] = formatWith1000Separator(totalApprovedNotes);
 	
     req.session.data['chosen-facility'] = selectedFacility;
-	req.session.data['chosen-facility-draft-returned-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Draft' || n._status === 'Returned'));
+	req.session.data['chosen-facility-submitted-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Submitted'));
 	req.session.data['chosen-facility-all-other-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status !== 'Draft' && n._status !== 'Returned'));
 	
     res.redirect('/version-2/412_Manage_evidence');
