@@ -1614,7 +1614,6 @@ router.get('/version-2/pcs-journey/320-view-evidence-note', function(req, res)
     res.redirect('/version-2/320_View_evidence_note');
 });
 
-// this is called when loading the Review Evidence page
 router.get('/version-2/pcs-journey/311-review-evidence-note', function(req, res)
 {
     var facility = req.session.data['chosen-facility']; 
@@ -2147,14 +2146,71 @@ router.get('/version-2/pcs-journey-v4/411-choose-site-init', function(req, res)
 
 router.get('/version-2/pcs-journey-v4/412-manage-evidence-init', function(req, res)
 {
-    //var facility = new Facility('Recycling Team Ltd', 1, 'WEE/AB5678GH/PCS');
-    //req.session.data['chosen-facility'] = facility._name;
-    req.session.data['chosen-facility'] = null;
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 	
-    //req.session.data['chosen-facility'] = 'Recycling Team Ltd';
+    var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
+    req.session.data['chosen-facility'] = facility;
 	
-    res.redirect('/version-2/pcs-journey-v4/412-manage-evidence');
+    res.redirect('/version-2/pcs-journey-v4/412-manage-evidence-note');
 });
+
+router.get('/version-2/pcs-journey-v4/413-review-evidence-init', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'review evidence notes';
+
+    var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
+    req.session.data['chosen-facility'] = facility;
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == 1389);  // pick first submitted note on the list
+	
+    res.redirect('/version-2/413_Review_evidence_note');
+});
+
+
+router.get('/version-2/pcs-journey-v4/414-download-approved-evidence-init', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'download confirmation page';
+	
+    var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
+    req.session.data['chosen-facility'] = facility;
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == 1255);  // pick first approved note on the list
+
+	// status=Approved - no reason given
+	req.session.data['reject-return-reason'] = null;
+
+    res.redirect('/version-2/414_Download_reviewed_evidence_note');
+});
+
+
+router.get('/version-2/pcs-journey-v4/414-download-rejected-evidence-init', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'download confirmation page';
+	
+    var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
+    req.session.data['chosen-facility'] = facility;
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == 1329);  // pick first rejected note on the list
+	req.session.data['reject-return-reason'] = "Note rejected due to multiple errors in tonnages.";
+
+    res.redirect('/version-2/414_Download_reviewed_evidence_note');
+});
+
+
+router.get('/version-2/pcs-journey-v4/414-download-returned-evidence-init', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'download confirmation page';
+	
+    var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
+    req.session.data['chosen-facility'] = facility;
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == 1367);  // pick first rejected note on the list
+	req.session.data['reject-return-reason'] = "Note returned due to missing items in inventory list.";
+
+    res.redirect('/version-2/414_Download_reviewed_evidence_note');
+});
+
 
 
 
@@ -2272,7 +2328,7 @@ router.get('/version-2/pcs-journey-v4/411-choose-site', function(req, res)
     res.redirect('/version-2/411_Choose_site');
 });
 
-router.get('/version-2/pcs-journey-v4/412-manage-evidence', function(req, res)
+router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
@@ -2287,6 +2343,7 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence', function(req, res)
 
     req.session.data['paste-values'] = '';
 
+	// check whether we are coming back from Review evidence/Print PDF or entering for the first time.
     var selectedFacility = null;
     if (!chosenFacility)
 	{
@@ -2379,9 +2436,50 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence', function(req, res)
 	req.session.data['chosen-facility-submitted-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Submitted'));
 	req.session.data['chosen-facility-all-other-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status !== 'Draft' && n._status !== 'Returned'));
 	
-    res.redirect('/version-2/412_Manage_evidence');
+    res.redirect('/version-2/412_Manage_evidence_note');
 });
 
+router.get('/version-2/pcs-journey-v4/413-review-evidence-note', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'review evidence notes';
+
+    var facility = req.session.data['chosen-facility'];
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
+	
+    res.redirect('/version-2/413_Review_evidence_note');
+});
+
+router.post('/version-2/pcs-journey-v4/414-save-and-continue', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'review evidence notes';
+
+	var evidenceNote = req.session.data['selected-evidence-note'];
+	var choice = req.session.data['choose-status'];
+	
+	if ( choice == '1' ) evidenceNote._status = 'Approved';
+	if ( choice == '2' ) evidenceNote._status = 'Rejected';
+	if ( choice == '3' ) evidenceNote._status = 'Returned';
+	
+	req.session.data['selected-evidence-note'] = evidenceNote;
+	
+	// update the facility and push back for when returning to Manage evidence list
+	var facility = req.session.data['chosen-facility'];
+	var savedEvidence = facility._evidenceNotes.find(note => note._reference == Number(evidenceNote._reference));
+	savedEvidence._status = evidenceNote._status;
+	req.session.data['chosen-facility'] = facility;
+	
+    res.redirect('/version-2/414_Download_reviewed_evidence_note');
+});
+
+router.get('/version-2/pcs-journey-v4/download-confirmation-page', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'download confirmation page';
+
+    res.redirect('/version-2/414_PDF_printed_dialog');
+});
 
 
 
