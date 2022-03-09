@@ -2131,8 +2131,9 @@ router.post('/version-2/aatf-journey-v4/create-evidence-note', function(req, res
 // ------------------------------------------------------------------------------------
 // Version 4 - PCS journey
 // ------------------------------------------------------------------------------------
-
+// -----------------
 // init pages
+// -----------------
 
 router.get('/version-2/pcs-journey-v4/411-choose-activity-pcs-init', function(req, res)
 {
@@ -2158,7 +2159,7 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-init', function(req, r
 router.get('/version-2/pcs-journey-v4/413-review-evidence-init', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'review evidence notes';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 
     var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
     req.session.data['chosen-facility'] = facility;
@@ -2171,7 +2172,7 @@ router.get('/version-2/pcs-journey-v4/413-review-evidence-init', function(req, r
 router.get('/version-2/pcs-journey-v4/414-download-approved-evidence-init', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'download confirmation page';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 	
     var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
     req.session.data['chosen-facility'] = facility;
@@ -2187,7 +2188,7 @@ router.get('/version-2/pcs-journey-v4/414-download-approved-evidence-init', func
 router.get('/version-2/pcs-journey-v4/414-download-rejected-evidence-init', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'download confirmation page';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 	
     var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
     req.session.data['chosen-facility'] = facility;
@@ -2201,7 +2202,7 @@ router.get('/version-2/pcs-journey-v4/414-download-rejected-evidence-init', func
 router.get('/version-2/pcs-journey-v4/414-download-returned-evidence-init', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'download confirmation page';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 	
     var facility = CreatePCSFacilitiesWithEvidenceNotes(req);
     req.session.data['chosen-facility'] = facility;
@@ -2211,9 +2212,7 @@ router.get('/version-2/pcs-journey-v4/414-download-returned-evidence-init', func
     res.redirect('/version-2/414_Download_reviewed_evidence_note');
 });
 
-
-
-
+// -----------------
 
 function CreatePCSFacilitiesWithEvidenceNotes(req)
 {
@@ -2424,6 +2423,7 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, r
 		}
 	}
 	
+	// I cater for 1 and 2-digit numbers inside the SVG black circle (ask Emily if could expect 3 digits numbers)
 	// we need to change the x coordinate of the number within the SVG 
 	// for 1-digit numbers x = 10 and for 2-digit numbers it is x = 5
 	var totalSubmittedNotesX = (totalSubmittedNotes.length == 1) ? 10 : 5;
@@ -2433,8 +2433,9 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, r
     req.session.data['total-approved-notes'] = formatWith1000Separator(totalApprovedNotes);
 	
     req.session.data['chosen-facility'] = selectedFacility;
-	req.session.data['chosen-facility-submitted-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Submitted'));
-	req.session.data['chosen-facility-all-other-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status !== 'Draft' && n._status !== 'Returned'));
+	req.session.data['chosen-facility-transferable-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
+	req.session.data['chosen-facility-submitted-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
+	req.session.data['chosen-facility-reviewed-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Approved' || n._status === 'Rejected' || n._status === 'Returned'));
 	
     res.redirect('/version-2/412_Manage_evidence_note');
 });
@@ -2442,7 +2443,7 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, r
 router.get('/version-2/pcs-journey-v4/413-review-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'review evidence notes';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 
     var facility = req.session.data['chosen-facility'];
 	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
@@ -2453,7 +2454,7 @@ router.get('/version-2/pcs-journey-v4/413-review-evidence-note', function(req, r
 router.post('/version-2/pcs-journey-v4/414-save-and-continue', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'review evidence notes';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 
 	var evidenceNote = req.session.data['selected-evidence-note'];
 	var choice = req.session.data['choose-status'];
@@ -2476,7 +2477,7 @@ router.post('/version-2/pcs-journey-v4/414-save-and-continue', function(req, res
 router.get('/version-2/pcs-journey-v4/download-confirmation-page', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'download confirmation page';
+	req.session.data['header']['activity'] = 'manage evidence notes';
 
     res.redirect('/version-2/414_PDF_printed_dialog');
 });
