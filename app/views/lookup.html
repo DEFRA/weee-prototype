@@ -161,8 +161,8 @@
 <div class="govuk-main-wrapper--auto-spacing">
 <div> 
     <h1 class="govuk-heading-s">Select something...</h1>
-    <label class="govuk-label" for="prototype-select">Test:</label>
-    <select id="prototype-select">
+    <label id="prototype-select-label" class="govuk-label" for="prototype-select">Test:</label>
+    <select id="prototype-select" class="autocomplete-select" aria-labelledby="prototype-select-label">
         <option value=""></option>
         <option value="0b04dc2a-daa7-49a6-9cb3-4b4202cfe122">Cumbria and Lancashire (CLA)</option>
         <option value="65753ec0-623f-4319-999e-1ab6741de98b">Devon, Cornwall and the Isles of Scilly (DCS)</option>
@@ -185,9 +185,51 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var selectElement = document.querySelector('#prototype-select');
-            function suggest (query, populateResults) {   
-                          
+            var selectElements = document.querySelectorAll('.autocomplete-select');
+            
+            selectElements.forEach(function(element) {
+                accessibleAutocomplete.enhanceSelectElement({
+                    selectElement: element,
+                    autoselect: false,
+                    showAllValues: true,
+                    defaultValue: '',
+                //placeholder: 'test',
+                //source: suggest,
+                    dropdownArrow: function (config) {
+                            return '<svg class="autocomplete__dropdown-arrow-down" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+                    }
+                });
+
+/*                 var items = Array.from(element.options).map(el => el.textContent || el.innerText);
+                var newElement = document.createElement('div');
+                var newHiddenDescription = document.createElement('div');
+                
+                //newHiddenDescription.setAttribute("for", id_from_input);
+                newHiddenDescription.innerHTML = "Options for ";
+
+                //aria-labelledby="hidden-label"
+                element.parentNode.insertBefore(newElement, element);
+                //element.parentNode.insertBefore(newHiddenLabel, element);
+                
+                accessibleAutocomplete({
+                        showAllValues: true,
+                        id: element.id,
+                        source: items,
+                        defaultValue: '',
+                        //source: suggest,
+                        element: newElement,
+                        dropdownArrow: function (config) {
+                        return '<svg class="autocomplete__dropdown-arrow-down" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+                    }
+                });
+
+                element.style.display = 'none';
+                element.id = element.id + '-select';  */
+            });
+
+
+            /* function suggest (query, populateResults) {   
+                          console.log(this)
                 $.ajax({
                     }).done(function (){
                         //result.splice(0, 1);
@@ -196,9 +238,9 @@
                 var result = Array.from(selectElement.options).map(el => el.textContent || el.innerText);
                 //var filteredResults = [];
                 populateResults(result)
-            };
+            }; */
 
-            
+           /*  var elements = document.querySelector('#prototype-select');
 
             accessibleAutocomplete.enhanceSelectElement({
                selectElement: document.querySelector('#prototype-select'),
@@ -210,7 +252,7 @@
                dropdownArrow: function (config) {
                     return '<svg class="autocomplete__dropdown-arrow-down" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
                }
-            });
+            }); */
 
            /*  var result = [];
             result = Array.from(selectElement.options).map(el => el.textContent || el.innerText);
