@@ -2456,19 +2456,19 @@ router.post('/version-2/pcs-journey-v4/414-save-and-continue', function(req, res
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
 
-	var evidenceNote = req.session.data['selected-evidence-note'];
+	var selectedEvidenceNote = req.session.data['selected-evidence-note'];
 	var choice = req.session.data['choose-status'];
 	
-	if ( choice == '1' ) evidenceNote._status = 'Approved';
-	if ( choice == '2' ) evidenceNote._status = 'Rejected';
-	if ( choice == '3' ) evidenceNote._status = 'Returned';
+	if ( choice == '1' ) selectedEvidenceNote._status = 'Approved';
+	if ( choice == '2' ) selectedEvidenceNote._status = 'Rejected';
+	if ( choice == '3' ) selectedEvidenceNote._status = 'Returned';
 	
-	req.session.data['selected-evidence-note'] = evidenceNote;
+	req.session.data['selected-evidence-note'] = selectedEvidenceNote;
 	
 	// update the facility and push back for when returning to Manage evidence list
 	var facility = req.session.data['chosen-facility'];
-	var savedEvidence = facility._evidenceNotes.find(note => note._reference == Number(evidenceNote._reference));
-	savedEvidence._status = evidenceNote._status;
+	var savedEvidence = facility._evidenceNotes.find(note => note._reference == Number(selectedEvidenceNote._reference));
+	savedEvidence._status = selectedEvidenceNote._status;
 	req.session.data['chosen-facility'] = facility;
 	
     res.redirect('/version-2/414_Download_reviewed_evidence_note');
@@ -2482,6 +2482,31 @@ router.get('/version-2/pcs-journey-v4/download-confirmation-page', function(req,
     res.redirect('/version-2/414_PDF_printed_dialog');
 });
 
+router.get('/version-2/pcs-journey-v4/420-view-evidence-note', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence note';
+    var facility = req.session.data['chosen-facility']; 
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
+
+    res.redirect('/version-2/420_View_evidence_note');
+});
+
+router.get('/version-2/pcs-journey-v4/415-transfer-evidence-note', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence note';
+	
+    res.redirect('/version-2/415_Transfer_evidence_note');
+});
+
+router.get('/version-2/pcs-journey-v4/415-save-and-continue', function(req, res)
+{
+	//req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	//req.session.data['header']['activity'] = 'manage evidence note';
+	
+    //res.redirect('/version-2/415_Transfer_evidence_note');
+});
 
 
 

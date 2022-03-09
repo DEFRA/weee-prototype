@@ -1,0 +1,246 @@
+{% extends "version-2/layout_no_back.html" %}
+
+{% block pageTitle %}
+  View submitted evidence note
+{% endblock %}
+
+{% block content %}
+<a class="govuk-back-link" href="/version-2/pcs-journey-v4/412-manage-evidence">Manage evidence notes</a>
+<div class="govuk-!-padding-bottom-5"></div>
+<form class="form" action="/version-2/pcs-journey-v4/download-confirmation-page" method="post">
+	
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-three-quarters" style="width: 90%;">
+
+		<h2 class="govuk-heading-m">Evidence note</h2>
+
+		<div class="govuk-width-container govuk-grid-column-full govuk-!-margin-top-3 govuk-!-margin-left-0">
+		
+			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Reference ID:</span> 
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._reference }}</span>
+			</div>
+		
+			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Status:</span> 
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._status }}</span>
+			</div>
+			
+			{% if ( data['reject-return-reason'] ) %}
+
+				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Reason:</span> 
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['reject-return-reason'] }}</span>
+				</div>
+
+			{% endif %}
+
+
+			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted:</span> 
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._submittedDate }}</span>
+			</div>
+
+			{% if ( data['status'] === 'Approved' ) %}
+				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date approved:</span> 
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-approved'] }}</span>
+				</div>
+			{% endif %}
+
+			{% if ( data['status'] === 'Rejected' ) %}
+				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date rejected:</span> 
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-rejected'] }}</span>
+				</div>
+			{% endif %}
+
+			{% if ( data['status'] === 'Returned' ) %}
+				<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+					<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date returned:</span> 
+					<span class="govuk-body govuk-!-margin-left-2">{{ data['date-returned'] }}</span>
+				</div>
+			{% endif %}
+				
+		
+			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Compliance period:</span> 
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._year }}</span>
+			</div>
+			
+			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Type of waste:</span> 
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._wasteType }}</span>
+			</div>
+			
+			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Actual or protocol:</span> 
+				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._protocol }}</span>
+			</div>
+		
+		</div>
+
+		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
+		
+			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
+				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Issuing site:</div>
+				<div class="govuk-grid-column-one-half govuk-body">
+					ABB ltd <br />
+					<b>WEE/AB0001YZ/ATF</b> <br />
+					12 May Lane <br />
+					Hammersmith <br />
+					London <br />
+					SW13 TYH
+				</div>
+			</div>
+			
+			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
+				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0; text-align: right;">Operator:</div>
+				<div class="govuk-grid-column-one-half govuk-body">
+					ABB ltd <br />
+					12 May Lane <br />
+					Hammersmith <br />
+					London <br />
+					SW13 TYH
+				</div>
+			</div>
+			
+			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
+				<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0; text-align: right;">Receiving PCS:</div>
+				<div class="govuk-grid-column-one-half govuk-body">
+					PCS6 <br />
+					1 Bart avenue <br />
+					Reading <br />
+					RG1 ATR
+				</div>
+			</div>
+			
+		</div>                                  
+		  
+		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full govuk-body" style="padding: 0 0 0 0;">
+			By submitting this information you confirm that the following waste and electronic equipment from UK <b>household</b> 
+			has been received between <b>{{ data['selected-evidence-note']._startDate }}</b> and <b>{{ data['selected-evidence-note']._endDate }}</b> at this site. 
+			It has been reused as whole appliances to the extent set out below. 
+			No other evidence has been issued on these WEEE materials
+		</div>
+		
+		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
+		
+			<table class="govuk-table">
+				<thead class="govuk-table__head">
+					<tr>
+						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 48%;">Category</th>
+						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 27%;">Total received (tonnes)</th>
+						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 25%;">Re-used as whole appliances (tonnes)</th>
+					</tr>
+				</thead>
+				
+				<tbody class="govuk-table__body">
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">1. Large household appliances</td>
+						<td class="govuk-table__cell">48</td>
+						<td class="govuk-table__cell">2</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">2. Small household appliances</td>
+						<td class="govuk-table__cell">21</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">3. IT and telecommunications equipment</td>
+						<td class="govuk-table__cell">1</td>
+						<td class="govuk-table__cell">1</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">4. Consumer equipment</td>
+						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">5. Lighting equipment</td>
+						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">6. Electrical and electronic tools</td>
+						<td class="govuk-table__cell">14</td>
+						<td class="govuk-table__cell">3</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">7. Toys, leisure and sports equipment</td>
+						<td class="govuk-table__cell">32</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">8. Medical devices</td>
+						<td class="govuk-table__cell">11</td>
+						<td class="govuk-table__cell">1</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">9. Monitoring and control instruments</td>
+						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">10. Automatic dispensers</td>
+						<td class="govuk-table__cell">3</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">11. Display equipment</td>
+						<td class="govuk-table__cell">1</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">12. Cooling appliances containing refridgerants</td>
+						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">13. Gas discharge lamps</td>
+						<td class="govuk-table__cell">5</td>
+						<td class="govuk-table__cell">1</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<td class="govuk-table__cell">14. Photovoltaic panels</td>
+						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell">-</td>
+					</tr>
+				
+					<tr class="govuk-table__row">
+						<th class="govuk-table__cell" style="font-weight: 600; border-bottom: 0;">Total</th>
+						<th class="govuk-table__cell" style="font-weight: 600; border-bottom: 0;">136</th>
+						<th class="govuk-table__cell" style="font-weight: 600; border-bottom: 0;">8</th>
+					</tr>
+
+				</tbody>
+			</table>
+		
+		</div>
+    </div>
+  </div>
+		
+	<div class="govuk-!-margin-top-3">
+		{{ govukButton({
+			text: "Download PDF",
+			classes: "civica-font-size-22"
+		  }) }}
+	</div>
+
+</form>
+
+{% endblock %}

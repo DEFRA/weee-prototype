@@ -17,6 +17,20 @@
     <div class="govuk-grid-column-full">
 
 	  <h1 class="govuk-heading-l govuk-!-margin-bottom-9">Manage evidence notes for {{ data['chosen-facility']._name }}</h1>
+
+	<div class="govuk-grid-row govuk-!-padding-bottom-9">
+		<div class="govuk-grid-column-two-thirds">
+			<span class="govuk-body-l govuk-!-font-weight-bold govuk-!-font-size-22">
+			Compliance year &nbsp;&nbsp;
+			</span>
+			<select class="govuk-select" text="Compliance year" id="year-filter">
+				<option value="2022">2022</option>
+				<option value="2021">2021</option>
+				<option value="2020">2020</option>
+			</select>
+		</div>
+	</div>
+
 	  
 <div class="govuk-tabs" data-module="govuk-tabs" style="margin-left: -20px; margin-right: -20px;">
   <h2 class="govuk-tabs__title">
@@ -60,18 +74,6 @@
   
   <!-- FIRST TAB -->
   <div id="evidence-summary" class="govuk-tabs__panel">
-	<div class="govuk-grid-row govuk-!-padding-bottom-7">
-		<div class="govuk-grid-column-two-thirds">
-			<span class="govuk-body-l govuk-!-font-weight-bold govuk-!-font-size-22" style="margin: 12px;">
-			Evidence summary for compliance year
-			</span>
-			<select class="govuk-select" text="Compliance year" id="year-filter-1" style="margin: 12px;">
-				<option value="2022">2022</option>
-				<option value="2021">2021</option>
-				<option value="2020">2020</option>
-			</select>
-		</div>
-	</div>
 	<div class="govuk-grid-row govuk-!-padding-bottom-7">
 		<div class="govuk-grid-column-three-quarters">
 		  <div class="govuk-grid-column-one-half">
@@ -304,13 +306,7 @@
 					<input class="govuk-select" type="Date" id="Date-filter-to-2" style="width: 100%;" />
 				</td>
 				<td>&nbsp;</td>
-				<td>
-					<select class="govuk-select" id="year-filter-2" style="width: 100%;" text="Compliance year">
-						<option value="2022">2022</option>
-						<option value="2021">2021</option>
-						<option value="2020">2020</option>
-					</select>
-				</td>
+				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
@@ -557,16 +553,10 @@
 		  </tr>
 		  <tr class="govuk-table__row">
 			<td>
-				<!-- input class="govuk-select" type="Date" id="date-filter" style="width: 200px;" / -->
-				<input class="govuk-select" type="Month" id="month-filter-3" style="width: 200px; padding: 0;" />
+				<input class="govuk-select" type="Date" id="date-filter" style="width: 200px;" />
+				<!-- input class="govuk-select" type="Month" id="month-filter-3" style="width: 200px; padding: 0;" / -->
 			</td>
-			<td>
-				<select class="govuk-select" id="year-filter-3" style="width: 175px;" text="Compliance year">
-					<option value="2022">2022</option>
-					<option value="2021">2021</option>
-					<option value="2020">2020</option>
-				</select>
-			</td>
+			<td>&nbsp;</td>
 			<td>
 				<input class="govuk-select" id="pcs-filter-3" type="text" name="example" style="width: 100%;" list="issuersList">
 				<datalist id="issuersList">
@@ -610,7 +600,17 @@
 		</table>
 	</div>
 	
-	<form class="form" action="/version-2/pcs-journey/314-transfer-evidence-note" method="post">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<form class="form" action="/version-2/pcs-journey-v4/415-transfer-evidence-note" method="post">
 	
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 	
@@ -648,7 +648,7 @@
 				  <td class="govuk-table__cell">{{evidenceNote._aatf}}</td>
 				  <td class="govuk-table__cell govuk-!-text-align-right">{{evidenceNote._received}}</td>
 				  <td class="govuk-table__cell govuk-!-text-align-right">
-					<a href="/version-2/pcs-journey/320-view-evidence-note?id={{evidenceNote._reference}}">View</a>
+					  <a href="/version-2/pcs-journey-v4/420-view-evidence-note?id={{evidenceNote._reference}}">View</a>
 				  </td>
 				</tr>
 				
@@ -742,7 +742,7 @@
 		  
 		</table>
 		
-		<div class="element-spacer">
+		<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 			{{ govukButton({
 				text: "Transfer evidence", classes: "govuk-!-font-weight-bold",
 				attributes: {id : "transferEvidenceButton"}
@@ -789,13 +789,7 @@
 				<!-- input class="govuk-select" type="Date" id="date-filter-4" style="width: 200px;" / -->
 				<input class="govuk-select" type="Month" id="month-filter-4" style="width: 200px; padding: 0;" />
 			</td>
-			<td>
-				<select class="govuk-select" id="year-filter-4" style="width: 175px;" text="Compliance year">
-					<option value="2022">2022</option>
-					<option value="2021">2021</option>
-					<option value="2020">2020</option>
-				</select>
-			</td>
+			<td>&nbsp;</td>
 			<td>
 				<input class="govuk-select" id="pcs-filter-4" type="text" name="example" style="width: 220px;" list="issuersList">
 				<datalist id="issuersList">
@@ -835,8 +829,8 @@
 					<option value="9">9. Monitoring and control instruments</option>
 					<option value="10">10. Automatic dispensers</option>
 					<option value="11">11. Display equipment</option>
-					<option value="12">12. Cooling appliances containing refridgerants</option>
-					<option value="13">13. Gas discharge lamps</option>
+					<option value="12">12. Cooling appliances containing refrigerants</option>
+					<option value="13">13. Gas discharge lamps and LED light sources</option>
 					<option value="14">14. Photovoltaic panels</option>
 				</select>
 			</td>
@@ -890,7 +884,7 @@
 						<td class="govuk-table__cell">{{evidenceNote._wasteType}}</td>
 						<td class="govuk-table__cell">{{evidenceNote._status}}</td>  <!-- this should be always be 'Submitted' -->
 						<td class="govuk-table__cell">
-						  <a href="/version-2/pcs-journey/320-view-evidence-note?id={{evidenceNote._reference}}">View</a>
+						  <a href="/version-2/pcs-journey-v4/420-view-evidence-note?id={{evidenceNote._reference}}">View</a>
 						</td>
 					</tr>
 
