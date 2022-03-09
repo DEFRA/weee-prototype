@@ -1,0 +1,309 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    .autocomplete__wrapper {
+        position: relative;
+        z-index: 0;
+    }
+    
+    .autocomplete__hint, .autocomplete__input {
+        -webkit-appearance: none;
+        border: 2px solid #0b0c0c;
+        border-radius: 0;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        margin-bottom: 0;
+        width: 100%
+    }
+    
+    .autocomplete__input {
+        background-color: transparent;
+        position: relative
+    }
+    
+    .autocomplete__hint {
+        color: #b1b4b6;
+        position: absolute
+    }
+    
+    .autocomplete__input--default {
+        padding: 5px
+    }
+    
+    .autocomplete__input--focused {
+        outline: 3px solid #fd0;
+        outline-offset: 0;
+        box-shadow: inset 0 0 0 2px
+    }
+    
+    .autocomplete__input--show-all-values {
+        padding: 5px 34px 5px 5px;
+        cursor: pointer
+    }
+    
+    .autocomplete__dropdown-arrow-down {
+        z-index: -1;
+        display: inline-block;
+        position: absolute;
+        right: 8px;
+        width: 12px;
+        height: 12px;
+        top: 12px;
+    
+    }
+    
+    .autocomplete__menu {
+        background-color: #fff;
+        border: 2px solid #0b0c0c;
+        border-top: 0;
+        color: #0b0c0c;
+        margin: 0;
+        max-height: 342px;
+        overflow-x: hidden;
+        padding: 0;
+        width: 100%;
+        width: calc(100% - 4px)
+    }
+    
+    .autocomplete__menu--visible {
+        display: block
+    }
+    
+    .autocomplete__menu--hidden {
+        display: none
+    }
+    
+    .autocomplete__menu--overlay {
+        box-shadow: rgba(0,0,0,.256863) 0 2px 6px;
+        left: 0;
+        position: absolute;
+        top: 100%;
+        z-index: 100
+    }
+    
+    .autocomplete__menu--inline {
+        position: relative
+    }
+    
+    .autocomplete__option {
+        font-family: "GDS Transport", arial, sans-serif;
+        border-bottom: solid #b1b4b6;
+        border-width: 1px 0;
+        cursor: pointer;
+        display: block;
+        position: relative
+    }
+    
+        .autocomplete__option > * {
+            pointer-events: none
+        }
+    
+        .autocomplete__option:first-of-type {
+            border-top-width: 0
+        }
+    
+        .autocomplete__option:last-of-type {
+            border-bottom-width: 0
+        }
+    
+    .autocomplete__option--odd {
+        background-color: #fafafa
+    }
+    
+    .autocomplete__option--focused, .autocomplete__option:hover {
+        background-color: #1d70b8;
+        border-color: #1d70b8;
+        color: #fff;
+        outline: 0
+    }
+    
+    @media (-ms-high-contrast:active),(forced-colors:active) {
+        .autocomplete__menu {
+            border-color: FieldText
+        }
+    
+        .autocomplete__option {
+            background-color: Field;
+            color: FieldText
+        }
+    
+            .autocomplete__option--focused, .autocomplete__option:hover {
+                forced-color-adjust: none;
+                background-color: SelectedItem;
+                border-color: SelectedItem;
+                color: SelectedItemText;
+                outline-color: SelectedItemText
+            }
+    }
+    
+    .autocomplete__option--no-results {
+        background-color: #fafafa;
+        color: #646b6f;
+        cursor: not-allowed
+    }
+    
+    .autocomplete__hint, .autocomplete__input, .autocomplete__option {
+        font-size: 16px;
+        line-height: 1.25
+    }
+    
+    .autocomplete__hint, .autocomplete__option {
+        padding: 5px
+    }
+    
+    
+    
+    </style>
+
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
+<script src="/public/javascripts/autocomplete.min.js"></script>
+<div class="govuk-main-wrapper--auto-spacing">
+<div> 
+    <h1 class="govuk-heading-s">Select something...</h1>
+    <label id="prototype-select-label" class="govuk-label" for="prototype-select">Recipient</label>
+    <select id="prototype-select" class="autocomplete-select" aria-labelledby="prototype-select-label">
+        <option value=""></option>
+
+        <option value="1">All WEEE Compliance</option>
+        <option value="2">B2B Compliance</option>
+        <option value="3">B2BWEEE-SCHEME</option>
+        <option value="4">Comply Direct</option>
+        <option value="5">Comply with Clarity</option>
+        <option value="6">Ecosurety</option>
+        <option value="7">Electrolink</option>
+        <option value="8">ERP UK</option>
+        <option value="9">Interlevin</option>
+        <option value="10">Lumicom Compliance Scheme</option>
+        <option value="11">Nilwaste</option>
+        <option value="12">Northern Compliance Limited</option>
+        <option value="13">PV CYCLE UK</option>
+        <option value="14">Recolight</option>
+        <option value="15">Recycle Telecom Producer Compliance Scheme</option>
+        <option value="16">Recycling Lives Compliance Services Limited</option>
+        <option value="17">RENE AG</option>
+        <option value="18">REPIC</option>
+        <option value="19">Repscot Ltd</option>
+        <option value="20">RTB WEEE Compliance</option>
+        <option value="21">Smart Comply (EA)</option>
+        <option value="22">Transform</option>
+        <option value="23">Valpak</option>
+        <option value="24">Valpak Scotland Limited</option>
+        <option value="25">Veolia ES WEEE Compliance Scheme (UK) Ltd</option>
+        <option value="26">Waste Electrical Recycling Compliance Scheme</option>
+        <option value="27">WE3 Compliance</option>
+        <option value="28">WEEE 3R Ltd</option>
+        <option value="29">WEEE Link</option>
+        <option value="30">WEEECare</option>
+        <option value="31">WEEEComply</option>
+        <option value="32">WEEELight</option>
+        </select>
+    </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var selectElements = document.querySelectorAll('.autocomplete-select');
+            
+            selectElements.forEach(function(element) {
+                accessibleAutocomplete.enhanceSelectElement({
+                    selectElement: element,
+                    autoselect: false,
+                    showAllValues: true,
+                    defaultValue: '',
+                //placeholder: 'test',
+                //source: suggest,
+                    dropdownArrow: function (config) {
+                            return '<svg class="autocomplete__dropdown-arrow-down" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+                    }
+                });
+
+/*                 var items = Array.from(element.options).map(el => el.textContent || el.innerText);
+                var newElement = document.createElement('div');
+                var newHiddenDescription = document.createElement('div');
+                
+                //newHiddenDescription.setAttribute("for", id_from_input);
+                newHiddenDescription.innerHTML = "Options for ";
+
+                //aria-labelledby="hidden-label"
+                element.parentNode.insertBefore(newElement, element);
+                //element.parentNode.insertBefore(newHiddenLabel, element);
+                
+                accessibleAutocomplete({
+                        showAllValues: true,
+                        id: element.id,
+                        source: items,
+                        defaultValue: '',
+                        //source: suggest,
+                        element: newElement,
+                        dropdownArrow: function (config) {
+                        return '<svg class="autocomplete__dropdown-arrow-down" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+                    }
+                });
+
+                element.style.display = 'none';
+                element.id = element.id + '-select';  */
+            });
+
+
+            /* function suggest (query, populateResults) {   
+                          console.log(this)
+                $.ajax({
+                    }).done(function (){
+                        //result.splice(0, 1);
+                        //filteredResults = result.splice(0, 1);
+                    });
+                var result = Array.from(selectElement.options).map(el => el.textContent || el.innerText);
+                //var filteredResults = [];
+                populateResults(result)
+            }; */
+
+           /*  var elements = document.querySelector('#prototype-select');
+
+            accessibleAutocomplete.enhanceSelectElement({
+               selectElement: document.querySelector('#prototype-select'),
+               autoselect: false,
+               showAllValues: true,
+               defaultValue: '',
+               //placeholder: 'test',
+               //source: suggest,
+               dropdownArrow: function (config) {
+                    return '<svg class="autocomplete__dropdown-arrow-down" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+               }
+            }); */
+
+           /*  var result = [];
+            result = Array.from(selectElement.options).map(el => el.textContent || el.innerText);
+            var id = selectElement.id;
+            var element = document.createElement('div');
+
+            selectElement.parentNode.insertBefore(element, selectElement);
+
+            function suggest (query, populateResults) {   
+                var filteredResults = result;            
+                $.ajax({
+                    }).done(function (){
+                        //result.splice(0, 1);
+                        //filteredResults = result.splice(0, 1);
+                    });
+
+                populateResults(filteredResults)
+            };
+
+            accessibleAutocomplete({
+                showAllValues: true,
+                id: id,
+                source: result,
+                //source: suggest,
+                element: element,
+                dropdownArrow: function (config) {
+                return '<svg class="autocomplete__dropdown-arrow-down" viewBox="0 0 512 512" ><path d="M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z"/></svg>'
+                }
+            });
+
+            selectElement.style.display = 'none';
+            selectElement.id = selectElement.id + '-select';   */
+        });
+    </script>
+{% endblock %}
