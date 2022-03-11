@@ -17,8 +17,8 @@ class EvidenceNote{
      this._returnedDate = '-';
      this._rejectedDate = '-';
      this._createdDate = createdDate;
-	 this._sortOrder = 0;
-	 this._isVisible = false;
+     this._sortOrder = 0;
+     this._isVisible = false;
     }
 }
 

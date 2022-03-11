@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<form class="form" action="/version-2/pcs-journey-v4/415-save-and-continue" method="post">
+<form class="form" action="/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from" method="post">
 
   <h1 class="govuk-heading-l">Transfer evidence to another Producer Compliance Scheme</h1>
   
@@ -14,7 +14,7 @@
 
 		<div class="govuk-grid-column-three-quarters">
 
-			<h2 class="govuk-heading-m">Which scheme would you like to transfer evidence to?</h2>
+			<h2 class="govuk-heading-m">Which PCS would you like to transfer evidence to?</h2>
 
 			<div class="govuk-form-group govuk-!-margin-bottom-7">
 			  <select class="govuk-select" name="transfer-selected-pcs">
@@ -27,16 +27,16 @@
 					{% endfor %}
 
 				{% else %}
-				<option value="Recyling Lives">Recyling Lives</option>
-				<option value="Waste recycling">Waste recycling</option>
-				<option value="WEEE team">WEEE team</option>
+					<option value="Recyling Lives">Recyling Lives</option>
+					<option value="Waste recycling">Waste recycling</option>
+					<option value="WEEE team">WEEE team</option>
 				{% endif %}
 				
 			  </select>
 			</div>
 
 			<div class="govuk-!-margin-bottom-2">
-			<h2 class="govuk-heading-m">Which categories are you transferring from?</h2>
+			<h2 class="govuk-heading-m">Which categories would you like to transfer evidence from?</h2>
 			</div>
 
 			<div class="govuk-form-group">

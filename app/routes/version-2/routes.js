@@ -2303,8 +2303,8 @@ router.get('/version-2/pcs-journey-v4/411-choose-activity-pcs', function(req, re
     req.session.data['chosen-facility'] = null;
 	req.session.data['show-submission-panel'] = null;
 
-    //req.session.data['selected-transfer-aatfs'] = null;
-    //req.session.data['selected-transfer-categories'] = null;
+    req.session.data['selected-transfer-aatfs'] = null;
+    req.session.data['selected-transfer-categories'] = null;
     
     res.redirect('/version-2/411_Choose_activity_PCS');
 });
@@ -2433,9 +2433,17 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, r
     req.session.data['total-approved-notes'] = formatWith1000Separator(totalApprovedNotes);
 	
     req.session.data['chosen-facility'] = selectedFacility;
+	req.session.data['chosen-facility-all-notes'] = selectedFacility._evidenceNotes;   //.filter(n => n._status === 'Submitted');
+	
+	// tab3 list
+	req.session.data['chosen-facility-reviewed-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Approved' || n._status === 'Rejected' || n._status === 'Returned' || n._status === 'Void'));
+
+    req.session.data['selected-transfer-aatfs'] = null;
+    req.session.data['selected-transfer-categories'] = null;
+
+
 	req.session.data['chosen-facility-transferable-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
-	req.session.data['chosen-facility-submitted-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
-	req.session.data['chosen-facility-reviewed-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Approved' || n._status === 'Rejected' || n._status === 'Returned'));
+	req.session.data['chosen-facility-transferred-out-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
 	
     res.redirect('/version-2/412_Manage_evidence_note');
 });
@@ -2492,20 +2500,22 @@ router.get('/version-2/pcs-journey-v4/420-view-evidence-note', function(req, res
     res.redirect('/version-2/420_View_evidence_note');
 });
 
-router.get('/version-2/pcs-journey-v4/415-transfer-evidence-note', function(req, res)
+router.get('/version-2/pcs-journey-v4/415-transfer-select-categories', function(req, res)
+{
+	console.log('page: 415-transfer-select-categories  has been called');
+	
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence note';
+	
+    res.redirect('/version-2/415_Transfer_Select_Categories');
+});
+
+router.get('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence note';
 	
-    res.redirect('/version-2/415_Transfer_evidence_note');
-});
-
-router.get('/version-2/pcs-journey-v4/415-save-and-continue', function(req, res)
-{
-	//req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	//req.session.data['header']['activity'] = 'manage evidence note';
-	
-    //res.redirect('/version-2/415_Transfer_evidence_note');
+    res.redirect('/version-2/416_Choose_notes_to_transfer_from');
 });
 
 

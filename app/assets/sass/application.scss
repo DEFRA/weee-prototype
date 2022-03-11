@@ -237,3 +237,39 @@ $govuk-assets-path: '/govuk/assets/';
 	border: 1px solid #eee; 
 	background-color: #eeeeef;
 }
+
+.civica-date-input
+{
+	width: 140px; 
+	height: 36px; 
+	margin: 0 0 0 0; 
+	padding: 0 0 0 0;
+	font-size: 19px;
+	font-family: arial;
+	border-width: 2px;
+	border-radius: 1px;
+	border-color: #111;
+}
+
+input[type="date"]
+{
+	background: white;
+}
+
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="date"]::-webkit-calendar-picker-indicator
+{
+	padding: 1px;
+	margin: 0;
+}
+
+input[type="date"]::-webkit-inner-spin-button
+{
+	display: none;
+}
+		

@@ -15,8 +15,8 @@ class CategoryItems{
         this._categoryItems.push(new Category(9, 'Monitoring and control instruments'));
         this._categoryItems.push(new Category(10, 'Automatic dispensers'));
         this._categoryItems.push(new Category(11, 'Display equipment'));
-        this._categoryItems.push(new Category(12, 'Cooling appliances containing refridgerants'));
-        this._categoryItems.push(new Category(13, 'Gas discharge lamps'));
+        this._categoryItems.push(new Category(12, 'Cooling appliances containing refrigerants'));
+        this._categoryItems.push(new Category(13, 'Gas discharge lamps and LED light sources'));
         this._categoryItems.push(new Category(14, 'Photovoltaic panels'));
     }    
 }
