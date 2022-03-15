@@ -2168,7 +2168,7 @@ router.get('/version-2/pcs-journey-v4/413-review-evidence-init', function(req, r
     res.redirect('/version-2/413_Review_evidence_note');
 });
 
-router.get('/version-2/pcs-journey-v4/414-download-approved-evidence-init', function(req, res)
+router.get('/version-2/pcs-journey-v4/414-view-download-approved-evidence-init', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
@@ -2183,7 +2183,7 @@ router.get('/version-2/pcs-journey-v4/414-download-approved-evidence-init', func
     res.redirect('/version-2/414_Download_reviewed_evidence_note');
 });
 
-router.get('/version-2/pcs-journey-v4/414-download-rejected-evidence-init', function(req, res)
+router.get('/version-2/pcs-journey-v4/414-view-download-rejected-evidence-init', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
@@ -2196,7 +2196,7 @@ router.get('/version-2/pcs-journey-v4/414-download-rejected-evidence-init', func
     res.redirect('/version-2/414_Download_reviewed_evidence_note');
 });
 
-router.get('/version-2/pcs-journey-v4/414-download-returned-evidence-init', function(req, res)
+router.get('/version-2/pcs-journey-v4/414-view-download-returned-evidence-init', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
@@ -2208,6 +2208,70 @@ router.get('/version-2/pcs-journey-v4/414-download-returned-evidence-init', func
 
     res.redirect('/version-2/414_Download_reviewed_evidence_note');
 });
+
+router.get('/version-2/pcs-journey-v4/415-transfer-select-categories-init', function(req, res)
+{
+	console.log('page: 415-transfer-select-categories  has been called');
+	
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence note';
+	
+    res.redirect('/version-2/415_Transfer_Select_Categories');
+});
+
+router.get('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from-init', function(req, res)
+{
+	req.session.data['waste-1'] = 'on';
+	req.session.data['waste-2'] = 'on';
+	req.session.data['waste-6'] = 'on';
+	req.session.data['waste-8'] = 'on';
+	
+    res.redirect('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from');
+});
+
+router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer-init', function(req, res)
+{
+	//req.session.data['waste-1'] = 'on';
+	//req.session.data['waste-2'] = 'on';
+	//req.session.data['waste-6'] = 'on';
+	//req.session.data['waste-8'] = 'on';
+	
+    res.redirect('/version-2/417_Choose_tonnage_to_transfer');
+});
+
+router.get('/version-2/pcs-journey-v4/418-check-transfer-details-init', function(req, res)
+{
+	//req.session.data['waste-1'] = 'on';
+	//req.session.data['waste-2'] = 'on';
+	//req.session.data['waste-6'] = 'on';
+	//req.session.data['waste-8'] = 'on';
+	
+    res.redirect('/version-2/418_Check_transfer_details');
+});
+
+router.get('/version-2/pcs-journey-v4/419-view-transfer-note-after-submission-init', function(req, res)
+{
+	//req.session.data['waste-1'] = 'on';
+	//req.session.data['waste-2'] = 'on';
+	//req.session.data['waste-6'] = 'on';
+	//req.session.data['waste-8'] = 'on';
+	
+    res.redirect('/version-2/419_View_transfer_note_after_submission');
+});
+
+router.get('/version-2/pcs-journey-v4/420-view-note-1399-after-transfer-init', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence notes';
+	var selectedEvidence = new EvidenceNote('01/01/2022', '31/01/2022', 'Electrical Waste Recycling Group Limited (Huddersfield)', '2022', 'Household', 'Actual', 140.265, 20.002, "Void", 1399, '11/11/2021 11:32:40')
+	selectedEvidence._submittedDate = '02/08/21 11:48:37';
+	selectedEvidence._approvedDate = '07/09/21 09:22:22';
+	selectedEvidence._status = 'Approved';
+	req.session.data['selected-evidence-note'] = selectedEvidence;
+	
+    res.redirect('/version-2/420_View_evidence_note');
+});
+
 
 
 // -----------------
@@ -2227,9 +2291,10 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        var newNote = new EvidenceNote('01/02/2022', '11/02/2022', 'Environcom (North West) Ltd', '2022', 'Household', 'Actual', 180.005, 10.001, "Submitted", 1211, '11/11/2021 11:32:40');
-        newNote._aatf = "Intelligent Waste Management Ltd";
-        facility._evidenceNotes.push(newNote);
+        
+		facility._evidenceNotes.push(new EvidenceNote('01/02/2022', '11/02/2022', 'Environcom (North West) Ltd', '2022', 'Household', 'Actual', 180.005, 10.001, "Submitted", 1211, '11/11/2021 11:32:40'));
+        //newNote._aatf = "Intelligent Waste Management Ltd";
+        //facility._evidenceNotes.push(newNote);
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -2251,9 +2316,9 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        var newNote = new EvidenceNote('09/02/2022', '12/02/2022', 'M.D.J. Light Brothers Ltd - Greystone Quarry', '2022', 'Household', 'Actual', 130.256, 20.002, "Submitted", 1189, '11/11/2021 11:32:40');
-        newNote._aatf = "Recycling Lives Ltd (Recycling Park)";
-        facility._evidenceNotes.push(newNote);
+        facility._evidenceNotes.push(new EvidenceNote('09/02/2022', '12/02/2022', 'M.D.J. Light Brothers Ltd - Greystone Quarry', '2022', 'Household', 'Actual', 130.256, 20.002, "Submitted", 1189, '11/11/2021 11:32:40'));
+        //newNote._aatf = "Recycling Lives Ltd (Recycling Park)";
+        //facility._evidenceNotes.push(newNote);
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -2261,7 +2326,7 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', 350.256, 2.002, "Rejected", 1890, '11/11/2021 11:32:40'));
+        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Epic', '2022', 'Household', 'Actual', 350.256, 2.002, "Submitted", 1890, '11/11/2021 11:32:40'));
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -2273,12 +2338,19 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         // facility._evidenceNotes[0]._submittedDate = moment(new Date(2022, 01, 4, 10, 4, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
         // ------------------------------------------------------------------------------------------
         
+		// Submitted notes
         facility._evidenceNotes[0]._submittedDate = moment(new Date(2022, 01, 4), 'DD/MM/YYYY').format('DD/MM/YYYY');
         facility._evidenceNotes[1]._submittedDate = moment(new Date(2022, 01, 5), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[6]._submittedDate = moment(new Date(2022, 01, 6), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[8]._submittedDate = moment(new Date(2022, 01, 7), 'DD/MM/YYYY').format('DD/MM/YYYY');
+        facility._evidenceNotes[9]._submittedDate = moment(new Date(2022, 01, 8), 'DD/MM/YYYY').format('DD/MM/YYYY');
+
+		// Rejected notes
         facility._evidenceNotes[3]._rejectedDate = moment(new Date(2022, 01, 8), 'DD/MM/YYYY').format('DD/MM/YYYY');
-        facility._evidenceNotes[6]._submittedDate = moment(new Date(2022, 01, 9), 'DD/MM/YYYY').format('DD/MM/YYYY');
-        facility._evidenceNotes[9]._submittedDate = moment(new Date(2022, 01, 9), 'DD/MM/YYYY').format('DD/MM/YYYY');
-        
+		
+		// Transferred notes
+		facility._evidenceNotes[0]._isTransferred = true;
+		facility._evidenceNotes[2]._isTransferred = true;
     }
 	
 	return facility;
@@ -2303,7 +2375,7 @@ router.get('/version-2/pcs-journey-v4/411-choose-activity-pcs', function(req, re
 
     req.session.data['selected-transfer-aatfs'] = null;
     req.session.data['selected-transfer-categories'] = null;
-    
+
     res.redirect('/version-2/411_Choose_activity_PCS');
 });
 
@@ -2431,16 +2503,9 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, r
     req.session.data['total-approved-notes'] = formatWith1000Separator(totalApprovedNotes);
 	
     req.session.data['chosen-facility'] = selectedFacility;
-	req.session.data['chosen-facility-all-notes'] = selectedFacility._evidenceNotes;   //.filter(n => n._status === 'Submitted');
-	
-	// tab3 list
-	req.session.data['chosen-facility-reviewed-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Approved' || n._status === 'Rejected' || n._status === 'Returned' || n._status === 'Void'));
-
-    //req.session.data['selected-transfer-aatfs'] = null;
-    //req.session.data['selected-transfer-categories'] = null;
-
-	req.session.data['chosen-facility-transferable-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Approved' || n._status === 'Rejected' || n._status === 'Returned' || n._status === 'Void'));
-	req.session.data['chosen-facility-transferred-out-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
+	req.session.data['chosen-facility-submitted-notes'] = selectedFacility._evidenceNotes.filter(n => ((n._status === 'Submitted') && (n._isTransferred == false)));
+	req.session.data['chosen-facility-transferrable-notes'] = selectedFacility._evidenceNotes.filter(n => (n._isTransferred == false));
+	req.session.data['chosen-facility-transferred-notes'] = selectedFacility._evidenceNotes.filter(n => n._isTransferred == true);
 	
     res.redirect('/version-2/412_Manage_evidence_note');
 });
@@ -2479,35 +2544,15 @@ router.post('/version-2/pcs-journey-v4/414-save-and-continue', function(req, res
     res.redirect('/version-2/414_Download_reviewed_evidence_note');
 });
 
-router.get('/version-2/pcs-journey-v4/download-confirmation-page', function(req, res)
-{
-	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'manage evidence notes';
-
-    res.redirect('/version-2/414_PDF_printed_dialog');
-});
-
-router.get('/version-2/pcs-journey-v4/420-view-evidence-note', function(req, res)
-{
-	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'manage evidence note';
-    var facility = req.session.data['chosen-facility']; 
-	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
-
-    res.redirect('/version-2/420_View_evidence_note');
-});
-
 router.get('/version-2/pcs-journey-v4/415-transfer-select-categories', function(req, res)
 {
-	console.log('page: 415-transfer-select-categories  has been called');
-	
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence note';
 	
     res.redirect('/version-2/415_Transfer_Select_Categories');
 });
 
-router.post('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', function(req, res)
+router.get('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence note';
@@ -2530,7 +2575,7 @@ router.post('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', funct
 	var waste12 = req.session.data['waste-12'];
 	var waste13 = req.session.data['waste-13'];
 	var waste14 = req.session.data['waste-14'];
-	
+/*	
 	console.log('waste1: ' + waste1);
 	console.log('waste2: ' + waste2);
 	console.log('waste3: ' + waste3);
@@ -2545,7 +2590,7 @@ router.post('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', funct
 	console.log('waste12: ' + waste12);
 	console.log('waste13: ' + waste13);
 	console.log('waste14: ' + waste14);
-	
+	*/
 	/*
 	scheme: B2BWEEE-SCHEME
 	waste1: on
@@ -2567,7 +2612,7 @@ router.post('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', funct
     res.redirect('/version-2/416_Choose_notes_to_transfer_from');
 });
 
-router.post('/version-2/pcs-journey-v4/417-save-and-continue', function(req, res)
+router.post('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
@@ -2615,128 +2660,17 @@ router.get('/version-2/pcs-journey-v4/419-view-transfer-note-after-submission', 
     res.redirect('/version-2/419_Check_transfer_details');
 });
 
-// this is called by 419_view_transfer_note_after_submission - we do not want to re-initialise some variables
-router.get('/version-2/pcs-journey-v4/412-manage-evidence-note-no-init', function(req, res)
+router.get('/version-2/pcs-journey-v4/420-view-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
-	req.session.data['header']['activity'] = 'manage evidence notes';
-	
-    var chosenFacility = req.session.data['chosen-facility'];
-	var schemes = new Schemes();
-    req.session.data['schemes'] = schemes;
+	req.session.data['header']['activity'] = 'manage evidence note';
+    var facility = req.session.data['chosen-facility']; 
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
 
-    var facilities = [];
-    facilities.push(new Facility('Recycling Team Ltd', 1, 'WEE/AB9012GH/PCS'));
-    req.session.data['facilities'] = facilities;
-
-    req.session.data['paste-values'] = '';
-
-	// check whether we are coming back from Review evidence/Print PDF or entering for the first time.
-    var selectedFacility = null;
-    if (!chosenFacility)
-	{
-        selectedFacility = CreatePCSFacilitiesWithEvidenceNotes(req);
-    }
-	else
-	{
-        selectedFacility = chosenFacility;
-    }
-
-	// Sort by Status then Submitted Date 
-	// Draft first then submitted in descending date order
-	// Draft, Rejected, Approved, Submitted
-	// WARNING: this sort must be done before pagination (lower down)
-	for ( var o = 0; o < selectedFacility._evidenceNotes.length; o++ )
-	{
-		var order = selectedFacility._evidenceNotes[o]._sortOrder;
-		var status = selectedFacility._evidenceNotes[o]._status;
-		
-		// we want editable records listed first
-		
-		if ( status === 'Draft' )
-		{
-			// draft must be at the top of the list
-			selectedFacility._evidenceNotes[o]._sortOrder = 0;
-		}
-		if ( status === 'Returned' )
-		{
-			// Returned must be at the top of the list but after Draft
-			selectedFacility._evidenceNotes[o]._sortOrder = 1;
-		}
-		if ( status === 'Submitted' )
-		{
-			// submitted notes come second on the list
-			selectedFacility._evidenceNotes[o]._sortOrder = 2;
-		}
-		if ( status !== 'Draft' && status !== 'Submitted' )
-		{
-			// other types of notes will follow in unsorted order
-			selectedFacility._evidenceNotes[o]._sortOrder = 3;
-		}
-	}
-
-	// sort over 2 columns:  submitted date in descending order
-	selectedFacility._evidenceNotes.sort((a, b) => (a._sortOrder > b._sortOrder) ? 1 : (a._sortOrder === b._sortOrder) ? ((a._submittedDate > b._submittedDate) ? -1 : 1) : -1 );
-	
-	
-	// WARNING: make sure pagination is applied to sorted list first.
-	// page size is hard-coded but should be stored in session is changed by UI
-	var pageSize = 10;
-	
-	for ( var v = 0; v < selectedFacility._evidenceNotes.length; v++ )
-	{
-		selectedFacility._evidenceNotes[v]._isVisible = false;
-		
-		if ( v < pageSize )
-		{
-			selectedFacility._evidenceNotes[v]._isVisible = true;
-		}
-	}
-
-	// Evidence Summary - calculate totals for first tab
-	var totalSubmittedNotes = 0;
-	var totalApprovedNotes = 0;
-	
-	for(var e = 0; e < selectedFacility._evidenceNotes.length; e++)
-	{
-		var status = selectedFacility._evidenceNotes[e]._status;
-		
-		if ( status === 'Submitted' )
-		{
-			totalSubmittedNotes++;
-		}
-		
-		if ( status === 'Approved' )
-		{
-			totalApprovedNotes++;
-		}
-	}
-	
-	// I cater for 1 and 2-digit numbers inside the SVG black circle (ask Emily if could expect 3 digits numbers)
-	// we need to change the x coordinate of the number within the SVG 
-	// for 1-digit numbers x = 10 and for 2-digit numbers it is x = 5
-	var totalSubmittedNotesX = (totalSubmittedNotes.length == 1) ? 10 : 5;
-	
-    req.session.data['total-submitted-notes-x'] = totalSubmittedNotesX;
-    req.session.data['total-submitted-notes'] = formatWith1000Separator(totalSubmittedNotes);
-    req.session.data['total-approved-notes'] = formatWith1000Separator(totalApprovedNotes);
-	
-    req.session.data['chosen-facility'] = selectedFacility;
-	req.session.data['chosen-facility-all-notes'] = selectedFacility._evidenceNotes;   //.filter(n => n._status === 'Submitted');
-	
-	// tab3 list
-	req.session.data['chosen-facility-reviewed-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Approved' || n._status === 'Rejected' || n._status === 'Returned' || n._status === 'Void'));
-
-    //req.session.data['selected-transfer-aatfs'] = null;
-    //req.session.data['selected-transfer-categories'] = null;
-
-	req.session.data['chosen-facility-transferable-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status === 'Approved' || n._status === 'Rejected' || n._status === 'Returned' || n._status === 'Void'));
-	req.session.data['chosen-facility-transferred-out-notes'] = selectedFacility._evidenceNotes.filter(n => n._status === 'Submitted');
-	
-    res.redirect('/version-2/412_Manage_evidence_note');
+    res.redirect('/version-2/420_View_evidence_note');
 });
 
-router.get('/version-2/pcs-journey-v4//version-2/pcs-journey-v4/421-download-as-pdf', function(req, res)
+router.get('/version-2/pcs-journey-v4/421-download-as-pdf', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';

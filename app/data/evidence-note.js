@@ -19,6 +19,7 @@ class EvidenceNote{
      this._createdDate = createdDate;
      this._sortOrder = 0;
      this._isVisible = false;
+     this._isTransferred = false;
     }
 }
 

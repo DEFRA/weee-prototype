@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block content %}
-
-<a class="govuk-back-link govuk-!-margin-top-1 govuk-!-margin-bottom-7" href="/version-2/pcs-journey-v4/411-choose-activity-pcs">Back</a>
-
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 <script src="/public/javascripts/tabs.js"></script>
+<script src="/public/javascripts/transfer-routes-v4.js"></script>
+<script src="/public/javascripts/transfer-totals.js"></script>
+
+<a class="govuk-back-link govuk-!-margin-top-1 govuk-!-margin-bottom-7" href="/version-2/pcs-journey-v4/411-choose-activity-pcs">Back</a>
 
 
   <div class="govuk-grid-row">
@@ -661,7 +662,7 @@
 		  
 		  <tbody class="govuk-table__body" id="tbody-results-3">		  
 		  
-			{% for evidenceNote in data['chosen-facility-reviewed-notes'] %}
+			{% for evidenceNote in data['chosen-facility-transferrable-notes'] %}
 
 				<tr class="govuk-table__row result-row">
 				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
@@ -913,7 +914,7 @@
 		  
 			<tbody class="govuk-table__body" id="tbody-results-4">
 		  
-				{% for evidenceNote in data['chosen-facility-transferred-out-notes'] %}
+				{% for evidenceNote in data['chosen-facility-transferred-notes'] %}
 
 					<tr class="govuk-table__row result-row">
 						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
