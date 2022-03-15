@@ -5,20 +5,32 @@
 {% endblock %}
 
 {% block content %}
-<script src="/public/javascripts/transfer-routes-v4.js"></script>
-<script src="/public/javascripts/transfer-totals.js"></script>
+<script src="/public/javascripts/jquery-1.11.3.js"></script>
 
 <style> div { border: 0px solid black; } </style>
+<script>
+function showHide()
+{
+	var widget = $("#transfer-history");
+	
+	if (widget.css("display") === "none") 
+		widget.css("display","block");
+	else	
+		widget.css("display","none");
+		
+//alert('click');		
+}
+</script>
 
 <div class="govuk-!-margin-bottom-5"><a class="govuk-back-link" href="/version-2/pcs-journey-v4/412-manage-evidence">Back</a></div>
 
 <div class="govuk-!-margin-bottom-9">
-	<div class="govuk-!-margin-bottom-3"><a class="govuk-body" href="#">Transfer history</a></div>
-	<div id="transfer-list" class="civica-transfer-hint">
+	<div class="govuk-!-margin-bottom-3"><a class="govuk-body govuk-back-link" href="javascript:showHide();">Transfer history</a></div>
+	<div id="transfer-history" class="civica-transfer-hint" style="display: none;">
 		<div style="border: 1px solid #666; padding: 8px; margin: 0 0 0 0;">
-			<div class="govuk-body">02/03/2022 Transfer to Recyling Lives <a href="#">View</a></div>
-			<div class="govuk-body">03/03/2022 Transfer to Repic Ltd <a href="#">View</a></div>
-			<div class="govuk-body">&nbsp;</div>
+			<div class="govuk-body govuk-!-margin-bottom-1">02/03/2022 Transfer to Recyling Lives <a href="/version-2/pcs-journey-v4/420-view-evidence-note?id=1399">View</a></div>
+			<div class="govuk-body govuk-!-margin-bottom-1">03/03/2022 Transfer to Repic Ltd <a href="/version-2/pcs-journey-v4/420-view-evidence-note?id=1255">View</a></div>
+			<div class="govuk-body govuk-!-margin-bottom-1">&nbsp;</div>
 		</div>
 	</div>
 </div>

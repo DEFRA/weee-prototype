@@ -2287,18 +2287,15 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         // [0..4] -------------------------------------------
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'M.D.J. Light Brothers Ltd - Greystone Quarry', '2022', 'Household', 'Actual', 150.025, 10.001, "Submitted", 1389, '11/11/2021 11:32:40'));
+        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'M.D.J. Light Brothers Ltd - Greystone Quarry', '2022', 'Household', 'Actual', 150.025, 10.001, "Submitted", 1399, '11/11/2021 11:32:40'));
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        
 		facility._evidenceNotes.push(new EvidenceNote('01/02/2022', '11/02/2022', 'Environcom (North West) Ltd', '2022', 'Household', 'Actual', 180.005, 10.001, "Submitted", 1211, '11/11/2021 11:32:40'));
-        //newNote._aatf = "Intelligent Waste Management Ltd";
-        //facility._evidenceNotes.push(newNote);
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/03/2022', '31/03/2022', 'ERP UK', '2022', 'Household', 'Actual', 210.110, 10.001, "Approved", 1255, '11/11/2021 11:32:40'));
+        facility._evidenceNotes.push(new EvidenceNote('01/03/2022', '31/03/2022', 'Intelligent Waste Management Ltd', '2022', 'Household', 'Actual', 210.110, 10.001, "Approved", 1255, '11/11/2021 11:32:40'));
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -2317,12 +2314,10 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
         facility._evidenceNotes.push(new EvidenceNote('09/02/2022', '12/02/2022', 'M.D.J. Light Brothers Ltd - Greystone Quarry', '2022', 'Household', 'Actual', 130.256, 20.002, "Submitted", 1189, '11/11/2021 11:32:40'));
-        //newNote._aatf = "Recycling Lives Ltd (Recycling Park)";
-        //facility._evidenceNotes.push(newNote);
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives', '2022', 'Household', 'Actual', 240.668, 10.002, "Returned", 1367, '11/11/2021 11:32:40'));
+        facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives Ltd (Recycling Park)', '2022', 'Household', 'Actual', 240.668, 10.002, "Returned", 1367, '11/11/2021 11:32:40'));
     
         received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
         reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -2349,8 +2344,8 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
         facility._evidenceNotes[3]._rejectedDate = moment(new Date(2022, 01, 8), 'DD/MM/YYYY').format('DD/MM/YYYY');
 		
 		// Transferred notes
-		facility._evidenceNotes[0]._isTransferred = true;
-		facility._evidenceNotes[2]._isTransferred = true;
+		facility._evidenceNotes[0]._isTransferred = true;  // 1399
+		facility._evidenceNotes[2]._isTransferred = true;  // 1255
     }
 	
 	return facility;
