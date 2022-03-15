@@ -87,9 +87,9 @@
 				<th class="govuk-body govuk-!-text-align-left" style="width:  20px;">&nbsp;</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 140px;">Date</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width:   8px;">&nbsp;</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">&nbsp;</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">Issued by</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width:   8px;">&nbsp;</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">&nbsp;</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">Category</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width:   8px;">&nbsp;</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">&nbsp;</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">&nbsp;</th>
@@ -99,37 +99,11 @@
 				<td>
 					<input class="civica-date-input" type="Date" id="Date-received-filter-from-3" />
 				</td>
-				<td class="govuk-body">to</td>
+				<td>to</td>
 				<td>
 					<input class="civica-date-input" type="Date" id="Date-received-filter-to-3" />
 				</td>
 				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-				<td>&nbsp;</td>
-			  </tr>
-				
-			  <tr>
-				<td colspan="8" style="height: 12px;"></td>
-			  </tr>
-			  
-			  <tr class="govuk-table__row">
-				<th class="govuk-body govuk-!-text-align-left">Submitted by</th>
-				<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
-				<th class="govuk-body govuk-!-text-align-left">Type</th>
-				<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
-				<th class="govuk-body govuk-!-text-align-left">Status</th>
-				<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
-				<th class="govuk-body govuk-!-text-align-left">Category</th>
-				<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
-				<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
-				<th class="govuk-body govuk-!-text-align-left">&nbsp;</th>
-			  </tr>
-			  
-			  <tr class="govuk-table__row">
 				<td>
 					<input class="govuk-select" type="text" id="pcs-filter-3" name="example" style="width: 100%;" list="issuersList">
 					<datalist id="issuersList" style="width: 100%;">
@@ -139,26 +113,6 @@
 						<option value="AATF2" />
 						<option value="AATF3" />
 					</datalist>
-				</td>
-				<td>&nbsp;</td>
-				<td>
-					<select class="govuk-select" text="Type" id="type-filter-3" style="width: 100%;">
-						<option value="0"> </option>
-						<option value="Household">Household</option>
-						<option value="Non-household">Non-household</option>
-					</select>
-				</td>
-				<td>&nbsp;</td>
-				<td>
-					<select class="govuk-select" style="width: 100%;" id="status-filter-3">
-						<option value="0"> </option>
-						<option value="Submitted">Draft</option>
-						<option value="Submitted">Submitted</option>
-						<option value="Approved">Approved</option>
-						<option value="Rejected">Rejected</option>
-						<option value="Rejected">Returned</option>
-						<option value="Void">Void</option>
-					</select>
 				</td>
 				<td>&nbsp;</td>
 				<td>
@@ -186,7 +140,7 @@
 					<button style="width: 100%; height: 100%; font-size: 19px;">Filter</button>
 				</td>
 				
-				<td><a class="govuk-link govuk-body-m" style="padding-left: 20px;">Clear filter</a></td>
+				<td><a href="#" class="govuk-link govuk-body-m" style="padding-left: 20px;">Clear filter</a></td>
 			  </tr>
 		  
 			</table>
@@ -221,17 +175,17 @@
 		
 		<div class="govuk-checkboxes" data-module="govuk-checkboxes">
 		
-		<table class="govuk-table">
+		<table class="govuk-table" border="0">
 			
 			<caption class="govuk-table__caption govuk-table__caption--l"></caption>
 			
 			<thead class="govuk-table__head">
 				<tr class="govuk-table__row">
-					<th scope="col" class="govuk-table__header" style="width: 140px;">Reference ID</th>
+					<th scope="col" class="govuk-table__header" style="width: 110px;">Reference <br />ID</th>
 					<th scope="col" class="govuk-table__header" style="width: 140px;">WEEE Received between</th>
-					<th scope="col" class="govuk-table__header" style="width: 340px;">Issued by</th>
+					<th scope="col" class="govuk-table__header">Issued by</th>
 					<th scope="col" class="govuk-table__header civica-align-right" style="width: 140px;">Total (tonnes)</th>
-					<th scope="col" class="govuk-table__header">&nbsp;</th>
+					<th scope="col" class="govuk-table__header" style="width: 100px;">&nbsp;</th>
 				</tr>
 			</thead>
 			
@@ -252,7 +206,7 @@
 						{{note._pcs}}
 					</td>
 					<td class="govuk-table__cell civica-align-right">
-						{{note._received}}
+						{{note._receivedRoundeup}}
 					</td>
 					<td class="govuk-table__cell">
 						<a class="govuk-body" href="/version-2/pcs-journey-v4/420-view-evidence-note?id={{transfer._id}}" class="govuk-link">View</a>
@@ -279,6 +233,4 @@
 	</div>
 </form>
 	
-
-<script src="/public/javascripts/transfer-totals.js"></script>
 {% endblock %}

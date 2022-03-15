@@ -15,14 +15,23 @@
 			
 			<h1 class="govuk-heading-l">Transfer tonnage to {{data['transfer-selected-pcs']}} from selected evidence notes</h1>
 			
-			<p>Choose the tonnage that you would like to transfer from each category, for each evidence note that you have selected.</p>
+			<div class="govuk-!-margin-bottom-7">
+				<p>Choose the tonnage that you would like to transfer from each category, for each evidence note that you have selected.</p>
+			</div>
+			
+			<div class="govuk-checkboxes__item govuk-!-margin-bottom-9">
+				<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+					<input class="govuk-checkboxes__input" id="note-{{ note._reference }}-chk" name="note-{{ note._reference }}-chk" type="checkbox">
+					<label class="govuk-label govuk-checkboxes__label" for="note-{{ note._reference }}-chk">Transfer all tonnage from all notes that you have selected.</label>
+				</fieldset>
+			</div>
 	
-			{% if data['selected-transfer-aatfs'] %}
+			{% if data['chosen-facility-transferred-notes'] %}
 
-			{% for aatf in data['selected-transfer-aatfs'] %}
-				<h2 class="govuk-heading-m">{{aatf._name}} ({{aatf._reference}})</h2>
+			{% for note in data['chosen-facility-transferred-notes'] %}
+				<h2 class="govuk-heading-m">{{note._name}} ({{note._reference}})</h2>
 
-				{% for transfer in aatf._notes %}
+				{% for transfer in note._notes %}
 				
 					<p><div class="govuk-heading-s">Reference ID: {{transfer._id}}&nbsp; <a class="govuk-body" href="/version-2/pcs-journey/320-view-evidence-note?id={{transfer._id}}" class="govuk-link">View</a></div> </p>
 				
@@ -44,8 +53,8 @@
 									<td class="govuk-table__cell">{{category._category._id}}. {{category._category._description}} </td>
 									<td class="govuk-table__cell civica-align-right">{{category._receivedTonnage}}</td>
 									<td class="govuk-table__cell civica-align-right">{{category._reusedTonnage}}</td>
-									<td class="govuk-table__cell civica-align-right"><input type="text" name="transfer-rec-category-{{category._category._id}}-{{aatf._id}}-{{transfer._id}}" id="transfer-rec-category-{{category._category._id}}-{{aatf._id}}-{{transfer._id}}" class="govuk-input" /></td>
-									<td class="govuk-table__cell civica-align-right"><input type="text" name="transfer-reused-category-{{category._category._id}}-{{aatf._id}}-{{transfer._id}}" id="transfer-reused-category-{{category._category._id}}-{{aatf._id}}-{{transfer._id}}" class="govuk-input" /></td>
+									<td class="govuk-table__cell civica-align-right"><input type="text" name="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" id="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" class="govuk-input" /></td>
+									<td class="govuk-table__cell civica-align-right"><input type="text" name="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" id="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" class="govuk-input" /></td>
 								</tr>
 					
 							{% endfor %}
@@ -71,7 +80,7 @@
 				</thead>
 				<tbody class="govuk-table__body">
 					
-					{% for category in data['selected-transfer-aatfs'][0]._notes[0]._categories %}
+					{% for category in data['chosen-facility-transferred-notes'][0]._evidenceNotes[0]._categories %}
 						<tr class="govuk-table__row civica-transfer-totals-row">
 							<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
 							<td class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-received-hidden" name="{{category._category._id}}-total-received-hidden" value="0"/> <span id="{{category._category._id}}-total-received"></span></td>

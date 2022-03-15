@@ -2486,6 +2486,8 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, r
 		{
 			totalApprovedNotes++;
 		}
+		
+		selectedFacility._evidenceNotes[e]._receivedRoundeup = selectedFacility._evidenceNotes[e]._received.toFixed(0);
 	}
 	
 	// I cater for 1 and 2-digit numbers inside the SVG black circle (ask Emily if could expect 3 digits numbers)
@@ -2608,6 +2610,31 @@ router.get('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', functi
 });
 
 router.post('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence notes';
+
+	//var selectedEvidenceNote = req.session.data['selected-evidence-note'];
+	//var choice = req.session.data['choose-status'];
+	
+	//if ( choice == '1' ) selectedEvidenceNote._status = 'Approved';
+	//if ( choice == '2' ) selectedEvidenceNote._status = 'Rejected';
+	//if ( choice == '3' ) selectedEvidenceNote._status = 'Returned';
+	
+	//req.session.data['selected-evidence-note'] = selectedEvidenceNote;
+	
+	// update the facility and push back for when returning to Manage evidence list
+	
+	//var facility = req.session.data['chosen-facility'];
+	//var savedEvidence = facility._evidenceNotes.find(note => note._reference == Number(selectedEvidenceNote._reference));
+	//savedEvidence._status = selectedEvidenceNote._status;
+	//req.session.data['chosen-facility'] = facility;
+	
+    res.redirect('/version-2/417_Choose_tonnage_to_transfer');
+});
+
+
+router.post('/version-2/pcs-journey-v4/418-check-transfer-details', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
