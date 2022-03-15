@@ -1,4 +1,4 @@
-{% extends "version-2/layout_no_back.html" %}
+{% extends "version-2/layout.html" %}
 
 {% block pageTitle %}
   View submitted evidence note
@@ -8,44 +8,13 @@
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 <script src="/public/javascripts/transfer-routes-v4.js"></script>
 <script src="/public/javascripts/transfer-totals.js"></script>
-
-		<a class="govuk-back-link" href="/version-2/pcs-journey-v4/419-view-transfer-note-after-submission" class="govuk-link">Check evidence transfer details before submitting</a>
-		
 		<form class="form" action="/version-2/pcs-journey-v4/418-submit-transfer-details" method="post">
 
-
-			<div class="govuk-!-padding-bottom-5"></div>
-			<h1 class="govuk-heading-l">Evidence note (transfer) 
-			<div class="govuk-grid-row">
-				<div class="govuk-grid-column-one-third">
-					
-			<table class="govuk-table">
-				<caption class="govuk-table__caption govuk-table__caption--m"></caption>
-				<tbody class="govuk-table__body">
-					<tr class="govuk-table__row">
-						<th scope="col" class="govuk-table__header civica-no-border">Reference ID:</th>
-						<td class="govuk-table__cell civica-no-border">T{{data['new-transfer-note']._id}}</th>
-					  </tr>
-				  <tr class="govuk-table__row">
-					<th scope="row" class="govuk-table__header civica-no-border ">Status:</th>
-					<td class="govuk-table__cell civica-no-border ">{{data['new-transfer-note']._status}}</td>
-				  </tr>
-				  <tr class="govuk-table__row">
-					<th scope="row" class="govuk-table__header civica-no-border ">Compliance period:</th>
-					<td class="govuk-table__cell civica-no-border ">{{data['new-transfer-note']._complianceYear}}</td>
-				  </tr>
-				  <tr class="govuk-table__row" >
-					<th scope="row" class="govuk-table__header civica-no-border ">Type of waste:</th>
-					<td class="govuk-table__cell civica-no-border ">{{data['new-transfer-note']._typeOfWaste}}</td>
-				  </tr>
-				</tbody>
-			  </table>
-			  </div></div>
+		<h1 class="govuk-heading-l">Check evidence transfer details before submitting</h1>
+		
 			<div class="govuk-grid-row">
 				
 				<div class="govuk-grid-column-full">
-				
-				
 
 					<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
 		
@@ -79,7 +48,6 @@
 						
 					</div>    
 					
-					<p>By submitting this information you confirm that the following waste and electronic equipment from UK household has been transferred to the PCS stated above.</p>
 			
 					<h2 class="govuk-heading-m">Total transferred</h2>
 		
