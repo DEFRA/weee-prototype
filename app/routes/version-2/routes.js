@@ -2633,7 +2633,6 @@ router.post('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function
     res.redirect('/version-2/417_Choose_tonnage_to_transfer');
 });
 
-
 router.post('/version-2/pcs-journey-v4/418-check-transfer-details', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
