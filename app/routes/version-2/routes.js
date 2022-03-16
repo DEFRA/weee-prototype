@@ -289,6 +289,7 @@ function CreatePCSFacilitiesWithEvidenceNotes(req)
 		// Transferred notes
 		facility._evidenceNotes[0]._isTransferred = true;  // 1399
 		facility._evidenceNotes[2]._isTransferred = true;  // 1255
+		facility._evidenceNotes[5]._isTransferred = true;  // 1150
     }
 	
 	return facility;
@@ -2847,10 +2848,6 @@ router.get('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', functi
     res.redirect('/version-2/416_Choose_notes_to_transfer_from');
 });
 
-
-
-
-
 router.post('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
@@ -2860,10 +2857,6 @@ router.post('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function
 	
     res.redirect('/version-2/417_Choose_tonnage_to_transfer');
 });
-
-
-
-
 
 router.post('/version-2/pcs-journey-v4/418-check-transfer-details', function(req, res)
 {
