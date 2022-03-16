@@ -6,10 +6,6 @@
 
 {% block content %}
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
-<script src="/public/javascripts/transfer-routes-v4.js"></script>
-<script src="/public/javascripts/transfer-totals.js"></script>
-
-<style> div { border: 0px solid black; } </style>
 
 <form class="form" action="/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer" method="post">
 	<div class="govuk-grid-row">
@@ -190,7 +186,8 @@
 			</thead>
 			
 			<tbody class="govuk-table__body">
-			{% for note in data['chosen-facility-transferrable-notes'] %}
+			
+			{% for note in data['chosen-facility-transferrable-notes-first-ten'] %}
 			
 				<tr class="govuk-table__row result-row">
 					<td class="govuk-table__cell">
@@ -206,10 +203,10 @@
 						{{note._pcs}}
 					</td>
 					<td class="govuk-table__cell civica-align-right">
-						{{note._receivedRoundeup}}
+						{{note._receivedRoundedup}}
 					</td>
 					<td class="govuk-table__cell">
-						<a class="govuk-body" href="/version-2/pcs-journey-v4/420-view-evidence-note?id={{transfer._id}}" class="govuk-link">View</a>
+						<a class="govuk-body" href="/version-2/pcs-journey-v4/420-view-evidence-note?id={{note._reference}}" class="govuk-link">View</a>
 					</td>
 				</tr>
 
@@ -233,4 +230,5 @@
 	</div>
 </form>
 	
+<script src="/public/javascripts/transfer-totals.js"></script>
 {% endblock %}

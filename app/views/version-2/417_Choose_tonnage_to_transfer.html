@@ -6,8 +6,6 @@
 
 {% block content %}
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
-<script src="/public/javascripts/transfer-routes-v4.js"></script>
-<script src="/public/javascripts/transfer-totals.js"></script>
 
 		<form class="form" action="/version-2/pcs-journey-v4/418-check-transfer-details" method="post">
 			<div class="govuk-grid-row">
@@ -25,42 +23,50 @@
 					<label class="govuk-label govuk-checkboxes__label" for="note-{{ note._reference }}-chk">Transfer all tonnage from all notes that you have selected.</label>
 				</fieldset>
 			</div>
+			
 	
-			{% if data['chosen-facility-transferred-notes'] %}
+			{% if data['selected-transfer-aatfs'] %}
 
-			{% for note in data['chosen-facility-transferred-notes'] %}
+			{% for note in data['selected-transfer-aatfs'] %}
+
+
 				<h2 class="govuk-heading-m">{{note._name}} ({{note._reference}})</h2>
 
 				{% for transfer in note._notes %}
 				
-					<p><div class="govuk-heading-s">Reference ID: {{transfer._id}}&nbsp; <a class="govuk-body" href="/version-2/pcs-journey/320-view-evidence-note?id={{transfer._id}}" class="govuk-link">View</a></div> </p>
-				
-				
-					<table class="govuk-table">
-						<caption class="govuk-table__caption govuk-table__caption--l "></caption>
-						<thead class="govuk-table__head">
-						  <tr class="govuk-table__row">
-							<th scope="col" class="govuk-table__header">Category</th>
-							<th scope="col" class="govuk-table__header civica-align-right">Total received (tonnes)</th>
-							<th scope="col" class="govuk-table__header civica-align-right">Total re-used (tonnes)</th>
-							<th scope="col" class="govuk-table__header civica-align-right">Transfer received (tonnes)</th>
-							<th scope="col" class="govuk-table__header civica-align-right">Transfer re-used (tonnes)</th>
-						  </tr>
-						</thead>
-						<tbody class="govuk-table__body">
-							{% for category in transfer._categories %}
-								<tr class="govuk-table__row">
-									<td class="govuk-table__cell">{{category._category._id}}. {{category._category._description}} </td>
-									<td class="govuk-table__cell civica-align-right">{{category._receivedTonnage}}</td>
-									<td class="govuk-table__cell civica-align-right">{{category._reusedTonnage}}</td>
-									<td class="govuk-table__cell civica-align-right"><input type="text" name="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" id="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" class="govuk-input" /></td>
-									<td class="govuk-table__cell civica-align-right"><input type="text" name="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" id="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" class="govuk-input" /></td>
-								</tr>
+					<div style="background-color: #eee; border: 1px solid #ddd; padding-bottom: 0px; margin-bottom: 32px;">
 					
-							{% endfor %}
+						<div class="govuk-heading-s govuk-!-padding-1" style="margin-bottom: -10px;">Reference ID: <span class="govuk-body">{{transfer._id}}</span> <!-- &nbsp; <a class="govuk-body" href="/version-2/pcs-journey/320-view-evidence-note?id={{transfer._id}}" class="govuk-link">View</a> --> </div> 
+						<div class="govuk-heading-s govuk-!-padding-1" style="margin-bottom: -20px;">WEEE received between <span class="govuk-body">16/01/2022 - 11/03/2022</span></div>
+					
+						<table class="govuk-table" style="padding-bottom: 0px; margin-bottom: -2px;">
+							<caption class="govuk-table__caption govuk-table__caption--l "></caption>
+							<thead class="govuk-table__head">
+							  <tr class="govuk-table__row">
+								<th scope="col" class="govuk-table__header" style="width: 200px; padding-left: 8px; padding-right: 8px;">Category</th>
+								<th scope="col" class="govuk-table__header civica-align-right">Total received (tonnes)</th>
+								<th scope="col" class="govuk-table__header civica-align-right">Total reused (tonnes)</th>
+								<th scope="col" class="govuk-table__header civica-align-right">Transfer received (tonnes)</th>
+								<th scope="col" class="govuk-table__header civica-align-right" style="width: 200px; padding-right: 8px;">Transfer reused (tonnes)</th>
+							  </tr>
+							</thead>
+							<tbody class="govuk-table__body">
+							
+								{% for category in transfer._categories %}
+								
+									<tr class="govuk-table__row">
+										<td class="govuk-table__cell" style="padding-left: 8px; padding-right: 8px;">{{category._category._id}}. {{category._category._description}} </td>
+										<td class="govuk-table__cell civica-align-right">{{category._receivedTonnage}}</td>
+										<td class="govuk-table__cell civica-align-right">{{category._reusedTonnage}}</td>
+										<td class="govuk-table__cell civica-align-right"><input type="text" name="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" id="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" class="govuk-input" /></td>
+										<td class="govuk-table__cell civica-align-right" style="width: 200px; padding-right: 8px;"><input type="text" name="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" id="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" class="govuk-input" /></td>
+									</tr>
+						
+								{% endfor %}
 
-						</tbody>
-					  </table>
+							</tbody>
+						  </table>
+					</div>
 
 				{% endfor %}
 				
@@ -68,25 +74,37 @@
 
 
 
-			<h2 class="govuk-heading-m">Summary of total evidence transferred</h2>
+
+			<div style="margin-top: 62px; margin-bottom: -24px;"><h2 class="govuk-heading-m">Summary of total evidence transferred</h2></div>
+			
 			<table class="govuk-table">
 				<caption class="govuk-table__caption govuk-table__caption--l "></caption>
 				<thead class="govuk-table__head">
 				  <tr class="govuk-table__row">
-					<th scope="col" class="govuk-table__header">Category</th>
+					<th scope="col" class="govuk-table__header" style="width: 50%;">Category</th>
 					<th scope="col" class="govuk-table__header">Total transferred (tonnes)</th>
 					<th scope="col" class="govuk-table__header">Total re-used transferred (tonnes)</th>
 				  </tr>
 				</thead>
 				<tbody class="govuk-table__body">
 					
-					{% for category in data['chosen-facility-transferred-notes'][0]._evidenceNotes[0]._categories %}
+					{% for category in data['selected-transfer-categories'][0]._evidenceNotes[0]._categories %}
 						<tr class="govuk-table__row civica-transfer-totals-row">
-							<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
-							<td class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-received-hidden" name="{{category._category._id}}-total-received-hidden" value="0"/> <span id="{{category._category._id}}-total-received"></span></td>
-							<td class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-reused-hidden" name="{{category._category._id}}-total-reused-hidden" /><span id="{{category._category._id}}-total-reused"></span></td>	
+							<td style="background-color: #eee; padding-left: 8px;" class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
+							<td style="background-color: #eee; padding-right: 58px;" class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-received-hidden" name="{{category._category._id}}-total-received-hidden" value="0"/> <b> <span id="{{category._category._id}}-total-received"></span> </b> </td>
+							<td style="background-color: #eee; padding-right: 58px;" class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-reused-hidden" name="{{category._category._id}}-total-reused-hidden" /> <b> <span id="{{category._category._id}}-total-reused"></span> </b> </td>	
 						</tr>
 					{% endfor %}
+					<tr class="govuk-table__row civica-transfer-totals-row">
+						<td style="background-color: #eee; padding-left: 8px;" class="govuk-table__cell"><input type="hidden" name="category" value="4. Consumer stuff" />4. Consumer equipment </td>
+						<td style="background-color: #eee; padding-right: 58px;" class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-received-hidden" name="{{category._category._id}}-total-received-hidden" value="0"/><b> 120 </b></td>
+						<td style="background-color: #eee; padding-right: 58px;" class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-reused-hidden" name="{{category._category._id}}-total-reused-hidden" /><b> 5 </b></span></td>	
+					</tr>
+					<tr class="govuk-table__row civica-transfer-totals-row">
+						<td style="background-color: #eee; padding-left: 8px;" class="govuk-table__cell"><input type="hidden" name="category" value="4. Consumer stuff" />6. Electrical and electronic tools </td>
+						<td style="background-color: #eee; padding-right: 58px;" class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-received-hidden" name="{{category._category._id}}-total-received-hidden" value="0"/><b> 50 </b></td>
+						<td style="background-color: #eee; padding-right: 58px;" class="govuk-table__cell civica-align-right"><input type="hidden" id="{{category._category._id}}-total-reused-hidden" name="{{category._category._id}}-total-reused-hidden" /><b> 9 </b></span></td>	
+					</tr>
 				</tbody>
 			  </table>
 
@@ -94,15 +112,13 @@
 
 			<div class="govuk-!-margin-top-7">
 				{{ govukButton({
-					text: "Save and continue"
+					text: "Check transfer details"
 				}) }}
 			</div>
 		</div>
 			</div>
 		</form>
-		
-	
-	
 
-		<script src="/public/javascripts/transfer-totals.js"></script>
+<script src="/public/javascripts/transfer-totals.js"></script>
+
 {% endblock %}

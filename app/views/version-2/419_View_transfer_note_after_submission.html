@@ -6,9 +6,6 @@
 
 {% block content %}
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
-<script src="/public/javascripts/transfer-routes-v4.js"></script>
-<script src="/public/javascripts/transfer-totals.js"></script>
-<style> div { border: solid 0px black; } </style>
 
 <div class="govuk-!-margin-bottom-7"><a class="govuk-link govuk-!-font-size-19" href="/version-2/pcs-journey-v4/412-manage-evidence-note" class="govuk-link">Manage evidence</a></div>
 
@@ -110,47 +107,50 @@
 			</thead>
 			
 			<tbody class="govuk-table__body">
+			
 				{% for category in data['selected-transfer-categories'] %}
+				
 					<tr class="govuk-table__row civica-transfer-totals-row">
 						<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
 						<td class="govuk-table__cell civica-align-right"><span id="{{category._category._id}}-total-received">
-							{% if category._totalReceived === '0' %}
+							{% if category._totalReceived == 0 %}
 							<span>-</span>
 							{% else %}
 							{{category._totalReceived}}
 							{% endif %}
 						</span></td>
 						<td class="govuk-table__cell civica-align-right"><span id="{{category._category._id}}-total-reused">
-							{% if category._totalReused === '0' %}
+							{% if category._totalReused == 0 %}
 							<span>-</span>
 							{% else %}
 							{{category._totalReused}}
 							{% endif %}
 						</span></td>	
 					</tr>
+					
 				{% endfor %}
+				
 			</tbody>
 		</table>
 
 </div>
 
+
+
 <div class="govuk-width-container govuk-grid-row govuk-!-margin-bottom-9">	
+
 	<h2 class="govuk-heading-m">Breakdown of evidence transferred</h2>
-
-
-</div>
-
-<div class="govuk-width-container govuk-grid-row govuk-!-margin-bottom-9">	
-	<h2 class="govuk-heading-m">Original AATF: WEEE waste (WEE/AB0241YZ/ATF)</h2>
 
 		{% if data['selected-transfer-aatfs'] %}
 
 		{% for aatf in data['selected-transfer-aatfs'] %}
+		
 			<h3 class="govuk-heading-s">Original AATF: {{aatf._name}} ({{aatf._reference}})</h3>
+			<!-- h3 class="govuk-heading-m">Original AATF: WEEE waste (WEE/AB0241YZ/ATF)</h3 -->
 
 			<table class="govuk-table">
 			
-				<caption class="govuk-table__caption govuk-table__caption--l "></caption>
+				<caption class="govuk-table__caption govuk-table__caption--l"></caption>
 				
 				<thead class="govuk-table__head">
 					<tr class="govuk-table__row">
@@ -162,42 +162,46 @@
 				</thead>
 				
 				<tbody class="govuk-table__body">
+				
 					{% for transfer in aatf._notes %}
 
-					{% for i in range(0, transfer._categories.length) %}
-					<tr class="govuk-table__row">
+						{% for i in range(0, transfer._categories.length) %}
+						
+							<tr class="govuk-table__row">
+										
+								{% if i === 0 %}
+									<td class="govuk-table__cell civica-transfer-vertical-middle" rowspan="{{transfer._categories.length}}">{{transfer._id}} </td>
+								{% endif %}
+
+								<td class="govuk-table__cell">{{transfer._categories[i]._category._id}}. {{transfer._categories[i]._category._description}} </td>
 								
-						{% if i === 0 %}
-							<td class="govuk-table__cell civica-transfer-vertical-middle" rowspan="{{transfer._categories.length}}">{{transfer._id}} </td>
-						{% endif %}
+								<td class="govuk-table__cell civica-align-right">
+									
+								{% if transfer._categories[i]._transferReceivedTonnage == 0 %}
+									<span>-</span>
+								{% else %}
+									{{transfer._categories[i]._transferReceivedTonnage}}
+								{% endif %}
 
-						<td class="govuk-table__cell">{{transfer._categories[i]._category._id}}. {{transfer._categories[i]._category._description}} </td>
-						
-						<td class="govuk-table__cell civica-align-right">
-							
-						{% if transfer._categories[i]._transferReceivedTonnage === 0 %}
-							<span>-</span>
-						{% else %}
-							{{transfer._categories[i]._transferReceivedTonnage}}
-						{% endif %}
-
-						</td>
-						
-						<td class="govuk-table__cell civica-align-right">
-						{% if transfer._categories[i]._transferReusedTonnage === 0 %}
-							<span>-</span>
-						{% else %}
-							{{transfer._categories[i]._transferReusedTonnage}}
-						{% endif %}
-						</td>	
-					</tr>
-					{% endfor %}
+								</td>
+								
+								<td class="govuk-table__cell civica-align-right">
+								{% if transfer._categories[i]._transferReusedTonnage == 0 %}
+									<span>-</span>
+								{% else %}
+									{{transfer._categories[i]._transferReusedTonnage}}
+								{% endif %}
+								</td>	
+							</tr>
+						{% endfor %}
 
 					{% endfor %}
 				</tbody>
 			
 			</table>
+			
 		{% endfor %}	
+		
 		{% endif %}
 
 </div>
@@ -213,4 +217,5 @@
 	</form>
 </div>
 
+<script src="/public/javascripts/transfer-totals.js"></script>
 {% endblock %}

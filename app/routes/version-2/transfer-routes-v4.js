@@ -12,7 +12,8 @@ const TransferNote = require('../../data/transferNote');
 const moment = require('./moment');
 
 
-router.get('/version-2/pcs-journey-v4/317-view-transfer-note', function(req, res){
+router.get('/version-2/pcs-journey-v4/317-view-transfer-note', function(req, res)
+{
 
     setupAatfs(req);
     
@@ -20,7 +21,7 @@ router.get('/version-2/pcs-journey-v4/317-view-transfer-note', function(req, res
     if (!note) {
 
         var aatfs = req.session.data['selected-transfer-aatfs'];
-        var newNote = new TransferNote(Math.floor(Math.random() * 5000), aatfs, "Submitted", 2021);
+        var newNote = new TransferNote('T' + note._reference, aatfs, "Submitted", 2022);
 
         req.session.data['new-transfer-note'] = newNote;
     }
@@ -47,7 +48,7 @@ router.post('/version-2/pcs-journey/316-save-and-continue', function(req, res){
         status = 'Draft'
     };
 
-    var newNote = new TransferNote(Math.floor(Math.random() * 5000), aatfs, status, 2021);
+    var newNote = new TransferNote('T' + Math.floor(Math.random() * 5000), aatfs, status, 2021);
 
     req.session.data['new-transfer-note'] = newNote;
 
@@ -243,6 +244,8 @@ function setupAatfs(req){
     req.session.data['selected-transfer-categories'] = selectedTransferCategories;
     req.session.data['selected-transfer-aatfs'] = aatfs;
 }
+
+
 router.get('/version-2/pcs-journey/315-selected-evidence-notes', function(req, res)
 {
     setupAatfs(req);
@@ -296,7 +299,8 @@ router.post('/version-2/pcs-journey/315-save-and-continue', function(req, res){
     res.redirect('/version-2/pcs-journey/316-submit-transfer-note');
     
 });
-                                                                       
+    
+	
 router.post('/version-2/pcs-journey/314-transfer-evidence-note', function(req, res)
 {
     req.session.data['schemes'] = new Schemes();
@@ -321,6 +325,7 @@ router.post('/version-2/pcs-journey/314-transfer-evidence-note', function(req, r
     
     res.redirect('/version-2/314_Transfer_evidence_note');
 });
+
 
 router.post('/version-2/pcs-journey/314-save-and-continue', function(req, res){
 
@@ -398,7 +403,7 @@ router.post('/version-2/pcs-journey/311-review-evidence-note-save', function(req
     
     var facility = req.session.data['chosen-facility']; 
     var evidenceNoteReference = req.session.data["evidence-note-reference"];
-	req.session.data['header']['activity'] = 'View evidence note';
+	//req.session.data['header']['activity'] = 'View evidence note';
 
     var evidenceNote = facility._evidenceNotes.find(note => note._reference == Number(evidenceNoteReference));
     

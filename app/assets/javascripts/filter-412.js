@@ -39,11 +39,11 @@
 			var minDate = FormatYYYYMMDDasNumber(dateFromFilter);
 			var maxDate = FormatYYYYMMDDasNumber(dateToFilter);
 			
-			bool condition = (( cellDateFrom >= minDate && cellDateFrom <= maxDate ) 
-			               || ( cellDateTo >= minDate && cellDateTo <= maxDate ));
+			// error ?
+			var conditionVerified = (( cellDateFrom >= minDate && cellDateFrom <= maxDate ) || ( cellDateTo >= minDate && cellDateTo <= maxDate ));
 			
 			// check if cell from/to dates are within range of filter from/to dates
-			if ( condition )
+			if ( conditionVerified )
 			{
 				return true;
 			}
