@@ -58,8 +58,6 @@ $(document).ready(function () {
         });
 
 
-
-
         var grandTotalReceived = 0.000;
         var grandTotalReused = 0.000;
 
