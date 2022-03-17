@@ -44,13 +44,16 @@
 	
 	<li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" id="tab-evidence-review" href="#evidence-review" onclick="tabClicked('evidence-review')">
-        Review submitted evidence 
+        
+		Review submitted evidence 
+		
 		<svg height="30" width="30" style="margin-bottom: -8px;">
 		  <circle cx="15" cy="15" r="12" stroke="black" stroke-width="1" fill="black" />
 		  <foreignobject class="node" x="{{ data['total-submitted-notes-x'] }}" y="4" width="20" height="20">            
 			 <div style="font-size: 16px; font-weight: 600; color: white;">{{ data['total-submitted-notes'] }}</div>
 		  </foreignobject>
-		</svg> 
+		</svg>
+		
       </a>
     </li>
 	
@@ -85,6 +88,7 @@
 	</div>
 	<div class="govuk-!-padding-bottom-7">
 		<table class="govuk-table" id="evidence-summary-table">
+		
 		  <thead class="govuk-table__head">
 			<tr class="govuk-table__row">
 			  <th scope="col" class="govuk-table__header">Category</th>
@@ -96,6 +100,7 @@
 			  <th scope="col" class="govuk-table__header">Difference</th>
 			</tr>
 		  </thead>
+		  
 		  <tbody class="govuk-table__body" id="tbody-results-1">
 		  
 			<tr class="govuk-table__row result-row">
@@ -237,20 +242,29 @@
 			  <td class="govuk-table__cell govuk-!-text-align-right">177</td>
 			  <td class="govuk-table__cell govuk-!-text-align-right">-270</td>
 			</tr>
-			
 		  </tbody>
 		  
 		  <tfooter>
-			<tr class="total-row">
-			  <td class="govuk-table__cell" style="border-bottom: 0;">Total</td>
-			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">31,500</td>
-			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">25,600</td>
-			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">3,443</td>
-			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">16,933</td>
-			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">12,512</td>
-			  <td class="govuk-table__cell govuk-!-text-align-right" style="border-bottom: 0;">5,900</td>
+			<tr class="govuk-table__row total-row" style="background-color: #eee;">
+			  <td class="govuk-table__cell">Total (tonnes)</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">31,500</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">25,600</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">3,443</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">16,933</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">12,512</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">5,900</td>
+			</tr>
+			<tr class="govuk-table__row total-row" style="background-color: #eee;">
+			  <td class="govuk-table__cell">Category 2-10 summary</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">16,210</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">10,080</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">2,670</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">8,999</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">6,083</td>
+			  <td class="govuk-table__cell govuk-!-text-align-right">6,130</td>
 			</tr>
 		  </tfooter>
+		
 		</table>
 	</div>
   </div>
@@ -507,7 +521,6 @@
 
 	<!-- FILTER AREA -->
 	<div class="filter-area-tab">
-
 		<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-2">
 			<label for="input-search-3" class="govuk-heading-s">Search by reference ID</label>
 			<div class="govuk-input" style="background-color: #fff; width: 130px;">
@@ -590,8 +603,8 @@
 				<td>
 					<select class="govuk-select" style="width: 100%;" id="status-filter-3">
 						<option value="0"> </option>
-						<option value="Submitted">Draft</option>
-						<option value="Submitted">Submitted</option>
+						<!-- option value="Submitted">Draft</option>
+						<option value="Submitted">Submitted</option -->
 						<option value="Approved">Approved</option>
 						<option value="Rejected">Rejected</option>
 						<option value="Rejected">Returned</option>
@@ -631,7 +644,6 @@
 		</div>
 	</div>
 	
-
 	<!-- Pagination listbox -->
 	<div style="float: right; margin-top: 30px;">
 		<span class="govuk-body">View</span>
@@ -648,11 +660,11 @@
 		  <thead class="govuk-table__head">
 			<tr class="govuk-table__row">
 			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 100px;">Reference ID</th>
-			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 200px;">WEEE received between</th>
-			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 400px;">Submitted by</th>
-			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 90px;">Type</th>
-			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 90px;">Status</th>
-			  <th scope="col" class="govuk-table__header govuk-!-padding-1">&nbsp;</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 150px;">WEEE received between</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="vertical-align: bottom;">Submitted by</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 130px; vertical-align: bottom;">Type of waste</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 80px; vertical-align: bottom;">Status</th>
+			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 50px;">&nbsp;</th>
 			</tr>
 		  </thead>
 		  
@@ -722,7 +734,7 @@
 			  <td class="govuk-table__cell">12/11/2021-12/12/2021</td>
 			  <td class="govuk-table__cell">Recycling Lives Ltd (Recycling Park)</td>
 			  <td class="govuk-table__cell">Household</td>
-			  <td class="govuk-table__cell">Draft</td>
+			  <td class="govuk-table__cell">Approved</td>
 			  <td class="govuk-table__cell govuk-!-text-align-right"><a href="#">View</a></td>
 			</tr>
 		  </tbody>

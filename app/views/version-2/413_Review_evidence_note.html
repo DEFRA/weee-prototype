@@ -31,10 +31,10 @@
 				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._status }}</span>
 			</div>
 			
-			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
+			<!-- div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date created</span> 
 				<span class="govuk-body govuk-!-margin-left-2">{{ data['selected-evidence-note']._createdDate }}</span>
-			</div>
+			</div -->
 			
 			<div class="govuk-grid-row govuk-!-width-two-thirds govuk-!-margin-bottom-1">
 				<span class="govuk-grid-column-one-third govuk-label--s govuk-!-margin-left-0 govuk-!-padding-left-0">Date submitted</span> 
@@ -63,7 +63,7 @@
 			<div class="govuk-grid-column-one-third" style="padding: 0 12px 0 0;">  
 				<div class="govuk-label--s" style="padding: 0 0 8px 0;">Issuing site</div>
 				<div class="govuk-body">
-					{{ data['selected-evidence-note']._pcs }} <br />
+					Electrical Waste Recycling Group Limited (Huddersfield) <br />
 					<b>WEE/AB0001YZ/ATF</b> <br />
 					12 May Lane <br />
 					Hammersmith <br />
@@ -75,7 +75,7 @@
 			<div class="govuk-grid-column-one-third" style="padding: 0 12px 0 0;">  
 				<div class="govuk-label--s" style="padding: 0 0 8px 0;">Operator</div>
 				<div class="govuk-body">
-					Electrical Waste Recycling Group Limited (Huddersfield) <br />
+					{{ data['selected-evidence-note']._pcs }} <br />
 					12 May Lane <br />
 					Hammersmith <br />
 					London <br />
