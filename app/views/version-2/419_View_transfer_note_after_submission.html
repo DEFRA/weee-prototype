@@ -12,12 +12,11 @@
 <!-- Green Panel -->
 <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-7">
   <div class="govuk-panel__body-s govuk-!-font-weight-bold">
-	You have successfully submitted the evidence note transfer with reference ID T123
+	You have successfully submitted the evidence note transfer with reference ID {{ data['new-transfer-note']._id }}
   </div>
 </div>
 
 <h1 class="govuk-heading-l">Evidence note (transfer)</h1>
-
 
 <div class="govuk-width-container govuk-grid-row govuk-!-margin-bottom-7">	
 
@@ -34,35 +33,35 @@
 					<th style="width: 200px;"></th>
 				</tr>
 				<tr>
-					<td class="govuk-label--s">Reference ID:</td>
-					<td class="govuk-body">T123</td>
+					<td class="govuk-label--s">Reference ID</td>
+					<td class="govuk-body">{{ data['new-transfer-note']._id }}</td>
 					<td></td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="govuk-label--s">Status:</td>
-					<td class="govuk-body">Submitted</td>
+					<td class="govuk-label--s">Status</td>
+					<td class="govuk-body">{{ data['new-transfer-note']._status }}</td>
 					<td></td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="govuk-label--s">Submitted date:</td>
-					<td class="govuk-body">12/12/2022</td>
+					<td class="govuk-label--s">Submitted date</td>
+					<td class="govuk-body">{{ data['new-transfer-note']._submittedDate }} (GMT)</td>
 					<td></td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
-					<td class="govuk-label--s">Compliance period:</td>
-					<td class="govuk-body">2022</td>
+					<td class="govuk-label--s">Compliance period</td>
+					<td class="govuk-body">{{ data['new-transfer-note']._complianceYear }}</td>
 					<td></td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr style="vertical-align: top;">
-					<td class="govuk-label--s">Transferring PCS:</td>
+					<td class="govuk-label--s">Transferring PCS</td>
 					<td class="govuk-body">
 						Recycling Plant <br />
 						12 May Lane<br />
@@ -71,15 +70,14 @@
 						SW13 TYH
 					</td>
 					<td></td>
-					<td class="govuk-label--s">Receiving PCS:</td>
+					<td class="govuk-label--s">Recipient</td>
 					<td class="govuk-body">
 						{% if data['transfer-selected-pcs'] %}
-								<span> {{data['transfer-selected-pcs']}}</span>
-								{% else %}
-								<span>Waste Collectors</span>
-								{% endif %}
-						
-						 <br />
+						<span> {{data['transfer-selected-pcs']}}</span>
+						{% else %}
+						<span>Waste Collectors</span>
+						{% endif %}
+						<br />
 						1 Bart avenue <br />
 						Reading <br />
 						RG1 ATR
@@ -93,7 +91,7 @@
 
 
 <div class="govuk-width-container govuk-grid-row govuk-!-margin-bottom-9">	
-	<h2 class="govuk-heading-m">Total transferred</h2>
+	<h2 class="govuk-heading-m">Total transferred (tonnes)</h2>
 
 		<table class="govuk-table">
 			<caption class="govuk-table__caption govuk-table__caption--l"></caption>
@@ -101,8 +99,8 @@
 			<thead class="govuk-table__head">
 			  <tr class="govuk-table__row">
 				<th scope="col" class="govuk-table__header">Category</th>
-				<th scope="col" class="govuk-table__header civica-align-right">Total transferred (tonnes)</th>
-				<th scope="col" class="govuk-table__header civica-align-right">Total re-used transferred (tonnes)</th>
+				<th scope="col" class="govuk-table__header civica-align-right" style="width: 200px;">Total transferred (tonnes)</th>
+				<th scope="col" class="govuk-table__header civica-align-right" style="width: 200px;">Total reused transferred (tonnes)</th>
 			  </tr>
 			</thead>
 			
@@ -146,7 +144,6 @@
 		{% for aatf in data['selected-transfer-aatfs'] %}
 		
 			<h3 class="govuk-heading-s">Original AATF: {{aatf._name}} ({{aatf._reference}})</h3>
-			<!-- h3 class="govuk-heading-m">Original AATF: WEEE waste (WEE/AB0241YZ/ATF)</h3 -->
 
 			<table class="govuk-table">
 			
@@ -154,10 +151,10 @@
 				
 				<thead class="govuk-table__head">
 					<tr class="govuk-table__row">
-					<th scope="col" class="govuk-table__header" style="width:15%">Reference ID</th>
-					<th scope="col" class="govuk-table__header" style="width:30%">Category</th>
-					<th scope="col" class="govuk-table__header civica-align-right" style="width:25%">Total transferred (tonnes)</th>
-					<th scope="col" class="govuk-table__header civica-align-right">Total re-used transferred (tonnes)</th>
+					<th scope="col" class="govuk-table__header" style="width: 140px;">Reference ID</th>
+					<th scope="col" class="govuk-table__header">Category</th>
+					<th scope="col" class="govuk-table__header civica-align-right" style="width: 200px;">Total transferred (tonnes)</th>
+					<th scope="col" class="govuk-table__header civica-align-right" style="width: 200px;">Total reused transferred (tonnes)</th>
 					</tr>
 				</thead>
 				
@@ -217,6 +214,6 @@
 	</form>
 </div>
 
-<script src="/public/javascripts/transfer-totals.js"></script>
+<script src="/public/javascripts/transfer-totals-v4.js"></script>
 
 {% endblock %}

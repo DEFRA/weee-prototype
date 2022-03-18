@@ -83,7 +83,7 @@
 				<th class="govuk-body govuk-!-text-align-left" style="width:  20px;">&nbsp;</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 140px;">Date</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width:   8px;">&nbsp;</th>
-				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">Issued by</th>
+				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">Submitted by</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width:   8px;">&nbsp;</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width: 150px;">Category</th>
 				<th class="govuk-body govuk-!-text-align-left" style="width:   8px;">&nbsp;</th>
@@ -162,7 +162,7 @@
 
 	
 	<div class="govuk-grid-row govuk-form-group govuk-!-margin-0">
-		<fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+		<fieldset class="govuk-fieldset" aria-describedby="waste-hint" id="chkset" name="chkset">
 		<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 			<h1 class="govuk-fieldset__heading"></h1>
 		</legend>
@@ -179,7 +179,7 @@
 				<tr class="govuk-table__row">
 					<th scope="col" class="govuk-table__header" style="width: 110px;">Reference <br />ID</th>
 					<th scope="col" class="govuk-table__header" style="width: 140px;">WEEE Received between</th>
-					<th scope="col" class="govuk-table__header">Issued by</th>
+					<th scope="col" class="govuk-table__header">Submitted by</th>
 					<th scope="col" class="govuk-table__header civica-align-right" style="width: 140px;">Total (tonnes)</th>
 					<th scope="col" class="govuk-table__header" style="width: 100px;">&nbsp;</th>
 				</tr>
@@ -187,12 +187,12 @@
 			
 			<tbody class="govuk-table__body">
 			
-			{% for note in data['chosen-facility-transferrable-notes-first-ten'] %}
+			{% for note in data['chosen-facility-approved-notes'] %}
 			
 				<tr class="govuk-table__row result-row">
 					<td class="govuk-table__cell">
 						<div class="govuk-checkboxes__item">
-							<input class="govuk-checkboxes__input" id="note-{{ note._reference }}-chk" name="note-{{ note._reference }}-chk" type="checkbox">
+							<input class="govuk-checkboxes__input" value="{{ note._reference }}" id="note-{{ note._reference }}-chk" name="note-{{ note._reference }}-chk" type="checkbox">
 							<label class="govuk-label govuk-checkboxes__label" for="note-{{ note._reference }}-chk">{{ note._reference }}</label>
 						</div>
 					</td>
@@ -230,7 +230,7 @@
 	</div>
 </form>
 	
-<script src="/public/javascripts/transfer-totals.js"></script>
+<script src="/public/javascripts/transfer-totals-v4.js"></script>
 
 {% endblock %}
 

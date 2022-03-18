@@ -6,20 +6,21 @@
 
 {% block content %}
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
+<style> div { border: 0px solid black; } </style>
 
 		<form class="form" action="/version-2/pcs-journey-v4/419-view-transfer-note-after-submission" method="post">
 
-		<h1 class="govuk-heading-l">Check evidence transfer details before submitting</h1>
+		<h1 class="govuk-heading-l govuk-!-margin-bottom-9">Check evidence transfer details before submitting</h1>
 		
 			<div class="govuk-grid-row">
 				
 				<div class="govuk-grid-column-full">
 
-					<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
+					<div class="govuk-width-container govuk-grid-column-full govuk-!-padding-left-0">
 		
-						<div class="govuk-grid-column-one-half" style="padding: 0 0 0 0;">  
-							<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Transferring PCS:</div>
-							<div class="govuk-grid-column-one-half govuk-body">
+						<div class="govuk-grid-column-one-third govuk-!-margin-left-0 govuk-!-margin-bottom-7">  
+							<div class="govuk-grid-row govuk-label--s govuk-!-margin-bottom-1">Transferring PCS</div>
+							<div class="govuk-grid-row govuk-body">
 								Recycling Plant <br />
 								12 May Lane<br />
 								Hammersmith <br />
@@ -28,9 +29,9 @@
 							</div>
 						</div>
 						
-						<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
-							<div class="govuk-grid-column-one-half govuk-label--s" style="padding: 0 0 0 0;">Receiving PCS:</div>
-							<div class="govuk-grid-column-one-half govuk-body">
+						<div class="govuk-grid-column-one-third">  
+							<div class="govuk-grid-row govuk-label--s govuk-!-margin-bottom-1">Recipient</div>
+							<div class="govuk-grid-row govuk-body">
 								
 								{% if data['transfer-selected-pcs'] %}
 										<span> {{data['transfer-selected-pcs']}}</span>
@@ -48,41 +49,66 @@
 					</div>    
 					
 			
-					<h2 class="govuk-heading-m">Total transferred</h2>
+				<div class="govuk-!-margin-bottom-7">
+					<h2 class="govuk-heading-m">Total transferred (tonnes)</h2>
 		
 					<table class="govuk-table">
 						<caption class="govuk-table__caption govuk-table__caption--l"></caption>
 						<thead class="govuk-table__head">
 						  <tr class="govuk-table__row">
 							<th scope="col" class="govuk-table__header">Category</th>
-							<th scope="col" class="govuk-table__header civica-align-right">Total transferred (tonnes)</th>
-							<th scope="col" class="govuk-table__header civica-align-right">Total re-used transferred (tonnes)</th>
+							<th scope="col" class="govuk-table__header civica-align-left" style="width: 180px;">Total transferred (tonnes)</th>
+							<th scope="col" class="govuk-table__header civica-align-left" style="width: 180px;">Total reused transferred (tonnes)</th>
 						  </tr>
 						</thead>
 						<tbody class="govuk-table__body">
 							
 							{% for category in data['selected-transfer-categories'] %}
+							
 								<tr class="govuk-table__row civica-transfer-totals-row">
 									<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
-									<td class="govuk-table__cell civica-align-right"><span id="{{category._category._id}}-total-received">
-										{% if category._totalReceived === '0' %}
-										<span>-</span>
-										{% else %}
-										{{category._totalReceived}}
-										{% endif %}
-									</span></td>
-									<td class="govuk-table__cell civica-align-right"><span id="{{category._category._id}}-total-reused">
-										{% if category._totalReused === '0' %}
-										<span>-</span>
-										{% else %}
-										{{category._totalReused}}
-										{% endif %}
-									</span></td>	
+									<td class="govuk-table__cell civica-align-right">
+									
+										<span id="{{category._category._id}}-total-received">
+											{% if category._totalReceived == '0' %}
+											<span>-</span>
+											{% else %}
+											{{category._totalReceived}}
+											{% endif %}
+										</span>
+										
+										<!--
+										<span>{{data['grand-total-received']}}</span>
+										-->
+									
+									</td>
+									<td class="govuk-table__cell civica-align-right">
+									
+										<span id="{{category._category._id}}-total-reused">
+											{% if category._totalReused == '0' %}
+											<span>-</span>
+											{% else %}
+											{{category._totalReused}}
+											{% endif %}
+										</span>
+										
+										<!--
+										<span>{{data['grand-total-reused']}}</span>
+										-->
+									
+									</td>	
 								</tr>
+								
 							{% endfor %}
+							
 						</tbody>
 					  </table>
+					  
+				</div>
+				
+				<div class="govuk-!-margin-top-7 govuk-!-margin-bottom-9">&nbsp;</div>
 		
+				<div class="govuk-!-margin-top-7 govuk-!-margin-bottom-7">
 					<h2 class="govuk-heading-m">Breakdown of evidence transferred</h2>
 					
 					{% if data['selected-transfer-aatfs'] %}
@@ -94,10 +120,10 @@
 							<caption class="govuk-table__caption govuk-table__caption--l "></caption>
 							<thead class="govuk-table__head">
 								<tr class="govuk-table__row">
-								<th scope="col" class="govuk-table__header" style="width:15%">Reference ID</th>
-								<th scope="col" class="govuk-table__header" style="width:30%">Category</th>
-								<th scope="col" class="govuk-table__header civica-align-right" style="width:25%">Total transferred (tonnes)</th>
-								<th scope="col" class="govuk-table__header civica-align-right">Total re-used transferred (tonnes)</th>
+								<th scope="col" class="govuk-table__header" style="width:150px;">Reference ID</th>
+								<th scope="col" class="govuk-table__header">Category</th>
+								<th scope="col" class="govuk-table__header civica-align-left" style="width:180px;">Total transferred (tonnes)</th>
+								<th scope="col" class="govuk-table__header civica-align-left" style="width:180px;">Total reused transferred (tonnes)</th>
 								</tr>
 							</thead>
 							<tbody class="govuk-table__body">
@@ -114,20 +140,20 @@
 									<td class="govuk-table__cell civica-align-right">
 										
 										{% if transfer._categories[i]._transferReceivedTonnage == 0 %}
-								<span>-</span>
-								{% else %}
-								{{transfer._categories[i]._transferReceivedTonnage}}
-								{% endif %}
+										<span>-</span>
+										{% else %}
+										{{transfer._categories[i]._transferReceivedTonnage}}
+										{% endif %}
 		
 									
 									</td>
 									<td class="govuk-table__cell civica-align-right">
 										{% if transfer._categories[i]._transferReusedTonnage == 0 %}
-								<span>-</span>
-								{% else %}
-								{{transfer._categories[i]._transferReusedTonnage}}
-								{% endif %}
-										
+										<span>-</span>
+										{% else %}
+										{{transfer._categories[i]._transferReusedTonnage}}
+										{% endif %}
+									</td>	
 								</tr>
 								{% endfor %}
 		
@@ -136,19 +162,23 @@
 							</table>
 					{% endfor %}	
 					{% endif %}
+				</div>
 					
-				<div class="govuk-!-margin-top-7">
+				<div class="govuk-!-margin-top-9">
 					{{ govukButton({
 						text: "Submit transfer",
 						name: "action",
-						value: "submit"
+						value: "submit", 
+						classes: "govuk-!-font-weight-bold govuk-!-padding-left-7 govuk-!-padding-right-7 govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-font-size-19"
 					}) }}
+					
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 					{{ govukButton({
 						text: "Save as draft",
 						name: "action",
 						value: "save",
-						classes: "govuk-button--secondary"
+						classes: "govuk-button--secondary govuk-!-font-weight-bold govuk-!-padding-left-7 govuk-!-padding-right-7 govuk-!-padding-top-2 govuk-!-padding-bottom-2 govuk-!-font-size-19"
 					}) }}
 				</div>
 					
@@ -157,6 +187,6 @@
 
 		</form>
 		
-<script src="/public/javascripts/transfer-totals.js"></script>
+<script src="/public/javascripts/transfer-totals-v4.js"></script>
 
 {% endblock %}

@@ -1,0 +1,30 @@
+{% extends "version-2/layout_no_back.html" %}
+
+{% block pageTitle %}
+  PDF evidence note
+{% endblock %}
+
+{% block content %}
+
+<form class="form" action="/version-2/pcs-journey-v4/412-manage-evidence-note" method="post">
+
+	<div class="govuk-panel govuk-panel--confirmation">
+	  
+	  <h1 class="govuk-panel__title">
+		Transfer evidence note completed
+	  </h1>
+	  
+	  <div class="govuk-panel__body">
+		Your draft has been saved to the database
+	  </div>
+	  
+	</div>
+
+	<div class="govuk-!-margin-top-9">
+		{{ govukButton({
+			text: "Return to Manage Evidence"
+		  }) }}
+	</div>
+	
+</form>
+{% endblock %}

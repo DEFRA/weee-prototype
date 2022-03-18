@@ -657,6 +657,7 @@
 	<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 	
 		<table class="govuk-table" border="0">
+		
 		  <thead class="govuk-table__head">
 			<tr class="govuk-table__row">
 			  <th scope="col" class="govuk-table__header govuk-!-padding-1" style="width: 100px;">Reference ID</th>
@@ -672,7 +673,7 @@
 		  
 		  <tbody class="govuk-table__body" id="tbody-results-3">		  
 		  
-			{% for evidenceNote in data['chosen-facility-transferrable-notes-first-ten'] %}
+			{% for evidenceNote in data['chosen-facility-transferable-notes-first-ten'] %}
 
 				<tr class="govuk-table__row result-row">
 				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>

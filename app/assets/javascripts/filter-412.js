@@ -7,6 +7,68 @@
 
 	// -----------------------------------------------------------------------------
     
+	function filterEventBinding()
+	{
+        document.getElementById("input-search-2").addEventListener('change', (e) => {
+            searchTab2();        
+        });
+        document.getElementById("input-search-3").addEventListener('change', (e) => {
+            searchTab3();        
+        });
+
+        document.getElementById("date-filter-from-2").addEventListener('change', (e) => {
+            filterDateFromToTab2();
+        });
+
+        document.getElementById("date-filter-to-2").addEventListener('change', (e) => {
+            filterDateFromToTab2();
+        });
+
+        document.getElementById("date-filter-3").addEventListener('change', (e) => {
+            filterDateTab3();
+        });
+
+/*  Year is now working across ALL tabs from same listbox */
+        document.getElementById("year-filter").addEventListener('change', (e) => {
+            filterYearAllTabs();
+        });
+
+
+        document.getElementById("pcs-filter-2").addEventListener('change', (e) => {
+            filterPcsTab2();
+        });
+        document.getElementById("pcs-filter-3").addEventListener('change', (e) => {
+            filterPcsTab3();
+        });
+		
+
+        document.getElementById("status-filter-2").addEventListener('change', (e) => {
+            filterStatusTab2();
+        });
+        document.getElementById("status-filter-3").addEventListener('change', (e) => {
+            filterStatusTab3();
+        });
+
+
+        document.getElementById("type-filter-2").addEventListener('change', (e) => {
+            filterTypeTab2();
+        });
+        document.getElementById("type-filter-3").addEventListener('change', (e) => {
+            filterTypeTab3();
+        });
+
+        document.getElementById("category-filter-2").addEventListener('change', (e) => {
+            filter();
+        });
+        document.getElementById("category-filter-3").addEventListener('change', (e) => {
+            filter();
+        });
+        document.getElementById("category-filter-4").addEventListener('change', (e) => {
+            filter();
+        });
+	}
+
+	
     function IsMatch(td, compare)
 	{
         if (td) 
@@ -237,9 +299,9 @@
 		}
 	}
 
-	function filterYearTab2()
+	function filterYearAllTabs()
 	{
-		var yearFilter = document.getElementById("year-filter-2").value;
+		var yearFilter = document.getElementById("year-filter").value;
         var table = document.getElementById("tbody-results-2");
         var trs = table.getElementsByClassName("govuk-table__row result-row");
 		
@@ -259,31 +321,12 @@
 			
             trs[i].style.display = (displayRow) ? "" : "none";
 		}
-	}
-
-	function filterYearTab3()
-	{
-		var yearFilter = document.getElementById("year-filter-3").value;
-        var table = document.getElementById("tbody-results-3");
-        var trs = table.getElementsByClassName("govuk-table__row result-row");
 		
-        for (i = 0; i < trs.length; i++) 
-		{
-			var displayRow = true;
-			
-            if (yearFilter != '') 
-			{
-                var cell = trs[i].getElementsByTagName("td")[0];
-
-                if (!IsMatch(cell, yearFilter))
-				{
-                    displayRow = false;
-                }
-            }
-			
-            trs[i].style.display = (displayRow) ? "" : "none";
-		}
+		// we need to use jQuery or Node to redirect to page with flag setupPagination
+		// we can set a year flag to indicate router what to filter
+		// res.redirect('/version-2/412_Manage_evidence_note');
 	}
+
 
 	function filterPcsTab2()
 	{
@@ -419,69 +462,6 @@
 			
             trs[i].style.display = (displayRow) ? "" : "none";
 		}
-	}
-
-	function filterEventBinding()
-	{
-        document.getElementById("input-search-2").addEventListener('change', (e) => {
-            searchTab2();        
-        });
-        document.getElementById("input-search-3").addEventListener('change', (e) => {
-            searchTab3();        
-        });
-
-        document.getElementById("date-filter-from-2").addEventListener('change', (e) => {
-            filterDateFromToTab2();
-        });
-
-        document.getElementById("date-filter-to-2").addEventListener('change', (e) => {
-            filterDateFromToTab2();
-        });
-
-        document.getElementById("date-filter-3").addEventListener('change', (e) => {
-            filterDateTab3();
-        });
-
-        document.getElementById("year-filter-2").addEventListener('change', (e) => {
-            filterYearTab2();
-        });
-        document.getElementById("year-filter-3").addEventListener('change', (e) => {
-            filterYearTab3();
-        });
-
-
-        document.getElementById("pcs-filter-2").addEventListener('change', (e) => {
-            filterPcsTab2();
-        });
-        document.getElementById("pcs-filter-3").addEventListener('change', (e) => {
-            filterPcsTab3();
-        });
-		
-
-        document.getElementById("status-filter-2").addEventListener('change', (e) => {
-            filterStatusTab2();
-        });
-        document.getElementById("status-filter-3").addEventListener('change', (e) => {
-            filterStatusTab3();
-        });
-
-
-        document.getElementById("type-filter-2").addEventListener('change', (e) => {
-            filterTypeTab2();
-        });
-        document.getElementById("type-filter-3").addEventListener('change', (e) => {
-            filterTypeTab3();
-        });
-
-        document.getElementById("category-filter-2").addEventListener('change', (e) => {
-            filter();
-        });
-        document.getElementById("category-filter-3").addEventListener('change', (e) => {
-            filter();
-        });
-        document.getElementById("category-filter-4").addEventListener('change', (e) => {
-            filter();
-        });
 	}
 
 	// This is called by the page numbers in table footer
