@@ -68,7 +68,7 @@
 								<tr class="govuk-table__row civica-transfer-totals-row">
 									<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
 									<td class="govuk-table__cell civica-align-right">
-									
+										<!--
 										<span id="{{category._category._id}}-total-received">
 											{% if category._totalReceived == '0' %}
 											<span>-</span>
@@ -76,14 +76,13 @@
 											{{category._totalReceived}}
 											{% endif %}
 										</span>
-										
-										<!--
-										<span>{{data['grand-total-received']}}</span>
 										-->
-									
+
+										<span>{{data[category._category._id + '-total-received-hidden']}}</span>
+										
 									</td>
 									<td class="govuk-table__cell civica-align-right">
-									
+										<!--
 										<span id="{{category._category._id}}-total-reused">
 											{% if category._totalReused == '0' %}
 											<span>-</span>
@@ -91,10 +90,9 @@
 											{{category._totalReused}}
 											{% endif %}
 										</span>
-										
-										<!--
-										<span>{{data['grand-total-reused']}}</span>
 										-->
+										
+										<span>{{data[category._category._id + '-total-reused-hidden']}}</span>
 									
 									</td>	
 								</tr>
@@ -127,35 +125,39 @@
 								</tr>
 							</thead>
 							<tbody class="govuk-table__body">
+							
 								{% for transfer in aatf._notes %}
 		
-								{% for i in range(0, transfer._categories.length) %}
-								<tr class="govuk-table__row">
-											
-									{% if i === 0 %}
-										<td class="govuk-table__cell civica-transfer-vertical-middle" rowspan="{{transfer._categories.length}}">{{transfer._id}} </td>
-									{% endif %}
-		
-									<td class="govuk-table__cell">{{transfer._categories[i]._category._id}}. {{transfer._categories[i]._category._description}} </td>
-									<td class="govuk-table__cell civica-align-right">
-										
-										{% if transfer._categories[i]._transferReceivedTonnage == 0 %}
-										<span>-</span>
-										{% else %}
-										{{transfer._categories[i]._transferReceivedTonnage}}
-										{% endif %}
-		
+									{% for i in range(0, transfer._categories.length) %}
 									
-									</td>
-									<td class="govuk-table__cell civica-align-right">
-										{% if transfer._categories[i]._transferReusedTonnage == 0 %}
-										<span>-</span>
-										{% else %}
-										{{transfer._categories[i]._transferReusedTonnage}}
-										{% endif %}
-									</td>	
-								</tr>
-								{% endfor %}
+										<tr class="govuk-table__row">
+													
+											{% if i === 0 %}
+												<td class="govuk-table__cell civica-transfer-vertical-middle" rowspan="{{transfer._categories.length}}">{{transfer._id}} </td>
+											{% endif %}
+				
+											<td class="govuk-table__cell">{{transfer._categories[i]._category._id}}. {{transfer._categories[i]._category._description}} </td>
+											<td class="govuk-table__cell civica-align-right">
+												<span>
+													{% if transfer._categories[i]._transferReceivedTonnage == 0 %}
+														-
+													{% else %}
+														{{transfer._categories[i]._transferReceivedTonnage}}
+													{% endif %}
+												</span>
+											</td>
+											<td class="govuk-table__cell civica-align-right">
+												<span>
+													{% if transfer._categories[i]._transferReusedTonnage == 0 %}
+														-
+													{% else %}
+														{{transfer._categories[i]._transferReusedTonnage}}
+													{% endif %}
+												</span>
+											</td>	
+										</tr>
+										
+									{% endfor %}
 		
 								{% endfor %}
 							</tbody>
@@ -187,6 +189,6 @@
 
 		</form>
 		
-<script src="/public/javascripts/transfer-totals-v4.js"></script>
+<!-- script src="/public/javascripts/transfer-totals-v4.js"></script -->
 
 {% endblock %}

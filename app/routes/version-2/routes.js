@@ -2917,7 +2917,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 	req.session.data['header']['activity'] = 'manage evidence notes';
 	
 	var selectedTransferCategories = req.session.data['selected-transfer-categories'];
-	console.log(selectedTransferCategories);
+	//console.log(selectedTransferCategories);
 
 	var facility = req.session.data['chosen-facility'];
 	
@@ -2927,93 +2927,71 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 	
 	if (req.session.data["note-1173-chk"] != undefined)
 	{
-		var savedNote = facility._evidenceNotes.find(note => note._reference == Number(1173));
+		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1173));
+		checkedNote._isTransferred = true;
 
 		var aatfNote = new TransferAatfNote(1173);
-		aatfNote._startDate = savedNote._startDate;
-		aatfNote._endDate = savedNote._endDate;
-		aatfNote._categories = selectedTransferCategories;  // adjust received and reused totals here
+		aatfNote._startDate = checkedNote._startDate;
+		aatfNote._endDate = checkedNote._endDate;
+		aatfNote._categories = selectedTransferCategories;  // at this moment we do not know the input values for tonnages - these will be collected on next page (4.18)
 		
-		//console.log('categories');
-		//console.log(aatfNote._categories);
-		
-		aatfNotes1.push(aatfNote);
-		
-		//console.log('aatfNotes1');
-		//console.log(aatfNotes1);
+		aatfNotes1.push(aatfNote);  // this note belongs to this specific aatf
 	}
 	
 	if (req.session.data["note-1189-chk"] != undefined)
 	{
-		var savedNote = facility._evidenceNotes.find(note => note._reference == Number(1189));
+		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1189));
+		checkedNote._isTransferred = true;
 
 		var aatfNote = new TransferAatfNote(1189);
-		aatfNote._startDate = savedNote._startDate;
-		aatfNote._endDate = savedNote._endDate;
+		aatfNote._startDate = checkedNote._startDate;
+		aatfNote._endDate = checkedNote._endDate;
 		aatfNote._categories = selectedTransferCategories;
 		
-		//console.log('categories');
-		//console.log(aatfNote._categories);
-		
-		aatfNotes1.push(aatfNote);
-		
-		//console.log('aatfNotes1');
-		//console.log(aatfNotes1);
+		aatfNotes1.push(aatfNote);  // this note belongs to this specific aatf
 	}
 	
 	if (req.session.data["note-1182-chk"] != undefined)
 	{
-		var savedNote = facility._evidenceNotes.find(note => note._reference == Number(1182));
+		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1182));
+		checkedNote._isTransferred = true;
 
 		var aatfNote = new TransferAatfNote(1182);
-		aatfNote._startDate = savedNote._startDate;
-		aatfNote._endDate = savedNote._endDate;
+		aatfNote._startDate = checkedNote._startDate;
+		aatfNote._endDate = checkedNote._endDate;
 		aatfNote._categories = selectedTransferCategories;
 		
-		//console.log('categories');
-		//console.log(aatfNote._categories);
-		
-		aatfNotes1.push(aatfNote);
-		
-		//console.log('aatfNotes1');
-		//console.log(aatfNotes1);
+		aatfNotes1.push(aatfNote);  // this note belongs to this specific aatf
 	}
 	
 	if (req.session.data["note-1391-chk"] != undefined)
 	{
-		var savedNote = facility._evidenceNotes.find(note => note._reference == Number(1391));
+		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1391));
+		checkedNote._isTransferred = true;
 
 		var aatfNote = new TransferAatfNote(1391);
-		aatfNote._startDate = savedNote._startDate;
-		aatfNote._endDate = savedNote._endDate;
+		aatfNote._startDate = checkedNote._startDate;
+		aatfNote._endDate = checkedNote._endDate;
 		aatfNote._categories = selectedTransferCategories;
 		
-		//console.log('categories');
-		//console.log(aatfNote._categories);
-		
-		aatfNotes2.push(aatfNote);
-		
-		//console.log('aatfNotes2');
-		//console.log(aatfNotes2);
+		aatfNotes2.push(aatfNote);  // this note belongs to this specific aatf
 	}
 	
 	if (req.session.data["note-1111-chk"] != undefined)
 	{
-		var savedNote = facility._evidenceNotes.find(note => note._reference == Number(1111));
+		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1111));
+		checkedNote._isTransferred = true;
 
 		var aatfNote = new TransferAatfNote(1111);
-		aatfNote._startDate = savedNote._startDate;
-		aatfNote._endDate = savedNote._endDate;
+		aatfNote._startDate = checkedNote._startDate;
+		aatfNote._endDate = checkedNote._endDate;
 		aatfNote._categories = selectedTransferCategories;
 		
-		//console.log('categories');
-		//console.log(aatfNote._categories);
-		
-		aatfNotes2.push(aatfNote);
-		
-		//console.log('aatfNotes2');
-		//console.log(aatfNotes2);
+		aatfNotes2.push(aatfNote);  // this note belongs to this specific aatf
 	}
+
+	// we have changed the isTransferred status so we save these notes
+	req.session.data['chosen-facility'] = facility;
 	
 	var aatfs = [];
 	
@@ -3031,42 +3009,8 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 		aatfs.push(aatf2);
 	}
 	
-	//console.log(aatfs);
-  
     req.session.data['selected-transfer-aatfs'] = aatfs;
-	//SetupTransferAatfsData(req);
 	
-/*
-class TransferAatf
-{
-	constructor(id, name, reference)
-	{
-		this._id = id;
-		this._name = name;
-		this._reference = reference;
-		this._notes = [];
-	}
-  }
-	  
-	  
-class TransferAatfNote{
-    constructor(id){
-        this._id = id;
-        this._categories = [];
-        this._startDate = 'date-from-note';
-        this._endDate = 'date-from-note';
-    }
-  }	  
-	  
-class TransferCategory{
-    constructor(category, totalReceived, totalReused) {
-        this._category = category;
-        this._totalReceived = totalReceived;
-        this._totalReused = totalReused;
-    }
-  }  
-*/
-		
     res.redirect('/version-2/417_Choose_tonnage_to_transfer');
 });
 
@@ -3074,40 +3018,61 @@ router.post('/version-2/pcs-journey-v4/418-check-transfer-details', function(req
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
-	
-	// 1-total-received-hidden
-	//req.session.data['grand-total-received'] = req.session.data['1-total-received-hidden'];
-	// 1-total-reused-hidden
-	//req.session.data['grand-total-reused'] = req.session.data['1-total-reused-hidden'];
-	
-	// collect totals in
-	// transfer-received-category-1-1-1173
-	// transfer-reused-category-1-1-1173
-	
-	//SetupTransferAatfsData(req);
+
+    var aatfs = req.session.data['selected-transfer-aatfs'];
+    var selectedTransferCategories = req.session.data['selected-transfer-categories'];
+    
+    for(var aatfCount=0; aatfCount < aatfs.length; aatfCount++)
+	{
+        var aatf = aatfs[aatfCount];
+        
+        for (var noteCount = 0; noteCount < aatf._notes.length; noteCount ++)
+		{
+            var note = aatf._notes[noteCount];
+
+            for (var categoryCount = 0; categoryCount < note._categories.length; categoryCount++)
+			{
+                var category = note._categories[categoryCount];
+
+                var receivedTransfer = "transfer-rec-category-" + category._category._id + "-" + aatf._id + "-" + note._id;
+                var reusedTransfer = "transfer-reused-category-" + category._category._id + "-" + aatf._id + "-" + note._id;
+
+                var transferReceivedTonnage = req.session.data[receivedTransfer];
+                if (!transferReceivedTonnage)
+				{
+                    transferReceivedTonnage = 0;
+                }
+                var transferReusedTonnage = req.session.data[reusedTransfer];
+                if (!transferReusedTonnage)
+				{
+                    transferReusedTonnage = 0;
+                }
+                category._transferReceivedTonnage = transferReceivedTonnage;
+                category._transferReusedTonnage = transferReusedTonnage;
+            }
+        }
+    }
+
+    for(var categoryCount = 0; categoryCount < selectedTransferCategories.length; categoryCount++) 
+	{
+        var category = selectedTransferCategories[categoryCount];
+        
+        var receivedTotal = category._category._id + "-total-received-hidden";
+        var reusedTotal = category._category._id + "-total-reused-hidden";
+        
+        category._totalReceived = req.session.data[receivedTotal] ;
+        category._totalReused = req.session.data[reusedTotal] ;
+    } 
+
+    req.session.data['selected-transfer-categories'] = selectedTransferCategories;
 
     res.redirect('/version-2/418_Check_transfer_details');
 });
 
-router.get('/version-2/pcs-journey-v4/419-view-transfer-note-after-submission', function(req, res)
+router.post('/version-2/pcs-journey-v4/419-view-transfer-note-after-submission', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
-
-/*
-class TransferNote{
-    constructor(id, aatfData, status, complianceYear) {
-        this._id = id;
-        this._aatfData = aatfData;
-        this._status = status;
-        this._complianceYear = complianceYear;
-        this._typeOfWaste = "Household";
-		this._startDate = '18/03/2022';
-		this._endDate = '18/03/2022';
-    }
-  }
-}
-*/
 
 	var id = req.query['id'];
 	var newId = '';

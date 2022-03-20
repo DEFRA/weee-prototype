@@ -26,42 +26,36 @@
 		
 			<table border="0">
 				<tr style="height: 1px;">
-					<th style="width: 150px;"></th>
 					<th style="width: 200px;"></th>
-					<th style="width:  10px;"></th>
-					<th style="width: 130px;"></th>
-					<th style="width: 200px;"></th>
+					<th style="width:  90px;"></th>
+					<th style="width: 250px;"></th>
 				</tr>
 				<tr>
 					<td class="govuk-label--s">Reference ID</td>
-					<td class="govuk-body">{{ data['new-transfer-note']._id }}</td>
-					<td></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td colspan="2" class="govuk-body">{{ data['new-transfer-note']._id }}</td>
 				</tr>
 				<tr>
 					<td class="govuk-label--s">Status</td>
-					<td class="govuk-body">{{ data['new-transfer-note']._status }}</td>
-					<td></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td colspan="2" class="govuk-body">{{ data['new-transfer-note']._status }}</td>
 				</tr>
 				<tr>
-					<td class="govuk-label--s">Submitted date</td>
-					<td class="govuk-body">{{ data['new-transfer-note']._submittedDate }} (GMT)</td>
-					<td></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td class="govuk-label--s">Date submitted</td>
+					<td colspan="2" class="govuk-body">{{ data['new-transfer-note']._submittedDate }} (GMT)</td>
 				</tr>
 				<tr>
-					<td class="govuk-label--s">Compliance period</td>
-					<td class="govuk-body">{{ data['new-transfer-note']._complianceYear }}</td>
-					<td></td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
+					<td class="govuk-label--s">Compliance year</td>
+					<td colspan="2" class="govuk-body">{{ data['new-transfer-note']._complianceYear }}</td>
 				</tr>
+				
+				<tr style="height: 30px;"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+				
 				<tr style="vertical-align: top;">
 					<td class="govuk-label--s">Transferring PCS</td>
+					<td>&nbsp;</td>
+					<td class="govuk-label--s">Recipient</td>
+				</tr>
+				
+				<tr style="vertical-align: top;">
 					<td class="govuk-body">
 						Recycling Plant <br />
 						12 May Lane<br />
@@ -69,8 +63,7 @@
 						London <br />
 						SW13 TYH
 					</td>
-					<td></td>
-					<td class="govuk-label--s">Recipient</td>
+					<td>&nbsp;</td>
 					<td class="govuk-body">
 						{% if data['transfer-selected-pcs'] %}
 						<span> {{data['transfer-selected-pcs']}}</span>
@@ -106,28 +99,39 @@
 			
 			<tbody class="govuk-table__body">
 			
-				{% for category in data['selected-transfer-categories'] %}
-				
-					<tr class="govuk-table__row civica-transfer-totals-row">
-						<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
-						<td class="govuk-table__cell civica-align-right"><span id="{{category._category._id}}-total-received">
-							{% if category._totalReceived == 0 %}
-							<span>-</span>
-							{% else %}
-							{{category._totalReceived}}
-							{% endif %}
-						</span></td>
-						<td class="govuk-table__cell civica-align-right"><span id="{{category._category._id}}-total-reused">
-							{% if category._totalReused == 0 %}
-							<span>-</span>
-							{% else %}
-							{{category._totalReused}}
-							{% endif %}
-						</span></td>	
-					</tr>
+				{% if data['selected-transfer-categories'] %}
+						
+					{% for category in data['selected-transfer-categories'] %}
 					
-				{% endfor %}
-				
+						<tr class="govuk-table__row civica-transfer-totals-row">
+							<td class="govuk-table__cell"><input type="hidden" name="category" value="{{category._category._id}}" />{{category._category._id}}. {{category._category._description}} </td>
+							<td class="govuk-table__cell civica-align-right">
+								<!--
+								{% if transfer._categories[i]._transferReceivedTonnage == 0 %}
+								<span id="transfer-received-tonnage">-</span>
+								{% else %}
+								<span id="transfer-received-tonnage">{{transfer._categories[i]._transferReceivedTonnage}}</span>
+								{% endif %}
+								-->
+								<span>{{data[category._category._id + '-total-received-hidden']}}</span>
+								
+							</td>
+							<td class="govuk-table__cell civica-align-right">
+								<!--
+								{% if transfer._categories[i]._transferReusedTonnage == 0 %}
+								<span id="transfer-reused-tonnage">-</span>
+								{% else %}
+								<span id="transfer-reused-tonnage">{{transfer._categories[i]._transferReusedTonnage}}</span>
+								{% endif %}
+								-->
+								{{data[category._category._id + '-total-reused-hidden']}}
+								
+							</td>	
+						</tr>
+						
+					{% endfor %}
+					
+				{% endif %}
 			</tbody>
 		</table>
 

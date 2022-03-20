@@ -40,7 +40,9 @@
 						<div class="govuk-heading-s govuk-!-padding-1" style="margin-bottom: -20px;">WEEE received between <span class="govuk-body">{{transfer._startDate}} - {{transfer._endDate}}</span></div>
 					
 						<table class="govuk-table" style="padding-bottom: 0px; margin-bottom: -2px;">
+						
 							<caption class="govuk-table__caption govuk-table__caption--l "></caption>
+							
 							<thead class="govuk-table__head">
 							  <tr class="govuk-table__row">
 								<th scope="col" class="govuk-table__header" style="width: 200px; padding-left: 8px; padding-right: 8px;">Category</th>
@@ -50,6 +52,7 @@
 								<th scope="col" class="govuk-table__header civica-align-right" style="width: 200px; padding-right: 8px;">Transfer reused (tonnes)</th>
 							  </tr>
 							</thead>
+							
 							<tbody class="govuk-table__body">
 							
 								{% for category in transfer._categories %}
