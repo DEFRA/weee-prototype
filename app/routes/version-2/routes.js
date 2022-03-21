@@ -3127,6 +3127,20 @@ router.get('/version-2/pcs-journey-v4/420-view-evidence-note', function(req, res
     res.redirect('/version-2/420_View_evidence_note');
 });
 
+
+
+router.get('/version-2/pcs-journey-v4/407-view-approved-evidence-note', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence note';
+    var facility = req.session.data['chosen-facility']; 
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
+
+    res.redirect('/version-2/407_View_approved_Evidence_note');
+});
+
+
+
 router.get('/version-2/pcs-journey-v4/421-download-as-pdf', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
@@ -3134,6 +3148,8 @@ router.get('/version-2/pcs-journey-v4/421-download-as-pdf', function(req, res)
 	
     res.redirect('/version-2/421_PDF_printed_dialog');
 });
+
+
 
 
 module.exports = router;
