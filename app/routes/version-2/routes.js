@@ -327,6 +327,8 @@ function CreatePcsSelectedFacilityWithEvidenceNotes(req)
 	// Transferred notes
 	facility._evidenceNotes[2]._isTransferred = true;  // 1255
 	facility._evidenceNotes[3]._isTransferred = true;  // 1329
+	facility._evidenceNotes[2]._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	facility._evidenceNotes[3]._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 	
 	return facility;
 }
@@ -437,8 +439,6 @@ function SetupTransferAatfsData(req)
         aatfs = [];
     }
 	
-	//selectedTransferableNotes = null;  // debug first control block
-
     if (!selectedTransferableNotes)
 	{
         for(var tempCount = 0; tempCount < tempData.length; tempCount++)
@@ -2929,6 +2929,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 	{
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1173));
 		checkedNote._isTransferred = true;
+		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
 		var aatfNote = new TransferAatfNote(1173);
 		aatfNote._startDate = checkedNote._startDate;
@@ -2942,6 +2943,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 	{
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1189));
 		checkedNote._isTransferred = true;
+		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
 		var aatfNote = new TransferAatfNote(1189);
 		aatfNote._startDate = checkedNote._startDate;
@@ -2955,6 +2957,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 	{
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1182));
 		checkedNote._isTransferred = true;
+		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
 		var aatfNote = new TransferAatfNote(1182);
 		aatfNote._startDate = checkedNote._startDate;
@@ -2968,6 +2971,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 	{
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1391));
 		checkedNote._isTransferred = true;
+		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
 		var aatfNote = new TransferAatfNote(1391);
 		aatfNote._startDate = checkedNote._startDate;
@@ -2981,6 +2985,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 	{
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1111));
 		checkedNote._isTransferred = true;
+		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
 		var aatfNote = new TransferAatfNote(1111);
 		aatfNote._startDate = checkedNote._startDate;
@@ -3127,8 +3132,6 @@ router.get('/version-2/pcs-journey-v4/420-view-evidence-note', function(req, res
     res.redirect('/version-2/420_View_evidence_note');
 });
 
-
-
 router.get('/version-2/pcs-journey-v4/407-view-approved-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
@@ -3138,8 +3141,6 @@ router.get('/version-2/pcs-journey-v4/407-view-approved-evidence-note', function
 
     res.redirect('/version-2/407_View_approved_Evidence_note');
 });
-
-
 
 router.get('/version-2/pcs-journey-v4/421-download-as-pdf', function(req, res)
 {

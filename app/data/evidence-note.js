@@ -20,6 +20,7 @@ class EvidenceNote{
      this._sortOrder = 0;
      this._isVisible = false;
      this._isTransferred = false;
+     this._dateTransferred = '21/03/2022 14:04:05';
     }
 }
 

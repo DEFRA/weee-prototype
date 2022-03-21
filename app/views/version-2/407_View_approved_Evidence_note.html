@@ -75,9 +75,9 @@
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
 		
 			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
-				<div class="govuk-grid-column-full govuk-label--s" style="padding: 0 0 0 0;">Issuing site</div>
+				<div class="govuk-grid-column-full govuk-label--s" style="padding: 0 5px 0 0;">Issuing site</div>
 				<div class="govuk-grid-column-full govuk-body" style="padding: 0 0 0 0;">
-					ABB ltd <br />
+					{{ data['selected-evidence-note']._pcs }} <br />
 					<b>AATF12345</b> <br />
 					12 May Lane <br />
 					Hammersmith <br />
@@ -100,7 +100,7 @@
 			<div class="govuk-grid-column-one-third" style="padding: 0 0 0 0;">  
 				<div class="govuk-grid-column-full govuk-label--s" style="padding: 0 0 0 0;">Receiving PCS</div>
 				<div class="govuk-grid-column-full govuk-body" style="padding: 0 0 0 0;">
-					PCS6 <br />
+					{{ data['transfer-selected-pcs'] }} <br />
 					1 Bart avenue <br />
 					Reading <br />
 					RG1 ATR

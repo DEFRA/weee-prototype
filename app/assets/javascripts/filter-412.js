@@ -15,7 +15,10 @@
         document.getElementById("input-search-3").addEventListener('change', (e) => {
             searchTab3();        
         });
-
+        document.getElementById("input-search-4").addEventListener('change', (e) => {
+            searchTab4();        
+        });
+/*
         document.getElementById("date-filter-from-2").addEventListener('change', (e) => {
             filterDateFromToTab2();
         });
@@ -24,10 +27,10 @@
             filterDateFromToTab2();
         });
 
-        document.getElementById("date-filter-3").addEventListener('change', (e) => {
-            filterDateTab3();
+        document.getElementById("date-received-filter-from-3").addEventListener('change', (e) => {
+            filterDateReceivedTab3();
         });
-
+*/
 /*  Year is now working across ALL tabs from same listbox */
         document.getElementById("year-filter").addEventListener('change', (e) => {
             filterYearAllTabs();
@@ -40,13 +43,16 @@
         document.getElementById("pcs-filter-3").addEventListener('change', (e) => {
             filterPcsTab3();
         });
+        document.getElementById("pcs-filter-4").addEventListener('change', (e) => {
+            filterPcsTab4();
+        });
 		
 
-        document.getElementById("status-filter-2").addEventListener('change', (e) => {
-            filterStatusTab2();
-        });
         document.getElementById("status-filter-3").addEventListener('change', (e) => {
             filterStatusTab3();
+        });
+        document.getElementById("status-filter-4").addEventListener('change', (e) => {
+            filterStatusTab4();
         });
 
 
@@ -206,14 +212,7 @@
                 }
             }
 
-            if (displayRow)
-			{
-                trs[i].style.display = "";
-            }
-            else
-			{
-                trs[i].style.display = "none";
-            }
+            trs[i].style.display = (displayRow) ? "" : "none";
         }
     }
 
@@ -238,14 +237,32 @@
                 }
             }
 
-            if (displayRow)
+            trs[i].style.display = (displayRow) ? "" : "none";
+        }
+    }
+
+    function searchTab4() 
+	{
+        var searchFilter = document.getElementById("input-search-4").value;
+        var table = document.getElementById("tbody-results-4");
+        var trs = table.getElementsByClassName("govuk-table__row result-row");
+
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < trs.length; i++) 
+		{
+            var displayRow = true;
+
+            if (searchFilter.trim() != '' && searchFilter != '') 
 			{
-                trs[i].style.display = "";
+                var td = trs[i].getElementsByTagName("td")[3];
+
+                if (!IsMatch(td, searchFilter))
+				{
+                    displayRow = false;
+                }
             }
-            else
-			{
-                trs[i].style.display = "none";
-            }
+
+            trs[i].style.display = (displayRow) ? "" : "none";
         }
     }
 
@@ -376,25 +393,30 @@
 		}
 	}
 
-	function filterStatusTab2()
+	function filterPcsTab4()
 	{
-		var statusFilter = document.getElementById("status-filter-2").value;
-        var table = document.getElementById("tbody-results-2");
+		var pcsFilter = document.getElementById("pcs-filter-4").value;
+        var table = document.getElementById("tbody-results-4");
         var trs = table.getElementsByClassName("govuk-table__row result-row");
 		
         for (i = 0; i < trs.length; i++) 
 		{
 			var displayRow = true;
 			
-            if (statusFilter != '0') 
+            if (pcsFilter != ' ') 
 			{
-                var cell = trs[i].getElementsByTagName("td")[6];
-				displayRow = IsMatch(cell, statusFilter);
+                var cell = trs[i].getElementsByTagName("td")[5];
+
+                if (!IsMatch(cell, pcsFilter))
+				{
+                    displayRow = false;
+                }
             }
 			
             trs[i].style.display = (displayRow) ? "" : "none";
 		}
 	}
+
 	
 	function filterStatusTab3()
 	{
@@ -409,10 +431,33 @@
             if (statusFilter != '0') 
 			{
                 var cell = trs[i].getElementsByTagName("td")[7];
+				console.log(cell);
+				displayRow = IsMatch(cell, statusFilter);
+				console.log(statusFilter);
+            }
+			
+            trs[i].style.display = (displayRow) ? "" : "none";
+		}
+	}
+	
+	function filterStatusTab4()
+	{
+		var statusFilter = document.getElementById("status-filter-4").value;
+        var table = document.getElementById("tbody-results-4");
+        var trs = table.getElementsByClassName("govuk-table__row result-row");
+		
+        for (i = 0; i < trs.length; i++) 
+		{
+			var displayRow = true;
+			
+            if (statusFilter != '0') 
+			{
+                var cell = trs[i].getElementsByTagName("td")[6];
 				displayRow = IsMatch(cell, statusFilter);
             }
 			
             trs[i].style.display = (displayRow) ? "" : "none";
+			trs[i].style.backgroundColor = "#ccc";
 		}
 	}
 
