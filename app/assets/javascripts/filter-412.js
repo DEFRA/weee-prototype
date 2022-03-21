@@ -9,6 +9,15 @@
     
 	function filterEventBinding()
 	{
+		
+
+		/*  Year is now working across ALL tabs from same listbox */
+        document.getElementById("year-filter").addEventListener('change', (e) => {
+            filterYearAllTabs();
+        });
+		
+
+
         document.getElementById("input-search-2").addEventListener('change', (e) => {
             searchTab2();        
         });
@@ -18,6 +27,12 @@
         document.getElementById("input-search-4").addEventListener('change', (e) => {
             searchTab4();        
         });
+
+		
+        document.getElementById("transfer-date-filter-tab-4").addEventListener('change', (e) => {
+            filterTransferDateTab4();
+        });
+		
 /*
         document.getElementById("date-filter-from-2").addEventListener('change', (e) => {
             filterDateFromToTab2();
@@ -31,10 +46,7 @@
             filterDateReceivedTab3();
         });
 */
-/*  Year is now working across ALL tabs from same listbox */
-        document.getElementById("year-filter").addEventListener('change', (e) => {
-            filterYearAllTabs();
-        });
+
 
 
         document.getElementById("pcs-filter-2").addEventListener('change', (e) => {
@@ -63,6 +75,7 @@
             filterTypeTab3();
         });
 
+/*
         document.getElementById("category-filter-2").addEventListener('change', (e) => {
             filter();
         });
@@ -72,7 +85,118 @@
         document.getElementById("category-filter-4").addEventListener('change', (e) => {
             filter();
         });
+*/		
 	}
+
+	
+
+	function filterYearAllTabs()
+	{
+		var yearFilter = document.getElementById("year-filter").value;
+		
+		// TAB2
+        var table = document.getElementById("tbody-results-2");
+        var trs = table.getElementsByClassName("govuk-table__row result-row");
+		
+        for (i = 0; i < trs.length; i++) 
+		{
+			var displayRow = true;
+			
+            if (yearFilter != '') 
+			{
+                var cell = trs[i].getElementsByTagName("td")[0];
+
+                if (!IsMatch(cell, yearFilter))
+				{
+                    displayRow = false;
+                }
+            }
+			
+            trs[i].style.display = (displayRow) ? "" : "none";
+		}
+		
+		// TAB3
+        var table = document.getElementById("tbody-results-3");
+        var trs = table.getElementsByClassName("govuk-table__row result-row");
+		
+        for (i = 0; i < trs.length; i++) 
+		{
+			var displayRow = true;
+			
+            if (yearFilter != '') 
+			{
+                var cell = trs[i].getElementsByTagName("td")[0];
+
+                if (!IsMatch(cell, yearFilter))
+				{
+                    displayRow = false;
+                }
+            }
+			
+            trs[i].style.display = (displayRow) ? "" : "none";
+		}
+		
+		// TAB3
+        var table = document.getElementById("tbody-results-4");
+        var trs = table.getElementsByClassName("govuk-table__row result-row");
+		
+        for (i = 0; i < trs.length; i++) 
+		{
+			var displayRow = true;
+			
+            if (yearFilter != '') 
+			{
+                var cell = trs[i].getElementsByTagName("td")[0];
+
+                if (!IsMatch(cell, yearFilter))
+				{
+                    displayRow = false;
+                }
+            }
+			
+            trs[i].style.display = (displayRow) ? "" : "none";
+		}
+		
+		// we need to use jQuery or Node to redirect to page with flag setupPagination
+		// we can set a year flag to indicate router what to filter
+		// res.redirect('/version-2/412_Manage_evidence_note');
+	}
+
+	function filterTransferDateTab4()
+	{
+		var dateFilter = document.getElementById("transfer-date-filter-tab-4").value;
+        var table = document.getElementById("tbody-results-4");
+        var trs = table.getElementsByClassName("govuk-table__row result-row");
+		
+        for (i = 0; i < trs.length; i++) 
+		{
+			var displayRow = true;
+			
+            if (dateFilter != '') 
+			{
+                var cell = trs[i].getElementsByTagName("td")[4];
+				var txtValue = cell.textContent || cell.innerText;
+				var usDate = FormatUKDate2DashedYYYMMDD(txtValue);
+
+                if (!IsDateMatch(usDate, dateFilter))
+				{
+                    displayRow = false;
+                }
+				
+            }
+			
+            trs[i].style.display = (displayRow) ? "" : "none";
+		}
+	}
+
+
+    function IsDateMatch(date1, date2)
+	{
+		var isMatched = date1.toString().includes(date2.toString());
+
+		return isMatched;
+    }
+
 
 	
     function IsMatch(td, compare)
@@ -128,7 +252,7 @@
 	function FormatYYYYMMDDasNumber(someDateString)
 	{
 		// substitute day and month to get US format date (are we digitally colonised ?)
-		console.log('date fed to FormatYYYYMMDDasNumber() => ' + someDateString);
+		//console.log('date fed to FormatYYYYMMDDasNumber() => ' + someDateString);
 		
 		var dateParts = someDateString.split("/");  // expecting UK format date
 		
@@ -137,6 +261,22 @@
 		var year = dateParts[2];
 		
 		return Number(year + month + day);  // eg: 20220106 for 6 jan 2022, serial date for numerical compare
+	}
+	
+	function FormatUKDate2DashedYYYMMDD(someUKDateString)
+	{
+		// substitute day and month to get US format date (are we digitally colonised ?)
+		//console.log('date fed to FormatYYYYMMDDasNumber() => ' + someUKDateString);
+		
+		var dateParts = someUKDateString.split(' ')[0].split('/');  // expecting UK date with HH:MM:SS
+		
+		var day = dateParts[0];
+		var month = dateParts[1];
+		var year = dateParts[2];
+		
+		var usDate = year.toString() + '-' + month.toString() + '-' + day.toString();
+		
+		return usDate;  // eg: 2022-01-06 for 6 jan 2022, serial date for numerical compare
 	}
 
 
@@ -315,34 +455,10 @@
             trs[i].style.display = (displayRow) ? "" : "none";
 		}
 	}
-
-	function filterYearAllTabs()
-	{
-		var yearFilter = document.getElementById("year-filter").value;
-        var table = document.getElementById("tbody-results-2");
-        var trs = table.getElementsByClassName("govuk-table__row result-row");
-		
-        for (i = 0; i < trs.length; i++) 
-		{
-			var displayRow = true;
-			
-            if (yearFilter != '') 
-			{
-                var cell = trs[i].getElementsByTagName("td")[0];
-
-                if (!IsMatch(cell, yearFilter))
-				{
-                    displayRow = false;
-                }
-            }
-			
-            trs[i].style.display = (displayRow) ? "" : "none";
-		}
-		
-		// we need to use jQuery or Node to redirect to page with flag setupPagination
-		// we can set a year flag to indicate router what to filter
-		// res.redirect('/version-2/412_Manage_evidence_note');
-	}
+	
+	
+	
+	
 
 
 	function filterPcsTab2()
@@ -357,7 +473,7 @@
 			
             if (pcsFilter != ' ') 
 			{
-                var cell = trs[i].getElementsByTagName("td")[4];
+                var cell = trs[i].getElementsByTagName("td")[5];
 
                 if (!IsMatch(cell, pcsFilter))
 				{
@@ -442,6 +558,8 @@
 	
 	function filterStatusTab4()
 	{
+		console.log('filterStatusTab4()');
+		
 		var statusFilter = document.getElementById("status-filter-4").value;
         var table = document.getElementById("tbody-results-4");
         var trs = table.getElementsByClassName("govuk-table__row result-row");
@@ -457,7 +575,6 @@
             }
 			
             trs[i].style.display = (displayRow) ? "" : "none";
-			trs[i].style.backgroundColor = "#ccc";
 		}
 	}
 
@@ -473,7 +590,7 @@
 			
             if (typeFilter != '0') 
 			{
-                var cell = trs[i].getElementsByTagName("td")[5];
+                var cell = trs[i].getElementsByTagName("td")[6];
 
                 if (!IsMatch(cell, typeFilter))
 				{
@@ -550,6 +667,7 @@
 
 	function setupPagination() 
 	{
+		/*
 		var table = document.getElementById("tbody-results-2");
 		var trs = table.getElementsByClassName("result-row");
 		
@@ -567,11 +685,12 @@
 		
 		document.getElementById("total-1").innerText = numberWithCommas(total1);
 		document.getElementById("total-2").innerText = numberWithCommas(total2);
-		
+		*/
 		
 		
 		// paginator
 		
+/*		
 		document.getElementById("page-size-filter").addEventListener('change', (e) => 
 		{
 			document.getElementById("page-size-keeper").value = document.getElementById("page-size-filter").value;
@@ -648,5 +767,5 @@
 		{
 			pageView('n');        
 		});
-
+*/
 	}

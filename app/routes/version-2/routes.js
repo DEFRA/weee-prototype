@@ -236,11 +236,11 @@ function CreatePcsSelectedFacilityWithEvidenceNotes(req)
 
 	received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-	facility._evidenceNotes.push(new EvidenceNote('01/03/2022', '31/03/2022', 'Intelligent Waste Management Ltd', '2022', 'Household', 'Actual', 210.110, 10.001, "Approved", 1255, '11/11/2021 11:32:40'));
+	facility._evidenceNotes.push(new EvidenceNote('01/03/2022', '31/03/2022', 'Intelligent Waste Management Ltd', '2022', 'Household', 'Actual', 210.110, 10.001, "Approved", 'T1255', '11/11/2021 11:32:40'));
 
 	received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-	facility._evidenceNotes.push(new EvidenceNote('01/04/2022', '31/04/2022', 'ERP UK', '2022', 'Household', 'Actual', 120.225, 10.001, "Rejected", 1329, '11/11/2021 11:32:40'));
+	facility._evidenceNotes.push(new EvidenceNote('01/04/2022', '31/04/2022', 'ERP UK', '2022', 'Household', 'Actual', 120.225, 10.001, "Rejected", 'T1329', '11/11/2021 11:32:40'));
 
 	received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -2637,6 +2637,19 @@ router.get('/version-2/pcs-journey-v4/420-view-note-1399-after-transfer-init', f
     res.redirect('/version-2/420_View_evidence_note');
 });
 
+
+router.get('/version-2/pcs-journey-v4/412-manage-evidence-no-data', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence notes';
+	
+    req.session.data['chosen-facility'] = null;
+	req.session.data['total-submitted-notes'] = 0;
+	req.session.data['total-approved-notes'] = 0;
+    req.session.data['total-submitted-notes-x'] = 5;
+	
+    res.redirect('/version-2/412_Manage_evidence_note');
+});
 
 
 // -----------------

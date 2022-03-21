@@ -58,11 +58,31 @@
 								{% for category in transfer._categories %}
 								
 									<tr class="govuk-table__row">
-										<td class="govuk-table__cell" style="padding-left: 8px; padding-right: 8px;">{{category._category._id}}. {{category._category._description}} </td>
-										<td class="govuk-table__cell civica-align-right">{{category._receivedTonnage}}</td>
-										<td class="govuk-table__cell civica-align-right">{{category._reusedTonnage}}</td>
-										<td class="govuk-table__cell civica-align-right"><input type="text" name="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" id="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" class="govuk-input" /></td>
-										<td class="govuk-table__cell civica-align-right" style="width: 200px; padding-right: 8px;"><input type="text" name="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" id="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" class="govuk-input" /></td>
+										<td class="govuk-table__cell" style="padding-left: 8px; padding-right: 8px;">
+											{{category._category._id}}. {{category._category._description}} 
+										</td>
+										
+										<td class="govuk-table__cell civica-align-right" id="note-received-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}">
+											{{category._receivedTonnage}}
+										</td>
+										
+										<td class="govuk-table__cell civica-align-right" id="note-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}">
+											{{category._reusedTonnage}}
+										</td>
+										
+										<td class="govuk-table__cell civica-align-right">
+											<input type="text" 
+											       name="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" 
+												   id="transfer-rec-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" 
+												   class="govuk-input" />
+										</td>
+										
+										<td class="govuk-table__cell civica-align-right" style="width: 200px; padding-right: 8px;">
+											<input type="text" 
+											       name="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" 
+												   id="transfer-reused-category-{{category._category._id}}-{{note._id}}-{{transfer._id}}" 
+												   class="govuk-input" />
+										</td>
 									</tr>
 						
 								{% endfor %}
