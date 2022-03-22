@@ -730,7 +730,7 @@
 						<option value="0"> </option>
 						<option value="Approved">Approved</option>
 						<option value="Rejected">Rejected</option>
-						<option value="Rejected">Returned</option>
+						<option value="Returned">Returned</option>
 						<option value="Void">Void</option>
 					</select>
 				</td>
@@ -1006,7 +1006,13 @@
 
 						<td class="govuk-table__cell">{{evidenceNote._id}}</td>
 						<td class="govuk-table__cell">{{evidenceNote._transferDate}}</td>
-						<td class="govuk-table__cell">{{evidenceNote._aatfData._name}}</td>
+						<td class="govuk-table__cell">
+							{% if (evidenceNote._aatfData._name != null) %}
+								{{evidenceNote._aatfData._name}}
+							{% else %}
+								Environcom (North West) Ltd
+							{% endif %}
+						</td>
 						<td class="govuk-table__cell">{{evidenceNote._status}}</td>
 						<td class="govuk-table__cell">
 						  <a href="/version-2/pcs-journey-v4/419a-view-transfer-note-from-link?id={{evidenceNote._id}}">View</a>
