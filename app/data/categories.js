@@ -1,3 +1,4 @@
+
 class Categories{
 
     constructor(largeHouseholdAppliances, smallHouseholdAppliances, itAndTelecommunicationsEquipment, 

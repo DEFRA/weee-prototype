@@ -11,7 +11,7 @@
 	{
 		
 
-		/*  Year is now working across ALL tabs from same listbox */
+		/*  Year is now working across tab2 tab3 and tab4 from same listbox */
         document.getElementById("year-filter").addEventListener('change', (e) => {
             filterYearAllTabs();
         });

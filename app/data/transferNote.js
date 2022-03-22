@@ -1,4 +1,3 @@
-//const moment = require('./moment');
 
 class TransferNote{
     constructor(id, aatfData, status, complianceYear) {

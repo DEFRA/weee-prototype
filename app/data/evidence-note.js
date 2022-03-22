@@ -1,3 +1,4 @@
+
 const Categories = require('./categories');
 
 class EvidenceNote{
