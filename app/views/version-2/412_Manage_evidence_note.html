@@ -453,7 +453,6 @@
 
 	<!-- FILTER AREA -->
 	<div class="filter-area-tab">
-
 		<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-2">
 			<label for="input-search-2" class="govuk-heading-s">Search by reference ID</label>
 			<div class="govuk-input" style="background-color: #fff; width: 150px;">
@@ -461,7 +460,6 @@
 				<span id="button-holder" style="width: 15px; position: relative; top: -28px;"><img src="/public/images/search.jpg" /></span>
 			</div>
 		</div>
-
 		<div class="govuk-grid-row govuk-!-margin-1 govuk-!-padding-bottom-7">
 			<div class="govuk-heading-s govuk-!-margin-1 govuk-!-padding-bottom-1">Filter by</div>
 			<table border="0">
@@ -798,7 +796,7 @@
 		  
 		  <tbody class="govuk-table__body" id="tbody-results-3">		  
 		  
-			{% for evidenceNote in data['chosen-facility-transferable-notes-first-ten'] %}
+			{% for evidenceNote in data['chosen-facility-transferable-notes'] %}
 
 				<tr class="govuk-table__row result-row">
 				  <td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
@@ -812,7 +810,11 @@
 				  <td class="govuk-table__cell">{{evidenceNote._status}}</td>
 				  
 				  <td class="govuk-table__cell govuk-!-text-align-right">
-					  <a href="/version-2/pcs-journey-v4/407-view-approved-evidence-note?id={{evidenceNote._reference}}">View</a>
+					  {% if (evidenceNote._isTransferred == true) %}
+						  <a href="/version-2/pcs-journey-v4/420-view-evidence-note?id={{evidenceNote._reference}}">View</a>
+					  {% else %}
+						  <a href="/version-2/pcs-journey-v4/407-view-evidence-note?id={{evidenceNote._reference}}">View</a>
+					  {% endif %}
 				  </td>
 				</tr>
 				
@@ -995,19 +997,19 @@
 		  
 			<tbody class="govuk-table__body" id="tbody-results-4">
 		  
-				{% for evidenceNote in data['chosen-facility-transferred-notes'] %}
+				{% for evidenceNote in data['transferred-notes-tab4'] %}
 
 					<tr class="govuk-table__row result-row">
 						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._year}}</td>
 						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._searchDate}}</td>
 						<td class="govuk-table__cell" style="display: none;">{{evidenceNote._categoryFilterString}}</td>
 
-						<td class="govuk-table__cell">{{evidenceNote._reference}}</td>
-						<td class="govuk-table__cell">{{evidenceNote._dateTransferred}}</td>
-						<td class="govuk-table__cell">{{evidenceNote._pcs}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._id}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._transferDate}}</td>
+						<td class="govuk-table__cell">{{evidenceNote._aatfData._name}}</td>
 						<td class="govuk-table__cell">{{evidenceNote._status}}</td>
 						<td class="govuk-table__cell">
-						  <a href="/version-2/pcs-journey-v4/420-view-evidence-note?id={{evidenceNote._reference}}">View</a>
+						  <a href="/version-2/pcs-journey-v4/419a-view-transfer-note-from-link?id={{evidenceNote._id}}">View</a>
 						</td>
 					</tr>
 

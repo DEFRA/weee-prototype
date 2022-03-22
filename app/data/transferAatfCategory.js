@@ -1,3 +1,4 @@
+
 class TransferAatfCategory{
     constructor(category, receivedTonnage, reusedTonnage){
         this._receivedTonnage = receivedTonnage;

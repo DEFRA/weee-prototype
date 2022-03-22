@@ -20,16 +20,29 @@ function showHide()
 
 <div class="govuk-!-margin-bottom-5"><a class="govuk-back-link" href="/version-2/pcs-journey-v4/412-manage-evidence-note">Back</a></div>
 
+{% if ( data['transferred-notes-tab4'] ) %}
 <div class="govuk-!-margin-bottom-9">
 	<div class="govuk-!-margin-bottom-3"><a class="govuk-body govuk-back-link" href="javascript:showHide();">Transfer history</a></div>
 	<div id="transfer-history" class="civica-transfer-hint" style="display: none;">
 		<div style="border: 1px solid #666; padding: 8px; margin: 0 0 0 0;">
+			<!--
 			<div class="govuk-body govuk-!-margin-bottom-1">02/03/2022 Transfer to Recyling Lives <a href="/version-2/pcs-journey-v4/420-view-evidence-note?id=1399">View</a></div>
 			<div class="govuk-body govuk-!-margin-bottom-1">03/03/2022 Transfer to Repic Ltd <a href="/version-2/pcs-journey-v4/420-view-evidence-note?id=1255">View</a></div>
+			-->
+			{% for transferNote in data['transferred-notes-tab4'] %}
+			
+				<div class="govuk-body govuk-!-margin-bottom-1">
+					{{ transferNote._transferDate.split(" ")[0] }} Transfer to {{ transferNote._aatfData._name }}
+					<a href="/version-2/pcs-journey-v4/419a-view-transfer-note-from-link?id={{ transferNote._id }}">View</a>
+				</div>
+
+			{% endfor %}
+			
 			<div class="govuk-body govuk-!-margin-bottom-1">&nbsp;</div>
 		</div>
 	</div>
 </div>
+{% endif %}
 
 <form class="form" action="/version-2/pcs-journey-v4/421-download-as-pdf" method="post">
 	

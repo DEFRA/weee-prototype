@@ -236,11 +236,11 @@ function CreatePcsSelectedFacilityWithEvidenceNotes(req)
 
 	received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-	facility._evidenceNotes.push(new EvidenceNote('01/03/2022', '31/03/2022', 'Intelligent Waste Management Ltd', '2022', 'Household', 'Actual', 210.110, 10.001, "Approved", 'T1255', '11/11/2021 11:32:40'));
+	facility._evidenceNotes.push(new EvidenceNote('01/03/2022', '31/03/2022', 'Intelligent Waste Management Ltd', '2022', 'Household', 'Actual', 210.110, 10.001, "Approved", '1255', '11/11/2021 11:32:40'));
 
 	received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
-	facility._evidenceNotes.push(new EvidenceNote('01/04/2022', '31/04/2022', 'ERP UK', '2022', 'Household', 'Actual', 120.225, 10.001, "Rejected", 'T1329', '11/11/2021 11:32:40'));
+	facility._evidenceNotes.push(new EvidenceNote('01/04/2022', '31/04/2022', 'ERP UK', '2022', 'Household', 'Actual', 120.225, 10.001, "Rejected", '1329', '11/11/2021 11:32:40'));
 
 	received = new Categories(2, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
@@ -290,6 +290,18 @@ function CreatePcsSelectedFacilityWithEvidenceNotes(req)
 	reused = new Categories(1, null, null, null, null, null, null, null, null, null, null, null, null, null);
 	facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives Ltd (Recycling Park)', '2022', 'Household', 'Actual', 240.668, 10.002, "Approved", 1111, '11/11/2021 11:32:40'));
 
+	// -----------------------------------------------------------------------------------------------------------------------------------------
+	// [15..16] Transferred evidence notes 
+	// -----------------------------------------------------------------------------------------------------------------------------------------
+
+	received = new Categories(20, 5, null, null, null, null, null, null, null, null, null, null, null, null);
+	reused = new Categories(10, 1, null, null, null, null, null, null, null, null, null, null, null, null);
+	facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'M.D.J. Light Brothers Ltd - Greystone Quarry', '2022', 'Household', 'Actual', 240.668, 10.002, "Draft", 2200, '11/11/2021 11:32:40'));
+
+
+	received = new Categories(25, 14, null, null, null, null, null, null, null, null, null, null, null, null);
+	reused = new Categories(9, 2, null, null, null, null, null, null, null, null, null, null, null, null);
+	facility._evidenceNotes.push(new EvidenceNote('01/01/2022', '31/01/2022', 'Recycling Lives Ltd (Recycling Park)', '2022', 'Household', 'Actual', 240.668, 10.002, "Approved", 2201, '11/11/2021 11:32:40'));
         
 	// -----------------------------------------------------------------------------------------------------------------------------------------
 	// Submitted evidence notes 
@@ -324,12 +336,115 @@ function CreatePcsSelectedFacilityWithEvidenceNotes(req)
 	facility._evidenceNotes[7]._returnedDate = moment(new Date(2022, 01, 5, 15, 16, 7), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 	facility._evidenceNotes[12]._returnedDate = moment(new Date(2022, 01, 14, 16, 10, 5), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 
-	// Transferred notes
-	facility._evidenceNotes[2]._isTransferred = true;  // 1255
-	facility._evidenceNotes[3]._isTransferred = true;  // 1329
-	facility._evidenceNotes[2]._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
-	facility._evidenceNotes[3]._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+
+	// Transferred notes in tab3 - these notes will have some tonnage taken away so they have flag: _isTransferred = true
+	facility._evidenceNotes[10]._isTransferred = true;  // 1610
+	facility._evidenceNotes[11]._isTransferred = true;  // 1182
+
+	facility._evidenceNotes[16]._isTransferred = true;  // 2201
+	facility._evidenceNotes[15]._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	facility._evidenceNotes[16]._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+
+
+
+	// creating 2 boilerplate transfer notes for tab4
+	// -------
+	//var transferCategory = new TransferCategory(category, totalReceived, totalReused);
+	//received = new Categories(20, 5, null, null, null, null, null, null, null, null, null, null, null, null);
+	//reused = new Categories(10, 1, null, null, null, null, null, null, null, null, null, null, null, null);
+	//received = new Categories(25, 14, null, null, null, null, null, null, null, null, null, null, null, null);
+	//reused = new Categories(9, 2, null, null, null, null, null, null, null, null, null, null, null, null);
+	// -------
+
+	var categories = new CategoryItems();
 	
+	var transferCategories1 = [];
+
+	var transferAatfCat1 = new TransferAatfCategory(new TransferCategory(categories[0], 35, 11), 50, 32);
+    transferAatfCat1._transferReceivedTonnage = 20;
+    transferAatfCat1._transferReusedTonnage = 10;
+	
+	transferCategories1.push(transferAatfCat1);
+
+	// -------
+
+	var transferCategories2 = [];
+
+	var transferAatfCat2 = new TransferAatfCategory(new TransferCategory(categories[0], 58, 23), 50, 32);
+    transferAatfCat2._transferReceivedTonnage = 35;
+    transferAatfCat2._transferReusedTonnage = 17;
+	
+	transferCategories2.push(transferAatfCat2);
+	
+	// -------
+	
+	// collect first note user has checked
+	var aatfNotes1 = [];
+	var checkedNote1 = facility._evidenceNotes[15];
+	checkedNote1._isTransferred = true;
+	checkedNote1._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+
+	var aatfNote1 = new TransferAatfNote(checkedNote1._reference);
+	aatfNote1._startDate = checkedNote1._startDate;
+	aatfNote1._endDate = checkedNote1._endDate;
+	aatfNote1._transferDate = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	aatfNote1._categories = transferCategories1;
+	
+	// first note injected in transfer note
+	aatfNotes1.push(aatfNote1);
+	
+	// -------
+	
+	// collect second note user has checked
+	var aatfNotes2 = [];
+	var checkedNote2 = facility._evidenceNotes[16];
+	checkedNote2._isTransferred = true;
+	checkedNote2._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+
+	var aatfNote2 = new TransferAatfNote(checkedNote2._reference);
+	aatfNote2._startDate = checkedNote2._startDate;
+	aatfNote2._endDate = checkedNote2._endDate;
+	aatfNote2._transferDate = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	aatfNote2._categories = transferCategories2;
+	
+	// second note injected in transfer note
+	aatfNotes2.push(aatfNote2);
+	
+	// -------
+		
+	var aatfData1 = new TransferAatf("1", "Recycling Team Ltd", "WEE/AB5678GH/PCS");
+	aatfData1._notes = [];
+	aatfData1._notes.push(aatfNotes1);
+	
+	var aatfData2 = new TransferAatf("2", "Environcom (North West) Ltd", "WEE/AB3342GH/PCS");
+	aatfData2._notes = [];
+	aatfData2._notes.push(aatfNotes2);
+	
+	// -------
+	
+	var transferNote1 = new TransferNote('T1100', aatfData1, 'Draft', '2022');
+    transferNote1._typeOfWaste = "Household";
+	//transferNote1._transferDate = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	transferNote1._transferDate = '11/02/2022 15:12:06';
+	//transferNote1._submittedDate = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	transferNote1._submittedDate = '16/02/2022 11:02:24';
+	transferNote1._startDate = '12/01/2022 09:08:11';
+	transferNote1._endDate = '15/02/2022 11:05:01';
+		
+	var transferNote2 = new TransferNote('T1101', aatfData2, 'Submitted', '2022');
+    transferNote2._typeOfWaste = "Household";
+	//transferNote2._transferDate = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	//transferNote2._submittedDate = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+	transferNote2._transferDate = '08/12/2022 13:25:20';
+	transferNote2._submittedDate = '12/03/2022 14:31:51';
+	transferNote2._startDate = '10/02/2022 10:35:21';
+	transferNote2._endDate = '17/03/2022 12:03:08';
+		
+	var transferNotes = [];
+	transferNotes.push(transferNote1);
+	transferNotes.push(transferNote2);
+	req.session.data['transferred-notes-tab4'] = transferNotes;  // 2 boilerplate transfer notes
+		
 	return facility;
 }
 
@@ -2669,8 +2784,6 @@ router.get('/version-2/pcs-journey-v4/411-choose-activity-pcs', function(req, re
 	var selectedFacility = CreatePcsSelectedFacilityWithEvidenceNotes(req);
 	req.session.data['chosen-facility'] = selectedFacility;
 	
-	//console.log(selectedFacility);
-	
     req.session.data['schemes'] = new Schemes();
     req.session.data['paste-values'] = '';
 	req.session.data['show-submission-panel'] = null;
@@ -2706,7 +2819,6 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, r
 	
     req.session.data['paste-values'] = '';
     var selectedFacility = req.session.data['chosen-facility'];
-	//console.log(selectedFacility);
 
 	// Sort by Status then Submitted Date 
 	// Draft first then submitted in descending date order
@@ -2794,7 +2906,8 @@ router.get('/version-2/pcs-journey-v4/412-manage-evidence-note', function(req, r
     req.session.data['chosen-facility-sorted'] = selectedFacility;
 	req.session.data['chosen-facility-approved-notes'] = selectedFacility._evidenceNotes.filter(n => ((n._status === 'Approved') && (n._isTransferred == false)));
 	req.session.data['chosen-facility-submitted-notes'] = selectedFacility._evidenceNotes.filter(n => ((n._status === 'Submitted') && (n._isTransferred == false)));
-	req.session.data['chosen-facility-transferable-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status !== 'Draft' && n._status !== 'Submitted' && n._isTransferred == false));
+	//req.session.data['chosen-facility-transferable-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status !== 'Draft' && n._status !== 'Submitted' && n._isTransferred == false));
+	req.session.data['chosen-facility-transferable-notes'] = selectedFacility._evidenceNotes.filter(n => (n._status !== 'Draft' && n._status !== 'Submitted'));
 	req.session.data['chosen-facility-transferable-notes-first-ten'] = selectedFacility._evidenceNotes.filter( n => ( (n._status !== 'Draft') && (n._status !== 'Submitted') && (n._isTransferred !== true) ) ).slice(0, 10);
 	req.session.data['chosen-facility-transferred-notes'] = selectedFacility._evidenceNotes.filter(n => n._isTransferred == true);
 	
@@ -2806,8 +2919,6 @@ router.get('/version-2/pcs-journey-v4/413-review-evidence-note', function(req, r
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
 	
-	//SetupTransferAatfsData(req);
-
     var facility = req.session.data['chosen-facility'];
 	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
 	
@@ -2842,8 +2953,6 @@ router.get('/version-2/pcs-journey-v4/415-transfer-select-categories', function(
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence note';
 	
-	//SetupTransferAatfsData(req);
-	
     res.redirect('/version-2/415_Transfer_Select_Categories');
 });
 
@@ -2853,8 +2962,7 @@ router.post('/version-2/pcs-journey-v4/416-choose-notes-to-transfer-from', funct
 	req.session.data['header']['activity'] = 'manage evidence note';
 	
 	// collect the PCS to transfer to
-	var chosenScheme = req.session.data['transfer-selected-pcs'];
-	//console.log('scheme: ' + chosenScheme);
+	//var chosenScheme = req.session.data['transfer-selected-pcs'];
 	
 
 
@@ -2943,6 +3051,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1173));
 		checkedNote._isTransferred = true;
 		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+		//checkedNote._reference = 'T1173';
 
 		var aatfNote = new TransferAatfNote(1173);
 		aatfNote._startDate = checkedNote._startDate;
@@ -2957,6 +3066,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1189));
 		checkedNote._isTransferred = true;
 		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+		//checkedNote._reference = 'T1189';
 
 		var aatfNote = new TransferAatfNote(1189);
 		aatfNote._startDate = checkedNote._startDate;
@@ -2971,6 +3081,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1182));
 		checkedNote._isTransferred = true;
 		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+		//checkedNote._reference = 'T1182';
 
 		var aatfNote = new TransferAatfNote(1182);
 		aatfNote._startDate = checkedNote._startDate;
@@ -2985,6 +3096,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1391));
 		checkedNote._isTransferred = true;
 		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+		//checkedNote._reference = 'T1391';
 
 		var aatfNote = new TransferAatfNote(1391);
 		aatfNote._startDate = checkedNote._startDate;
@@ -2999,6 +3111,7 @@ router.get('/version-2/pcs-journey-v4/417-choose-tonnage-to-transfer', function(
 		var checkedNote = facility._evidenceNotes.find(note => note._reference == Number(1111));
 		checkedNote._isTransferred = true;
 		checkedNote._dateTransferred = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+		//checkedNote._reference = 'T1111';
 
 		var aatfNote = new TransferAatfNote(1111);
 		aatfNote._startDate = checkedNote._startDate;
@@ -3092,23 +3205,9 @@ router.post('/version-2/pcs-journey-v4/419-view-transfer-note-after-submission',
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence notes';
 
-	var id = req.query['id'];
-	var newId = '';
-    var aatfs = req.session.data['selected-transfer-aatfs'];
+	// calculate latest ref to use next
+	var newId = 'T' + (Math.floor(Math.random() * 100) + 1101).toString();
     var status = '';
-    var complianceYear = '2022';
-	var typeOfWaste = "Household";
-	var startDate = '18/03/2022';
-	var endDate = '18/03/2022';
-	
-	if ( req.query['id'] == null || req.query['id'] == undefined )
-	{
-		newId = 'T' + Math.floor(Math.random() * 5000);
-	}
-	else
-	{
-		newId = 'T' + id.toString();
-	}
 	
     if (req.session.data['action'] === 'submit')
 	{
@@ -3117,14 +3216,23 @@ router.post('/version-2/pcs-journey-v4/419-view-transfer-note-after-submission',
 	else 
 	{
         status = 'Draft';
-   };
+    };
 
+    var aatfs = req.session.data['selected-transfer-aatfs'];
 	var newNote = new TransferNote(newId, aatfs, status, 2022);
-	newNote._typeOfWaste = typeOfWaste;
-	newNote._startDate = startDate;
-	newNote._endDate = endDate;
+	newNote._typeOfWaste = "Household";
+	newNote._startDate = '18/03/2022';
+	newNote._endDate = '18/03/2022';
+	newNote._transferDate = moment(new Date(), 'DD/MM/YYYY HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
 	req.session.data['new-transfer-note'] = newNote;
+		
+	var transferNotes = req.session.data['transferred-notes-tab4'];
+	transferNotes.push(newNote);
+	req.session.data['transferred-notes-tab4'] = transferNotes;
 
+	console.log(transferNotes);
+
+	
     if (status === 'Submitted')
 	{
         res.redirect('/version-2/419_View_transfer_note_after_submission');
@@ -3134,6 +3242,24 @@ router.post('/version-2/pcs-journey-v4/419-view-transfer-note-after-submission',
         res.redirect('/version-2/422_Draft_saved_dialog');
     };
 });
+
+
+router.get('/version-2/pcs-journey-v4/419a-view-transfer-note-from-link', function(req, res)
+{
+	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
+	req.session.data['header']['activity'] = 'manage evidence notes';
+
+	// calculate latest ref to use next
+	var transferNotes = req.session.data['transferred-notes-tab4'];
+	var transferNote = transferNotes.find(note => note._id == req.query['id']);
+	req.session.data['new-transfer-note'] = transferNote;
+
+	console.log(transferNote);
+
+	
+    res.redirect('/version-2/419a_View_transfer_note_from_link');
+});
+
 
 router.get('/version-2/pcs-journey-v4/420-view-evidence-note', function(req, res)
 {
@@ -3145,12 +3271,12 @@ router.get('/version-2/pcs-journey-v4/420-view-evidence-note', function(req, res
     res.redirect('/version-2/420_View_evidence_note');
 });
 
-router.get('/version-2/pcs-journey-v4/407-view-approved-evidence-note', function(req, res)
+router.get('/version-2/pcs-journey-v4/407-view-evidence-note', function(req, res)
 {
 	req.session.data['header']['organisation'] = 'Recycling Team Ltd';
 	req.session.data['header']['activity'] = 'manage evidence note';
     var facility = req.session.data['chosen-facility']; 
-	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == Number(req.query['id']));
+	req.session.data['selected-evidence-note'] = facility._evidenceNotes.find(note => note._reference == req.query['id']);
 
     res.redirect('/version-2/407_View_approved_Evidence_note');
 });

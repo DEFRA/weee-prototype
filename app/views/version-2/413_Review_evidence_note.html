@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<a class="govuk-back-link govuk-!-margin-top-1 govuk-!-margin-bottom-7" href="/version-2/pcs-journey-v4/412-manage-evidence-note">Manage evidence notes</a>
+<a class="govuk-back-link govuk-!-margin-top-1 govuk-!-margin-bottom-7" href="/version-2/pcs-journey-v4/412-manage-evidence-note">Back</a>
 
 <form class="form" action="/version-2/pcs-journey-v4/414-save-and-continue" method="post">
 
@@ -84,7 +84,7 @@
 			</div>
 			
 			<div class="govuk-grid-column-one-third" style="padding: 0 12px 0 0;">  
-				<div class="govuk-label--s" style="padding: 0 0 8px 0;">Receiving PCS</div>
+				<div class="govuk-label--s" style="padding: 0 0 8px 0;">Recipient</div>
 				<div class="govuk-body">
 					Recycling Lives compliance services LTD <br />
 					1 Bart avenue <br />
@@ -99,7 +99,7 @@
 			By submitting this information you confirm that the following waste and electronic equipment from UK <b>household</b> 
 			has been received between <b>{{ data['selected-evidence-note']._startDate }}</b> and <b>{{ data['selected-evidence-note']._endDate }}</b> at this site. 
 			It has been reused as whole appliances to the extent set out below. 
-			No other evidence has been issued on these WEEE materials
+			No other evidence has been issued on these WEEE materials.
 		</div>
 		
 		<div class="govuk-width-container govuk-!-margin-top-3 govuk-grid-column-full" style="padding: 0 0 0 0;">
@@ -107,9 +107,9 @@
 			<table class="govuk-table">
 				<thead class="govuk-table__head">
 					<tr>
-						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 48%;">Category</th>
-						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 27%;">Total received (tonnes)</th>
-						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 25%;">Re-used as whole appliances (tonnes)</th>
+						<th scope="col" class="govuk-table__header" style="vertical-align: bottom; width: 45%;">Category</th>
+						<th scope="col" class="govuk-table__header govuk-!-text-align-right" style="vertical-align: bottom; width: 30%;">Total received (tonnes)</th>
+						<th scope="col" class="govuk-table__header govuk-!-text-align-right" style="vertical-align: bottom; width: 25%;">Re-used as whole appliances (tonnes)</th>
 					</tr>
 				</thead>
 				
@@ -117,92 +117,92 @@
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">1- Large household appliances</td>
-						<td class="govuk-table__cell">48</td>
-						<td class="govuk-table__cell">2</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">48</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">2</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">2- Small household appliances</td>
-						<td class="govuk-table__cell">21</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">21</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">3- IT and telecommunications equipment</td>
-						<td class="govuk-table__cell">1</td>
-						<td class="govuk-table__cell">1</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">1</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">1</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">4- Consumer equipment</td>
-						<td class="govuk-table__cell">-</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">5- Lighting equipment</td>
-						<td class="govuk-table__cell">-</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">6- Electrical and electronic tools</td>
-						<td class="govuk-table__cell">14</td>
-						<td class="govuk-table__cell">3</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">14</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">3</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">7- Toys, leisure and sports equipment</td>
-						<td class="govuk-table__cell">32</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">32</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">8- Medical devices</td>
-						<td class="govuk-table__cell">11</td>
-						<td class="govuk-table__cell">1</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">11</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">1</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">9- Monitoring and control instruments</td>
-						<td class="govuk-table__cell">-</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">10- Automatic dispensers</td>
-						<td class="govuk-table__cell">3</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">3</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">11- Display equipment</td>
-						<td class="govuk-table__cell">1</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">1</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">12- Cooling appliances containing refridgerants</td>
-						<td class="govuk-table__cell">-</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">13- Gas discharge lamps</td>
-						<td class="govuk-table__cell">5</td>
-						<td class="govuk-table__cell">1</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">5</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">1</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
 						<td class="govuk-table__cell">14- Photovoltaic panels</td>
-						<td class="govuk-table__cell">-</td>
-						<td class="govuk-table__cell">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
+						<td class="govuk-table__cell govuk-!-text-align-right">-</td>
 					</tr>
 				
 					<tr class="govuk-table__row">
-						<th class="govuk-table__cell" style="font-weight: 600; border-bottom: 0;">Total</th>
-						<th class="govuk-table__cell" style="font-weight: 600; border-bottom: 0;">136</th>
-						<th class="govuk-table__cell" style="font-weight: 600; border-bottom: 0;">8</th>
+						<th class="govuk-table__cell" style="font-weight: 600; border-bottom: 0;">Total (tonnes)</th>
+						<th class="govuk-table__cell govuk-!-text-align-right" style="font-weight: 600; border-bottom: 0;">136</th>
+						<th class="govuk-table__cell govuk-!-text-align-right" style="font-weight: 600; border-bottom: 0;">8</th>
 					</tr>
 
 				</tbody>

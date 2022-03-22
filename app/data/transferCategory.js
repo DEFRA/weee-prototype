@@ -1,3 +1,4 @@
+
 class TransferCategory{
     constructor(category, totalReceived, totalReused) {
         this._category = category;

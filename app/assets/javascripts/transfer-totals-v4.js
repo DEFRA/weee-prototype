@@ -9,7 +9,7 @@ $(document).ready(function ()
 			$('[id^=transfer-rec]').unbind('input');
 			
 			// 2. copy values
-			CopyAcross();
+			CopyTonnagesAcross();
 			calculateTotals();
 			
 			// 3. bind input events
@@ -17,7 +17,7 @@ $(document).ready(function ()
 		}
 	});
 	
-	function CopyAcross()
+	function CopyTonnagesAcross()
 	{
 		var transferReceivedControls = $('[id^=transfer-rec-category]');
 		var transferReusedControls = $('[id^=transfer-reused-category]');
